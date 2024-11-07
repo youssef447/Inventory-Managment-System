@@ -9,13 +9,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
-
 import 'package:window_manager/window_manager.dart';
-
 import 'core/routes/get_pages.dart';
 import 'core/constants/languages.dart';
 import 'core/theme/app_theme.dart';
-import 'features/home/presentation/page/home_page.dart';
+import 'features/consumables/presentation/ui/pages/tablet/consumables_tablet_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,7 +54,7 @@ class InventoryManagement extends StatelessWidget {
           // General
           debugShowCheckedModeBanner: false,
           title: 'Inventory Management',
-          home: const HomePage(),
+          home: ConsumablesTabletPage(readOnly: true),
           //  initialBinding: HomeBindings(),
 
           // Routes
