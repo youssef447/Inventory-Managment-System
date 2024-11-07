@@ -12,7 +12,7 @@ import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../../core/widgets/table/default_data_table.dart';
 import '../../../controller/assets_controller.dart';
-import '../../constats/assets_id_constant.dart';
+import '../../constants/assets_id_constant.dart';
 
 class AssetsTabletPage extends StatelessWidget {
   const AssetsTabletPage({super.key, required this.readOnly});

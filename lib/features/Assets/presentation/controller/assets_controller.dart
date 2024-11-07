@@ -5,7 +5,7 @@
 import 'package:get/get.dart';
 import '../../../../core/constants/enums.dart';
 import '../../domain/entity/assets_entity.dart';
-import '../ui/constats/assets_id_constant.dart';
+import '../ui/constants/assets_id_constant.dart';
 class AssetsController extends GetxController {
 
 // list for item of table assets
