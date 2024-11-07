@@ -143,6 +143,7 @@ class AppTextFormField extends StatelessWidget {
       textAlign: textAlign ?? TextAlign.start,
       cursorColor: AppColors.primary,
       decoration: InputDecoration(
+        hoverColor: backGroundColor ?? AppColors.field,
         helperText: helperText,
         counterStyle: GoogleFonts.cairo(
           color: AppColors.lightGrey,

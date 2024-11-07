@@ -12,7 +12,8 @@ extension ContextExtension on BuildContext {
   // ScreenInfo
   double get width => MediaQuery.of(this).size.width;
   double get height => MediaQuery.of(this).size.height;
-  bool get isTablett => MediaQuery.of(this).size.shortestSide >= 600;
+  bool get isTablett => MediaQuery.of(this).size.shortestSide > 500;
+  bool get isLandscapee => (MediaQuery.of(this).size.width > 1000);
   bool get isArabic => Get.locale.toString().toLowerCase().contains('ar');
 }
 

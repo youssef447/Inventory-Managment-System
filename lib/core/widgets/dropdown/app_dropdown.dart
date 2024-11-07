@@ -73,7 +73,7 @@ class AppDropdown extends StatelessWidget {
                   customSpacing ?? const SizedBox(),
                   showDropdownIcon
                       ? SvgPicture.asset(
-                          AppAssets.down,
+                          AppAssets.arrowDown,
                         )
                       : const SizedBox(),
                 ],

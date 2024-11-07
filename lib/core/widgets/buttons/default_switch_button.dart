@@ -3,9 +3,7 @@
 // Last update: 29/9/2024
 // this shared switch button in all app
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_switch/flutter_switch.dart';
-import 'package:get/get.dart';
 
 import '../../theme/app_colors.dart';
 

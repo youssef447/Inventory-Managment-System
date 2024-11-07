@@ -9,13 +9,16 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
+import 'package:inventory_management/core/helpers/responsive_helper.dart';
 
 import 'package:window_manager/window_manager.dart';
 
 import 'core/routes/get_pages.dart';
 import 'core/constants/languages.dart';
 import 'core/theme/app_theme.dart';
-import 'features/home/presentation/page/home_page.dart';
+import 'features/home/controller/home_bindings.dart';
+import 'features/home/presentation/page/mobile/mobile_home_page.dart';
+import 'features/home/presentation/page/tablet/tablet_home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,8 +59,11 @@ class InventoryManagement extends StatelessWidget {
           // General
           debugShowCheckedModeBanner: false,
           title: 'Inventory Management',
-          home: const HomePage(),
-          //  initialBinding: HomeBindings(),
+          home: const ResponsiveHelper(
+            mobileWidget: MobileHomePage(),
+            tabletWidget: TabletHomePage(),
+          ),
+          initialBinding: HomeBindings(),
 
           // Routes
           getPages: AppPages.routes,

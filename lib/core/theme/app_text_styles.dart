@@ -470,10 +470,10 @@ abstract class AppTextStyles {
       );
 
   static TextStyle get font20BlackSemiBoldCairo => GoogleFonts.cairo(
-    fontSize: 20.sp,
-    color: AppColors.text,
-    fontWeight: AppFontWeights.semiBold,
-  );
+        fontSize: 20.sp,
+        color: AppColors.text,
+        fontWeight: AppFontWeights.semiBold,
+      );
 
   static TextStyle get font20SecondaryBlackSemiBoldCairo => GoogleFonts.cairo(
         fontSize: 20.sp,
@@ -529,6 +529,11 @@ abstract class AppTextStyles {
   static TextStyle get font16PrimaryColorBoldCairo => GoogleFonts.cairo(
         fontSize: 16.sp,
         color: AppColors.primary,
+        fontWeight: AppFontWeights.bold,
+      );
+  static TextStyle get font22BlackBoldCairo => GoogleFonts.cairo(
+        fontSize: 22.sp,
+        color: AppColors.text,
         fontWeight: AppFontWeights.bold,
       );
 
