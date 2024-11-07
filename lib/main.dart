@@ -12,7 +12,6 @@ import 'package:inventory_management/core/extensions/extensions.dart';
 import 'package:inventory_management/core/helpers/responsive_helper.dart';
 
 import 'package:window_manager/window_manager.dart';
-
 import 'core/routes/get_pages.dart';
 import 'core/constants/languages.dart';
 import 'core/theme/app_theme.dart';
