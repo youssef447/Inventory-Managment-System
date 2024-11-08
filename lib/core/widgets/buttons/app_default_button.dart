@@ -60,10 +60,11 @@ class AppDefaultButton extends StatelessWidget {
         disabledColor:
             Get.isDarkMode ? AppColors.card : AppColors.moreLightGrey,
         padding: padding,
-        child: Text(
-          text,
-          overflow: TextOverflow.ellipsis,
-          style: style?.copyWith(color: textColor),
+        child: FittedBox(
+          child: Text(
+            text,
+            style: style?.copyWith(color: textColor),
+          ),
         ),
       ),
     );

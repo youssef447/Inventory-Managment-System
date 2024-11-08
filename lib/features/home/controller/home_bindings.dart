@@ -12,6 +12,7 @@ class HomeBindings implements Bindings {
   void dependencies() {
     Get.lazyPut(
       () => HomeController(),
+      fenix: true,
     );
     Get.lazyPut(
       () => RequestsController(),

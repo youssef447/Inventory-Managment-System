@@ -1,4 +1,3 @@
-
 // Date: 7/11/2024
 // By:Mohamed Ashraf
 // This widget displays a table of assets items using data from AssetsController in tablet and windows view
@@ -15,206 +14,192 @@ import '../../../controller/assets_controller.dart';
 import '../../constants/assets_id_constant.dart';
 
 class AssetsTabletPage extends StatelessWidget {
-  const AssetsTabletPage({super.key, required this.readOnly});
-
-  final bool readOnly;
+  const AssetsTabletPage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: GetBuilder<AssetsController>(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: GetBuilder<AssetsController>(
           init: AssetsController(),
-            id: AssetsIdConstant.assetsTable,
-            builder: (controller) {
-              return controller.assetsList.isEmpty
-                  ? const NoDataGif()
-                  : DefaultDataTable(
-                columns: controller.tableColumnsName
-                    .map(
-                      (element) => DataColumn(
-                    label: Text(
-                      element.tr,
-                      style: AppTextStyles.font16WhiteRegularCairo,
-                    ),
-                  ),
-                )
-                    .toList(),
-                rows: List.generate(
-                  controller.assetsList.length,
+          id: AssetsIdConstant.assetsTable,
+          builder: (controller) {
+            return controller.assetsList.isEmpty
+                ? const NoDataGif()
+                : DefaultDataTable(
+                    columns: controller.tableColumnsName
+                        .map(
+                          (element) => DataColumn(
+                            label: Text(
+                              element.tr,
+                              style: AppTextStyles.font16WhiteRegularCairo,
+                            ),
+                          ),
+                        )
+                        .toList(),
+                    rows: List.generate(
+                      controller.assetsList.length,
                       (index) => DataRow(
-                    color: WidgetStatePropertyAll(
-                      index % 2 == 0
-                          ? AppColors.evenRowColor
-                          : AppColors.oddRowColor,
-                    ),
-                    cells: [
-                      DataCell(
-                        Center(
-                          child: Text(
-                            controller.assetsList[index].assetId,
-                            style: AppTextStyles.font16BlackRegularCairo,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                        color: WidgetStatePropertyAll(
+                          index % 2 == 0
+                              ? AppColors.evenRowColor
+                              : AppColors.oddRowColor,
                         ),
-                      ),
-                      DataCell(
-                        Center(
-                          child: Text(
-                            controller.assetsList[index].assetName,
-                            style: AppTextStyles.font16BlackRegularCairo,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ),
-                      DataCell(
-                        Center(
-                          child: Text(
-                             controller.assetsList[index].category,
-                            style: AppTextStyles.font16BlackRegularCairo,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ),
-                      DataCell(
-                        Center(
-                          child: Text(
-                             controller.assetsList[index].subcategory,
-                            style: AppTextStyles.font16BlackRegularCairo,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ),
-                      DataCell(
-                        Center(
-                          child: Text(
-                             controller.assetsList[index].model,
-                            style: AppTextStyles.font16BlackRegularCairo,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ),
-                      DataCell(
-                        Center(
-                          child: Text(
-                             controller.assetsList[index].brand,
-                            style: AppTextStyles.font16BlackRegularCairo,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ),
-                      DataCell(
-                        Center(
-                          child: Text(
-                            DateTimeHelper.formatDate(
-                              controller.assetsList[index].dateReceived,
+                        cells: [
+                          DataCell(
+                            Text(
+                              controller.assetsList[index].assetId,
+                              style: AppTextStyles.font16BlackRegularCairo,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            style:
-                            AppTextStyles.font16BlackRegularCairo,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          )
-                        ),
-                      ),
-                      DataCell(
-                        Center(
-                          child: Text(
-                            controller.assetsList[index].dateReturn != null
-                                ? DateTimeHelper.formatDate(
-                              controller.assetsList[index].dateReturn!,
-                            )
-                                : 'Not Applicable',
-                            style: controller.assetsList[index].dateReturn != null
-                                ? AppTextStyles.font16BlackRegularCairo
-                                : AppTextStyles.font16DarkGreyRegularCairo,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
                           ),
-                        ),
-                      ),
-                      DataCell(
-                        Center(
-                          child: Text(
-                             controller.assetsList[index].quantity,
-                            style: AppTextStyles.font16BlackRegularCairo,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ),
-                      DataCell(
-                        Center(
-                          child: Text(
-                            controller.assetsList[index].maintenanceFrequency != null
-                                ?
-                              controller.assetsList[index].maintenanceFrequency!
-
-                                : 'Not Applicable',
-                            style: controller.assetsList[index].maintenanceFrequency != null
-                                ? AppTextStyles.font16BlackRegularCairo
-                                : AppTextStyles.font16DarkGreyRegularCairo,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ),
-                      DataCell(
-                        Center(
-                          child: Text(
-                            controller.assetsList[index].nextMaintenanceSchedule != null
-                                ? DateTimeHelper.formatDate(
-                              controller.assetsList[index].nextMaintenanceSchedule!,
-                            )
-                                : 'Not Applicable',
-                            style: controller.assetsList[index].nextMaintenanceSchedule != null
-                                ? AppTextStyles.font16BlackRegularCairo
-                                : AppTextStyles.font16DarkGreyRegularCairo,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ),
-                      DataCell(
-                        Center(
-                          child: Text(
-                            controller.assetsList[index].expirationDate != null
-                                ? DateTimeHelper.formatDate(
-                              controller.assetsList[index].expirationDate!,
-                            )
-                                : 'Not Applicable',
-                            style: controller.assetsList[index].expirationDate != null
-                                ? AppTextStyles.font16BlackRegularCairo
-                                : AppTextStyles.font16DarkGreyRegularCairo,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ),
-                      DataCell(
-                        Center(
-                          child: Text(
-                             controller.assetsList[index].status.getName,
-                            style: AppTextStyles.font16BlackRegularCairo.copyWith(
-                              color:    controller.assetsList[index].status.getColor
+                          DataCell(
+                            Text(
+                              controller.assetsList[index].assetName,
+                              style: AppTextStyles.font16BlackRegularCairo,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
                           ),
-                        ),
+                          DataCell(
+                            Text(
+                              controller.assetsList[index].category,
+                              style: AppTextStyles.font16BlackRegularCairo,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          DataCell(
+                            Text(
+                              controller.assetsList[index].subcategory,
+                              style: AppTextStyles.font16BlackRegularCairo,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          DataCell(
+                            Text(
+                              controller.assetsList[index].model,
+                              style: AppTextStyles.font16BlackRegularCairo,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          DataCell(
+                            Text(
+                              controller.assetsList[index].brand,
+                              style: AppTextStyles.font16BlackRegularCairo,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          DataCell(
+                            Center(
+                                child: Text(
+                              DateTimeHelper.formatDate(
+                                controller.assetsList[index].dateReceived,
+                              ),
+                              style: AppTextStyles.font16BlackRegularCairo,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            )),
+                          ),
+                          DataCell(
+                            Text(
+                              controller.assetsList[index].dateReturn != null
+                                  ? DateTimeHelper.formatDate(
+                                      controller.assetsList[index].dateReturn!,
+                                    )
+                                  : 'Not Applicable',
+                              style: controller.assetsList[index].dateReturn !=
+                                      null
+                                  ? AppTextStyles.font16BlackRegularCairo
+                                  : AppTextStyles.font16DarkGreyRegularCairo,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          DataCell(
+                            Text(
+                              controller.assetsList[index].quantity,
+                              style: AppTextStyles.font16BlackRegularCairo,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          DataCell(
+                            Text(
+                              controller.assetsList[index]
+                                          .maintenanceFrequency !=
+                                      null
+                                  ? controller
+                                      .assetsList[index].maintenanceFrequency!
+                                  : 'Not Applicable',
+                              style: controller.assetsList[index]
+                                          .maintenanceFrequency !=
+                                      null
+                                  ? AppTextStyles.font16BlackRegularCairo
+                                  : AppTextStyles.font16DarkGreyRegularCairo,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          DataCell(
+                            Text(
+                              controller.assetsList[index]
+                                          .nextMaintenanceSchedule !=
+                                      null
+                                  ? DateTimeHelper.formatDate(
+                                      controller.assetsList[index]
+                                          .nextMaintenanceSchedule!,
+                                    )
+                                  : 'Not Applicable',
+                              style: controller.assetsList[index]
+                                          .nextMaintenanceSchedule !=
+                                      null
+                                  ? AppTextStyles.font16BlackRegularCairo
+                                  : AppTextStyles.font16DarkGreyRegularCairo,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          DataCell(
+                            Text(
+                              controller.assetsList[index].expirationDate !=
+                                      null
+                                  ? DateTimeHelper.formatDate(
+                                      controller
+                                          .assetsList[index].expirationDate!,
+                                    )
+                                  : 'Not Applicable',
+                              style: controller
+                                          .assetsList[index].expirationDate !=
+                                      null
+                                  ? AppTextStyles.font16BlackRegularCairo
+                                  : AppTextStyles.font16DarkGreyRegularCairo,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          DataCell(
+                            Text(
+                              controller.assetsList[index].status.getName,
+                              style: AppTextStyles.font16BlackRegularCairo
+                                  .copyWith(
+                                      color: controller
+                                          .assetsList[index].status.getColor),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ).toList(),
-              );
-            }),
-      ),
+                    ).toList(),
+                  );
+          }),
     );
   }
 }

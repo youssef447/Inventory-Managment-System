@@ -1,32 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import '../constants/app_assets.dart';
-import '../theme/app_colors.dart';
 
 enum RequestStatus {
   approved,
   cancelled,
   pending,
   rejected,
-}
-
-extension GetColor on String {
-  Color? get getColor {
-    if (this == 'Pending'.tr) {
-      return AppColors.warming;
-    }
-    if (this == 'Approved'.tr) {
-      return AppColors.green;
-    }
-    if (this == 'Rejected'.tr) {
-      return AppColors.red;
-    }
-    if (this == 'Canceled'.tr) {
-      return AppColors.red;
-    }
-    return null;
-  }
 }
 
 extension GetName on RequestStatus {

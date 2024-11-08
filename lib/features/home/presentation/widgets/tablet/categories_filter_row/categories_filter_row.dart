@@ -51,6 +51,9 @@ class TabletCategoriesFilterRow extends GetView<HomeController> {
               if (controller.currentCategoryIndex.value == 2)
                 AppDefaultButton(
                   text: 'Track Request'.tr,
+                  style: context.isPhone
+                      ? AppTextStyles.font16BlackMediumCairo
+                      : AppTextStyles.font18BlackMediumCairo,
                 ),
             ],
           );

@@ -25,15 +25,12 @@ abstract class AppAssets {
   static const String arrowDown = 'assets/vectors/arrow_down.svg';
   static const String calender = 'assets/vectors/calender.svg';
   static const String time = 'assets/vectors/time.svg';
+  static const String image = 'assets/images/image.png';
 
   //****************************************************************************
 
   //***************************** LOTTIE FILES *********************************
 
-  static const String successful = 'assets/lottie/successful.json';
-  static const String trash = 'assets/lottie/trash.json';
-  static const String notification = 'assets/lottie/notification.json';
-  static const String location = 'assets/lottie/location.json';
   static const String noData = 'assets/lottie/noData.json';
 
   //****************************************************************************

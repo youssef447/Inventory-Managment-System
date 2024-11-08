@@ -4,6 +4,7 @@ class RequestEntity {
   String requestType;
   DateTime requestDate;
   String priority;
+  String status;
   String maintenanceFrequency;
   String assetName;
   String category;
@@ -27,6 +28,7 @@ class RequestEntity {
     required this.expectedRecieved,
     required this.dateReturn,
     required this.quantity,
+    required this.status,
   });
 
   RequestEntity copyWith({
@@ -37,6 +39,7 @@ class RequestEntity {
     String? maintenanceFrequency,
     String? assetName,
     String? category,
+    String? status,
     String? subCategory,
     String? model,
     String? brand,
@@ -46,6 +49,7 @@ class RequestEntity {
   }) {
     return RequestEntity(
       requestId: requestId ?? this.requestId,
+      status: status ?? this.status,
       requestType: requestType ?? this.requestType,
       requestDate: requestDate ?? this.requestDate,
       priority: priority ?? this.priority,

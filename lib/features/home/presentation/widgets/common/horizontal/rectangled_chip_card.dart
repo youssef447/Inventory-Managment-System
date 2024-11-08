@@ -46,8 +46,11 @@ class RectangledChipCard extends StatelessWidget {
               child: Text(
                 text.tr,
                 overflow: TextOverflow.ellipsis,
-                style: AppTextStyles.font18BlackMediumCairo
-                    .copyWith(color: AppColors.textButton),
+                style: context.isPhone
+                    ? AppTextStyles.font16BlackMediumCairo
+                        .copyWith(color: AppColors.textButton)
+                    : AppTextStyles.font18BlackMediumCairo
+                        .copyWith(color: AppColors.textButton),
               ),
             ),
           ],

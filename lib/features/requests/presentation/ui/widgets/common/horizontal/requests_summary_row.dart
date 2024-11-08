@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/core/enums/requests_enums.dart';
+import 'package:inventory_management/core/extensions/extensions.dart';
 import 'package:inventory_management/core/helpers/spacing_helper.dart';
 import 'package:inventory_management/core/theme/app_text_styles.dart';
 
@@ -26,8 +27,13 @@ class HorizontalRequstsSummary extends GetView<RequestsController> {
           (index) {
             return Row(
               children: [
-                SvgPicture.asset(
-                  RequestStatusConstants.categories[index].getAsset,
+                CircleAvatar(
+                  radius: 17.r,
+                  backgroundColor:
+                      RequestStatusConstants.categories[index].getName.getColor,
+                  child: SvgPicture.asset(
+                    RequestStatusConstants.categories[index].getAsset,
+                  ),
                 ),
                 horizontalSpace(10),
                 Text(
@@ -38,7 +44,7 @@ class HorizontalRequstsSummary extends GetView<RequestsController> {
                 //count of current status
                 Text(
                   '05',
-                  style: AppTextStyles.font23WhiteBoldCairo,
+                  style: AppTextStyles.font22BlackBoldCairo,
                 ),
               ],
             );

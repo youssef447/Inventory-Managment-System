@@ -18,7 +18,7 @@ class MobileCategoryFilterCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isTablet = context.isTablett;
     return Padding(
-      padding: EdgeInsetsDirectional.only(end: 37.w),
+      padding: EdgeInsetsDirectional.only(end: context.isTablett ? 37.w : 0),
       child: Row(children: [
         Container(
           height: isTablet ? 48.h : 32.h,

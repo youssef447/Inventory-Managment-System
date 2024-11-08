@@ -28,6 +28,9 @@ extension GetColor on String {
     if (this == 'Rejected'.tr) {
       return AppColors.red;
     }
+    if (this == 'Canceled'.tr) {
+      return AppColors.red;
+    }
     return null;
   }
 }
