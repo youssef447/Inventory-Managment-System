@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 ///Youssef Ashraf:
 ///Adding Up Down Transition to a given child
