@@ -26,6 +26,14 @@ abstract class AppAssets {
   static const String calender = 'assets/vectors/calender.svg';
   static const String time = 'assets/vectors/time.svg';
 
+  //media
+  static const String powerpoint = 'assets/vectors/powerpoint.svg';
+  static const String pdf = 'assets/vectors/pdf.svg';
+  static const String text = 'assets/vectors/text.svg';
+  static const String gallery = 'assets/vectors/gallery.svg';
+  static const String video = 'assets/vectors/video.svg';
+  static const String unknown = 'assets/vectors/unknown.svg';
+
   //****************************************************************************
 
   //***************************** LOTTIE FILES *********************************

@@ -1,5 +1,8 @@
-///Class Overview The RequestEntity class represents a request entity which is part of the inventory model.
+import 'attachment_entity.dart';
+
+/// represents a request entity which is part of the inventory model.
 class RequestEntity {
+  int quantity;
   String requestId;
   String requestType;
   DateTime requestDate;
@@ -13,7 +16,9 @@ class RequestEntity {
   String brand;
   DateTime expectedRecieved;
   DateTime dateReturn;
-  int quantity;
+  String? additionalNote;
+  List<AttachmentEntity> attachments;
+
   RequestEntity({
     required this.requestId,
     required this.requestType,
@@ -29,6 +34,8 @@ class RequestEntity {
     required this.dateReturn,
     required this.quantity,
     required this.status,
+    this.additionalNote,
+    this.attachments = const [],
   });
 
   RequestEntity copyWith({
@@ -46,6 +53,8 @@ class RequestEntity {
     DateTime? expectedRecieved,
     DateTime? dateReturn,
     int? quantity,
+    String? additionalNote,
+    List<AttachmentEntity>? attachments,
   }) {
     return RequestEntity(
       requestId: requestId ?? this.requestId,
@@ -62,6 +71,8 @@ class RequestEntity {
       expectedRecieved: expectedRecieved ?? this.expectedRecieved,
       dateReturn: dateReturn ?? this.dateReturn,
       quantity: quantity ?? this.quantity,
+      additionalNote: additionalNote ?? this.additionalNote,
+      attachments: attachments ?? this.attachments,
     );
   }
 }

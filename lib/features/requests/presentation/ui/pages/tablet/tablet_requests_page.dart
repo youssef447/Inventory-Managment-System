@@ -13,9 +13,9 @@ import '../../../../../../core/widgets/table/default_data_table.dart';
 import '../../../../constants/ids_constants.dart';
 import '../../../../constants/requests_columns.dart';
 import '../../../controller/requests_controller.dart';
-import '../../widgets/common/horizontal/requests_summary_row.dart';
-import '../../widgets/common/request_category_row.dart';
-import '../../widgets/common/vertical/requests_summary_row.dart';
+import '../../widgets/common/horizontal/requests_summary_circles.dart';
+import '../../widgets/common/request_category_filter.dart';
+import '../../widgets/common/vertical/requests_summary_circles.dart';
 
 class TabletRequestsPage extends GetView<RequestsController> {
   const TabletRequestsPage({super.key});
@@ -32,11 +32,11 @@ class TabletRequestsPage extends GetView<RequestsController> {
                   : Column(
                       children: [
                         const OrientationHelper(
-                          landScape: HorizontalRequstsSummary(),
-                          portrait: VerticalRequstsSummary(),
+                          landScape: HorizontalRequstsSummaryCircles(),
+                          portrait: VerticalRequstsSummaryCircles(),
                         ),
                         verticalSpace(10),
-                        const RequestCategoryRow(),
+                        const RequestCategoryFilter(),
                         verticalSpace(10),
                         DefaultDataTable(
                           columns: RequestsColumns.requestsColumns

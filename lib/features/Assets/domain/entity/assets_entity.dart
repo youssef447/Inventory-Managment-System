@@ -15,7 +15,7 @@ class AssetsEntity {
   final String? maintenanceFrequency;
   final DateTime? nextMaintenanceSchedule;
   final DateTime? expirationDate;
-
+  final int availableQuantity;
   final Status status;
 
   AssetsEntity(
@@ -24,12 +24,13 @@ class AssetsEntity {
       required this.category,
       required this.subcategory,
       required this.model,
+      this.availableQuantity = 0,
       required this.dateReceived,
-       this.dateReturn,
+      this.dateReturn,
       required this.quantity,
-       this.maintenanceFrequency,
+      this.maintenanceFrequency,
       this.nextMaintenanceSchedule,
-       this.expirationDate,
+      this.expirationDate,
       required this.status,
       required this.brand});
 }

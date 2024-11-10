@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -10,7 +10,10 @@ import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/theme/app_theme.dart';
-import '../../common/horizontal/rectangled_chip_card.dart';
+import '../../../../../../core/enums/requests_enums.dart';
+import '../../../../../../core/routes/app_routes.dart';
+import '../../../../../../core/widgets/dropdown/app_dropdown.dart';
+import '../../common/horizontal/rectangled_filter_card.dart';
 import '../../common/vertical/squared_filter_card.dart';
 import '../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../controller/home_controller.dart';
@@ -92,7 +95,7 @@ class TabletSearchFilter extends GetView<HomeController> {
               if (context.isLandscapee)
                 Row(
                   children: [
-                    RectangledChipCard(
+                    RectangledFilterCard(
                       image: AppAssets.filter,
                       text: 'Filter',
                       color: AppColors.card,
@@ -102,14 +105,43 @@ class TabletSearchFilter extends GetView<HomeController> {
                     if (isRequest)
                       Padding(
                         padding: EdgeInsetsDirectional.only(end: 9.w),
-                        child: RectangledChipCard(
+                        child: AppDropdown(
+                          showDropdownIcon: false,
                           image: AppAssets.add,
-                          text: 'Request',
-                          onTap: () {},
+                          textAlign: TextAlign.center,
+                          width: 112.w,
+                          style: context.isPhone
+                              ? AppTextStyles.font16BlackMediumCairo
+                                  .copyWith(color: AppColors.textButton)
+                              : AppTextStyles.font18BlackMediumCairo
+                                  .copyWith(color: AppColors.textButton),
                           color: AppColors.primary,
+                          height: 37.h,
+                          onChanged: (value) {
+                            if (value == RequestActions.requestAsset) {
+                              Get.toNamed(
+                                Routes.requestAsset,
+                              );
+                            }
+                          },
+                          items: List.generate(
+                            controller.requestActions.length,
+                            (index) {
+                              return DropdownMenuItem(
+                                alignment: AlignmentDirectional.centerStart,
+                                value: controller.requestActions[index],
+                                child: Text(
+                                  controller.requestActions[index].getName,
+                                  style:
+                                      AppTextStyles.font14SecondaryBlackCairo,
+                                ),
+                              );
+                            },
+                          ),
+                          textButton: 'Request'.tr,
                         ),
                       ),
-                    RectangledChipCard(
+                    RectangledFilterCard(
                       image: AppAssets.download,
                       text: 'Download',
                       color: AppColors.primary,
@@ -129,12 +161,40 @@ class TabletSearchFilter extends GetView<HomeController> {
                     if (isRequest)
                       Padding(
                         padding: EdgeInsetsDirectional.only(end: 9.w),
-                        child: RectangledChipCard(
+                        child: AppDropdown(
+                          showDropdownIcon: false,
                           image: AppAssets.add,
-                          text: 'Request',
+                          textAlign: TextAlign.center,
                           width: 112.w,
-                          onTap: () {},
+                          style: context.isPhone
+                              ? AppTextStyles.font16BlackMediumCairo
+                                  .copyWith(color: AppColors.textButton)
+                              : AppTextStyles.font18BlackMediumCairo
+                                  .copyWith(color: AppColors.textButton),
                           color: AppColors.primary,
+                          height: 37.h,
+                          onChanged: (value) {
+                            if (value == RequestActions.requestAsset) {
+                              Get.toNamed(
+                                Routes.requestAsset,
+                              );
+                            }
+                          },
+                          items: List.generate(
+                            controller.requestActions.length,
+                            (index) {
+                              return DropdownMenuItem(
+                                alignment: AlignmentDirectional.centerStart,
+                                value: controller.requestActions[index],
+                                child: Text(
+                                  controller.requestActions[index].getName,
+                                  style:
+                                      AppTextStyles.font14SecondaryBlackCairo,
+                                ),
+                              );
+                            },
+                          ),
+                          textButton: 'Request'.tr,
                         ),
                       ),
                     SquaredChipCard(

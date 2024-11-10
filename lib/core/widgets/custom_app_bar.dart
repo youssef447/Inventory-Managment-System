@@ -15,10 +15,12 @@ import '../theme/app_text_styles.dart';
 
 class CustomAppBar extends StatelessWidget {
   final List<String>? titles;
+  //final List<Function()>? titleNavigations;
 
   const CustomAppBar({
     super.key,
     this.titles,
+    // this.titleNavigations,
   });
 
   @override
@@ -28,13 +30,41 @@ class CustomAppBar extends StatelessWidget {
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         Padding(
-          padding: EdgeInsetsDirectional.only(end: 2.w),
-          child: Text(
-            'Inventory Management'.tr,
-            style: isTablet
-                ? AppTextStyles.font28BlackSemiBoldCairo
-                : AppTextStyles.font26BlackSemiBoldCairo,
-          ),
+          padding: EdgeInsetsDirectional.only(end: 8.w),
+          child: titles == null
+              ? Text(
+                  'Inventory Management'.tr,
+                  style: isTablet
+                      ? AppTextStyles.font28BlackSemiBoldCairo
+                      : AppTextStyles.font26BlackSemiBoldCairo,
+                )
+              : Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.until(
+                          (route) => route.isFirst,
+                        );
+                      },
+                      child: Text(
+                        'Inventory Management'.tr,
+                        style: isTablet
+                            ? AppTextStyles.font28BlackSemiBoldCairo
+                            : AppTextStyles.font26BlackSemiBoldCairo,
+                      ),
+                    ),
+                    horizontalSpace(8),
+                    SvgPicture.asset(
+                      context.isArabic
+                          ? AppAssets.arrowBack
+                          : AppAssets.arrowForward,
+                      width: 24.w,
+                      height: 24.h,
+                      color: AppColors.text,
+                    ),
+                  ],
+                ),
         ),
         if (titles != null)
           ...List.generate(
@@ -49,13 +79,18 @@ class CustomAppBar extends StatelessWidget {
                 );
               } else {
                 return Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
+                    //  onTap: titleNavigations![index],
+
                     Text(
                       titles![index].tr,
                       style: isTablet
                           ? AppTextStyles.font28BlackSemiBoldCairo
                           : AppTextStyles.font26BlackSemiBoldCairo,
                     ),
+                    horizontalSpace(8),
+
                     SvgPicture.asset(
                       context.isArabic
                           ? AppAssets.arrowBack

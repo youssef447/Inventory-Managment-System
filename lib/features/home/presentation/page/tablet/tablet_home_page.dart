@@ -26,11 +26,11 @@ class TabletHomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: context.isLandscapee
-            ? EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h)
-            : EdgeInsets.symmetric(horizontal: 30.w, vertical: 18.h),
-        child: SafeArea(
+      body: SafeArea(
+        child: Padding(
+          padding: context.isLandscapee
+              ? EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h)
+              : EdgeInsets.symmetric(horizontal: 30.w, vertical: 18.h),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

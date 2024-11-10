@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+
+import '../../../core/enums/requests_enums.dart';
 // Date: 7/11/2024
 // By: Youssef Ashraf
 /// Objectives: This file is responsible for handling home page logic.
@@ -14,6 +16,12 @@ class HomeController extends GetxController {
     currentCategoryIndex.value = index;
   }
 
-  //------------Search Filter Row------------
+  //------------Search Filter ------------
   TextEditingController searchController = TextEditingController();
+  List<RequestActions> requestActions = [
+    RequestActions.requestAsset,
+    RequestActions.returnAsset,
+    RequestActions.routineMaintenance,
+    RequestActions.repairAsset,
+  ];
 }

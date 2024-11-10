@@ -12,8 +12,8 @@ import '../../../../../../core/widgets/loading.dart';
 import '../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../constants/ids_constants.dart';
 import '../../../controller/requests_controller.dart';
-import '../../widgets/common/request_category_row.dart';
-import '../../widgets/common/vertical/requests_summary_row.dart';
+import '../../widgets/common/request_category_filter.dart';
+import '../../widgets/common/vertical/requests_summary_circles.dart';
 part '../../widgets/mobile/request_card.dart';
 
 class MobileRequestsPage extends GetView<RequestsController> {
@@ -29,9 +29,9 @@ class MobileRequestsPage extends GetView<RequestsController> {
               : controller.requests.isEmpty
                   ? const NoDataGif()
                   : Column(children: [
-                      const VerticalRequstsSummary(),
+                      const VerticalRequstsSummaryCircles(),
                       verticalSpace(10),
-                      const RequestCategoryRow(),
+                      const RequestCategoryFilter(),
                       verticalSpace(10),
                       ListView.separated(
                         shrinkWrap: true,
