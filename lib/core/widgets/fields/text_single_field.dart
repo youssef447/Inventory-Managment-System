@@ -1,6 +1,7 @@
 // by : Mohamed ashraf
 // date : 10/8/2024
 import 'package:flutter/material.dart';
+import 'package:inventory_management/core/theme/app_colors.dart';
 
 import '../../helpers/spacing_helper.dart';
 import '../../theme/app_text_styles.dart';
@@ -39,7 +40,7 @@ class TextSingleField extends StatelessWidget {
           alignment: isArabic ? Alignment.centerRight : Alignment.centerLeft,
           child: Text(
             typeName,
-            style: AppTextStyles.font14BlackCairoMedium,
+            style: AppTextStyles.font16BlackMediumCairo,
           ),
         ),
         verticalSpace(12),
@@ -57,6 +58,7 @@ class TextSingleField extends StatelessWidget {
           validator: validator,
           readOnly: isReadOnly,
           onTap: onTap,
+          backGroundColor: AppColors.base,
         ),
       ],
     );

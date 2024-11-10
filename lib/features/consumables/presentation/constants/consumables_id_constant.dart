@@ -3,6 +3,6 @@
 // date : 7/11/2024
 
 abstract class ConsumablesIdConstant{
-  static const String consumablesTable = 'consumablesTable';
+  static const String consumablesData = 'consumablesTable';
 
 }

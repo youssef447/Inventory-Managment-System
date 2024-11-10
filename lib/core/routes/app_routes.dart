@@ -10,4 +10,10 @@ abstract class Routes {
 
   //Requests
   static const requestAsset = '/home/requestAsset';
+
+  // Assets
+  static const assetsDetails = '/assetsDetails';
+
+  // Consumables
+  static const consumablesDetails = '/consumablesDetails';
 }

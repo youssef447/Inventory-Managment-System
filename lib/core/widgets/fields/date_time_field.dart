@@ -9,12 +9,12 @@ import 'time_picker_field.dart';
 
 //Mohamed Ashraf
 // Row of start Date , end time fields
-class DateImeField extends StatelessWidget {
+class DateTimeField extends StatelessWidget {
   final TextEditingController dateController;
   final TextEditingController timeController;
   final Function(DateTime)? onStartDateChanged;
   final Function(TimeOfDay)? onTimeChanged;
-  const DateImeField({
+  const DateTimeField({
     super.key,
     required this.dateController,
     required this.timeController,

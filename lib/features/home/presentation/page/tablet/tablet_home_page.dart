@@ -11,7 +11,7 @@ import '../../../../../core/theme/app_text_styles.dart';
 import '../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 
-import '../../../../Assets/presentation/ui/pages/tablet/Assets_tablet_page.dart';
+import '../../../../Assets/presentation/ui/pages/tablet/tablet_assets_page.dart';
 import '../../../../consumables/presentation/ui/pages/tablet/consumables_tablet_page.dart';
 import '../../../../requests/presentation/ui/pages/tablet/tablet_requests_page.dart';
 import '../../../constants/inventory_categories.dart';
@@ -44,7 +44,7 @@ class TabletHomePage extends GetView<HomeController> {
                 Obx(
                   () {
                     if (controller.currentCategoryIndex.value == 0) {
-                      return const AssetsTabletPage();
+                      return const TabletAssetsPage();
                     }
                     if (controller.currentCategoryIndex.value == 1) {
                       return const ConsumablesTabletPage();
