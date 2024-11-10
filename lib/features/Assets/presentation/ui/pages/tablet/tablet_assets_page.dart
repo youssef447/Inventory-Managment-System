@@ -15,8 +15,8 @@ import '../../../controller/assets_controller.dart';
 import '../../constants/assets_columns_name.dart';
 import '../../constants/assets_id_constant.dart';
 
-class AssetsTabletPage extends StatelessWidget {
-  const AssetsTabletPage({
+class TabletAssetsPage extends StatelessWidget {
+  const TabletAssetsPage({
     super.key,
   });
 
@@ -26,7 +26,7 @@ class AssetsTabletPage extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GetBuilder<AssetsController>(
           init: AssetsController(),
-          id: AssetsIdConstant.assetsTable,
+          id: AssetsIdConstant.assetsData,
           builder: (controller) {
             return controller.loading
                 ? const AppCircleProgress()
@@ -62,7 +62,7 @@ class AssetsTabletPage extends StatelessWidget {
                           ),
                           DataCell(
                             Text(
-                              controller.assetsList[index].assetName,
+                              controller.assetsList[index].brand + controller.assetsList[index].model,
                               style: AppTextStyles.font16BlackRegularCairo,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,

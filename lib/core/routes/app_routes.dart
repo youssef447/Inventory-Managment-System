@@ -8,9 +8,9 @@ abstract class Routes {
 
   static const home = '/home';
 
-  // Attendance
-  static const attendanceTabletPage = '/attendanceTabletPage';
-  static const attendanceMobilePage = '/attendanceTabletPage';
+  // Assets
+  static const assetsDetails = '/assetsDetails';
+
 
   //Send Request
   static const sendRequest = '/home/sendRequest';

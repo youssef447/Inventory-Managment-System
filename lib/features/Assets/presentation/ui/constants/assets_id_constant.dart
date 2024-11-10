@@ -3,6 +3,6 @@
 // date : 7/11/2024
 
 abstract class AssetsIdConstant{
-  static const String assetsTable = 'assetsTable';
+  static const String assetsData = 'assetsData';
 
 }

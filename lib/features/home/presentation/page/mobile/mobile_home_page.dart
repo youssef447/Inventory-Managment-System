@@ -9,6 +9,7 @@ import '../../../../../core/constants/app_assets.dart';
 import '../../../../../core/theme/app_theme.dart';
 import '../../../../../core/widgets/custom_app_bar.dart';
 import '../../../../../core/widgets/fields/app_form_field.dart';
+import '../../../../Assets/presentation/ui/pages/mobile/mobile_assets_page.dart';
 import '../../../../requests/presentation/ui/pages/mobile/mobile_requests_page.dart';
 
 import '../../../../../core/helpers/date_time_helper.dart';
@@ -48,7 +49,7 @@ class MobileHomePage extends GetView<HomeController> {
                 Obx(
                   () {
                     if (controller.currentCategoryIndex.value == 0) {
-                      return const SizedBox();
+                      return const MobileAssetsPage();
                     }
                     if (controller.currentCategoryIndex.value == 1) {
                       return const SizedBox();
