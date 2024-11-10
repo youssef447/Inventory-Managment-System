@@ -7,7 +7,7 @@
 abstract class AppAssets {
   //***************************** IMAGES ***************************************
 
-  static const String userProfile = 'assets/images/user_profile.jpeg';
+  static const String image = 'assets/images/image.png';
 
   //****************************************************************************
 
@@ -25,13 +25,12 @@ abstract class AppAssets {
   static const String arrowDown = 'assets/vectors/arrow_down.svg';
   static const String calender = 'assets/vectors/calender.svg';
   static const String time = 'assets/vectors/time.svg';
-  static const String image = 'assets/images/image.png';
 
   //****************************************************************************
 
   //***************************** LOTTIE FILES *********************************
 
-  static const String noData = 'assets/lottie/noData.json';
+  static const String noData = 'assets/lotties/noData.json';
 
   //****************************************************************************
 }
