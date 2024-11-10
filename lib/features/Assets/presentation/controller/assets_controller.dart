@@ -60,6 +60,7 @@ class AssetsController extends GetxController {
           assetName: 'Laptop',
           category: 'Electronics',
           subcategory: 'Computers',
+          availabilityStatus: AssetAvailabilityStatus.outOfStock,
           model: 'GZ 15',
           brand: 'dell',
           dateReceived: DateTime(2023, 1, 10, 9, 0),

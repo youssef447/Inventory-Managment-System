@@ -1,5 +1,5 @@
 // Date: 29/9/2024
-// By: Youssef Ashraf, Nada Mohammed, Mohammed Ashraf
+// By: Youssef Ashraf, Mohammed Ashraf
 // Last update: 29/9/2024
 // Objectives: This file is responsible for providing the app assets.
 
@@ -8,6 +8,7 @@ abstract class AppAssets {
   //***************************** IMAGES ***************************************
 
   static const String image = 'assets/images/image.png';
+  static const String phone = 'assets/images/image.png';
 
   //****************************************************************************
 

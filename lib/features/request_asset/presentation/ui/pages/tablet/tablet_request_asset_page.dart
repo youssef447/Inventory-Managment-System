@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/core/constants/enums.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
+import '../../../../../../core/constants/app_assets.dart';
 import '../../../../..//Assets/domain/entity/assets_entity.dart';
 
 import '../../../../../../core/helpers/orientation_helper.dart';

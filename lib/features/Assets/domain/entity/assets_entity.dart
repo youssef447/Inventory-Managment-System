@@ -17,20 +17,23 @@ class AssetsEntity {
   final DateTime? expirationDate;
   final int availableQuantity;
   final Status status;
+  final AssetAvailabilityStatus availabilityStatus;
 
-  AssetsEntity(
-      {required this.assetId,
-      required this.assetName,
-      required this.category,
-      required this.subcategory,
-      required this.model,
-      this.availableQuantity = 0,
-      required this.dateReceived,
-      this.dateReturn,
-      required this.quantity,
-      this.maintenanceFrequency,
-      this.nextMaintenanceSchedule,
-      this.expirationDate,
-      required this.status,
-      required this.brand});
+  AssetsEntity({
+    required this.assetId,
+    required this.assetName,
+    required this.category,
+    required this.subcategory,
+    required this.model,
+    this.availableQuantity = 0,
+    required this.dateReceived,
+    this.dateReturn,
+    required this.quantity,
+    this.availabilityStatus = AssetAvailabilityStatus.inStock,
+    this.maintenanceFrequency,
+    this.nextMaintenanceSchedule,
+    this.expirationDate,
+    required this.status,
+    required this.brand,
+  });
 }
