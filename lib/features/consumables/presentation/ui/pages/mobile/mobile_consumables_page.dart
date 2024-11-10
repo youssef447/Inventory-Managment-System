@@ -10,22 +10,23 @@ import '../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../core/routes/app_routes.dart';
 import '../../../../../../core/widgets/loading.dart';
 import '../../../../../../core/widgets/no_data_gif.dart';
-import '../../../controller/assets_controller.dart';
-import '../../constants/assets_id_constant.dart';
-import '../../widget/mobile/mobile_assets_card.dart';
+import '../../../constants/consumables_id_constant.dart';
+import '../../../controller/consumables_controller.dart';
+import '../../widget/mobile/mobile_consumable_card.dart';
 
-class MobileAssetsPage extends GetView<AssetsController> {
-  const MobileAssetsPage({super.key});
+
+class MobileConsumablesPage extends GetView<ConsumablesController> {
+  const MobileConsumablesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-return GetBuilder<AssetsController>(
-  init: AssetsController(),
-        id: AssetsIdConstant.assetsData,
+    return GetBuilder<ConsumablesController>(
+        init: ConsumablesController(),
+        id: ConsumablesIdConstant.consumablesData,
         builder: (controller) {
           return controller.loading
               ? const AppCircleProgress()
-              : controller.assetsList.isEmpty
+              : controller.consumablesList.isEmpty
               ? const NoDataGif()
               : Column(children: [
             ListView.separated(
@@ -40,19 +41,19 @@ return GetBuilder<AssetsController>(
                       );
 
                       Get.toNamed(
-                        Routes.assetsDetails,
+                        Routes.consumablesDetails,
                         arguments: {
-                          'assetsModelIndex': index,
+                          'consumablesModelIndex': index,
                           //'readOnly': readOnly,
                         },
                       );
                     },
-                    child: MobileAssetsCard(index: index));
+                    child: MobileConsumableCard(index: index));
               },
               separatorBuilder: (_, __) => SizedBox(
                 height: 16.h,
               ),
-              itemCount: controller.assetsList.length,
+              itemCount: controller.consumablesList.length,
             )
           ]);
         });

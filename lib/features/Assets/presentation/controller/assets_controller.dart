@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../core/constants/enums.dart';
+import '../../../../core/helpers/date_time_helper.dart';
 import '../../domain/entity/assets_entity.dart';
 import '../ui/constants/assets_id_constant.dart';
 class AssetsController extends GetxController {
@@ -26,6 +27,8 @@ class AssetsController extends GetxController {
   TextEditingController modelController = TextEditingController();
   TextEditingController brandController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
+  TextEditingController dateReceivedController = TextEditingController();
+  TextEditingController dateReturnController = TextEditingController();
   TextEditingController maintenanceFrequencyController = TextEditingController();
   TextEditingController nextMaintenanceScheduleController = TextEditingController();
   TextEditingController expirationDateController = TextEditingController();
@@ -37,9 +40,7 @@ class AssetsController extends GetxController {
     ).then((_) {
       assetsList = [
         AssetsEntity(
-          assetId: assetIdController.text.isNotEmpty
-              ? assetIdController.text
-              : 'ytr3',
+          assetId: 'A101',
           assetName: 'Laptop',
           category: 'Electronics',
           subcategory: 'Computers',
@@ -54,9 +55,7 @@ class AssetsController extends GetxController {
           status: Status.maintenance,
         ),
         AssetsEntity(
-            assetId:  assetIdController.text.isNotEmpty
-                ? assetIdController.text
-                : 'A10222',
+            assetId: 'A102',
             assetName: 'Laptop',
             category: 'Electronics',
             subcategory: 'Computers',
@@ -71,9 +70,7 @@ class AssetsController extends GetxController {
             status:Status.returned
         ),
         AssetsEntity(
-            assetId:  assetIdController.text.isNotEmpty
-                ? assetIdController.text
-                : 'A10dfd5',
+            assetId: 'A103',
             assetName: 'Laptop',
             category: 'Electronics',
             subcategory: 'Computers',
@@ -98,11 +95,13 @@ class AssetsController extends GetxController {
         modelController.text = asset.model;
         brandController.text = asset.brand;
         quantityController.text = asset.quantity;
+        dateReceivedController.text = DateTimeHelper.formatDate(asset.dateReceived);
+        dateReturnController.text = DateTimeHelper.formatDate(asset.dateReturn!);
         maintenanceFrequencyController.text = asset.maintenanceFrequency ?? '';
         nextMaintenanceScheduleController.text =
             asset.nextMaintenanceSchedule?.toString() ?? '';
         expirationDateController.text = asset.expirationDate?.toString() ?? '';
-        statusController.text = asset.status.toString();
+        statusController.text = asset.status.getName;
       }
       loading = false;
       update([AssetsIdConstant.assetsData]);

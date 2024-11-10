@@ -26,7 +26,7 @@ class ConsumablesTabletPage extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: GetBuilder<ConsumablesController>(
           init: ConsumablesController(),
-          id: ConsumablesIdConstant.consumablesTable,
+          id: ConsumablesIdConstant.consumablesData,
           builder: (controller) {
             return controller.loading
                 ? const AppCircleProgress()

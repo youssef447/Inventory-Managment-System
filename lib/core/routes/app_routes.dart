@@ -11,6 +11,9 @@ abstract class Routes {
   // Assets
   static const assetsDetails = '/assetsDetails';
 
+  // Consumables
+  static const consumablesDetails = '/consumablesDetails';
+
 
   //Send Request
   static const sendRequest = '/home/sendRequest';

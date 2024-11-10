@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/core/theme/app_colors.dart';
 
 import '../../constants/app_assets.dart';
 import '../../helpers/date_time_helper.dart';
@@ -22,6 +23,7 @@ class DatePickerField extends StatelessWidget {
   final String? icon;
   final double? width;
   final bool showIcon;
+  final bool openDatePiker;
 
   final Function(DateTime)? onDateChanged;
 
@@ -32,13 +34,13 @@ class DatePickerField extends StatelessWidget {
     this.hintText,
     this.width,
     this.icon,
-    this.showIcon = true,
+    this.showIcon = true, this.openDatePiker = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
+      onTap: () { openDatePiker?
         GetDatePickerHelper.customDatePicker(context: context).then(
           (value) {
             if (value != null) {
@@ -48,14 +50,15 @@ class DatePickerField extends StatelessWidget {
                 onDateChanged!(value[0]!);
               }
             }
-          },
-        );
+          }
+        ): null;
       },
       child: SizedBox(
         height: 40.h,
         child: AppTextFormField(
           readOnly: true,
           enabled: false,
+          backGroundColor: AppColors.base,
           controller: textEditingController,
           hintText: hintText,
           suffixIcon: showIcon

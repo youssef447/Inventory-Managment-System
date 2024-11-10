@@ -69,7 +69,7 @@ class ConsumablesController extends GetxController {
         // Add more assets as needed
       ];
       loading = false;
-      update([ConsumablesIdConstant.consumablesTable]);
+      update([ConsumablesIdConstant.consumablesData]);
     });
   }
 

@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 
 import '../../features/Assets/presentation/controller/assets_binding.dart';
 import '../../features/Assets/presentation/ui/pages/mobile/mobile_assets_details.dart';
-import '../../features/requests/presentation/ui/pages/mobile/mobile_requests_page.dart';
+import '../../features/consumables/presentation/ui/pages/mobile/mobile_consumables_details_page.dart';
 import '../helpers/responsive_helper.dart';
 import 'app_routes.dart';
 
@@ -29,5 +29,21 @@ abstract class AppPages {
       ),
       binding: AssetsBinding(),
     ),
+
+    GetPage(
+      name: Routes.consumablesDetails,
+      transition: Transition.fadeIn,
+      page: () => ResponsiveHelper(
+        mobileWidget: MobileConsumablesDetailsPage(
+          index: Get.arguments['consumablesModelIndex'],
+          // readOnly: Get.arguments['readOnly'],
+        ),
+        tabletWidget: MobileConsumablesDetailsPage(
+          index: Get.arguments['consumablesModelIndex'],
+        ),
+      ),
+      binding: AssetsBinding(),
+    ),
+
   ];
 }
