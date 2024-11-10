@@ -8,8 +8,10 @@ import 'package:inventory_management/core/constants/enums.dart';
 import '../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../../core/widgets/loading.dart';
 import '../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../../core/widgets/table/default_data_table.dart';
+import '../../../constants/consumables_columns_name.dart';
 import '../../../constants/consumables_id_constant.dart';
 import '../../../controller/consumables_controller.dart';
 
@@ -26,10 +28,12 @@ class ConsumablesTabletPage extends StatelessWidget {
           init: ConsumablesController(),
           id: ConsumablesIdConstant.consumablesTable,
           builder: (controller) {
-            return controller.consumablesList.isEmpty
+            return controller.loading
+                ? const AppCircleProgress()
+                : controller.consumablesList.isEmpty
                 ? const NoDataGif()
                 : DefaultDataTable(
-                    columns: controller.tableColumnsConsumablesName
+                    columns: ConsumablesColumnsName.tableColumnsConsumablesName
                         .map(
                           (element) => DataColumn(
                             label: Text(
