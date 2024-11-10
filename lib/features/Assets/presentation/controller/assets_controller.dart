@@ -3,7 +3,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/constants/enums.dart';
 import '../../../../core/helpers/date_time_helper.dart';
 import '../../domain/entity/assets_entity.dart';
 import '../ui/constants/assets_id_constant.dart';
@@ -53,14 +52,14 @@ class AssetsController extends GetxController {
         maintenanceFrequency: 'Monthly',
         nextMaintenanceSchedule: null,
         expirationDate: DateTime(2023, 1, 10, 9, 0),
-        status: Status.maintenance,
+        status: 'Maintenance',
       ),
       AssetsEntity(
           assetId: 'A102',
           assetName: 'Laptop',
           category: 'Electronics',
           subcategory: 'Computers',
-          availabilityStatus: AssetAvailabilityStatus.outOfStock,
+          availabilityStatus: 'Out Stock',
           model: 'GZ 15',
           brand: 'dell',
           dateReceived: DateTime(2023, 1, 10, 9, 0),
@@ -69,7 +68,7 @@ class AssetsController extends GetxController {
           maintenanceFrequency: null,
           nextMaintenanceSchedule: null,
           expirationDate: null,
-          status: Status.returned),
+          status: 'Returned'),
       AssetsEntity(
           assetId: 'A103',
           assetName: 'Laptop',
@@ -83,7 +82,7 @@ class AssetsController extends GetxController {
           maintenanceFrequency: 'Monthly',
           nextMaintenanceSchedule: DateTime(2023, 1, 10, 9, 0),
           expirationDate: DateTime(2023, 1, 10, 9, 0),
-          status: Status.inUse),
+          status: 'InUse'),
       // Add more assets as needed
     ];
     if (assetsList.isNotEmpty) {
@@ -102,7 +101,7 @@ class AssetsController extends GetxController {
       nextMaintenanceScheduleController.text =
           asset.nextMaintenanceSchedule?.toString() ?? '';
       expirationDateController.text = asset.expirationDate?.toString() ?? '';
-      statusController.text = asset.status.getName;
+      statusController.text = asset.status;
     }
     loading = false;
     update([AssetsIdConstant.assetsData]);

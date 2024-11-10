@@ -1,10 +1,8 @@
-
 // Date: 7/11/2024
 // By:Mohamed Ashraf
 
 import 'package:get/get.dart';
 
-import '../../../../core/constants/enums.dart';
 import '../../domain/entity/consumables_entity.dart';
 import '../constants/consumables_id_constant.dart';
 
@@ -14,12 +12,12 @@ class ConsumablesController extends GetxController {
     super.onInit();
     loadConsumablesData();
   }
+
   bool loading = true;
 // list for item of table assets
   List<ConsumablesEntity> consumablesList = [];
 // show dummy data for test ui ------ will be removed --------
   Future<void> loadConsumablesData() async {
-
     Future.delayed(
       const Duration(seconds: 2),
     ).then((_) {
@@ -36,7 +34,7 @@ class ConsumablesController extends GetxController {
           unitOfMeasurement: 'pieces',
           usageFrequency: 'daily',
           expirationDate: DateTime(2024, 7, 10),
-          status: Status.maintenance,
+          status: 'Maintenance',
         ),
         ConsumablesEntity(
           consumableId: 'C002',
@@ -50,7 +48,7 @@ class ConsumablesController extends GetxController {
           unitOfMeasurement: 'liters',
           usageFrequency: 'as needed',
           expirationDate: DateTime(2025, 6, 15),
-          status: Status.inUse,
+          status: 'InUse',
         ),
         ConsumablesEntity(
           consumableId: 'C001',
@@ -64,7 +62,7 @@ class ConsumablesController extends GetxController {
           unitOfMeasurement: 'pieces',
           usageFrequency: 'daily',
           expirationDate: null,
-          status: Status.expired,
+          status: 'Expired',
         ),
         // Add more assets as needed
       ];
@@ -72,7 +70,4 @@ class ConsumablesController extends GetxController {
       update([ConsumablesIdConstant.consumablesData]);
     });
   }
-
-
-
 }

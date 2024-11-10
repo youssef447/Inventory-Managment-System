@@ -1,8 +1,6 @@
 // Date: 7/11/2024
 // By:Mohamed Ashraf
 
-import '../../../../core/constants/enums.dart';
-
 class ConsumablesEntity {
   final String consumableId;
   final String name;
@@ -15,7 +13,7 @@ class ConsumablesEntity {
   final String unitOfMeasurement;
   final String usageFrequency;
   final DateTime? expirationDate;
-  final Status status;
+  final String status;
 
   ConsumablesEntity(
       {required this.consumableId,

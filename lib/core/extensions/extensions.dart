@@ -35,6 +35,25 @@ extension GetColor on String {
     if (this == 'Canceled'.tr) {
       return AppColors.red;
     }
+    if (this == 'Out Stock'.tr) {
+      return AppColors.red;
+    }
+    if (this == 'In Stock'.tr) {
+      return AppColors.green;
+    }
+    if (this == 'Maintenance'.tr) {
+      return AppColors.secondaryPrimary;
+    }
+
+    if (this == 'Returned'.tr) {
+      return AppColors.primary;
+    }
+    if (this == 'InUse'.tr) {
+      return AppColors.green;
+    }
+    if (this == 'Expired'.tr) {
+      return AppColors.red;
+    }
     return null;
   }
 }

@@ -36,7 +36,7 @@ class HorizontalRequestAssetCard extends StatelessWidget {
                       style: AppTextStyles.font10MediumGreyCairoMedium,
                       children: [
                         TextSpan(
-                          text: model.availabilityStatus.getName,
+                          text: model.availabilityStatus,
                           style: AppTextStyles.font10BlackCairoMedium.copyWith(
                             color: model.availabilityStatus.getColor,
                           ),
@@ -56,7 +56,7 @@ class HorizontalRequestAssetCard extends StatelessWidget {
                       style: AppTextStyles.font12MediumGreyCairoMedium,
                       children: [
                         TextSpan(
-                          text: model.availabilityStatus.getName,
+                          text: model.availabilityStatus,
                           style: AppTextStyles.font12MediumGreyCairoMedium
                               .copyWith(
                             color: AppColors.darkWhiteShadow,

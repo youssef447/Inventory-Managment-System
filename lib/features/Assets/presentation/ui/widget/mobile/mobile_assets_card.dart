@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/core/constants/enums.dart';
+import 'package:inventory_management/core/extensions/extensions.dart';
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
@@ -52,9 +52,9 @@ class MobileAssetsCard extends GetView<AssetsController> {
                         style: AppTextStyles.font12SecondaryBlackCairoMedium,
                         children: [
                           TextSpan(
-                            text:controller.assetsList[index].brand + controller.assetsList[index].model,
-                            style: AppTextStyles.font12BlackCairo
-                          )
+                              text: controller.assetsList[index].brand +
+                                  controller.assetsList[index].model,
+                              style: AppTextStyles.font12BlackCairo)
                         ]),
                   ),
                 ],
@@ -67,7 +67,7 @@ class MobileAssetsCard extends GetView<AssetsController> {
                     style: AppTextStyles.font12SecondaryBlackCairoMedium,
                     children: [
                       TextSpan(
-                        text: controller.assetsList[index].status.getName,
+                        text: controller.assetsList[index].status,
                         style: AppTextStyles.font12SecondaryBlackCairoMedium
                             .copyWith(
                                 color: controller
@@ -84,9 +84,8 @@ class MobileAssetsCard extends GetView<AssetsController> {
                 style: AppTextStyles.font12SecondaryBlackCairoMedium,
                 children: [
                   TextSpan(
-                    text: controller.assetsList[index].category,
-                    style: AppTextStyles.font12BlackMediumCairo
-                  )
+                      text: controller.assetsList[index].category,
+                      style: AppTextStyles.font12BlackMediumCairo)
                 ]),
           ),
           verticalSpace(3),
@@ -112,7 +111,8 @@ class MobileAssetsCard extends GetView<AssetsController> {
                     style: AppTextStyles.font12SecondaryBlackCairoMedium,
                     children: [
                       TextSpan(
-                        text: DateTimeHelper.formatDate(controller.assetsList[index].dateReceived),
+                        text: DateTimeHelper.formatDate(
+                            controller.assetsList[index].dateReceived),
                         style: AppTextStyles.font12BlackMediumCairo,
                       )
                     ]),

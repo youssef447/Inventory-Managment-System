@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/core/constants/enums.dart';
+import 'package:inventory_management/core/extensions/extensions.dart';
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
@@ -52,9 +52,9 @@ class MobileConsumableCard extends GetView<ConsumablesController> {
                         style: AppTextStyles.font12SecondaryBlackCairoMedium,
                         children: [
                           TextSpan(
-                              text:controller.consumablesList[index].brand + controller.consumablesList[index].model,
-                              style: AppTextStyles.font12BlackCairo
-                          )
+                              text: controller.consumablesList[index].brand +
+                                  controller.consumablesList[index].model,
+                              style: AppTextStyles.font12BlackCairo)
                         ]),
                   ),
                 ],
@@ -67,11 +67,11 @@ class MobileConsumableCard extends GetView<ConsumablesController> {
                     style: AppTextStyles.font12SecondaryBlackCairoMedium,
                     children: [
                       TextSpan(
-                        text: controller.consumablesList[index].status.getName,
+                        text: controller.consumablesList[index].status,
                         style: AppTextStyles.font12SecondaryBlackCairoMedium
                             .copyWith(
-                            color: controller
-                                .consumablesList[index].status.getColor),
+                                color: controller
+                                    .consumablesList[index].status.getColor),
                       )
                     ]),
               ),
@@ -85,8 +85,7 @@ class MobileConsumableCard extends GetView<ConsumablesController> {
                 children: [
                   TextSpan(
                       text: controller.consumablesList[index].category,
-                      style: AppTextStyles.font12BlackMediumCairo
-                  )
+                      style: AppTextStyles.font12BlackMediumCairo)
                 ]),
           ),
           verticalSpace(3),
@@ -112,7 +111,8 @@ class MobileConsumableCard extends GetView<ConsumablesController> {
                     style: AppTextStyles.font12SecondaryBlackCairoMedium,
                     children: [
                       TextSpan(
-                        text: DateTimeHelper.formatDate(controller.consumablesList[index].dateReceived),
+                        text: DateTimeHelper.formatDate(
+                            controller.consumablesList[index].dateReceived),
                         style: AppTextStyles.font12BlackMediumCairo,
                       )
                     ]),

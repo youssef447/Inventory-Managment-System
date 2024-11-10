@@ -1,6 +1,5 @@
 // Date: 7/11/2024
 // By:Mohamed Ashraf
-import '../../../../core/constants/enums.dart';
 
 class AssetsEntity {
   final String assetId;
@@ -16,8 +15,8 @@ class AssetsEntity {
   final DateTime? nextMaintenanceSchedule;
   final DateTime? expirationDate;
   final int availableQuantity;
-  final Status status;
-  final AssetAvailabilityStatus availabilityStatus;
+  final String status;
+  final String availabilityStatus;
 
   AssetsEntity({
     required this.assetId,
@@ -29,7 +28,7 @@ class AssetsEntity {
     required this.dateReceived,
     this.dateReturn,
     required this.quantity,
-    this.availabilityStatus = AssetAvailabilityStatus.inStock,
+    this.availabilityStatus = 'In Stock',
     this.maintenanceFrequency,
     this.nextMaintenanceSchedule,
     this.expirationDate,
