@@ -13,7 +13,6 @@ import '../helpers/responsive_helper.dart';
 import '../../features/Assets/presentation/controller/assets_binding.dart';
 import '../../features/Assets/presentation/ui/pages/mobile/mobile_assets_details.dart';
 import '../../features/consumables/presentation/ui/pages/mobile/mobile_consumables_details_page.dart';
-import '../helpers/responsive_helper.dart';
 import 'app_routes.dart';
 
 abstract class AppPages {
