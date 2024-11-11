@@ -24,61 +24,118 @@ class MobileRequestNewAssetPage extends GetView<RequestAssetsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: SafeArea(
         child: PopScope(
           onPopInvoked: (didPop) {
             controller.resetResources();
           },
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        HapticFeedbackHelper.triggerHapticFeedback(
-                          vibration: VibrateType.mediumImpact,
-                          hapticFeedback: HapticFeedback.mediumImpact,
-                        );
-                        Get.back();
-                      },
-                      child: SvgPicture.asset(
-                        context.isArabic
-                            ? AppAssets.arrowForward
-                            : AppAssets.arrowBack,
-                        color: AppColors.text,
-                        width: 24.w,
-                        height: 24.h,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          HapticFeedbackHelper.triggerHapticFeedback(
+                            vibration: VibrateType.mediumImpact,
+                            hapticFeedback: HapticFeedback.mediumImpact,
+                          );
+                          Get.back();
+                        },
+                        child: SvgPicture.asset(
+                          context.isArabic
+                              ? AppAssets.arrowForward
+                              : AppAssets.arrowBack,
+                          color: AppColors.text,
+                          width: 24.w,
+                          height: 24.h,
+                        ),
                       ),
-                    ),
-                    horizontalSpace(8),
-                    Text(
-                      'Request New Asset'.tr,
-                      style: AppTextStyles.font16BlackMediumCairo,
-                    ),
-                  ],
-                ),
-                verticalSpace(15),
-                Image.asset(
-                  model.image,
-                  width: 60.w,
-                  height: 60.h,
-                  fit: BoxFit.cover,
-                ),
-                verticalSpace(15),
-                LabeledFormField(
-                  controller: controller.reqIdController,
-                  label: 'Request ID',
-                ),
-                verticalSpace(16),
-                AttachmentsSection(
-                  model: model,
-                ),
-                verticalSpace(16),
-                Align(
-                  alignment: AlignmentDirectional.centerEnd,
-                  child: GestureDetector(
+                      verticalSpace(8),
+                      Text(
+                        'Request New Asset'.tr,
+                        style: AppTextStyles.font16BlackMediumCairo,
+                      ),
+                    ],
+                  ),
+                  verticalSpace(15),
+                  Image.asset(
+                    model.image,
+                    width: 60.w,
+                    height: 60.h,
+                    fit: BoxFit.cover,
+                  ),
+                  verticalSpace(15),
+                  LabeledFormField(
+                    controller: controller.reqIdController,
+                    label: 'Request ID',
+                  ),
+                  verticalSpace(15),
+                  LabeledFormField(
+                    controller: controller.assetNameController,
+                    label: 'Asset Name',
+                  ),
+                  verticalSpace(24),
+                  LabeledFormField(
+                    controller: controller.categoryController,
+                    label: 'Category',
+                  ),
+                  verticalSpace(15),
+                  LabeledFormField(
+                    controller: controller.subCategoryController,
+                    label: 'SubCategory',
+                  ),
+                  verticalSpace(24),
+                  LabeledFormField(
+                    controller: controller.assetModelController,
+                    label: 'Asset Model',
+                  ),
+                  verticalSpace(15),
+                  LabeledFormField(
+                    controller: controller.brandController,
+                    label: 'Brand',
+                  ),
+                  verticalSpace(24),
+                  LabeledFormField(
+                    controller: controller.availabilityController,
+                    label: 'Availability',
+                  ),
+                  verticalSpace(15),
+                  LabeledFormField(
+                    controller: controller.quantityController,
+                    label: 'Quantity',
+                  ),
+                  verticalSpace(24),
+                  LabeledFormField(
+                    controller: controller.priorityController,
+                    label: 'Priority',
+                    hintText: 'Priority',
+                    readOnly: false,
+                  ),
+                  verticalSpace(15),
+                  LabeledFormField(
+                    controller: controller.expectedDeliveryController,
+                    date: true,
+                    label: 'Expected Delivery',
+                    hintText: 'Expected Delivery',
+                  ),
+                  verticalSpace(24),
+                  LabeledFormField(
+                    controller: controller.expectedReturnController,
+                    date: true,
+                    label: 'Expected Return',
+                    hintText: 'Expected Return',
+                  ),
+                  verticalSpace(24),
+                  AttachmentsSection(
+                    model: model,
+                  ),
+                  verticalSpace(20),
+                  GestureDetector(
                     onTap: () {
                       HapticFeedbackHelper.triggerHapticFeedback(
                         vibration: VibrateType.mediumImpact,
@@ -86,8 +143,10 @@ class MobileRequestNewAssetPage extends GetView<RequestAssetsController> {
                       );
                     },
                     child: Container(
-                      height: 35.h,
-                      width: context.isTablett ? 69.h : double.infinity,
+                      height: 40.h,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 15.w,
+                      ),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4.r),
@@ -100,8 +159,8 @@ class MobileRequestNewAssetPage extends GetView<RequestAssetsController> {
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inventory_management/core/theme/app_colors.dart';
 
 // Date: 7/11/2024
@@ -9,13 +10,16 @@ class AppCircleProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation<Color>(
-          AppColors.primary,
+    return Padding(
+      padding: EdgeInsets.only(top: 50.h),
+      child: Center(
+        child: CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(
+            AppColors.primary,
+          ),
+          backgroundColor: Colors.white60,
+          strokeWidth: 2.0,
         ),
-        backgroundColor: Colors.white60,
-        strokeWidth: 2.0,
       ),
     );
   }
