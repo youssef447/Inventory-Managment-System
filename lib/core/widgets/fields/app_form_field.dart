@@ -36,6 +36,7 @@ class AppTextFormField extends StatelessWidget {
     this.label,
     this.readOnly,
     this.enabled,
+    this.textAlignVertical,
     this.onTap,
     this.top,
     this.bottom,
@@ -65,6 +66,7 @@ class AppTextFormField extends StatelessWidget {
   final InputBorder? enabledBorder;
   final TextStyle? inputTextStyle;
   final TextStyle? hintStyle, style;
+  final TextAlignVertical? textAlignVertical;
   final String? hintText;
   final bool? isObscureText, readOnly, enabled, showBorder;
   final Widget? suffixIcon;
@@ -139,7 +141,7 @@ class AppTextFormField extends StatelessWidget {
       readOnly: readOnly ?? false,
       enabled: enabled,
       maxLength: maxLength,
-      textAlignVertical: TextAlignVertical.center,
+      textAlignVertical: textAlignVertical ?? TextAlignVertical.center,
       textAlign: textAlign ?? TextAlign.start,
       cursorColor: AppColors.primary,
       decoration: InputDecoration(

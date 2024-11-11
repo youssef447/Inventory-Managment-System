@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/enums/requests_enums.dart';
 import '../../../Assets/domain/entity/assets_entity.dart';
 import '../../../Assets/presentation/controller/assets_controller.dart';
 import '../../../requests/entities/attachment_entity.dart';
@@ -81,6 +82,16 @@ class RequestAssetsController extends GetxController {
   TextEditingController expectedDeliveryController = TextEditingController();
   TextEditingController expectedReturnController = TextEditingController();
   TextEditingController additionalNotesController = TextEditingController();
+  List<RequestPriorityTypes> priorities = [
+    RequestPriorityTypes.urgent,
+    RequestPriorityTypes.high,
+    RequestPriorityTypes.medium,
+    RequestPriorityTypes.low,
+  ];
+  Rxn<RequestPriorityTypes> priorityValue = Rxn<RequestPriorityTypes>();
+  updatePriority(RequestPriorityTypes value) {
+    priorityValue.value = value;
+  }
 
   ///called when exit new request form
   resetResources() {
@@ -96,6 +107,7 @@ class RequestAssetsController extends GetxController {
     expectedDeliveryController.clear();
     expectedReturnController.clear();
     additionalNotesController.clear();
+    priorityValue.value = null;
     attachments = [];
   }
 

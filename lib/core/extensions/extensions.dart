@@ -73,6 +73,21 @@ extension GetName on RequestStatus {
   }
 }
 
+extension GetriorityType on RequestPriorityTypes {
+  String get getName {
+    switch (this) {
+      case RequestPriorityTypes.high:
+        return 'High';
+      case RequestPriorityTypes.urgent:
+        return 'Urgent';
+      case RequestPriorityTypes.low:
+        return 'Low';
+      case RequestPriorityTypes.medium:
+        return 'Medium';
+    }
+  }
+}
+
 extension GetAsset on RequestStatus {
   String get getAsset {
     switch (this) {

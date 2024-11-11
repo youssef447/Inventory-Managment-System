@@ -1,3 +1,6 @@
+//Youssef Ashraf
+//Enums of Requests
+
 enum RequestStatus {
   approved,
   cancelled,
@@ -10,4 +13,11 @@ enum RequestActions {
   returnAsset,
   repairAsset,
   routineMaintenance,
+}
+
+enum RequestPriorityTypes {
+  urgent,
+  high,
+  medium,
+  low,
 }

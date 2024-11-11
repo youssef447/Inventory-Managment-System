@@ -11,12 +11,14 @@ class LabeledFormField extends StatelessWidget {
   final bool? date;
   final bool? readOnly;
   final String? hintText;
+  final bool? expands;
   const LabeledFormField({
     super.key,
     required this.controller,
     this.date,
     this.readOnly,
     this.hintText,
+    this.expands,
     required this.label,
   });
   final String label;
@@ -38,13 +40,18 @@ class LabeledFormField extends StatelessWidget {
                 width: double.infinity,
                 hintText: hintText,
               )
-            : AppTextFormField(
-                height: 44.h,
-                hintText: hintText,
-                readOnly: readOnly ?? true,
-                showBorder: true,
-                width: double.infinity,
-                controller: controller,
+            : SizedBox(
+                height: expands ?? false ? 88.h : 44.h,
+                child: AppTextFormField(
+                  hintText: hintText,
+                  textAlignVertical:
+                      expands ?? false ? TextAlignVertical.top : null,
+                  readOnly: readOnly ?? true,
+                  showBorder: true,
+                  width: double.infinity,
+                  controller: controller,
+                  expands: expands,
+                ),
               ),
       ],
     );

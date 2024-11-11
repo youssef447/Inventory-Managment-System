@@ -9,6 +9,7 @@ import '../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../../core/widgets/dropdown/app_dropdown.dart';
 import '../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../../Assets/domain/entity/assets_entity.dart';
 import '../../../controller/request_assets_controller.dart';
@@ -146,11 +147,41 @@ class TabletRequestNewAssetPage extends GetView<RequestAssetsController> {
                   Row(
                     children: [
                       Expanded(
-                        child: LabeledFormField(
-                          controller: controller.priorityController,
-                          label: 'Priority',
-                          hintText: 'Priority',
-                          readOnly: false,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Priority'.tr,
+                              style: AppTextStyles.font16BlackCairoMedium,
+                            ),
+                            verticalSpace(8),
+                            Obx(
+                              () => AppDropdown(
+                                showDropdownIcon: true,
+                                onChanged: (value) {
+                                  controller.updatePriority(value);
+                                },
+                                hintText: 'Priority',
+                                height: 44.h,
+                                value: controller.priorityValue.value,
+                                textButton:
+                                    controller.priorityValue.value?.getName,
+                                items: List.generate(
+                                  controller.priorities.length,
+                                  (index) {
+                                    return DropdownMenuItem(
+                                      value: controller.priorities[index],
+                                      child: Text(
+                                        controller.priorities[index].getName.tr,
+                                        style: AppTextStyles
+                                            .font14SecondaryBlackCairo,
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                       horizontalSpace(15),
@@ -178,6 +209,14 @@ class TabletRequestNewAssetPage extends GetView<RequestAssetsController> {
                       horizontalSpace(15),
                       const Spacer(),
                     ],
+                  ),
+                  verticalSpace(24),
+                  LabeledFormField(
+                    controller: controller.additionalNotesController,
+                    expands: true,
+                    readOnly: false,
+                    label: 'Additional Notes',
+                    hintText: 'Additional Notes',
                   ),
                   verticalSpace(24),
                   AttachmentsSection(
