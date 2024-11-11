@@ -10,6 +10,7 @@ abstract class Routes {
 
   //Requests
   static const requestAsset = '/home/requestAsset';
+  static const newRequestAsset = '$requestAsset/newRequestAsset';
 
   // Assets
   static const assetsDetails = '/assetsDetails';

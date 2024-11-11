@@ -7,7 +7,7 @@ import '../constants/app_assets.dart';
 //Date: 10/11/2024
 ///Helper the provide the file type based on the file extension and the asset icon accordingly
 abstract class FileTypeHelper {
-  static String getFileType(File file) {
+  static String _getFileType(File file) {
     // Get the MIME type based on the file extension
     final mimeType = lookupMimeType(
       file.path,
@@ -33,8 +33,8 @@ abstract class FileTypeHelper {
     return 'unknown';
   }
 
-  String getExstensionImage(File file) {
-    final fileType = getFileType(file);
+  static String getExstensionImage(File file) {
+    final fileType = _getFileType(file);
     if (fileType == 'video') {
       return AppAssets.video;
     }

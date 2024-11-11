@@ -8,7 +8,7 @@ abstract class AppAssets {
   //***************************** IMAGES ***************************************
 
   static const String image = 'assets/images/image.png';
-  static const String phone = 'assets/images/image.png';
+  static const String phone = 'assets/images/phone.png';
 
   //****************************************************************************
 
@@ -26,6 +26,9 @@ abstract class AppAssets {
   static const String arrowDown = 'assets/vectors/arrow_down.svg';
   static const String calender = 'assets/vectors/calender.svg';
   static const String time = 'assets/vectors/time.svg';
+  static const String export = 'assets/vectors/export.svg';
+  static const String delete = 'assets/vectors/delete.svg';
+  static const String download2 = 'assets/vectors/download2.svg';
 
   //media
   static const String powerpoint = 'assets/vectors/powerpoint.svg';

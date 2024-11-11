@@ -1,7 +1,10 @@
 // Date: 7/11/2024
 // By:Mohamed Ashraf
 
+import 'package:inventory_management/core/constants/app_assets.dart';
+
 class AssetsEntity {
+  final String image = AppAssets.phone;
   final String assetId;
   final String assetName;
   final String category;
@@ -17,6 +20,8 @@ class AssetsEntity {
   final int availableQuantity;
   final String status;
   final String availabilityStatus;
+  final bool requiresApprovals;
+  final DateTime lastUpdate = DateTime.now();
 
   AssetsEntity({
     required this.assetId,
@@ -27,6 +32,7 @@ class AssetsEntity {
     this.availableQuantity = 0,
     required this.dateReceived,
     this.dateReturn,
+    this.requiresApprovals = true,
     required this.quantity,
     this.availabilityStatus = 'In Stock',
     this.maintenanceFrequency,

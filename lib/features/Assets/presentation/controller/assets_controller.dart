@@ -65,6 +65,7 @@ class AssetsController extends GetxController {
           dateReceived: DateTime(2023, 1, 10, 9, 0),
           dateReturn: null,
           quantity: '10',
+          requiresApprovals: false,
           maintenanceFrequency: null,
           nextMaintenanceSchedule: null,
           expirationDate: null,

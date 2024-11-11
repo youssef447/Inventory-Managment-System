@@ -5,9 +5,11 @@
 
 import 'package:get/get.dart';
 
-import '../../features/request_asset/presentation/controller/request_assets__bindings.dart';
-import '../../features/request_asset/presentation/ui/pages/mobile/mobile_request_asset_page.dart';
-import '../../features/request_asset/presentation/ui/pages/tablet/tablet_request_asset_page.dart';
+import '../../features/request_new_asset/presentation/controller/request_assets__bindings.dart';
+import '../../features/request_new_asset/presentation/ui/pages/mobile/mobile_request_asset_page.dart';
+import '../../features/request_new_asset/presentation/ui/pages/mobile/mobile_request_new_asset_page.dart';
+import '../../features/request_new_asset/presentation/ui/pages/tablet/tablet_request_asset_page.dart';
+import '../../features/request_new_asset/presentation/ui/pages/tablet/tablet_request_new_asset_page.dart';
 import '../helpers/responsive_helper.dart';
 
 import '../../features/Assets/presentation/controller/assets_binding.dart';
@@ -26,6 +28,19 @@ abstract class AppPages {
         tabletWidget: TabletRequestAssetsPage(),
       ),
       binding: RequestAssetsBindings(),
+      transition: Transition.fade,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+    GetPage(
+      name: Routes.newRequestAsset,
+      page: () => ResponsiveHelper(
+        mobileWidget: MobileRequestNewAssetPage(
+          model: Get.arguments['assetModel'],
+        ),
+        tabletWidget: TabletRequestNewAssetPage(
+          model: Get.arguments['assetModel'],
+        ),
+      ),
       transition: Transition.fade,
       transitionDuration: const Duration(milliseconds: 350),
     ),
