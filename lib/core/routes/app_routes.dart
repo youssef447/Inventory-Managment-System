@@ -17,4 +17,9 @@ abstract class Routes {
 
   // Consumables
   static const consumablesDetails = '/consumablesDetails';
+
+  //approval
+  static const approval = '/approvalDetails';
+
+
 }

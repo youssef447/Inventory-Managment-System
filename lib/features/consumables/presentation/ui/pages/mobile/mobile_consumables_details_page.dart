@@ -18,110 +18,118 @@ class MobileConsumablesDetailsPage extends  GetView<ConsumablesController>  {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      body: Padding(
-        padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () => Get.back(),
-                    child:  SvgPicture.asset(
-                      AppAssets.arrowBack,
-                    )
-                  ),
-                  Text(
-                    'Consumables Details'.tr,
-                    style: AppTextStyles.font26BlackSemiBoldCairo,
-                  ),
-                ],
-              ),
-              verticalSpace(20),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    AppAssets.image,
-                    width: 65.w,
-                    height: 65.h,
-                  ),
-                  horizontalSpace(4),
-                  Text(
-                    controller.consumablesList[index].brand +
-                        controller.consumablesList[index].model,
-                    style: AppTextStyles.font14BlackCairoMedium,
-                  ),
-                  verticalSpace(3),
-                ],
-              ),
-              verticalSpace(16),
-              TextSingleField(
-                typeName: 'Status'.tr,
-                controller: controller.statusController,
-                style: AppTextStyles.font16BlackRegularCairo
-                    .copyWith(
-                    color: controller
-                        .consumablesList[index]
-                        .status
-                        .getColor),
-                isReadOnly: true,
-              ),
-              verticalSpace(12),
-              TextSingleField(
-                typeName: 'Asset ID'.tr,
-                controller: controller.consumableIdController,
-                isReadOnly: true,
-              ),
-              verticalSpace(12),
-              TextSingleField(
-                typeName: 'Category'.tr,
-                controller: controller.categoryController,
-                isReadOnly: true,
-              ),
-              verticalSpace(12),
-              TextSingleField(
-                typeName: ' Subcategory'.tr,
-                controller: controller.subcategoryController,
-                isReadOnly: true,
-              ),
-              verticalSpace(12),
-              TextSingleField(
-                typeName: ' Brand'.tr,
-                controller: controller.brandController,
-                isReadOnly: true,
-              ),
-              verticalSpace(12),
-              TextSingleField(
-                typeName: ' Model '.tr,
-                controller: controller.modelController,
-                isReadOnly: true,
-              ),
+      body: SafeArea(
 
-              verticalSpace(12),
-              TextSingleField(
-                typeName: 'Unit Of Measurement'.tr,
-                controller: controller.unitOfMeasurementController,
-                isReadOnly: true,
+        child: PopScope(
+          onPopInvoked: (didPop) {
+            controller.resetConsumablesDetails();
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () => Get.back(),
+                        child:  SvgPicture.asset(
+                          AppAssets.arrowBack,
+                        )
+                      ),
+                      Text(
+                        'Consumables Details'.tr,
+                        style: AppTextStyles.font26BlackSemiBoldCairo,
+                      ),
+                    ],
+                  ),
+                  verticalSpace(20),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset(
+                        AppAssets.image,
+                        width: 65.w,
+                        height: 65.h,
+                      ),
+                      horizontalSpace(4),
+                      Text(
+                        controller.consumablesList[index].brand +
+                            controller.consumablesList[index].model,
+                        style: AppTextStyles.font14BlackCairoMedium,
+                      ),
+                      verticalSpace(3),
+                    ],
+                  ),
+                  verticalSpace(16),
+                  TextSingleField(
+                    typeName: 'Status'.tr,
+                    controller: controller.statusController,
+                    style: AppTextStyles.font16BlackRegularCairo
+                        .copyWith(
+                        color: controller
+                            .consumablesList[index]
+                            .status
+                            .getColor),
+                    isReadOnly: true,
+                  ),
+                  verticalSpace(12),
+                  TextSingleField(
+                    typeName: 'Asset ID'.tr,
+                    controller: controller.consumableIdController,
+                    isReadOnly: true,
+                  ),
+                  verticalSpace(12),
+                  TextSingleField(
+                    typeName: 'Category'.tr,
+                    controller: controller.categoryController,
+                    isReadOnly: true,
+                  ),
+                  verticalSpace(12),
+                  TextSingleField(
+                    typeName: ' Subcategory'.tr,
+                    controller: controller.subcategoryController,
+                    isReadOnly: true,
+                  ),
+                  verticalSpace(12),
+                  TextSingleField(
+                    typeName: ' Brand'.tr,
+                    controller: controller.brandController,
+                    isReadOnly: true,
+                  ),
+                  verticalSpace(12),
+                  TextSingleField(
+                    typeName: ' Model '.tr,
+                    controller: controller.modelController,
+                    isReadOnly: true,
+                  ),
+
+                  verticalSpace(12),
+                  TextSingleField(
+                    typeName: 'Unit Of Measurement'.tr,
+                    controller: controller.unitOfMeasurementController,
+                    isReadOnly: true,
+                  ),
+                  verticalSpace(12),
+                  TextSingleField(
+                    typeName: 'Maintenance Frequency'.tr,
+                    controller:controller.usageFrequencyController,
+                    isReadOnly: true,
+                  ),
+                  verticalSpace(12),
+                  DateField(
+                    dateController: controller.dateReceivedController,
+                    headerName: 'Date Received',
+                  ),
+                  verticalSpace(12),
+                  DateField(
+                    dateController: controller.expirationDateController,
+                    headerName: 'Expiration Date',
+                  ),
+                  verticalSpace(40),
+                ],
               ),
-              verticalSpace(12),
-              TextSingleField(
-                typeName: 'Maintenance Frequency'.tr,
-                controller:controller.usageFrequencyController,
-                isReadOnly: true,
-              ),
-              verticalSpace(12),
-              DateField(
-                dateController: controller.dateReceivedController,
-                headerName: 'Date Received',
-              ),
-              verticalSpace(12),
-              DateField(
-                dateController: controller.expirationDateController,
-                headerName: 'Expiration Date',
-              ),
-              verticalSpace(40),
-            ],
+            ),
           ),
         ),
       ),

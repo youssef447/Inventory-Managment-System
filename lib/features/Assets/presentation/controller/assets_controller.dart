@@ -11,6 +11,7 @@ class AssetsController extends GetxController {
 // list for item of table assets
   List<AssetsEntity> assetsList = [];
   bool loading = true;
+
   @override
   void onInit() {
     super.onInit();
@@ -33,6 +34,7 @@ class AssetsController extends GetxController {
       TextEditingController();
   TextEditingController expirationDateController = TextEditingController();
   TextEditingController statusController = TextEditingController();
+
 // show dummy data for test ui ------ will be removed --------
   Future<void> loadAssetsData() async {
     await Future.delayed(
@@ -46,12 +48,12 @@ class AssetsController extends GetxController {
         subcategory: 'Computers',
         model: 'GZ 15',
         brand: 'dell',
-        dateReceived: DateTime(2023, 1, 10, 9, 0),
+        dateReceived: DateTime(2024, 1, 10, 9, 0),
         dateReturn: DateTime(2023, 1, 10, 9, 0),
-        quantity: '9',
+        quantity: '700',
         maintenanceFrequency: 'Monthly',
-        nextMaintenanceSchedule: null,
-        expirationDate: DateTime(2023, 1, 10, 9, 0),
+        nextMaintenanceSchedule: DateTime(2024, 1, 10, 9, 0),
+        expirationDate: DateTime(2024, 1, 10, 9, 0),
         status: 'Maintenance',
       ),
       AssetsEntity(
@@ -63,12 +65,12 @@ class AssetsController extends GetxController {
           model: 'GZ 15',
           brand: 'dell',
           dateReceived: DateTime(2023, 1, 10, 9, 0),
-          dateReturn: null,
-          quantity: '10',
+          dateReturn: DateTime(2023, 1, 10, 9, 0),
+          quantity: '50',
           requiresApprovals: false,
-          maintenanceFrequency: null,
+          maintenanceFrequency: 'Monthly',
           nextMaintenanceSchedule: null,
-          expirationDate: null,
+          expirationDate: DateTime(2023, 1, 10, 9, 0),
           status: 'Returned'),
       AssetsEntity(
           assetId: 'A103',
@@ -82,29 +84,57 @@ class AssetsController extends GetxController {
           quantity: '5',
           maintenanceFrequency: 'Monthly',
           nextMaintenanceSchedule: DateTime(2023, 1, 10, 9, 0),
-          expirationDate: DateTime(2023, 1, 10, 9, 0),
+          expirationDate: null,
           status: 'InUse'),
       // Add more assets as needed
     ];
-    if (assetsList.isNotEmpty) {
-      final asset = assetsList[0]; // Using the first asset as an example
-      assetIdController.text = asset.assetId;
-      assetNameController.text = asset.assetName;
-      categoryController.text = asset.category;
-      subcategoryController.text = asset.subcategory;
-      modelController.text = asset.model;
-      brandController.text = asset.brand;
-      quantityController.text = asset.quantity;
-      dateReceivedController.text =
-          DateTimeHelper.formatDate(asset.dateReceived);
-      dateReturnController.text = DateTimeHelper.formatDate(asset.dateReturn!);
-      maintenanceFrequencyController.text = asset.maintenanceFrequency ?? '';
-      nextMaintenanceScheduleController.text =
-          asset.nextMaintenanceSchedule?.toString() ?? '';
-      expirationDateController.text = asset.expirationDate?.toString() ?? '';
-      statusController.text = asset.status;
-    }
     loading = false;
     update([AssetsIdConstant.assetsData]);
+  }
+
+  //called when user goes to details of assets
+  setAssetsDetails(AssetsEntity model) {
+    assetIdController.text = model.assetId;
+    assetNameController.text = model.assetName;
+    categoryController.text = model.category;
+    subcategoryController.text = model.subcategory;
+    modelController.text = model.model;
+    brandController.text = model.brand;
+    quantityController.text = model.quantity;
+    dateReceivedController.text = DateTimeHelper.formatDate(model.dateReceived);
+    dateReturnController.text = model.dateReturn != null
+        ? DateTimeHelper.formatDate(
+            model.dateReturn!,
+          )
+        : 'Not Applicable'.tr;
+    maintenanceFrequencyController.text = model.maintenanceFrequency ?? '';
+    nextMaintenanceScheduleController.text =
+        model.nextMaintenanceSchedule != null
+            ? DateTimeHelper.formatDate(
+                model.nextMaintenanceSchedule!,
+              )
+            : 'Not Applicable'.tr;
+    expirationDateController.text = model.expirationDate != null
+        ? DateTimeHelper.formatDate(
+            model.expirationDate!,
+          )
+        : 'Not Applicable'.tr;
+    statusController.text = model.status;
+  }
+  //reset data of controller
+  resetAssetsDetails() {
+    assetIdController.clear();
+    assetNameController.clear();
+    categoryController.clear();
+    subcategoryController.clear();
+    modelController.clear();
+    brandController.clear();
+    quantityController.clear();
+    dateReceivedController.clear();
+    dateReturnController.clear();
+    maintenanceFrequencyController.clear();
+    dateReturnController.clear();
+    expirationDateController.clear();
+    statusController.clear();
   }
 }

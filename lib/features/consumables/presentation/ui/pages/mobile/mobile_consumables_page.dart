@@ -35,6 +35,8 @@ class MobileConsumablesPage extends GetView<ConsumablesController> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                     onTap: () {
+                      controller.setConsumablesDetails(
+                          controller.consumablesList[index]);
                       HapticFeedbackHelper.triggerHapticFeedback(
                         vibration: VibrateType.mediumImpact,
                         hapticFeedback: HapticFeedback.mediumImpact,

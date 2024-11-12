@@ -34,11 +34,13 @@ return GetBuilder<AssetsController>(
               itemBuilder: (context, index) {
                 return GestureDetector(
                     onTap: () {
+                      controller.setAssetsDetails(
+                          controller.assetsList[index]);
+
                       HapticFeedbackHelper.triggerHapticFeedback(
                         vibration: VibrateType.mediumImpact,
                         hapticFeedback: HapticFeedback.mediumImpact,
                       );
-
                       Get.toNamed(
                         Routes.assetsDetails,
                         arguments: {
