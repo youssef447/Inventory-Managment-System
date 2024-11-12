@@ -9,6 +9,7 @@ import 'package:inventory_management/features/approval/presentation/controller/a
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
+import '../../common/rich_text_row.dart';
 import '../button/approval_button_vertical.dart';
 
 class ApprovalCardHorizontal extends GetView<ApprovalController> {
@@ -84,31 +85,6 @@ class ColumnText extends StatelessWidget {
   }
 }
 
-class RichTextRow extends StatelessWidget {
-  final String type;
-  final String value;
-  const RichTextRow({
-    super.key, required this.type, required this.value,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: RichText(
-        textAlign: TextAlign.end,
-        text: TextSpan(
-            text: '${type.tr} : ',
-            style:context.isLandscape? AppTextStyles.font14SecondaryBlackCairoRegular :  AppTextStyles.font16secondaryBlackRegularCairo ,
-            children: [
-              TextSpan(
-                  text: value.tr,
-                  style: context.isLandscape? AppTextStyles.font14BlackCairoRegular : AppTextStyles.font16BlackCairoMedium
-              )
-            ]),
-      ),
-    );
-  }
-}
 
 
 

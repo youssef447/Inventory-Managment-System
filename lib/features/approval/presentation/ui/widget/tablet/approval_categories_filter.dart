@@ -25,61 +25,33 @@ class ApprovalCategoriesFilter extends GetView<ApprovalController> {
       ),
       child: Obx(
             () {
-          return Row(
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    ...List.generate(ApprovalCategories.categories.length,
-                            (index) {
-                          final last =
-                              index == ApprovalCategories.categories.length - 1;
-                          return GestureDetector(
-                            behavior: HitTestBehavior.opaque,
-                            onTap: () {
-                              controller.updateCategoryIndex(index);
-                            },
-                            child: Padding(
-                              padding:
-                              EdgeInsetsDirectional.only(end: last ? 0 : 37.w),
-                              child: TabletCategoryFilterCard(
-                                count: 10,
-                                name: ApprovalCategories.categories[index],
-                                selected:
-                                controller.currentCategoryIndex.value == index,
-                              ),
-                            ),
-                          );
-                        }),
-                  ],
-                ),
-              ),
-              //if current tab is requests
-              // Row(
-              //   children: [
-              //     if (controller.currentCategoryIndex.value == 2)
-              //       AppDefaultButton(
-              //         text: 'Track Request'.tr,
-              //         style: context.isPhone
-              //             ? AppTextStyles.font16BlackMediumCairo
-              //             : AppTextStyles.font18BlackMediumCairo,
-              //       ),
-              //     horizontalSpace(8),
-              //     AppDefaultButton(
-              //       text: 'Approval'.tr,
-              //       onPressed: (){
-              //         Get.toNamed(Routes.approval);
-              //       },
-              //       style: context.isPhone
-              //           ? AppTextStyles.font16BlackMediumCairo
-              //           : AppTextStyles.font18BlackMediumCairo,
-              //     ),
-              //   ],
-              // ),
-            ],
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                ...List.generate(ApprovalCategories.categories.length, (index) {
+                  final last = index == ApprovalCategories.categories.length - 1;
+                  return GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      controller.updateCategoryIndex(index);
+                    },
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.only(end: last ? 0 : 37.w),
+                      child: TabletCategoryFilterCard(
+                        count: 10,
+                        name: ApprovalCategories.categories[index],
+                        selected: controller.currentCategoryIndex.value == index,
+                      ),
+                    ),
+                  );
+                }),
+              ],
+            ),
           );
         },
       ),
     );
   }
 }
+

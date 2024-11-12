@@ -47,9 +47,9 @@ class TabletApprovalPage extends GetView<ApprovalController>  {
                       return const AllCategories();
                     }
                     if (controller.currentCategoryIndex.value == 1) {
-                      return const Text('data222');
+                      return const AllCategories();
                     }
-                    return const Text('data33');
+                    return const AllCategories();
                   },
                 ),
 

@@ -25,7 +25,6 @@ class TabletAssetsPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GetBuilder<AssetsController>(
-          init: AssetsController(),
           id: AssetsIdConstant.assetsData,
           builder: (controller) {
             return controller.loading

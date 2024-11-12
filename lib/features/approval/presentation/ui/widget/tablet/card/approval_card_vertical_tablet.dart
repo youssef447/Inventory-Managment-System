@@ -10,6 +10,7 @@ import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../common/approval_buttons.dart';
+import '../../common/rich_text_row.dart';
 
 class ApprovalCardVerticalTablet extends GetView<ApprovalController> {
   final int index;
@@ -35,14 +36,14 @@ class ApprovalCardVerticalTablet extends GetView<ApprovalController> {
             ],
           ),
           verticalSpace(10),
-          RichTextRow(type: 'Request Date', value:DateTimeHelper.formatDate(controller.approvalList[index].requestDate),),
-          RichTextRow(type: 'Request Type', value: controller.approvalList[index].requestType),
-          RichTextRow(type: 'Asset Name', value: controller.approvalList[index].brand + controller.approvalList[index].model),
-          RichTextRow(type: 'Category', value: controller.approvalList[index].category),
-          RichTextRow(type: 'Subcategory', value: controller.approvalList[index].subcategory),
-          RichTextRow(type: 'Model', value:controller.approvalList[index].model),
-          RichTextRow(type: 'Brand', value: controller.approvalList[index].brand),
-          RichTextRow(type: 'Quantity', value: controller.approvalList[index].quantity.toString()),
+          RichTextRow(type: 'Request Date'.tr, value:DateTimeHelper.formatDate(controller.approvalList[index].requestDate),),
+          RichTextRow(type: 'Request Type'.tr, value: controller.approvalList[index].requestType),
+          RichTextRow(type: 'Asset Name'.tr, value: controller.approvalList[index].brand + controller.approvalList[index].model),
+          RichTextRow(type: 'Category'.tr, value: controller.approvalList[index].category),
+          RichTextRow(type: 'Subcategory'.tr, value: controller.approvalList[index].subcategory),
+          RichTextRow(type: 'Model'.tr, value:controller.approvalList[index].model),
+          RichTextRow(type: 'Brand'.tr, value: controller.approvalList[index].brand),
+          RichTextRow(type: 'Quantity'.tr, value: controller.approvalList[index].quantity.toString()),
           verticalSpace(10),
          const ApprovalButtons()
           
@@ -52,31 +53,7 @@ class ApprovalCardVerticalTablet extends GetView<ApprovalController> {
   }
 }
 
-class RichTextRow extends StatelessWidget {
-  final String type;
-  final String value;
-  const RichTextRow({
-    super.key, required this.type, required this.value,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: RichText(
-        textAlign: TextAlign.justify,
-        text: TextSpan(
-            text: '${type.tr} : ',
-            style:context.isLandscape? AppTextStyles.font14SecondaryBlackCairoRegular :  AppTextStyles.font16secondaryBlackRegularCairo ,
-            children: [
-              TextSpan(
-                  text: value.tr,
-                  style: context.isLandscape? AppTextStyles.font14BlackCairoRegular : AppTextStyles.font16BlackCairoMedium
-              )
-            ]),
-      ),
-    );
-  }
-}
 
 
 

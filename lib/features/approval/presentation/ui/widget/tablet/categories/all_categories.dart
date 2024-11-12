@@ -7,6 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/core/helpers/spacing_helper.dart';
 import 'package:inventory_management/features/approval/presentation/controller/approval_controller.dart';
+import '../../../../../../../core/animations/scale_animation.dart';
+import '../../../../../../../core/animations/up_down_animation.dart';
 import '../../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../../core/routes/app_routes.dart';
 import '../../../../../../../core/widgets/loading.dart';
@@ -27,46 +29,16 @@ class AllCategories extends GetView<ApprovalController> {
               ? const AppCircleProgress()
               : controller.approvalList.isEmpty
                   ? const NoDataGif()
-                  : Column(
-              children: [
+                  : ScaleAnimation(
+                    child: Column(
+                                  children: [
 
-                    (controller.listViewSelect && context.isLandscape) ?
-                    ListView.separated(
-                      shrinkWrap: true,
-                      separatorBuilder: (context, index) {
-                        return verticalSpace(20);
-                      },
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                            onTap: () {
-                              controller.setApprovalDetails(
-                                  controller.approvalList[index]);
-
-                              HapticFeedbackHelper.triggerHapticFeedback(
-                                vibration: VibrateType.mediumImpact,
-                                hapticFeedback: HapticFeedback.mediumImpact,
-                              );
-                              Get.toNamed(
-                                Routes.assetsDetails,
-                                arguments: {
-                                  'assetsModelIndex': index,
-                                  //'readOnly': readOnly,
-                                },
-                              );
-                            },
-                            child: ApprovalCardHorizontal(index: index)
-                        );
-                      },
-                      itemCount: controller.approvalList.length,
-                    ):
-                      GridView.builder(
-                        gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: context.isLandscape? 3 : 2,
-                              crossAxisSpacing:context.isLandscape? 19 : 50,
-                                mainAxisSpacing: 16,
-                             ),
+                      (controller.listViewSelect && context.isLandscape) ?
+                      ListView.separated(
                         shrinkWrap: true,
+                        separatorBuilder: (context, index) {
+                          return verticalSpace(20);
+                        },
                         itemBuilder: (context, index) {
                           return GestureDetector(
                               onTap: () {
@@ -85,13 +57,45 @@ class AllCategories extends GetView<ApprovalController> {
                                   },
                                 );
                               },
-                              child: ApprovalCardVerticalTablet(index: index)
+                              child: ApprovalCardHorizontal(index: index)
                           );
                         },
                         itemCount: controller.approvalList.length,
-                      )
+                      ):
+                        GridView.builder(
+                          gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: context.isLandscape? 3 : 2,
+                                crossAxisSpacing:context.isLandscape? 19 : 50,
+                                  mainAxisSpacing: 16,
+                               ),
+                          shrinkWrap: true,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                                onTap: () {
+                                  controller.setApprovalDetails(
+                                      controller.approvalList[index]);
 
-                    ]);
+                                  HapticFeedbackHelper.triggerHapticFeedback(
+                                    vibration: VibrateType.mediumImpact,
+                                    hapticFeedback: HapticFeedback.mediumImpact,
+                                  );
+                                  Get.toNamed(
+                                    Routes.assetsDetails,
+                                    arguments: {
+                                      'assetsModelIndex': index,
+                                      //'readOnly': readOnly,
+                                    },
+                                  );
+                                },
+                                child: ApprovalCardVerticalTablet(index: index)
+                            );
+                          },
+                          itemCount: controller.approvalList.length,
+                        )
+
+                      ]),
+                  );
         });
   }
 }
