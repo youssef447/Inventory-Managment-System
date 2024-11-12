@@ -96,6 +96,7 @@ class TabletSearchFilter extends GetView<HomeController> {
                 Row(
                   children: [
                     RectangledFilterCard(
+                      width: 112.w,
                       image: AppAssets.filter,
                       text: 'Filter',
                       color: AppColors.card,

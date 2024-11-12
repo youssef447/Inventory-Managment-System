@@ -1,12 +1,14 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class UserEntity {
+  String id;
   String firstName;
   String lastName;
   String position;
   String profileImage;
   UserEntity({
     required this.firstName,
+    required this.id,
     required this.lastName,
     this.position = 'Designer',
     this.profileImage =

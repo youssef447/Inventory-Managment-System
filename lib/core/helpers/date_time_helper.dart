@@ -35,6 +35,10 @@ abstract class DateTimeHelper {
     return DateFormat('h:mm a', Get.locale.toString()).format(dateTime);
   }
 
+  static String formatDateWithTime(DateTime dateTime) {
+    return '${formatDate(dateTime)} ${'At'.tr} ${formatTime(dateTime)}';
+  }
+
   // helper function to extract the hour from the time string and convert it to 24-hour format
   static String extractHour(String time) {
     List<String> parts = time.split(' ');

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:inventory_management/core/constants/approve_cycle.dart';
 
 import '../../../Assets/domain/entity/assets_entity.dart';
 import '../../constants/ids_constants.dart';
@@ -46,6 +47,7 @@ class RequestsController extends GetxController {
           status: 'InUse',
           brand: 'Dell',
         ),
+        approvalCycles: ApproveCycle.approvalCycles,
       ),
       RequestEntity(
         requestId: '002',
@@ -66,6 +68,7 @@ class RequestsController extends GetxController {
           status: 'InUse',
           brand: 'Dell',
         ),
+        approvalCycles: ApproveCycle.approvalCycles,
       ),
       RequestEntity(
         requestId: '003',
@@ -86,6 +89,7 @@ class RequestsController extends GetxController {
           status: 'InUse',
           brand: 'Dell',
         ),
+        approvalCycles: ApproveCycle.approvalCycles,
       ),
       RequestEntity(
         requestId: '004',
@@ -106,6 +110,7 @@ class RequestsController extends GetxController {
           status: 'InUse',
           brand: 'Dell',
         ),
+        approvalCycles: ApproveCycle.approvalCycles,
       ),
       RequestEntity(
         requestId: '005',
@@ -126,6 +131,7 @@ class RequestsController extends GetxController {
           status: 'InUse',
           brand: 'Dell',
         ),
+        approvalCycles: ApproveCycle.approvalCycles,
       )
     ];
     loading = false;

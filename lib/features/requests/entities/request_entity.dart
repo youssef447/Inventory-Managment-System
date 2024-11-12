@@ -1,6 +1,9 @@
 import '../../Assets/domain/entity/assets_entity.dart';
+import '../../home/domain/user_entity.dart';
 import 'attachment_entity.dart';
+import 'message_entity.dart';
 
+//Youssef Ashraf
 /// represents a request entity which is part of the inventory model.
 class RequestEntity {
   int quantity;
@@ -15,6 +18,8 @@ class RequestEntity {
   DateTime dateReturn;
   String? additionalNote;
   List<AttachmentEntity> attachments;
+  List<MessageEntity> inquiryMessages;
+  List<UserEntity> approvalCycles;
 
   RequestEntity({
     required this.requestId,
@@ -28,36 +33,8 @@ class RequestEntity {
     required this.quantity,
     required this.status,
     this.additionalNote,
+    required this.approvalCycles,
+    this.inquiryMessages = const [],
     this.attachments = const [],
   });
-
-  RequestEntity copyWith({
-    String? requestId,
-    String? requestType,
-    DateTime? requestDate,
-    String? priority,
-    String? maintenanceFrequency,
-    String? status,
-    AssetsEntity? assetsEntity,
-    DateTime? expectedRecieved,
-    DateTime? dateReturn,
-    int? quantity,
-    String? additionalNote,
-    List<AttachmentEntity>? attachments,
-  }) {
-    return RequestEntity(
-      requestId: requestId ?? this.requestId,
-      status: status ?? this.status,
-      requestType: requestType ?? this.requestType,
-      requestDate: requestDate ?? this.requestDate,
-      priority: priority ?? this.priority,
-      maintenanceFrequency: maintenanceFrequency ?? this.maintenanceFrequency,
-      assetsEntity: assetsEntity ?? this.assetsEntity,
-      expectedRecieved: expectedRecieved ?? this.expectedRecieved,
-      dateReturn: dateReturn ?? this.dateReturn,
-      quantity: quantity ?? this.quantity,
-      additionalNote: additionalNote ?? this.additionalNote,
-      attachments: attachments ?? this.attachments,
-    );
-  }
 }

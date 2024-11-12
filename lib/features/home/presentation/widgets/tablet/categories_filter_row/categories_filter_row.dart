@@ -56,7 +56,9 @@ class TabletCategoriesFilterRow extends GetView<HomeController> {
                       text: 'Track Request'.tr,
                       style: context.isPhone
                           ? AppTextStyles.font16BlackMediumCairo
-                          : AppTextStyles.font18BlackMediumCairo,
+                              .copyWith(color: AppColors.textButton)
+                          : AppTextStyles.font18BlackMediumCairo
+                              .copyWith(color: AppColors.textButton),
                       onPressed: () => Get.toNamed(Routes.trackRequest),
                     ),
                   horizontalSpace(9),
@@ -68,7 +70,9 @@ class TabletCategoriesFilterRow extends GetView<HomeController> {
                     },
                     style: context.isPhone
                         ? AppTextStyles.font16BlackMediumCairo
-                        : AppTextStyles.font18BlackMediumCairo,
+                            .copyWith(color: AppColors.textButton)
+                        : AppTextStyles.font18BlackMediumCairo
+                            .copyWith(color: AppColors.textButton),
                   ),
                 ],
               ),

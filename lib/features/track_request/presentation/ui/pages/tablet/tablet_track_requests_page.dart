@@ -17,7 +17,7 @@ import '../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../requests/entities/request_entity.dart';
 import '../../../../constants/ids_constants.dart';
 import '../../../controller/track_requests_controller.dart';
-import '../../widgets/common/search_filter/track_request_search_filter.dart';
+import '../../widgets/common/track_requests/track_request_search_filter.dart';
 part '../../widgets/tablet/track_request/cards/vertical_track_request_card.dart';
 part '../../widgets/tablet/track_request/cards/horizontal_track_request_card.dart';
 
@@ -52,8 +52,7 @@ class TabletTrackRequestsPage extends GetView<TrackRequestController> {
                                     const TrackRequestSearchFilter(),
                                     verticalSpace(20),
                                     StaggeredGrid.count(
-                                      crossAxisCount:
-                                          2, //  context.isLandscapee ? 3 : 2,
+                                      crossAxisCount: Get.width > 1200 ? 3 : 2,
                                       mainAxisSpacing: 15.h,
                                       crossAxisSpacing:
                                           context.isLandscapee ? 20.w : 36.w,

@@ -17,8 +17,8 @@ import '../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../requests/entities/request_entity.dart';
 import '../../../../constants/ids_constants.dart';
 import '../../../controller/track_requests_controller.dart';
-part '../../widgets/mobile/track_details/cards/mobile_track_details_card.dart';
-part '../../widgets/mobile/track_details/mobile_approval_cycle.dart';
+part '../../widgets/mobile/track_request_details/cards/mobile_track_details_card.dart';
+part '../../widgets/mobile/track_request_details/mobile_approval_cycle.dart';
 
 class MobileTrackRequestDetailsPage extends GetView<TrackRequestController> {
   final RequestEntity model;

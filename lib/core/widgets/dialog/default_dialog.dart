@@ -56,8 +56,8 @@ class DefaultDialog extends StatelessWidget {
         color: AppColors.dialog,
       ),
       padding: EdgeInsets.symmetric(
-        vertical: 8.h,
-        horizontal: 8.w,
+        vertical: 12.h,
+        horizontal: 12.w,
       ),
       width: width,
       child: Column(

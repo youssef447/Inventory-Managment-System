@@ -13,8 +13,8 @@ import '../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../requests/entities/request_entity.dart';
 import '../../../../constants/ids_constants.dart';
 import '../../../controller/track_requests_controller.dart';
-import '../../widgets/common/search_filter/track_request_search_filter.dart';
-part '../../widgets/mobile/track_request/cards/track_request_card.dart';
+import '../../widgets/common/track_requests/track_request_search_filter.dart';
+part '../../widgets/mobile/track_requests/cards/track_request_card.dart';
 
 class MobileTrackRequestsPage extends GetView<TrackRequestController> {
   const MobileTrackRequestsPage({super.key});

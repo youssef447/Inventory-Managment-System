@@ -5,18 +5,22 @@ abstract class ApproveCycle {
     UserEntity(
       firstName: 'Ahmed',
       lastName: 'Mohammed',
+      id: '1',
     ),
     UserEntity(
       firstName: 'Ahmed',
       lastName: 'Mohammed',
+      id: '2',
     ),
     UserEntity(
       firstName: 'Ahmed',
       lastName: 'Mohammed',
+      id: '3',
     ),
     UserEntity(
       firstName: 'Ahmed',
       lastName: 'Mohammed',
+      id: '4',
     ),
   ];
 }

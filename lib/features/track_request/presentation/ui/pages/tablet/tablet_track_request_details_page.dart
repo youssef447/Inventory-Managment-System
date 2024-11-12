@@ -21,7 +21,7 @@ import '../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../requests/entities/request_entity.dart';
 import '../../../../constants/ids_constants.dart';
 import '../../../controller/track_requests_controller.dart';
-import '../../widgets/common/buttons/cancel_request_button.dart';
+import '../../widgets/common/track_request_details/buttons/cancel_request_button.dart';
 part '../../widgets/tablet/track_details/cards/track_details_card.dart';
 part '../../widgets/tablet/track_details/track_details_card_header.dart';
 part '../../widgets/tablet/track_details/approval_cycle.dart';
@@ -69,6 +69,10 @@ class TabletTrackRequestDetailsPage extends GetView<TrackRequestController> {
                                     ),
                                     verticalSpace(
                                       context.isLandscapee ? 26 : 38,
+                                    ),
+                                    Text(
+                                      'Inquiries And Comments'.tr,
+                                      style: AppTextStyles.font22BlackBoldCairo,
                                     ),
                                   ],
                                 ),

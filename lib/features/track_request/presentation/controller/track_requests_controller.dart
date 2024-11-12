@@ -36,6 +36,9 @@ class TrackRequestController extends GetxController {
           .where(
             (element) => element.status == 'Pending',
           )
+          .map(
+            (e) => e,
+          )
           .toList();
       loading = false;
       update([TrackRequestIds.trackRequestsPage]);
@@ -70,9 +73,10 @@ class TrackRequestController extends GetxController {
   }
 
   cancelRequest(String requestId) {
-    requests.firstWhere((element) => element.requestId == requestId).status =
-        'Canceled';
-    Get.find<RequestsController>().requests = List.from(requests);
+    Get.find<RequestsController>()
+        .requests
+        .firstWhere((element) => element.requestId == requestId)
+        .status = 'Canceled';
     requests.removeWhere((element) => element.requestId == requestId);
 
     Get.until((route) => route.settings.name == Routes.trackRequest);
