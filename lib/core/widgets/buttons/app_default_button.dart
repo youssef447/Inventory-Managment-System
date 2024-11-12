@@ -25,7 +25,7 @@ class AppDefaultButton extends StatelessWidget {
     super.key,
     required this.text,
     this.onPressed,
-    this.width = double.infinity,
+    this.width,
     this.padding,
     this.radius,
     this.color,
@@ -39,7 +39,7 @@ class AppDefaultButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 120.w,
+      width: width ?? 120.w,
       child: MaterialButton(
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,

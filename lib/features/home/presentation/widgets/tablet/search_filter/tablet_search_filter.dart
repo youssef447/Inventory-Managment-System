@@ -141,6 +141,7 @@ class TabletSearchFilter extends GetView<HomeController> {
                         ),
                       ),
                     RectangledFilterCard(
+                      width: 112.w,
                       image: AppAssets.download,
                       text: 'Download',
                       color: AppColors.primary,

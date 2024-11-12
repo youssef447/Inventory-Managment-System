@@ -82,7 +82,7 @@ class CustomAppBar extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     GestureDetector(
-                      onTap: titleNavigations![index],
+                      onTap: titleNavigations?[index],
                       child: Text(
                         titles![index].tr,
                         style: isTablet

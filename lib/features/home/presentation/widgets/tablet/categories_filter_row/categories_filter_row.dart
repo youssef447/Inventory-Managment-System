@@ -48,28 +48,30 @@ class TabletCategoriesFilterRow extends GetView<HomeController> {
                 ),
               ),
               //if current tab is requests
-                Row(
-                  children: [
-                    if (controller.currentCategoryIndex.value == 2)
-                      AppDefaultButton(
-                        text: 'Track Request'.tr,
-                        style: context.isPhone
-                            ? AppTextStyles.font16BlackMediumCairo
-                            : AppTextStyles.font18BlackMediumCairo,
-                        onPressed: () => Get.toNamed(Routes.trackRequest),
-                      ),
-                    horizontalSpace(8),
+              Row(
+                children: [
+                  if (controller.currentCategoryIndex.value == 2)
                     AppDefaultButton(
-                      text: 'Approval'.tr,
-                      onPressed: (){
-                        Get.toNamed(Routes.approval);
-                      },
+                      width: 112.w,
+                      text: 'Track Request'.tr,
                       style: context.isPhone
                           ? AppTextStyles.font16BlackMediumCairo
                           : AppTextStyles.font18BlackMediumCairo,
+                      onPressed: () => Get.toNamed(Routes.trackRequest),
                     ),
-                  ],
-                ),
+                  horizontalSpace(9),
+                  AppDefaultButton(
+                    width: 112.w,
+                    text: 'Approval'.tr,
+                    onPressed: () {
+                      Get.toNamed(Routes.approval);
+                    },
+                    style: context.isPhone
+                        ? AppTextStyles.font16BlackMediumCairo
+                        : AppTextStyles.font18BlackMediumCairo,
+                  ),
+                ],
+              ),
             ],
           );
         },
