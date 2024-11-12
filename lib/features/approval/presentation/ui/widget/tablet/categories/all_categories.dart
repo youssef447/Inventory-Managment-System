@@ -67,6 +67,7 @@ class AllCategories extends GetView<ApprovalController> {
                                 SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: context.isLandscape? 3 : 2,
                                 crossAxisSpacing:context.isLandscape? 19 : 50,
+                                  childAspectRatio:context.isLandscape? 1.2 : 0.9,
                                   mainAxisSpacing: 16,
                                ),
                           shrinkWrap: true,

@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 
 import '../../features/approval/presentation/controller/approval_binding.dart';
 import '../../features/approval/presentation/ui/pages/mobile/mobile_approval_page.dart';
+import '../../features/approval/presentation/ui/pages/tablet/tablet_approval_details_page.dart';
 import '../../features/approval/presentation/ui/pages/tablet/tablet_approval_page.dart';
 import '../../features/request_new_asset/presentation/controller/request_assets__bindings.dart';
 import '../../features/request_new_asset/presentation/ui/pages/mobile/mobile_new_request_page.dart';
@@ -111,6 +112,18 @@ abstract class AppPages {
       page: () => const ResponsiveHelper(
         mobileWidget: MobileApprovalPage(),
         tabletWidget:  TabletApprovalPage(
+        ),
+      ),
+      binding: ApprovalBinding(),
+    ),
+
+    GetPage(
+      name: Routes.approvalDetails,
+      transition: Transition.fadeIn,
+      page: () =>  ResponsiveHelper(
+        mobileWidget: const MobileApprovalPage(),
+        tabletWidget:  TabletApprovalDetailsPage(
+          index: Get.arguments['approvalModelIndex'],
         ),
       ),
       binding: ApprovalBinding(),

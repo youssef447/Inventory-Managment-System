@@ -19,35 +19,36 @@ class ApprovalCardVerticalTablet extends GetView<ApprovalController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-
       padding:  const EdgeInsets.symmetric(vertical: 10,horizontal: 17),
       decoration: BoxDecoration(
         color: AppColors.base,
             borderRadius: BorderRadius.circular(16)
       ),
-      child: Column(
-       crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              const CircleAvatar(radius: 26,backgroundImage: AssetImage(AppAssets.user),),
-              horizontalSpace(12),
-               Text('Mai Mohamed',style:  AppTextStyles.font18BlackMediumCairo,),
-            ],
-          ),
-          verticalSpace(10),
-          RichTextRow(type: 'Request Date'.tr, value:DateTimeHelper.formatDate(controller.approvalList[index].requestDate),),
-          RichTextRow(type: 'Request Type'.tr, value: controller.approvalList[index].requestType),
-          RichTextRow(type: 'Asset Name'.tr, value: controller.approvalList[index].brand + controller.approvalList[index].model),
-          RichTextRow(type: 'Category'.tr, value: controller.approvalList[index].category),
-          RichTextRow(type: 'Subcategory'.tr, value: controller.approvalList[index].subcategory),
-          RichTextRow(type: 'Model'.tr, value:controller.approvalList[index].model),
-          RichTextRow(type: 'Brand'.tr, value: controller.approvalList[index].brand),
-          RichTextRow(type: 'Quantity'.tr, value: controller.approvalList[index].quantity.toString()),
-          verticalSpace(10),
-         const ApprovalButtons()
-          
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+         crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const CircleAvatar(radius: 26,backgroundImage: AssetImage(AppAssets.user),),
+                horizontalSpace(12),
+                 Text('Mai Mohamed',style:  AppTextStyles.font18BlackMediumCairo,),
+              ],
+            ),
+            verticalSpace(10),
+            RichTextRow(type: 'Request Date'.tr, value:DateTimeHelper.formatDate(controller.approvalList[index].requestDate),),
+            RichTextRow(type: 'Request Type'.tr, value: controller.approvalList[index].requestType),
+            RichTextRow(type: 'Asset Name'.tr, value: controller.approvalList[index].brand + controller.approvalList[index].model),
+            RichTextRow(type: 'Category'.tr, value: controller.approvalList[index].category),
+            RichTextRow(type: 'Subcategory'.tr, value: controller.approvalList[index].subcategory),
+            RichTextRow(type: 'Model'.tr, value:controller.approvalList[index].model),
+            RichTextRow(type: 'Brand'.tr, value: controller.approvalList[index].brand),
+            RichTextRow(type: 'Quantity'.tr, value: controller.approvalList[index].quantity.toString()),
+            verticalSpace(10),
+           const ApprovalButtons()
+
+          ],
+        ),
       ),
     );
   }

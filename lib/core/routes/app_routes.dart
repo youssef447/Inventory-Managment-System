@@ -22,6 +22,7 @@ abstract class Routes {
 
   //approval
   static const approval = '/approvalDetails';
+  static const approvalDetails = '/approvalDetails';
 
 
 }

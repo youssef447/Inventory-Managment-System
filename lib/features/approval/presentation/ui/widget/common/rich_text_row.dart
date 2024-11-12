@@ -14,19 +14,17 @@ class RichTextRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: RichText(
-        textAlign: TextAlign.end,
-        text: TextSpan(
-            text: '${type.tr} : ',
-            style:context.isLandscape? AppTextStyles.font14SecondaryBlackCairoRegular :  AppTextStyles.font16secondaryBlackRegularCairo ,
-            children: [
-              TextSpan(
-                  text: value.tr,
-                  style: context.isLandscape? AppTextStyles.font14BlackCairoRegular : AppTextStyles.font16BlackCairoMedium
-              )
-            ]),
-      ),
+    return RichText(
+      textAlign: TextAlign.end,
+      text: TextSpan(
+          text: '${type.tr} : ',
+          style:context.isLandscape? AppTextStyles.font14SecondaryBlackCairoRegular :  AppTextStyles.font16secondaryBlackRegularCairo ,
+          children: [
+            TextSpan(
+                text: value.tr,
+                style: context.isLandscape? AppTextStyles.font14BlackCairoRegular : AppTextStyles.font16BlackCairoMedium
+            )
+          ]),
     );
   }
 }
