@@ -59,21 +59,22 @@ class MobileConsumableCard extends GetView<ConsumablesController> {
                   ),
                 ],
               ),
-              const Spacer(),
-              RichText(
-                textAlign: TextAlign.end,
-                text: TextSpan(
-                    text: '${'Status'.tr} : ',
-                    style: AppTextStyles.font12SecondaryBlackCairoMedium,
-                    children: [
-                      TextSpan(
-                        text: controller.consumablesList[index].status,
-                        style: AppTextStyles.font12SecondaryBlackCairoMedium
-                            .copyWith(
-                                color: controller
-                                    .consumablesList[index].status.getColor),
-                      )
-                    ]),
+              Expanded(
+                child: RichText(
+                  textAlign: TextAlign.end,
+                  text: TextSpan(
+                      text: '${'Status'.tr} : ',
+                      style: AppTextStyles.font12SecondaryBlackCairoMedium,
+                      children: [
+                        TextSpan(
+                          text: controller.consumablesList[index].status,
+                          style: AppTextStyles.font12SecondaryBlackCairoMedium
+                              .copyWith(
+                                  color: controller
+                                      .consumablesList[index].status.getColor),
+                        )
+                      ]),
+                ),
               ),
             ],
           ),

@@ -59,21 +59,22 @@ class MobileAssetsCard extends GetView<AssetsController> {
                   ),
                 ],
               ),
-              const Spacer(),
-              RichText(
-                textAlign: TextAlign.end,
-                text: TextSpan(
-                    text: '${'Status'.tr} : ',
-                    style: AppTextStyles.font12SecondaryBlackCairoMedium,
-                    children: [
-                      TextSpan(
-                        text: controller.assetsList[index].status,
-                        style: AppTextStyles.font12SecondaryBlackCairoMedium
-                            .copyWith(
-                                color: controller
-                                    .assetsList[index].status.getColor),
-                      )
-                    ]),
+              Expanded(
+                child: RichText(
+                  textAlign: TextAlign.end,
+                  text: TextSpan(
+                      text: '${'Status'.tr} : ',
+                      style: AppTextStyles.font12SecondaryBlackCairoMedium,
+                      children: [
+                        TextSpan(
+                          text: controller.assetsList[index].status,
+                          style: AppTextStyles.font12SecondaryBlackCairoMedium
+                              .copyWith(
+                                  color: controller
+                                      .assetsList[index].status.getColor),
+                        )
+                      ]),
+                ),
               ),
             ],
           ),

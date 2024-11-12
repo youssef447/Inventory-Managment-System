@@ -10,6 +10,7 @@ abstract class AppAssets {
   static const String image = 'assets/images/image.png';
   static const String phone = 'assets/images/phone.png';
   static const String profileImage = 'assets/images/profileImage.png';
+  static const String user = 'assets/images/user.png';
 
   //****************************************************************************
 
@@ -35,6 +36,8 @@ abstract class AppAssets {
   static const String line = 'assets/vectors/line.svg';
   static const String buildings = 'assets/vectors/buildings.svg';
   static const String doc = 'assets/vectors/doc.svg';
+  static const String grid = 'assets/vectors/grid.svg';
+  static const String list = 'assets/vectors/list.svg';
 
   //media
   static const String powerpoint = 'assets/vectors/powerpoint.svg';
@@ -51,5 +54,5 @@ abstract class AppAssets {
 
   static const String noData = 'assets/lotties/noData.json';
 
-  //****************************************************************************
+//****************************************************************************
 }

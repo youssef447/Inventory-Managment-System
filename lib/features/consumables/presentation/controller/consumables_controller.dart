@@ -83,24 +83,45 @@ class ConsumablesController extends GetxController {
           status: 'Expired',
         ),
       ];
-      if (consumablesList.isNotEmpty) {
-        final consumables = consumablesList[0]; // Using the first asset as an example
-        consumableIdController.text = consumables.consumableId;
-        nameController.text = consumables.name;
-        categoryController.text = consumables.category;
-        subcategoryController.text = consumables.subcategory;
-        modelController.text = consumables.model;
-        brandController.text = consumables.brand;
-        quantityController.text = consumables.quantity;
-        dateReceivedController.text =
-            DateTimeHelper.formatDate(consumables.dateReceived);
-        unitOfMeasurementController.text = consumables.unitOfMeasurement;
-        usageFrequencyController.text = consumables.usageFrequency;
-        expirationDateController.text = DateTimeHelper.formatDate(consumables.expirationDate!);
-        statusController.text = consumables.status;
-      }
       loading = false;
       update([ConsumablesIdConstant.consumablesData]);
     });
+  }
+
+  //called when user goes to details of Consumables
+  setConsumablesDetails(ConsumablesEntity model) {
+    consumableIdController.text = model.consumableId;
+    nameController.text = model.name;
+    categoryController.text = model.category;
+    subcategoryController.text = model.subcategory;
+    modelController.text = model.model;
+    brandController.text = model.brand;
+    quantityController.text = model.quantity;
+    unitOfMeasurementController.text = model.unitOfMeasurement;
+    usageFrequencyController.text = model.usageFrequency;
+    dateReceivedController.text = DateTimeHelper.formatDate(
+      model.dateReceived,
+    );
+    expirationDateController.text = model.expirationDate != null
+        ? DateTimeHelper.formatDate(
+            model.expirationDate!,
+          )
+        : 'Not Applicable'.tr;
+    statusController.text = model.status;
+  }
+
+  resetConsumablesDetails() {
+     consumableIdController.clear();
+     nameController.clear();
+     categoryController.clear();
+     subcategoryController.clear();
+     modelController.clear();
+     brandController.clear();
+     dateReceivedController.clear();
+     quantityController.clear();
+     unitOfMeasurementController.clear();
+     usageFrequencyController.clear();
+     expirationDateController.clear();
+     statusController.clear();
   }
 }

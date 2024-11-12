@@ -24,104 +24,111 @@ class MobileAssetsDetails extends GetView<AssetsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
+      body: SafeArea(
+        child: PopScope(
+          onPopInvoked: (didPop) {
+            controller.resetAssetsDetails();
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
-                  GestureDetector(
-                      onTap: () => Get.back(),
-                      child: SvgPicture.asset(
-                        AppAssets.arrowBack,
-                      )),
-                  Text(
-                    'Asset Details'.tr,
-                    style: AppTextStyles.font26BlackSemiBoldCairo,
+                  Row(
+                    children: [
+                      GestureDetector(
+                          onTap: () => Get.back(),
+                          child: SvgPicture.asset(
+                            AppAssets.arrowBack,
+                          )),
+                      Text(
+                        'Asset Details'.tr,
+                        style: AppTextStyles.font26BlackSemiBoldCairo,
+                      ),
+                    ],
                   ),
+                  verticalSpace(20),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset(
+                        AppAssets.image,
+                        width: 65.w,
+                        height: 65.h,
+                      ),
+                      horizontalSpace(4),
+                      Text(
+                        controller.assetsList[index].brand +
+                            controller.assetsList[index].model,
+                        style: AppTextStyles.font14BlackCairoMedium,
+                      ),
+                      verticalSpace(3),
+                    ],
+                  ),
+                  verticalSpace(16),
+                  TextSingleField(
+                    typeName: 'Status'.tr,
+                    controller: controller.statusController,
+                    isReadOnly: true,
+                    style: AppTextStyles.font16BlackRegularCairo.copyWith(
+                        color: controller.assetsList[index].status.getColor),
+                  ),
+                  verticalSpace(12),
+                  TextSingleField(
+                    typeName: 'Asset ID'.tr,
+                    controller: controller.assetIdController,
+                    isReadOnly: true,
+                  ),
+                  verticalSpace(12),
+                  TextSingleField(
+                    typeName: 'Category'.tr,
+                    controller: controller.categoryController,
+                    isReadOnly: true,
+                  ),
+                  verticalSpace(12),
+                  TextSingleField(
+                    typeName: ' Subcategory'.tr,
+                    controller: controller.subcategoryController,
+                    isReadOnly: true,
+                  ),
+                  verticalSpace(12),
+                  TextSingleField(
+                    typeName: ' Model '.tr,
+                    controller: controller.modelController,
+                    isReadOnly: true,
+                  ),
+                  verticalSpace(12),
+                  TextSingleField(
+                    typeName: ' Brand'.tr,
+                    controller: controller.brandController,
+                    isReadOnly: true,
+                  ),
+                  verticalSpace(12),
+                  TextSingleField(
+                    typeName: 'Quantity'.tr,
+                    controller: controller.quantityController,
+                    isReadOnly: true,
+                  ),
+                  verticalSpace(12),
+                  TextSingleField(
+                    typeName: 'Maintenance Frequency'.tr,
+                    controller: controller.maintenanceFrequencyController,
+                    isReadOnly: true,
+                  ),
+                  verticalSpace(12),
+                  DateField(
+                    dateController: controller.dateReceivedController,
+                    headerName: 'Date Received',
+                  ),
+                  verticalSpace(12),
+                  DateField(
+                    dateController: controller.dateReturnController,
+                    headerName: 'Date Return',
+                  ),
+                  verticalSpace(40),
                 ],
               ),
-              verticalSpace(20),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    AppAssets.image,
-                    width: 65.w,
-                    height: 65.h,
-                  ),
-                  horizontalSpace(4),
-                  Text(
-                    controller.assetsList[index].brand +
-                        controller.assetsList[index].model,
-                    style: AppTextStyles.font14BlackCairoMedium,
-                  ),
-                  verticalSpace(3),
-                ],
-              ),
-              verticalSpace(16),
-              TextSingleField(
-                typeName: 'Status'.tr,
-                controller: controller.statusController,
-                isReadOnly: true,
-                style: AppTextStyles.font16BlackRegularCairo.copyWith(
-                    color: controller.assetsList[index].status.getColor),
-              ),
-              verticalSpace(12),
-              TextSingleField(
-                typeName: 'Asset ID'.tr,
-                controller: controller.assetIdController,
-                isReadOnly: true,
-              ),
-              verticalSpace(12),
-              TextSingleField(
-                typeName: 'Category'.tr,
-                controller: controller.categoryController,
-                isReadOnly: true,
-              ),
-              verticalSpace(12),
-              TextSingleField(
-                typeName: ' Subcategory'.tr,
-                controller: controller.subcategoryController,
-                isReadOnly: true,
-              ),
-              verticalSpace(12),
-              TextSingleField(
-                typeName: ' Model '.tr,
-                controller: controller.modelController,
-                isReadOnly: true,
-              ),
-              verticalSpace(12),
-              TextSingleField(
-                typeName: ' Brand'.tr,
-                controller: controller.brandController,
-                isReadOnly: true,
-              ),
-              verticalSpace(12),
-              TextSingleField(
-                typeName: 'Quantity'.tr,
-                controller: controller.quantityController,
-                isReadOnly: true,
-              ),
-              verticalSpace(12),
-              TextSingleField(
-                typeName: 'Maintenance Frequency'.tr,
-                controller: controller.maintenanceFrequencyController,
-                isReadOnly: true,
-              ),
-              verticalSpace(12),
-              DateField(
-                dateController: controller.dateReceivedController,
-                headerName: 'Date Received',
-              ),
-              verticalSpace(12),
-              DateField(
-                dateController: controller.dateReturnController,
-                headerName: 'Date Return',
-              ),
-              verticalSpace(40),
-            ],
+            ),
           ),
         ),
       ),
