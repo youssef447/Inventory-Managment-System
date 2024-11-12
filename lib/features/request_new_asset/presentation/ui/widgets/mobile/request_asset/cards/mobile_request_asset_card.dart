@@ -1,4 +1,4 @@
-part of '../../../../pages/mobile/mobile_request_asset_page.dart';
+part of '../../../../pages/mobile/mobile_new_request_page.dart';
 
 class MobileRequestAssetCard extends StatelessWidget {
   final AssetsEntity model;

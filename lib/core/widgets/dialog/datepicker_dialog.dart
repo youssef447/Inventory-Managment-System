@@ -38,7 +38,8 @@ class DefaultDatePickerDialog extends StatelessWidget {
               //cells in year view
 
               yearCellStyle: DateRangePickerYearCellStyle(
-                disabledDatesTextStyle: AppTextStyles.font14SecondaryBlackCairo,
+                disabledDatesTextStyle:
+                    AppTextStyles.font14SecondaryBlackCairoMedium,
                 textStyle: AppTextStyles.font14BlackCairoRegular,
                 todayTextStyle: AppTextStyles.font14BlackCairoRegular,
               ),
@@ -51,7 +52,8 @@ class DefaultDatePickerDialog extends StatelessWidget {
               onViewChanged: (dateRangePickerViewChangedArgs) {},
 
               monthCellStyle: DateRangePickerMonthCellStyle(
-                disabledDatesTextStyle: AppTextStyles.font14SecondaryBlackCairo,
+                disabledDatesTextStyle:
+                    AppTextStyles.font14SecondaryBlackCairoMedium,
                 textStyle: AppTextStyles.font14BlackCairoRegular,
                 todayTextStyle: AppTextStyles.font14BlackCairoRegular,
               ),

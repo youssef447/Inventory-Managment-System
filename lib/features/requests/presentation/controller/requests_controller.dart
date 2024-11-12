@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../../Assets/domain/entity/assets_entity.dart';
 import '../../constants/ids_constants.dart';
 import '../../entities/request_entity.dart';
 
@@ -22,93 +23,112 @@ class RequestsController extends GetxController {
 
   ///Loading Requests from backend. Called at init
   Future<void> loadRequestsData() async {
-    Future.delayed(
+    await Future.delayed(
       const Duration(seconds: 2),
-    ).then((_) {
-      requests = [
-        RequestEntity(
-          requestId: '001',
-          requestType: 'Asset Request',
-          requestDate: DateTime.now(),
-          priority: 'Computer',
-          maintenanceFrequency: '',
-          assetName: 'Laptop',
+    );
+    requests = [
+      RequestEntity(
+        requestId: '001',
+        requestType: 'Asset Request',
+        status: 'Pending',
+        requestDate: DateTime.now(),
+        dateReturn: DateTime.now(),
+        expectedRecieved: DateTime.now(),
+        priority: 'Urgent',
+        quantity: 2,
+        assetsEntity: AssetsEntity(
+          assetName: 'Dell GZ 15',
           category: 'Electronics',
-          subCategory: 'Computer',
-          model: 'GZ 15',
+          subcategory: 'Computer',
+          model: '1540',
+          dateReceived: DateTime.now(),
+          quantity: '2',
+          status: 'InUse',
           brand: 'Dell',
-          expectedRecieved: DateTime.now(),
-          dateReturn: DateTime.now(),
-          quantity: 2,
-          status: 'Pending',
         ),
-        RequestEntity(
-          requestId: '001',
-          requestType: 'Asset Request',
-          requestDate: DateTime.now(),
-          priority: 'Computer',
-          maintenanceFrequency: '',
-          assetName: 'Laptop',
+      ),
+      RequestEntity(
+        requestId: '002',
+        requestType: 'Asset Request',
+        status: 'Approved',
+        requestDate: DateTime.now(),
+        dateReturn: DateTime.now(),
+        expectedRecieved: DateTime.now(),
+        priority: 'Urgent',
+        quantity: 2,
+        assetsEntity: AssetsEntity(
+          assetName: 'Dell GZ 15',
           category: 'Electronics',
-          subCategory: 'Computer',
-          model: 'GZ 15',
+          subcategory: 'Computer',
+          model: '1540',
+          dateReceived: DateTime.now(),
+          quantity: '2',
+          status: 'InUse',
           brand: 'Dell',
-          expectedRecieved: DateTime.now(),
-          dateReturn: DateTime.now(),
-          quantity: 2,
-          status: 'Approved',
         ),
-        RequestEntity(
-          requestId: '001',
-          requestType: 'Asset Request',
-          requestDate: DateTime.now(),
-          priority: 'Computer',
-          maintenanceFrequency: '',
-          assetName: 'Laptop',
+      ),
+      RequestEntity(
+        requestId: '003',
+        requestType: 'Asset Request',
+        status: 'Pending',
+        requestDate: DateTime.now(),
+        dateReturn: DateTime.now(),
+        expectedRecieved: DateTime.now(),
+        priority: 'Urgent',
+        quantity: 2,
+        assetsEntity: AssetsEntity(
+          assetName: 'Dell GZ 15',
           category: 'Electronics',
-          subCategory: 'Computer',
-          model: 'GZ 15',
+          subcategory: 'Computer',
+          model: '1540',
+          dateReceived: DateTime.now(),
+          quantity: '2',
+          status: 'InUse',
           brand: 'Dell',
-          expectedRecieved: DateTime.now(),
-          dateReturn: DateTime.now(),
-          quantity: 2,
-          status: 'Rejected',
         ),
-        RequestEntity(
-          requestId: '001',
-          requestType: 'Asset Request',
-          requestDate: DateTime.now(),
-          priority: 'Computer',
-          maintenanceFrequency: '',
-          assetName: 'Laptop',
+      ),
+      RequestEntity(
+        requestId: '004',
+        requestType: 'Asset Request',
+        status: 'Pending',
+        requestDate: DateTime.now(),
+        dateReturn: DateTime.now(),
+        expectedRecieved: DateTime.now(),
+        priority: 'Urgent',
+        quantity: 2,
+        assetsEntity: AssetsEntity(
+          assetName: 'Dell GZ 15',
           category: 'Electronics',
-          subCategory: 'Computer',
-          model: 'GZ 15',
+          subcategory: 'Computer',
+          model: '1540',
+          dateReceived: DateTime.now(),
+          quantity: '2',
+          status: 'InUse',
           brand: 'Dell',
-          expectedRecieved: DateTime.now(),
-          dateReturn: DateTime.now(),
-          quantity: 2,
-          status: 'Pending',
         ),
-        RequestEntity(
-          requestId: '001',
-          requestType: 'Asset Request',
-          requestDate: DateTime.now(),
-          priority: 'Computer',
-          maintenanceFrequency: '',
-          assetName: 'Laptop',
+      ),
+      RequestEntity(
+        requestId: '005',
+        requestType: 'Asset Request',
+        status: 'Pending',
+        requestDate: DateTime.now(),
+        dateReturn: DateTime.now(),
+        expectedRecieved: DateTime.now(),
+        priority: 'Urgent',
+        quantity: 2,
+        assetsEntity: AssetsEntity(
+          assetName: 'Dell GZ 15',
           category: 'Electronics',
-          subCategory: 'Computer',
-          model: 'GZ 15',
+          subcategory: 'Computer',
+          model: '1540',
+          dateReceived: DateTime.now(),
+          quantity: '2',
+          status: 'InUse',
           brand: 'Dell',
-          expectedRecieved: DateTime.now(),
-          dateReturn: DateTime.now(),
-          quantity: 2,
-          status: 'Canceled',
         ),
-      ];
-      loading = false;
-      update([RequestsIds.requestsPage]);
-    });
+      )
+    ];
+    loading = false;
+    update([RequestsIds.requestsPage]);
   }
 }

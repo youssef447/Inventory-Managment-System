@@ -5,11 +5,12 @@ import 'package:inventory_management/core/extensions/extensions.dart';
 
 import '../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../core/routes/app_routes.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_font_weights.dart';
 import '../../../../../core/theme/app_text_styles.dart';
 import '../../../../../core/widgets/buttons/app_default_button.dart';
-import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../../core/widgets/appbar/custom_app_bar.dart';
 
 import '../../../../Assets/presentation/ui/pages/tablet/tablet_assets_page.dart';
 import '../../../../consumables/presentation/ui/pages/tablet/consumables_tablet_page.dart';
@@ -31,29 +32,30 @@ class TabletHomePage extends GetView<HomeController> {
           padding: context.isLandscapee
               ? EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h)
               : EdgeInsets.symmetric(horizontal: 30.w, vertical: 18.h),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const CustomAppBar(),
-                verticalSpace(20),
-                const TabletCategoriesFilterRow(),
-                verticalSpace(20),
-                const TabletSearchFilter(),
-                verticalSpace(20),
-                Obx(
-                  () {
-                    if (controller.currentCategoryIndex.value == 0) {
-                      return const TabletAssetsPage();
-                    }
-                    if (controller.currentCategoryIndex.value == 1) {
-                      return const ConsumablesTabletPage();
-                    }
-                    return const TabletRequestsPage();
-                  },
-                ),
-              ],
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CustomAppBar(),
+              verticalSpace(20),
+              const TabletCategoriesFilterRow(),
+              verticalSpace(20),
+              const TabletSearchFilter(),
+              verticalSpace(20),
+              Obx(
+                () {
+                  if (controller.currentCategoryIndex.value == 0) {
+                    return const SingleChildScrollView(
+                        child: TabletAssetsPage());
+                  }
+                  if (controller.currentCategoryIndex.value == 1) {
+                    return const SingleChildScrollView(
+                      child: ConsumablesTabletPage(),
+                    );
+                  }
+                  return const TabletRequestsPage();
+                },
+              ),
+            ],
           ),
         ),
       ),

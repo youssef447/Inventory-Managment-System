@@ -1,4 +1,4 @@
-part of '../../../../pages/tablet/tablet_request_asset_page.dart';
+part of '../../../../pages/tablet/tablet_new_request_page.dart';
 
 class VerticalRequestAssetCard extends StatelessWidget {
   final AssetsEntity model;

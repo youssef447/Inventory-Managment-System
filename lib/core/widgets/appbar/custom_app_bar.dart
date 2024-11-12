@@ -9,18 +9,18 @@ import 'package:get/get.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
 import 'package:inventory_management/core/helpers/spacing_helper.dart';
 
-import '../constants/app_assets.dart';
-import '../theme/app_colors.dart';
-import '../theme/app_text_styles.dart';
+import '../../constants/app_assets.dart';
+import '../../theme/app_colors.dart';
+import '../../theme/app_text_styles.dart';
 
 class CustomAppBar extends StatelessWidget {
   final List<String>? titles;
-  //final List<Function()>? titleNavigations;
+  final List<Function()>? titleNavigations;
 
   const CustomAppBar({
     super.key,
     this.titles,
-    // this.titleNavigations,
+    this.titleNavigations,
   });
 
   @override
@@ -81,16 +81,16 @@ class CustomAppBar extends StatelessWidget {
                 return Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    //  onTap: titleNavigations![index],
-
-                    Text(
-                      titles![index].tr,
-                      style: isTablet
-                          ? AppTextStyles.font28BlackSemiBoldCairo
-                          : AppTextStyles.font26BlackSemiBoldCairo,
+                    GestureDetector(
+                      onTap: titleNavigations![index],
+                      child: Text(
+                        titles![index].tr,
+                        style: isTablet
+                            ? AppTextStyles.font28BlackSemiBoldCairo
+                            : AppTextStyles.font26BlackSemiBoldCairo,
+                      ),
                     ),
                     horizontalSpace(8),
-
                     SvgPicture.asset(
                       context.isArabic
                           ? AppAssets.arrowBack

@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
 
 import '../../../../../../../core/constants/app_assets.dart';
-import '../../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/routes/app_routes.dart';
 import '../../../../../../../core/theme/app_colors.dart';
@@ -200,7 +199,7 @@ class VerticalRequstsSummaryCircles extends GetView<HomeController> {
                     style: context.isPhone
                         ? AppTextStyles.font16BlackMediumCairo
                         : AppTextStyles.font18BlackMediumCairo,
-                    onPressed: () {},
+                    onPressed: () => Get.toNamed(Routes.trackRequest),
                   ),
                 ),
                 horizontalSpace(10),
@@ -218,11 +217,10 @@ class VerticalRequstsSummaryCircles extends GetView<HomeController> {
                     color: AppColors.primary,
                     height: 37.h,
                     onChanged: (value) {
-                      if (value == RequestActions.requestAsset) {
-                        Get.toNamed(
-                          Routes.requestAsset,
-                        );
-                      }
+                      Get.toNamed(
+                        Routes.requestAsset,
+                        arguments: {'action': value},
+                      );
                     },
                     items: List.generate(
                       controller.requestActions.length,
@@ -232,7 +230,8 @@ class VerticalRequstsSummaryCircles extends GetView<HomeController> {
                           value: controller.requestActions[index],
                           child: Text(
                             controller.requestActions[index].getName,
-                            style: AppTextStyles.font14SecondaryBlackCairo,
+                            style:
+                                AppTextStyles.font14SecondaryBlackCairoMedium,
                           ),
                         );
                       },

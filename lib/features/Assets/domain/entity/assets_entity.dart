@@ -24,7 +24,7 @@ class AssetsEntity {
   final DateTime lastUpdate = DateTime.now();
 
   AssetsEntity({
-    required this.assetId,
+    this.assetId = '001',
     required this.assetName,
     required this.category,
     required this.subcategory,

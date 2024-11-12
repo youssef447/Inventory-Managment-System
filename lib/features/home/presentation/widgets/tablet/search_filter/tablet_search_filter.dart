@@ -118,11 +118,10 @@ class TabletSearchFilter extends GetView<HomeController> {
                           color: AppColors.primary,
                           height: 37.h,
                           onChanged: (value) {
-                            if (value == RequestActions.requestAsset) {
-                              Get.toNamed(
-                                Routes.requestAsset,
-                              );
-                            }
+                            Get.toNamed(
+                              Routes.requestAsset,
+                              arguments: {'action': value},
+                            );
                           },
                           items: List.generate(
                             controller.requestActions.length,
@@ -132,8 +131,8 @@ class TabletSearchFilter extends GetView<HomeController> {
                                 value: controller.requestActions[index],
                                 child: Text(
                                   controller.requestActions[index].getName,
-                                  style:
-                                      AppTextStyles.font14SecondaryBlackCairo,
+                                  style: AppTextStyles
+                                      .font14SecondaryBlackCairoMedium,
                                 ),
                               );
                             },
@@ -188,8 +187,8 @@ class TabletSearchFilter extends GetView<HomeController> {
                                 value: controller.requestActions[index],
                                 child: Text(
                                   controller.requestActions[index].getName,
-                                  style:
-                                      AppTextStyles.font14SecondaryBlackCairo,
+                                  style: AppTextStyles
+                                      .font14SecondaryBlackCairoMedium,
                                 ),
                               );
                             },

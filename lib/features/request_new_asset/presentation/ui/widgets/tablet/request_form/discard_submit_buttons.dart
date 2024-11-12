@@ -1,4 +1,4 @@
-part of '../../../pages/tablet/tablet_request_new_asset_page.dart';
+part of '../../../pages/tablet/tablet_request_form_page.dart';
 
 class DiscardSubmitButtons extends GetView<RequestAssetsController> {
   const DiscardSubmitButtons({super.key});

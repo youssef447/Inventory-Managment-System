@@ -6,10 +6,15 @@
 import 'package:get/get.dart';
 
 import '../../features/request_new_asset/presentation/controller/request_assets__bindings.dart';
-import '../../features/request_new_asset/presentation/ui/pages/mobile/mobile_request_asset_page.dart';
-import '../../features/request_new_asset/presentation/ui/pages/mobile/mobile_request_new_asset_page.dart';
-import '../../features/request_new_asset/presentation/ui/pages/tablet/tablet_request_asset_page.dart';
-import '../../features/request_new_asset/presentation/ui/pages/tablet/tablet_request_new_asset_page.dart';
+import '../../features/request_new_asset/presentation/ui/pages/mobile/mobile_new_request_page.dart';
+import '../../features/request_new_asset/presentation/ui/pages/mobile/mobile_request_form_page.dart';
+import '../../features/request_new_asset/presentation/ui/pages/tablet/tablet_new_request_page.dart';
+import '../../features/request_new_asset/presentation/ui/pages/tablet/tablet_request_form_page.dart';
+import '../../features/track_request/presentation/controller/track_requests_bindings.dart';
+import '../../features/track_request/presentation/ui/pages/mobile/mobile_track_requests_details_page.dart';
+import '../../features/track_request/presentation/ui/pages/mobile/mobile_track_requests_page.dart';
+import '../../features/track_request/presentation/ui/pages/tablet/tablet_track_request_details_page.dart';
+import '../../features/track_request/presentation/ui/pages/tablet/tablet_track_requests_page.dart';
 import '../helpers/responsive_helper.dart';
 
 import '../../features/Assets/presentation/controller/assets_binding.dart';
@@ -24,8 +29,8 @@ abstract class AppPages {
     GetPage(
       name: Routes.requestAsset,
       page: () => const ResponsiveHelper(
-        mobileWidget: MobileRequestAssetsPage(),
-        tabletWidget: TabletRequestAssetsPage(),
+        mobileWidget: MobileNewRequestPage(),
+        tabletWidget: TabletNewRequestPage(),
       ),
       binding: RequestAssetsBindings(),
       transition: Transition.fade,
@@ -34,15 +39,39 @@ abstract class AppPages {
     GetPage(
       name: Routes.newRequestAsset,
       page: () => ResponsiveHelper(
-        mobileWidget: MobileRequestNewAssetPage(
+        mobileWidget: MobileRequestFormPage(
           model: Get.arguments['assetModel'],
         ),
-        tabletWidget: TabletRequestNewAssetPage(
+        tabletWidget: TabletRequestFormPage(
           model: Get.arguments['assetModel'],
         ),
       ),
       transition: Transition.fade,
       transitionDuration: const Duration(milliseconds: 350),
+    ),
+    GetPage(
+      name: Routes.trackRequest,
+      page: () => const ResponsiveHelper(
+        mobileWidget: MobileTrackRequestsPage(),
+        tabletWidget: TabletTrackRequestsPage(),
+      ),
+      transition: Transition.fade,
+      transitionDuration: const Duration(milliseconds: 350),
+      binding: TrackRequestsBinding(),
+    ),
+    GetPage(
+      name: Routes.trackDetails,
+      page: () => ResponsiveHelper(
+        mobileWidget: MobileTrackRequestDetailsPage(
+          model: Get.arguments['model'],
+        ),
+        tabletWidget: TabletTrackRequestDetailsPage(
+          model: Get.arguments['model'],
+        ),
+      ),
+      transition: Transition.fade,
+      transitionDuration: const Duration(milliseconds: 350),
+      binding: TrackRequestsBinding(),
     ),
     GetPage(
       name: Routes.assetsDetails,

@@ -154,7 +154,7 @@ class AppTextFormField extends StatelessWidget {
         ),
         hintStyle: hintStyle ??
             (context.isTablett
-                ? AppTextStyles.font14SecondaryBlackCairo
+                ? AppTextStyles.font14SecondaryBlackCairoMedium
                 : AppTextStyles.font12SecondaryBlackCairoRegular),
         isCollapsed: collapsed,
         errorStyle: AppTextStyles.font12RedRegularCairo,

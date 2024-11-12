@@ -11,6 +11,7 @@ abstract class GetDialogHelper {
   }) {
     return showGeneralDialog(
         barrierLabel: "",
+        barrierColor: AppColors.whiteShadow,
         barrierDismissible: barrierDismissible ?? true,
         context: context,
         transitionDuration: const Duration(

@@ -42,7 +42,7 @@ class RequestAssetsSearchFilter extends GetView<RequestAssetsController> {
                             .tr,
                     collapsed: true,
                     hintStyle: context.isTablett
-                        ? AppTextStyles.font16BlackMediumCairo
+                        ? AppTextStyles.font16SecondaryBlackCairo
                         : AppTextStyles.font12SecondaryBlackCairoRegular
                             .copyWith(fontSize: 10.sp),
                     controller: controller.searchController,

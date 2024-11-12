@@ -9,6 +9,7 @@ abstract class AppAssets {
 
   static const String image = 'assets/images/image.png';
   static const String phone = 'assets/images/phone.png';
+  static const String profileImage = 'assets/images/profileImage.png';
 
   //****************************************************************************
 
@@ -29,6 +30,11 @@ abstract class AppAssets {
   static const String export = 'assets/vectors/export.svg';
   static const String delete = 'assets/vectors/delete.svg';
   static const String download2 = 'assets/vectors/download2.svg';
+  static const String blackArrow = 'assets/vectors/blackArrow.svg';
+  static const String greenArrow = 'assets/vectors/greenArrow.svg';
+  static const String line = 'assets/vectors/line.svg';
+  static const String buildings = 'assets/vectors/buildings.svg';
+  static const String doc = 'assets/vectors/doc.svg';
 
   //media
   static const String powerpoint = 'assets/vectors/powerpoint.svg';
@@ -37,6 +43,7 @@ abstract class AppAssets {
   static const String gallery = 'assets/vectors/gallery.svg';
   static const String video = 'assets/vectors/video.svg';
   static const String unknown = 'assets/vectors/unknown.svg';
+  static const String attach = 'assets/vectors/attach.svg';
 
   //****************************************************************************
 

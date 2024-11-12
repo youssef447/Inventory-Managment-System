@@ -14,11 +14,11 @@ import '../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../../Assets/domain/entity/assets_entity.dart';
 import '../../../controller/request_assets_controller.dart';
 import '../../widgets/attachments/attachments_section.dart';
-part '../../widgets/tablet/request_new_asset/discard_submit_buttons.dart';
+part '../../widgets/tablet/request_form/discard_submit_buttons.dart';
 
-class TabletRequestNewAssetPage extends GetView<RequestAssetsController> {
+class TabletRequestFormPage extends GetView<RequestAssetsController> {
   final AssetsEntity model;
-  const TabletRequestNewAssetPage({
+  const TabletRequestFormPage({
     super.key,
     required this.model,
   });
@@ -60,7 +60,7 @@ class TabletRequestNewAssetPage extends GetView<RequestAssetsController> {
                       horizontalSpace(8),
                       Text(
                         'Request New Asset'.tr,
-                        style: AppTextStyles.font16BlackMediumCairo,
+                        style: AppTextStyles.font24MediumBlackCairo,
                       ),
                     ],
                   ),
@@ -174,7 +174,7 @@ class TabletRequestNewAssetPage extends GetView<RequestAssetsController> {
                                       child: Text(
                                         controller.priorities[index].getName.tr,
                                         style: AppTextStyles
-                                            .font14SecondaryBlackCairo,
+                                            .font14SecondaryBlackCairoMedium,
                                       ),
                                     );
                                   },

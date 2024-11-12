@@ -1,3 +1,4 @@
+import '../../Assets/domain/entity/assets_entity.dart';
 import 'attachment_entity.dart';
 
 /// represents a request entity which is part of the inventory model.
@@ -8,12 +9,8 @@ class RequestEntity {
   DateTime requestDate;
   String priority;
   String status;
-  String maintenanceFrequency;
-  String assetName;
-  String category;
-  String subCategory;
-  String model;
-  String brand;
+  String? maintenanceFrequency;
+  AssetsEntity assetsEntity;
   DateTime expectedRecieved;
   DateTime dateReturn;
   String? additionalNote;
@@ -24,12 +21,8 @@ class RequestEntity {
     required this.requestType,
     required this.requestDate,
     required this.priority,
-    required this.maintenanceFrequency,
-    required this.assetName,
-    required this.category,
-    required this.subCategory,
-    required this.model,
-    required this.brand,
+    this.maintenanceFrequency,
+    required this.assetsEntity,
     required this.expectedRecieved,
     required this.dateReturn,
     required this.quantity,
@@ -44,12 +37,8 @@ class RequestEntity {
     DateTime? requestDate,
     String? priority,
     String? maintenanceFrequency,
-    String? assetName,
-    String? category,
     String? status,
-    String? subCategory,
-    String? model,
-    String? brand,
+    AssetsEntity? assetsEntity,
     DateTime? expectedRecieved,
     DateTime? dateReturn,
     int? quantity,
@@ -63,11 +52,7 @@ class RequestEntity {
       requestDate: requestDate ?? this.requestDate,
       priority: priority ?? this.priority,
       maintenanceFrequency: maintenanceFrequency ?? this.maintenanceFrequency,
-      assetName: assetName ?? this.assetName,
-      category: category ?? this.category,
-      subCategory: subCategory ?? this.subCategory,
-      model: model ?? this.model,
-      brand: brand ?? this.brand,
+      assetsEntity: assetsEntity ?? this.assetsEntity,
       expectedRecieved: expectedRecieved ?? this.expectedRecieved,
       dateReturn: dateReturn ?? this.dateReturn,
       quantity: quantity ?? this.quantity,

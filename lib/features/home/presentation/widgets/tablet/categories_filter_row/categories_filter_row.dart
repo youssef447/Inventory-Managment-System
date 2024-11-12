@@ -54,6 +54,7 @@ class TabletCategoriesFilterRow extends GetView<HomeController> {
                   style: context.isPhone
                       ? AppTextStyles.font16BlackMediumCairo
                       : AppTextStyles.font18BlackMediumCairo,
+                  onPressed: () => Get.toNamed(Routes.trackRequest),
                 ),
             ],
           );

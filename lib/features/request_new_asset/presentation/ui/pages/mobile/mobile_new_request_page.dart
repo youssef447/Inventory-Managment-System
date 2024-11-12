@@ -18,16 +18,16 @@ import '../../../controller/request_assets_controller.dart';
 import '../../widgets/common/request_assets_search_filter.dart';
 part '../../widgets/mobile/request_asset/cards/mobile_request_asset_card.dart';
 
-class MobileRequestAssetsPage extends GetView<RequestAssetsController> {
-  const MobileRequestAssetsPage({super.key});
+class MobileNewRequestPage extends GetView<RequestAssetsController> {
+  const MobileNewRequestPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
-        child: SafeArea(
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.h),
           child: GetBuilder<RequestAssetsController>(
               id: RequestAssetsIds.requestAssetsPage,
               builder: (controller) {

@@ -7,7 +7,7 @@ import 'package:inventory_management/features/home/presentation/widgets/common/v
 import '../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../core/constants/app_assets.dart';
 import '../../../../../core/theme/app_theme.dart';
-import '../../../../../core/widgets/custom_app_bar.dart';
+import '../../../../../core/widgets/appbar/custom_app_bar.dart';
 import '../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../Assets/presentation/ui/pages/mobile/mobile_assets_page.dart';
 import '../../../../consumables/presentation/ui/pages/mobile/mobile_consumables_page.dart';
