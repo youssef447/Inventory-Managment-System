@@ -56,18 +56,19 @@ class TabletTrackDeatailsCard extends GetView<TrackRequestController> {
                   hapticFeedback: HapticFeedback.mediumImpact,
                 );
                 GetDialogHelper.generalDialog(
-                    child: DefaultDialog(
-                      width: context.isPhone ? 343.w : 411.w,
-                      showButtons: true,
-                      icon: AppAssets.canceled,
-                      title: 'Cancelation Request'.tr,
-                      subTitle:
-                          'Are You sure You Want to Cancel this Request ?'.tr,
-                      onConfirm: () {
-                        controller.cancelRequest(model.requestId);
-                      },
-                    ),
-                    context: context);
+                  child: DefaultDialog(
+                    width: context.isPhone ? 343.w : 411.w,
+                    showButtons: true,
+                    icon: AppAssets.canceled,
+                    title: 'Cancelation Request'.tr,
+                    subTitle:
+                        'Are You sure You Want to Cancel this Request ?'.tr,
+                    onConfirm: () {
+                      controller.cancelRequest(model.requestId);
+                    },
+                  ),
+                  context: context,
+                );
               },
               child: const CancelRequestButton(),
             ),

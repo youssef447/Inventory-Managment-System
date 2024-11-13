@@ -43,6 +43,8 @@ class LabeledFormField extends StatelessWidget {
             : SizedBox(
                 height: expands ?? false ? 88.h : 44.h,
                 child: AppTextFormField(
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
                   hintText: hintText,
                   textAlignVertical:
                       expands ?? false ? TextAlignVertical.top : null,

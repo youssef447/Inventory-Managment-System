@@ -3,6 +3,8 @@
 // Last update: 29/9/2024
 // Objectives: This file is responsible for providing extensions to several classes in the project.
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,6 +20,8 @@ extension ContextExtension on BuildContext {
   bool get isLandscapee =>
       (MediaQuery.of(this).size.width > 900) || (isTablet && isLandscape);
   bool get isArabic => Get.locale.toString().toLowerCase().contains('ar');
+  bool get isDesktop =>
+      Platform.isWindows || Platform.isLinux || Platform.isMacOS;
 }
 
 //Request Model
@@ -114,6 +118,23 @@ extension GetReqActionName on RequestActions {
         return 'Routine Maintenance';
       case RequestActions.repairAsset:
         return 'Repair Asset';
+    }
+  }
+}
+
+extension GetIssuName on IssueTypes {
+  String get getName {
+    switch (this) {
+      case IssueTypes.mechanical:
+        return 'Mechanical';
+      case IssueTypes.electrical:
+        return 'Electrical';
+      case IssueTypes.software:
+        return 'Software';
+      case IssueTypes.performance:
+        return 'Performance';
+      case IssueTypes.safety:
+        return 'Safety';
     }
   }
 }

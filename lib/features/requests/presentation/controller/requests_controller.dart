@@ -3,6 +3,7 @@ import 'package:inventory_management/core/constants/approve_cycle.dart';
 
 import '../../../Assets/domain/entity/assets_entity.dart';
 import '../../constants/ids_constants.dart';
+import '../../entities/message_entity.dart';
 import '../../entities/request_entity.dart';
 
 //Youssef Ashraf
@@ -41,14 +42,24 @@ class RequestsController extends GetxController {
           assetName: 'Dell GZ 15',
           category: 'Electronics',
           subcategory: 'Computer',
-          model: '1540',
+          model: 'GZ 15',
           dateReceived: DateTime.now(),
           quantity: '2',
           status: 'InUse',
           brand: 'Dell',
         ),
         approvalCycles: ApproveCycle.approvalCycles,
-      ),
+      )..inquiryMessages = [
+          MessageEntity(
+            userEntity: ApproveCycle.approvalCycles[1],
+            message: 'Hi',
+          ),
+          MessageEntity(
+            userEntity: ApproveCycle.approvalCycles[1],
+            message:
+                'Please Send me an attachment of all the designs made by UI/UX Designers as soon as possible .',
+          ),
+        ],
       RequestEntity(
         requestId: '002',
         requestType: 'Asset Request',
@@ -62,7 +73,7 @@ class RequestsController extends GetxController {
           assetName: 'Dell GZ 15',
           category: 'Electronics',
           subcategory: 'Computer',
-          model: '1540',
+          model: 'GZ 15',
           dateReceived: DateTime.now(),
           quantity: '2',
           status: 'InUse',
@@ -83,7 +94,7 @@ class RequestsController extends GetxController {
           assetName: 'Dell GZ 15',
           category: 'Electronics',
           subcategory: 'Computer',
-          model: '1540',
+          model: 'GZ 15',
           dateReceived: DateTime.now(),
           quantity: '2',
           status: 'InUse',
@@ -104,7 +115,7 @@ class RequestsController extends GetxController {
           assetName: 'Dell GZ 15',
           category: 'Electronics',
           subcategory: 'Computer',
-          model: '1540',
+          model: 'GZ 15',
           dateReceived: DateTime.now(),
           quantity: '2',
           status: 'InUse',
@@ -125,7 +136,7 @@ class RequestsController extends GetxController {
           assetName: 'Dell GZ 15',
           category: 'Electronics',
           subcategory: 'Computer',
-          model: '1540',
+          model: 'GZ 15',
           dateReceived: DateTime.now(),
           quantity: '2',
           status: 'InUse',

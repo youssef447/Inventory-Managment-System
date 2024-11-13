@@ -18,7 +18,7 @@ class RequestEntity {
   DateTime dateReturn;
   String? additionalNote;
   List<AttachmentEntity> attachments;
-  List<MessageEntity> inquiryMessages;
+  List<MessageEntity> inquiryMessages = [];
   List<UserEntity> approvalCycles;
 
   RequestEntity({
@@ -34,7 +34,6 @@ class RequestEntity {
     required this.status,
     this.additionalNote,
     required this.approvalCycles,
-    this.inquiryMessages = const [],
     this.attachments = const [],
   });
 }

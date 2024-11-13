@@ -88,6 +88,7 @@ class RequestAssetsSearchFilter extends GetView<RequestAssetsController> {
                 : RectangledFilterCard(
                     image: AppAssets.filter,
                     text: 'Filter',
+                    textColor: AppColors.text,
                     color: AppColors.card,
                     onTap: () {},
                   )

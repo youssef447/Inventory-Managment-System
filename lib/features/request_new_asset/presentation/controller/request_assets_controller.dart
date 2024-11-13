@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/core/constants/approve_cycle.dart';
+import 'package:inventory_management/core/extensions/extensions.dart';
 import 'package:inventory_management/features/requests/presentation/controller/requests_controller.dart';
 
 import '../../../../core/enums/requests_enums.dart';
@@ -14,7 +16,7 @@ import 'package:file_picker/file_picker.dart';
 
 //Youssef Ashraf
 //Date: 7/11/2024
-///Where all logic in Request Asset Page is handled
+///Where all logic in Request New Asset Page is handled (request,repair,maintenance, return)
 class RequestAssetsController extends GetxController {
   List<AssetsEntity> assets = [];
   List<RequestEntity> requests = [];
@@ -52,7 +54,7 @@ class RequestAssetsController extends GetxController {
 
   //------------Search Filter ------------
   TextEditingController searchController = TextEditingController();
-  //------------Request Attachments ------------
+  //------------Request Uploaded Attachments ------------
   List<AttachmentEntity> attachments = [];
   uploadAttachments() async {
     final result = await FilePicker.platform.pickFiles(
@@ -83,19 +85,26 @@ class RequestAssetsController extends GetxController {
     update([RequestAssetsIds.attachments]);
   }
 
+  submitForApproval(AssetsEntity assetModel) {
+    RequestEntity(
+      requestId: '001',
+      requestType: requestAction.getName,
+      requestDate: DateTime.now(),
+      priority: priorityController.text,
+      assetsEntity: assetModel,
+      expectedRecieved: DateTime.parse(
+        expectedDeliveryController.text,
+      ),
+      dateReturn: DateTime.parse(
+        expectedReturnController.text,
+      ),
+      quantity: int.parse(quantityController.text),
+      status: 'Pending',
+      approvalCycles: ApproveCycle.approvalCycles,
+    );
+  }
+
   //------------New Request Logic ------------
-  TextEditingController reqIdController = TextEditingController();
-  TextEditingController assetNameController = TextEditingController();
-  TextEditingController categoryController = TextEditingController();
-  TextEditingController subCategoryController = TextEditingController();
-  TextEditingController assetModelController = TextEditingController();
-  TextEditingController brandController = TextEditingController();
-  TextEditingController availabilityController = TextEditingController();
-  TextEditingController quantityController = TextEditingController();
-  TextEditingController priorityController = TextEditingController();
-  TextEditingController expectedDeliveryController = TextEditingController();
-  TextEditingController expectedReturnController = TextEditingController();
-  TextEditingController additionalNotesController = TextEditingController();
   List<RequestPriorityTypes> priorities = [
     RequestPriorityTypes.urgent,
     RequestPriorityTypes.high,
@@ -105,6 +114,40 @@ class RequestAssetsController extends GetxController {
   Rxn<RequestPriorityTypes> priorityValue = Rxn<RequestPriorityTypes>();
   updatePriority(RequestPriorityTypes value) {
     priorityValue.value = value;
+  }
+
+  late TextEditingController reqIdController = TextEditingController();
+  late TextEditingController assetNameController = TextEditingController();
+  late TextEditingController categoryController = TextEditingController();
+  late TextEditingController subCategoryController = TextEditingController();
+  late TextEditingController assetModelController = TextEditingController();
+  late TextEditingController brandController = TextEditingController();
+  late TextEditingController availabilityController = TextEditingController();
+  late TextEditingController quantityController = TextEditingController();
+  late TextEditingController priorityController = TextEditingController();
+  late TextEditingController additionalNotesController =
+      TextEditingController();
+  //request asset
+  late TextEditingController expectedDeliveryController =
+      TextEditingController();
+  late TextEditingController expectedReturnController = TextEditingController();
+  //routine maintenance
+  late TextEditingController maintenanceDateController =
+      TextEditingController();
+  //return asset
+  late TextEditingController returnDateController = TextEditingController();
+  //repair asset
+  late TextEditingController repairDateController = TextEditingController();
+  List<IssueTypes> issueTypes = [
+    IssueTypes.mechanical,
+    IssueTypes.electrical,
+    IssueTypes.performance,
+    IssueTypes.safety,
+    IssueTypes.software,
+  ];
+  Rxn<IssueTypes> issueTypeValue = Rxn<IssueTypes>();
+  updateIssueType(IssueTypes value) {
+    issueTypeValue.value = value;
   }
 
   ///called when exit new request form
@@ -121,7 +164,9 @@ class RequestAssetsController extends GetxController {
     expectedDeliveryController.clear();
     expectedReturnController.clear();
     additionalNotesController.clear();
+    repairDateController.clear();
     priorityValue.value = null;
+    issueTypeValue.value = null;
     attachments = [];
   }
 

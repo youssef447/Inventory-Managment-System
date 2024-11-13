@@ -38,6 +38,7 @@ abstract class AppAssets {
   static const String doc = 'assets/vectors/doc.svg';
   static const String grid = 'assets/vectors/grid.svg';
   static const String list = 'assets/vectors/list.svg';
+  static const String send = 'assets/vectors/send.svg';
 
   //media
   static const String powerpoint = 'assets/vectors/powerpoint.svg';
@@ -53,6 +54,7 @@ abstract class AppAssets {
   //***************************** LOTTIE FILES *********************************
 
   static const String noData = 'assets/lotties/noData.json';
+  static const String success = 'assets/lotties/successful.json';
 
 //****************************************************************************
 }

@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:inventory_management/core/helpers/spacing_helper.dart';
 
 import '../../../../../../../core/theme/app_colors.dart';
-import '../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 
 class RectangledFilterCard extends StatelessWidget {
@@ -13,6 +12,7 @@ class RectangledFilterCard extends StatelessWidget {
   final String text;
   final Color color;
   final double? width;
+  final Color? textColor;
   final Function()? onTap;
   const RectangledFilterCard({
     super.key,
@@ -20,6 +20,7 @@ class RectangledFilterCard extends StatelessWidget {
     required this.text,
     required this.onTap,
     required this.color,
+    this.textColor,
     this.width,
   });
 
@@ -32,14 +33,14 @@ class RectangledFilterCard extends StatelessWidget {
         width: width ?? 120.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4.r),
-          color: AppTheme.isDark ?? false ? AppColors.card : color,
+          color: color,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
               image,
-              color: AppColors.icon,
+              color: textColor ?? AppColors.icon,
             ),
             horizontalSpace(5),
             Flexible(
@@ -48,9 +49,9 @@ class RectangledFilterCard extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: context.isPhone
                     ? AppTextStyles.font16BlackMediumCairo
-                        .copyWith(color: AppColors.textButton)
+                        .copyWith(color: textColor ?? AppColors.textButton)
                     : AppTextStyles.font18BlackMediumCairo
-                        .copyWith(color: AppColors.textButton),
+                        .copyWith(color: textColor ?? AppColors.textButton),
               ),
             ),
           ],

@@ -17,6 +17,7 @@ import '../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../requests/entities/request_entity.dart';
 import '../../../../constants/ids_constants.dart';
 import '../../../controller/track_requests_controller.dart';
+import '../../widgets/common/inquiry_chat/cards/inquiry_chat_card.dart';
 part '../../widgets/mobile/track_request_details/cards/mobile_track_details_card.dart';
 part '../../widgets/mobile/track_request_details/mobile_approval_cycle.dart';
 
@@ -42,7 +43,7 @@ class MobileTrackRequestDetailsPage extends GetView<TrackRequestController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       MobileCustomAppbar(
-                        title: 'Track Request Details'.tr,
+                        title: 'Asset Details'.tr,
                       ),
                       controller.loading
                           ? const Expanded(
@@ -52,13 +53,27 @@ class MobileTrackRequestDetailsPage extends GetView<TrackRequestController> {
                               ? const NoDataGif()
                               : Expanded(
                                   child: SingleChildScrollView(
+                                  controller: controller.scrollController,
                                   child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        verticalSpace(52),
-                                        MobileTrackDetailsCard(model: model)
-                                      ]),
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      verticalSpace(52),
+                                      MobileTrackDetailsCard(model: model),
+                                      verticalSpace(
+                                        20,
+                                      ),
+                                      Text(
+                                        'Inquiries And Comments'.tr,
+                                        style: AppTextStyles
+                                            .font16BlackSemiBoldCairo,
+                                      ),
+                                      verticalSpace(13),
+                                      InquiryChatCard(
+                                        model: model,
+                                      ),
+                                    ],
+                                  ),
                                 ))
                     ]);
               }),

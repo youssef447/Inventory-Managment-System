@@ -4,6 +4,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
 
+import '../../../../../../core/animations/size_animation.dart';
 import '../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../core/helpers/orientation_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
@@ -51,38 +52,41 @@ class TabletTrackRequestsPage extends GetView<TrackRequestController> {
                                     verticalSpace(20),
                                     const TrackRequestSearchFilter(),
                                     verticalSpace(20),
-                                    StaggeredGrid.count(
-                                      crossAxisCount: Get.width > 1200 ? 3 : 2,
-                                      mainAxisSpacing: 15.h,
-                                      crossAxisSpacing:
-                                          context.isLandscapee ? 20.w : 36.w,
-                                      children: List.generate(
-                                        controller.requests.length,
-                                        (index) {
-                                          return GestureDetector(
-                                            onTap: () {
-                                              Get.toNamed(
-                                                Routes.trackDetails,
-                                                arguments: {
-                                                  'model':
-                                                      controller.requests[index]
-                                                },
-                                              );
-                                            },
-                                            child: OrientationHelper(
-                                              landScape:
-                                                  HorizontalTrackRequestCard(
-                                                model:
-                                                    controller.requests[index],
+                                    SizeAnimation(
+                                      child: StaggeredGrid.count(
+                                        crossAxisCount:
+                                            Get.width > 1200 ? 3 : 2,
+                                        mainAxisSpacing: 15.h,
+                                        crossAxisSpacing:
+                                            context.isLandscapee ? 20.w : 36.w,
+                                        children: List.generate(
+                                          controller.requests.length,
+                                          (index) {
+                                            return GestureDetector(
+                                              onTap: () {
+                                                Get.toNamed(
+                                                  Routes.trackDetails,
+                                                  arguments: {
+                                                    'model': controller
+                                                        .requests[index]
+                                                  },
+                                                );
+                                              },
+                                              child: OrientationHelper(
+                                                landScape:
+                                                    HorizontalTrackRequestCard(
+                                                  model: controller
+                                                      .requests[index],
+                                                ),
+                                                portrait:
+                                                    VerticalTrackRequestCard(
+                                                  model: controller
+                                                      .requests[index],
+                                                ),
                                               ),
-                                              portrait:
-                                                  VerticalTrackRequestCard(
-                                                model:
-                                                    controller.requests[index],
-                                              ),
-                                            ),
-                                          );
-                                        },
+                                            );
+                                          },
+                                        ),
                                       ),
                                     )
                                   ],

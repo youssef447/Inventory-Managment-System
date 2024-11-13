@@ -34,8 +34,8 @@ class MobileCustomAppbar extends StatelessWidget {
           child: SvgPicture.asset(
             context.isArabic ? AppAssets.arrowForward : AppAssets.arrowBack,
             color: AppColors.text,
-            width: 24.w,
-            height: 24.h,
+            width: 16.w,
+            height: 16.h,
           ),
         ),
         verticalSpace(8),

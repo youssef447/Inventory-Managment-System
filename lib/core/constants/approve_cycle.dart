@@ -4,7 +4,7 @@ abstract class ApproveCycle {
   static final List<UserEntity> approvalCycles = [
     UserEntity(
       firstName: 'Ahmed',
-      lastName: 'Mohammed',
+      lastName: 'Ali',
       id: '1',
     ),
     UserEntity(

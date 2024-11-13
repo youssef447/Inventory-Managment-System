@@ -88,6 +88,7 @@ class TrackRequestSearchFilter extends GetView<TrackRequestController> {
                 : RectangledFilterCard(
                     image: AppAssets.filter,
                     text: 'Filter',
+                    textColor: AppColors.text,
                     color: AppColors.card,
                     onTap: () {},
                   )

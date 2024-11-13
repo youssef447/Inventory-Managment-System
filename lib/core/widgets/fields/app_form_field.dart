@@ -54,6 +54,7 @@ class AppTextFormField extends StatelessWidget {
     this.alignCounterTextLeft = false,
     this.showCounter = false,
     this.helperText,
+    this.focusNode,
   });
 
   final TextAlign? textAlign;
@@ -90,10 +91,12 @@ class AppTextFormField extends StatelessWidget {
   final bool alignCounterTextLeft;
   final bool showCounter;
   final String? helperText;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      focusNode: focusNode,
       buildCounter: showCounter
           ? (
               _, {

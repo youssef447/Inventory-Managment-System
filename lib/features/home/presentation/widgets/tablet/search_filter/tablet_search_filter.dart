@@ -99,6 +99,7 @@ class TabletSearchFilter extends GetView<HomeController> {
                       width: 112.w,
                       image: AppAssets.filter,
                       text: 'Filter',
+                      textColor: AppColors.text,
                       color: AppColors.card,
                       onTap: () {},
                     ),

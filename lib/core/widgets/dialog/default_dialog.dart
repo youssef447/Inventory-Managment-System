@@ -44,10 +44,11 @@ class DefaultDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     if (!showButtons) {
       Timer(
-        const Duration(seconds: 3),
-        () => Get.until(
+        const Duration(seconds: 2),
+        () => Get
+            .back(), /*  Get.until(
           (route) => route.isFirst,
-        ),
+        ), */
       );
     }
     return Container(

@@ -6,22 +6,28 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/core/helpers/file_type_helper.dart';
+import 'package:inventory_management/core/helpers/files/file_type_helper.dart';
 
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
-import '../../../../../requests/entities/attachment_entity.dart';
-import '../../../controller/request_assets_controller.dart';
+import '../../../features/requests/entities/attachment_entity.dart';
+import '../../helpers/files/file_save_helper.dart';
 
-class AttachmentCard extends GetView<RequestAssetsController> {
+//Youssef Ashraf
+///Default Attachment Card for any file
+class AttachmentCard extends StatelessWidget {
   final AttachmentEntity model;
   final bool? showDelete;
+  final bool? showDownload;
+  final void Function()? onDelete;
   const AttachmentCard({
     super.key,
     required this.model,
+    this.onDelete,
     this.showDelete,
+    this.showDownload,
   });
 
   @override
@@ -36,6 +42,7 @@ class AttachmentCard extends GetView<RequestAssetsController> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
         border: Border.all(color: AppColors.whiteShadow),
+        color: AppColors.card,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -65,16 +72,20 @@ class AttachmentCard extends GetView<RequestAssetsController> {
             children: [
               if (showDelete ?? false)
                 GestureDetector(
-                  onTap: () {
-                    controller.removeAttachment(model);
-                  },
+                  onTap: onDelete,
                   child: SvgPicture.asset(
                     AppAssets.delete,
                   ),
                 ),
               const Spacer(),
-              SvgPicture.asset(
-                AppAssets.download2,
+              // if (showDownload ?? false)
+              GestureDetector(
+                onTap: () {
+                  FileSaveHelper.saveFile(model.file);
+                },
+                child: SvgPicture.asset(
+                  AppAssets.download2,
+                ),
               ),
             ],
           )

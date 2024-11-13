@@ -68,7 +68,6 @@ class DatePickerField extends StatelessWidget {
                 )
               : const SizedBox(),
           hintStyle: AppTextStyles.font12SecondaryBlackCairoRegular,
-          style: AppTextStyles.font12SecondaryBlackCairoRegular,
           width: width ?? 186.w,
           contentPadding: EdgeInsets.symmetric(
             horizontal: 8.w,

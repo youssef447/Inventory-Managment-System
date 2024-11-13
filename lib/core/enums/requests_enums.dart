@@ -21,3 +21,5 @@ enum RequestPriorityTypes {
   medium,
   low,
 }
+
+enum IssueTypes { mechanical, electrical, software, performance, safety }
