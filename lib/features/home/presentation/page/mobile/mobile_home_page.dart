@@ -30,6 +30,8 @@ class MobileHomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
+
       body: Padding(
         padding: context.isLandscapee
             ? EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h)

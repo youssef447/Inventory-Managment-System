@@ -72,14 +72,14 @@ selectGridView(){
     quantity: 1,
     availability: 3,
     priority: 'High',
-    expectedDelivery: DateTime.now().add(Duration(days: 5)), // 5 days from now
-    expectedReturn: DateTime.now().add(Duration(days: 30)), // 1 month from now
+    expectedDelivery: DateTime.now().add(const Duration(days: 5)), // 5 days from now
+    expectedReturn: DateTime.now().add(const Duration(days: 30)), // 1 month from now
     status: 'Approved',
     ),
     ApprovalEntity(
     approvalId: '002',
     userName: 'Bob Smith',
-    requestDate: DateTime.now().subtract(Duration(days: 2)), // 2 days ago
+    requestDate: DateTime.now().subtract(const Duration(days: 2)), // 2 days ago
     requestType: 'Maintenance',
     assetName: 'Projector',
     category: 'Office ',
@@ -89,8 +89,8 @@ selectGridView(){
     quantity: 1,
     availability: 1,
     priority: 'Medium',
-    expectedDelivery: DateTime.now().add(Duration(days: 3)), // 3 days from now
-    expectedReturn: DateTime.now().add(Duration(days: 15)), // 15 days from now
+    expectedDelivery: DateTime.now().add(const Duration(days: 3)), // 3 days from now
+    expectedReturn: DateTime.now().add(const Duration(days: 15)), // 15 days from now
     status: 'Rejected',
     ),ApprovalEntity(
     approvalId: '003',
@@ -105,8 +105,8 @@ selectGridView(){
     quantity: 2,
     availability: 0,
     priority: 'Low',
-    expectedDelivery: DateTime.now().add(Duration(days: 10)), // 10 days from now
-    expectedReturn: DateTime.now().add(Duration(days: 40)), // 40 days from now
+    expectedDelivery: DateTime.now().add(const Duration(days: 10)), // 10 days from now
+    expectedReturn: DateTime.now().add(const Duration(days: 40)), // 40 days from now
     status: 'Rejected',
     ),
       ApprovalEntity(
@@ -122,8 +122,8 @@ selectGridView(){
         quantity: 2,
         availability: 0,
         priority: 'Low',
-        expectedDelivery: DateTime.now().add(Duration(days: 10)), // 10 days from now
-        expectedReturn: DateTime.now().add(Duration(days: 40)), // 40 days from now
+        expectedDelivery: DateTime.now().add(const Duration(days: 10)), // 10 days from now
+        expectedReturn: DateTime.now().add(const Duration(days: 40)), // 40 days from now
         status: 'Canceled',
       )
 

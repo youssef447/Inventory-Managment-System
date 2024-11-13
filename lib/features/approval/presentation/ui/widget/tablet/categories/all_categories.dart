@@ -8,12 +8,13 @@ import 'package:get/get.dart';
 import 'package:inventory_management/core/helpers/spacing_helper.dart';
 import 'package:inventory_management/features/approval/presentation/controller/approval_controller.dart';
 import '../../../../../../../core/animations/scale_animation.dart';
-import '../../../../../../../core/animations/up_down_animation.dart';
+import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../../core/routes/app_routes.dart';
 import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';
 import '../../../constants/approval_id_constant.dart';
+import '../../../pages/tablet/tablet_approval_details_page.dart';
 import '../card/approval_card_horizontal.dart';
 import '../card/approval_card_vertical_tablet.dart';
 
@@ -22,6 +23,12 @@ class AllCategories extends GetView<ApprovalController> {
 
   @override
   Widget build(BuildContext context) {
+
+    var size = MediaQuery.of(context).size;
+    final double itemHeight = (size.height - kToolbarHeight - 24) / 1;
+    final double itemHeightVertical = (size.height - kToolbarHeight) / 1.3;
+    final double itemWidth = size.width / 2;
+
     return GetBuilder<ApprovalController>(
         id: ApprovalIdConstant.approval,
         builder: (controller) {
@@ -63,31 +70,36 @@ class AllCategories extends GetView<ApprovalController> {
                         itemCount: controller.approvalList.length,
                       ):
                         GridView.builder(
+
                           gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: context.isLandscape? 3 : 2,
-                                crossAxisSpacing:context.isLandscape? 19 : 50,
-                                  childAspectRatio:context.isLandscape? 1.2 : 0.9,
+                                  crossAxisCount: context.isLandscape? 4 : 3,
+                                crossAxisSpacing:context.isLandscape? 20 : 24,
+                                 childAspectRatio: context.isLandscape ? (itemWidth / itemHeight) : (itemWidth / itemHeightVertical) ,
                                   mainAxisSpacing: 16,
                                ),
                           shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
                           itemBuilder: (context, index) {
                             return GestureDetector(
                                 onTap: () {
                                   controller.setApprovalDetails(
                                       controller.approvalList[index]);
-
                                   HapticFeedbackHelper.triggerHapticFeedback(
                                     vibration: VibrateType.mediumImpact,
                                     hapticFeedback: HapticFeedback.mediumImpact,
                                   );
-                                  Get.toNamed(
-                                    Routes.assetsDetails,
-                                    arguments: {
-                                      'assetsModelIndex': index,
-                                      //'readOnly': readOnly,
-                                    },
+                                  GetDialogHelper.generalDialog(
+                                    child:  TabletApprovalDetailsPage(index: index,),
+                                    context: context,
                                   );
+                                  // Get.toNamed(
+                                  //   Routes.approvalDetails,
+                                  //   arguments: {
+                                  //     'approvalModelIndex': index,
+                                  //     //'readOnly': readOnly,
+                                  //   },
+                                  // );
                                 },
                                 child: ApprovalCardVerticalTablet(index: index)
                             );

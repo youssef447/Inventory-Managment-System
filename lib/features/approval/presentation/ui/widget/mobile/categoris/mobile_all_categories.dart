@@ -11,12 +11,10 @@ import 'package:inventory_management/core/helpers/spacing_helper.dart';
 import 'package:inventory_management/features/approval/presentation/controller/approval_controller.dart';
 import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/haptic_feedback_helper.dart';
-import '../../../../../../../core/routes/app_routes.dart';
-import '../../../../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';
 import '../../../constants/approval_id_constant.dart';
-import '../../../pages/tablet/tablet_approval_details_page.dart';
+import '../../../pages/mobile/mobile_approval_details_page.dart';
 import '../card/mobile_approval_card.dart';
 
 
@@ -50,7 +48,7 @@ class MobileAllCategories extends GetView<ApprovalController> {
                             hapticFeedback: HapticFeedback.mediumImpact,
                           );
                           GetDialogHelper.generalDialog(
-                              context: context, child: TabletApprovalDetailsPage(index: index,));
+                              context: context, child: MobileApprovalDetailsPage(index: index,));
                           // Get.toNamed(
                           //   Routes.assetsDetails,
                           //   arguments: {

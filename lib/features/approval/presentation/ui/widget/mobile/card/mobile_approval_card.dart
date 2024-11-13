@@ -12,7 +12,6 @@ import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../common/approval_buttons.dart';
-import '../../common/rich_text_row.dart';
 
 class MobileApprovalCard extends GetView<ApprovalController> {
   final int index;
@@ -42,10 +41,10 @@ class MobileApprovalCard extends GetView<ApprovalController> {
               Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MobileRichTextRow(type: 'Request Date', value:DateTimeHelper.formatDate(controller.approvalList[index].requestDate),),
-                  MobileRichTextRow(type: 'Request Type', value: controller.approvalList[index].requestType),
-                  MobileRichTextRow(type: 'Asset Name', value: controller.approvalList[index].brand + controller.approvalList[index].model),
-                  MobileRichTextRow(type: 'Category', value: controller.approvalList[index].category),
+                  MobileRichTextRow(type: 'Request Date'.tr, value:DateTimeHelper.formatDate(controller.approvalList[index].requestDate),),
+                  MobileRichTextRow(type: 'Request Type'.tr, value: controller.approvalList[index].requestType),
+                  MobileRichTextRow(type: 'Asset Name'.tr, value: controller.approvalList[index].brand + controller.approvalList[index].model),
+                  MobileRichTextRow(type: 'Category'.tr, value: controller.approvalList[index].category),
               ]
               ),
               Spacer(),
@@ -89,7 +88,7 @@ class MobileRichTextRow extends StatelessWidget {
           style: AppTextStyles.font12SecondaryBlackCairoRegular,
           children: [
             TextSpan(
-                text: value.tr,
+                text: value,
                 style: AppTextStyles.font12BlackCairoRegular
             )
           ]),

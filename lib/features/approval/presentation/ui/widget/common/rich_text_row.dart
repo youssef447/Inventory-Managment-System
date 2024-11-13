@@ -16,6 +16,7 @@ class RichTextRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       textAlign: TextAlign.end,
+      overflow: TextOverflow.ellipsis,
       text: TextSpan(
           text: '${type.tr} : ',
           style:context.isLandscape? AppTextStyles.font14SecondaryBlackCairoRegular :  AppTextStyles.font16secondaryBlackRegularCairo ,

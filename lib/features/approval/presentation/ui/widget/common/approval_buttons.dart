@@ -37,7 +37,7 @@ class ApprovalButtons extends StatelessWidget {
                     color: Colors.red,
                     size: 20,
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: 4),
                   Text(
                       'Reject'.tr,
                       style: AppTextStyles.font16InputColorCairo.copyWith(color: AppColors.red)
@@ -47,7 +47,7 @@ class ApprovalButtons extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(width: 16),
+        const SizedBox(width: 12),
         // Approve Button
         Expanded(
           child: GestureDetector(
@@ -69,7 +69,7 @@ class ApprovalButtons extends StatelessWidget {
                     color: Colors.green,
                     size: 20,
                   ),
-                  const SizedBox(width: 8),
+                  const SizedBox(width: 4),
                   Text(
                       'Approve'.tr,
                       style: AppTextStyles.font16InputColorCairo.copyWith(color: AppColors.green)

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
 import 'package:inventory_management/core/helpers/spacing_helper.dart';
+import 'package:inventory_management/core/theme/app_colors.dart';
 import 'package:inventory_management/features/approval/presentation/controller/approval_controller.dart';
 
 import '../../../../../../core/helpers/orientation_helper.dart';
@@ -19,6 +20,7 @@ class TabletApprovalPage extends GetView<ApprovalController>  {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      backgroundColor: AppColors.background,
       body: Padding(
         padding: context.isLandscapee
             ? EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h)

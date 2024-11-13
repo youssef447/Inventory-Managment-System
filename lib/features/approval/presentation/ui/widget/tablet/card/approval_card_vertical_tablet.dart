@@ -19,7 +19,7 @@ class ApprovalCardVerticalTablet extends GetView<ApprovalController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:  const EdgeInsets.symmetric(vertical: 10,horizontal: 17),
+      padding:  const EdgeInsets.only(top: 10,right: 17,left: 17),
       decoration: BoxDecoration(
         color: AppColors.base,
             borderRadius: BorderRadius.circular(16)
@@ -32,7 +32,7 @@ class ApprovalCardVerticalTablet extends GetView<ApprovalController> {
               children: [
                 const CircleAvatar(radius: 26,backgroundImage: AssetImage(AppAssets.user),),
                 horizontalSpace(12),
-                 Text('Mai Mohamed',style:  AppTextStyles.font18BlackMediumCairo,),
+                 Expanded(child: Text('Mai Mohamed',style:  AppTextStyles.font18BlackMediumCairo,)),
               ],
             ),
             verticalSpace(10),

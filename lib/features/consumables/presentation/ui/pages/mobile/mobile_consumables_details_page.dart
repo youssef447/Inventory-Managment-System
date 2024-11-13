@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/widgets/fields/date_field.dart';
 import '../../../../../../core/widgets/fields/text_single_field.dart';
@@ -17,9 +18,8 @@ class MobileConsumablesDetailsPage extends  GetView<ConsumablesController>  {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      backgroundColor: AppColors.background,
       body: SafeArea(
-
         child: PopScope(
           onPopInvoked: (didPop) {
             controller.resetConsumablesDetails();
