@@ -9,11 +9,13 @@ import 'package:inventory_management/core/helpers/spacing_helper.dart';
 import 'package:inventory_management/features/approval/presentation/controller/approval_controller.dart';
 import '../../../../../../../core/animations/scale_animation.dart';
 import '../../../../../../../core/animations/up_down_animation.dart';
+import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../../core/routes/app_routes.dart';
 import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';
 import '../../../constants/approval_id_constant.dart';
+import '../../../pages/tablet/tablet_approval_details_page.dart';
 import '../card/approval_card_horizontal.dart';
 import '../card/approval_card_vertical_tablet.dart';
 
@@ -76,18 +78,22 @@ class AllCategories extends GetView<ApprovalController> {
                                 onTap: () {
                                   controller.setApprovalDetails(
                                       controller.approvalList[index]);
-
                                   HapticFeedbackHelper.triggerHapticFeedback(
                                     vibration: VibrateType.mediumImpact,
                                     hapticFeedback: HapticFeedback.mediumImpact,
                                   );
-                                  Get.toNamed(
-                                    Routes.assetsDetails,
-                                    arguments: {
-                                      'assetsModelIndex': index,
-                                      //'readOnly': readOnly,
-                                    },
+                                  GetDialogHelper.generalDialog(
+                                    child:  TabletApprovalDetailsPage(index: index,),
+                                    context: context,
                                   );
+
+                                  // Get.toNamed(
+                                  //   Routes.approvalDetails,
+                                  //   arguments: {
+                                  //     'approvalModelIndex': index,
+                                  //     //'readOnly': readOnly,
+                                  //   },
+                                  // );
                                 },
                                 child: ApprovalCardVerticalTablet(index: index)
                             );
