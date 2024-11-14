@@ -1,3 +1,7 @@
+// by : Mohamed Ashraf
+//dater : 14/11/2024
+// this widget show row of approval and rejected button
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
