@@ -38,24 +38,28 @@ class MobileApprovalCard extends GetView<ApprovalController> {
           verticalSpace(10),
           Row(
             children: [
-              Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MobileRichTextRow(type: 'Request Date'.tr, value:DateTimeHelper.formatDate(controller.approvalList[index].requestDate),),
-                  MobileRichTextRow(type: 'Request Type'.tr, value: controller.approvalList[index].requestType),
-                  MobileRichTextRow(type: 'Asset Name'.tr, value: controller.approvalList[index].brand + controller.approvalList[index].model),
-                  MobileRichTextRow(type: 'Category'.tr, value: controller.approvalList[index].category),
-              ]
-              ),
-              Spacer(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Expanded(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    MobileRichTextRow(type: 'Subcategory', value: controller.approvalList[index].subcategory),
-                    MobileRichTextRow(type: 'Model', value:controller.approvalList[index].model),
-                    MobileRichTextRow(type: 'Brand', value: controller.approvalList[index].brand),
-                    MobileRichTextRow(type: 'Quantity', value: controller.approvalList[index].quantity.toString()),
-                  ]
+                    MobileRichTextRow(type: 'Request Date'.tr, value:DateTimeHelper.formatDate(controller.allApprovalList[index].requestDate),),
+                    MobileRichTextRow(type: 'Request Type'.tr, value: controller.allApprovalList[index].requestType),
+                    MobileRichTextRow(type: 'Asset Name'.tr, value: controller.allApprovalList[index].brand + controller.allApprovalList[index].model),
+                    MobileRichTextRow(type: 'Category'.tr, value: controller.allApprovalList[index].category),
+                ]
+                ),
+              ),
+              verticalSpace(12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      MobileRichTextRow(type: 'Subcategory', value: controller.allApprovalList[index].subcategory),
+                      MobileRichTextRow(type: 'Model', value:controller.allApprovalList[index].model),
+                      MobileRichTextRow(type: 'Brand', value: controller.allApprovalList[index].brand),
+                      MobileRichTextRow(type: 'Quantity', value: controller.allApprovalList[index].quantity.toString()),
+                    ]
+                ),
               )
             ],
           ),
@@ -83,9 +87,10 @@ class MobileRichTextRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       textAlign: TextAlign.end,
+      overflow: TextOverflow.ellipsis,
       text: TextSpan(
           text: '${type.tr} : ',
-          style: AppTextStyles.font12SecondaryBlackCairoRegular,
+          style: AppTextStyles.font12SecondaryBlackCairoRegular.copyWith(color: AppColors.inverseBase),
           children: [
             TextSpan(
                 text: value,

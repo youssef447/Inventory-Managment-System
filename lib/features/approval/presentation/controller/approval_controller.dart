@@ -15,7 +15,10 @@ class ApprovalController extends GetxController {
   }
 
   // list for item of table assets
-  List<ApprovalEntity> approvalList = [];
+  List<ApprovalEntity> allApprovalList = [];
+  List<ApprovalEntity> approvedList = [];
+  List<ApprovalEntity> rejectedList = [];
+  List<ApprovalEntity> canceledList = [];
   bool loading = true;
   bool gridViewSelect = true;
   bool listViewSelect = false;
@@ -35,7 +38,8 @@ selectGridView(){
   void onInit() {
     super.onInit();
     loadAssetsData();
-  }
+    _updateApprovalLists();
+}
   // Controllers for search
   TextEditingController searchController = TextEditingController();
   // Controllers for TextFormFields to bind with UI
@@ -55,60 +59,43 @@ selectGridView(){
 
 // show dummy data for test ui ------ will be removed --------
   Future<void> loadAssetsData() async {
-    await Future.delayed(
-      const Duration(seconds: 1),
-    );
-    approvalList = [
-     ApprovalEntity(
-    approvalId: '001',
-    userName: 'Alice Johnson',
-    requestDate: DateTime.now(),
-    requestType: 'Purchase ',
-    assetName: 'Laptop',
-    category: 'Electronics',
-    subcategory: 'Computers',
-    model: 'Dell 13',
-    brand: 'Dell',
-    quantity: 1,
-    availability: 3,
-    priority: 'High',
-    expectedDelivery: DateTime.now().add(const Duration(days: 5)), // 5 days from now
-    expectedReturn: DateTime.now().add(const Duration(days: 30)), // 1 month from now
-    status: 'Approved',
-    ),
-    ApprovalEntity(
-    approvalId: '002',
-    userName: 'Bob Smith',
-    requestDate: DateTime.now().subtract(const Duration(days: 2)), // 2 days ago
-    requestType: 'Maintenance',
-    assetName: 'Projector',
-    category: 'Office ',
-    subcategory: 'Audiovisual',
-    model: 'EB-S41',
-    brand: 'Epson',
-    quantity: 1,
-    availability: 1,
-    priority: 'Medium',
-    expectedDelivery: DateTime.now().add(const Duration(days: 3)), // 3 days from now
-    expectedReturn: DateTime.now().add(const Duration(days: 15)), // 15 days from now
-    status: 'Rejected',
-    ),ApprovalEntity(
-    approvalId: '003',
-    userName: 'Charlie Brown',
-    requestDate: DateTime.now(),
-    requestType: 'Replacement',
-    assetName: 'Monitor',
-    category: 'Electronics',
-    subcategory: 'Displays',
-    model: 'G5',
-    brand: 'Samsung',
-    quantity: 2,
-    availability: 0,
-    priority: 'Low',
-    expectedDelivery: DateTime.now().add(const Duration(days: 10)), // 10 days from now
-    expectedReturn: DateTime.now().add(const Duration(days: 40)), // 40 days from now
-    status: 'Rejected',
-    ),
+    await Future.delayed(const Duration(seconds: 1));
+    // Define all dummy data
+    List<ApprovalEntity> allApprovals = [
+      ApprovalEntity(
+        approvalId: '001',
+        userName: 'Alice Johnson',
+        requestDate: DateTime.now(),
+        requestType: 'Purchase',
+        assetName: 'Laptop',
+        category: 'Electronics',
+        subcategory: 'Computers',
+        model: 'Dell 13',
+        brand: 'Dell',
+        quantity: 1,
+        availability: 3,
+        priority: 'High',
+        expectedDelivery: DateTime.now().add(const Duration(days: 5)),
+        expectedReturn: DateTime.now().add(const Duration(days: 30)),
+        status: 'Canceled',
+      ),
+      ApprovalEntity(
+        approvalId: '002',
+        userName: 'Bob Smith',
+        requestDate: DateTime.now().subtract(const Duration(days: 2)),
+        requestType: 'Maintenance',
+        assetName: 'Projector',
+        category: 'Office',
+        subcategory: 'Audiovisual',
+        model: 'EB-S41',
+        brand: 'Epson',
+        quantity: 1,
+        availability: 1,
+        priority: 'Medium',
+        expectedDelivery: DateTime.now().add(const Duration(days: 3)),
+        expectedReturn: DateTime.now().add(const Duration(days: 15)),
+        status: 'Rejected',
+      ),
       ApprovalEntity(
         approvalId: '003',
         userName: 'Charlie Brown',
@@ -117,20 +104,92 @@ selectGridView(){
         assetName: 'Monitor',
         category: 'Electronics',
         subcategory: 'Displays',
-        model: ' G5',
+        model: 'G5',
         brand: 'Samsung',
         quantity: 2,
         availability: 0,
         priority: 'Low',
-        expectedDelivery: DateTime.now().add(const Duration(days: 10)), // 10 days from now
-        expectedReturn: DateTime.now().add(const Duration(days: 40)), // 40 days from now
-        status: 'Canceled',
-      )
-
-    // Add more approvals as needed
+        expectedDelivery: DateTime.now().add(const Duration(days: 10)),
+        expectedReturn: DateTime.now().add(const Duration(days: 40)),
+        status: 'Rejected',
+      ),
+      ApprovalEntity(
+        approvalId: '004',
+        userName: 'Diana Prince',
+        requestDate: DateTime.now(),
+        requestType: 'Replacement',
+        assetName: 'Tablet',
+        category: 'Electronics',
+        subcategory: 'Mobile Devices',
+        model: 'Galaxy Tab S7',
+        brand: 'Samsung',
+        quantity: 5,
+        availability: 10,
+        priority: 'High',
+        expectedDelivery: DateTime.now().add(const Duration(days: 7)),
+        expectedReturn: DateTime.now().add(const Duration(days: 30)),
+        status: 'Approved',
+      ),
+      ApprovalEntity(
+        approvalId: '004',
+        userName: 'Diana Prince',
+        requestDate: DateTime.now(),
+        requestType: 'Replacement',
+        assetName: 'Tablet',
+        category: 'Electronics',
+        subcategory: 'Mobile Devices',
+        model: 'Galaxy Tab S7',
+        brand: 'Samsung',
+        quantity: 5,
+        availability: 10,
+        priority: 'High',
+        expectedDelivery: DateTime.now().add(const Duration(days: 7)),
+        expectedReturn: DateTime.now().add(const Duration(days: 30)),
+        status: 'Approved',
+      ),
+      ApprovalEntity(
+        approvalId: '004',
+        userName: 'Diana Prince',
+        requestDate: DateTime.now(),
+        requestType: 'Replacement',
+        assetName: 'Tablet',
+        category: 'Electronics',
+        subcategory: 'Mobile Devices',
+        model: 'Galaxy Tab S7',
+        brand: 'Samsung',
+        quantity: 5,
+        availability: 10,
+        priority: 'High',
+        expectedDelivery: DateTime.now().add(const Duration(days: 7)),
+        expectedReturn: DateTime.now().add(const Duration(days: 30)),
+        status: 'Approved',
+      ),
     ];
+
+    // Filter the list to include only approvals with status 'Approved'
+    allApprovalList = allApprovals.toList();
+    approvedList = allApprovals.where((approval) => approval.status == 'Approved').toList();
+    rejectedList = allApprovals.where((approval) => approval.status == 'Rejected').toList();
+    canceledList = allApprovals.where((approval) => approval.status == 'Canceled').toList();
+
     loading = false;
     update([ApprovalIdConstant.approval]);
+  }
+
+  void _updateApprovalLists() {
+    approvedList = allApprovalList.where((approval) => approval.status == 'Approved').toList();
+    rejectedList = allApprovalList.where((approval) => approval.status == 'Rejected').toList();
+    canceledList = allApprovalList.where((approval) => approval.status == 'Canceled').toList();
+  }
+
+
+  // Method to change the status of an item
+  void changeStatus(String approvalId, String newStatus) {
+    final index = allApprovalList.indexWhere((item) => item.approvalId == approvalId);
+    if (index != -1) {
+      allApprovalList[index] = allApprovalList[index].copyWith(status: newStatus);
+      update();
+    }
   }
 
   //called when user goes to details of approvals
@@ -152,7 +211,6 @@ selectGridView(){
     );
     additionalNoteController.text = model.additionalNote.toString();
   }
-
   //reset data of controller
   resetApprovalDetails() {
     approvalIdController.clear();

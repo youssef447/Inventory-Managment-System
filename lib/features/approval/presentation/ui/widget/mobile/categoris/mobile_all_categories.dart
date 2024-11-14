@@ -13,13 +13,15 @@ import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';
+import '../../../../../domain/approval_entity.dart';
 import '../../../constants/approval_id_constant.dart';
 import '../../../pages/mobile/mobile_approval_details_page.dart';
 import '../card/mobile_approval_card.dart';
 
 
 class MobileAllCategories extends GetView<ApprovalController> {
-  const MobileAllCategories({super.key});
+  final List<ApprovalEntity> list;
+  const MobileAllCategories({super.key ,required this.list});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class MobileAllCategories extends GetView<ApprovalController> {
         builder: (controller) {
           return controller.loading
               ? const AppCircleProgress()
-              : controller.approvalList.isEmpty
+              : list.isEmpty
               ? const NoDataGif()
               : Column(
               children: [
@@ -41,7 +43,7 @@ class MobileAllCategories extends GetView<ApprovalController> {
                     return GestureDetector(
                         onTap: () {
                           controller.setApprovalDetails(
-                              controller.approvalList[index]);
+                              list[index]);
 
                           HapticFeedbackHelper.triggerHapticFeedback(
                             vibration: VibrateType.mediumImpact,
@@ -60,7 +62,7 @@ class MobileAllCategories extends GetView<ApprovalController> {
                         child: MobileApprovalCard(index: index)
                     );
                   },
-                  itemCount: controller.approvalList.length,
+                  itemCount: list.length,
                 )
 
 

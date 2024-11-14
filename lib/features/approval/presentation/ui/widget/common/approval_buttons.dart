@@ -1,15 +1,22 @@
 //by : mohamed Ashraf
 //date : 11/11/2024
 
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../../../../../core/constants/app_assets.dart';
+import '../../../../../../core/helpers/get_dialog_helper.dart';
+import '../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../../core/widgets/dialog/default_dialog.dart';
+import '../../../controller/approval_controller.dart';
 
-class ApprovalButtons extends StatelessWidget {
-  const ApprovalButtons({super.key});
+class ApprovalButtons extends GetView<ApprovalController> {
+  const ApprovalButtons({super.key,});
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +24,27 @@ class ApprovalButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         // Reject Button
-        Expanded(
+        Flexible(
           child: GestureDetector(
             onTap: () {
-              // Add your reject action here
+              HapticFeedbackHelper.triggerHapticFeedback(
+                vibration: VibrateType.mediumImpact,
+                hapticFeedback: HapticFeedback.mediumImpact,
+              );
+              GetDialogHelper.generalDialog(
+                child: DefaultDialog(
+                  width: context.isPhone ? 343.w : 411.w,
+                  showButtons: true,
+                  icon: AppAssets.canceled,
+                  title: 'Reject Approve'.tr,
+                  subTitle:
+                  'Are You sure You Want to Reject this Approve ?'.tr,
+                  onConfirm: () {
+
+                  },
+                ),
+                context: context,
+              );
             },
             child: Container(
               height: 40,
@@ -28,7 +52,7 @@ class ApprovalButtons extends StatelessWidget {
                 border: Border.all(color: Colors.red),
                 borderRadius: BorderRadius.circular(5),
               ),
-              child:  Row(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -37,10 +61,14 @@ class ApprovalButtons extends StatelessWidget {
                     color: Colors.red,
                     size: 20,
                   ),
-                  const SizedBox(width: 4),
-                  Text(
+                  const SizedBox(width: 2),
+                  Flexible(
+                    child: Text(
                       'Reject'.tr,
-                      style: AppTextStyles.font16InputColorCairo.copyWith(color: AppColors.red)
+                      style: AppTextStyles.font16InputColorCairo.copyWith(color: AppColors.red),
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: false,
+                    ),
                   ),
                 ],
               ),
@@ -49,10 +77,13 @@ class ApprovalButtons extends StatelessWidget {
         ),
         const SizedBox(width: 12),
         // Approve Button
-        Expanded(
+        Flexible(
           child: GestureDetector(
             onTap: () {
-              // Add your approve action here
+              HapticFeedbackHelper.triggerHapticFeedback(
+                vibration: VibrateType.mediumImpact,
+                hapticFeedback: HapticFeedback.mediumImpact,
+              );
             },
             child: Container(
               height: 40,
@@ -60,7 +91,7 @@ class ApprovalButtons extends StatelessWidget {
                 border: Border.all(color: Colors.green),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child:  Row(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -69,10 +100,14 @@ class ApprovalButtons extends StatelessWidget {
                     color: Colors.green,
                     size: 20,
                   ),
-                  const SizedBox(width: 4),
-                  Text(
+                  const SizedBox(width: 2),
+                  Flexible(
+                    child: Text(
                       'Approve'.tr,
-                      style: AppTextStyles.font16InputColorCairo.copyWith(color: AppColors.green)
+                      style: AppTextStyles.font16InputColorCairo.copyWith(color: AppColors.green),
+                      overflow: TextOverflow.ellipsis,
+                      softWrap: false,
+                    ),
                   ),
                 ],
               ),

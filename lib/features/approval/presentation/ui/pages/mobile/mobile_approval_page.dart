@@ -49,12 +49,15 @@ class MobileApprovalPage extends GetView<ApprovalController> {
                   Obx(
                         () {
                       if (controller.currentCategoryIndex.value == 0) {
-                        return const MobileAllCategories();
+                        return  MobileAllCategories(list: controller.allApprovalList);
                       }
                       if (controller.currentCategoryIndex.value == 1) {
-                        return const Text('data222');
+                        return  MobileAllCategories(list: controller.approvedList);
                       }
-                      return const Text('data33');
+                      if (controller.currentCategoryIndex.value == 2) {
+                        return  MobileAllCategories(list: controller.rejectedList);
+                      }
+                      return  MobileAllCategories(list: controller.canceledList);
                     },
                   ),
 

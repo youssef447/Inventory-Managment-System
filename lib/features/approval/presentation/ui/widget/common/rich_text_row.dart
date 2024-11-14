@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/core/theme/app_colors.dart';
 
 import '../../../../../../core/theme/app_text_styles.dart';
 
@@ -19,7 +20,7 @@ class RichTextRow extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
       text: TextSpan(
           text: '${type.tr} : ',
-          style:context.isLandscape? AppTextStyles.font14SecondaryBlackCairoRegular :  AppTextStyles.font16secondaryBlackRegularCairo ,
+          style:context.isLandscape? AppTextStyles.font14SecondaryBlackCairoRegular.copyWith(color: AppColors.inverseBase) :  AppTextStyles.font16secondaryBlackRegularCairo.copyWith(color: AppColors.inverseBase) ,
           children: [
             TextSpan(
                 text: value.tr,

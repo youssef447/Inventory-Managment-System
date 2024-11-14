@@ -23,25 +23,51 @@ class ApprovalEntity {
   final DateTime expectedReturn;
   final String? additionalNote;
   final String status;
-  List<AttachmentEntity> attachments;
+  final List<AttachmentEntity> attachments;
 
-  ApprovalEntity(
-      {required this.userName,
-        required this.approvalId,
-        required this.requestDate,
-      required this.requestType,
-      required this.assetName,
-      required this.category,
-      required this.subcategory,
-      required this.model,
-      required this.brand,
-      required this.quantity,
-      required this.availability,
-      required this.priority,
-      required this.expectedDelivery,
-      required this.expectedReturn,
-        required this.status,
-       this.additionalNote,
-       this.attachments = const [],
-      });
+  ApprovalEntity({
+    required this.userName,
+    required this.approvalId,
+    required this.requestDate,
+    required this.requestType,
+    required this.assetName,
+    required this.category,
+    required this.subcategory,
+    required this.model,
+    required this.brand,
+    required this.quantity,
+    required this.availability,
+    required this.priority,
+    required this.expectedDelivery,
+    required this.expectedReturn,
+    required this.status,
+    this.additionalNote,
+    this.attachments = const [],
+  });
+
+  // CopyWith method to allow copying with a new status
+  ApprovalEntity copyWith({
+    String? status,
+  }) {
+    return ApprovalEntity(
+      userName: userName,
+      approvalId: approvalId,
+      requestDate: requestDate,
+      requestType: requestType,
+      assetName: assetName,
+      category: category,
+      subcategory: subcategory,
+      model: model,
+      brand: brand,
+      quantity: quantity,
+      availability: availability,
+      priority: priority,
+      expectedDelivery: expectedDelivery,
+      expectedReturn: expectedReturn,
+      status: status ?? this.status,
+      additionalNote: additionalNote,
+      attachments: attachments,
+    );
+  }
 }
+
