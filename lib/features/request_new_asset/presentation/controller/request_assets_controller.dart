@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/core/constants/approve_cycle.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
-import 'package:inventory_management/features/requests/presentation/controller/requests_controller.dart';
 
 import '../../../../core/enums/requests_enums.dart';
 import '../../../Assets/domain/entity/assets_entity.dart';
@@ -19,14 +18,12 @@ import 'package:file_picker/file_picker.dart';
 ///Where all logic in Request New Asset Page is handled (request,repair,maintenance, return)
 class RequestAssetsController extends GetxController {
   List<AssetsEntity> assets = [];
-  List<RequestEntity> requests = [];
   bool loading = true;
   late RequestActions requestAction;
   @override
   void onInit() {
     super.onInit();
     requestAction = Get.arguments['action'] as RequestActions;
-
     loadAssetsData();
   }
 
@@ -39,14 +36,6 @@ class RequestAssetsController extends GetxController {
   Future<void> loadAssetsData() async {
     Get.find<AssetsController>().loadAssetsData().then((_) {
       assets = Get.find<AssetsController>().assetsList;
-      loading = false;
-      update([RequestAssetsIds.requestAssetsPage]);
-    });
-  }
-
-  ///Loading Request . only when action is request asset
-  Future<void> loadRequestsData() async {
-    Get.find<RequestsController>().loadRequestsData().then((_) {
       loading = false;
       update([RequestAssetsIds.requestAssetsPage]);
     });

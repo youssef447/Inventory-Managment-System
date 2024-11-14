@@ -122,7 +122,7 @@ class TabletRequestFormPage extends GetView<RequestAssetsController> {
                         Expanded(
                           child: LabeledFormField(
                             controller: controller.assetModelController,
-                            label: 'Asset Model',
+                            label: 'Model',
                           ),
                         ),
                         horizontalSpace(15),
@@ -167,9 +167,7 @@ class TabletRequestFormPage extends GetView<RequestAssetsController> {
                       hintText: 'Additional Notes',
                     ),
                     verticalSpace(24),
-                    AttachmentsSection(
-                      model: model,
-                    ),
+                    const AttachmentsSection(),
                     verticalSpace(66),
                     const DiscardSubmitButtons(),
                   ],

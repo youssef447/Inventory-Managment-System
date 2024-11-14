@@ -39,7 +39,7 @@ class TabletTrackDeatailsCard extends GetView<TrackRequestController> {
               ),
               _BuildIconLabel(
                 '${'Last Update'.tr}: ',
-                DateTimeHelper.formatDate(model.assetsEntity.lastUpdate),
+                DateTimeHelper.formatDate(model.assetsEntity!.lastUpdate),
                 AppAssets.calender,
               ),
             ],

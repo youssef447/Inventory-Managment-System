@@ -28,7 +28,7 @@ class VerticalTrackRequestCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
-                model.assetsEntity.image,
+                model.assetsEntity!.image,
                 /* width: 60.w,
                 height: 60.h, */
                 fit: BoxFit.fill,
@@ -36,7 +36,7 @@ class VerticalTrackRequestCard extends StatelessWidget {
               horizontalSpace(8),
               Expanded(
                 child: Text(
-                  model.assetsEntity.assetName,
+                  model.assetsEntity!.assetName,
                   style: AppTextStyles.font16BlackCairoRegular,
                 ),
               ),
@@ -89,7 +89,7 @@ class VerticalTrackRequestCard extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: DateTimeHelper.formatDate(
-                        model.assetsEntity.lastUpdate),
+                        model.assetsEntity!.lastUpdate),
                     style: AppTextStyles.font14darkWhiteShadowCairoMedium,
                   )
                 ],

@@ -47,10 +47,15 @@ class HomeController extends GetxController {
 
   //------------Search Filter ------------
   TextEditingController searchController = TextEditingController();
-  List<RequestActions> requestActions = [
+  List<RequestActions> requestAssetActions = [
     RequestActions.requestAsset,
     RequestActions.returnAsset,
     RequestActions.routineMaintenance,
     RequestActions.repairAsset,
+  ];
+  List<RequestActions> requestConsumablesActions = [
+    RequestActions.requestConsumables,
+    RequestActions.returnConsumables,
+    RequestActions.expiredConsumables,
   ];
 }

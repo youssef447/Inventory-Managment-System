@@ -24,7 +24,7 @@ class MobileTrackRequestCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
-                model.assetsEntity.image,
+                model.assetsEntity!.image,
                 /* width: 60.w,
                 height: 60.h, */
                 fit: BoxFit.fill,
@@ -37,7 +37,7 @@ class MobileTrackRequestCard extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          model.assetsEntity.assetName,
+                          model.assetsEntity!.assetName,
                           style: AppTextStyles.font14BlackCairoRegular,
                         ),
                         const Spacer(),
@@ -90,7 +90,7 @@ class MobileTrackRequestCard extends StatelessWidget {
                         ),
                         children: [
                           TextSpan(
-                            text: model.assetsEntity.model,
+                            text: model.assetsEntity!.model,
                             style: AppTextStyles.font10SecondaryBlackCairoMedium
                                 .copyWith(
                               fontSize: 11.sp,
@@ -114,7 +114,7 @@ class MobileTrackRequestCard extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: DateTimeHelper.formatDate(
-                        model.assetsEntity.lastUpdate),
+                        model.assetsEntity!.lastUpdate),
                     style: AppTextStyles.font10SecondaryBlackCairoMedium,
                   )
                 ],

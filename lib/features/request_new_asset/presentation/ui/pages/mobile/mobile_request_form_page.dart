@@ -37,8 +37,8 @@ class MobileRequestFormPage extends GetView<RequestAssetsController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MobileCustomAppbar(
-                    title: 'Request New Asset'.tr,
-                  ),
+                      title:
+                          '${'Request New'.tr} ${controller.requestAction.getName.tr}'),
                   verticalSpace(15),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8.r),
@@ -72,7 +72,7 @@ class MobileRequestFormPage extends GetView<RequestAssetsController> {
                   verticalSpace(24),
                   LabeledFormField(
                     controller: controller.assetModelController,
-                    label: 'Asset Model',
+                    label: 'Model',
                   ),
                   verticalSpace(15),
                   LabeledFormField(
@@ -147,9 +147,7 @@ class MobileRequestFormPage extends GetView<RequestAssetsController> {
                     hintText: 'Additional Notes',
                   ),
                   verticalSpace(24),
-                  AttachmentsSection(
-                    model: model,
-                  ),
+                  const AttachmentsSection(),
                   verticalSpace(20),
                   GestureDetector(
                     onTap: () {

@@ -12,6 +12,11 @@ import '../../features/request_new_asset/presentation/ui/pages/mobile/mobile_new
 import '../../features/request_new_asset/presentation/ui/pages/mobile/mobile_request_form_page.dart';
 import '../../features/request_new_asset/presentation/ui/pages/tablet/tablet_new_request_page.dart';
 import '../../features/request_new_asset/presentation/ui/pages/tablet/tablet_request_form_page.dart';
+import '../../features/request_new_consumable/presentation/controller/request_consumable_bindings.dart';
+import '../../features/request_new_consumable/presentation/ui/pages/mobile/mobile_new_request_page.dart';
+import '../../features/request_new_consumable/presentation/ui/pages/mobile/mobile_request_form_page.dart';
+import '../../features/request_new_consumable/presentation/ui/pages/tablet/tablet_new_request_page.dart';
+import '../../features/request_new_consumable/presentation/ui/pages/tablet/tablet_request_form_page.dart';
 import '../../features/track_request/presentation/controller/track_requests_bindings.dart';
 import '../../features/track_request/presentation/ui/pages/mobile/mobile_track_requests_details_page.dart';
 import '../../features/track_request/presentation/ui/pages/mobile/mobile_track_requests_page.dart';
@@ -39,6 +44,16 @@ abstract class AppPages {
       transitionDuration: const Duration(milliseconds: 350),
     ),
     GetPage(
+      name: Routes.requestConsumable,
+      page: () => const ResponsiveHelper(
+        mobileWidget: MobileNewConsumableRequestPage(),
+        tabletWidget: TabletNewConsumableRequestPage(),
+      ),
+      binding: RequestConsumableBindings(),
+      transition: Transition.fade,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+    GetPage(
       name: Routes.newRequestAsset,
       page: () => ResponsiveHelper(
         mobileWidget: MobileRequestFormPage(
@@ -46,6 +61,19 @@ abstract class AppPages {
         ),
         tabletWidget: TabletRequestFormPage(
           model: Get.arguments['assetModel'],
+        ),
+      ),
+      transition: Transition.fade,
+      transitionDuration: const Duration(milliseconds: 350),
+    ),
+    GetPage(
+      name: Routes.newRequestConsumable,
+      page: () => ResponsiveHelper(
+        mobileWidget: MobileRequestConsumableFormPage(
+          model: Get.arguments['model'],
+        ),
+        tabletWidget: TabletRequestConsumableFormPage(
+          model: Get.arguments['model'],
         ),
       ),
       transition: Transition.fade,
@@ -108,12 +136,9 @@ abstract class AppPages {
       transition: Transition.fadeIn,
       page: () => const ResponsiveHelper(
         mobileWidget: MobileApprovalPage(),
-        tabletWidget:  TabletApprovalPage(
-        ),
+        tabletWidget: TabletApprovalPage(),
       ),
       binding: ApprovalBinding(),
     ),
-
-
   ];
 }

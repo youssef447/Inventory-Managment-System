@@ -36,56 +36,55 @@ class ConsumablesController extends GetxController {
 
 // show dummy data for test ui ------ will be removed --------
   Future<void> loadConsumablesData() async {
-    Future.delayed(
+    await Future.delayed(
       const Duration(seconds: 2),
-    ).then((_) {
-      consumablesList = [
-        ConsumablesEntity(
-          consumableId: 'C003',
-          name: 'Face Mask',
-          category: 'Medical Supplies',
-          subcategory: 'Personal Protective Equipment',
-          model: 'FM789',
-          brand: 'SafeHealth',
-          dateReceived: DateTime(2023, 7, 10),
-          quantity: '500',
-          unitOfMeasurement: 'pieces',
-          usageFrequency: 'daily',
-          expirationDate: DateTime(2024, 7, 10),
-          status: 'Maintenance',
-        ),
-        ConsumablesEntity(
-          consumableId: 'C002',
-          name: 'Hand Sanitizer',
-          category: 'Hygiene Products',
-          subcategory: 'Sanitizers',
-          model: 'HS-456',
-          brand: 'CleanCo',
-          dateReceived: DateTime(2023, 6, 15),
-          quantity: '50',
-          unitOfMeasurement: 'liters',
-          usageFrequency: 'as needed',
-          expirationDate: DateTime(2025, 6, 15),
-          status: 'InUse',
-        ),
-        ConsumablesEntity(
-          consumableId: 'C001',
-          name: 'Gloves',
-          category: 'Medical Supplies',
-          subcategory: 'Personal Protective Equipment',
-          model: 'G123',
-          brand: 'MedBrand',
-          dateReceived: DateTime(2023, 5, 20),
-          quantity: '200',
-          unitOfMeasurement: 'pieces',
-          usageFrequency: 'daily',
-          expirationDate: null,
-          status: 'Expired',
-        ),
-      ];
-      loading = false;
-      update([ConsumablesIdConstant.consumablesData]);
-    });
+    );
+    consumablesList = [
+      ConsumablesEntity(
+        consumableId: 'C003',
+        name: 'Face Mask',
+        category: 'Medical Supplies',
+        subcategory: 'Personal Protective Equipment',
+        model: 'FM789',
+        brand: 'SafeHealth',
+        dateReceived: DateTime(2023, 7, 10),
+        quantity: '500',
+        unitOfMeasurement: 'pieces',
+        usageFrequency: 'daily',
+        expirationDate: DateTime(2024, 7, 10),
+        status: 'Maintenance',
+      ),
+      ConsumablesEntity(
+        consumableId: 'C002',
+        name: 'Hand Sanitizer',
+        category: 'Hygiene Products',
+        subcategory: 'Sanitizers',
+        model: 'HS-456',
+        brand: 'CleanCo',
+        dateReceived: DateTime(2023, 6, 15),
+        quantity: '50',
+        unitOfMeasurement: 'liters',
+        usageFrequency: 'as needed',
+        expirationDate: DateTime(2025, 6, 15),
+        status: 'InUse',
+      ),
+      ConsumablesEntity(
+        consumableId: 'C001',
+        name: 'Gloves',
+        category: 'Medical Supplies',
+        subcategory: 'Personal Protective Equipment',
+        model: 'G123',
+        brand: 'MedBrand',
+        dateReceived: DateTime(2023, 5, 20),
+        quantity: '200',
+        unitOfMeasurement: 'pieces',
+        usageFrequency: 'daily',
+        expirationDate: null,
+        status: 'Expired',
+      ),
+    ];
+    loading = false;
+    update([ConsumablesIdConstant.consumablesData]);
   }
 
   //called when user goes to details of Consumables
@@ -111,17 +110,17 @@ class ConsumablesController extends GetxController {
   }
 
   resetConsumablesDetails() {
-     consumableIdController.clear();
-     nameController.clear();
-     categoryController.clear();
-     subcategoryController.clear();
-     modelController.clear();
-     brandController.clear();
-     dateReceivedController.clear();
-     quantityController.clear();
-     unitOfMeasurementController.clear();
-     usageFrequencyController.clear();
-     expirationDateController.clear();
-     statusController.clear();
+    consumableIdController.clear();
+    nameController.clear();
+    categoryController.clear();
+    subcategoryController.clear();
+    modelController.clear();
+    brandController.clear();
+    dateReceivedController.clear();
+    quantityController.clear();
+    unitOfMeasurementController.clear();
+    usageFrequencyController.clear();
+    expirationDateController.clear();
+    statusController.clear();
   }
 }

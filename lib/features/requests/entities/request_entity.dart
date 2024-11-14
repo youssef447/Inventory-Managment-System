@@ -1,4 +1,5 @@
 import '../../Assets/domain/entity/assets_entity.dart';
+import '../../consumables/domain/entity/consumables_entity.dart';
 import '../../home/domain/user_entity.dart';
 import 'attachment_entity.dart';
 import 'message_entity.dart';
@@ -13,7 +14,8 @@ class RequestEntity {
   String priority;
   String status;
   String? maintenanceFrequency;
-  AssetsEntity assetsEntity;
+  AssetsEntity? assetsEntity;
+  ConsumablesEntity? consumablesEntity;
   DateTime expectedRecieved;
   DateTime dateReturn;
   String? additionalNote;
@@ -27,7 +29,8 @@ class RequestEntity {
     required this.requestDate,
     required this.priority,
     this.maintenanceFrequency,
-    required this.assetsEntity,
+    this.assetsEntity,
+    this.consumablesEntity,
     required this.expectedRecieved,
     required this.dateReturn,
     required this.quantity,

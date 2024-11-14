@@ -24,6 +24,7 @@ class Languages extends Translations {
           'Job Title': 'Job Title',
           'Request Information': 'Request Information',
           'Request ID': 'Request ID',
+          'Consumable ID': 'Consumable ID',
           'Request Type': 'Request Type',
           'Expected Delivery': 'Expected Delivery',
           'Return Date': 'Return Date',
@@ -83,6 +84,8 @@ class Languages extends Translations {
           'Are You sure You Want to Cancel this Request ?':
               'Are You sure You Want to Cancel this Request ?',
           'Request Delivery': 'Request Delivery',
+          'Consumable Request': 'Consumable Request',
+          'Asset Request': 'Asset Request',
         },
 
         // ****************************************** ARABIC LANGUAGE ******************************************
@@ -101,6 +104,7 @@ class Languages extends Translations {
           'Job Title': 'المسمى الوظيفي',
           'Request Information': 'معلومات الطلب',
           'Request ID': 'رقم الطلب',
+          'Consumable ID': 'رقم المستهلك',
           "Request": "طلب",
           "Requests": "الطلبات",
           "Not Applicable": "غير قابل للتطبيق",
@@ -156,6 +160,8 @@ class Languages extends Translations {
           "Are You sure You Want to Cancel this Request ?":
               "هل أنت متأكد أنك تريد إلغاء هذا الطلب؟",
           'Request Delivery': 'تاريخ تسليم الطلب',
+          'Consumable Request': 'طلب مستهلك',
+          'Asset Request': 'طلب سلعة',
         },
       };
 }

@@ -10,15 +10,12 @@ import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 
 import '../../../../../../core/widgets/attachments/attachment_card.dart';
-import '../../../../../Assets/domain/entity/assets_entity.dart';
 import '../../../../constants/ids_constants.dart';
 import '../../../controller/request_assets_controller.dart';
 
 class AttachmentsSection extends StatelessWidget {
-  final AssetsEntity model;
   const AttachmentsSection({
     super.key,
-    required this.model,
   });
 
   @override

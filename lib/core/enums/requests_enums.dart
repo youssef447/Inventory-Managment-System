@@ -13,6 +13,9 @@ enum RequestActions {
   returnAsset,
   repairAsset,
   routineMaintenance,
+  expiredConsumables,
+  returnConsumables,
+  requestConsumables
 }
 
 enum RequestPriorityTypes {

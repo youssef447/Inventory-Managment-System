@@ -14,6 +14,7 @@ import '../../../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../../../core/widgets/dropdown/app_dropdown.dart';
 import '../../../../../../home/controller/home_controller.dart';
 import '../../../../../constants/request_status_constants.dart';
+import '../../../../controller/requests_controller.dart';
 
 class VerticalRequstsSummaryCircles extends GetView<HomeController> {
   const VerticalRequstsSummaryCircles({super.key});
@@ -21,6 +22,7 @@ class VerticalRequstsSummaryCircles extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     final isRequest = controller.currentCategoryIndex.value == 2;
+    final requestController = Get.find<RequestsController>();
 
     return Column(
       children: [
@@ -203,40 +205,52 @@ class VerticalRequstsSummaryCircles extends GetView<HomeController> {
                   ),
                 ),
                 horizontalSpace(10),
-                Expanded(
-                  child: AppDropdown(
-                    showDropdownIcon: false,
-                    image: AppAssets.add,
-                    textAlign: TextAlign.center,
-                    width: 112.w,
-                    style: context.isPhone
-                        ? AppTextStyles.font16BlackMediumCairo
-                            .copyWith(color: AppColors.textButton)
-                        : AppTextStyles.font18BlackMediumCairo
-                            .copyWith(color: AppColors.textButton),
-                    color: AppColors.primary,
-                    height: 37.h,
-                    onChanged: (value) {
-                      Get.toNamed(
-                        Routes.requestAsset,
-                        arguments: {'action': value},
-                      );
-                    },
-                    items: List.generate(
-                      controller.requestActions.length,
-                      (index) {
-                        return DropdownMenuItem(
-                          alignment: AlignmentDirectional.centerStart,
-                          value: controller.requestActions[index],
-                          child: Text(
-                            controller.requestActions[index].getName,
-                            style:
-                                AppTextStyles.font14SecondaryBlackCairoMedium,
-                          ),
+                Obx(
+                  () => Expanded(
+                    child: AppDropdown(
+                      showDropdownIcon: false,
+                      image: AppAssets.add,
+                      textAlign: TextAlign.center,
+                      width: 112.w,
+                      style: context.isPhone
+                          ? AppTextStyles.font16BlackMediumCairo
+                              .copyWith(color: AppColors.textButton)
+                          : AppTextStyles.font18BlackMediumCairo
+                              .copyWith(color: AppColors.textButton),
+                      color: AppColors.primary,
+                      height: 37.h,
+                      onChanged: (value) {
+                        Get.toNamed(
+                          Routes.requestAsset,
+                          arguments: {'action': value},
                         );
                       },
+                      items: List.generate(
+                        requestController.currentCategoryIndex.value == 0
+                            ? controller.requestAssetActions.length
+                            : controller.requestConsumablesActions.length,
+                        (index) {
+                          return DropdownMenuItem(
+                            alignment: AlignmentDirectional.centerStart,
+                            value: requestController
+                                        .currentCategoryIndex.value ==
+                                    0
+                                ? controller.requestAssetActions[index]
+                                : controller.requestConsumablesActions[index],
+                            child: Text(
+                              requestController.currentCategoryIndex.value == 0
+                                  ? controller
+                                      .requestAssetActions[index].getName
+                                  : controller
+                                      .requestConsumablesActions[index].getName,
+                              style:
+                                  AppTextStyles.font14SecondaryBlackCairoMedium,
+                            ),
+                          );
+                        },
+                      ),
+                      textButton: 'Request'.tr,
                     ),
-                    textButton: 'Request'.tr,
                   ),
                 )
               ],

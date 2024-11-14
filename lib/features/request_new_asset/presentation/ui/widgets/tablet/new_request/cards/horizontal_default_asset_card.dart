@@ -48,7 +48,7 @@ class HorizontalDefaultAssetCard extends GetView<RequestAssetsController> {
                                   AppTextStyles.font12SecondaryBlackCairoMedium,
                               style: AppTextStyles.font12BlackMediumCairo,
                               label: 'Category',
-                              value: model.availabilityStatus,
+                              value: model.category,
                             ),
                             DefaultRichText(
                               labelStyle:

@@ -40,19 +40,19 @@ class MobileTrackDetailsCard extends StatelessWidget {
           ),
           DefaultRichText(
             label: 'Category',
-            value: model.assetsEntity.category,
+            value: model.assetsEntity!.category,
           ),
           DefaultRichText(
             label: 'Subcategory',
-            value: model.assetsEntity.subcategory,
+            value: model.assetsEntity!.subcategory,
           ),
           DefaultRichText(
             label: 'Model',
-            value: model.assetsEntity.model,
+            value: model.assetsEntity!.model,
           ),
           DefaultRichText(
             label: 'Brand',
-            value: model.assetsEntity.brand,
+            value: model.assetsEntity!.brand,
           ),
           verticalSpace(32),
           _BuildIconLabel(
@@ -63,7 +63,7 @@ class MobileTrackDetailsCard extends StatelessWidget {
           verticalSpace(15),
           _BuildIconLabel(
             '${'Last Update'.tr}: ',
-            DateTimeHelper.formatDate(model.assetsEntity.lastUpdate),
+            DateTimeHelper.formatDate(model.assetsEntity!.lastUpdate),
             AppAssets.calender,
           ),
           verticalSpace(15),

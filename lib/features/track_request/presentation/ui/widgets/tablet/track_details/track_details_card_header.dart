@@ -75,7 +75,7 @@ class TrackDetailsCardHeader extends StatelessWidget {
                 style: AppTextStyles.font14SecondaryBlackCairoMedium,
                 children: [
                   TextSpan(
-                    text: model.assetsEntity.category,
+                    text: model.assetsEntity!.category,
                     style: AppTextStyles.font14BlackCairoMedium,
                   )
                 ],
@@ -87,7 +87,7 @@ class TrackDetailsCardHeader extends StatelessWidget {
                 style: AppTextStyles.font14SecondaryBlackCairoMedium,
                 children: [
                   TextSpan(
-                    text: model.assetsEntity.subcategory,
+                    text: model.assetsEntity!.subcategory,
                     style: AppTextStyles.font14BlackCairoMedium,
                   )
                 ],
@@ -99,7 +99,7 @@ class TrackDetailsCardHeader extends StatelessWidget {
                 style: AppTextStyles.font14SecondaryBlackCairoMedium,
                 children: [
                   TextSpan(
-                    text: model.assetsEntity.model,
+                    text: model.assetsEntity!.model,
                     style: AppTextStyles.font14BlackCairoMedium,
                   )
                 ],
@@ -111,7 +111,7 @@ class TrackDetailsCardHeader extends StatelessWidget {
                 style: AppTextStyles.font14SecondaryBlackCairoMedium,
                 children: [
                   TextSpan(
-                    text: model.assetsEntity.brand,
+                    text: model.assetsEntity!.brand,
                     style: AppTextStyles.font14BlackCairoMedium,
                   )
                 ],

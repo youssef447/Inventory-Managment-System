@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:typed_data';
 
 //Youssef Ashraf
+///Represents The attachment Of any file. Also a part of the request Entity
 class AttachmentEntity {
   String extension;
   String? fileName;

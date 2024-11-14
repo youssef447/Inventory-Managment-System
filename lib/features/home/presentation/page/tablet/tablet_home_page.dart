@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
 import 'package:inventory_management/core/routes/app_routes.dart';
 
+import '../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../core/theme/app_colors.dart';
@@ -76,17 +77,28 @@ class TabletHomePage extends GetView<HomeController> {
                             controller.toggleLanguage();
                           },
                         ),
-                        DefaultSwitchButton(
-                          value: controller.isDarkModeEnabled,
-                          onChanged: (bool value) async {
-                            controller.toggleDarkMode();
-                          },
+                        const Spacer(),
+                        Expanded(
+                          child: Align(
+                            alignment: AlignmentDirectional.centerEnd,
+                            child: DefaultSwitchButton(
+                              value: controller.isDarkModeEnabled,
+                              onChanged: (bool value) async {
+                                controller.toggleDarkMode();
+                              },
+                            ),
+                          ),
                         ),
-                        DefaultSwitchButton(
-                          value: controller.isAnimatable,
-                          onChanged: (bool value) async {
-                            controller.toggleAnimation();
-                          },
+                        Expanded(
+                          child: Align(
+                            alignment: AlignmentDirectional.centerEnd,
+                            child: DefaultSwitchButton(
+                              value: controller.isAnimatable,
+                              onChanged: (bool value) async {
+                                controller.toggleAnimation();
+                              },
+                            ),
+                          ),
                         ),
                       ],
                     ),

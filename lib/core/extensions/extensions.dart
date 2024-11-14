@@ -12,6 +12,7 @@ import '../enums/requests_enums.dart';
 import '../theme/app_colors.dart';
 import '../../core/constants/app_assets.dart';
 
+//-----------------------Context Extensions-----------------------------
 extension ContextExtension on BuildContext {
   // ScreenInfo
   double get width => MediaQuery.of(this).size.width;
@@ -24,7 +25,7 @@ extension ContextExtension on BuildContext {
       Platform.isWindows || Platform.isLinux || Platform.isMacOS;
 }
 
-//Request Model
+//-----------------------Models And Enums Extensions-----------------------------
 extension GetColor on String {
   Color? get getColor {
     if (this == 'Pending'.tr) {
@@ -118,6 +119,12 @@ extension GetReqActionName on RequestActions {
         return 'Routine Maintenance';
       case RequestActions.repairAsset:
         return 'Repair Asset';
+      case RequestActions.requestConsumables:
+        return 'Request Consumables';
+      case RequestActions.returnConsumables:
+        return 'Return Consumables';
+      case RequestActions.expiredConsumables:
+        return 'Expired Consumables';
     }
   }
 }

@@ -55,7 +55,7 @@ class MobileNewRequestPage extends GetView<RequestAssetsController> {
                           ),
                           horizontalSpace(8),
                           Text(
-                            'Request Asset'.tr,
+                            controller.requestAction.getName,
                             style: AppTextStyles.font26BlackSemiBoldCairo,
                           ),
                         ],
