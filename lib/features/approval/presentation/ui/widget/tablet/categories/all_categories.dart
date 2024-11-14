@@ -13,19 +13,20 @@ import '../../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../../core/routes/app_routes.dart';
 import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';
+import '../../../../../domain/approval_entity.dart';
 import '../../../constants/approval_id_constant.dart';
 import '../../../pages/tablet/tablet_approval_details_page.dart';
 import '../card/approval_card_horizontal.dart';
 import '../card/approval_card_vertical_tablet.dart';
 
 class AllCategories extends GetView<ApprovalController> {
-  const AllCategories({super.key});
-
+  const AllCategories({super.key,required this.list});
+  final List<ApprovalEntity> list;
   @override
   Widget build(BuildContext context) {
 
     var size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 1;
+    final double itemHeight = (size.height - kToolbarHeight - 24) / 0.95;
     final double itemHeightVertical = (size.height - kToolbarHeight) / 1.3;
     final double itemWidth = size.width / 2;
 
@@ -34,12 +35,11 @@ class AllCategories extends GetView<ApprovalController> {
         builder: (controller) {
           return controller.loading
               ? const AppCircleProgress()
-              : controller.approvalList.isEmpty
+              : list.isEmpty
                   ? const NoDataGif()
                   : ScaleAnimation(
                     child: Column(
                                   children: [
-
                       (controller.listViewSelect && context.isLandscape) ?
                       ListView.separated(
                         shrinkWrap: true,
@@ -50,7 +50,7 @@ class AllCategories extends GetView<ApprovalController> {
                           return GestureDetector(
                               onTap: () {
                                 controller.setApprovalDetails(
-                                    controller.approvalList[index]);
+                                    list[index]);
 
                                 HapticFeedbackHelper.triggerHapticFeedback(
                                   vibration: VibrateType.mediumImpact,
@@ -67,10 +67,9 @@ class AllCategories extends GetView<ApprovalController> {
                               child: ApprovalCardHorizontal(index: index)
                           );
                         },
-                        itemCount: controller.approvalList.length,
+                        itemCount: list.length,
                       ):
                         GridView.builder(
-
                           gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: context.isLandscape? 4 : 3,
@@ -84,7 +83,7 @@ class AllCategories extends GetView<ApprovalController> {
                             return GestureDetector(
                                 onTap: () {
                                   controller.setApprovalDetails(
-                                      controller.approvalList[index]);
+                                      list[index]);
                                   HapticFeedbackHelper.triggerHapticFeedback(
                                     vibration: VibrateType.mediumImpact,
                                     hapticFeedback: HapticFeedback.mediumImpact,
@@ -104,7 +103,7 @@ class AllCategories extends GetView<ApprovalController> {
                                 child: ApprovalCardVerticalTablet(index: index)
                             );
                           },
-                          itemCount: controller.approvalList.length,
+                          itemCount: list.length,
                         )
 
                       ]),

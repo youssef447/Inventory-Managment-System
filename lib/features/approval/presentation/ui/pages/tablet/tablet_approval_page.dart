@@ -5,7 +5,6 @@ import 'package:inventory_management/core/extensions/extensions.dart';
 import 'package:inventory_management/core/helpers/spacing_helper.dart';
 import 'package:inventory_management/core/theme/app_colors.dart';
 import 'package:inventory_management/features/approval/presentation/controller/approval_controller.dart';
-
 import '../../../../../../core/helpers/orientation_helper.dart';
 import '../../../../../../core/widgets/appbar/custom_app_bar.dart';
 import '../../../../../requests/presentation/ui/widgets/common/horizontal/requests_summary_circles.dart';
@@ -46,12 +45,15 @@ class TabletApprovalPage extends GetView<ApprovalController>  {
                 Obx(
                       () {
                     if (controller.currentCategoryIndex.value == 0) {
-                      return const AllCategories();
+                      return  AllCategories(list: controller.allApprovalList);
                     }
                     if (controller.currentCategoryIndex.value == 1) {
-                      return const AllCategories();
+                      return  AllCategories(list: controller.approvedList);
                     }
-                    return const AllCategories();
+                    if (controller.currentCategoryIndex.value == 2) {
+                      return  AllCategories(list: controller.rejectedList);
+                    }
+                      return  AllCategories(list: controller.canceledList);
                   },
                 ),
 

@@ -41,20 +41,20 @@ class MobileApprovalCard extends GetView<ApprovalController> {
               Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MobileRichTextRow(type: 'Request Date'.tr, value:DateTimeHelper.formatDate(controller.approvalList[index].requestDate),),
-                  MobileRichTextRow(type: 'Request Type'.tr, value: controller.approvalList[index].requestType),
-                  MobileRichTextRow(type: 'Asset Name'.tr, value: controller.approvalList[index].brand + controller.approvalList[index].model),
-                  MobileRichTextRow(type: 'Category'.tr, value: controller.approvalList[index].category),
+                  MobileRichTextRow(type: 'Request Date'.tr, value:DateTimeHelper.formatDate(controller.allApprovalList[index].requestDate),),
+                  MobileRichTextRow(type: 'Request Type'.tr, value: controller.allApprovalList[index].requestType),
+                  MobileRichTextRow(type: 'Asset Name'.tr, value: controller.allApprovalList[index].brand + controller.allApprovalList[index].model),
+                  MobileRichTextRow(type: 'Category'.tr, value: controller.allApprovalList[index].category),
               ]
               ),
-              Spacer(),
+              const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    MobileRichTextRow(type: 'Subcategory', value: controller.approvalList[index].subcategory),
-                    MobileRichTextRow(type: 'Model', value:controller.approvalList[index].model),
-                    MobileRichTextRow(type: 'Brand', value: controller.approvalList[index].brand),
-                    MobileRichTextRow(type: 'Quantity', value: controller.approvalList[index].quantity.toString()),
+                    MobileRichTextRow(type: 'Subcategory', value: controller.allApprovalList[index].subcategory),
+                    MobileRichTextRow(type: 'Model', value:controller.allApprovalList[index].model),
+                    MobileRichTextRow(type: 'Brand', value: controller.allApprovalList[index].brand),
+                    MobileRichTextRow(type: 'Quantity', value: controller.allApprovalList[index].quantity.toString()),
                   ]
               )
             ],
