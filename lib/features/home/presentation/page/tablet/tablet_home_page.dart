@@ -113,13 +113,10 @@ class TabletHomePage extends GetView<HomeController> {
               Obx(
                 () {
                   if (controller.currentCategoryIndex.value == 0) {
-                    return const SingleChildScrollView(
-                        child: TabletAssetsPage());
+                    return const TabletAssetsPage();
                   }
                   if (controller.currentCategoryIndex.value == 1) {
-                    return const SingleChildScrollView(
-                      child: ConsumablesTabletPage(),
-                    );
+                    return const ConsumablesTabletPage();
                   }
                   return const TabletRequestsPage();
                 },

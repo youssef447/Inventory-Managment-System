@@ -22,7 +22,7 @@ class ApprovalEntity {
   final DateTime expectedDelivery;
   final DateTime expectedReturn;
   final String? additionalNote;
-  final String status;
+   String status;
   final List<AttachmentEntity> attachments;
 
   ApprovalEntity({

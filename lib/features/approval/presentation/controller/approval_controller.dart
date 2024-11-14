@@ -38,7 +38,6 @@ selectGridView(){
   void onInit() {
     super.onInit();
     loadAssetsData();
-    _updateApprovalLists();
 }
   // Controllers for search
   TextEditingController searchController = TextEditingController();
@@ -72,12 +71,12 @@ selectGridView(){
         subcategory: 'Computers',
         model: 'Dell 13',
         brand: 'Dell',
-        quantity: 1,
+        quantity: 11111,
         availability: 3,
         priority: 'High',
         expectedDelivery: DateTime.now().add(const Duration(days: 5)),
         expectedReturn: DateTime.now().add(const Duration(days: 30)),
-        status: 'Canceled',
+        status: 'Approved',
       ),
       ApprovalEntity(
         approvalId: '002',
@@ -89,7 +88,7 @@ selectGridView(){
         subcategory: 'Audiovisual',
         model: 'EB-S41',
         brand: 'Epson',
-        quantity: 1,
+        quantity: 2222,
         availability: 1,
         priority: 'Medium',
         expectedDelivery: DateTime.now().add(const Duration(days: 3)),
@@ -98,23 +97,57 @@ selectGridView(){
       ),
       ApprovalEntity(
         approvalId: '003',
-        userName: 'Charlie Brown',
+        userName: 'Diana Prince',
         requestDate: DateTime.now(),
         requestType: 'Replacement',
-        assetName: 'Monitor',
+        assetName: 'Tablet',
         category: 'Electronics',
-        subcategory: 'Displays',
-        model: 'G5',
+        subcategory: 'Mobile Devices',
+        model: 'Galaxy Tab S7',
         brand: 'Samsung',
-        quantity: 2,
-        availability: 0,
-        priority: 'Low',
-        expectedDelivery: DateTime.now().add(const Duration(days: 10)),
-        expectedReturn: DateTime.now().add(const Duration(days: 40)),
+        quantity: 444444,
+        availability: 10,
+        priority: 'High',
+        expectedDelivery: DateTime.now().add(const Duration(days: 7)),
+        expectedReturn: DateTime.now().add(const Duration(days: 30)),
+        status: 'Approved',
+      ),
+      ApprovalEntity(
+        approvalId: '004',
+        userName: 'Diana Prince',
+        requestDate: DateTime.now(),
+        requestType: 'Replacement',
+        assetName: 'Tablet',
+        category: 'Electronics',
+        subcategory: 'Mobile Devices',
+        model: 'Galaxy Tab S7',
+        brand: 'Samsung',
+        quantity: 444444,
+        availability: 10,
+        priority: 'High',
+        expectedDelivery: DateTime.now().add(const Duration(days: 7)),
+        expectedReturn: DateTime.now().add(const Duration(days: 30)),
+        status: 'Approved',
+      ),
+      ApprovalEntity(
+        approvalId: '005',
+        userName: 'Diana Prince',
+        requestDate: DateTime.now(),
+        requestType: 'Replacement',
+        assetName: 'Tablet',
+        category: 'Electronics',
+        subcategory: 'Mobile Devices',
+        model: 'Galaxy Tab S7',
+        brand: 'Samsung',
+        quantity: 444444,
+        availability: 10,
+        priority: 'High',
+        expectedDelivery: DateTime.now().add(const Duration(days: 7)),
+        expectedReturn: DateTime.now().add(const Duration(days: 30)),
         status: 'Rejected',
       ),
       ApprovalEntity(
-        approvalId: '004',
+        approvalId: '006',
         userName: 'Diana Prince',
         requestDate: DateTime.now(),
         requestType: 'Replacement',
@@ -123,15 +156,15 @@ selectGridView(){
         subcategory: 'Mobile Devices',
         model: 'Galaxy Tab S7',
         brand: 'Samsung',
-        quantity: 5,
+        quantity: 444444,
         availability: 10,
         priority: 'High',
         expectedDelivery: DateTime.now().add(const Duration(days: 7)),
         expectedReturn: DateTime.now().add(const Duration(days: 30)),
-        status: 'Approved',
+        status: 'Canceled',
       ),
       ApprovalEntity(
-        approvalId: '004',
+        approvalId: '007',
         userName: 'Diana Prince',
         requestDate: DateTime.now(),
         requestType: 'Replacement',
@@ -140,57 +173,37 @@ selectGridView(){
         subcategory: 'Mobile Devices',
         model: 'Galaxy Tab S7',
         brand: 'Samsung',
-        quantity: 5,
+        quantity: 444444,
         availability: 10,
         priority: 'High',
         expectedDelivery: DateTime.now().add(const Duration(days: 7)),
         expectedReturn: DateTime.now().add(const Duration(days: 30)),
-        status: 'Approved',
+        status: 'Canceled',
       ),
-      ApprovalEntity(
-        approvalId: '004',
-        userName: 'Diana Prince',
-        requestDate: DateTime.now(),
-        requestType: 'Replacement',
-        assetName: 'Tablet',
-        category: 'Electronics',
-        subcategory: 'Mobile Devices',
-        model: 'Galaxy Tab S7',
-        brand: 'Samsung',
-        quantity: 5,
-        availability: 10,
-        priority: 'High',
-        expectedDelivery: DateTime.now().add(const Duration(days: 7)),
-        expectedReturn: DateTime.now().add(const Duration(days: 30)),
-        status: 'Approved',
-      ),
+
     ];
 
-    // Filter the list to include only approvals with status 'Approved'
-    allApprovalList = allApprovals.toList();
+    allApprovalList = List.from(allApprovals);
     approvedList = allApprovals.where((approval) => approval.status == 'Approved').toList();
     rejectedList = allApprovals.where((approval) => approval.status == 'Rejected').toList();
     canceledList = allApprovals.where((approval) => approval.status == 'Canceled').toList();
-
     loading = false;
     update([ApprovalIdConstant.approval]);
   }
 
-  void _updateApprovalLists() {
+  // Method to change the status of an item
+  void changeApprovalStatusById(String approvalId, String newStatus) {
+    final approvals = allApprovalList.where((approval) => approval.approvalId == approvalId).toList();
+    for (var approval in approvals) {
+      approval.status = newStatus;
+    }
+
     approvedList = allApprovalList.where((approval) => approval.status == 'Approved').toList();
     rejectedList = allApprovalList.where((approval) => approval.status == 'Rejected').toList();
     canceledList = allApprovalList.where((approval) => approval.status == 'Canceled').toList();
+    update([ApprovalIdConstant.approval]);
   }
 
-
-  // Method to change the status of an item
-  void changeStatus(String approvalId, String newStatus) {
-    final index = allApprovalList.indexWhere((item) => item.approvalId == approvalId);
-    if (index != -1) {
-      allApprovalList[index] = allApprovalList[index].copyWith(status: newStatus);
-      update();
-    }
-  }
 
   //called when user goes to details of approvals
   setApprovalDetails(ApprovalEntity model) {

@@ -67,13 +67,13 @@ extension GetName on RequestStatus {
   String get getName {
     switch (this) {
       case RequestStatus.pending:
-        return 'Pending';
+        return 'Pending'.tr;
       case RequestStatus.approved:
-        return 'Approved';
+        return 'Approved'.tr;
       case RequestStatus.cancelled:
-        return 'Canceled';
+        return 'Canceled'.tr;
       case RequestStatus.rejected:
-        return 'Rejected';
+        return 'Rejected'.tr;
     }
   }
 }

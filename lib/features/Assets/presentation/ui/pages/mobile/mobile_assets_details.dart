@@ -90,19 +90,19 @@ class MobileAssetsDetails extends GetView<AssetsController> {
                   ),
                   verticalSpace(12),
                   TextSingleField(
-                    typeName: ' Subcategory'.tr,
+                    typeName: 'Subcategory'.tr,
                     controller: controller.subcategoryController,
                     isReadOnly: true,
                   ),
                   verticalSpace(12),
                   TextSingleField(
-                    typeName: ' Model '.tr,
+                    typeName: 'Model'.tr,
                     controller: controller.modelController,
                     isReadOnly: true,
                   ),
                   verticalSpace(12),
                   TextSingleField(
-                    typeName: ' Brand'.tr,
+                    typeName: 'Brand'.tr,
                     controller: controller.brandController,
                     isReadOnly: true,
                   ),
@@ -121,12 +121,12 @@ class MobileAssetsDetails extends GetView<AssetsController> {
                   verticalSpace(12),
                   DateField(
                     dateController: controller.dateReceivedController,
-                    headerName: 'Date Received',
+                    headerName: 'Date Received'.tr,
                   ),
                   verticalSpace(12),
                   DateField(
                     dateController: controller.dateReturnController,
-                    headerName: 'Date Return',
+                    headerName: 'Date Return'.tr,
                   ),
                   verticalSpace(40),
                 ],

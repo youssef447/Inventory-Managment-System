@@ -9,12 +9,15 @@ import 'package:inventory_management/features/approval/presentation/controller/a
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../domain/approval_entity.dart';
 import '../../common/rich_text_row.dart';
 import '../button/approval_button_vertical.dart';
 
 class ApprovalCardHorizontal extends GetView<ApprovalController> {
   final int index;
-  const ApprovalCardHorizontal({super.key,required this.index});
+  final List<ApprovalEntity> list;
+
+  const ApprovalCardHorizontal({super.key,required this.index , required this.list});
 
   @override
   Widget build(BuildContext context) {
@@ -33,28 +36,28 @@ class ApprovalCardHorizontal extends GetView<ApprovalController> {
               horizontalSpace(12),
               Text('Mai Mohamed',style:  AppTextStyles.font18BlackMediumCairo,),
               const Spacer(),
-              RichTextRow(type: 'Request Date', value:DateTimeHelper.formatDate(controller.allApprovalList[index].requestDate),),
+              RichTextRow(type: 'Request Date',  value: DateTimeHelper.formatDate(list[index].requestDate),),
 
             ],
           ),
           verticalSpace(10),
           Row(
             children: [
-              ColumnText(type: 'Request Type', value: controller.allApprovalList[index].requestType),
+              ColumnText(type: 'Request Type', value: list[index].requestType),
               horizontalSpace(16),
-              ColumnText(type: 'Asset Name', value: controller.allApprovalList[index].brand + controller.allApprovalList[index].model),
+              ColumnText(type: 'Asset Name', value: list[index].requestType + list[index].model),
               horizontalSpace(16),
-              ColumnText(type: 'Category', value: controller.allApprovalList[index].category),
+              ColumnText(type: 'Category', value: list[index].category),
               horizontalSpace(16),
-              ColumnText(type: 'Subcategory', value: controller.allApprovalList[index].subcategory),
+              ColumnText(type: 'Subcategory', value: list[index].subcategory),
               horizontalSpace(16),
-              ColumnText(type: 'Model', value:controller.allApprovalList[index].model),
+              ColumnText(type: 'Model', value:list[index].model),
               horizontalSpace(16),
-              ColumnText(type: 'Brand', value: controller.allApprovalList[index].brand),
+              ColumnText(type: 'Brand', value: list[index].brand),
               horizontalSpace(16),
-              ColumnText(type: 'Quantity', value: controller.allApprovalList[index].quantity.toString()),
-              Spacer(),
-              ApprovalButtonVertical()
+              ColumnText(type: 'Quantity', value: list[index].quantity.toString()),
+              const Spacer(),
+              ApprovalButtonVertical(approvalId:list[index].approvalId,)
 
             ],
           )

@@ -15,8 +15,8 @@ import '../../../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../controller/approval_controller.dart';
 
 class ApprovalButtons extends GetView<ApprovalController> {
-  const ApprovalButtons({super.key,});
-
+  const ApprovalButtons({super.key,required this.approvalId});
+  final String approvalId;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,8 @@ class ApprovalButtons extends GetView<ApprovalController> {
                   subTitle:
                   'Are You sure You Want to Reject this Approve ?'.tr,
                   onConfirm: () {
-
+                    controller.changeApprovalStatusById(approvalId , 'Rejected');
+                    Get.back();
                   },
                 ),
                 context: context,
@@ -84,6 +85,8 @@ class ApprovalButtons extends GetView<ApprovalController> {
                 vibration: VibrateType.mediumImpact,
                 hapticFeedback: HapticFeedback.mediumImpact,
               );
+              controller.changeApprovalStatusById(approvalId , 'Approved');
+
             },
             child: Container(
               height: 40,

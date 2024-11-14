@@ -22,17 +22,16 @@ class ConsumablesTabletPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: GetBuilder<ConsumablesController>(
-          init: ConsumablesController(),
-          id: ConsumablesIdConstant.consumablesData,
-          builder: (controller) {
-            return controller.loading
-                ? const AppCircleProgress()
-                : controller.consumablesList.isEmpty
-                    ? const NoDataGif()
-                    : DefaultDataTable(
+    return GetBuilder<ConsumablesController>(
+        init: ConsumablesController(),
+        id: ConsumablesIdConstant.consumablesData,
+        builder: (controller) {
+          return controller.loading
+              ? const AppCircleProgress()
+              : controller.consumablesList.isEmpty
+                  ? const NoDataGif()
+                  : Expanded(
+                    child: DefaultDataTable(
                         columns: ConsumablesColumnsName
                             .tableColumnsConsumablesName
                             .map(
@@ -162,7 +161,7 @@ class ConsumablesTabletPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  controller.consumablesList[index].status,
+                                  controller.consumablesList[index].status.tr,
                                   style: AppTextStyles.font16BlackRegularCairo
                                       .copyWith(
                                           color: controller
@@ -176,8 +175,8 @@ class ConsumablesTabletPage extends StatelessWidget {
                             ],
                           ),
                         ).toList(),
-                      );
-          }),
-    );
+                      ),
+                  );
+        });
   }
 }

@@ -11,11 +11,14 @@ import 'package:inventory_management/features/approval/presentation/controller/a
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../domain/approval_entity.dart';
 import '../../common/approval_buttons.dart';
 
 class MobileApprovalCard extends GetView<ApprovalController> {
   final int index;
-  const MobileApprovalCard({super.key,required this.index});
+  final List<ApprovalEntity> list;
+
+  const MobileApprovalCard({super.key,required this.index, required this.list});
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +45,10 @@ class MobileApprovalCard extends GetView<ApprovalController> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    MobileRichTextRow(type: 'Request Date'.tr, value:DateTimeHelper.formatDate(controller.allApprovalList[index].requestDate),),
-                    MobileRichTextRow(type: 'Request Type'.tr, value: controller.allApprovalList[index].requestType),
-                    MobileRichTextRow(type: 'Asset Name'.tr, value: controller.allApprovalList[index].brand + controller.allApprovalList[index].model),
-                    MobileRichTextRow(type: 'Category'.tr, value: controller.allApprovalList[index].category),
+                    MobileRichTextRow(type: 'Request Date'.tr, value: DateTimeHelper.formatDate(list[index].requestDate),),
+                    MobileRichTextRow(type: 'Request Type'.tr, value: list[index].requestType),
+                    MobileRichTextRow(type: 'Asset Name'.tr, value: list[index].brand + list[index].model),
+                    MobileRichTextRow(type: 'Category'.tr, value: list[index].category),
                 ]
                 ),
               ),
@@ -54,10 +57,10 @@ class MobileApprovalCard extends GetView<ApprovalController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      MobileRichTextRow(type: 'Subcategory', value: controller.allApprovalList[index].subcategory),
-                      MobileRichTextRow(type: 'Model', value:controller.allApprovalList[index].model),
-                      MobileRichTextRow(type: 'Brand', value: controller.allApprovalList[index].brand),
-                      MobileRichTextRow(type: 'Quantity', value: controller.allApprovalList[index].quantity.toString()),
+                      MobileRichTextRow(type: 'Subcategory', value: list[index].subcategory),
+                      MobileRichTextRow(type: 'Model', value:list[index].model),
+                      MobileRichTextRow(type: 'Brand', value: list[index].brand),
+                      MobileRichTextRow(type: 'Quantity', value: list[index].quantity.toString()),
                     ]
                 ),
               )
@@ -66,7 +69,7 @@ class MobileApprovalCard extends GetView<ApprovalController> {
 
 
           verticalSpace(10),
-         const ApprovalButtons()
+          ApprovalButtons(approvalId: list[index].approvalId,)
 
         ],
       ),

@@ -4,5 +4,6 @@
 
 abstract class ApprovalIdConstant{
   static const String approval = 'approval';
+  static const String changeApprovalStatus = 'changeApprovalStatus';
 
 }

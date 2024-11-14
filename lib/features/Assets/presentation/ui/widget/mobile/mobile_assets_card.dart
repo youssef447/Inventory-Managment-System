@@ -1,3 +1,5 @@
+// by : mohamed ashraf
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -41,7 +43,7 @@ class MobileAssetsCard extends GetView<AssetsController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${'Assets ID'.tr} : ${controller.assetsList[index].assetId}',
+                    '${'Asset ID'.tr} : ${controller.assetsList[index].assetId}',
                     style: AppTextStyles.font14BlackCairoMedium,
                   ),
                   verticalSpace(3),

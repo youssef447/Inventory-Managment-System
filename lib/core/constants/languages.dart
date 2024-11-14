@@ -13,7 +13,6 @@ class Languages extends Translations {
         'en_US': {
           // add english translations here
           'Inventory Management': 'Inventory Management',
-          //-------------------------------------------- approval -------------------
           'All': 'All',
           'Approved': 'Approved',
           'Rejected': 'Rejected',
@@ -84,14 +83,30 @@ class Languages extends Translations {
           'Are You sure You Want to Cancel this Request ?':
               'Are You sure You Want to Cancel this Request ?',
           'Request Delivery': 'Request Delivery',
+
+          "Asset ID": "Asset ID",
+          "Asset Name": "Asset Name",
+          "Next Maintenance Schedule": "Next Maintenance Schedule",
+          "Date Received": "Date Received",
+          "Name": "Name",
           'Consumable Request': 'Consumable Request',
-          'Asset Request': 'Asset Request',
+          'Asset Request': 'Asset Request', "Maintenance": "Maintenance",
+          "Returned": "Returned",
+          "InUse": "InUse",
+          "Out Stock": "Out Stock",
+          "In Stock": "In Stock",
+          "Availability": "Availability",
+          "SubCategory": "SubCategory",
+          "Additional Notes": "Additional Notes",
+          "No Data Found": "No Data Found",
+          "Assets ID": "Assets ID",
+          "Date Receive": "Date Receive",
         },
 
         // ****************************************** ARABIC LANGUAGE ******************************************
         'ar_EG': {
           // add arabic translations here
-          //-------------------------------------------- approval -------------------
+
           'Inventory Management': 'إدارة المخزون',
 
           'All': 'الكل',
@@ -160,8 +175,28 @@ class Languages extends Translations {
           "Are You sure You Want to Cancel this Request ?":
               "هل أنت متأكد أنك تريد إلغاء هذا الطلب؟",
           'Request Delivery': 'تاريخ تسليم الطلب',
+
           'Consumable Request': 'طلب مستهلك',
           'Asset Request': 'طلب سلعة',
+
+          "Asset ID": "معرف الأصل",
+          "Asset Name": "اسم الأصل",
+          "Next Maintenance Schedule": "الجدول الزمني للصيانة القادمة",
+          "Date Received": "تاريخ الاستلام",
+          "Date Return": "تاريخ الإرجاع",
+          "Name": "الاسم",
+          "Maintenance": "الصيانة",
+          "Returned": "تم الإرجاع",
+          "InUse": "قيد الاستخدام",
+          "Expired": "منتهي الصلاحية",
+          "Out Stock": "غير متوفر",
+          "In Stock": "متوفر",
+          "Availability": "التوفر",
+          "Additional Notes": "ملاحظات إضافية",
+          "No Data Found": "لم يتم العثور على بيانات",
+          "Assets ID": "معرف الأصول",
+          "Date Receive": "تاريخ الاستلام",
+          "Consumables Details": "تفاصيل المستهلكات",
         },
       };
 }

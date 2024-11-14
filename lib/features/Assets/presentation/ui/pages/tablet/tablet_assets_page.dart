@@ -22,16 +22,15 @@ class TabletAssetsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: GetBuilder<AssetsController>(
-          id: AssetsIdConstant.assetsData,
-          builder: (controller) {
-            return controller.loading
-                ? const AppCircleProgress()
-                : controller.assetsList.isEmpty
-                    ? const NoDataGif()
-                    : DefaultDataTable(
+    return GetBuilder<AssetsController>(
+        id: AssetsIdConstant.assetsData,
+        builder: (controller) {
+          return controller.loading
+              ? const Center(child: AppCircleProgress())
+              : controller.assetsList.isEmpty
+                  ? const NoDataGif()
+                  : Expanded(
+                    child: DefaultDataTable(
                         columns: AssetsColumnsName.tableColumnsName
                             .map(
                               (element) => DataColumn(
@@ -197,7 +196,7 @@ class TabletAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  controller.assetsList[index].status,
+                                  controller.assetsList[index].status.tr,
                                   style: AppTextStyles.font16BlackRegularCairo
                                       .copyWith(
                                           color: controller.assetsList[index]
@@ -209,8 +208,8 @@ class TabletAssetsPage extends StatelessWidget {
                             ],
                           ),
                         ).toList(),
-                      );
-          }),
-    );
+                      ),
+                  );
+        });
   }
 }
