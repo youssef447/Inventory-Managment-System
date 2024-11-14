@@ -31,7 +31,7 @@ class ConsumablesTabletPage extends StatelessWidget {
               : controller.consumablesList.isEmpty
                   ? const NoDataGif()
                   : Expanded(
-                    child: DefaultDataTable(
+                      child: DefaultDataTable(
                         columns: ConsumablesColumnsName
                             .tableColumnsConsumablesName
                             .map(
@@ -167,6 +167,7 @@ class ConsumablesTabletPage extends StatelessWidget {
                                           color: controller
                                               .consumablesList[index]
                                               .status
+                                              .tr
                                               .getColor),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -176,7 +177,7 @@ class ConsumablesTabletPage extends StatelessWidget {
                           ),
                         ).toList(),
                       ),
-                  );
+                    );
         });
   }
 }
