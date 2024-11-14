@@ -49,11 +49,11 @@ class MobileRequestCard extends GetView<RequestsController> {
                       style: AppTextStyles.font12SecondaryBlackCairoMedium,
                       children: [
                         TextSpan(
-                          text: controller.requests[index].status,
+                          text: controller.requests[index].status.tr,
                           style: AppTextStyles.font12SecondaryBlackCairoMedium
                               .copyWith(
                                   color: controller
-                                      .requests[index].status.getColor),
+                                      .requests[index].status.tr.getColor),
                         )
                       ]),
                 ),

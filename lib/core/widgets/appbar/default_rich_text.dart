@@ -24,7 +24,7 @@ class DefaultRichText extends StatelessWidget {
       textAlign: TextAlign.start,
       overflow: TextOverflow.ellipsis,
       text: TextSpan(
-        text: '${label.tr} :',
+        text: '${label.tr}: ',
         style: labelStyle ?? AppTextStyles.font14SecondaryBlackCairoMedium,
         children: [
           TextSpan(

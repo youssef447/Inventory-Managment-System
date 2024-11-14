@@ -26,7 +26,8 @@ abstract class GetDatePickerHelper {
 
     return showCalendarDatePicker2Dialog(
       context: context,
-      dialogSize: isTablet ? Size(550.w, 390.h) : Size(365.w, 350.h),
+      dialogSize:
+          isTablet ? Size(Get.width / 2.2, Get.height / 2) : Size(365.w, 350.h),
       borderRadius: BorderRadius.circular(10.r),
       dialogBackgroundColor: AppColors.dialog,
       config: CalendarDatePicker2WithActionButtonsConfig(
@@ -80,7 +81,7 @@ abstract class GetDatePickerHelper {
         hideMonthPickerDividers: true,
         hideYearPickerDividers: true,
         buttonPadding: EdgeInsets.symmetric(
-          horizontal: isTablet ? 60.w : 25.w,
+          horizontal: 15.w,
         ),
         customModePickerIcon: Padding(
           padding: EdgeInsets.symmetric(
@@ -97,7 +98,7 @@ abstract class GetDatePickerHelper {
         okButton: Container(
           alignment: Alignment.center,
           height: isTablet ? 40.h : 30.h,
-          width: isTablet ? 150.w : 120.w,
+          width: 110.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.r),
             color: AppColors.primary,
@@ -113,7 +114,7 @@ abstract class GetDatePickerHelper {
         cancelButton: Container(
           alignment: Alignment.center,
           height: isTablet ? 40.h : 30.h,
-          width: isTablet ? 150.w : 120.w,
+          width: 110.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8.r),
             color: AppColors.darkWhiteShadow,

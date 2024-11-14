@@ -114,7 +114,7 @@ class TabletRequestsPage extends GetView<RequestsController> {
                                           .font16BlackRegularCairo
                                           .copyWith(
                                         color: controller
-                                            .requests[index].status.getColor,
+                                            .requests[index].status.tr.getColor,
                                       ),
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,

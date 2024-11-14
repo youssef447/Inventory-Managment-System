@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../features/home/controller/home_controller.dart';
 
 ///Youssef Ashraf:
 ///Adding Up Down Transition to a given child
@@ -26,38 +29,38 @@ class UpDownAnimationState extends State<UpDownAnimation>
   late AnimationController controller;
   late Animation<Offset> translateAnimation;
   late Animation<double> fadeAnimation;
-  //final bool isAnimatable = Get.find<HomeController>().isAnimatable;
+  final bool isAnimatable = Get.find<HomeController>().isAnimatable;
 
   @override
   void initState() {
     super.initState();
-    //if (isAnimatable) {
-    controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    );
-    translateAnimation = Tween<Offset>(
-      begin: widget.reverse ?? false
-          ? Offset(0, widget.y ?? 1)
-          : Offset(0, widget.y ?? -1),
-      end: Offset.zero,
-    ).animate(
-      CurvedAnimation(
-        parent: controller,
-        curve: Curves.fastEaseInToSlowEaseOut,
-      ),
-    );
-    fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(
-        parent: controller,
-        curve: Curves.ease,
-      ),
-    );
-    Future.delayed(Duration(milliseconds: (500 * widget.delay).round()))
-        .then((value) {
-      controller.forward();
-    });
-    //}
+    if (isAnimatable) {
+      controller = AnimationController(
+        vsync: this,
+        duration: const Duration(seconds: 1),
+      );
+      translateAnimation = Tween<Offset>(
+        begin: widget.reverse ?? false
+            ? Offset(0, widget.y ?? 1)
+            : Offset(0, widget.y ?? -1),
+        end: Offset.zero,
+      ).animate(
+        CurvedAnimation(
+          parent: controller,
+          curve: Curves.fastEaseInToSlowEaseOut,
+        ),
+      );
+      fadeAnimation = Tween<double>(begin: 0, end: 1).animate(
+        CurvedAnimation(
+          parent: controller,
+          curve: Curves.ease,
+        ),
+      );
+      Future.delayed(Duration(milliseconds: (500 * widget.delay).round()))
+          .then((value) {
+        controller.forward();
+      });
+    }
   }
 
   @override
@@ -68,15 +71,14 @@ class UpDownAnimationState extends State<UpDownAnimation>
 
   @override
   Widget build(BuildContext context) {
-    return /* isAnimatable
-        ? */
-        FadeTransition(
-      opacity: fadeAnimation,
-      child: SlideTransition(
-        position: translateAnimation,
-        child: widget.child,
-      ),
-    );
-    //  : widget.child;
+    return isAnimatable
+        ? FadeTransition(
+            opacity: fadeAnimation,
+            child: SlideTransition(
+              position: translateAnimation,
+              child: widget.child,
+            ),
+          )
+        : widget.child;
   }
 }

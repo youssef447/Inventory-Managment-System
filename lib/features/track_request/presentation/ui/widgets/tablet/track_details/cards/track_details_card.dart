@@ -34,7 +34,7 @@ class TabletTrackDeatailsCard extends GetView<TrackRequestController> {
               ),
               _BuildIconLabel(
                 '${'Approval'.tr}: ',
-                '${model.status} ${'Approval'.tr}',
+                model.status.tr,
                 AppAssets.doc,
               ),
               _BuildIconLabel(
@@ -99,7 +99,7 @@ class _BuildIconLabel extends StatelessWidget {
               TextSpan(
                 text: value,
                 style: AppTextStyles.font14BlackCairoMedium
-                    .copyWith(color: value.split(' ')[0].getColor),
+                    .copyWith(color: value.getColor),
               ),
             ],
           ),

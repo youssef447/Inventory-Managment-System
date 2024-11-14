@@ -51,12 +51,13 @@ class TabletCategoryFilterCard extends StatelessWidget {
         style: isTablet
             ? AppTextStyles.font20SecondaryBlackSemiBoldCairo.copyWith(
                 fontWeight:
-                    selected ? AppFontWeights.semiBold : AppFontWeights.medium,
-                color: selected ? AppColors.textButton : AppColors.inverseBase)
+                    selected ? AppFontWeights.extraBold : AppFontWeights.medium,
+                color: AppColors.text,
+              )
             : AppTextStyles.font14BlackCairo.copyWith(
-                color: selected ? AppColors.textButton : AppColors.inverseBase,
+                color: AppColors.text,
                 fontWeight:
-                    selected ? AppFontWeights.semiBold : AppFontWeights.medium,
+                    selected ? AppFontWeights.extraBold : AppFontWeights.medium,
               ),
       ),
     ]);

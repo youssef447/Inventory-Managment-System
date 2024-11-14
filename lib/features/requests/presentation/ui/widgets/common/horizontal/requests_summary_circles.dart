@@ -29,7 +29,7 @@ class HorizontalRequstsSummaryCircles extends GetView<RequestsController> {
                 CircleAvatar(
                   radius: 17.r,
                   backgroundColor: RequestStatusConstants
-                      .requestsStatus[index].getName.getColor,
+                      .requestsStatus[index].getName.tr.getColor,
                   child: SvgPicture.asset(
                     RequestStatusConstants.requestsStatus[index].getAsset,
                   ),

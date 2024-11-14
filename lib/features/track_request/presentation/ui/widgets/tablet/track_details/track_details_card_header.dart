@@ -34,7 +34,7 @@ class TrackDetailsCardHeader extends StatelessWidget {
                 style: AppTextStyles.font14SecondaryBlackCairoMedium,
                 children: [
                   TextSpan(
-                    text: model.priority,
+                    text: model.priority.tr,
                     style: AppTextStyles.font14BlackCairoMedium,
                   )
                 ],

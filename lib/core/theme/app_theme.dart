@@ -258,7 +258,7 @@ abstract class AppTheme {
     'indicator': const Color(0xffE9E9E9),
     'starredCard': Colors.white,
     'black': const Color(0xff2D2D2D),
-    'secondaryBlack': Colors.white,
+    'secondaryBlack': const Color(0xff797979),
     'whiteShadow': const Color(0xD9D9D9E0),
     'darkWhiteShadow': const Color(0x9E9E9E9E),
     'white': Colors.white,

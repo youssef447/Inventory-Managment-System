@@ -40,11 +40,14 @@ class MobileRequestFormPage extends GetView<RequestAssetsController> {
                     title: 'Request New Asset'.tr,
                   ),
                   verticalSpace(15),
-                  Image.asset(
-                    model.image,
-                    width: 60.w,
-                    height: 60.h,
-                    fit: BoxFit.cover,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8.r),
+                    child: Image.asset(
+                      model.image,
+                      width: 60.w,
+                      height: 60.h,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                   verticalSpace(15),
                   LabeledFormField(

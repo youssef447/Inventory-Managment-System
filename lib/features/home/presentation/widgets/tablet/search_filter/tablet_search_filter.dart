@@ -55,9 +55,7 @@ class TabletSearchFilter extends GetView<HomeController> {
                       maxLines: 1,
                       hintText: 'Search Here...'.tr,
                       collapsed: true,
-                      hintStyle: context.isTablett
-                          ? AppTextStyles.font16BlackMediumCairo
-                          : AppTextStyles.font12BlackCairo,
+                      hintStyle: AppTextStyles.font16SecondaryBlackCairoMedium,
                       controller: controller.searchController,
                       onChanged: (value) {
                         /*   if (index == 1) {
@@ -84,8 +82,8 @@ class TabletSearchFilter extends GetView<HomeController> {
                           : null,
                       prefixIcon: SvgPicture.asset(
                         AppAssets.search,
-                        width: context.isTablett ? 24.w : 16.0.w,
-                        height: context.isTablett ? 24.h : 16.0.h,
+                        width: 24.w,
+                        height: 24.h,
                       ),
                     ),
                   ),

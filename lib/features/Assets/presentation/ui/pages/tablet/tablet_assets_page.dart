@@ -119,7 +119,7 @@ class TabletAssetsPage extends StatelessWidget {
                                           controller
                                               .assetsList[index].dateReturn!,
                                         )
-                                      : 'Not Applicable',
+                                      : 'Not Applicable'.tr,
                                   style: controller
                                               .assetsList[index].dateReturn !=
                                           null
@@ -144,8 +144,8 @@ class TabletAssetsPage extends StatelessWidget {
                                               .maintenanceFrequency !=
                                           null
                                       ? controller.assetsList[index]
-                                          .maintenanceFrequency!
-                                      : 'Not Applicable',
+                                          .maintenanceFrequency!.tr
+                                      : 'Not Applicable'.tr,
                                   style: controller.assetsList[index]
                                               .maintenanceFrequency !=
                                           null
@@ -165,7 +165,7 @@ class TabletAssetsPage extends StatelessWidget {
                                           controller.assetsList[index]
                                               .nextMaintenanceSchedule!,
                                         )
-                                      : 'Not Applicable',
+                                      : 'Not Applicable'.tr,
                                   style: controller.assetsList[index]
                                               .nextMaintenanceSchedule !=
                                           null
@@ -184,7 +184,7 @@ class TabletAssetsPage extends StatelessWidget {
                                           controller.assetsList[index]
                                               .expirationDate!,
                                         )
-                                      : 'Not Applicable',
+                                      : 'Not Applicable'.tr,
                                   style: controller.assetsList[index]
                                               .expirationDate !=
                                           null

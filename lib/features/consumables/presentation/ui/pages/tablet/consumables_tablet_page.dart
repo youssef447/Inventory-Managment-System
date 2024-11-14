@@ -149,7 +149,7 @@ class ConsumablesTabletPage extends StatelessWidget {
                                           controller.consumablesList[index]
                                               .expirationDate!,
                                         )
-                                      : 'Not Applicable',
+                                      : 'Not Applicable'.tr,
                                   style: controller.consumablesList[index]
                                               .expirationDate !=
                                           null

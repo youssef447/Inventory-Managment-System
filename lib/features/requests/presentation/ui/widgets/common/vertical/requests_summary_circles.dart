@@ -42,7 +42,7 @@ class VerticalRequstsSummaryCircles extends GetView<HomeController> {
                         CircleAvatar(
                           radius: context.isPhone ? 10 : 17.r,
                           backgroundColor: RequestStatusConstants
-                              .requestsStatus[0].getName.getColor,
+                              .requestsStatus[0].getName.tr.getColor,
                           child: SvgPicture.asset(
                             width: 20.w,
                             height: 20.h,
@@ -74,7 +74,7 @@ class VerticalRequstsSummaryCircles extends GetView<HomeController> {
                         CircleAvatar(
                           radius: context.isPhone ? 10 : 17.r,
                           backgroundColor: RequestStatusConstants
-                              .requestsStatus[1].getName.getColor,
+                              .requestsStatus[1].getName.tr.getColor,
                           child: SvgPicture.asset(
                             width: 16.w,
                             height: 16.h,
@@ -122,7 +122,7 @@ class VerticalRequstsSummaryCircles extends GetView<HomeController> {
                         CircleAvatar(
                           radius: context.isPhone ? 10 : 17.r,
                           backgroundColor: RequestStatusConstants
-                              .requestsStatus[2].getName.getColor,
+                              .requestsStatus[2].getName.tr.getColor,
                           child: SvgPicture.asset(
                             width: 12.w,
                             height: 12.h,
@@ -154,7 +154,7 @@ class VerticalRequstsSummaryCircles extends GetView<HomeController> {
                         CircleAvatar(
                           radius: context.isPhone ? 10 : 17.r,
                           backgroundColor: RequestStatusConstants
-                              .requestsStatus[3].getName.getColor,
+                              .requestsStatus[3].getName.tr.getColor,
                           child: SvgPicture.asset(
                             width: 20.w,
                             height: 20.h,

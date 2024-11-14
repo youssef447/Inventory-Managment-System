@@ -68,7 +68,7 @@ class _BuildAvatarArrow extends StatelessWidget {
               style: AppTextStyles.font14BlackCairoMedium,
             ),
             Text(
-              postion,
+              postion.tr,
               style: AppTextStyles.font12SecondaryBlackCairoMedium,
             ),
           ],

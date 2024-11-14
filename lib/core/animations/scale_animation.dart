@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../features/home/controller/home_controller.dart';
 
 ///Youssef Ashraf:
 ///Adding Scale Effect to a given child
@@ -22,36 +25,36 @@ class ScaleAnimationState extends State<ScaleAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> scaleAnimation, fadeAnimation;
-  //final bool isAnimatable = Get.find<HomeController>().isAnimatable;
+  final bool isAnimatable = Get.find<HomeController>().isAnimatable;
   @override
   void initState() {
     super.initState();
-    //if (isAnimatable) {
-    controller = AnimationController(
-      vsync: this,
-      duration: widget.duration ??
-          const Duration(
-            milliseconds: 600,
-          ),
-    );
+    if (isAnimatable) {
+      controller = AnimationController(
+        vsync: this,
+        duration: widget.duration ??
+            const Duration(
+              milliseconds: 600,
+            ),
+      );
 
-    scaleAnimation = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(
-        parent: controller,
-        curve: Curves.ease,
-      ),
-    );
-    fadeAnimation = Tween<double>(begin: -0.5, end: 1).animate(
-      CurvedAnimation(
-        parent: controller,
-        curve: Curves.ease,
-      ),
-    );
-    Future.delayed(Duration(milliseconds: (500 * widget.delay).round()))
-        .then((value) {
-      controller.forward();
-    });
-    // }
+      scaleAnimation = Tween<double>(begin: 0, end: 1).animate(
+        CurvedAnimation(
+          parent: controller,
+          curve: Curves.ease,
+        ),
+      );
+      fadeAnimation = Tween<double>(begin: -0.5, end: 1).animate(
+        CurvedAnimation(
+          parent: controller,
+          curve: Curves.ease,
+        ),
+      );
+      Future.delayed(Duration(milliseconds: (500 * widget.delay).round()))
+          .then((value) {
+        controller.forward();
+      });
+    }
   }
 
   @override
@@ -62,15 +65,14 @@ class ScaleAnimationState extends State<ScaleAnimation>
 
   @override
   Widget build(BuildContext context) {
-    return /*  isAnimatable
-        ?  */
-        FadeTransition(
-      opacity: fadeAnimation,
-      child: ScaleTransition(
-        scale: scaleAnimation,
-        child: widget.child,
-      ),
-    );
-    // : widget.child;
+    return isAnimatable
+        ? FadeTransition(
+            opacity: fadeAnimation,
+            child: ScaleTransition(
+              scale: scaleAnimation,
+              child: widget.child,
+            ),
+          )
+        : widget.child;
   }
 }

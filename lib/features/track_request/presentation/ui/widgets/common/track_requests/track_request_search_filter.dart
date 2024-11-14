@@ -38,7 +38,7 @@ class TrackRequestSearchFilter extends GetView<TrackRequestController> {
                         ? AppColors.field
                         : AppColors.white,
                     hintText:
-                        'Search by Name, Category, Subcategory, Brand, Or Model'
+                        'Search By Name, Category, Subcategory, Brand, Or Model'
                             .tr,
                     collapsed: true,
                     hintStyle: context.isTablett

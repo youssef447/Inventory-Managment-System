@@ -23,7 +23,7 @@ class RequestCategoryFilter extends GetView<RequestsController> {
         ),
         decoration: BoxDecoration(
           color: AppColors.card,
-          borderRadius: BorderRadius.circular(2.r),
+          borderRadius: BorderRadius.circular(6.r),
         ),
         child: Obx(
           () {
@@ -43,11 +43,11 @@ class RequestCategoryFilter extends GetView<RequestsController> {
                       duration: const Duration(milliseconds: 200),
                       padding: EdgeInsets.symmetric(
                         horizontal: 10.w,
-                        vertical: 9.h,
+                        vertical: 6.h,
                       ),
                       decoration: BoxDecoration(
                         color: selected ? AppColors.primary : AppColors.card,
-                        borderRadius: BorderRadius.circular(2.r),
+                        borderRadius: BorderRadius.circular(6.r),
                       ),
                       child: Text(
                         InventoryCategories.categories[index].tr,
