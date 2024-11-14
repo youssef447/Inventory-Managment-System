@@ -35,18 +35,15 @@ class TextSingleField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Align(
-          alignment: isArabic ? Alignment.centerRight : Alignment.centerLeft,
-          child: Text(
-            typeName,
-            style: AppTextStyles.font16BlackMediumCairo,
-          ),
+        Text(
+          typeName,
+          style: AppTextStyles.font16BlackMediumCairo,
         ),
         verticalSpace(12),
         AppTextFormField(
           helperText: helperText,
-          textAlign: isArabic ? TextAlign.right : TextAlign.left,
           hintText: hintText,
           maxLines: 1,
           prefixIcon: icon,

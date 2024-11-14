@@ -52,7 +52,7 @@ class ConsumablesController extends GetxController {
           unitOfMeasurement: 'pieces',
           usageFrequency: 'daily',
           expirationDate: DateTime(2024, 7, 10),
-          status: 'Maintenance',
+          status: 'Maintenance'.tr,
         ),
         ConsumablesEntity(
           consumableId: 'C002',
@@ -66,7 +66,7 @@ class ConsumablesController extends GetxController {
           unitOfMeasurement: 'liters',
           usageFrequency: 'as needed',
           expirationDate: DateTime(2025, 6, 15),
-          status: 'InUse',
+          status: 'InUse'.tr,
         ),
         ConsumablesEntity(
           consumableId: 'C001',
@@ -80,7 +80,7 @@ class ConsumablesController extends GetxController {
           unitOfMeasurement: 'pieces',
           usageFrequency: 'daily',
           expirationDate: null,
-          status: 'Expired',
+          status: 'Expired'.tr,
         ),
       ];
       loading = false;

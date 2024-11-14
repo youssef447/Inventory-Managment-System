@@ -78,6 +78,7 @@ class MobileApprovalDetailsPage extends GetView<ApprovalController> {
                             ),
                             horizontalSpace(12),
                             Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 MobileRichTextRow(
                                     type: 'Department'.tr, value: 'Marketing'),
@@ -222,7 +223,7 @@ class MobileApprovalDetailsPage extends GetView<ApprovalController> {
                 verticalSpace(24),
 
 
-                const ApprovalButtons(),
+                 ApprovalButtons(approvalId:  controller.allApprovalList[index].approvalId,),
                 verticalSpace(24),
 
 

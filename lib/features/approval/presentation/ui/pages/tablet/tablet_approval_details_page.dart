@@ -9,7 +9,6 @@ import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../../home/presentation/widgets/common/horizontal/rectangled_filter_card.dart';
-import '../../../../../request_new_asset/presentation/ui/widgets/attachments/attachments_section.dart';
 import '../../../controller/approval_controller.dart';
 import '../../widget/common/approval_buttons.dart';
 
@@ -153,7 +152,7 @@ class TabletApprovalDetailsPage extends GetView<ApprovalController> {
                   Expanded(
                     child: LabeledFormField(
                       controller: controller.availabilityController,
-                      label: 'Availability',
+                      label: 'Availability'.tr,
                     ),
                   ),
                   horizontalSpace(15),
@@ -201,7 +200,7 @@ class TabletApprovalDetailsPage extends GetView<ApprovalController> {
                  alignment: AlignmentDirectional.bottomEnd,
                  child:  SizedBox(
                    width: Get.width * 0.3,
-                   child:   const ApprovalButtons(),
+                   child: ApprovalButtons(approvalId:  controller.allApprovalList[index].approvalId,),
                  ),
                )
             ],

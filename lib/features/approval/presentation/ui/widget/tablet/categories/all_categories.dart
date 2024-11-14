@@ -51,7 +51,6 @@ class AllCategories extends GetView<ApprovalController> {
                               onTap: () {
                                 controller.setApprovalDetails(
                                     list[index]);
-
                                 HapticFeedbackHelper.triggerHapticFeedback(
                                   vibration: VibrateType.mediumImpact,
                                   hapticFeedback: HapticFeedback.mediumImpact,
@@ -64,7 +63,7 @@ class AllCategories extends GetView<ApprovalController> {
                                   },
                                 );
                               },
-                              child: ApprovalCardHorizontal(index: index)
+                              child: ApprovalCardHorizontal(index: index ,list:list)
                           );
                         },
                         itemCount: list.length,
@@ -100,7 +99,7 @@ class AllCategories extends GetView<ApprovalController> {
                                   //   },
                                   // );
                                 },
-                                child: ApprovalCardVerticalTablet(index: index)
+                                child: ApprovalCardVerticalTablet(index: index, list:list)
                             );
                           },
                           itemCount: list.length,

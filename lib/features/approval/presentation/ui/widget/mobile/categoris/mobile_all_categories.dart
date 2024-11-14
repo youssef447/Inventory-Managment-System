@@ -59,7 +59,7 @@ class MobileAllCategories extends GetView<ApprovalController> {
                           //   },
                           // );
                         },
-                        child: MobileApprovalCard(index: index)
+                        child: MobileApprovalCard(index: index, list: list,)
                     );
                   },
                   itemCount: list.length,
