@@ -44,7 +44,7 @@ class ApprovalCardVerticalTablet extends StatelessWidget {
             RichTextRow(type: 'Category'.tr, value: list[index].category),
             RichTextRow(type: 'Subcategory'.tr, value: list[index].subcategory),
             RichTextRow(type: 'Model'.tr, value:list[index].model),
-            RichTextRow(type: 'Brand'.tr, value: list[index].status),
+            RichTextRow(type: 'Brand'.tr, value: list[index].brand),
             RichTextRow(type: 'Quantity'.tr, value: list[index].toString()),
             verticalSpace(10),
             ApprovalButtons(approvalId: list[index].approvalId,)
