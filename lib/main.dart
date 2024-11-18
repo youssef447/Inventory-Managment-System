@@ -15,9 +15,9 @@ import 'package:window_manager/window_manager.dart';
 import 'core/routes/get_pages.dart';
 import 'core/constants/languages.dart';
 import 'core/theme/app_theme.dart';
-import 'features/home/controller/home_bindings.dart';
-import 'features/home/presentation/page/mobile/mobile_home_page.dart';
-import 'features/home/presentation/page/tablet/tablet_home_page.dart';
+import 'features/home/presentation/controller/home_bindings.dart';
+import 'features/home/presentation/ui/page/mobile/mobile_home_page.dart';
+import 'features/home/presentation/ui/page/tablet/tablet_home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

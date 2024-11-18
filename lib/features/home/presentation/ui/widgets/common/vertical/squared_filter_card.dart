@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
 
-import '../../../../../../core/theme/app_colors.dart';
+import '../../../../../../../core/theme/app_colors.dart';
 
 // Date: 8/8/2024
 // By: Youssef Ashraf

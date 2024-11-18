@@ -85,6 +85,16 @@ abstract class DateTimeHelper {
     return NumberFormat('0', Get.locale.toString()).format(number);
   }
 
+  static String formatDecimal(String number) {
+    int firstNumber = int.parse(number[0]);
+    final formatted =
+        NumberFormat('#####', Get.locale.toString()).format(int.parse(number));
+    if (firstNumber == 0) {
+      return '${formatInt(firstNumber)}$formatted';
+    }
+    return formatted;
+  }
+
   static String formatDouble(double number) {
     return NumberFormat('0.00', Get.locale.toString()).format(number);
   }

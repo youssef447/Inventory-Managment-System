@@ -82,7 +82,9 @@ class MobileSearchFilter extends GetView<HomeController> {
                   SquaredChipCard(
                     icon: AppAssets.download,
                     color: AppColors.primary,
-                    onTap: () {},
+                    onTap: () {
+                      controller.exportTable();
+                    },
                   ),
                 ],
               ),

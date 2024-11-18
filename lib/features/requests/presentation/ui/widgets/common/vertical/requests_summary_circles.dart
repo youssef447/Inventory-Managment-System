@@ -12,7 +12,7 @@ import '../../../../../../../core/theme/app_font_weights.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../../../core/widgets/dropdown/app_dropdown.dart';
-import '../../../../../../home/controller/home_controller.dart';
+import '../../../../../../home/presentation/controller/home_controller.dart';
 import '../../../../../constants/request_status_constants.dart';
 import '../../../../controller/requests_controller.dart';
 
@@ -198,6 +198,7 @@ class VerticalRequstsSummaryCircles extends GetView<HomeController> {
                 Expanded(
                   child: AppDefaultButton(
                     text: 'Track Request'.tr,
+                    textColor: AppColors.textButton,
                     style: context.isPhone
                         ? AppTextStyles.font16BlackMediumCairo
                         : AppTextStyles.font18BlackMediumCairo,

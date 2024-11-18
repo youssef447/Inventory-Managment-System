@@ -5,10 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
 
-import '../../../../../home/presentation/page/tablet/tablet_home_page.dart';
+import '../../../../../home/presentation/ui/page/tablet/tablet_home_page.dart';
 import '../../../controller/approval_controller.dart';
 import '../../constants/approval_categories.dart';
-
 
 class ApprovalCategoriesFilter extends GetView<ApprovalController> {
   const ApprovalCategoriesFilter({
@@ -24,13 +23,14 @@ class ApprovalCategoriesFilter extends GetView<ApprovalController> {
         top: 8.h,
       ),
       child: Obx(
-            () {
+        () {
           return SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
                 ...List.generate(ApprovalCategories.categories.length, (index) {
-                  final last = index == ApprovalCategories.categories.length - 1;
+                  final last =
+                      index == ApprovalCategories.categories.length - 1;
                   return GestureDetector(
                     behavior: HitTestBehavior.opaque,
                     onTap: () {
@@ -41,7 +41,8 @@ class ApprovalCategoriesFilter extends GetView<ApprovalController> {
                       child: TabletCategoryFilterCard(
                         count: 10,
                         name: ApprovalCategories.categories[index],
-                        selected: controller.currentCategoryIndex.value == index,
+                        selected:
+                            controller.currentCategoryIndex.value == index,
                       ),
                     ),
                   );
@@ -54,4 +55,3 @@ class ApprovalCategoriesFilter extends GetView<ApprovalController> {
     );
   }
 }
-

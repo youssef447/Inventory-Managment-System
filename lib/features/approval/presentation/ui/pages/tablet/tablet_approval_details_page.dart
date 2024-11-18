@@ -1,7 +1,6 @@
 // by : Mohamed Ashraf
 // date : 14/11/2024
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,7 +11,7 @@ import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/widgets/fields/labled_form_field.dart';
-import '../../../../../home/presentation/widgets/common/horizontal/rectangled_filter_card.dart';
+import '../../../../../home/presentation/ui/widgets/common/horizontal/rectangled_filter_card.dart';
 import '../../../controller/approval_controller.dart';
 import '../../widget/common/approval_buttons.dart';
 
@@ -44,15 +43,22 @@ class TabletApprovalDetailsPage extends GetView<ApprovalController> {
               Row(
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      HapticFeedbackHelper.triggerHapticFeedback(
-                        vibration: VibrateType.mediumImpact,
-                        hapticFeedback: HapticFeedback.mediumImpact,
-                      );
-                      Get.back();
-                    },
-                    child: CircleAvatar(backgroundColor: AppColors.primary,radius: 22, child: Icon(Icons.add,color: AppColors.icon,size: 36,),)
-                  ),
+                      onTap: () {
+                        HapticFeedbackHelper.triggerHapticFeedback(
+                          vibration: VibrateType.mediumImpact,
+                          hapticFeedback: HapticFeedback.mediumImpact,
+                        );
+                        Get.back();
+                      },
+                      child: CircleAvatar(
+                        backgroundColor: AppColors.primary,
+                        radius: 22,
+                        child: Icon(
+                          Icons.add,
+                          color: AppColors.icon,
+                          size: 36,
+                        ),
+                      )),
                   horizontalSpace(8),
                   Text(
                     'Request New Asset'.tr,
@@ -114,7 +120,6 @@ class TabletApprovalDetailsPage extends GetView<ApprovalController> {
               ),
               verticalSpace(24),
 
-
               Row(
                 children: [
                   Expanded(
@@ -160,33 +165,33 @@ class TabletApprovalDetailsPage extends GetView<ApprovalController> {
                     ),
                   ),
                   horizontalSpace(15),
-                   Expanded(
-                     child: LabeledFormField(
+                  Expanded(
+                    child: LabeledFormField(
                       controller: controller.expectedDeliveryDateController,
                       readOnly: false,
                       date: true,
                       label: 'Expected Delivery'.tr,
                       hintText: 'Expected Delivery'.tr,
-                                       ),
-                   ),
+                    ),
+                  ),
                 ],
               ),
               verticalSpace(24),
-                Row(
-                  children: [
-                    Expanded(
-                      child: LabeledFormField(
-                        controller: controller.expectedReturnDateController,
-                        readOnly: false,
-                        date: true,
-                        label: 'Return Date'.tr,
-                        hintText: 'Return Date'.tr,
-                      ),
+              Row(
+                children: [
+                  Expanded(
+                    child: LabeledFormField(
+                      controller: controller.expectedReturnDateController,
+                      readOnly: false,
+                      date: true,
+                      label: 'Return Date'.tr,
+                      hintText: 'Return Date'.tr,
                     ),
-                    horizontalSpace(15),
-                    const Spacer(),
-                  ],
-                ),
+                  ),
+                  horizontalSpace(15),
+                  const Spacer(),
+                ],
+              ),
               verticalSpace(24),
               LabeledFormField(
                 controller: controller.additionalNoteController,
@@ -200,13 +205,15 @@ class TabletApprovalDetailsPage extends GetView<ApprovalController> {
               //   model: model,
               // ),
               verticalSpace(66),
-               Align(
-                 alignment: AlignmentDirectional.bottomEnd,
-                 child:  SizedBox(
-                   width: Get.width * 0.3,
-                   child: ApprovalButtons(approvalId:  controller.allApprovalList[index].approvalId,),
-                 ),
-               )
+              Align(
+                alignment: AlignmentDirectional.bottomEnd,
+                child: SizedBox(
+                  width: Get.width * 0.3,
+                  child: ApprovalButtons(
+                    approvalId: controller.allApprovalList[index].approvalId,
+                  ),
+                ),
+              )
             ],
           ),
         ),

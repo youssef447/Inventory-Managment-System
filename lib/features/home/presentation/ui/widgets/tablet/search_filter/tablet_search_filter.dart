@@ -3,20 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
-import '../../../../../../../core/animations/horizontal_animation.dart';
-import '../../../../../../../core/constants/app_assets.dart';
+import '../../../../../../../../core/animations/horizontal_animation.dart';
+import '../../../../../../../../core/constants/app_assets.dart';
 
-import '../../../../../../../core/helpers/spacing_helper.dart';
-import '../../../../../../../core/theme/app_colors.dart';
-import '../../../../../../../core/theme/app_text_styles.dart';
-import '../../../../../../../core/theme/app_theme.dart';
-import '../../../../../../core/enums/requests_enums.dart';
-import '../../../../../../core/routes/app_routes.dart';
-import '../../../../../../core/widgets/dropdown/app_dropdown.dart';
-import '../../../../../requests/presentation/controller/requests_controller.dart';
+import '../../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../../core/theme/app_colors.dart';
+import '../../../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../../../../core/theme/app_theme.dart';
+import '../../../../../../../core/enums/requests_enums.dart';
+import '../../../../../../../core/routes/app_routes.dart';
+import '../../../../../../../core/widgets/dropdown/app_dropdown.dart';
+import '../../../../../../requests/presentation/controller/requests_controller.dart';
 import '../../common/horizontal/rectangled_filter_card.dart';
 import '../../common/vertical/squared_filter_card.dart';
-import '../../../../../../core/widgets/fields/app_form_field.dart';
+import '../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../controller/home_controller.dart';
 // Date: 5/8/2024
 // By: Youssef Ashraf
@@ -173,7 +173,9 @@ class TabletSearchFilter extends GetView<HomeController> {
                         image: AppAssets.download,
                         text: 'Download',
                         color: AppColors.primary,
-                        onTap: () {},
+                        onTap: () {
+                          controller.exportTable();
+                        },
                       ),
                     ],
                   ),
@@ -250,7 +252,9 @@ class TabletSearchFilter extends GetView<HomeController> {
                       SquaredChipCard(
                         icon: AppAssets.download,
                         color: AppColors.primary,
-                        onTap: () {},
+                        onTap: () {
+                          controller.exportTable();
+                        },
                       ),
                     ],
                   ),

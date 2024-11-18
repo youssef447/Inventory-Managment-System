@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,8 +11,8 @@ import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../core/widgets/fields/app_form_field.dart';
-import '../../../../../home/presentation/widgets/common/horizontal/rectangled_filter_card.dart';
-import '../../../../../home/presentation/widgets/common/vertical/squared_filter_card.dart';
+import '../../../../../home/presentation/ui/widgets/common/horizontal/rectangled_filter_card.dart';
+import '../../../../../home/presentation/ui/widgets/common/vertical/squared_filter_card.dart';
 import '../../../controller/approval_controller.dart';
 import '../../constants/approval_id_constant.dart';
 // Date: 11/12/2024
@@ -75,8 +73,8 @@ class ApprovalSearchFilter extends GetView<ApprovalController> {
                     },
                     contentPadding: context.isTablett
                         ? EdgeInsets.symmetric(
-                      vertical: 2.h,
-                    )
+                            vertical: 2.h,
+                          )
                         : null,
                     prefixIcon: SvgPicture.asset(
                       AppAssets.search,
@@ -99,10 +97,10 @@ class ApprovalSearchFilter extends GetView<ApprovalController> {
                   ),
                   horizontalSpace(9),
                   GetBuilder<ApprovalController>(
-                      id:  ApprovalIdConstant.approval,
+                      id: ApprovalIdConstant.approval,
                       builder: (controller) {
                         return GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             controller.selectGridView();
                           },
                           child: Container(
@@ -110,19 +108,20 @@ class ApprovalSearchFilter extends GetView<ApprovalController> {
                             height: 40,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(6),
-                                color: controller.gridViewSelect ? AppColors.primary : AppColors.white
-                            ),
-                            child: Center(child: SvgPicture.asset(AppAssets.grid)),
+                                color: controller.gridViewSelect
+                                    ? AppColors.primary
+                                    : AppColors.white),
+                            child:
+                                Center(child: SvgPicture.asset(AppAssets.grid)),
                           ),
                         );
-                      }
-                  ),
+                      }),
                   horizontalSpace(13),
                   GetBuilder<ApprovalController>(
-                      id:  ApprovalIdConstant.approval,
+                      id: ApprovalIdConstant.approval,
                       builder: (controller) {
                         return GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             controller.selectListView();
                           },
                           child: Container(
@@ -130,13 +129,14 @@ class ApprovalSearchFilter extends GetView<ApprovalController> {
                             height: 40,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(6),
-                                color:   controller.listViewSelect ? AppColors.primary : AppColors.white
-                            ),
-                            child: Center(child: SvgPicture.asset(AppAssets.list)),
+                                color: controller.listViewSelect
+                                    ? AppColors.primary
+                                    : AppColors.white),
+                            child:
+                                Center(child: SvgPicture.asset(AppAssets.list)),
                           ),
                         );
-                      }
-                  )
+                      })
                 ],
               ),
             if (!context.isLandscapee)

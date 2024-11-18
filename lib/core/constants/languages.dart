@@ -59,7 +59,7 @@ class Languages extends Translations {
           "Low": "Low",
           "Date Return": "Date Return",
           "Maintenance Frequency": "Maintenance Frequency",
-          'Expected Recieved': 'Expected Recieved',
+          'Expected Received': 'Expected Received',
           "Filter": "Filter",
           'Search Here...': 'Search Here...',
           'Search By Name, Category, Subcategory, Brand, Or Model':
@@ -151,7 +151,7 @@ class Languages extends Translations {
           "Medium": "متوسطة",
           "Low": "منخفضة",
           "Maintenance Frequency": "تكرار الصيانة",
-          'Expected Recieved': 'توقع الاستلام',
+          'Expected Received': 'توقع الاستلام',
           "Daily": "يومي",
           "Monthly": "شهري",
           "Annually": "سنوي",

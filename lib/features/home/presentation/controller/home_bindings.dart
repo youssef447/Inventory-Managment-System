@@ -4,9 +4,9 @@
 
 import 'package:get/get.dart';
 
-import '../../Assets/presentation/controller/assets_controller.dart';
-import '../../consumables/presentation/controller/consumables_controller.dart';
-import '../../requests/presentation/controller/requests_controller.dart';
+import '../../../Assets/presentation/controller/assets_controller.dart';
+import '../../../consumables/presentation/controller/consumables_controller.dart';
+import '../../../requests/presentation/controller/requests_controller.dart';
 import 'home_controller.dart';
 
 class HomeBindings implements Bindings {

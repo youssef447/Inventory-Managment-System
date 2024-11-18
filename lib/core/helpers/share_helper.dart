@@ -72,135 +72,119 @@ abstract class ShareHelper {
 
   static printDoc(List<List<dynamic>> data, List<String> headers,
       [List<Uint8List>? images]) async {
-    final doc = pw.Document();
+    final doc = pw.Document(
+      compress: false,
+    );
     final arabicFont = await PdfGoogleFonts.cairoRegular();
+
     if (Get.context!.isArabic) {
       headers = headers.reversed.toList();
     }
+
     doc.addPage(
-      pw.Page(
-        pageFormat: PdfPageFormat.a4,
+      pw.MultiPage(
         margin: pw.EdgeInsets.zero,
         build: (pw.Context context) {
-          return pw.ClipRRect(
-            verticalRadius: 8.r,
-            horizontalRadius: 8.r,
-            child: pw.Table(
-              defaultColumnWidth: const pw.FlexColumnWidth(),
-              border: pw.TableBorder.symmetric(
-                outside: pw.BorderSide.none,
-              ),
-              children: [
-                // Header
-                pw.TableRow(
-                  verticalAlignment: pw.TableCellVerticalAlignment.middle,
-                  decoration: pw.BoxDecoration(
-                    color: PdfColor.fromHex('#2D2D2D'),
-                  ),
-                  children: headers.map((header) {
-                    return pw.Padding(
-                      padding: pw.EdgeInsets.symmetric(
-                        vertical: 12.0.w,
-                        horizontal: 6.w,
-                      ),
-                      child: pw.Text(
-                        header.tr,
-                        textDirection: Get.context!.isArabic
-                            ? pw.TextDirection.rtl
-                            : pw.TextDirection.ltr,
-                        style: pw.TextStyle(
-                          font: arabicFont,
-                          fontSize: 16,
-                          color: PdfColors.white,
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-                ...List.generate(data.length, (rowIndex) {
-                  List<dynamic> row = data[rowIndex];
-                  if (Get.context!.isArabic) {
-                    row = row.reversed.toList();
-                  }
-                  return pw.TableRow(
-                      verticalAlignment: pw.TableCellVerticalAlignment.middle,
-                      decoration: pw.BoxDecoration(
-                        color: rowIndex % 2 == 0
-                            ? PdfColor.fromHex('#F5F5F5')
-                            : PdfColors.white,
-                      ),
-                      children: List.generate(
-                        row.length,
-                        (index) {
-                          final isApproved = row[index] == 'Approved'.tr;
-                          final isRejected = row[index] == 'Rejected'.tr;
-                          final isPending = row[index] == 'Pending'.tr;
-                          final isAbsent = row[index] == 'Absent'.tr;
-                          final isPresent = row[index] == 'Present'.tr;
-                          final isLate = row[index] == 'Late'.tr;
-                          final isLink = row[index].startsWith('http');
-                          return pw.Padding(
-                            padding: pw.EdgeInsets.symmetric(
-                              vertical: 12.0.w,
-                              horizontal: 6.w,
-                            ),
-                            child: Get.context!.isArabic &&
-                                        index == row.length - 1 &&
-                                        images != null ||
-                                    !Get.context!.isArabic &&
-                                        index == 0 &&
-                                        images != null
-                                ? pw.Align(
-                                    alignment: Get.context!.isArabic
-                                        ? pw.Alignment.centerRight
-                                        : pw.Alignment.centerLeft,
-                                    child: pw.Container(
-                                      height: 32.h,
-                                      width: 20.w,
-                                      decoration: pw.BoxDecoration(
-                                        borderRadius:
-                                            pw.BorderRadius.circular(8.r),
-                                        image: pw.DecorationImage(
-                                          image: pw.MemoryImage(
-                                            images[rowIndex],
-                                            // for backend
-                                            //  controller.getRequestedUser(controller.requestModels[index]).profilePic,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                : pw.Text(
-                                    row[index],
-                                    textDirection: Get.context!.isArabic
-                                        ? pw.TextDirection.rtl
-                                        : pw.TextDirection.ltr,
-                                    style: pw.TextStyle(
-                                      fontSize: 14.sp,
-                                      font: arabicFont,
-                                      color: isRejected || isAbsent
-                                          ? PdfColor.fromHex('#DF1C1C')
-                                          : isApproved || isPresent
-                                              ? PdfColor.fromHex('#008000')
-                                              : isPending || isLate
-                                                  ? PdfColor.fromHex('#FF814A')
-                                                  : isLink
-                                                      ? PdfColors.blue
-                                                      : PdfColor.fromHex(
-                                                          '#2D2D2D'),
-                                    ),
-                                  ),
-                          );
-                        },
-                      ));
-                }),
-              ],
-            ),
-          );
+          return [
+            buildPdfGrid(data, headers, arabicFont),
+          ];
         },
       ),
     );
+
     await Printing.layoutPdf(
-        onLayout: (PdfPageFormat format) async => doc.save());
+      onLayout: (PdfPageFormat format) async => doc.save(),
+      format: PdfPageFormat.a4,
+    );
+  }
+
+  static pw.Widget buildPdfGrid(
+    List<List<dynamic>> data,
+    List<String> headers,
+    pw.Font arabicFont,
+  ) {
+    final grid = pw.Table(
+      border: pw.TableBorder.symmetric(),
+      children: [
+        // Header Row
+        pw.TableRow(
+          decoration: pw.BoxDecoration(
+            color: PdfColor.fromHex('#2D2D2D'),
+          ),
+          children: headers.map((header) {
+            return pw.Padding(
+              padding: const pw.EdgeInsets.all(4),
+              child: pw.Text(
+                header.tr,
+                textDirection: Get.context!.isArabic
+                    ? pw.TextDirection.rtl
+                    : pw.TextDirection.ltr,
+                style: pw.TextStyle(
+                  font: arabicFont,
+                  fontSize: 10,
+                  color: PdfColors.white,
+                ),
+              ),
+            );
+          }).toList(),
+        ),
+        // Data Rows
+        ...data.asMap().entries.map((entry) {
+          final rowIndex = entry.key;
+          List<dynamic> row = entry.value;
+          if (Get.context!.isArabic) {
+            row = row.reversed.toList();
+          }
+
+          return pw.TableRow(
+            decoration: pw.BoxDecoration(
+              color: rowIndex % 2 == 0
+                  ? PdfColor.fromHex('#F5F5F5')
+                  : PdfColors.white,
+            ),
+            children: row.map((cell) {
+              final textStyle = pw.TextStyle(
+                font: arabicFont,
+                fontSize: 8,
+                color: _getCellColor(cell),
+              );
+
+              return pw.Padding(
+                padding: const pw.EdgeInsets.all(4),
+                child: pw.Text(
+                  cell.toString().tr,
+                  textDirection: Get.context!.isArabic
+                      ? pw.TextDirection.rtl
+                      : pw.TextDirection.ltr,
+                  style: textStyle,
+                ),
+              );
+            }).toList(),
+          );
+        }),
+      ],
+    );
+
+    return pw.ClipRRect(
+      verticalRadius: 8.r,
+      horizontalRadius: 8.r,
+      child: grid,
+    );
+  }
+
+  /// Helper function to determine cell color
+  static PdfColor _getCellColor(dynamic cell) {
+    const colors = {
+      'Approved': '#008000',
+      'InUse': '#008000',
+      'Rejected': '#DF1C1C',
+      'Canceled': '#DF1C1C',
+      'Pending': '#FF814A',
+      'Not Applicable': '#797979',
+      'Maintenance': '#E5B800',
+      'Returned': '#FFDE59',
+    };
+
+    return PdfColor.fromHex(colors[cell.toString()] ?? '#2D2D2D');
   }
 }
