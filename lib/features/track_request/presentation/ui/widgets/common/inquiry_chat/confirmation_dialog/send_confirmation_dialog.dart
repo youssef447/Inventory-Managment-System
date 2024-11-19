@@ -24,7 +24,7 @@ class SendConfirmationDialog extends GetView<TrackRequestController> {
           horizontal: isTablet ? 24.w : 16.w,
           // vertical: isTablet ? 16.h : 12.h,
         ),
-        width: Get.width * 0.5,
+        width: Get.width * 0.3,
         height: isTablet ? 140.h : 150.h,
         // width: isTablet ? 214.w : 179.w,
         decoration: BoxDecoration(
@@ -57,7 +57,7 @@ class SendConfirmationDialog extends GetView<TrackRequestController> {
                   text: 'Cancel'.tr,
                   color: Colors.white,
                   borderColor: AppColors.lightGrey,
-                  width: context.isTablett ? 135.w : 80.w,
+                  width: context.isTablett ? 100.w : 80.w,
                   style: AppTextStyles.font14BlackCairo.copyWith(
                     color: AppColors.black,
                   ),
@@ -68,10 +68,10 @@ class SendConfirmationDialog extends GetView<TrackRequestController> {
                 ),
                 AppDefaultButton(
                     text: 'Send'.tr,
-                    width: context.isTablett ? 135.w : 80.w,
+                    width: context.isTablett ? 100.w : 80.w,
                     height: 35.h,
                     style: AppTextStyles.font14BlackCairo.copyWith(
-                      color: AppColors.black,
+                      color: AppColors.textButton,
                     ),
                     onPressed: () {
                       Get.back(result: true);

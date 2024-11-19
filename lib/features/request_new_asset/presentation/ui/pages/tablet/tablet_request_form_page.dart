@@ -15,7 +15,7 @@ import '../../../../../../core/widgets/dropdown/app_dropdown.dart';
 import '../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../../Assets/domain/entity/assets_entity.dart';
 import '../../../controller/request_assets_controller.dart';
-import '../../widgets/attachments/attachments_section.dart';
+import '../../widgets/common/attachments/attachments_section.dart';
 part '../../widgets/tablet/request_form/discard_submit_buttons.dart';
 part '../../widgets/tablet/request_actions_fields/request_asset_fields.dart';
 part '../../widgets/tablet/request_actions_fields/repair_asset_fields.dart';

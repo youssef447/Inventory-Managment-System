@@ -2,10 +2,12 @@ part of '../../../../pages/tablet/tablet_track_requests_page.dart';
 
 class HorizontalTrackRequestCard extends StatelessWidget {
   final RequestEntity model;
+  final bool isConsumable;
 
   const HorizontalTrackRequestCard({
     super.key,
     required this.model,
+    required this.isConsumable,
   });
 
   @override
@@ -24,9 +26,11 @@ class HorizontalTrackRequestCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
-                model.assetsEntity!.image,
-                /* width: 60.w,
-                height: 60.h, */
+                isConsumable
+                    ? model.consumablesEntity!.image
+                    : model.assetsEntity!.image,
+                width: 45.w,
+                height: 60.h,
                 fit: BoxFit.fill,
               ),
               horizontalSpace(8),
@@ -35,7 +39,9 @@ class HorizontalTrackRequestCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      model.assetsEntity!.assetName,
+                      isConsumable
+                          ? model.consumablesEntity!.name
+                          : model.assetsEntity!.assetName,
                       style: AppTextStyles.font16BlackCairoRegular,
                     ),
                     verticalSpace(2),
@@ -102,7 +108,10 @@ class HorizontalTrackRequestCard extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: DateTimeHelper.formatDate(
-                        model.assetsEntity!.lastUpdate),
+                      isConsumable
+                          ? model.consumablesEntity!.lastUpdate
+                          : model.assetsEntity!.lastUpdate,
+                    ),
                     style: AppTextStyles.font12darkWhiteShadowCairoMedium,
                   )
                 ],

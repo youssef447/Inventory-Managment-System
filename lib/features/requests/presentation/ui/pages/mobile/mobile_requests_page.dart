@@ -19,6 +19,9 @@ import '../../widgets/common/request_category_filter.dart';
 import '../../widgets/common/vertical/requests_summary_circles.dart';
 part '../../widgets/mobile/request_card.dart';
 
+//Youssef Ashraf
+//Date: 7/11/2024
+///Represents The Requests Tab Page in Mobile View
 class MobileRequestsPage extends GetView<RequestsController> {
   const MobileRequestsPage({super.key});
 
@@ -28,35 +31,43 @@ class MobileRequestsPage extends GetView<RequestsController> {
         id: RequestsIds.requestsPage,
         builder: (controller) {
           return controller.loading
-              ? const AppCircleProgress()
+              ? const SliverFillRemaining(
+                  child: AppCircleProgress(),
+                )
               : controller.requests.isEmpty
-                  ? const NoDataGif()
-                  : Column(children: [
-                      const ScaleAnimation(
-                          child: VerticalRequstsSummaryCircles()),
-                      verticalSpace(10),
-                      const RequestCategoryFilter(),
-                      verticalSpace(10),
-                      Obx(
-                        () => ListView.separated(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return MobileRequestCard(
-                              request:
-                                  controller.currentCategoryIndex.value == 0
-                                      ? controller.requestsOfAssets[index]
-                                      : controller.requestsOfConsumables[index],
-                            );
-                          },
-                          separatorBuilder: (_, __) => SizedBox(
-                            height: 16.h,
-                          ),
-                          itemCount: controller.currentCategoryIndex.value == 0
-                              ? controller.requestsOfAssets.length
-                              : controller.requestsOfConsumables.length,
+                  ? const SliverFillRemaining(
+                      child: NoDataGif(),
+                    )
+                  : SliverMainAxisGroup(slivers: [
+                      const SliverToBoxAdapter(
+                        child: ScaleAnimation(
+                          child: VerticalRequstsSummaryCircles(),
                         ),
-                      )
+                      ),
+                      SliverToBoxAdapter(child: verticalSpace(10)),
+                      const SliverToBoxAdapter(child: RequestCategoryFilter()),
+                      SliverToBoxAdapter(child: verticalSpace(10)),
+                      Obx(() => SliverPadding(
+                            padding: EdgeInsets.only(
+                              bottom: 12.h,
+                            ),
+                            sliver: SliverList.separated(
+                              separatorBuilder: (_, __) => verticalSpace(16),
+                              itemBuilder: (context, index) {
+                                return MobileRequestCard(
+                                  request:
+                                      controller.currentCategoryIndex.value == 0
+                                          ? controller.requestsOfAssets[index]
+                                          : controller
+                                              .requestsOfConsumables[index],
+                                );
+                              },
+                              itemCount:
+                                  controller.currentCategoryIndex.value == 0
+                                      ? controller.requestsOfAssets.length
+                                      : controller.requestsOfConsumables.length,
+                            ),
+                          ))
                     ]);
         });
   }

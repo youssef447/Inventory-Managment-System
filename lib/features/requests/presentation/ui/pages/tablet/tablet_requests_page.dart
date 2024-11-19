@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
 
-import '../../../../../../core/animations/scale_animation.dart';
+import '../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../core/helpers/orientation_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
@@ -20,6 +20,9 @@ import '../../widgets/common/vertical/requests_summary_circles.dart';
 part '../../widgets/tablet/requests_of_assets_table.dart';
 part '../../widgets/tablet/requests_of_consumables_table.dart';
 
+//Youssef Ashraf
+//Date: 7/11/2024
+///Represents The Requests Tab Page in Tablet View
 class TabletRequestsPage extends GetView<RequestsController> {
   const TabletRequestsPage({super.key});
 
@@ -35,8 +38,9 @@ class TabletRequestsPage extends GetView<RequestsController> {
                 : SingleChildScrollView(
                     child: Column(
                       children: [
-                        const ScaleAnimation(
-                          child: OrientationHelper(
+                        SlideAnimation(
+                          leftToRight: !context.isArabic,
+                          child: const OrientationHelper(
                             landScape: HorizontalRequstsSummaryCircles(),
                             portrait: VerticalRequstsSummaryCircles(),
                           ),

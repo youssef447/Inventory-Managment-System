@@ -2,9 +2,12 @@ part of '../../../pages/tablet/tablet_track_request_details_page.dart';
 
 class TrackDetailsCardHeader extends StatelessWidget {
   final RequestEntity model;
+  final bool isConsumable;
+
   const TrackDetailsCardHeader({
     super.key,
     required this.model,
+    required this.isConsumable,
   });
 
   @override
@@ -75,7 +78,9 @@ class TrackDetailsCardHeader extends StatelessWidget {
                 style: AppTextStyles.font14SecondaryBlackCairoMedium,
                 children: [
                   TextSpan(
-                    text: model.assetsEntity!.category,
+                    text: isConsumable
+                        ? model.consumablesEntity!.category
+                        : model.assetsEntity!.category,
                     style: AppTextStyles.font14BlackCairoMedium,
                   )
                 ],
@@ -87,7 +92,9 @@ class TrackDetailsCardHeader extends StatelessWidget {
                 style: AppTextStyles.font14SecondaryBlackCairoMedium,
                 children: [
                   TextSpan(
-                    text: model.assetsEntity!.subcategory,
+                    text: isConsumable
+                        ? model.consumablesEntity!.subcategory
+                        : model.assetsEntity!.subcategory,
                     style: AppTextStyles.font14BlackCairoMedium,
                   )
                 ],
@@ -99,7 +106,9 @@ class TrackDetailsCardHeader extends StatelessWidget {
                 style: AppTextStyles.font14SecondaryBlackCairoMedium,
                 children: [
                   TextSpan(
-                    text: model.assetsEntity!.model,
+                    text: isConsumable
+                        ? model.consumablesEntity!.model
+                        : model.assetsEntity!.model,
                     style: AppTextStyles.font14BlackCairoMedium,
                   )
                 ],
@@ -111,7 +120,9 @@ class TrackDetailsCardHeader extends StatelessWidget {
                 style: AppTextStyles.font14SecondaryBlackCairoMedium,
                 children: [
                   TextSpan(
-                    text: model.assetsEntity!.brand,
+                    text: isConsumable
+                        ? model.consumablesEntity!.brand
+                        : model.assetsEntity!.brand,
                     style: AppTextStyles.font14BlackCairoMedium,
                   )
                 ],

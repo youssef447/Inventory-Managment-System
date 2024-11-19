@@ -79,6 +79,7 @@ abstract class AppPages {
       transition: Transition.fade,
       transitionDuration: const Duration(milliseconds: 350),
     ),
+    //Track Request
     GetPage(
       name: Routes.trackRequest,
       page: () => const ResponsiveHelper(
@@ -103,6 +104,7 @@ abstract class AppPages {
       transitionDuration: const Duration(milliseconds: 350),
       binding: TrackRequestsBinding(),
     ),
+    //Assets
     GetPage(
       name: Routes.assetsDetails,
       transition: Transition.fadeIn,

@@ -3,9 +3,11 @@ part of '../../../../pages/tablet/tablet_track_request_details_page.dart';
 //Youssef Ashraf
 class TabletTrackDeatailsCard extends GetView<TrackRequestController> {
   final RequestEntity model;
+  final bool isConsumable;
   const TabletTrackDeatailsCard({
     super.key,
     required this.model,
+    required this.isConsumable,
   });
 
   @override
@@ -22,7 +24,10 @@ class TabletTrackDeatailsCard extends GetView<TrackRequestController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TrackDetailsCardHeader(model: model),
+          TrackDetailsCardHeader(
+            model: model,
+            isConsumable: isConsumable,
+          ),
           verticalSpace(38),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,7 +44,9 @@ class TabletTrackDeatailsCard extends GetView<TrackRequestController> {
               ),
               _BuildIconLabel(
                 '${'Last Update'.tr}: ',
-                DateTimeHelper.formatDate(model.assetsEntity!.lastUpdate),
+                DateTimeHelper.formatDate(isConsumable
+                    ? model.consumablesEntity!.lastUpdate
+                    : model.assetsEntity!.lastUpdate),
                 AppAssets.calender,
               ),
             ],

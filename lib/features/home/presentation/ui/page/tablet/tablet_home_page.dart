@@ -24,6 +24,8 @@ import '../../widgets/tablet/search_filter/tablet_search_filter.dart';
 part '../../widgets/tablet/cards/category_filter_card.dart';
 part '../../widgets/tablet/categories_filter_row/categories_filter_row.dart';
 
+//Youssef Ashraf
+///Represents The Home Page in Mobile View
 class TabletHomePage extends GetView<HomeController> {
   const TabletHomePage({super.key});
 

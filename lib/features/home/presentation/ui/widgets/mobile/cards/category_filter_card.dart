@@ -55,15 +55,14 @@ class MobileCategoryFilterCard extends StatelessWidget {
           style: isTablet
               ? AppTextStyles.font20SecondaryBlackSemiBoldCairo.copyWith(
                   fontWeight: selected
-                      ? AppFontWeights.semiBold
+                      ? AppFontWeights.extraBold
                       : AppFontWeights.medium,
-                  color:
-                      selected ? AppColors.textButton : AppColors.inverseBase)
+                  color: AppColors.text,
+                )
               : AppTextStyles.font14BlackCairo.copyWith(
-                  color:
-                      selected ? AppColors.textButton : AppColors.inverseBase,
+                  color: AppColors.text,
                   fontWeight: selected
-                      ? AppFontWeights.semiBold
+                      ? AppFontWeights.extraBold
                       : AppFontWeights.medium,
                 ),
         ),

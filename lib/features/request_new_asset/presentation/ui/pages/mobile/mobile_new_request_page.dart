@@ -15,7 +15,7 @@ import '../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../Assets/domain/entity/assets_entity.dart';
 import '../../../../constants/ids_constants.dart';
 import '../../../controller/request_assets_controller.dart';
-import '../../widgets/common/request_assets_search_filter.dart';
+import '../../widgets/common/request_search_filter/request_assets_search_filter.dart';
 part '../../widgets/mobile/request_asset/cards/mobile_request_asset_card.dart';
 
 class MobileNewRequestPage extends GetView<RequestAssetsController> {

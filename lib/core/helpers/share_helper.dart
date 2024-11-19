@@ -7,10 +7,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
+import 'package:inventory_management/core/widgets/dialog/default_dialog.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
+
+import '../constants/app_assets.dart';
+import '../widgets/loading/loading.dart';
+import 'get_dialog_helper.dart';
 //Youssef Ashraf
 ///Helper Class resbonsible for sharing images for printing docs or sharing widgets as images (Qr)
 
@@ -72,38 +77,62 @@ abstract class ShareHelper {
 
   static printDoc(List<List<dynamic>> data, List<String> headers,
       [List<Uint8List>? images]) async {
-    final doc = pw.Document(
-      compress: false,
-    );
-    final arabicFont = await PdfGoogleFonts.cairoRegular();
+    try {
+      showLoadingIndicator();
+      final doc = pw.Document(
+        compress: false,
+        title: 'Inventory Management',
+      );
+      final arabicFont = await PdfGoogleFonts.cairoRegular();
 
-    if (Get.context!.isArabic) {
-      headers = headers.reversed.toList();
+      if (Get.context!.isArabic) {
+        headers = headers.reversed.toList();
+      }
+
+      doc.addPage(
+        pw.MultiPage(
+          margin: pw.EdgeInsets.zero,
+          build: (pw.Context context) {
+            return [
+              buildPdfTable(data, headers, arabicFont),
+            ];
+          },
+        ),
+      );
+
+      bool result = await Printing.layoutPdf(
+        onLayout: (PdfPageFormat format) async => await doc.save(),
+        format: PdfPageFormat.standard,
+      );
+      hideLoadingIndicator();
+      if (result && Get.context!.isDesktop) {
+        GetDialogHelper.generalDialog(
+          context: Get.context!,
+          child: const DefaultDialog(
+            title: 'Success',
+            subTitle: 'Document Has Been Saved',
+            lottieAsset: AppAssets.success,
+          ),
+        );
+      }
+    } catch (e) {
+      GetDialogHelper.generalDialog(
+        context: Get.context!,
+        child: const DefaultDialog(
+          title: 'Error',
+          subTitle: 'Erro Occured, Please Try Again',
+          icon: AppAssets.canceled,
+        ),
+      );
     }
-
-    doc.addPage(
-      pw.MultiPage(
-        margin: pw.EdgeInsets.zero,
-        build: (pw.Context context) {
-          return [
-            buildPdfGrid(data, headers, arabicFont),
-          ];
-        },
-      ),
-    );
-
-    await Printing.layoutPdf(
-      onLayout: (PdfPageFormat format) async => doc.save(),
-      format: PdfPageFormat.a4,
-    );
   }
 
-  static pw.Widget buildPdfGrid(
+  static pw.Widget buildPdfTable(
     List<List<dynamic>> data,
     List<String> headers,
     pw.Font arabicFont,
   ) {
-    final grid = pw.Table(
+    final table = pw.Table(
       border: pw.TableBorder.symmetric(),
       children: [
         // Header Row
@@ -168,7 +197,7 @@ abstract class ShareHelper {
     return pw.ClipRRect(
       verticalRadius: 8.r,
       horizontalRadius: 8.r,
-      child: grid,
+      child: table,
     );
   }
 
@@ -179,6 +208,7 @@ abstract class ShareHelper {
       'InUse': '#008000',
       'Rejected': '#DF1C1C',
       'Canceled': '#DF1C1C',
+      'Expired': '#DF1C1C',
       'Pending': '#FF814A',
       'Not Applicable': '#797979',
       'Maintenance': '#E5B800',

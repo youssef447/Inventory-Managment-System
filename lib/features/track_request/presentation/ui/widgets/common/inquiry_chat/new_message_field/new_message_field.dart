@@ -21,16 +21,20 @@ class NewMessageField extends GetView<TrackRequestController> {
         Expanded(
           child: SizedBox(
             height: 42.h,
-            child: AppTextFormField(
-              focusNode: controller.messageFocusNode,
-              collapsed: true,
-              controller: controller.messageController,
-              prefixIcon: GestureDetector(
-                  onTap: () {
-                    controller.uploadAttachments(model);
-                  },
-                  child: SvgPicture.asset(AppAssets.attach)),
-              hintText: 'Write A Comment'.tr,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: AppTextFormField(
+                focusNode: controller.messageFocusNode,
+                collapsed: true,
+                backGroundColor: AppColors.background,
+                controller: controller.messageController,
+                prefixIcon: GestureDetector(
+                    onTap: () {
+                      controller.uploadAttachments(model);
+                    },
+                    child: SvgPicture.asset(AppAssets.attach)),
+                hintText: 'Write A Comment'.tr,
+              ),
             ),
           ),
         ),

@@ -17,6 +17,7 @@ import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_font_weights.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
+import '../../../../constants/ids.dart';
 import '../../../../constants/inventory_categories.dart';
 import '../../../controller/home_controller.dart';
 import '../../widgets/common/vertical/squared_filter_card.dart';
@@ -24,6 +25,8 @@ part '../../widgets/mobile/cards/category_filter_card.dart';
 part '../../widgets/mobile/categories_filter_row/categories_filter_row.dart';
 part '../../widgets/mobile/search_filter/mobile_search_filter.dart';
 
+//Youssef Ashraf
+///Represents The Home Page in Mobile View
 class MobileHomePage extends GetView<HomeController> {
   const MobileHomePage({super.key});
 
@@ -38,29 +41,27 @@ class MobileHomePage extends GetView<HomeController> {
                 ? EdgeInsets.symmetric(horizontal: 30.w, vertical: 18.h)
                 : EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
         child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const CustomAppBar(),
-                verticalSpace(20),
-                const MobileCategoriesFilterRow(),
-                verticalSpace(20),
-                const MobileSearchFilter(),
-                verticalSpace(20),
-                Obx(
-                  () {
-                    if (controller.currentCategoryIndex.value == 0) {
-                      return const MobileAssetsPage();
-                    }
-                    if (controller.currentCategoryIndex.value == 1) {
-                      return const MobileConsumablesPage();
-                    }
-                    return const MobileRequestsPage();
-                  },
-                ),
-              ],
-            ),
+          child: GetBuilder<HomeController>(
+            id: HomeIds.home,
+            builder: (controller) {
+              return Obx(() {
+                final index = controller.currentCategoryIndex.value;
+                return CustomScrollView(
+                  slivers: [
+                    const SliverToBoxAdapter(child: CustomAppBar()),
+                    SliverToBoxAdapter(child: verticalSpace(20)),
+                    const SliverToBoxAdapter(
+                        child: MobileCategoriesFilterRow()),
+                    SliverToBoxAdapter(child: verticalSpace(20)),
+                    const SliverToBoxAdapter(child: MobileSearchFilter()),
+                    SliverToBoxAdapter(child: verticalSpace(20)),
+                    if (index == 0) const MobileAssetsPage(),
+                    if (index == 1) const MobileConsumablesPage(),
+                    if (index == 2) const MobileRequestsPage(),
+                  ],
+                );
+              });
+            },
           ),
         ),
       ),

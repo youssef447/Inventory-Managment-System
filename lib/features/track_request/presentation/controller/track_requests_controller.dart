@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,23 +26,33 @@ class TrackRequestController extends GetxController {
     loadRequestsData();
   }
 
-  RxInt currentCategoryIndex = 0.obs;
-  updateCategoryIndex(int index) {
-    currentCategoryIndex.value = index;
-  }
-
   ///Loading Requests from backend. Called at init
   Future<void> loadRequestsData() async {
+    final currentRequestCategory =
+        Get.find<RequestsController>().currentCategoryIndex.value;
+
     Get.find<RequestsController>().loadRequestsData().then((_) {
-      requests = Get.find<RequestsController>()
-          .requests
-          .where(
-            (element) => element.status == 'Pending',
-          )
-          .map(
-            (e) => e,
-          )
-          .toList();
+      if (currentRequestCategory == 0) {
+        requests = Get.find<RequestsController>()
+            .requestsOfAssets
+            .where(
+              (element) => element.status == 'Pending',
+            )
+            .map(
+              (e) => e,
+            )
+            .toList();
+      } else {
+        requests = Get.find<RequestsController>()
+            .requestsOfConsumables
+            .where(
+              (element) => element.status == 'Pending',
+            )
+            .map(
+              (e) => e,
+            )
+            .toList();
+      }
       loading = false;
       update([TrackRequestIds.trackRequestsPage]);
     });
@@ -126,10 +135,20 @@ class TrackRequestController extends GetxController {
 
 //------------Cancel Request ------------
   cancelRequest(String requestId) {
-    Get.find<RequestsController>()
-        .requests
-        .firstWhere((element) => element.requestId == requestId)
-        .status = 'Canceled';
+    final isConsumable =
+        Get.find<RequestsController>().currentCategoryIndex.value == 1;
+
+    if (isConsumable) {
+      Get.find<RequestsController>()
+          .requestsOfConsumables
+          .firstWhere((element) => element.requestId == requestId)
+          .status = 'Canceled';
+    } else {
+      Get.find<RequestsController>()
+          .requestsOfAssets
+          .firstWhere((element) => element.requestId == requestId)
+          .status = 'Canceled';
+    }
     requests.removeWhere((element) => element.requestId == requestId);
 
     Get.until((route) => route.settings.name == Routes.trackRequest);

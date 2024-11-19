@@ -60,7 +60,7 @@ class DefaultDialog extends StatelessWidget {
         vertical: 12.h,
         horizontal: 12.w,
       ),
-      width: width,
+      width: width ?? (context.isTablett ? 411.w : 343.w),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -72,8 +72,9 @@ class DefaultDialog extends StatelessWidget {
               right: 8.w,
             ),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.r),
-                color: AppColors.background),
+              borderRadius: BorderRadius.circular(8.r),
+              color: AppColors.background,
+            ),
             child: icon != null
                 ? CircleAvatar(
                     backgroundColor: AppColors.red,

@@ -19,7 +19,7 @@ import '../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../Assets/domain/entity/assets_entity.dart';
 import '../../../../constants/ids_constants.dart';
 import '../../../controller/request_assets_controller.dart';
-import '../../widgets/common/request_assets_search_filter.dart';
+import '../../widgets/common/request_search_filter/request_assets_search_filter.dart';
 part '../../widgets/tablet/new_request/cards/horizontal_request_asset_card.dart';
 part '../../widgets/tablet/new_request/cards/vertical_request_asset_card.dart';
 part '../../widgets/tablet/new_request/cards/vertical_default_asset_card.dart';
@@ -53,74 +53,79 @@ class TabletNewRequestPage extends GetView<RequestAssetsController> {
                         ? const Expanded(child: AppCircleProgress())
                         : controller.assets.isEmpty
                             ? const Expanded(child: NoDataGif())
-                            : SingleChildScrollView(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    verticalSpace(21),
-                                    Text(
-                                      'Asset Information'.tr,
-                                      style:
-                                          AppTextStyles.font18BlackCairoMedium,
-                                    ),
-                                    verticalSpace(21),
-                                    const RequestAssetsSearchFilter(),
-                                    verticalSpace(21),
-                                    SizeAnimation(
-                                      child: StaggeredGrid.count(
-                                        crossAxisCount:
-                                            Get.width > 1200 ? 3 : 2,
-                                        mainAxisSpacing: 15.h,
-                                        crossAxisSpacing:
-                                            context.isLandscapee ? 20.w : 36.w,
-                                        children: List.generate(
-                                          controller.assets.length,
-                                          (index) {
-                                            return GestureDetector(
-                                              onTap: () {
-                                                controller.setResources(
-                                                    controller.assets[index]);
-                                                Get.toNamed(
-                                                  Routes.newRequestAsset,
-                                                  arguments: {
-                                                    'assetModel':
-                                                        controller.assets[index]
-                                                  },
-                                                );
-                                              },
-                                              child: controller.requestAction ==
-                                                      RequestActions
-                                                          .requestAsset
-                                                  ? OrientationHelper(
-                                                      landScape:
-                                                          HorizontalRequestAssetCard(
-                                                        model: controller
-                                                            .assets[index],
-                                                      ),
-                                                      portrait:
-                                                          VerticalRequestAssetCard(
-                                                        model: controller
-                                                            .assets[index],
-                                                      ),
-                                                    )
-                                                  : OrientationHelper(
-                                                      landScape:
-                                                          HorizontalDefaultAssetCard(
-                                                        model: controller
-                                                            .assets[index],
-                                                      ),
-                                                      portrait:
-                                                          VerticalDefaultAssetCard(
-                                                        model: controller
-                                                            .assets[index],
-                                                      ),
-                                                    ),
-                                            );
-                                          },
-                                        ),
+                            : Expanded(
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      verticalSpace(21),
+                                      Text(
+                                        'Asset Information'.tr,
+                                        style: AppTextStyles
+                                            .font18BlackCairoMedium,
                                       ),
-                                    )
-                                  ],
+                                      verticalSpace(21),
+                                      const RequestAssetsSearchFilter(),
+                                      verticalSpace(21),
+                                      SizeAnimation(
+                                        child: StaggeredGrid.count(
+                                          crossAxisCount:
+                                              Get.width > 1200 ? 3 : 2,
+                                          mainAxisSpacing: 15.h,
+                                          crossAxisSpacing: context.isLandscapee
+                                              ? 20.w
+                                              : 36.w,
+                                          children: List.generate(
+                                            controller.assets.length,
+                                            (index) {
+                                              return GestureDetector(
+                                                onTap: () {
+                                                  controller.setResources(
+                                                      controller.assets[index]);
+                                                  Get.toNamed(
+                                                    Routes.newRequestAsset,
+                                                    arguments: {
+                                                      'assetModel': controller
+                                                          .assets[index]
+                                                    },
+                                                  );
+                                                },
+                                                child: controller
+                                                            .requestAction ==
+                                                        RequestActions
+                                                            .requestAsset
+                                                    ? OrientationHelper(
+                                                        landScape:
+                                                            HorizontalRequestAssetCard(
+                                                          model: controller
+                                                              .assets[index],
+                                                        ),
+                                                        portrait:
+                                                            VerticalRequestAssetCard(
+                                                          model: controller
+                                                              .assets[index],
+                                                        ),
+                                                      )
+                                                    : OrientationHelper(
+                                                        landScape:
+                                                            HorizontalDefaultAssetCard(
+                                                          model: controller
+                                                              .assets[index],
+                                                        ),
+                                                        portrait:
+                                                            VerticalDefaultAssetCard(
+                                                          model: controller
+                                                              .assets[index],
+                                                        ),
+                                                      ),
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                   ],

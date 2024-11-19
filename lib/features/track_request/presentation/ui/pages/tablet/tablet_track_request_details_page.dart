@@ -44,10 +44,15 @@ class TabletTrackRequestDetailsPage extends GetView<TrackRequestController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomAppBar(
-                titles: [
-                  'Track Asset'.tr,
-                  'Asset Details'.tr,
-                ],
+                titles: model.assetsEntity != null
+                    ? [
+                        'Track Asset'.tr,
+                        'Asset Details'.tr,
+                      ]
+                    : [
+                        'Track Consumable'.tr,
+                        'Consumable Details'.tr,
+                      ],
                 titleNavigations: [
                   () => Get.back(),
                 ],
@@ -58,6 +63,7 @@ class TabletTrackRequestDetailsPage extends GetView<TrackRequestController> {
                   verticalSpace(20),
                   TabletTrackDeatailsCard(
                     model: model,
+                    isConsumable: model.consumablesEntity != null,
                   ),
                   verticalSpace(
                     context.isLandscapee ? 26 : 38,

@@ -16,6 +16,7 @@ import '../../../../../../core/widgets/loading.dart';
 import '../../../../../../core/widgets/no_data_gif.dart';
 
 import '../../../../../requests/entities/request_entity.dart';
+import '../../../../../requests/presentation/controller/requests_controller.dart';
 import '../../../../constants/ids_constants.dart';
 import '../../../controller/track_requests_controller.dart';
 import '../../widgets/common/track_requests/track_request_search_filter.dart';
@@ -39,7 +40,14 @@ class TabletTrackRequestsPage extends GetView<TrackRequestController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomAppBar(
-                      titles: ['Track Asset'.tr],
+                      titles: [
+                        Get.find<RequestsController>()
+                                    .currentCategoryIndex
+                                    .value ==
+                                1
+                            ? 'Track Consumable'.tr
+                            : 'Track Asset'.tr
+                      ],
                     ),
                     controller.loading
                         ? const Expanded(child: AppCircleProgress())
@@ -77,11 +85,19 @@ class TabletTrackRequestsPage extends GetView<TrackRequestController> {
                                                     HorizontalTrackRequestCard(
                                                   model: controller
                                                       .requests[index],
+                                                  isConsumable: controller
+                                                          .requests[index]
+                                                          .consumablesEntity !=
+                                                      null,
                                                 ),
                                                 portrait:
                                                     VerticalTrackRequestCard(
                                                   model: controller
                                                       .requests[index],
+                                                  isConsumable: controller
+                                                          .requests[index]
+                                                          .consumablesEntity !=
+                                                      null,
                                                 ),
                                               ),
                                             );

@@ -6,9 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/core/helpers/spacing_helper.dart';
 import '../../../../../../core/helpers/haptic_feedback_helper.dart';
+import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/routes/app_routes.dart';
+import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../../core/widgets/loading.dart';
@@ -22,57 +23,68 @@ class MobileAssetsPage extends GetView<AssetsController> {
 
   @override
   Widget build(BuildContext context) {
-return GetBuilder<AssetsController>(
-  init: AssetsController(),
+    return GetBuilder<AssetsController>(
+        init: AssetsController(),
         id: AssetsIdConstant.assetsData,
         builder: (controller) {
           return controller.loading
-              ? const AppCircleProgress()
+              ? const SliverFillRemaining(
+                  child: AppCircleProgress(),
+                )
               : controller.assetsList.isEmpty
-              ? const NoDataGif()
-              : Column(children: [
-            Align(
-              alignment: AlignmentDirectional.bottomEnd,
-              child: AppDefaultButton(
-                text: 'Approval'.tr,
-                onPressed: (){
-                  Get.toNamed(Routes.approval);
-                },
-                style: context.isPhone
-                    ? AppTextStyles.font16BlackMediumCairo
-                    : AppTextStyles.font18BlackMediumCairo,
-              ),
-            ),
-            verticalSpace(12),
-            ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                    onTap: () {
-                      controller.setAssetsDetails(
-                          controller.assetsList[index]);
+                  ? const SliverFillRemaining(
+                      child: NoDataGif(),
+                    )
+                  : SliverMainAxisGroup(
+                      slivers: [
+                        SliverToBoxAdapter(
+                          child: Align(
+                            alignment: AlignmentDirectional.bottomEnd,
+                            child: AppDefaultButton(
+                              text: 'Approval'.tr,
+                              textColor: AppColors.textButton,
+                              onPressed: () {
+                                Get.toNamed(Routes.approval);
+                              },
+                              style: context.isPhone
+                                  ? AppTextStyles.font16BlackMediumCairo
+                                  : AppTextStyles.font18BlackMediumCairo,
+                            ),
+                          ),
+                        ),
+                        SliverToBoxAdapter(child: verticalSpace(12)),
+                        SliverPadding(
+                          padding: EdgeInsets.only(
+                            bottom: 12.h,
+                          ),
+                          sliver: SliverList.separated(
+                            separatorBuilder: (_, __) => verticalSpace(16),
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                  onTap: () {
+                                    controller.setAssetsDetails(
+                                        controller.assetsList[index]);
 
-                      HapticFeedbackHelper.triggerHapticFeedback(
-                        vibration: VibrateType.mediumImpact,
-                        hapticFeedback: HapticFeedback.mediumImpact,
-                      );
-                      Get.toNamed(
-                        Routes.assetsDetails,
-                        arguments: {
-                          'assetsModelIndex': index,
-                          //'readOnly': readOnly,
-                        },
-                      );
-                    },
-                    child: MobileAssetsCard(index: index));
-              },
-              separatorBuilder: (_, __) => SizedBox(
-                height: 16.h,
-              ),
-              itemCount: controller.assetsList.length,
-            )
-          ]);
+                                    HapticFeedbackHelper.triggerHapticFeedback(
+                                      vibration: VibrateType.mediumImpact,
+                                      hapticFeedback:
+                                          HapticFeedback.mediumImpact,
+                                    );
+                                    Get.toNamed(
+                                      Routes.assetsDetails,
+                                      arguments: {
+                                        'assetsModelIndex': index,
+                                        //'readOnly': readOnly,
+                                      },
+                                    );
+                                  },
+                                  child: MobileAssetsCard(index: index));
+                            },
+                            itemCount: controller.assetsList.length,
+                          ),
+                        )
+                      ],
+                    );
         });
   }
 }

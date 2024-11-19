@@ -41,7 +41,6 @@ class AttachmentCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(color: AppColors.whiteShadow),
         color: AppColors.card,
       ),
       child: Row(

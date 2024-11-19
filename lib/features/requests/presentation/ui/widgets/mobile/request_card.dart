@@ -28,34 +28,34 @@ class MobileRequestCard extends GetView<RequestsController> {
                   height: 65.h,
                 ),
                 horizontalSpace(4),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '${'Request ID'.tr} : ${DateTimeHelper.formatInt(int.parse(request.requestId))}',
-                      style: AppTextStyles.font14BlackCairoMedium,
-                    ),
-                    verticalSpace(3),
-                    Text(
-                      '${'Request Type'.tr} : ${request.requestType}',
-                      style: AppTextStyles.font12SecondaryBlackCairoMedium,
-                    ),
-                  ],
-                ),
                 Expanded(
-                  child: RichText(
-                    textAlign: TextAlign.end,
-                    text: TextSpan(
-                        text: '${'Status'.tr} :',
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${'Request ID'.tr} : ${DateTimeHelper.formatInt(int.parse(request.requestId))}',
+                        style: AppTextStyles.font14BlackCairoMedium,
+                      ),
+                      verticalSpace(3),
+                      Text(
+                        '${'Request Type'.tr} : ${request.requestType}',
                         style: AppTextStyles.font12SecondaryBlackCairoMedium,
-                        children: [
-                          TextSpan(
-                            text: request.status.tr,
-                            style: AppTextStyles.font12SecondaryBlackCairoMedium
-                                .copyWith(color: request.status.tr.getColor),
-                          )
-                        ]),
+                      ),
+                    ],
                   ),
+                ),
+                RichText(
+                  textAlign: TextAlign.end,
+                  text: TextSpan(
+                      text: '${'Status'.tr} :',
+                      style: AppTextStyles.font12SecondaryBlackCairoMedium,
+                      children: [
+                        TextSpan(
+                          text: request.status.tr,
+                          style: AppTextStyles.font12SecondaryBlackCairoMedium
+                              .copyWith(color: request.status.tr.getColor),
+                        )
+                      ]),
                 ),
               ],
             ),

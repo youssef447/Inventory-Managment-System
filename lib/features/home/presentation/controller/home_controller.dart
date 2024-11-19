@@ -7,6 +7,8 @@ import '../../../../core/helpers/share_helper.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../Assets/presentation/controller/assets_controller.dart';
 import '../../../Assets/presentation/ui/constants/assets_columns_name.dart';
+import '../../../consumables/presentation/constants/consumables_columns_name.dart';
+import '../../../consumables/presentation/controller/consumables_controller.dart';
 import '../../../requests/constants/requests_columns.dart';
 import '../../../requests/presentation/controller/requests_controller.dart';
 // Date: 7/11/2024
@@ -93,6 +95,27 @@ class HomeController extends GetxController {
         ];
       }).toList();
     }
+    //consumables
+    else if (currentCategoryIndex.value == 1) {
+      final controller = Get.find<ConsumablesController>();
+      headers = ConsumablesColumnsName.tableColumnsConsumablesName;
+      data = controller.consumablesList.map((model) {
+        return [
+          model.consumableId,
+          model.name,
+          model.category,
+          model.subcategory,
+          model.model,
+          model.brand,
+          DateTimeHelper.formatDate(model.dateReceived),
+          DateTimeHelper.formatInt(int.parse(model.quantity)),
+          model.unitOfMeasurement,
+          model.usageFrequency,
+          DateTimeHelper.formatDate(model.expirationDate ?? DateTime.now()),
+          model.status,
+        ];
+      }).toList();
+    }
     //requests
     else if (currentCategoryIndex.value == 2) {
       final controller = Get.find<RequestsController>();
@@ -147,7 +170,7 @@ class HomeController extends GetxController {
           ];
         }).toList();
       }
-      await ShareHelper.printDoc(data, headers);
     }
+    await ShareHelper.printDoc(data, headers);
   }
 }

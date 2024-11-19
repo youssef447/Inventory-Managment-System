@@ -2,9 +2,12 @@ part of '../../../../pages/tablet/tablet_track_requests_page.dart';
 
 class VerticalTrackRequestCard extends StatelessWidget {
   final RequestEntity model;
+  final bool isConsumable;
+
   const VerticalTrackRequestCard({
     super.key,
     required this.model,
+    required this.isConsumable,
   });
 
   @override
@@ -28,15 +31,19 @@ class VerticalTrackRequestCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
-                model.assetsEntity!.image,
-                /* width: 60.w,
-                height: 60.h, */
+                isConsumable
+                    ? model.consumablesEntity!.image
+                    : model.assetsEntity!.image,
                 fit: BoxFit.fill,
+                width: 45.w,
+                height: 60.h,
               ),
               horizontalSpace(8),
               Expanded(
                 child: Text(
-                  model.assetsEntity!.assetName,
+                  isConsumable
+                      ? model.consumablesEntity!.name
+                      : model.assetsEntity!.assetName,
                   style: AppTextStyles.font16BlackCairoRegular,
                 ),
               ),
@@ -89,7 +96,10 @@ class VerticalTrackRequestCard extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: DateTimeHelper.formatDate(
-                        model.assetsEntity!.lastUpdate),
+                      isConsumable
+                          ? model.consumablesEntity!.lastUpdate
+                          : model.assetsEntity!.lastUpdate,
+                    ),
                     style: AppTextStyles.font14darkWhiteShadowCairoMedium,
                   )
                 ],

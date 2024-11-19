@@ -11,6 +11,7 @@ import '../../../../../../core/widgets/appbar/mobile_custom_appbar.dart';
 import '../../../../../../core/widgets/loading.dart';
 import '../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../requests/entities/request_entity.dart';
+import '../../../../../requests/presentation/controller/requests_controller.dart';
 import '../../../../constants/ids_constants.dart';
 import '../../../controller/track_requests_controller.dart';
 import '../../widgets/common/track_requests/track_request_search_filter.dart';
@@ -33,7 +34,12 @@ class MobileTrackRequestsPage extends GetView<TrackRequestController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       MobileCustomAppbar(
-                        title: 'Track Request'.tr,
+                        title: Get.find<RequestsController>()
+                                    .currentCategoryIndex
+                                    .value ==
+                                1
+                            ? 'Track Consumable'.tr
+                            : 'Track Asset'.tr,
                       ),
                       controller.loading
                           ? const Expanded(
