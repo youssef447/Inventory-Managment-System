@@ -26,11 +26,11 @@ class TabletAssetsPage extends StatelessWidget {
         id: AssetsIdConstant.assetsData,
         builder: (controller) {
           return controller.loading
-              ? const Center(child: AppCircleProgress())
+              ? const Expanded(child: AppCircleProgress())
               : controller.assetsList.isEmpty
-                  ? const NoDataGif()
+                  ? const Expanded(child: NoDataGif())
                   : Expanded(
-                    child: DefaultDataTable(
+                      child: DefaultDataTable(
                         columns: AssetsColumnsName.tableColumnsName
                             .map(
                               (element) => DataColumn(
@@ -209,7 +209,7 @@ class TabletAssetsPage extends StatelessWidget {
                           ),
                         ).toList(),
                       ),
-                  );
+                    );
         });
   }
 }

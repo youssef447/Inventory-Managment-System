@@ -23,35 +23,38 @@ class DefaultDataTable extends StatelessWidget {
   Widget build(BuildContext context) {
     var isLandScape = context.isLandscape;
 
-    return SizeAnimation(
+    return Align(
+      alignment: Alignment.topCenter,
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: ClipRRect(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(8.r),
-              topRight: Radius.circular(8.r),
-            ),
-            child: DataTable(
-              border: TableBorder(
-                horizontalInside: BorderSide(
-                  width: 0,
-                  color: AppTheme.isDark ?? false
-                      ? const Color(0xFF000000)
-                      : AppColors.card,
-                ),
+          child: SizeAnimation(
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(8.r),
+                topRight: Radius.circular(8.r),
               ),
-              // columnSpacing: 45.w, //columnSpacing,
-              headingRowColor: WidgetStatePropertyAll(AppColors.header),
-              dataRowMinHeight: 46.h,
-              dataRowMaxHeight: 46.h,
-              headingRowHeight: 46.h,
-              horizontalMargin: isLandScape ? 29.w : 16.w,
-              dividerThickness: 0,
-              showCheckboxColumn: false,
-              columns: columns,
-              rows: rows,
+              child: DataTable(
+                border: TableBorder(
+                  horizontalInside: BorderSide(
+                    width: 0,
+                    color: AppTheme.isDark ?? false
+                        ? const Color(0xFF000000)
+                        : AppColors.card,
+                  ),
+                ),
+                // columnSpacing: 45.w, //columnSpacing,
+                headingRowColor: WidgetStatePropertyAll(AppColors.header),
+                dataRowMinHeight: 46.h,
+                dataRowMaxHeight: 46.h,
+                headingRowHeight: 46.h,
+                horizontalMargin: isLandScape ? 29.w : 16.w,
+                dividerThickness: 0,
+                showCheckboxColumn: false,
+                columns: columns,
+                rows: rows,
+              ),
             ),
           ),
         ),

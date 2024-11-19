@@ -27,155 +27,157 @@ class ConsumablesTabletPage extends StatelessWidget {
         id: ConsumablesIdConstant.consumablesData,
         builder: (controller) {
           return controller.loading
-              ? const AppCircleProgress()
+              ? const Expanded(child: AppCircleProgress())
               : controller.consumablesList.isEmpty
-                  ? const NoDataGif()
-                  : DefaultDataTable(
-                    columns: ConsumablesColumnsName
-                        .tableColumnsConsumablesName
-                        .map(
-                          (element) => DataColumn(
-                            label: Text(
-                              element.tr,
-                              style: AppTextStyles.font16WhiteRegularCairo,
-                            ),
-                          ),
-                        )
-                        .toList(),
-                    rows: List.generate(
-                      controller.consumablesList.length,
-                      (index) => DataRow(
-                        color: WidgetStatePropertyAll(
-                          index % 2 == 0
-                              ? AppColors.evenRowColor
-                              : AppColors.oddRowColor,
-                        ),
-                        cells: [
-                          DataCell(
-                            Text(
-                              controller
-                                  .consumablesList[index].consumableId,
-                              style: AppTextStyles.font16BlackRegularCairo,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          DataCell(
-                            Text(
-                              controller.consumablesList[index].name,
-                              style: AppTextStyles.font16BlackRegularCairo,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          DataCell(
-                            Text(
-                              controller.consumablesList[index].category,
-                              style: AppTextStyles.font16BlackRegularCairo,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          DataCell(
-                            Text(
-                              controller.consumablesList[index].subcategory,
-                              style: AppTextStyles.font16BlackRegularCairo,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          DataCell(
-                            Text(
-                              controller.consumablesList[index].model,
-                              style: AppTextStyles.font16BlackRegularCairo,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          DataCell(
-                            Text(
-                              controller.consumablesList[index].brand,
-                              style: AppTextStyles.font16BlackRegularCairo,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          DataCell(
-                            Center(
-                                child: Text(
-                              DateTimeHelper.formatDate(
-                                controller
-                                    .consumablesList[index].dateReceived,
+                  ? const Expanded(child: NoDataGif())
+                  : Expanded(
+                      child: DefaultDataTable(
+                        columns: ConsumablesColumnsName
+                            .tableColumnsConsumablesName
+                            .map(
+                              (element) => DataColumn(
+                                label: Text(
+                                  element.tr,
+                                  style: AppTextStyles.font16WhiteRegularCairo,
+                                ),
                               ),
-                              style: AppTextStyles.font16BlackRegularCairo,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            )),
-                          ),
-                          DataCell(
-                            Text(
-                              controller.consumablesList[index].quantity,
-                              style: AppTextStyles.font16BlackRegularCairo,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
+                            )
+                            .toList(),
+                        rows: List.generate(
+                          controller.consumablesList.length,
+                          (index) => DataRow(
+                            color: WidgetStatePropertyAll(
+                              index % 2 == 0
+                                  ? AppColors.evenRowColor
+                                  : AppColors.oddRowColor,
                             ),
+                            cells: [
+                              DataCell(
+                                Text(
+                                  controller
+                                      .consumablesList[index].consumableId,
+                                  style: AppTextStyles.font16BlackRegularCairo,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  controller.consumablesList[index].name,
+                                  style: AppTextStyles.font16BlackRegularCairo,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  controller.consumablesList[index].category,
+                                  style: AppTextStyles.font16BlackRegularCairo,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  controller.consumablesList[index].subcategory,
+                                  style: AppTextStyles.font16BlackRegularCairo,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  controller.consumablesList[index].model,
+                                  style: AppTextStyles.font16BlackRegularCairo,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  controller.consumablesList[index].brand,
+                                  style: AppTextStyles.font16BlackRegularCairo,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              DataCell(
+                                Center(
+                                    child: Text(
+                                  DateTimeHelper.formatDate(
+                                    controller
+                                        .consumablesList[index].dateReceived,
+                                  ),
+                                  style: AppTextStyles.font16BlackRegularCairo,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                )),
+                              ),
+                              DataCell(
+                                Text(
+                                  controller.consumablesList[index].quantity,
+                                  style: AppTextStyles.font16BlackRegularCairo,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  controller
+                                      .consumablesList[index].unitOfMeasurement,
+                                  style: AppTextStyles.font16BlackRegularCairo,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  controller
+                                      .consumablesList[index].usageFrequency,
+                                  style: AppTextStyles.font16BlackRegularCairo,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  controller.consumablesList[index]
+                                              .expirationDate !=
+                                          null
+                                      ? DateTimeHelper.formatDate(
+                                          controller.consumablesList[index]
+                                              .expirationDate!,
+                                        )
+                                      : 'Not Applicable'.tr,
+                                  style: controller.consumablesList[index]
+                                              .expirationDate !=
+                                          null
+                                      ? AppTextStyles.font16BlackRegularCairo
+                                      : AppTextStyles
+                                          .font16DarkGreyRegularCairo,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  controller.consumablesList[index].status.tr,
+                                  style: AppTextStyles.font16BlackRegularCairo
+                                      .copyWith(
+                                          color: controller
+                                              .consumablesList[index]
+                                              .status
+                                              .tr
+                                              .getColor),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ],
                           ),
-                          DataCell(
-                            Text(
-                              controller
-                                  .consumablesList[index].unitOfMeasurement,
-                              style: AppTextStyles.font16BlackRegularCairo,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          DataCell(
-                            Text(
-                              controller
-                                  .consumablesList[index].usageFrequency,
-                              style: AppTextStyles.font16BlackRegularCairo,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          DataCell(
-                            Text(
-                              controller.consumablesList[index]
-                                          .expirationDate !=
-                                      null
-                                  ? DateTimeHelper.formatDate(
-                                      controller.consumablesList[index]
-                                          .expirationDate!,
-                                    )
-                                  : 'Not Applicable'.tr,
-                              style: controller.consumablesList[index]
-                                          .expirationDate !=
-                                      null
-                                  ? AppTextStyles.font16BlackRegularCairo
-                                  : AppTextStyles
-                                      .font16DarkGreyRegularCairo,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          DataCell(
-                            Text(
-                              controller.consumablesList[index].status.tr,
-                              style: AppTextStyles.font16BlackRegularCairo
-                                  .copyWith(
-                                      color: controller
-                                          .consumablesList[index]
-                                          .status
-                                          .tr
-                                          .getColor),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ],
+                        ).toList(),
                       ),
-                    ).toList(),
-                  );
+                    );
         });
   }
 }

@@ -34,34 +34,37 @@ class TabletRequestsPage extends GetView<RequestsController> {
         return controller.loading
             ? const Expanded(child: AppCircleProgress())
             : controller.requests.isEmpty
-                ? const NoDataGif()
-                : SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        SlideAnimation(
-                          leftToRight: !context.isArabic,
-                          child: const OrientationHelper(
-                            landScape: HorizontalRequstsSummaryCircles(),
-                            portrait: VerticalRequstsSummaryCircles(),
+                ? const Expanded(child: NoDataGif())
+                : Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SlideAnimation(
+                            leftToRight: !context.isArabic,
+                            child: const OrientationHelper(
+                              landScape: HorizontalRequstsSummaryCircles(),
+                              portrait: VerticalRequstsSummaryCircles(),
+                            ),
                           ),
-                        ),
-                        verticalSpace(10),
-                        const RequestCategoryFilter(),
-                        verticalSpace(10),
-                        Obx(
-                          () {
-                            if (controller.currentCategoryIndex.value == 0) {
-                              return controller.requestsOfAssets.isNotEmpty
-                                  ? const RequestsOfAssetsTable()
-                                  : const NoDataGif();
-                            } else {
-                              return controller.requestsOfConsumables.isNotEmpty
-                                  ? const RequestsOfConsumablesTable()
-                                  : const NoDataGif();
-                            }
-                          },
-                        )
-                      ],
+                          verticalSpace(10),
+                          const RequestCategoryFilter(),
+                          verticalSpace(10),
+                          Obx(
+                            () {
+                              if (controller.currentCategoryIndex.value == 0) {
+                                return controller.requestsOfAssets.isNotEmpty
+                                    ? const RequestsOfAssetsTable()
+                                    : const NoDataGif();
+                              } else {
+                                return controller
+                                        .requestsOfConsumables.isNotEmpty
+                                    ? const RequestsOfConsumablesTable()
+                                    : const NoDataGif();
+                              }
+                            },
+                          )
+                        ],
+                      ),
                     ),
                   );
       },
