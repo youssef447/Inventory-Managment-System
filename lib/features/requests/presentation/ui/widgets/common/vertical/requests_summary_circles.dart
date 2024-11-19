@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
 
 import '../../../../../../../core/constants/app_assets.dart';
+import '../../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/routes/app_routes.dart';
 import '../../../../../../../core/theme/app_colors.dart';
@@ -213,7 +214,7 @@ class VerticalRequstsSummaryCircles extends GetView<HomeController> {
                       image: AppAssets.add,
                       textAlign: TextAlign.center,
                       width: 112.w,
-                      style: context.isPhone
+                      style: !context.isTablett
                           ? AppTextStyles.font16BlackMediumCairo
                               .copyWith(color: AppColors.textButton)
                           : AppTextStyles.font18BlackMediumCairo
@@ -221,10 +222,19 @@ class VerticalRequstsSummaryCircles extends GetView<HomeController> {
                       color: AppColors.primary,
                       height: 37.h,
                       onChanged: (value) {
-                        Get.toNamed(
-                          Routes.requestAsset,
-                          arguments: {'action': value},
-                        );
+                        if (value == RequestActions.expiredConsumables ||
+                            value == RequestActions.returnConsumables ||
+                            value == RequestActions.requestConsumables) {
+                          Get.toNamed(
+                            Routes.requestConsumable,
+                            arguments: {'action': value},
+                          );
+                        } else {
+                          Get.toNamed(
+                            Routes.requestAsset,
+                            arguments: {'action': value},
+                          );
+                        }
                       },
                       items: List.generate(
                         requestController.currentCategoryIndex.value == 0

@@ -74,24 +74,23 @@ class AppDropdown extends StatelessWidget {
                 horizontal: 8.w,
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: image != null
+                    ? MainAxisAlignment.center
+                    : MainAxisAlignment.spaceBetween,
                 children: [
                   image == null
-                      ? Expanded(child: _buildDropdownText())
-                      : Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SvgPicture.asset(
-                                image!,
-                                color: AppColors.icon,
-                              ),
-                              horizontalSpace(5),
-                              Flexible(
-                                child: _buildDropdownText(),
-                              ),
-                            ],
-                          ),
+                      ? _buildDropdownText()
+                      : Row(
+                          children: [
+                            SvgPicture.asset(
+                              image!,
+                              color: AppColors.icon,
+                              width: 24.w,
+                              height: 24.h,
+                            ),
+                            horizontalSpace(5),
+                            _buildDropdownText(),
+                          ],
                         ),
                   customSpacing ?? const SizedBox(),
                   showDropdownIcon

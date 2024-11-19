@@ -125,12 +125,11 @@ class RequestConsumableController extends GetxController {
       TextEditingController();
   late TextEditingController expectedReturnController = TextEditingController();
   //routine maintenance
-  late TextEditingController maintenanceDateController =
-      TextEditingController();
+
   //return consumable
   late TextEditingController returnDateController = TextEditingController();
   //repair consumable
-  late TextEditingController repairDateController = TextEditingController();
+  late TextEditingController pickUpDateController = TextEditingController();
   List<IssueTypes> issueTypes = [
     IssueTypes.mechanical,
     IssueTypes.electrical,
@@ -157,7 +156,7 @@ class RequestConsumableController extends GetxController {
     expectedDeliveryController.clear();
     expectedReturnController.clear();
     additionalNotesController.clear();
-    repairDateController.clear();
+    pickUpDateController.clear();
     stockRemainingController.clear();
     priorityValue.value = null;
     issueTypeValue.value = null;

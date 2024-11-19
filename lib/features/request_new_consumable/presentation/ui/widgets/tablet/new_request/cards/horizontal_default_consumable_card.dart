@@ -1,5 +1,7 @@
 part of '../../../../pages/tablet/tablet_new_request_page.dart';
 
+//Youssef Ashraf
+///Represents The Horizontal Default (Return and Expiration Consumables Actions) Consumable Card in Horizontal Tablet View
 class HorizontalDefaultConsumableCard
     extends GetView<RequestConsumableController> {
   final ConsumablesEntity model;
@@ -39,29 +41,30 @@ class HorizontalDefaultConsumableCard
                     ),
                     verticalSpace(3),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            DefaultRichText(
-                              labelStyle:
-                                  AppTextStyles.font12SecondaryBlackCairoMedium,
-                              style: AppTextStyles.font12BlackMediumCairo,
-                              label: 'Category',
-                              value: model.status,
-                            ),
-                            DefaultRichText(
-                              labelStyle:
-                                  AppTextStyles.font12SecondaryBlackCairoMedium,
-                              style: AppTextStyles.font12BlackMediumCairo,
-                              label: 'Subcategory',
-                              value: model.subcategory,
-                            ),
-                          ],
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              DefaultRichText(
+                                labelStyle: AppTextStyles
+                                    .font12SecondaryBlackCairoMedium,
+                                style: AppTextStyles.font12BlackMediumCairo,
+                                label: 'Category',
+                                value: model.status,
+                              ),
+                              DefaultRichText(
+                                labelStyle: AppTextStyles
+                                    .font12SecondaryBlackCairoMedium,
+                                style: AppTextStyles.font12BlackMediumCairo,
+                                label: 'Subcategory',
+                                value: model.subcategory,
+                              ),
+                            ],
+                          ),
                         ),
                         horizontalSpace(3),
-                        Flexible(
+                        Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

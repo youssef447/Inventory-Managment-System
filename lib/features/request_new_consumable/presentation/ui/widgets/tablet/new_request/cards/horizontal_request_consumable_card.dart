@@ -1,5 +1,7 @@
 part of '../../../../pages/tablet/tablet_new_request_page.dart';
 
+//Youssef Ashraf
+///Represents The Horizontal Default (Request Consumable Actions) Consumable Card in Horizontal Tablet View
 class HorizontalRequestConsumableCard extends StatelessWidget {
   final ConsumablesEntity model;
   const HorizontalRequestConsumableCard({
@@ -121,7 +123,8 @@ class HorizontalRequestConsumableCard extends StatelessWidget {
                             children: [
                               TextSpan(
                                 text: DateTimeHelper.formatInt(
-                                    model.availableQuantity),
+                                  model.availableQuantity,
+                                ),
                                 style: AppTextStyles.font12MediumGreyCairoMedium
                                     .copyWith(
                                   color: AppColors.darkWhiteShadow,

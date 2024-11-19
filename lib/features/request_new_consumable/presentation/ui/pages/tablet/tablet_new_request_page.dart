@@ -13,16 +13,16 @@ import '../../../../../../core/routes/app_routes.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/widgets/appbar/custom_app_bar.dart';
-import '../../../../../../core/widgets/appbar/default_rich_text.dart';
+import '../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../../core/widgets/loading.dart';
 import '../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../consumables/domain/entity/consumables_entity.dart';
 import '../../../../constants/ids_constants.dart';
 import '../../../controller/request_consumable_controller.dart';
-import '../../widgets/common/request_assets_search_filter.dart';
+import '../../widgets/common/request_consumable_search_filter/request_consumable_search_filter.dart';
 part '../../widgets/tablet/new_request/cards/horizontal_request_consumable_card.dart';
-part '../../widgets/tablet/new_request/cards/vertical_request_asset_card.dart';
-part '../../widgets/tablet/new_request/cards/vertical_default_asset_card.dart';
+part '../../widgets/tablet/new_request/cards/vertical_default_consumable_card.dart';
+part '../../widgets/tablet/new_request/cards/vertical_request_consumable_card.dart';
 part '../../widgets/tablet/new_request/cards/horizontal_default_consumable_card.dart';
 
 class TabletNewConsumableRequestPage

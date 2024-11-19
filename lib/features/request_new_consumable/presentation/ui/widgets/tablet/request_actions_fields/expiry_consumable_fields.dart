@@ -10,7 +10,7 @@ class TabletExpiryConsumableFields
       children: [
         Expanded(
           child: LabeledFormField(
-            controller: controller.expectedDeliveryController,
+            controller: controller.pickUpDateController,
             date: true,
             label: 'Pick Up Date',
             hintText: 'Pick Up Date',

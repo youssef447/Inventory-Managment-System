@@ -124,7 +124,7 @@ extension GetReqActionName on RequestActions {
       case RequestActions.returnConsumables:
         return 'Return Consumables';
       case RequestActions.expiredConsumables:
-        return 'Expired Consumables';
+        return 'Expiry Consumables';
     }
   }
 }

@@ -71,7 +71,7 @@ class TabletCategoriesFilterRow extends GetView<HomeController> {
                         onPressed: () {
                           Get.toNamed(Routes.approval);
                         },
-                        style: context.isPhone
+                        style: !context.isTablett
                             ? AppTextStyles.font16BlackMediumCairo
                                 .copyWith(color: AppColors.textButton)
                             : AppTextStyles.font18BlackMediumCairo
@@ -86,9 +86,9 @@ class TabletCategoriesFilterRow extends GetView<HomeController> {
                         Padding(
                           padding: EdgeInsets.only(bottom: 9.0.h),
                           child: AppDefaultButton(
-                            width: 112.w,
+                            width: 125.w,
                             text: 'Track Request'.tr,
-                            style: context.isPhone
+                            style: !context.isTablett
                                 ? AppTextStyles.font16BlackMediumCairo
                                     .copyWith(color: AppColors.textButton)
                                 : AppTextStyles.font18BlackMediumCairo
@@ -97,12 +97,12 @@ class TabletCategoriesFilterRow extends GetView<HomeController> {
                           ),
                         ),
                       AppDefaultButton(
-                        width: 112.w,
+                        width: 125.w,
                         text: 'Approval'.tr,
                         onPressed: () {
                           Get.toNamed(Routes.approval);
                         },
-                        style: context.isPhone
+                        style: !context.isTablett
                             ? AppTextStyles.font16BlackMediumCairo
                                 .copyWith(color: AppColors.textButton)
                             : AppTextStyles.font18BlackMediumCairo

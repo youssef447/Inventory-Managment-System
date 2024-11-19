@@ -15,7 +15,7 @@ import '../../../../../../core/widgets/dropdown/app_dropdown.dart';
 import '../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../../consumables/domain/entity/consumables_entity.dart';
 import '../../../controller/request_consumable_controller.dart';
-import '../../widgets/attachments/attachments_section.dart';
+import '../../widgets/common/attachments/attachments_section.dart';
 part '../../widgets/tablet/request_form/discard_submit_buttons.dart';
 part '../../widgets/tablet/request_actions_fields/request_consumable_fields.dart';
 part '../../widgets/tablet/request_actions_fields/expiry_consumable_fields.dart';

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
+import '../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
@@ -12,8 +13,10 @@ import '../../../../../../core/widgets/dropdown/app_dropdown.dart';
 import '../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../../consumables/domain/entity/consumables_entity.dart';
 import '../../../controller/request_consumable_controller.dart';
-import '../../widgets/attachments/attachments_section.dart';
+import '../../widgets/common/attachments/attachments_section.dart';
 
+//Youssef Ashraf
+///Represents The Mobile New Request Consumable Form Page
 class MobileRequestConsumableFormPage
     extends GetView<RequestConsumableController> {
   final ConsumablesEntity model;
@@ -38,7 +41,8 @@ class MobileRequestConsumableFormPage
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MobileCustomAppbar(
-                    title: 'Request New Asset'.tr,
+                    title:
+                        '${'Request New'.tr} ${controller.requestAction.getName.tr}',
                   ),
                   verticalSpace(15),
                   ClipRRect(
@@ -58,7 +62,7 @@ class MobileRequestConsumableFormPage
                   verticalSpace(15),
                   LabeledFormField(
                     controller: controller.consumableNameController,
-                    label: 'Asset Name',
+                    label: 'Consumable Name',
                   ),
                   verticalSpace(24),
                   LabeledFormField(
@@ -81,69 +85,78 @@ class MobileRequestConsumableFormPage
                     label: 'Brand',
                   ),
                   verticalSpace(24),
-                  LabeledFormField(
-                    controller: controller.availabilityController,
-                    label: 'Availability',
-                  ),
-                  verticalSpace(15),
-                  LabeledFormField(
-                    controller: controller.quantityController,
-                    label: 'Quantity',
-                  ),
-                  verticalSpace(24),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Priority'.tr,
-                        style: AppTextStyles.font16BlackCairoMedium,
-                      ),
-                      verticalSpace(8),
-                      Obx(
-                        () => AppDropdown(
-                          showDropdownIcon: true,
-                          onChanged: (value) {
-                            controller.updatePriority(value);
-                          },
-                          hintText: 'Priority',
-                          height: 44.h,
-                          value: controller.priorityValue.value,
-                          textButton: controller.priorityValue.value?.getName,
-                          items: List.generate(
-                            controller.priorities.length,
-                            (index) {
-                              return DropdownMenuItem(
-                                value: controller.priorities[index],
-                                child: Text(
-                                  controller.priorities[index].getName.tr,
-                                  style: AppTextStyles
-                                      .font14SecondaryBlackCairoMedium,
-                                ),
-                              );
+                  if (controller.requestAction ==
+                      RequestActions.expiredConsumables)
+                    LabeledFormField(
+                      controller: controller.pickUpDateController,
+                      label: 'Pick Up Date',
+                      date: true,
+                      hintText: 'Pick Up Date',
+                    ),
+                  if (controller.requestAction ==
+                      RequestActions.returnConsumables)
+                    LabeledFormField(
+                      controller: controller.returnDateController,
+                      label: 'Return Date',
+                      hintText: 'Return Date',
+                      date: true,
+                    ),
+                  if (controller.requestAction ==
+                      RequestActions.requestConsumables)
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Priority'.tr,
+                          style: AppTextStyles.font16BlackCairoMedium,
+                        ),
+                        verticalSpace(8),
+                        Obx(
+                          () => AppDropdown(
+                            showDropdownIcon: true,
+                            onChanged: (value) {
+                              controller.updatePriority(value);
                             },
+                            hintText: 'Priority',
+                            height: 44.h,
+                            value: controller.priorityValue.value,
+                            textButton: controller.priorityValue.value?.getName,
+                            items: List.generate(
+                              controller.priorities.length,
+                              (index) {
+                                return DropdownMenuItem(
+                                  value: controller.priorities[index],
+                                  child: Text(
+                                    controller.priorities[index].getName.tr,
+                                    style: AppTextStyles
+                                        .font14SecondaryBlackCairoMedium,
+                                  ),
+                                );
+                              },
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  verticalSpace(15),
-                  LabeledFormField(
-                    controller: controller.expectedDeliveryController,
-                    date: true,
-                    label: 'Expected Delivery',
-                    hintText: 'Expected Delivery',
-                  ),
-                  verticalSpace(24),
-                  LabeledFormField(
-                    controller: controller.expectedReturnController,
-                    date: true,
-                    label: 'Expected Return',
-                    hintText: 'Expected Return',
-                  ),
+                        verticalSpace(15),
+                        LabeledFormField(
+                          controller: controller.expectedDeliveryController,
+                          date: true,
+                          hintText: 'Expected Delivery',
+                          label: 'Expected Delivery',
+                        ),
+                        verticalSpace(24),
+                        LabeledFormField(
+                          controller: controller.expectedReturnController,
+                          date: true,
+                          label: 'Expected Return',
+                          hintText: 'Expected Return',
+                        ),
+                      ],
+                    ),
                   verticalSpace(24),
                   LabeledFormField(
                     controller: controller.additionalNotesController,
                     expands: true,
+                    readOnly: false,
                     label: 'Additional Notes',
                     hintText: 'Additional Notes',
                   ),

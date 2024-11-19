@@ -4,14 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import '../../../../../../core/constants/app_assets.dart';
-import '../../../../../../core/helpers/spacing_helper.dart';
-import '../../../../../../core/theme/app_colors.dart';
-import '../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../../../core/constants/app_assets.dart';
+import '../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../core/theme/app_colors.dart';
+import '../../../../../../../core/theme/app_text_styles.dart';
 
-import '../../../../../../core/widgets/attachments/attachment_card.dart';
-import '../../../../constants/ids_constants.dart';
-import '../../../controller/request_consumable_controller.dart';
+import '../../../../../../../core/widgets/attachments/attachment_card.dart';
+import '../../../../../constants/ids_constants.dart';
+import '../../../../controller/request_consumable_controller.dart';
 
 class AttachmentsSection extends StatelessWidget {
   const AttachmentsSection({

@@ -10,7 +10,7 @@ import '../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
-import '../../../../../../core/widgets/appbar/default_rich_text.dart';
+import '../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../../core/widgets/appbar/mobile_custom_appbar.dart';
 import '../../../../../../core/widgets/loading.dart';
 import '../../../../../../core/widgets/no_data_gif.dart';
