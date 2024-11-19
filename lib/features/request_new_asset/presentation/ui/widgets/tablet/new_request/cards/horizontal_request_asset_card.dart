@@ -23,8 +23,8 @@ class HorizontalRequestAssetCard extends StatelessWidget {
             children: [
               Image.asset(
                 model.image,
-                /* width: 60.w,
-                height: 60.h, */
+                width: 65.w,
+                height: 65.h,
                 fit: BoxFit.fill,
               ),
               horizontalSpace(8),
@@ -39,51 +39,36 @@ class HorizontalRequestAssetCard extends StatelessWidget {
                           style: AppTextStyles.font16BlackCairoRegular,
                         ),
                         const Spacer(),
-                        RichText(
-                          text: TextSpan(
-                            text: '${'Status'.tr}: ',
-                            style: AppTextStyles.font10MediumGreyCairoMedium,
-                            children: [
-                              TextSpan(
-                                text: model.availabilityStatus,
-                                style: AppTextStyles.font10BlackCairoMedium
-                                    .copyWith(
-                                  color: model.availabilityStatus.getColor,
-                                ),
-                              )
-                            ],
-                          ),
-                        )
+                        DefaultRichText(
+                          labelStyle:
+                              AppTextStyles.font12SecondaryBlackCairoMedium,
+                          style: AppTextStyles.font12BlackMediumCairo,
+                          label: 'Status',
+                          value: model.availabilityStatus,
+                        ),
                       ],
                     ),
                     verticalSpace(3),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        RichText(
-                          text: TextSpan(
-                            text: '${'Category'.tr}: ',
-                            style: AppTextStyles.font12MediumGreyCairoMedium,
-                            children: [
-                              TextSpan(
-                                text: model.category,
-                                style: AppTextStyles.font12MediumGreyCairoMedium
-                                    .copyWith(
-                                  color: AppColors.darkWhiteShadow,
-                                ),
-                              )
-                            ],
-                          ),
+                        DefaultRichText(
+                          labelStyle:
+                              AppTextStyles.font12SecondaryBlackCairoMedium,
+                          style: AppTextStyles.font12BlackMediumCairo,
+                          label: 'Category',
+                          value: model.category,
                         ),
                         const Spacer(),
                         RichText(
                           text: TextSpan(
                             text: '${'Specifications'.tr}: ',
-                            style: AppTextStyles.font12MediumGreyCairoMedium,
+                            style:
+                                AppTextStyles.font14SecondaryBlackCairoMedium,
                             children: [
                               TextSpan(
                                 text: 'Download'.tr,
-                                style: AppTextStyles.font12MediumGreyCairoMedium
+                                style: AppTextStyles.font14BlackCairoMedium
                                     .copyWith(
                                   decoration: TextDecoration.underline,
                                   color: AppColors.blue,
@@ -98,36 +83,21 @@ class HorizontalRequestAssetCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        RichText(
-                          text: TextSpan(
-                            text: '${'Sub Category'.tr}: ',
-                            style: AppTextStyles.font12MediumGreyCairoMedium,
-                            children: [
-                              TextSpan(
-                                text: model.subcategory,
-                                style: AppTextStyles.font12MediumGreyCairoMedium
-                                    .copyWith(
-                                  color: AppColors.darkWhiteShadow,
-                                ),
-                              )
-                            ],
-                          ),
+                        DefaultRichText(
+                          labelStyle:
+                              AppTextStyles.font12SecondaryBlackCairoMedium,
+                          style: AppTextStyles.font12BlackMediumCairo,
+                          label: 'Subcategory',
+                          value: model.subcategory,
                         ),
                         const Spacer(),
-                        RichText(
-                          text: TextSpan(
-                            text: '${'Available Stock'.tr}: ',
-                            style: AppTextStyles.font12MediumGreyCairoMedium,
-                            children: [
-                              TextSpan(
-                                text: DateTimeHelper.formatInt(
-                                    model.availableQuantity),
-                                style: AppTextStyles.font12MediumGreyCairoMedium
-                                    .copyWith(
-                                  color: AppColors.darkWhiteShadow,
-                                ),
-                              )
-                            ],
+                        DefaultRichText(
+                          labelStyle:
+                              AppTextStyles.font12SecondaryBlackCairoMedium,
+                          style: AppTextStyles.font12BlackMediumCairo,
+                          label: 'Available Stock',
+                          value: DateTimeHelper.formatInt(
+                            model.availableQuantity,
                           ),
                         ),
                       ],
@@ -141,34 +111,18 @@ class HorizontalRequestAssetCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              RichText(
-                text: TextSpan(
-                  text: '${'Requires Approvals'.tr}: ',
-                  style: AppTextStyles.font12MediumGreyCairoMedium,
-                  children: [
-                    TextSpan(
-                      text: model.requiresApprovals ? 'Yes'.tr : 'No'.tr,
-                      style: AppTextStyles.font12MediumGreyCairoMedium.copyWith(
-                        color: AppColors.darkWhiteShadow,
-                      ),
-                    )
-                  ],
-                ),
+              DefaultRichText(
+                labelStyle: AppTextStyles.font12SecondaryBlackCairoMedium,
+                style: AppTextStyles.font12BlackMediumCairo,
+                label: 'Requires Approvals',
+                value: model.requiresApprovals ? 'Yes'.tr : 'No'.tr,
               ),
               const Spacer(),
-              RichText(
-                text: TextSpan(
-                  text: '${'Last Update'.tr}: ',
-                  style: AppTextStyles.font12MediumGreyCairoMedium,
-                  children: [
-                    TextSpan(
-                      text: DateTimeHelper.formatDate(model.lastUpdate),
-                      style: AppTextStyles.font12MediumGreyCairoMedium.copyWith(
-                        color: AppColors.darkWhiteShadow,
-                      ),
-                    )
-                  ],
-                ),
+              DefaultRichText(
+                labelStyle: AppTextStyles.font12SecondaryBlackCairoMedium,
+                style: AppTextStyles.font12BlackMediumCairo,
+                label: 'Last Update',
+                value: DateTimeHelper.formatDate(model.lastUpdate),
               ),
             ],
           )

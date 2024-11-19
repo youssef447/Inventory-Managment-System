@@ -2,12 +2,13 @@ import 'dart:io';
 import 'package:mime/mime.dart';
 
 import '../../constants/app_assets.dart';
+import '../../enums/file_type_enums.dart';
 
 //Youssef Ashraf
 //Date: 10/11/2024
 ///Helper the provide the file type based on the file extension and the asset icon accordingly
 abstract class FileTypeHelper {
-  static String _getFileType(File file) {
+  static FileType _getFileType(File file) {
     // Get the MIME type based on the file extension
     final mimeType = lookupMimeType(
       file.path,
@@ -15,39 +16,39 @@ abstract class FileTypeHelper {
 
     // Check file type based on MIME type prefix
     if (mimeType == null) {
-      return 'unknown';
+      return FileType.unknown;
     } else if (mimeType.startsWith('video/')) {
-      return 'video';
+      return FileType.video;
     } else if (mimeType.startsWith('image/')) {
-      return 'image';
+      return FileType.image;
     } else if (mimeType == 'application/pdf') {
-      return 'pdf';
+      return FileType.pdf;
     } else if (mimeType == 'application/vnd.ms-powerpoint' ||
         mimeType ==
             'application/vnd.openxmlformats-officedocument.presentationml.presentation') {
-      return 'powerpoint';
+      return FileType.powerpoint;
     } else if (mimeType == 'text/plain') {
-      return 'text';
+      return FileType.text;
     }
 
-    return 'unknown';
+    return FileType.unknown;
   }
 
   static String getExstensionImage(File file) {
     final fileType = _getFileType(file);
-    if (fileType == 'video') {
+    if (fileType == FileType.video) {
       return AppAssets.video;
     }
-    if (fileType == 'image') {
+    if (fileType == FileType.image) {
       return AppAssets.gallery;
     }
-    if (fileType == 'pdf') {
+    if (fileType == FileType.pdf) {
       return AppAssets.pdf;
     }
-    if (fileType == 'powerpoint') {
+    if (fileType == FileType.powerpoint) {
       return AppAssets.powerpoint;
     }
-    if (fileType == 'text') {
+    if (fileType == FileType.text) {
       return AppAssets.text;
     }
     return AppAssets.unknown;

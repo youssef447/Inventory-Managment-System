@@ -22,6 +22,7 @@ class HorizontalDefaultConsumableCard
         mainAxisSize: MainAxisSize.min,
         children: [
           Row(
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(

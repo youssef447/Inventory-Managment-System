@@ -18,6 +18,8 @@ import '../../../controller/request_assets_controller.dart';
 import '../../widgets/common/request_search_filter/request_assets_search_filter.dart';
 part '../../widgets/mobile/request_asset/cards/mobile_request_asset_card.dart';
 
+//Youssef Ashraf
+///Represents The Available Assets Based On Consumable Request Action in Mobile View
 class MobileNewRequestPage extends GetView<RequestAssetsController> {
   const MobileNewRequestPage({super.key});
 

@@ -1,6 +1,6 @@
 part of '../../../../pages/tablet/tablet_new_request_page.dart';
 
-class VerticalDefaultAssetCard extends StatelessWidget {
+class VerticalDefaultAssetCard extends GetView<RequestAssetsController> {
   final AssetsEntity model;
 
   const VerticalDefaultAssetCard({
@@ -21,138 +21,72 @@ class VerticalDefaultAssetCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
                 model.image,
-                /* width: 60.w,
-                height: 60.h, */
+                width: 45.w,
+                height: 60.h,
                 fit: BoxFit.fill,
               ),
               horizontalSpace(8),
               Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      model.assetName,
-                      style: AppTextStyles.font16BlackCairoRegular,
-                    ),
-                    const Spacer(),
-                    RichText(
-                      text: TextSpan(
-                        text: '${'Status'.tr}: ',
-                        style: AppTextStyles.font10MediumGreyCairoMedium,
-                        children: [
-                          TextSpan(
-                            text: model.availabilityStatus,
-                            style:
-                                AppTextStyles.font10BlackCairoMedium.copyWith(
-                              color: model.availabilityStatus.getColor,
-                            ),
-                          )
-                        ],
-                      ),
-                    )
-                  ],
+                child: Text(
+                  model.assetName,
+                  style: AppTextStyles.font16BlackCairoRegular,
                 ),
               ),
             ],
           ),
           verticalSpace(3),
-          RichText(
-            text: TextSpan(
-              text: '${'Requires Approvals'.tr}: ',
-              style: AppTextStyles.font12MediumGreyCairoMedium,
-              children: [
-                TextSpan(
-                  text: model.requiresApprovals ? 'Yes'.tr : 'No'.tr,
-                  style: AppTextStyles.font12MediumGreyCairoMedium.copyWith(
-                    color: AppColors.darkWhiteShadow,
-                  ),
-                )
-              ],
+          DefaultRichText(
+            labelStyle: AppTextStyles.font12SecondaryBlackCairoMedium,
+            style: AppTextStyles.font12BlackMediumCairo,
+            label: 'Category',
+            value: model.category,
+          ),
+          verticalSpace(3),
+          DefaultRichText(
+            labelStyle: AppTextStyles.font12SecondaryBlackCairoMedium,
+            style: AppTextStyles.font12BlackMediumCairo,
+            label: 'Subcategory',
+            value: model.subcategory,
+          ),
+          verticalSpace(3),
+          DefaultRichText(
+            labelStyle: AppTextStyles.font12SecondaryBlackCairoMedium,
+            style: AppTextStyles.font12BlackMediumCairo,
+            label: 'Date Recieved',
+            value: DateTimeHelper.formatDate(
+              model.dateReceived,
             ),
           ),
           verticalSpace(3),
-          RichText(
-            text: TextSpan(
-              text: '${'Category'.tr}: ',
-              style: AppTextStyles.font12MediumGreyCairoMedium,
-              children: [
-                TextSpan(
-                  text: model.category,
-                  style: AppTextStyles.font12MediumGreyCairoMedium.copyWith(
-                    color: AppColors.darkWhiteShadow,
-                  ),
-                )
-              ],
-            ),
-          ),
-          verticalSpace(3),
-          RichText(
-            text: TextSpan(
-              text: '${'Sub Category'.tr}: ',
-              style: AppTextStyles.font12MediumGreyCairoMedium,
-              children: [
-                TextSpan(
-                  text: model.subcategory,
-                  style: AppTextStyles.font12MediumGreyCairoMedium.copyWith(
-                    color: AppColors.darkWhiteShadow,
-                  ),
-                )
-              ],
-            ),
-          ),
-          verticalSpace(3),
-          RichText(
-            text: TextSpan(
-              text: '${'Specifications'.tr}: ',
-              style: AppTextStyles.font12MediumGreyCairoMedium,
-              children: [
-                TextSpan(
-                  text: 'Download'.tr,
-                  style: AppTextStyles.font12MediumGreyCairoMedium.copyWith(
-                    decoration: TextDecoration.underline,
-                    color: AppColors.blue,
-                  ),
-                )
-              ],
-            ),
-          ),
-          verticalSpace(3),
-          RichText(
-            text: TextSpan(
-              text: '${'Available Stock'.tr}: ',
-              style: AppTextStyles.font12MediumGreyCairoMedium,
-              children: [
-                TextSpan(
-                  text: DateTimeHelper.formatInt(model.availableQuantity),
-                  style: AppTextStyles.font12MediumGreyCairoMedium.copyWith(
-                    color: AppColors.darkWhiteShadow,
-                  ),
-                )
-              ],
-            ),
-          ),
-          verticalSpace(3),
-          Align(
-            alignment: AlignmentDirectional.centerEnd,
-            child: RichText(
-              text: TextSpan(
-                text: '${'Last Update'.tr}: ',
-                style: AppTextStyles.font12MediumGreyCairoMedium,
-                children: [
-                  TextSpan(
-                    text: DateTimeHelper.formatDate(model.lastUpdate),
-                    style: AppTextStyles.font12MediumGreyCairoMedium.copyWith(
-                      color: AppColors.darkWhiteShadow,
-                    ),
-                  )
-                ],
+          if (controller.requestAction == RequestActions.returnAsset)
+            DefaultRichText(
+              labelStyle: AppTextStyles.font12SecondaryBlackCairoMedium,
+              style: AppTextStyles.font12BlackMediumCairo,
+              label: 'Date Return',
+              value: DateTimeHelper.formatDate(
+                model.dateReturn ?? DateTime.now(),
               ),
             ),
-          )
+          if (controller.requestAction == RequestActions.routineMaintenance ||
+              controller.requestAction == RequestActions.repairAsset)
+            DefaultRichText(
+              labelStyle: AppTextStyles.font12SecondaryBlackCairoMedium,
+              style: AppTextStyles.font12BlackMediumCairo,
+              label: 'Maintenance Frequency',
+              value: model.maintenanceFrequency ?? 'Not Applicable',
+            ),
+          Align(
+            alignment: AlignmentDirectional.centerEnd,
+            child: DefaultRichText(
+              labelStyle: AppTextStyles.font12SecondaryBlackCairoMedium,
+              style: AppTextStyles.font12BlackMediumCairo,
+              label: 'Last Update',
+              value: DateTimeHelper.formatDate(model.lastUpdate),
+            ),
+          ),
         ],
       ),
     );

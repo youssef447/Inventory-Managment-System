@@ -22,7 +22,7 @@ part '../../widgets/mobile/new_request/cards/mobile_request_consumable_card.dart
 part '../../widgets/mobile/new_request/cards/mobile_default_consumable_card.dart';
 
 //Youssef Ashraf
-///Represents The Mobile New Request Consumable Page
+///Represents The Available Consumables Based On Consumable Request Action in Mobile View
 class MobileNewConsumableRequestPage
     extends GetView<RequestConsumableController> {
   const MobileNewConsumableRequestPage({super.key});

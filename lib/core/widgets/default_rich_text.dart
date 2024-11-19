@@ -11,11 +11,13 @@ class DefaultRichText extends StatelessWidget {
   final String value;
   final TextStyle? style;
   final TextStyle? labelStyle;
+  final Color? valueColor;
   const DefaultRichText({
     super.key,
     required this.label,
     required this.value,
     this.style,
+    this.valueColor,
     this.labelStyle,
   });
 
@@ -34,9 +36,9 @@ class DefaultRichText extends StatelessWidget {
             text: value,
             style: context.isTablett
                 ? AppTextStyles.font14BlackCairoMedium
-                    .copyWith(color: value.split(' ')[0].getColor)
-                : AppTextStyles.font12BlackMediumCairo
-                    .copyWith(color: value.split(' ')[0].getColor),
+                    .copyWith(color: valueColor ?? value.split(' ')[0].getColor)
+                : AppTextStyles.font12BlackMediumCairo.copyWith(
+                    color: valueColor ?? value.split(' ')[0].getColor),
           ),
         ],
       ),

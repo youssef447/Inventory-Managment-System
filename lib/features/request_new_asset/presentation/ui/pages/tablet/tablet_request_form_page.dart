@@ -65,7 +65,7 @@ class TabletRequestFormPage extends GetView<RequestAssetsController> {
                         ),
                         horizontalSpace(8),
                         Text(
-                          'Request New Asset'.tr,
+                          controller.requestAction.getName.tr,
                           style: AppTextStyles.font24MediumBlackCairo,
                         ),
                       ],

@@ -195,7 +195,7 @@ class TabletSearchFilter extends GetView<HomeController> {
                             showDropdownIcon: false,
                             image: AppAssets.add,
                             textAlign: TextAlign.center,
-                            //  width: 112.w,
+                            width: 112.w,
                             style: !context.isTablett
                                 ? AppTextStyles.font16BlackMediumCairo
                                     .copyWith(color: AppColors.textButton)
