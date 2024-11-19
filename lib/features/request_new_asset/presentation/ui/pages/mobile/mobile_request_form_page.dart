@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
+import '../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
@@ -13,6 +14,9 @@ import '../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../../Assets/domain/entity/assets_entity.dart';
 import '../../../controller/request_assets_controller.dart';
 import '../../widgets/common/attachments/attachments_section.dart';
+part '../../widgets/mobile/request_action_fields/repair_asset_fields.dart';
+part '../../widgets/mobile/request_action_fields/request_asset_fields.dart';
+part '../../widgets/mobile/request_action_fields/routine_maintenance_fields.dart';
 
 class MobileRequestFormPage extends GetView<RequestAssetsController> {
   final AssetsEntity model;
@@ -80,65 +84,20 @@ class MobileRequestFormPage extends GetView<RequestAssetsController> {
                     label: 'Brand',
                   ),
                   verticalSpace(24),
-                  LabeledFormField(
-                    controller: controller.availabilityController,
-                    label: 'Availability',
-                  ),
-                  verticalSpace(15),
-                  LabeledFormField(
-                    controller: controller.quantityController,
-                    label: 'Quantity',
-                  ),
-                  verticalSpace(24),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Priority'.tr,
-                        style: AppTextStyles.font16BlackCairoMedium,
-                      ),
-                      verticalSpace(8),
-                      Obx(
-                        () => AppDropdown(
-                          showDropdownIcon: true,
-                          onChanged: (value) {
-                            controller.updatePriority(value);
-                          },
-                          hintText: 'Priority',
-                          height: 44.h,
-                          value: controller.priorityValue.value,
-                          textButton: controller.priorityValue.value?.getName,
-                          items: List.generate(
-                            controller.priorities.length,
-                            (index) {
-                              return DropdownMenuItem(
-                                value: controller.priorities[index],
-                                child: Text(
-                                  controller.priorities[index].getName.tr,
-                                  style: AppTextStyles
-                                      .font14SecondaryBlackCairoMedium,
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  verticalSpace(15),
-                  LabeledFormField(
-                    controller: controller.expectedDeliveryController,
-                    date: true,
-                    label: 'Expected Delivery',
-                    hintText: 'Expected Delivery',
-                  ),
-                  verticalSpace(24),
-                  LabeledFormField(
-                    controller: controller.expectedReturnController,
-                    date: true,
-                    label: 'Expected Return',
-                    hintText: 'Expected Return',
-                  ),
+                  if (controller.requestAction == RequestActions.requestAsset)
+                    const MobileRequestAssetFields(),
+                  if (controller.requestAction == RequestActions.repairAsset)
+                    const MobileRepairAssetFields(),
+                  if (controller.requestAction ==
+                      RequestActions.routineMaintenance)
+                    const MobileRotuineMaintenanceAssetFields(),
+                  if (controller.requestAction == RequestActions.returnAsset)
+                    LabeledFormField(
+                      controller: controller.returnDateController,
+                      label: 'Return Date',
+                      hintText: 'Return Date',
+                      date: true,
+                    ),
                   verticalSpace(24),
                   LabeledFormField(
                     controller: controller.additionalNotesController,
