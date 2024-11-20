@@ -6,6 +6,7 @@ import 'package:inventory_management/core/constants/approve_cycle.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
 
 import '../../../../core/enums/requests_enums.dart';
+import '../../../../core/routes/route_arguments.dart';
 import '../../../Assets/domain/entity/assets_entity.dart';
 import '../../../Assets/presentation/controller/assets_controller.dart';
 import '../../../requests/entities/attachment_entity.dart';
@@ -23,7 +24,8 @@ class RequestAssetsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    requestAction = Get.arguments['action'] as RequestActions;
+    requestAction =
+        Get.arguments[RouteArguments.requestAction] as RequestActions;
     loadAssetsData();
   }
 
@@ -127,13 +129,6 @@ class RequestAssetsController extends GetxController {
   late TextEditingController returnDateController = TextEditingController();
   //repair asset
   late TextEditingController repairDateController = TextEditingController();
-  List<IssueTypes> issueTypes = [
-    IssueTypes.mechanical,
-    IssueTypes.electrical,
-    IssueTypes.performance,
-    IssueTypes.safety,
-    IssueTypes.software,
-  ];
   Rxn<IssueTypes> issueTypeValue = Rxn<IssueTypes>();
   updateIssueType(IssueTypes value) {
     issueTypeValue.value = value;

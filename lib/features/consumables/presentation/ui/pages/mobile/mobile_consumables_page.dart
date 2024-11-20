@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import '../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/routes/app_routes.dart';
+import '../../../../../../core/routes/route_arguments.dart';
 import '../../../../../../core/widgets/loading.dart';
 import '../../../../../../core/widgets/no_data_gif.dart';
 import '../../../constants/consumables_id_constant.dart';
@@ -51,7 +52,7 @@ class MobileConsumablesPage extends GetView<ConsumablesController> {
                                 Get.toNamed(
                                   Routes.consumablesDetails,
                                   arguments: {
-                                    'consumablesModelIndex': index,
+                                    RouteArguments.consumablesModelIndex: index,
                                     //'readOnly': readOnly,
                                   },
                                 );

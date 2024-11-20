@@ -7,6 +7,7 @@ import '../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/routes/app_routes.dart';
+import '../../../../../../core/routes/route_arguments.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/widgets/appbar/mobile_custom_appbar.dart';
@@ -70,7 +71,7 @@ class MobileNewRequestPage extends GetView<RequestAssetsController> {
                                         Get.toNamed(
                                           Routes.newRequestAsset,
                                           arguments: {
-                                            'assetModel':
+                                            RouteArguments.assetModel:
                                                 controller.assets[index]
                                           },
                                         );

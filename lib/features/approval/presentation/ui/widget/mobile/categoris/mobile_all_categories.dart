@@ -1,5 +1,3 @@
-
-
 // by : mohamed ashraf
 //date : 10 / 11 / 2024
 //this widget response to loading and show data of assets in listView
@@ -18,10 +16,9 @@ import '../../../constants/approval_id_constant.dart';
 import '../../../pages/mobile/mobile_approval_details_page.dart';
 import '../card/mobile_approval_card.dart';
 
-
 class MobileAllCategories extends GetView<ApprovalController> {
   final List<ApprovalEntity> list;
-  const MobileAllCategories({super.key ,required this.list});
+  const MobileAllCategories({super.key, required this.list});
 
   @override
   Widget build(BuildContext context) {
@@ -31,42 +28,43 @@ class MobileAllCategories extends GetView<ApprovalController> {
           return controller.loading
               ? const AppCircleProgress()
               : list.isEmpty
-              ? const NoDataGif()
-              : Column(
-              children: [
-                ListView.separated(
-                  shrinkWrap: true,
-                  separatorBuilder: (context, index) {
-                    return verticalSpace(20);
-                  },
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                        onTap: () {
-                          controller.setApprovalDetails(
-                              list[index]);
-
-                          HapticFeedbackHelper.triggerHapticFeedback(
-                            vibration: VibrateType.mediumImpact,
-                            hapticFeedback: HapticFeedback.mediumImpact,
-                          );
-                          GetDialogHelper.generalDialog(
-                              context: context, child: MobileApprovalDetailsPage(index: index,));
-                          // Get.toNamed(
-                          //   Routes.assetsDetails,
-                          //   arguments: {
-                          //     'assetsModelIndex': index,
-                          //     //'readOnly': readOnly,
-                          //   },
-                          // );
+                  ? const NoDataGif()
+                  : Column(children: [
+                      ListView.separated(
+                        shrinkWrap: true,
+                        separatorBuilder: (context, index) {
+                          return verticalSpace(20);
                         },
-                        child: MobileApprovalCard(index: index, list: list,)
-                    );
-                  },
-                  itemCount: list.length,
-                )
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                              onTap: () {
+                                controller.setApprovalDetails(list[index]);
 
-
-              ]);
+                                HapticFeedbackHelper.triggerHapticFeedback(
+                                  vibration: VibrateType.mediumImpact,
+                                  hapticFeedback: HapticFeedback.mediumImpact,
+                                );
+                                GetDialogHelper.generalDialog(
+                                    context: context,
+                                    child: MobileApprovalDetailsPage(
+                                      index: index,
+                                    ));
+                                // Get.toNamed(
+                                //   Routes.assetsDetails,
+                                //   arguments: {
+                                //      RouteArguments.assetsModelIndex: index,
+                                //     //'readOnly': readOnly,
+                                //   },
+                                // );
+                              },
+                              child: MobileApprovalCard(
+                                index: index,
+                                list: list,
+                              ));
+                        },
+                        itemCount: list.length,
+                      )
+                    ]);
         });
   }
 }

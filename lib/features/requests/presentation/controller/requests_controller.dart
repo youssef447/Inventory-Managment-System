@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:inventory_management/core/constants/approve_cycle.dart';
 
+import '../../../../core/enums/requests_enums.dart';
 import '../../../Assets/domain/entity/assets_entity.dart';
 import '../../../consumables/domain/entity/consumables_entity.dart';
 import '../../constants/ids_constants.dart';
@@ -24,6 +25,7 @@ class RequestsController extends GetxController {
   RxInt currentCategoryIndex = 0.obs;
   updateCategoryIndex(int index) {
     currentCategoryIndex.value = index;
+    update([RequestsIds.summaryCircles]);
   }
 
   ///Loading Requests from backend. Called at init
@@ -234,5 +236,60 @@ class RequestsController extends GetxController {
           (e) => e,
         )
         .toList();
+  }
+
+  int getPendingRequestNumbers(RequestStatus status) {
+    final isConsumable = currentCategoryIndex.value == 1;
+    if (status == RequestStatus.approved) {
+      return isConsumable
+          ? getApprovedConsumableNumbers()
+          : getApprovedAssetNumbers();
+    }
+    if (status == RequestStatus.pending) {
+      return isConsumable
+          ? getPendingConsumableNumbers()
+          : getPendingAssetNumbers();
+    }
+    if (status == RequestStatus.rejected) {
+      return isConsumable
+          ? getRejectedConsumableNumbers()
+          : getRejectedAssetNumbers();
+    }
+    //Canceled
+    return isConsumable
+        ? getCanceledConsumableNumbers()
+        : getCanceledAssetNumbers();
+  }
+
+  int getPendingConsumableNumbers() {
+    return requestsOfConsumables.where((e) => e.status == 'Pending').length;
+  }
+
+  int getApprovedConsumableNumbers() {
+    return requestsOfConsumables.where((e) => e.status == 'Approved').length;
+  }
+
+  int getCanceledConsumableNumbers() {
+    return requestsOfConsumables.where((e) => e.status == 'Canceled').length;
+  }
+
+  int getRejectedConsumableNumbers() {
+    return requestsOfConsumables.where((e) => e.status == 'Rejected').length;
+  }
+
+  int getPendingAssetNumbers() {
+    return requestsOfAssets.where((e) => e.status == 'Pending').length;
+  }
+
+  int getApprovedAssetNumbers() {
+    return requestsOfAssets.where((e) => e.status == 'Approved').length;
+  }
+
+  int getCanceledAssetNumbers() {
+    return requestsOfAssets.where((e) => e.status == 'Canceled').length;
+  }
+
+  int getRejectedAssetNumbers() {
+    return requestsOfAssets.where((e) => e.status == 'Rejected').length;
   }
 }

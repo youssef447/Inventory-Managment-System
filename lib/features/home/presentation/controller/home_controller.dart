@@ -7,15 +7,32 @@ import '../../../../core/helpers/share_helper.dart';
 import '../../../../core/theme/app_theme.dart';
 import '../../../Assets/presentation/controller/assets_controller.dart';
 import '../../../Assets/presentation/ui/constants/assets_columns_name.dart';
+import '../../../Assets/presentation/ui/pages/mobile/mobile_assets_page.dart';
+import '../../../Assets/presentation/ui/pages/tablet/tablet_assets_page.dart';
 import '../../../consumables/presentation/constants/consumables_columns_name.dart';
 import '../../../consumables/presentation/controller/consumables_controller.dart';
+import '../../../consumables/presentation/ui/pages/mobile/mobile_consumables_page.dart';
+import '../../../consumables/presentation/ui/pages/tablet/consumables_tablet_page.dart';
 import '../../../requests/constants/requests_columns.dart';
 import '../../../requests/presentation/controller/requests_controller.dart';
+import '../../../requests/presentation/ui/pages/mobile/mobile_requests_page.dart';
+import '../../../requests/presentation/ui/pages/tablet/tablet_requests_page.dart';
 // Date: 7/11/2024
 // By: Youssef Ashraf
 /// Objectives: This file is responsible for handling home page logic.
 
 class HomeController extends GetxController {
+  //------------Tabs------------
+  final List<Widget> mobileHomeTabs = [
+    const MobileAssetsPage(),
+    const MobileConsumablesPage(),
+    const MobileRequestsPage(),
+  ];
+  final List<Widget> tabletHomeTabs = [
+    const TabletAssetsPage(),
+    const ConsumablesTabletPage(),
+    const TabletRequestsPage(),
+  ];
   //------------Theme------------
 
   var isDarkModeEnabled = Get.isDarkMode;
@@ -68,6 +85,8 @@ class HomeController extends GetxController {
   ];
   //------------Export Table Logic ------------
 
+  ///This function is responsible for exporting the current table data based on the currentCategoryIndex into a pdf file.
+  ///the data is retrieved from the AssetsController, ConsumablesController or RequestsController based on the currentCategoryIndex.
   Future<void> exportTable() async {
     late List<String> headers;
     late List<List<dynamic>> data;

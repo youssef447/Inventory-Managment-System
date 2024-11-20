@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -7,20 +6,19 @@ import 'package:inventory_management/core/extensions/extensions.dart';
 
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/constants/approve_cycle.dart';
-import '../../../../../../core/helpers/get_dialog_helper.dart';
-import '../../../../../../core/helpers/haptic_feedback_helper.dart';
+
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/widgets/appbar/custom_app_bar.dart';
-import '../../../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../../../../core/helpers/date_time_helper.dart';
 
+import '../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../requests/entities/request_entity.dart';
 import '../../../controller/track_requests_controller.dart';
 import '../../widgets/common/track_request_details/cancel_request_button.dart';
 import '../../widgets/common/inquiry_chat/cards/inquiry_chat_card.dart';
-part '../../widgets/tablet/track_details/cards/track_details_card.dart';
+part '../../widgets/tablet/track_details/cards/tablet_track_details_card.dart';
 part '../../widgets/tablet/track_details/track_details_card_header.dart';
 part '../../widgets/tablet/track_details/approval_cycle.dart';
 

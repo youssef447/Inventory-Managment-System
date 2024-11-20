@@ -1,6 +1,7 @@
 part of '../../../../pages/tablet/tablet_track_request_details_page.dart';
 
 //Youssef Ashraf
+///Represnts Tablet Track Request Details Card Wich contains Req Info and Aprroval Cycle
 class TabletTrackDeatailsCard extends GetView<TrackRequestController> {
   final RequestEntity model;
   final bool isConsumable;
@@ -33,17 +34,17 @@ class TabletTrackDeatailsCard extends GetView<TrackRequestController> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               _BuildIconLabel(
-                '${'Expected Recieved'.tr}: ',
+                'Expected Recieved',
                 DateTimeHelper.formatDate(model.expectedRecieved),
                 AppAssets.calender,
               ),
               _BuildIconLabel(
-                '${'Approval'.tr}: ',
-                model.status.tr,
+                'Approval',
+                model.status,
                 AppAssets.doc,
               ),
               _BuildIconLabel(
-                '${'Last Update'.tr}: ',
+                'Last Update',
                 DateTimeHelper.formatDate(
                   isConsumable
                       ? model.consumablesEntity!.lastUpdate
@@ -58,29 +59,7 @@ class TabletTrackDeatailsCard extends GetView<TrackRequestController> {
           verticalSpace(38),
           Align(
             alignment: AlignmentDirectional.centerEnd,
-            child: GestureDetector(
-              onTap: () {
-                HapticFeedbackHelper.triggerHapticFeedback(
-                  vibration: VibrateType.mediumImpact,
-                  hapticFeedback: HapticFeedback.mediumImpact,
-                );
-                GetDialogHelper.generalDialog(
-                  child: DefaultDialog(
-                    width: context.isPhone ? 343.w : 411.w,
-                    showButtons: true,
-                    icon: AppAssets.canceled,
-                    title: 'Cancelation Request'.tr,
-                    subTitle:
-                        'Are You sure You Want to Cancel this Request ?'.tr,
-                    onConfirm: () {
-                      controller.cancelRequest(model.requestId);
-                    },
-                  ),
-                  context: context,
-                );
-              },
-              child: const CancelRequestButton(),
-            ),
+            child: CancelRequestButton(requestId: model.requestId),
           ),
         ],
       ),
@@ -98,20 +77,12 @@ class _BuildIconLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SvgPicture.asset(icon),
+        SvgPicture.asset(icon, height: 24.h, width: 24.w),
         horizontalSpace(3),
-        RichText(
-          text: TextSpan(
-            text: label,
-            style: AppTextStyles.font14SecondaryBlackCairoMedium,
-            children: [
-              TextSpan(
-                text: value,
-                style: AppTextStyles.font14BlackCairoMedium
-                    .copyWith(color: value.getColor),
-              ),
-            ],
-          ),
+        DefaultRichText(
+          label: label,
+          valueColor: value.getColor,
+          value: value,
         ),
       ],
     );

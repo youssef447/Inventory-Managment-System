@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import '../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/routes/app_routes.dart';
+import '../../../../../../core/routes/route_arguments.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/widgets/buttons/app_default_button.dart';
@@ -73,7 +74,7 @@ class MobileAssetsPage extends GetView<AssetsController> {
                                     Get.toNamed(
                                       Routes.assetsDetails,
                                       arguments: {
-                                        'assetsModelIndex': index,
+                                        RouteArguments.assetsModelIndex: index,
                                         //'readOnly': readOnly,
                                       },
                                     );

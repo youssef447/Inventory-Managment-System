@@ -275,6 +275,8 @@ abstract class AppTheme {
     'fieldBorder': const Color(0xff797979),
   };
 
+  /// Changes the current theme colors to the light or dark theme based on the
+  /// current  theme mode
   static void setCurrentThemeColors() {
     AppColors.currentThemeColors =
         Get.isDarkMode ? lightThemeColors : darkThemeColors;
@@ -313,6 +315,12 @@ abstract class AppTheme {
     Get.forceAppUpdate();
   }
 
+  /// Returns a contrasting color based on the luminance of the primary and secondary primary colors.
+
+  /// If both colors are light (luminance > 0.5), black is returned.
+  /// If both colors are dark (luminance <= 0.5), white is returned.
+  /// If one color is light and the other is dark, a contrasting color is returned (currently white, but can be changed).
+
   static Color contrastColor() {
     final double primaryLuminance = AppColors.primary.computeLuminance();
     final double secondaryPrimaryLuminance =
@@ -329,6 +337,11 @@ abstract class AppTheme {
     }
   }
 
+  /// Returns a contrasting grey color based on the luminance of the primary and secondary primary colors.
+  ///
+  /// If both colors are light (luminance > 0.5), secondary black is returned.
+  /// If both colors are dark (luminance <= 0.5), white is returned.
+  /// If one color is light and the other is dark, a contrasting grey color is returned.
   static Color contrastGreyColor() {
     final double primaryLuminance = AppColors.primary.computeLuminance();
     final double secondaryPrimaryLuminance =

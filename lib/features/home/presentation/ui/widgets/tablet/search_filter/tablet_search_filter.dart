@@ -12,6 +12,7 @@ import '../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../../core/routes/app_routes.dart';
+import '../../../../../../../core/routes/route_arguments.dart';
 import '../../../../../../../core/widgets/dropdown/app_dropdown.dart';
 import '../../../../../../requests/presentation/controller/requests_controller.dart';
 import '../../common/horizontal/rectangled_filter_card.dart';
@@ -128,12 +129,16 @@ class TabletSearchFilter extends GetView<HomeController> {
                                   value == RequestActions.requestConsumables) {
                                 Get.toNamed(
                                   Routes.requestConsumable,
-                                  arguments: {'action': value},
+                                  arguments: {
+                                    RouteArguments.requestAction: value
+                                  },
                                 );
                               } else {
                                 Get.toNamed(
                                   Routes.requestAsset,
-                                  arguments: {'action': value},
+                                  arguments: {
+                                    RouteArguments.requestAction: value
+                                  },
                                 );
                               }
                             },
@@ -209,12 +214,16 @@ class TabletSearchFilter extends GetView<HomeController> {
                                   value == RequestActions.requestConsumables) {
                                 Get.toNamed(
                                   Routes.requestConsumable,
-                                  arguments: {'action': value},
+                                  arguments: {
+                                    RouteArguments.requestAction: value
+                                  },
                                 );
                               } else {
                                 Get.toNamed(
                                   Routes.requestAsset,
-                                  arguments: {'action': value},
+                                  arguments: {
+                                    RouteArguments.requestAction: value
+                                  },
                                 );
                               }
                             },

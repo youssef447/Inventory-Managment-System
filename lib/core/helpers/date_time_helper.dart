@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 abstract class DateTimeHelper {
+//// Helper function to format a time of day to a DateTime object
   static DateTime formatTimeOfDayToDateTime(
       TimeOfDay timeOfDay, DateTime? date) {
     if (date == null) {
@@ -19,21 +20,18 @@ abstract class DateTimeHelper {
         date.year, date.month, date.day, timeOfDay.hour, timeOfDay.minute);
   }
 
-  static String formatTimeOfDayToString(TimeOfDay timeOfDay) {
-    final hour = timeOfDay.hourOfPeriod == 0 ? 12 : timeOfDay.hourOfPeriod;
-    final minute = timeOfDay.minute.toString().padLeft(2, '0');
-    final period = timeOfDay.period == DayPeriod.am ? 'AM' : 'PM';
-
-    return '$hour:$minute $period';
-  }
-
+  /// Helper function to format a DateTime object to a string Date based on the current locale
   static String formatDate(DateTime dateTime) {
     return DateFormat('MMM dd, yyyy', Get.locale.toString()).format(dateTime);
   }
 
+  /// Helper function to format a DateTime object to a string Time based on the current locale
+
   static String formatTime(DateTime dateTime) {
     return DateFormat('h:mm a', Get.locale.toString()).format(dateTime);
   }
+
+  /// Helper function to format a DateTime object to a string of both date and Time based on the current locale
 
   static String formatDateWithTime(DateTime dateTime) {
     return '${formatDate(dateTime)} ${'At'.tr} ${formatTime(dateTime)}';
@@ -56,14 +54,7 @@ abstract class DateTimeHelper {
     return hour.toString();
   }
 
-  static String extractMinutes(String time) {
-    List<String> parts = time.split(' ');
-    List<String> timeParts = parts[0].split(':');
-
-    String minutes = timeParts[1].trim();
-    return minutes;
-  }
-
+  /// Helper function to format a Duration object to a passed period format string  (2 Days, 1 Month, etc.)
   static String formatDuration(Duration duration) {
     final months = duration.inDays ~/ 30;
     if (months >= 1) {
@@ -73,7 +64,7 @@ abstract class DateTimeHelper {
     } else if (duration.inHours > 0) {
       return '${formatInt(duration.inHours)} ${duration.inHours > 1 ? 'Hours'.tr : 'Hour'.tr}';
     } else if (duration.inMinutes > 0) {
-      return '${formatInt(duration.inMinutes)} ${duration.inMinutes > 1 ? 'timeMinutes'.tr : 'Minute'.tr}';
+      return '${formatInt(duration.inMinutes)} ${duration.inMinutes > 1 ? 'Minutes'.tr : 'Minute'.tr}';
     } else if (duration.inSeconds > 0) {
       return '${formatInt(duration.inSeconds)} ${duration.inSeconds > 1 ? 'Seconds'.tr : 'Second'.tr}';
     } else {
@@ -81,36 +72,14 @@ abstract class DateTimeHelper {
     }
   }
 
+  /// Helper function to format a single number digit to a string based on the current locale
   static String formatInt(int number) {
     return NumberFormat('0', Get.locale.toString()).format(number);
   }
 
-  static String formatDecimal(String number) {
-    int firstNumber = int.parse(number[0]);
-    final formatted =
-        NumberFormat('#####', Get.locale.toString()).format(int.parse(number));
-    if (firstNumber == 0) {
-      return '${formatInt(firstNumber)}$formatted';
-    }
-    return formatted;
-  }
+  /// Helper function to format a double number to a string based on the current locale (2.25 Format)
 
   static String formatDouble(double number) {
     return NumberFormat('0.00', Get.locale.toString()).format(number);
   }
-
-  static Map<String, String> monthsMap = {
-    'Jan': 'يناير',
-    'Feb': 'فبراير',
-    'Mar': 'مارس',
-    'Apr': 'أبريل',
-    'May': 'مايو',
-    'Jun': 'يونيو',
-    'Jul': 'يوليو',
-    'Aug': 'أغسطس',
-    'Sep': 'سبتمبر',
-    'Oct': 'أكتوبر',
-    'Nov': 'نوفمبر',
-    'Dec': 'ديسمبر',
-  };
 }

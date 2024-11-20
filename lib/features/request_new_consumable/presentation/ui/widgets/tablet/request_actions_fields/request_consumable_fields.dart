@@ -48,12 +48,12 @@ class TabletRequestConsumableFields
                       value: controller.priorityValue.value,
                       textButton: controller.priorityValue.value?.getName,
                       items: List.generate(
-                        controller.priorities.length,
+                        RequestPriorityTypes.values.length,
                         (index) {
                           return DropdownMenuItem(
-                            value: controller.priorities[index],
+                            value: RequestPriorityTypes.values[index],
                             child: Text(
-                              controller.priorities[index].getName.tr,
+                              RequestPriorityTypes.values[index].getName.tr,
                               style:
                                   AppTextStyles.font14SecondaryBlackCairoMedium,
                             ),

@@ -153,6 +153,7 @@ class TrackRequestController extends GetxController {
 
     Get.until((route) => route.settings.name == Routes.trackRequest);
     update([TrackRequestIds.trackRequestsPage]);
-    Get.find<RequestsController>().update([RequestsIds.requestsPage]);
+    Get.find<RequestsController>()
+        .update([RequestsIds.requestsPage, RequestsIds.summaryCircles]);
   }
 }

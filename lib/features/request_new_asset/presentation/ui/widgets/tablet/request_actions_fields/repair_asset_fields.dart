@@ -29,12 +29,12 @@ class TabletRepairAssetFields extends GetView<RequestAssetsController> {
                       value: controller.issueTypeValue.value,
                       textButton: controller.issueTypeValue.value?.getName,
                       items: List.generate(
-                        controller.issueTypes.length,
+                        IssueTypes.values.length,
                         (index) {
                           return DropdownMenuItem(
-                            value: controller.issueTypes[index],
+                            value: IssueTypes.values[index],
                             child: Text(
-                              controller.issueTypes[index].getName.tr,
+                              IssueTypes.values[index].getName.tr,
                               style:
                                   AppTextStyles.font14SecondaryBlackCairoMedium,
                             ),

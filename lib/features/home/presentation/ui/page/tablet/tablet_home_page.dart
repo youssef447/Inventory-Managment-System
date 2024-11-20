@@ -15,9 +15,7 @@ import '../../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../../core/widgets/appbar/custom_app_bar.dart';
 
 import '../../../../../../core/widgets/buttons/default_switch_button.dart';
-import '../../../../../Assets/presentation/ui/pages/tablet/tablet_assets_page.dart';
-import '../../../../../consumables/presentation/ui/pages/tablet/consumables_tablet_page.dart';
-import '../../../../../requests/presentation/ui/pages/tablet/tablet_requests_page.dart';
+
 import '../../../../constants/inventory_categories.dart';
 import '../../../controller/home_controller.dart';
 import '../../widgets/tablet/search_filter/tablet_search_filter.dart';
@@ -25,7 +23,7 @@ part '../../widgets/tablet/cards/category_filter_card.dart';
 part '../../widgets/tablet/categories_filter_row/categories_filter_row.dart';
 
 //Youssef Ashraf
-///Represents The Home Page in Mobile View
+///Represents The Home Page in Tablet View
 class TabletHomePage extends GetView<HomeController> {
   const TabletHomePage({super.key});
 
@@ -114,13 +112,9 @@ class TabletHomePage extends GetView<HomeController> {
               verticalSpace(20),
               Obx(
                 () {
-                  if (controller.currentCategoryIndex.value == 0) {
-                    return const TabletAssetsPage();
-                  }
-                  if (controller.currentCategoryIndex.value == 1) {
-                    return const ConsumablesTabletPage();
-                  }
-                  return const TabletRequestsPage();
+                  final index = controller.currentCategoryIndex.value;
+
+                  return controller.tabletHomeTabs[index];
                 },
               ),
             ],

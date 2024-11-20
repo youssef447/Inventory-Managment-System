@@ -18,6 +18,7 @@ import '../../../../../requests/entities/request_entity.dart';
 import '../../../../constants/ids_constants.dart';
 import '../../../controller/track_requests_controller.dart';
 import '../../widgets/common/inquiry_chat/cards/inquiry_chat_card.dart';
+import '../../widgets/common/track_request_details/cancel_request_button.dart';
 part '../../widgets/mobile/track_request_details/cards/mobile_track_details_card.dart';
 part '../../widgets/mobile/track_request_details/mobile_approval_cycle.dart';
 

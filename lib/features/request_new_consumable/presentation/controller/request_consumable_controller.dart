@@ -6,6 +6,7 @@ import 'package:inventory_management/core/constants/approve_cycle.dart';
 import 'package:inventory_management/core/extensions/extensions.dart';
 
 import '../../../../core/enums/requests_enums.dart';
+import '../../../../core/routes/route_arguments.dart';
 import '../../../consumables/domain/entity/consumables_entity.dart';
 
 import '../../../consumables/presentation/controller/consumables_controller.dart';
@@ -25,7 +26,8 @@ class RequestConsumableController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    requestAction = Get.arguments['action'] as RequestActions;
+    requestAction =
+        Get.arguments[RouteArguments.requestAction] as RequestActions;
     loadconsumablesData();
   }
 
@@ -47,6 +49,7 @@ class RequestConsumableController extends GetxController {
   TextEditingController searchController = TextEditingController();
   //------------Request Uploaded Attachments ------------
   List<AttachmentEntity> attachments = [];
+
   uploadAttachments() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.any,
@@ -96,12 +99,7 @@ class RequestConsumableController extends GetxController {
   }
 
   //------------New Request Logic ------------
-  List<RequestPriorityTypes> priorities = [
-    RequestPriorityTypes.urgent,
-    RequestPriorityTypes.high,
-    RequestPriorityTypes.medium,
-    RequestPriorityTypes.low,
-  ];
+
   Rxn<RequestPriorityTypes> priorityValue = Rxn<RequestPriorityTypes>();
   updatePriority(RequestPriorityTypes value) {
     priorityValue.value = value;
@@ -165,7 +163,7 @@ class RequestConsumableController extends GetxController {
 
   ///called when user goes to new request form
   setResources(ConsumablesEntity model) {
-    reqIdController.text = '001';
+    reqIdController.text = model.consumableId;
     consumableNameController.text = model.name;
     categoryController.text = model.category;
     subCategoryController.text = model.subcategory;

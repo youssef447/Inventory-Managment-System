@@ -28,6 +28,7 @@ import '../../features/Assets/presentation/controller/assets_binding.dart';
 import '../../features/Assets/presentation/ui/pages/mobile/mobile_assets_details.dart';
 import '../../features/consumables/presentation/ui/pages/mobile/mobile_consumables_details_page.dart';
 import 'app_routes.dart';
+import 'route_arguments.dart';
 
 abstract class AppPages {
   static const initial = Routes.home;
@@ -57,10 +58,10 @@ abstract class AppPages {
       name: Routes.newRequestAsset,
       page: () => ResponsiveHelper(
         mobileWidget: MobileRequestFormPage(
-          model: Get.arguments['assetModel'],
+          model: Get.arguments[RouteArguments.assetModel],
         ),
         tabletWidget: TabletRequestFormPage(
-          model: Get.arguments['assetModel'],
+          model: Get.arguments[RouteArguments.assetModel],
         ),
       ),
       transition: Transition.fade,
@@ -70,10 +71,10 @@ abstract class AppPages {
       name: Routes.newRequestConsumable,
       page: () => ResponsiveHelper(
         mobileWidget: MobileRequestConsumableFormPage(
-          model: Get.arguments['model'],
+          model: Get.arguments[RouteArguments.consumableModel],
         ),
         tabletWidget: TabletRequestConsumableFormPage(
-          model: Get.arguments['model'],
+          model: Get.arguments[RouteArguments.consumableModel],
         ),
       ),
       transition: Transition.fade,
@@ -94,10 +95,10 @@ abstract class AppPages {
       name: Routes.trackDetails,
       page: () => ResponsiveHelper(
         mobileWidget: MobileTrackRequestDetailsPage(
-          model: Get.arguments['model'],
+          model: Get.arguments[RouteArguments.requestModel],
         ),
         tabletWidget: TabletTrackRequestDetailsPage(
-          model: Get.arguments['model'],
+          model: Get.arguments[RouteArguments.requestModel],
         ),
       ),
       transition: Transition.fade,
@@ -110,11 +111,11 @@ abstract class AppPages {
       transition: Transition.fadeIn,
       page: () => ResponsiveHelper(
         mobileWidget: MobileAssetsDetails(
-          index: Get.arguments['assetsModelIndex'],
+          index: Get.arguments[RouteArguments.assetsModelIndex],
           // readOnly: Get.arguments['readOnly'],
         ),
         tabletWidget: MobileAssetsDetails(
-          index: Get.arguments['assetsModelIndex'],
+          index: Get.arguments[RouteArguments.assetsModelIndex],
         ),
       ),
       binding: AssetsBinding(),
@@ -124,11 +125,11 @@ abstract class AppPages {
       transition: Transition.fadeIn,
       page: () => ResponsiveHelper(
         mobileWidget: MobileConsumablesDetailsPage(
-          index: Get.arguments['consumablesModelIndex'],
+          index: Get.arguments[RouteArguments.consumablesModelIndex],
           // readOnly: Get.arguments['readOnly'],
         ),
         tabletWidget: MobileConsumablesDetailsPage(
-          index: Get.arguments['consumablesModelIndex'],
+          index: Get.arguments[RouteArguments.consumablesModelIndex],
         ),
       ),
       binding: AssetsBinding(),

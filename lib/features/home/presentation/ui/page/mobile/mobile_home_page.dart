@@ -8,10 +8,6 @@ import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/theme/app_theme.dart';
 import '../../../../../../core/widgets/appbar/custom_app_bar.dart';
 import '../../../../../../core/widgets/fields/app_form_field.dart';
-import '../../../../../Assets/presentation/ui/pages/mobile/mobile_assets_page.dart';
-import '../../../../../consumables/presentation/ui/pages/mobile/mobile_consumables_page.dart';
-import '../../../../../requests/presentation/ui/pages/mobile/mobile_requests_page.dart';
-
 import '../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
@@ -55,9 +51,7 @@ class MobileHomePage extends GetView<HomeController> {
                     SliverToBoxAdapter(child: verticalSpace(20)),
                     const SliverToBoxAdapter(child: MobileSearchFilter()),
                     SliverToBoxAdapter(child: verticalSpace(20)),
-                    if (index == 0) const MobileAssetsPage(),
-                    if (index == 1) const MobileConsumablesPage(),
-                    if (index == 2) const MobileRequestsPage(),
+                    controller.mobileHomeTabs[index],
                   ],
                 );
               });

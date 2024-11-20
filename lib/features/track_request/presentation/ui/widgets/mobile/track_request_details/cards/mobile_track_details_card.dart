@@ -1,5 +1,7 @@
 part of '../../../../pages/mobile/mobile_track_requests_details_page.dart';
 
+//Youssef Ashraf
+///Represnts Mobile Track Request Details Card Wich contains Req Info and Aprroval Cycle
 class MobileTrackDetailsCard extends StatelessWidget {
   final RequestEntity model;
   final bool isConsumable;
@@ -66,13 +68,13 @@ class MobileTrackDetailsCard extends StatelessWidget {
           ),
           verticalSpace(32),
           _BuildIconLabel(
-            '${'Approval'.tr}: ',
-            '${model.status} ${'Approval'.tr}',
+            'Approval',
+            model.status,
             AppAssets.doc,
           ),
           verticalSpace(15),
           _BuildIconLabel(
-            '${'Last Update'.tr}: ',
+            'Last Update',
             DateTimeHelper.formatDate(
               isConsumable
                   ? model.consumablesEntity!.lastUpdate
@@ -82,12 +84,17 @@ class MobileTrackDetailsCard extends StatelessWidget {
           ),
           verticalSpace(15),
           _BuildIconLabel(
-            '${'Expected Recieved'.tr}: ',
+            'Expected Recieved',
             DateTimeHelper.formatDate(model.expectedRecieved),
             AppAssets.calender,
           ),
           verticalSpace(32),
           const MobileApprovalCycle(),
+          verticalSpace(32),
+          Align(
+            alignment: AlignmentDirectional.centerEnd,
+            child: CancelRequestButton(requestId: model.requestId),
+          ),
         ],
       ),
     );
@@ -104,20 +111,12 @@ class _BuildIconLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SvgPicture.asset(icon),
+        SvgPicture.asset(icon, height: 16.h, width: 16.w),
         horizontalSpace(3),
-        RichText(
-          text: TextSpan(
-            text: label,
-            style: AppTextStyles.font14SecondaryBlackCairoMedium,
-            children: [
-              TextSpan(
-                text: value,
-                style: AppTextStyles.font14BlackCairoMedium
-                    .copyWith(color: value.split(' ')[0].getColor),
-              ),
-            ],
-          ),
+        DefaultRichText(
+          label: label,
+          valueColor: value.getColor,
+          value: value,
         ),
       ],
     );

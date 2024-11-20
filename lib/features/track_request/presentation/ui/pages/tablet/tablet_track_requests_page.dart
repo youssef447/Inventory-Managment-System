@@ -9,6 +9,7 @@ import '../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../core/helpers/orientation_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/routes/app_routes.dart';
+import '../../../../../../core/routes/route_arguments.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/widgets/appbar/custom_app_bar.dart';
@@ -24,6 +25,8 @@ import '../../widgets/common/track_requests/track_request_search_filter.dart';
 part '../../widgets/tablet/track_request/cards/vertical_track_request_card.dart';
 part '../../widgets/tablet/track_request/cards/horizontal_track_request_card.dart';
 
+//Youssef Ashraf
+///Represents Tablet Track Requests Page in Wich list of pending requests are displayed
 class TabletTrackRequestsPage extends GetView<TrackRequestController> {
   const TabletTrackRequestsPage({super.key});
 
@@ -76,8 +79,9 @@ class TabletTrackRequestsPage extends GetView<TrackRequestController> {
                                                 Get.toNamed(
                                                   Routes.trackDetails,
                                                   arguments: {
-                                                    'model': controller
-                                                        .requests[index]
+                                                    RouteArguments.requestModel:
+                                                        controller
+                                                            .requests[index]
                                                   },
                                                 );
                                               },
