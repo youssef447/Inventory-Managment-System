@@ -8,16 +8,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/core/extensions/extensions.dart';
-import 'package:inventory_management/core/helpers/responsive_helper.dart';
+import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import 'package:inventory_management/inventory_management_module/core/helpers/responsive_helper.dart';
 
 import 'package:window_manager/window_manager.dart';
-import 'core/routes/get_pages.dart';
-import 'core/constants/languages.dart';
-import 'core/theme/app_theme.dart';
-import 'features/home/presentation/controller/home_bindings.dart';
-import 'features/home/presentation/ui/page/mobile/mobile_home_page.dart';
-import 'features/home/presentation/ui/page/tablet/tablet_home_page.dart';
+import 'inventory_management_module/core/routes/get_pages.dart';
+import 'inventory_management_module/core/constants/languages.dart';
+import 'inventory_management_module/core/theme/app_theme.dart';
+import 'inventory_management_module/core/di/home_bindings.dart';
+import 'inventory_management_module/features/home/presentation/ui/page/mobile/mobile_home_page.dart';
+import 'inventory_management_module/features/home/presentation/ui/page/tablet/tablet_home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
