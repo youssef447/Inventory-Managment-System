@@ -34,7 +34,7 @@ class ApprovalCardVerticalTablet extends StatelessWidget {
               children: [
                 const CircleAvatar(radius: 26,backgroundImage: AssetImage(AppAssets.user),),
                 horizontalSpace(12),
-                 Expanded(child: Text('Mai Mohamed',style:  AppTextStyles.font18BlackMediumCairo,)),
+                 Expanded(child: Text(list[index].userName,style:  AppTextStyles.font18BlackMediumCairo,)),
               ],
             ),
             verticalSpace(10),

@@ -1,6 +1,8 @@
 //Youssef Ashraf
 //Enums of Requests
 
+import 'package:flutter/material.dart';
+
 enum RequestStatus {
   approved,
   cancelled,
@@ -26,3 +28,6 @@ enum RequestPriorityTypes {
 }
 
 enum IssueTypes { mechanical, electrical, software, performance, safety }
+
+
+

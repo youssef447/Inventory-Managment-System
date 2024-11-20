@@ -17,7 +17,7 @@ import '../../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../domain/approval_entity.dart';
 import '../../../constants/approval_id_constant.dart';
 import '../../../pages/tablet/tablet_approval_details_page.dart';
-import '../card/approval_card_horizontal.dart';
+import '../card/approval_card_horizontal_tablet.dart';
 import '../card/approval_card_vertical_tablet.dart';
 
 class AllCategories extends GetView<ApprovalController> {
@@ -59,13 +59,12 @@ class AllCategories extends GetView<ApprovalController> {
                                         Get.toNamed(
                                           Routes.assetsDetails,
                                           arguments: {
-                                            RouteArguments.assetsModelIndex:
-                                                index,
+                                            RouteArguments.assetsModelIndex
                                             //'readOnly': readOnly,
                                           },
                                         );
                                       },
-                                      child: ApprovalCardHorizontal(
+                                      child: ApprovalCardHorizontalTablet(
                                           index: index, list: list));
                                 },
                                 itemCount: list.length,

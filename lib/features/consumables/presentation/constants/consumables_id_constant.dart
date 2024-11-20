@@ -4,5 +4,6 @@
 
 abstract class ConsumablesIdConstant{
   static const String consumablesData = 'consumablesTable';
+  static const String consumablesModelIndex = 'consumablesModelIndex';
 
 }

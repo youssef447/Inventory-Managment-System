@@ -4,9 +4,11 @@
 // Objectives: This file is responsible for providing the get pages for the app.
 
 import 'package:get/get.dart';
+import '../../features/Assets/presentation/ui/constants/assets_id_constant.dart';
 import '../../features/approval/presentation/controller/approval_binding.dart';
 import '../../features/approval/presentation/ui/pages/mobile/mobile_approval_page.dart';
 import '../../features/approval/presentation/ui/pages/tablet/tablet_approval_page.dart';
+import '../../features/consumables/presentation/constants/consumables_id_constant.dart';
 import '../../features/request_new_asset/presentation/controller/request_assets__bindings.dart';
 import '../../features/request_new_asset/presentation/ui/pages/mobile/mobile_new_request_page.dart';
 import '../../features/request_new_asset/presentation/ui/pages/mobile/mobile_request_form_page.dart';
