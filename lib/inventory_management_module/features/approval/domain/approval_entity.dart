@@ -1,8 +1,7 @@
 // Date: 7/11/2024
 // By:Mohamed Ashraf
 
-import 'package:inventory_management/inventory_management_module/core/constants/app_assets.dart';
-
+import '../../../core/constants/app_assets.dart';
 import '../../requests/entities/attachment_entity.dart';
 
 class ApprovalEntity {

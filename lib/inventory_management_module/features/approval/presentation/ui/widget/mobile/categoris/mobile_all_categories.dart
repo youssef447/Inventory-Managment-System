@@ -5,13 +5,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/helpers/spacing_helper.dart';
-import 'package:inventory_management/inventory_management_module/features/approval/presentation/controller/approval_controller.dart';
 import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/haptic_feedback_helper.dart';
+import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../domain/approval_entity.dart';
+import '../../../../controller/approval_controller.dart';
 import '../../../constants/approval_id_constant.dart';
 import '../../../pages/mobile/mobile_approval_details_page.dart';
 import '../card/mobile_approval_card.dart';

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-
 import '../../../../../home/presentation/ui/page/tablet/tablet_home_page.dart';
 import '../../../controller/approval_controller.dart';
 import '../../constants/approval_categories.dart';
