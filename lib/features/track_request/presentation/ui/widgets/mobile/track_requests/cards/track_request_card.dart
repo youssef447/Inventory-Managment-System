@@ -1,17 +1,21 @@
 part of '../../../../pages/mobile/mobile_track_requests_page.dart';
 
+//Youssef Ashraf
+///Represents Mobile Request Card when pressing on Track Request button in home page
 class MobileTrackRequestCard extends StatelessWidget {
   final RequestEntity model;
+  final bool isConsumable;
 
   const MobileTrackRequestCard({
     super.key,
     required this.model,
+    required this.isConsumable,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
       decoration: BoxDecoration(
         color: AppColors.card,
         borderRadius: BorderRadius.circular(4.r),
@@ -24,9 +28,11 @@ class MobileTrackRequestCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset(
-                model.assetsEntity!.image,
-                /* width: 60.w,
-                height: 60.h, */
+                isConsumable
+                    ? model.consumablesEntity!.image
+                    : model.assetsEntity!.image,
+                width: 65.w,
+                height: 65.h,
                 fit: BoxFit.fill,
               ),
               horizontalSpace(8),
@@ -37,87 +43,42 @@ class MobileTrackRequestCard extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          model.assetsEntity!.assetName,
+                          isConsumable
+                              ? model.consumablesEntity!.name
+                              : model.assetsEntity!.assetName,
                           style: AppTextStyles.font14BlackCairoRegular,
                         ),
                         const Spacer(),
-                        RichText(
-                          text: TextSpan(
-                            text: '${'Request Date'.tr}: ',
-                            style:
-                                AppTextStyles.font12BlackMediumCairo.copyWith(
-                              fontSize: 11.sp,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: DateTimeHelper.formatDate(
-                                  model.requestDate,
-                                ),
-                                style: AppTextStyles
-                                    .font10SecondaryBlackCairoMedium
-                                    .copyWith(
-                                  fontSize: 11.sp,
-                                ),
-                              )
-                            ],
-                          ),
-                        )
+                        DefaultRichText(
+                          label: 'Request Date',
+                          value: DateTimeHelper.formatDate(model.requestDate),
+                        ),
                       ],
                     ),
                     verticalSpace(3),
-                    RichText(
-                      text: TextSpan(
-                        text: '${'Request ID'.tr}: ',
-                        style: AppTextStyles.font12BlackMediumCairo.copyWith(
-                          fontSize: 11.sp,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: model.requestId,
-                            style: AppTextStyles.font10SecondaryBlackCairoMedium
-                                .copyWith(
-                              fontSize: 11.sp,
-                            ),
-                          )
-                        ],
-                      ),
+                    DefaultRichText(
+                      label: 'Request ID',
+                      value: model.requestId,
                     ),
-                    RichText(
-                      text: TextSpan(
-                        text: '${'Request Name'.tr}: ',
-                        style: AppTextStyles.font12BlackMediumCairo.copyWith(
-                          fontSize: 11.sp,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: model.assetsEntity!.model,
-                            style: AppTextStyles.font10SecondaryBlackCairoMedium
-                                .copyWith(
-                              fontSize: 11.sp,
-                            ),
-                          )
-                        ],
-                      ),
-                    )
+                    DefaultRichText(
+                      label: 'Model',
+                      value: isConsumable
+                          ? model.consumablesEntity!.model
+                          : model.assetsEntity!.model,
+                    ),
                   ],
                 ),
               ),
             ],
           ),
-          verticalSpace(3),
           Align(
             alignment: AlignmentDirectional.centerEnd,
-            child: RichText(
-              text: TextSpan(
-                text: '${'Last Update'.tr}: ',
-                style: AppTextStyles.font12BlackMediumCairo,
-                children: [
-                  TextSpan(
-                    text: DateTimeHelper.formatDate(
-                        model.assetsEntity!.lastUpdate),
-                    style: AppTextStyles.font10SecondaryBlackCairoMedium,
-                  )
-                ],
+            child: DefaultRichText(
+              label: 'Last Update',
+              value: DateTimeHelper.formatDate(
+                isConsumable
+                    ? model.consumablesEntity!.lastUpdate
+                    : model.assetsEntity!.lastUpdate,
               ),
             ),
           ),

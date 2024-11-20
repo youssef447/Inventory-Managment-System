@@ -1,5 +1,7 @@
 part of '../../../../pages/tablet/tablet_track_requests_page.dart';
 
+//Youssef Ashraf
+///Represents Vertical Tablet Request Card when pressing on Track Request button in home page
 class VerticalTrackRequestCard extends StatelessWidget {
   final RequestEntity model;
   final bool isConsumable;
@@ -50,59 +52,27 @@ class VerticalTrackRequestCard extends StatelessWidget {
             ],
           ),
           verticalSpace(10),
-          RichText(
-            text: TextSpan(
-              text: '${'Request ID'.tr}: ',
-              style: AppTextStyles.font14BlackCairoMedium,
-              children: [
-                TextSpan(
-                  text: model.requestId,
-                  style: AppTextStyles.font14darkWhiteShadowCairoMedium,
-                )
-              ],
-            ),
+          DefaultRichText(
+            label: 'Request ID',
+            value: model.requestId,
           ),
-          RichText(
-            text: TextSpan(
-              text: '${'Request Type'.tr}: ',
-              style: AppTextStyles.font14BlackCairoMedium,
-              children: [
-                TextSpan(
-                  text: model.requestType,
-                  style: AppTextStyles.font14darkWhiteShadowCairoMedium,
-                )
-              ],
-            ),
+          DefaultRichText(
+            label: 'Request Type',
+            value: model.requestType,
           ),
-          RichText(
-            text: TextSpan(
-              text: '${'Request Date'.tr}: ',
-              style: AppTextStyles.font14BlackCairoMedium,
-              children: [
-                TextSpan(
-                  text: DateTimeHelper.formatDate(model.requestDate),
-                  style: AppTextStyles.font14darkWhiteShadowCairoMedium,
-                )
-              ],
-            ),
+          DefaultRichText(
+            label: 'Request Date',
+            value: DateTimeHelper.formatDate(model.requestDate),
           ),
           verticalSpace(14),
           Align(
             alignment: AlignmentDirectional.centerEnd,
-            child: RichText(
-              text: TextSpan(
-                text: '${'Last Update'.tr}: ',
-                style: AppTextStyles.font14BlackCairoMedium,
-                children: [
-                  TextSpan(
-                    text: DateTimeHelper.formatDate(
-                      isConsumable
-                          ? model.consumablesEntity!.lastUpdate
-                          : model.assetsEntity!.lastUpdate,
-                    ),
-                    style: AppTextStyles.font14darkWhiteShadowCairoMedium,
-                  )
-                ],
+            child: DefaultRichText(
+              label: 'Last Update',
+              value: DateTimeHelper.formatDate(
+                isConsumable
+                    ? model.consumablesEntity!.lastUpdate
+                    : model.assetsEntity!.lastUpdate,
               ),
             ),
           )

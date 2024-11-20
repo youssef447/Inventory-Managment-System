@@ -43,7 +43,9 @@ class MobileTrackRequestDetailsPage extends GetView<TrackRequestController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       MobileCustomAppbar(
-                        title: 'Asset Details'.tr,
+                        title: model.assetsEntity != null
+                            ? 'Asset Details'.tr
+                            : 'Consumable Details'.tr,
                       ),
                       controller.loading
                           ? const Expanded(
@@ -59,7 +61,11 @@ class MobileTrackRequestDetailsPage extends GetView<TrackRequestController> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       verticalSpace(52),
-                                      MobileTrackDetailsCard(model: model),
+                                      MobileTrackDetailsCard(
+                                        model: model,
+                                        isConsumable:
+                                            model.consumablesEntity != null,
+                                      ),
                                       verticalSpace(
                                         20,
                                       ),

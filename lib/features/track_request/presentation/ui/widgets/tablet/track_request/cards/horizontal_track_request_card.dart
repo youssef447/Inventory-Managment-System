@@ -1,5 +1,7 @@
 part of '../../../../pages/tablet/tablet_track_requests_page.dart';
 
+//Youssef Ashraf
+///Represents Horizontal Tablet Request Card when pressing on Track Request button in home page
 class HorizontalTrackRequestCard extends StatelessWidget {
   final RequestEntity model;
   final bool isConsumable;
@@ -48,51 +50,22 @@ class HorizontalTrackRequestCard extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        RichText(
-                          text: TextSpan(
-                            text: '${'Request ID'.tr}: ',
-                            style: AppTextStyles.font14BlackCairoMedium,
-                            children: [
-                              TextSpan(
-                                text: model.requestId,
-                                style: AppTextStyles
-                                    .font12darkWhiteShadowCairoMedium,
-                              )
-                            ],
-                          ),
+                        DefaultRichText(
+                          label: 'Request ID',
+                          value: model.requestId,
                         ),
                         horizontalSpace(4),
                         Flexible(
-                          child: RichText(
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            text: TextSpan(
-                              text: '${'Request Type'.tr}: ',
-                              style: AppTextStyles.font14BlackCairoMedium,
-                              children: [
-                                TextSpan(
-                                  text: model.requestType,
-                                  style: AppTextStyles
-                                      .font12darkWhiteShadowCairoMedium,
-                                )
-                              ],
-                            ),
+                          child: DefaultRichText(
+                            label: 'Request Type',
+                            value: model.requestType,
                           ),
                         ),
                       ],
                     ),
-                    RichText(
-                      text: TextSpan(
-                        text: '${'Request Date'.tr}: ',
-                        style: AppTextStyles.font14BlackCairoMedium,
-                        children: [
-                          TextSpan(
-                            text: DateTimeHelper.formatDate(model.requestDate),
-                            style:
-                                AppTextStyles.font12darkWhiteShadowCairoMedium,
-                          )
-                        ],
-                      ),
+                    DefaultRichText(
+                      label: 'Request Date',
+                      value: DateTimeHelper.formatDate(model.requestDate),
                     ),
                   ],
                 ),
@@ -101,20 +74,12 @@ class HorizontalTrackRequestCard extends StatelessWidget {
           ),
           Align(
             alignment: AlignmentDirectional.centerEnd,
-            child: RichText(
-              text: TextSpan(
-                text: '${'Last Update'.tr}: ',
-                style: AppTextStyles.font14BlackCairoMedium,
-                children: [
-                  TextSpan(
-                    text: DateTimeHelper.formatDate(
-                      isConsumable
-                          ? model.consumablesEntity!.lastUpdate
-                          : model.assetsEntity!.lastUpdate,
-                    ),
-                    style: AppTextStyles.font12darkWhiteShadowCairoMedium,
-                  )
-                ],
+            child: DefaultRichText(
+              label: 'Last Update',
+              value: DateTimeHelper.formatDate(
+                isConsumable
+                    ? model.consumablesEntity!.lastUpdate
+                    : model.assetsEntity!.lastUpdate,
               ),
             ),
           )

@@ -8,6 +8,7 @@ import '../../../../../../core/routes/app_routes.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/widgets/appbar/mobile_custom_appbar.dart';
+import '../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../../core/widgets/loading.dart';
 import '../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../requests/entities/request_entity.dart';
@@ -75,8 +76,13 @@ class MobileTrackRequestsPage extends GetView<TrackRequestController> {
                                                 );
                                               },
                                               child: MobileTrackRequestCard(
-                                                  model: controller
-                                                      .requests[index]),
+                                                model:
+                                                    controller.requests[index],
+                                                isConsumable: controller
+                                                        .requests[index]
+                                                        .consumablesEntity !=
+                                                    null,
+                                              ),
                                             );
                                           },
                                           separatorBuilder: (_, __) => SizedBox(

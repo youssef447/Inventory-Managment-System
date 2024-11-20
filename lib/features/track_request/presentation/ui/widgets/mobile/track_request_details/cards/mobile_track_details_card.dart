@@ -2,10 +2,12 @@ part of '../../../../pages/mobile/mobile_track_requests_details_page.dart';
 
 class MobileTrackDetailsCard extends StatelessWidget {
   final RequestEntity model;
+  final bool isConsumable;
 
   const MobileTrackDetailsCard({
     super.key,
     required this.model,
+    required this.isConsumable,
   });
 
   @override
@@ -40,19 +42,27 @@ class MobileTrackDetailsCard extends StatelessWidget {
           ),
           DefaultRichText(
             label: 'Category',
-            value: model.assetsEntity!.category,
+            value: isConsumable
+                ? model.consumablesEntity!.category
+                : model.assetsEntity!.category,
           ),
           DefaultRichText(
             label: 'Subcategory',
-            value: model.assetsEntity!.subcategory,
+            value: isConsumable
+                ? model.consumablesEntity!.subcategory
+                : model.assetsEntity!.subcategory,
           ),
           DefaultRichText(
             label: 'Model',
-            value: model.assetsEntity!.model,
+            value: isConsumable
+                ? model.consumablesEntity!.model
+                : model.assetsEntity!.model,
           ),
           DefaultRichText(
             label: 'Brand',
-            value: model.assetsEntity!.brand,
+            value: isConsumable
+                ? model.consumablesEntity!.brand
+                : model.assetsEntity!.brand,
           ),
           verticalSpace(32),
           _BuildIconLabel(
@@ -63,7 +73,11 @@ class MobileTrackDetailsCard extends StatelessWidget {
           verticalSpace(15),
           _BuildIconLabel(
             '${'Last Update'.tr}: ',
-            DateTimeHelper.formatDate(model.assetsEntity!.lastUpdate),
+            DateTimeHelper.formatDate(
+              isConsumable
+                  ? model.consumablesEntity!.lastUpdate
+                  : model.assetsEntity!.lastUpdate,
+            ),
             AppAssets.calender,
           ),
           verticalSpace(15),

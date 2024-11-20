@@ -12,6 +12,7 @@ import '../../../../../../core/routes/app_routes.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/widgets/appbar/custom_app_bar.dart';
+import '../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../../core/widgets/loading.dart';
 import '../../../../../../core/widgets/no_data_gif.dart';
 
