@@ -3,6 +3,7 @@
 // Objectives: This file is responsible for providing a binding class that is used to bind the home controller to the home page.
 
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/features/home/presentation/controller/filter_controller.dart';
 
 import '../../features/Assets/presentation/controller/assets_controller.dart';
 import '../../features/consumables/presentation/controller/consumables_controller.dart';
@@ -27,6 +28,10 @@ class HomeBindings implements Bindings {
     );
     Get.lazyPut(
       () => RequestsController(),
+      fenix: true,
+    );
+    Get.lazyPut(
+          () => FilterController(),
       fenix: true,
     );
   }

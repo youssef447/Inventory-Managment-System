@@ -6,6 +6,7 @@ import 'package:inventory_management/inventory_management_module/core/extensions
 import '../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/enums/inventory_categories.dart';
+import '../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../core/theme/app_theme.dart';
 import '../../../../../../core/widgets/appbar/custom_app_bar.dart';
 import '../../../../../../core/widgets/fields/app_form_field.dart';
@@ -17,6 +18,7 @@ import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../constants/ids.dart';
 import '../../../controller/home_controller.dart';
 import '../../widgets/common/vertical/squared_filter_card.dart';
+import '../../widgets/tablet/search_filter/filter_dialog.dart';
 part '../../widgets/mobile/cards/category_filter_card.dart';
 part '../../widgets/mobile/categories_filter_row/categories_filter_row.dart';
 part '../../widgets/mobile/search_filter/mobile_search_filter.dart';

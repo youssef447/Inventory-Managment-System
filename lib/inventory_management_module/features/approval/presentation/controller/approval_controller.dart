@@ -2,12 +2,29 @@
 //dater : 11/11/2024
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../core/enums/requests_enums.dart';
 import '../../../../core/helpers/date_time_helper.dart';
 import '../../domain/approval_entity.dart';
 import '../ui/constants/approval_id_constant.dart';
 
 class ApprovalController extends GetxController {
   RxInt currentCategoryIndex = 0.obs;
+
+
+
+  /// drop down
+  List<RequestPriorityTypes> priorities = [
+    RequestPriorityTypes.urgent,
+    RequestPriorityTypes.high,
+    RequestPriorityTypes.medium,
+    RequestPriorityTypes.low,
+  ];
+  Rxn<RequestPriorityTypes> priorityValue = Rxn<RequestPriorityTypes>();
+  updatePriority(RequestPriorityTypes value) {
+    priorityValue.value = value;
+  }
+
+
 
   ///updates category filter row index to filter table
   updateCategoryIndex(int index) {
@@ -71,7 +88,7 @@ class ApprovalController extends GetxController {
         approvalId: '001',
         userName: 'Alice Johnson',
         requestDate: DateTime.now(),
-        requestType: 'Purchase',
+        requestType: 'Asset Request',
         assetName: 'Laptop',
         category: 'Electronics',
         subcategory: 'Computers',
@@ -88,7 +105,7 @@ class ApprovalController extends GetxController {
         approvalId: '002',
         userName: 'Bob Smith',
         requestDate: DateTime.now().subtract(const Duration(days: 2)),
-        requestType: 'Maintenance',
+        requestType: 'Asset Request',
         assetName: 'Projector',
         category: 'Office',
         subcategory: 'Audiovisual',
@@ -105,7 +122,7 @@ class ApprovalController extends GetxController {
         approvalId: '003',
         userName: 'Diana Prince',
         requestDate: DateTime.now(),
-        requestType: 'Replacement',
+        requestType: 'Assets Request',
         assetName: 'Tablet',
         category: 'Electronics',
         subcategory: 'Mobile Devices',
@@ -122,7 +139,7 @@ class ApprovalController extends GetxController {
         approvalId: '004',
         userName: 'Diana Prince',
         requestDate: DateTime.now(),
-        requestType: 'Replacement',
+        requestType: 'Asset Request',
         assetName: 'Tablet',
         category: 'Electronics',
         subcategory: 'Mobile Devices',
@@ -139,7 +156,7 @@ class ApprovalController extends GetxController {
         approvalId: '005',
         userName: 'Diana Prince',
         requestDate: DateTime.now(),
-        requestType: 'Replacement',
+        requestType: 'Assets Request',
         assetName: 'Tablet',
         category: 'Electronics',
         subcategory: 'Mobile Devices',
@@ -156,7 +173,7 @@ class ApprovalController extends GetxController {
         approvalId: '006',
         userName: 'Diana Prince',
         requestDate: DateTime.now(),
-        requestType: 'Replacement',
+        requestType: 'Assets Request',
         assetName: 'Tablet',
         category: 'Electronics',
         subcategory: 'Mobile Devices',
@@ -173,7 +190,7 @@ class ApprovalController extends GetxController {
         approvalId: '007',
         userName: 'Diana Prince',
         requestDate: DateTime.now(),
-        requestType: 'Replacement',
+        requestType: 'Assets Request',
         assetName: 'Tablet',
         category: 'Electronics',
         subcategory: 'Mobile Devices',

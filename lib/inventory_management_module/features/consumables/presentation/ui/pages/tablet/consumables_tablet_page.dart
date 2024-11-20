@@ -62,7 +62,21 @@ class ConsumablesTabletPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  controller.consumablesList[index].name,
+                                  controller.consumablesList[index].status.tr,
+                                  style: AppTextStyles.font16BlackRegularCairo
+                                      .copyWith(
+                                      color: controller
+                                          .consumablesList[index]
+                                          .status
+                                          .tr
+                                          .getColor),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              DataCell(
+                                Text(
+                                  controller.consumablesList[index].brand + controller.consumablesList[index].model,
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -158,20 +172,7 @@ class ConsumablesTabletPage extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
-                              DataCell(
-                                Text(
-                                  controller.consumablesList[index].status.tr,
-                                  style: AppTextStyles.font16BlackRegularCairo
-                                      .copyWith(
-                                          color: controller
-                                              .consumablesList[index]
-                                              .status
-                                              .tr
-                                              .getColor),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
+
                             ],
                           ),
                         ).toList(),

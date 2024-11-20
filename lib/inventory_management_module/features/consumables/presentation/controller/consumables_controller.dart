@@ -52,7 +52,7 @@ class ConsumablesController extends GetxController {
         unitOfMeasurement: 'pieces',
         usageFrequency: 'daily',
         expirationDate: DateTime(2024, 7, 10),
-        status: 'Maintenance',
+        status: 'Returned',
       ),
       ConsumablesEntity(
         consumableId: 'C002',

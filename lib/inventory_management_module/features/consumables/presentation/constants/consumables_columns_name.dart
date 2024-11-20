@@ -3,7 +3,8 @@ abstract class ConsumablesColumnsName{
   // name of column for table
   static const List<String> tableColumnsConsumablesName = [
     'Consumable ID',
-    'Name',
+    'Status',
+    'Consumable Name',
     'Category',
     'Subcategory',
     'Model',
@@ -13,7 +14,6 @@ abstract class ConsumablesColumnsName{
     'Unit Of Measurement',
     'Usage Frequency',
     'Expiration Date',
-    'Status',
   ];
 
 }

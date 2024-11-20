@@ -80,6 +80,37 @@ class RequestsOfAssetsTable extends GetView<RequestsController> {
 
                   DataCell(
                     Text(
+                      DateTimeHelper.formatDate(
+                        controller.requestsOfAssets[index].expectedRecieved,
+                      ),
+                      style: AppTextStyles.font16BlackRegularCairo,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  DataCell(
+                    Text(
+                      DateTimeHelper.formatDate(
+                        controller.requestsOfAssets[index].dateReturn,
+                      ),
+                      style: AppTextStyles.font16BlackRegularCairo,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  DataCell(
+                    Text(
+                      DateTimeHelper.formatInt(
+                        controller.requestsOfAssets[index].quantity,
+                      ),
+                      style: AppTextStyles.font16BlackRegularCairo,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+
+                  DataCell(
+                    Text(
                       controller.requestsOfAssets[index].assetsEntity!
                               .maintenanceFrequency ??
                           'Not Applicable'.tr,
@@ -136,36 +167,7 @@ class RequestsOfAssetsTable extends GetView<RequestsController> {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  DataCell(
-                    Text(
-                      DateTimeHelper.formatDate(
-                        controller.requestsOfAssets[index].expectedRecieved,
-                      ),
-                      style: AppTextStyles.font16BlackRegularCairo,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  DataCell(
-                    Text(
-                      DateTimeHelper.formatDate(
-                        controller.requestsOfAssets[index].dateReturn,
-                      ),
-                      style: AppTextStyles.font16BlackRegularCairo,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  DataCell(
-                    Text(
-                      DateTimeHelper.formatInt(
-                        controller.requestsOfAssets[index].quantity,
-                      ),
-                      style: AppTextStyles.font16BlackRegularCairo,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
+
                 ],
               ),
             ).toList(),

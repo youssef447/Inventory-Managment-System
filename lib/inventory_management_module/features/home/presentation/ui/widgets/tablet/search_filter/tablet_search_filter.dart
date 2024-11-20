@@ -6,6 +6,7 @@ import 'package:inventory_management/inventory_management_module/core/extensions
 import '../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../core/constants/app_assets.dart';
 
+import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
@@ -19,6 +20,7 @@ import '../../common/horizontal/rectangled_filter_card.dart';
 import '../../common/vertical/squared_filter_card.dart';
 import '../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../controller/home_controller.dart';
+import 'filter_dialog.dart';
 // Date: 5/8/2024
 // By: Youssef Ashraf
 // Last update: 6/8/2024
@@ -105,7 +107,12 @@ class TabletSearchFilter extends GetView<HomeController> {
                         text: 'Filter',
                         textColor: AppColors.text,
                         color: AppColors.card,
-                        onTap: () {},
+                        onTap: () {
+                          GetDialogHelper.generalDialog(
+                            child:const FilterDialog(),
+                            context: context,
+                          );
+                        },
                       ),
                       horizontalSpace(9),
                       if (isRequest)

@@ -7,15 +7,15 @@ abstract class RequestsColumns {
     'Request Date',
     'Status',
     'Priority',
+    'Expected Received',
+    'Date Return',
+    'Quantity',
     'Maintenance Frequency',
     'Asset Name',
     'Category',
     'Subcategory',
     'Model',
     'Brand',
-    'Expected Received',
-    'Date Return',
-    'Quantity',
   ];
   static const List<String> requestConsumableColumns = [
     'Request ID',

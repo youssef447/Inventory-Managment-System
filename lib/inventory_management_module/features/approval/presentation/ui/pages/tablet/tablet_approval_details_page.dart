@@ -5,19 +5,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../../core/widgets/dropdown/app_dropdown.dart';
 import '../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../../home/presentation/ui/widgets/common/horizontal/rectangled_filter_card.dart';
+import '../../../../domain/approval_entity.dart';
 import '../../../controller/approval_controller.dart';
 import '../../widget/common/approval_buttons.dart';
 
 class TabletApprovalDetailsPage extends GetView<ApprovalController> {
   final int index;
-  const TabletApprovalDetailsPage({super.key, required this.index});
+  final List<ApprovalEntity> list;
+  const TabletApprovalDetailsPage({super.key, required this.index, required this.list});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +65,7 @@ class TabletApprovalDetailsPage extends GetView<ApprovalController> {
                       )),
                   horizontalSpace(8),
                   Text(
-                    'Request New Asset'.tr,
+                    'Approval'.tr,
                     style: AppTextStyles.font24MediumBlackCairo,
                   ),
                   const Spacer(),
@@ -167,11 +171,60 @@ class TabletApprovalDetailsPage extends GetView<ApprovalController> {
                   horizontalSpace(15),
                   Expanded(
                     child: LabeledFormField(
+                      controller: controller.quantityController,
+                      label: 'Quantity'.tr,
+                    ),
+                  ),
+                ],
+              ),
+              verticalSpace(24),
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Priority'.tr,
+                          style: AppTextStyles.font16BlackCairoMedium,
+                        ),
+                        verticalSpace(8),
+                        Obx(
+                              () => AppDropdown(
+                            showDropdownIcon: true,
+                            onChanged: (value) {
+                              controller.updatePriority(value);
+                            },
+                            hintText: 'Priority',
+                            height: 44.h,
+                            value: controller.priorityValue.value,
+                            textButton: controller.priorityValue.value?.getName,
+                            items: List.generate(
+                              controller.priorities.length,
+                                  (index) {
+                                return DropdownMenuItem(
+                                  value: controller.priorities[index],
+                                  child: Text(
+                                    controller.priorities[index].getName.tr,
+                                    style:
+                                    AppTextStyles.font14SecondaryBlackCairoMedium,
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  horizontalSpace(15),
+                  Expanded(
+                    child: LabeledFormField(
                       controller: controller.expectedDeliveryDateController,
                       readOnly: false,
                       date: true,
-                      label: 'Expected Delivery'.tr,
-                      hintText: 'Expected Delivery'.tr,
+                      label: 'Requested Date'.tr,
+                      hintText: 'Requested Date'.tr,
                     ),
                   ),
                 ],
@@ -210,7 +263,7 @@ class TabletApprovalDetailsPage extends GetView<ApprovalController> {
                 child: SizedBox(
                   width: Get.width * 0.3,
                   child: ApprovalButtons(
-                    approvalId: controller.allApprovalList[index].approvalId,
+                    approvalId: list[index].approvalId,
                   ),
                 ),
               )

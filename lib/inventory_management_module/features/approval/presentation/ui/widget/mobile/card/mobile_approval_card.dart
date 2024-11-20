@@ -9,6 +9,7 @@ import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../domain/approval_entity.dart';
 import '../../../../controller/approval_controller.dart';
 import '../../common/approval_buttons.dart';
@@ -49,19 +50,19 @@ class MobileApprovalCard extends GetView<ApprovalController> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      MobileRichTextRow(
-                        type: 'Request Date'.tr,
+                      DefaultRichText(
+                        label: 'Request Date'.tr,
                         value:
                             DateTimeHelper.formatDate(list[index].requestDate),
                       ),
-                      MobileRichTextRow(
-                          type: 'Request Type'.tr,
+                      DefaultRichText(
+                          label: 'Request Type'.tr,
                           value: list[index].requestType),
-                      MobileRichTextRow(
-                          type: 'Asset Name'.tr,
+                      DefaultRichText(
+                          label: 'Asset Name'.tr,
                           value: list[index].brand + list[index].model),
-                      MobileRichTextRow(
-                          type: 'Category'.tr, value: list[index].category),
+                      DefaultRichText(
+                          label: 'Category'.tr, value: list[index].category),
                     ]),
               ),
               verticalSpace(12),
@@ -69,14 +70,14 @@ class MobileApprovalCard extends GetView<ApprovalController> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      MobileRichTextRow(
-                          type: 'Subcategory', value: list[index].subcategory),
-                      MobileRichTextRow(
-                          type: 'Model', value: list[index].model),
-                      MobileRichTextRow(
-                          type: 'Brand', value: list[index].brand),
-                      MobileRichTextRow(
-                          type: 'Quantity',
+                      DefaultRichText(
+                          label: 'Subcategory', value: list[index].subcategory),
+                      DefaultRichText(
+                          label: 'Model', value: list[index].model),
+                      DefaultRichText(
+                          label: 'Brand', value: list[index].brand),
+                      DefaultRichText(
+                          label: 'Quantity',
                           value: list[index].quantity.toString()),
                     ]),
               )
@@ -92,27 +93,3 @@ class MobileApprovalCard extends GetView<ApprovalController> {
   }
 }
 
-class MobileRichTextRow extends StatelessWidget {
-  final String type;
-  final String value;
-  const MobileRichTextRow({
-    super.key,
-    required this.type,
-    required this.value,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return RichText(
-      textAlign: TextAlign.end,
-      overflow: TextOverflow.ellipsis,
-      text: TextSpan(
-          text: '${type.tr} : ',
-          style: AppTextStyles.font12SecondaryBlackCairoRegular
-              .copyWith(color: AppColors.inverseBase),
-          children: [
-            TextSpan(text: value, style: AppTextStyles.font12BlackCairoRegular)
-          ]),
-    );
-  }
-}

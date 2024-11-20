@@ -60,6 +60,17 @@ class TabletAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
+                                  controller.assetsList[index].status.tr,
+                                  style: AppTextStyles.font16BlackRegularCairo
+                                      .copyWith(
+                                      color: controller.assetsList[index]
+                                          .status.getColor),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              DataCell(
+                                Text(
                                   controller.assetsList[index].brand +
                                       controller.assetsList[index].model,
                                   style: AppTextStyles.font16BlackRegularCairo,
@@ -190,17 +201,6 @@ class TabletAssetsPage extends StatelessWidget {
                                       ? AppTextStyles.font16BlackRegularCairo
                                       : AppTextStyles
                                           .font16DarkGreyRegularCairo,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  controller.assetsList[index].status.tr,
-                                  style: AppTextStyles.font16BlackRegularCairo
-                                      .copyWith(
-                                          color: controller.assetsList[index]
-                                              .status.getColor),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),

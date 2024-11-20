@@ -56,12 +56,11 @@ class AllCategories extends GetView<ApprovalController> {
                                           hapticFeedback:
                                               HapticFeedback.mediumImpact,
                                         );
-                                        Get.toNamed(
-                                          Routes.assetsDetails,
-                                          arguments: {
-                                            RouteArguments.assetsModelIndex
-                                            //'readOnly': readOnly,
-                                          },
+                                        GetDialogHelper.generalDialog(
+                                          child: TabletApprovalDetailsPage(
+                                            index: index, list: list,
+                                          ),
+                                          context: context,
                                         );
                                       },
                                       child: ApprovalCardHorizontalTablet(
@@ -95,17 +94,10 @@ class AllCategories extends GetView<ApprovalController> {
                                         );
                                         GetDialogHelper.generalDialog(
                                           child: TabletApprovalDetailsPage(
-                                            index: index,
+                                            index: index, list: list,
                                           ),
                                           context: context,
                                         );
-                                        // Get.toNamed(
-                                        //   Routes.approvalDetails,
-                                        //   arguments: {
-                                        //     'approvalModelIndex': index,
-                                        //     //'readOnly': readOnly,
-                                        //   },
-                                        // );
                                       },
                                       child: ApprovalCardVerticalTablet(
                                           index: index, list: list));

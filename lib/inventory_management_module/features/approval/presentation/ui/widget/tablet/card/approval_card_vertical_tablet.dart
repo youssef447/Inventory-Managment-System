@@ -8,9 +8,9 @@ import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../domain/approval_entity.dart';
 import '../../common/approval_buttons.dart';
-import '../../common/rich_text_row.dart';
 
 class ApprovalCardVerticalTablet extends StatelessWidget {
   final int index;
@@ -43,20 +43,20 @@ class ApprovalCardVerticalTablet extends StatelessWidget {
               ],
             ),
             verticalSpace(10),
-            RichTextRow(
-              type: 'Request Date'.tr,
+            DefaultRichText(
+              label: 'Request Date'.tr,
               value: DateTimeHelper.formatDate(list[index].requestDate),
             ),
-            RichTextRow(
-                type: 'Request Type'.tr, value: list[index].requestType),
-            RichTextRow(
-                type: 'Asset Name'.tr,
+            DefaultRichText(
+                label: 'Request Type'.tr, value: list[index].requestType),
+            DefaultRichText(
+                label: 'Asset Name'.tr,
                 value: list[index].brand + list[index].model),
-            RichTextRow(type: 'Category'.tr, value: list[index].category),
-            RichTextRow(type: 'Subcategory'.tr, value: list[index].subcategory),
-            RichTextRow(type: 'Model'.tr, value: list[index].model),
-            RichTextRow(type: 'Brand'.tr, value: list[index].brand),
-            RichTextRow(type: 'Quantity'.tr, value: list[index].toString()),
+            DefaultRichText(label: 'Category'.tr, value: list[index].category),
+            DefaultRichText(label: 'Subcategory'.tr, value: list[index].subcategory),
+            DefaultRichText(label: 'Model'.tr, value: list[index].model),
+            DefaultRichText(label: 'Brand'.tr, value: list[index].brand),
+            DefaultRichText(label: 'Quantity'.tr, value: list[index].quantity.toString()),
             verticalSpace(10),
             ApprovalButtons(
               approvalId: list[index].approvalId,
