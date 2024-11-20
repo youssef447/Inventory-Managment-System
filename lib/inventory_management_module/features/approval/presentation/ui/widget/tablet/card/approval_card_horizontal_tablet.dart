@@ -9,9 +9,9 @@ import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../domain/approval_entity.dart';
 import '../../../../controller/approval_controller.dart';
-import '../../common/rich_text_row.dart';
 import '../button/approval_button_vertical.dart';
 
 class ApprovalCardHorizontalTablet extends GetView<ApprovalController> {
@@ -42,8 +42,8 @@ class ApprovalCardHorizontalTablet extends GetView<ApprovalController> {
                 style: AppTextStyles.font18BlackMediumCairo,
               ),
               const Spacer(),
-              RichTextRow(
-                type: 'Request Date',
+              DefaultRichText(
+                label: 'Request Date',
                 value: DateTimeHelper.formatDate(list[index].requestDate),
               ),
             ],
