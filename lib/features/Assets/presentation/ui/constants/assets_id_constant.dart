@@ -4,5 +4,6 @@
 
 abstract class AssetsIdConstant{
   static const String assetsData = 'assetsData';
+  static const String assetsModelIndex = 'assetsModelIndex';
 
 }

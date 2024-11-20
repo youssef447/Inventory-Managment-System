@@ -1,6 +1,6 @@
 //by : mohamed Ashraf
 //date : 11/11/2024
-
+// this widget response to show two button in vertical uses in tablet view
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +13,7 @@ import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../../controller/approval_controller.dart';
+import '../../../constants/approval_button.dart';
 
 
 class ApprovalButtonVertical extends GetView<ApprovalController> {
@@ -65,7 +66,7 @@ class ApprovalButtonVertical extends GetView<ApprovalController> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                    'Reject'.tr,
+                    ApprovalButton.reject.tr,
                     style: AppTextStyles.font16InputColorCairo.copyWith(color: AppColors.red)
                 ),
               ],
@@ -100,7 +101,7 @@ class ApprovalButtonVertical extends GetView<ApprovalController> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                    'Approve'.tr,
+                    ApprovalButton.approve.tr,
                     style: AppTextStyles.font16InputColorCairo.copyWith(color: AppColors.green)
                 ),
               ],

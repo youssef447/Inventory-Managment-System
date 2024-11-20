@@ -1,23 +1,24 @@
 //by : Mohamed Ashraf
 //date :11/11/2024
+// this widget response to show card item in tablet when user select list view
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/core/helpers/spacing_helper.dart';
-import 'package:inventory_management/core/theme/app_colors.dart';
-import 'package:inventory_management/features/approval/presentation/controller/approval_controller.dart';
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/date_time_helper.dart';
+import '../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../domain/approval_entity.dart';
+import '../../../../controller/approval_controller.dart';
 import '../../common/rich_text_row.dart';
 import '../button/approval_button_vertical.dart';
 
-class ApprovalCardHorizontal extends GetView<ApprovalController> {
+class ApprovalCardHorizontalTablet extends GetView<ApprovalController> {
   final int index;
   final List<ApprovalEntity> list;
 
-  const ApprovalCardHorizontal({super.key,required this.index , required this.list});
+  const ApprovalCardHorizontalTablet({super.key,required this.index , required this.list});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class ApprovalCardHorizontal extends GetView<ApprovalController> {
             children: [
               const CircleAvatar(radius: 26,backgroundImage: AssetImage(AppAssets.user),),
               horizontalSpace(12),
-              Text('Mai Mohamed',style:  AppTextStyles.font18BlackMediumCairo,),
+              Text(list[index].userName,style:  AppTextStyles.font18BlackMediumCairo,),
               const Spacer(),
               RichTextRow(type: 'Request Date',  value: DateTimeHelper.formatDate(list[index].requestDate),),
 

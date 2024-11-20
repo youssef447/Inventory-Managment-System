@@ -51,7 +51,7 @@ class MobileConsumablesPage extends GetView<ConsumablesController> {
                                 Get.toNamed(
                                   Routes.consumablesDetails,
                                   arguments: {
-                                    'consumablesModelIndex': index,
+                                    ConsumablesIdConstant.consumablesModelIndex: index,
                                     //'readOnly': readOnly,
                                   },
                                 );

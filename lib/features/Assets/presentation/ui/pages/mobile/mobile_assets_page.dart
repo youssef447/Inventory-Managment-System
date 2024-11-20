@@ -73,7 +73,7 @@ class MobileAssetsPage extends GetView<AssetsController> {
                                     Get.toNamed(
                                       Routes.assetsDetails,
                                       arguments: {
-                                        'assetsModelIndex': index,
+                                        AssetsIdConstant.assetsModelIndex: index,
                                         //'readOnly': readOnly,
                                       },
                                     );
