@@ -2,13 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/constants/approve_cycle.dart';
+import '../../../../core/constants/app_assets.dart';
 
 import '../../../../core/enums/requests_enums.dart';
+import '../../../../core/helpers/get_dialog_helper.dart';
+import '../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../Assets/domain/entity/assets_entity.dart';
 import '../../../Assets/presentation/controller/assets_controller.dart';
 import '../../../requests/entities/attachment_entity.dart';
-import '../../../requests/entities/request_entity.dart';
 import '../../constants/ids_constants.dart';
 import 'package:file_picker/file_picker.dart';
 
@@ -73,10 +74,10 @@ class RequestAssetsController extends GetxController {
   }
 
   submitForApproval(
-    AssetsEntity assetModel,
-    RequestActions requestAction,
-  ) {
-    RequestEntity(
+/*     AssetsEntity assetModel,
+    RequestActions requestAction, */
+      ) {
+    /* RequestEntity(
       requestId: '001',
       requestType: requestAction.getName,
       requestDate: DateTime.now(),
@@ -91,7 +92,15 @@ class RequestAssetsController extends GetxController {
       quantity: int.parse(quantityController.text),
       status: 'Pending',
       approvalCycles: ApproveCycle.approvalCycles,
-    );
+    ); */
+    GetDialogHelper.generalDialog(
+        context: Get.context!,
+        child: DefaultDialog(
+          title: 'Success'.tr,
+          subTitle: 'Your Request Was Sent Successfully'.tr,
+          lottieAsset: AppAssets.success,
+        ));
+    resetResources();
   }
 
   //------------New Request Logic ------------

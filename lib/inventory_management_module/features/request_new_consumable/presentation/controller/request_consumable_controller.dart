@@ -2,9 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/constants/approve_cycle.dart';
+import '../../../../core/constants/app_assets.dart';
+import '../../../../core/widgets/dialog/default_dialog.dart';
 
 import '../../../../core/enums/requests_enums.dart';
+import '../../../../core/helpers/get_dialog_helper.dart';
 import '../../../consumables/domain/entity/consumables_entity.dart';
 
 import '../../../consumables/presentation/controller/consumables_controller.dart';
@@ -75,9 +77,10 @@ class RequestConsumableController extends GetxController {
     update([RequestConsumablesIds.attachments]);
   }
 
-  submitForApproval(ConsumablesEntity entity, RequestActions requestAction) {
-    RequestEntity(
-      requestId: '001',
+  submitForApproval(
+      /* ConsumablesEntity entity, RequestActions requestAction */) {
+    /*  RequestEntity(
+      requestId: ,
       requestType: requestAction.getName,
       requestDate: DateTime.now(),
       priority: priorityController.text,
@@ -91,7 +94,15 @@ class RequestConsumableController extends GetxController {
       quantity: int.parse(quantityController.text),
       status: 'Pending',
       approvalCycles: ApproveCycle.approvalCycles,
-    );
+    ); */
+    GetDialogHelper.generalDialog(
+        context: Get.context!,
+        child: DefaultDialog(
+          title: 'Success'.tr,
+          subTitle: 'Your Request Was Sent Successfully'.tr,
+          lottieAsset: AppAssets.success,
+        ));
+    resetResources();
   }
 
   //------------New Request Logic ------------
