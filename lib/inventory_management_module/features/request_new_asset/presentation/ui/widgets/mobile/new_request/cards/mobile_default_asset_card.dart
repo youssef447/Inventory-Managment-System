@@ -2,7 +2,13 @@ part of '../../../../pages/mobile/mobile_new_request_page.dart';
 
 class MobileDefaultAssetCard extends GetView<RequestAssetsController> {
   final AssetsEntity model;
-  const MobileDefaultAssetCard({super.key, required this.model});
+  final RequestActions requestAction;
+
+  const MobileDefaultAssetCard({
+    super.key,
+    required this.model,
+    required this.requestAction,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +78,7 @@ class MobileDefaultAssetCard extends GetView<RequestAssetsController> {
                         ),
                       ),
                       verticalSpace(3),
-                      if (controller.requestAction ==
-                          RequestActions.returnAsset)
+                      if (requestAction == RequestActions.returnAsset)
                         DefaultRichText(
                           labelStyle:
                               AppTextStyles.font12SecondaryBlackCairoMedium,
@@ -89,8 +94,8 @@ class MobileDefaultAssetCard extends GetView<RequestAssetsController> {
               ),
             ],
           ),
-          if (controller.requestAction == RequestActions.routineMaintenance ||
-              controller.requestAction == RequestActions.repairAsset)
+          if (requestAction == RequestActions.routineMaintenance ||
+              requestAction == RequestActions.repairAsset)
             DefaultRichText(
               labelStyle: AppTextStyles.font12SecondaryBlackCairoMedium,
               style: AppTextStyles.font12BlackMediumCairo,

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:inventory_management/inventory_management_module/core/theme/app_font_weights.dart';
+import '../../../../../../../core/theme/app_font_weights.dart';
 
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/get_dialog_helper.dart';
@@ -37,7 +37,8 @@ class CancelRequestButton extends GetView<TrackRequestController> {
             title: 'Cancelation Request'.tr,
             subTitle: 'Are You sure You Want to Cancel this Request ?'.tr,
             onConfirm: () {
-              controller.cancelRequest(requestId);
+              //  Navigator.of(context).pop();
+              controller.cancelRequest(requestId, context);
             },
           ),
           context: context,

@@ -6,7 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../extensions/extensions.dart';
 
 import '../../helpers/date_time_helper.dart';
 import '../../theme/app_colors.dart';

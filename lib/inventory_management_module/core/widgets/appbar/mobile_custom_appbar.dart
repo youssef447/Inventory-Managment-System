@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../extensions/extensions.dart';
 
 import '../../constants/app_assets.dart';
 import '../../helpers/haptic_feedback_helper.dart';
@@ -29,7 +28,7 @@ class MobileCustomAppbar extends StatelessWidget {
               vibration: VibrateType.mediumImpact,
               hapticFeedback: HapticFeedback.mediumImpact,
             );
-            Get.back();
+            Navigator.of(context).pop();
           },
           child: SvgPicture.asset(
             context.isArabic ? AppAssets.arrowForward : AppAssets.arrowBack,

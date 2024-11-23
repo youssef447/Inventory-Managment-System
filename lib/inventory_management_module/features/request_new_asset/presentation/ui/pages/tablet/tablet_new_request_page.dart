@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../core/helpers/date_time_helper.dart';
@@ -28,7 +28,12 @@ part '../../widgets/tablet/new_request/cards/horizontal_default_asset_card.dart'
 //Youssef Ashraf
 ///Represents The Available Assets Based On Consumable Request Action in Tablet View
 class TabletNewRequestPage extends GetView<RequestAssetsController> {
-  const TabletNewRequestPage({super.key});
+  final RequestActions requestAction;
+
+  const TabletNewRequestPage({
+    super.key,
+    required this.requestAction,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +51,7 @@ class TabletNewRequestPage extends GetView<RequestAssetsController> {
                   slivers: [
                     SliverToBoxAdapter(
                       child: CustomAppBar(
-                        titles: [
-                          'New Request'.tr,
-                          controller.requestAction.getName.tr
-                        ],
+                        titles: ['New Request'.tr, requestAction.getName.tr],
                       ),
                     ),
                     controller.loading
@@ -88,15 +90,17 @@ class TabletNewRequestPage extends GetView<RequestAssetsController> {
                                             onTap: () {
                                               controller.setResources(
                                                   controller.assets[index]);
-                                              Get.toNamed(
+                                              context.navigateTo(
                                                 Routes.newRequestAsset,
                                                 arguments: {
                                                   RouteArguments.assetModel:
-                                                      controller.assets[index]
+                                                      controller.assets[index],
+                                                  RouteArguments.requestAction:
+                                                      requestAction,
                                                 },
                                               );
                                             },
-                                            child: controller.requestAction ==
+                                            child: requestAction ==
                                                     RequestActions.requestAsset
                                                 ? OrientationHelper(
                                                     landScape:
@@ -115,11 +119,15 @@ class TabletNewRequestPage extends GetView<RequestAssetsController> {
                                                         HorizontalDefaultAssetCard(
                                                       model: controller
                                                           .assets[index],
+                                                      requestAction:
+                                                          requestAction,
                                                     ),
                                                     portrait:
                                                         VerticalDefaultAssetCard(
                                                       model: controller
                                                           .assets[index],
+                                                      requestAction:
+                                                          requestAction,
                                                     ),
                                                   ),
                                           );

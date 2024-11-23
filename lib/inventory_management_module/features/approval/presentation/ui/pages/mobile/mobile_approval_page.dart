@@ -25,7 +25,7 @@ class MobileApprovalPage extends GetView<ApprovalController> {
         backgroundColor: AppColors.background,
         body: GetBuilder<ApprovalController>(
             id: ApprovalIdConstant.approval,
-            builder: (context) {
+            builder: (controller) {
               return Padding(
                 padding: const EdgeInsets.all(20),
                 child: SafeArea(
@@ -36,7 +36,7 @@ class MobileApprovalPage extends GetView<ApprovalController> {
                         Row(
                           children: [
                             GestureDetector(
-                                onTap: () => Get.back(),
+                                onTap: () => Navigator.of(context).pop(),
                                 child: SvgPicture.asset(
                                   AppAssets.arrowBack,
                                 )),

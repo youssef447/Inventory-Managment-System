@@ -13,6 +13,7 @@ import '../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../../core/widgets/appbar/mobile_custom_appbar.dart';
 import '../../../../../../core/widgets/loading.dart';
 import '../../../../../../core/widgets/no_data_gif.dart';
+import '../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../consumables/domain/entity/consumables_entity.dart';
 import '../../../../constants/ids_constants.dart';
@@ -25,7 +26,9 @@ part '../../widgets/mobile/new_request/cards/mobile_default_consumable_card.dart
 ///Represents The Available Consumables Based On Consumable Request Action in Mobile View
 class MobileNewConsumableRequestPage
     extends GetView<RequestConsumableController> {
-  const MobileNewConsumableRequestPage({super.key});
+  final RequestActions requestAction;
+  const MobileNewConsumableRequestPage(
+      {required this.requestAction, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +44,7 @@ class MobileNewConsumableRequestPage
                   slivers: [
                     SliverToBoxAdapter(
                       child: MobileCustomAppbar(
-                        title: controller.requestAction.getName.tr,
+                        title: requestAction.getName.tr,
                       ),
                     ),
                     controller.loading
@@ -78,16 +81,18 @@ class MobileNewConsumableRequestPage
                                           onTap: () {
                                             controller.setResources(
                                                 controller.consumables[index]);
-                                            Get.toNamed(
+                                            context.navigateTo(
                                               Routes.newRequestConsumable,
                                               arguments: {
                                                 RouteArguments.consumableModel:
                                                     controller
-                                                        .consumables[index]
+                                                        .consumables[index],
+                                                RouteArguments.requestAction:
+                                                    requestAction,
                                               },
                                             );
                                           },
-                                          child: controller.requestAction ==
+                                          child: requestAction ==
                                                   RequestActions
                                                       .requestConsumables
                                               ? MobileRequestConsumableCard(
@@ -97,6 +102,7 @@ class MobileNewConsumableRequestPage
                                               : MobileDefaultConsumableCard(
                                                   model: controller
                                                       .consumables[index],
+                                                  requestAction: requestAction,
                                                 ),
                                         );
                                       },

@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../core/extensions/extensions.dart';
+
 import '../../../../../../core/animations/up_down_animation.dart';
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/enums/requests_enums.dart';
@@ -23,9 +24,12 @@ part '../../widgets/tablet/request_actions_fields/expiry_consumable_fields.dart'
 class TabletRequestConsumableFormPage
     extends GetView<RequestConsumableController> {
   final ConsumablesEntity model;
+  final RequestActions requestAction;
+
   const TabletRequestConsumableFormPage({
     super.key,
     required this.model,
+    required this.requestAction,
   });
 
   @override
@@ -52,7 +56,7 @@ class TabletRequestConsumableFormPage
                               vibration: VibrateType.mediumImpact,
                               hapticFeedback: HapticFeedback.mediumImpact,
                             );
-                            Get.back();
+                            Navigator.of(context).pop();
                           },
                           child: SvgPicture.asset(
                             context.isArabic
@@ -65,8 +69,7 @@ class TabletRequestConsumableFormPage
                         ),
                         horizontalSpace(8),
                         Text(
-                          '${'Request New'.tr} ${controller.requestAction.getName.tr}'
-                              .tr,
+                          '${'Request New'.tr} ${requestAction.getName.tr}'.tr,
                           style: AppTextStyles.font24MediumBlackCairo,
                         ),
                       ],
@@ -136,14 +139,11 @@ class TabletRequestConsumableFormPage
                       ],
                     ),
                     verticalSpace(24),
-                    if (controller.requestAction ==
-                        RequestActions.requestConsumables)
+                    if (requestAction == RequestActions.requestConsumables)
                       const TabletRequestConsumableFields(),
-                    if (controller.requestAction ==
-                        RequestActions.expiredConsumables)
+                    if (requestAction == RequestActions.expiredConsumables)
                       const TabletExpiryConsumableFields(),
-                    if (controller.requestAction ==
-                        RequestActions.returnConsumables)
+                    if (requestAction == RequestActions.returnConsumables)
                       Row(
                         children: [
                           Expanded(

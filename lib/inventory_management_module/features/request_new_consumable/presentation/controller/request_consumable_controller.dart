@@ -2,10 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/constants/approve_cycle.dart';
+import '../../../../core/constants/approve_cycle.dart';
 
 import '../../../../core/enums/requests_enums.dart';
-import '../../../../core/routes/route_arguments.dart';
 import '../../../consumables/domain/entity/consumables_entity.dart';
 
 import '../../../consumables/presentation/controller/consumables_controller.dart';
@@ -21,12 +20,10 @@ class RequestConsumableController extends GetxController {
   List<ConsumablesEntity> consumables = [];
   List<RequestEntity> requests = [];
   bool loading = true;
-  late RequestActions requestAction;
   @override
   void onInit() {
     super.onInit();
-    requestAction =
-        Get.arguments[RouteArguments.requestAction] as RequestActions;
+
     loadconsumablesData();
   }
 
@@ -78,7 +75,7 @@ class RequestConsumableController extends GetxController {
     update([RequestConsumablesIds.attachments]);
   }
 
-  submitForApproval(ConsumablesEntity entity) {
+  submitForApproval(ConsumablesEntity entity, RequestActions requestAction) {
     RequestEntity(
       requestId: '001',
       requestType: requestAction.getName,

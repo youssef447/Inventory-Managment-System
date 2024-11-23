@@ -2,8 +2,7 @@ import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/core/routes/app_routes.dart';
+import '../../../../../../core/routes/app_routes.dart';
 
 import '../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../core/enums/inventory_categories.dart';
@@ -16,6 +15,7 @@ import '../../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../../core/widgets/appbar/custom_app_bar.dart';
 
 import '../../../../../../core/widgets/buttons/default_switch_button.dart';
+import '../../../../../../core/extensions/extensions.dart';
 
 import '../../../controller/home_controller.dart';
 import '../../widgets/tablet/search_filter/tablet_search_filter.dart';

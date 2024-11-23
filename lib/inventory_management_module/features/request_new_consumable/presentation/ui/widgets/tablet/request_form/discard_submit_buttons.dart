@@ -14,7 +14,7 @@ class DiscardSubmitButtons extends GetView<RequestConsumableController> {
               vibration: VibrateType.mediumImpact,
               hapticFeedback: HapticFeedback.mediumImpact,
             );
-            Get.back();
+            Navigator.of(context).pop();
             controller.resetResources();
           },
           child: Container(

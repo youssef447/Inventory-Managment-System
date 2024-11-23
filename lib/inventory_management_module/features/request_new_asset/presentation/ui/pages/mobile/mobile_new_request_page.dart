@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../core/helpers/date_time_helper.dart';
@@ -24,7 +24,12 @@ part '../../widgets/mobile/new_request/cards/mobile_default_asset_card.dart';
 //Youssef Ashraf
 ///Represents The Available Assets Based On Consumable Request Action in Mobile View
 class MobileNewRequestPage extends GetView<RequestAssetsController> {
-  const MobileNewRequestPage({super.key});
+  final RequestActions requestAction;
+
+  const MobileNewRequestPage({
+    super.key,
+    required this.requestAction,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +44,7 @@ class MobileNewRequestPage extends GetView<RequestAssetsController> {
               return CustomScrollView(slivers: [
                 SliverToBoxAdapter(
                   child: MobileCustomAppbar(
-                    title: controller.requestAction.getName.tr,
+                    title: requestAction.getName.tr,
                   ),
                 ),
                 controller.loading
@@ -69,21 +74,24 @@ class MobileNewRequestPage extends GetView<RequestAssetsController> {
                                         controller.setResources(
                                           controller.assets[index],
                                         );
-                                        Get.toNamed(
+                                        context.navigateTo(
                                           Routes.newRequestAsset,
                                           arguments: {
                                             RouteArguments.assetModel:
-                                                controller.assets[index]
+                                                controller.assets[index],
+                                            RouteArguments.requestAction:
+                                                requestAction,
                                           },
                                         );
                                       },
-                                      child: controller.requestAction ==
+                                      child: requestAction ==
                                               RequestActions.requestAsset
                                           ? MobileRequestAssetCard(
                                               model: controller.assets[index],
                                             )
                                           : MobileDefaultAssetCard(
                                               model: controller.assets[index],
+                                              requestAction: requestAction,
                                             ),
                                     );
                                   },

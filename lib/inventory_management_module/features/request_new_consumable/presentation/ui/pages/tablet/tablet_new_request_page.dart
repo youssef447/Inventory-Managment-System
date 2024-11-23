@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../core/helpers/date_time_helper.dart';
@@ -29,7 +29,10 @@ part '../../widgets/tablet/new_request/cards/horizontal_default_consumable_card.
 ///Represents The Available Consumables Based On Consumable Request Action in Tablet View
 class TabletNewConsumableRequestPage
     extends GetView<RequestConsumableController> {
-  const TabletNewConsumableRequestPage({super.key});
+  final RequestActions requestAction;
+
+  const TabletNewConsumableRequestPage(
+      {super.key, required this.requestAction});
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +50,7 @@ class TabletNewConsumableRequestPage
                   slivers: [
                     SliverToBoxAdapter(
                       child: CustomAppBar(
-                        titles: [
-                          'New Request'.tr,
-                          controller.requestAction.getName.tr
-                        ],
+                        titles: ['New Request'.tr, requestAction.getName.tr],
                       ),
                     ),
                     controller.loading
@@ -89,17 +89,19 @@ class TabletNewConsumableRequestPage
                                             onTap: () {
                                               controller.setResources(controller
                                                   .consumables[index]);
-                                              Get.toNamed(
+                                              context.navigateTo(
                                                 Routes.newRequestConsumable,
                                                 arguments: {
                                                   RouteArguments
                                                           .consumableModel:
                                                       controller
-                                                          .consumables[index]
+                                                          .consumables[index],
+                                                  RouteArguments.requestAction:
+                                                      requestAction,
                                                 },
                                               );
                                             },
-                                            child: controller.requestAction ==
+                                            child: requestAction ==
                                                     RequestActions
                                                         .requestConsumables
                                                 ? OrientationHelper(
@@ -119,11 +121,15 @@ class TabletNewConsumableRequestPage
                                                         HorizontalDefaultConsumableCard(
                                                       model: controller
                                                           .consumables[index],
+                                                      requestAction:
+                                                          requestAction,
                                                     ),
                                                     portrait:
                                                         VerticalDefaultConsumableCard(
                                                       model: controller
                                                           .consumables[index],
+                                                      requestAction:
+                                                          requestAction,
                                                     ),
                                                   ),
                                           );

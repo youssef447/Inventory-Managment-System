@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 import 'package:lottie/lottie.dart';
 
 import '../constants/app_assets.dart';
 import '../helpers/spacing_helper.dart';
 import '../theme/app_text_styles.dart';
+import '../extensions/extensions.dart';
 
 // Date: 16/10/2024
 // By: Youssef Ashraf, Nada Mohammed, Mohammed Ashraf

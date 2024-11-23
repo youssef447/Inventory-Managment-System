@@ -6,11 +6,11 @@
 abstract class Routes {
   // Home
 
-  static const home = '/home';
+  static const home = '/';
 
   //Requests
-  static const requestAsset = '$home/requestAsset';
-  static const requestConsumable = '$home/requestConsumable';
+  static const requestAsset = '/requestAsset';
+  static const requestConsumable = '/requestConsumable';
   static const newRequestAsset = '$requestAsset/newRequestAsset';
   static const newRequestConsumable = '$requestConsumable/newRequestConsumable';
   static const trackRequest = '$requestAsset/trackRequest';

@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 
 import 'package:lottie/lottie.dart';
+import '../../extensions/extensions.dart';
 
 import '../../helpers/spacing_helper.dart';
 import '../../theme/app_colors.dart';
@@ -43,13 +43,7 @@ class DefaultDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (!showButtons) {
-      Timer(
-        const Duration(seconds: 2),
-        () => Get
-            .back(), /*  Get.until(
-          (route) => route.isFirst,
-        ), */
-      );
+      Timer(const Duration(seconds: 2), () => Navigator.of(context).pop());
     }
     return Container(
       decoration: BoxDecoration(
@@ -124,7 +118,7 @@ class DefaultDialog extends StatelessWidget {
                           style: AppTextStyles.font16ButtonMediumCairo
                               .copyWith(color: AppColors.black),
                           onPressed: () {
-                            Get.back();
+                            Navigator.of(context).pop();
                           },
                         ),
                         horizontalSpace(context.isTablett ? 32 : 16),

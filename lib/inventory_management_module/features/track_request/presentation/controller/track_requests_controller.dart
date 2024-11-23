@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 
 import '../../../../core/constants/approve_cycle.dart';
 import '../../../../core/helpers/get_dialog_helper.dart';
-import '../../../../core/routes/app_routes.dart';
 import '../../../requests/constants/ids_constants.dart';
 import '../../../requests/entities/attachment_entity.dart';
 import '../../../requests/entities/message_entity.dart';
@@ -134,7 +133,7 @@ class TrackRequestController extends GetxController {
   }
 
 //------------Cancel Request ------------
-  cancelRequest(String requestId) {
+  cancelRequest(String requestId, BuildContext context) {
     final isConsumable =
         Get.find<RequestsController>().currentCategoryIndex.value == 1;
 
@@ -150,8 +149,9 @@ class TrackRequestController extends GetxController {
           .status = 'Canceled';
     }
     requests.removeWhere((element) => element.requestId == requestId);
+    Navigator.of(context, rootNavigator: true).pop();
+    Navigator.of(context).pop();
 
-    Get.until((route) => route.settings.name == Routes.trackRequest);
     update([TrackRequestIds.trackRequestsPage]);
     Get.find<RequestsController>()
         .update([RequestsIds.requestsPage, RequestsIds.summaryCircles]);

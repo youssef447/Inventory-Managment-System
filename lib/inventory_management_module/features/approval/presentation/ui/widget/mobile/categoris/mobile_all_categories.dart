@@ -49,7 +49,7 @@ class MobileAllCategories extends GetView<ApprovalController> {
                                     child: MobileApprovalDetailsPage(
                                       index: index,
                                     ));
-                                // Get.toNamed(
+                                //  context.navigateTo(
                                 //   Routes.assetsDetails,
                                 //   arguments: {
                                 //      RouteArguments.assetsModelIndex: index,

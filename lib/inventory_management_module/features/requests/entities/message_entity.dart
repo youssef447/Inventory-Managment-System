@@ -1,4 +1,4 @@
-import 'package:inventory_management/inventory_management_module/features/home/domain/user_entity.dart';
+import '../../../features/home/domain/user_entity.dart';
 
 import 'attachment_entity.dart';
 

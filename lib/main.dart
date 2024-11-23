@@ -8,19 +8,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/core/helpers/responsive_helper.dart';
+
+import 'inventory_management_module/core/extensions/extensions.dart';
 
 import 'package:window_manager/window_manager.dart';
-import 'inventory_management_module/core/routes/get_pages.dart';
+import 'inventory_management_module/core/di/injection.dart';
 import 'inventory_management_module/core/constants/languages.dart';
+import 'inventory_management_module/core/routes/app_routes.dart';
+import 'inventory_management_module/core/routes/routes_generator.dart';
 import 'inventory_management_module/core/theme/app_theme.dart';
-import 'inventory_management_module/core/di/home_bindings.dart';
-import 'inventory_management_module/features/home/presentation/ui/page/mobile/mobile_home_page.dart';
-import 'inventory_management_module/features/home/presentation/ui/page/tablet/tablet_home_page.dart';
+
+final inventoryNavKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  configurationDependencies();
 
   // init Dependencies
   await ScreenUtil.ensureScreenSize();
@@ -58,14 +60,24 @@ class InventoryManagement extends StatelessWidget {
           // General
           debugShowCheckedModeBanner: false,
           title: 'Inventory Management',
-          home: const ResponsiveHelper(
-            mobileWidget: MobileHomePage(),
-            tabletWidget: TabletHomePage(),
+          home: Column(
+            children: [
+              Container(
+                height: 100.h,
+                color: Colors.red,
+              ),
+              Expanded(
+                child: Navigator(
+                  key: inventoryNavKey,
+                  onGenerateRoute: RouteGenerator.generateRoute,
+                  initialRoute: Routes.home,
+                ),
+              ),
+            ],
           ),
-          initialBinding: HomeBindings(),
 
           // Routes
-          getPages: AppPages.routes,
+          onGenerateRoute: RouteGenerator.generateRoute,
 
           // Theme
           themeMode:

@@ -10,8 +10,6 @@ import '../ui/constants/approval_id_constant.dart';
 class ApprovalController extends GetxController {
   RxInt currentCategoryIndex = 0.obs;
 
-
-
   /// drop down
   List<RequestPriorityTypes> priorities = [
     RequestPriorityTypes.urgent,
@@ -23,8 +21,6 @@ class ApprovalController extends GetxController {
   updatePriority(RequestPriorityTypes value) {
     priorityValue.value = value;
   }
-
-
 
   ///updates category filter row index to filter table
   updateCategoryIndex(int index) {
@@ -220,7 +216,8 @@ class ApprovalController extends GetxController {
   }
 
   // Method to change the status of an item
-  void changeApprovalStatusById(String approvalId, String newStatus) {
+  void changeApprovalStatusById(
+      String approvalId, String newStatus, BuildContext context) {
     final approvals = allApprovalList
         .where((approval) => approval.approvalId == approvalId)
         .toList();
@@ -237,6 +234,7 @@ class ApprovalController extends GetxController {
     canceledList = allApprovalList
         .where((approval) => approval.status == 'Canceled')
         .toList();
+
     update([ApprovalIdConstant.approval]);
   }
 

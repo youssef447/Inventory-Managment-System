@@ -3,7 +3,7 @@
 // Objectives: This file is responsible for providing a helper class that is used to show a responsive widget based on the screen size.
 
 import 'package:flutter/material.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../core/extensions/extensions.dart';
 
 class ResponsiveHelper extends StatelessWidget {
   final Widget mobileWidget, tabletWidget;

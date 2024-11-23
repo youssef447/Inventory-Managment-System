@@ -4,12 +4,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 
 import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../controller/track_requests_controller.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
 
 class SendConfirmationDialog extends GetView<TrackRequestController> {
   final int? count;
@@ -63,7 +63,7 @@ class SendConfirmationDialog extends GetView<TrackRequestController> {
                   ),
                   height: 35.h,
                   onPressed: () {
-                    Get.back(result: false);
+                    Navigator.of(context).pop(false);
                   },
                 ),
                 AppDefaultButton(
@@ -74,7 +74,7 @@ class SendConfirmationDialog extends GetView<TrackRequestController> {
                       color: AppColors.textButton,
                     ),
                     onPressed: () {
-                      Get.back(result: true);
+                      Navigator.of(context).pop(true);
                     }),
               ],
             ),

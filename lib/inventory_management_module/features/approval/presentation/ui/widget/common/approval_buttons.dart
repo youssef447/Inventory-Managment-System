@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../core/helpers/haptic_feedback_helper.dart';
-import '../../../../../../core/routes/app_routes.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/widgets/dialog/default_dialog.dart';
@@ -40,8 +39,12 @@ class ApprovalButtons extends GetView<ApprovalController> {
                   title: 'Reject Approve'.tr,
                   subTitle: 'Are You sure You Want to Reject this Approve ?'.tr,
                   onConfirm: () {
-                    controller.changeApprovalStatusById(approvalId, 'Rejected');
-                    Get.until((route) => route.settings.name == Routes.approval);
+                    controller.changeApprovalStatusById(
+                      approvalId,
+                      'Rejected',
+                      context,
+                    );
+                    Navigator.of(context, rootNavigator: true).pop();
                   },
                 ),
                 context: context,
@@ -86,8 +89,8 @@ class ApprovalButtons extends GetView<ApprovalController> {
                 vibration: VibrateType.mediumImpact,
                 hapticFeedback: HapticFeedback.mediumImpact,
               );
-              controller.changeApprovalStatusById(approvalId, 'Approved');
-             Get.until((route) => route.settings.name == Routes.approval);
+              controller.changeApprovalStatusById(
+                  approvalId, 'Approved', context);
             },
             child: Container(
               height: 40,

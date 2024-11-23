@@ -19,9 +19,11 @@ part '../../widgets/mobile/request_action_fields/routine_maintenance_fields.dart
 
 class MobileRequestFormPage extends GetView<RequestAssetsController> {
   final AssetsEntity model;
+  final RequestActions requestAction;
   const MobileRequestFormPage({
     super.key,
     required this.model,
+    required this.requestAction,
   });
 
   @override
@@ -40,8 +42,7 @@ class MobileRequestFormPage extends GetView<RequestAssetsController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MobileCustomAppbar(
-                      title:
-                          '${'Request New'.tr} ${controller.requestAction.getName.tr}'),
+                      title: '${'Request New'.tr} ${requestAction.getName.tr}'),
                   verticalSpace(15),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8.r),
@@ -83,14 +84,13 @@ class MobileRequestFormPage extends GetView<RequestAssetsController> {
                     label: 'Brand',
                   ),
                   verticalSpace(24),
-                  if (controller.requestAction == RequestActions.requestAsset)
+                  if (requestAction == RequestActions.requestAsset)
                     const MobileRequestAssetFields(),
-                  if (controller.requestAction == RequestActions.repairAsset)
+                  if (requestAction == RequestActions.repairAsset)
                     const MobileRepairAssetFields(),
-                  if (controller.requestAction ==
-                      RequestActions.routineMaintenance)
+                  if (requestAction == RequestActions.routineMaintenance)
                     const MobileRotuineMaintenanceAssetFields(),
-                  if (controller.requestAction == RequestActions.returnAsset)
+                  if (requestAction == RequestActions.returnAsset)
                     LabeledFormField(
                       controller: controller.returnDateController,
                       label: 'Return Date',

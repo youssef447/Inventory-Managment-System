@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/enums/requests_enums.dart';
@@ -229,7 +229,7 @@ class VerticalRequstsSummaryCircles extends GetView<HomeController> {
                     style: context.isPhone
                         ? AppTextStyles.font16BlackMediumCairo
                         : AppTextStyles.font18BlackMediumCairo,
-                    onPressed: () => Get.toNamed(Routes.trackRequest),
+                    onPressed: () => context.navigateTo(Routes.trackRequest),
                   ),
                 ),
                 horizontalSpace(10),
@@ -251,12 +251,12 @@ class VerticalRequstsSummaryCircles extends GetView<HomeController> {
                         if (value == RequestActions.expiredConsumables ||
                             value == RequestActions.returnConsumables ||
                             value == RequestActions.requestConsumables) {
-                          Get.toNamed(
+                          context.navigateTo(
                             Routes.requestConsumable,
                             arguments: {RouteArguments.requestAction: value},
                           );
                         } else {
-                          Get.toNamed(
+                          context.navigateTo(
                             Routes.requestAsset,
                             arguments: {RouteArguments.requestAction: value},
                           );

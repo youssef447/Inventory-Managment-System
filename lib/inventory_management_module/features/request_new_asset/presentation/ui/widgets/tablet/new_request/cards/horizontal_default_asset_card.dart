@@ -2,9 +2,12 @@ part of '../../../../pages/tablet/tablet_new_request_page.dart';
 
 class HorizontalDefaultAssetCard extends GetView<RequestAssetsController> {
   final AssetsEntity model;
+  final RequestActions requestAction;
+
   const HorizontalDefaultAssetCard({
     super.key,
     required this.model,
+    required this.requestAction,
   });
 
   @override
@@ -72,10 +75,9 @@ class HorizontalDefaultAssetCard extends GetView<RequestAssetsController> {
                                 value: DateTimeHelper.formatDate(
                                     model.dateReceived),
                               ),
-                              if (controller.requestAction ==
+                              if (requestAction ==
                                       RequestActions.routineMaintenance ||
-                                  controller.requestAction ==
-                                      RequestActions.repairAsset)
+                                  requestAction == RequestActions.repairAsset)
                                 DefaultRichText(
                                   labelStyle: AppTextStyles
                                       .font12SecondaryBlackCairoMedium,
@@ -84,8 +86,7 @@ class HorizontalDefaultAssetCard extends GetView<RequestAssetsController> {
                                   value: model.maintenanceFrequency ??
                                       'Not Applicable',
                                 ),
-                              if (controller.requestAction ==
-                                  RequestActions.returnAsset)
+                              if (requestAction == RequestActions.returnAsset)
                                 DefaultRichText(
                                   labelStyle: AppTextStyles
                                       .font12SecondaryBlackCairoMedium,

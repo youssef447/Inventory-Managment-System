@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import '../../extensions/extensions.dart';
 
 import '../../constants/app_assets.dart';
 import '../../helpers/spacing_helper.dart';
@@ -111,7 +111,7 @@ class CustomDataSelectorDialog extends StatelessWidget {
               alignment: AlignmentDirectional.centerEnd,
               child: AppTextButton(
                 onPressed: () {
-                  Get.back();
+                  Navigator.of(context).pop();
                 },
                 width: isTablet ? 95.w : 71.w,
                 height: 40.h,

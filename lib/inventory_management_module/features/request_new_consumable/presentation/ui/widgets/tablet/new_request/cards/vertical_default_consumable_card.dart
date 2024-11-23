@@ -3,10 +3,12 @@ part of '../../../../pages/tablet/tablet_new_request_page.dart';
 class VerticalDefaultConsumableCard
     extends GetView<RequestConsumableController> {
   final ConsumablesEntity model;
+  final RequestActions requestAction;
 
   const VerticalDefaultConsumableCard({
     super.key,
     required this.model,
+    required this.requestAction,
   });
 
   @override
@@ -63,7 +65,7 @@ class VerticalDefaultConsumableCard
             ),
           ),
           verticalSpace(3),
-          if (controller.requestAction == RequestActions.returnConsumables)
+          if (requestAction == RequestActions.returnConsumables)
             DefaultRichText(
               labelStyle: AppTextStyles.font12SecondaryBlackCairoMedium,
               style: AppTextStyles.font12BlackMediumCairo,
@@ -72,7 +74,7 @@ class VerticalDefaultConsumableCard
                 model.dateReturn ?? DateTime.now(),
               ),
             ),
-          if (controller.requestAction == RequestActions.expiredConsumables)
+          if (requestAction == RequestActions.expiredConsumables)
             DefaultRichText(
               labelStyle: AppTextStyles.font12SecondaryBlackCairoMedium,
               style: AppTextStyles.font12BlackMediumCairo,

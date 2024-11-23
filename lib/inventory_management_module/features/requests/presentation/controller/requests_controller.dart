@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/constants/approve_cycle.dart';
+import '../../../../core/constants/approve_cycle.dart';
 
 import '../../../../core/enums/requests_enums.dart';
 import '../../../Assets/domain/entity/assets_entity.dart';

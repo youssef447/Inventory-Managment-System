@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inventory_management/inventory_management_module/core/theme/app_colors.dart';
+import '../../core/theme/app_colors.dart';
 
 // Date: 7/11/2024
 // by: Youssef Ashraf

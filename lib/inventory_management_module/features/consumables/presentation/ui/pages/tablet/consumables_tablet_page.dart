@@ -3,7 +3,6 @@
 // This widget displays a table of consumable items using data from ConsumablesController in tablet and windows view
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 import '../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
@@ -13,6 +12,7 @@ import '../../../../../../core/widgets/table/default_data_table.dart';
 import '../../../constants/consumables_columns_name.dart';
 import '../../../constants/consumables_id_constant.dart';
 import '../../../controller/consumables_controller.dart';
+import '../../../../../../core/extensions/extensions.dart';
 
 class ConsumablesTabletPage extends StatelessWidget {
   const ConsumablesTabletPage({
@@ -65,18 +65,19 @@ class ConsumablesTabletPage extends StatelessWidget {
                                   controller.consumablesList[index].status.tr,
                                   style: AppTextStyles.font16BlackRegularCairo
                                       .copyWith(
-                                      color: controller
-                                          .consumablesList[index]
-                                          .status
-                                          .tr
-                                          .getColor),
+                                          color: controller
+                                              .consumablesList[index]
+                                              .status
+                                              .tr
+                                              .getColor),
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                               DataCell(
                                 Text(
-                                  controller.consumablesList[index].brand + controller.consumablesList[index].model,
+                                  controller.consumablesList[index].brand +
+                                      controller.consumablesList[index].model,
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -172,7 +173,6 @@ class ConsumablesTabletPage extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
-
                             ],
                           ),
                         ).toList(),

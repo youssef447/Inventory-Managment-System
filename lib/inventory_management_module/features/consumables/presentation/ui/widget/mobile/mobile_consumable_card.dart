@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../controller/consumables_controller.dart';
+import '../../../../../../core/extensions/extensions.dart';
 
 class MobileConsumableCard extends GetView<ConsumablesController> {
   final int index;

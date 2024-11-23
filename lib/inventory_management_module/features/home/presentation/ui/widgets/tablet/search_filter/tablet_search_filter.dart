@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 import '../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../core/constants/app_assets.dart';
 
@@ -21,6 +20,8 @@ import '../../common/vertical/squared_filter_card.dart';
 import '../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../controller/home_controller.dart';
 import 'filter_dialog.dart';
+import '../../../../../../../core/extensions/extensions.dart';
+
 // Date: 5/8/2024
 // By: Youssef Ashraf
 // Last update: 6/8/2024
@@ -109,7 +110,7 @@ class TabletSearchFilter extends GetView<HomeController> {
                         color: AppColors.card,
                         onTap: () {
                           GetDialogHelper.generalDialog(
-                            child:const FilterDialog(),
+                            child: const FilterDialog(),
                             context: context,
                           );
                         },
@@ -134,14 +135,14 @@ class TabletSearchFilter extends GetView<HomeController> {
                               if (value == RequestActions.expiredConsumables ||
                                   value == RequestActions.returnConsumables ||
                                   value == RequestActions.requestConsumables) {
-                                Get.toNamed(
+                                context.navigateTo(
                                   Routes.requestConsumable,
                                   arguments: {
                                     RouteArguments.requestAction: value
                                   },
                                 );
                               } else {
-                                Get.toNamed(
+                                context.navigateTo(
                                   Routes.requestAsset,
                                   arguments: {
                                     RouteArguments.requestAction: value
@@ -219,14 +220,14 @@ class TabletSearchFilter extends GetView<HomeController> {
                               if (value == RequestActions.expiredConsumables ||
                                   value == RequestActions.returnConsumables ||
                                   value == RequestActions.requestConsumables) {
-                                Get.toNamed(
+                                context.navigateTo(
                                   Routes.requestConsumable,
                                   arguments: {
                                     RouteArguments.requestAction: value
                                   },
                                 );
                               } else {
-                                Get.toNamed(
+                                context.navigateTo(
                                   Routes.requestAsset,
                                   arguments: {
                                     RouteArguments.requestAction: value

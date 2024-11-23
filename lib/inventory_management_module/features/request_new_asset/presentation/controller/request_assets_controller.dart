@@ -2,10 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/constants/approve_cycle.dart';
+import '../../../../core/constants/approve_cycle.dart';
 
 import '../../../../core/enums/requests_enums.dart';
-import '../../../../core/routes/route_arguments.dart';
 import '../../../Assets/domain/entity/assets_entity.dart';
 import '../../../Assets/presentation/controller/assets_controller.dart';
 import '../../../requests/entities/attachment_entity.dart';
@@ -19,12 +18,10 @@ import 'package:file_picker/file_picker.dart';
 class RequestAssetsController extends GetxController {
   List<AssetsEntity> assets = [];
   bool loading = true;
-  late RequestActions requestAction;
   @override
   void onInit() {
     super.onInit();
-    requestAction =
-        Get.arguments[RouteArguments.requestAction] as RequestActions;
+
     loadAssetsData();
   }
 
@@ -75,7 +72,10 @@ class RequestAssetsController extends GetxController {
     update([RequestAssetsIds.attachments]);
   }
 
-  submitForApproval(AssetsEntity assetModel) {
+  submitForApproval(
+    AssetsEntity assetModel,
+    RequestActions requestAction,
+  ) {
     RequestEntity(
       requestId: '001',
       requestType: requestAction.getName,

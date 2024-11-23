@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../../../../core/extensions/extensions.dart';
 import '../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/routes/app_routes.dart';
@@ -45,7 +46,7 @@ class MobileAssetsPage extends GetView<AssetsController> {
                               text: 'Approval'.tr,
                               textColor: AppColors.textButton,
                               onPressed: () {
-                                Get.toNamed(Routes.approval);
+                                context.navigateTo(Routes.approval);
                               },
                               style: context.isPhone
                                   ? AppTextStyles.font16BlackMediumCairo
@@ -71,7 +72,7 @@ class MobileAssetsPage extends GetView<AssetsController> {
                                       hapticFeedback:
                                           HapticFeedback.mediumImpact,
                                     );
-                                    Get.toNamed(
+                                    context.navigateTo(
                                       Routes.assetsDetails,
                                       arguments: {
                                         RouteArguments.assetsModelIndex: index,

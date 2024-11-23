@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
@@ -70,7 +71,7 @@ class MobileTrackRequestsPage extends GetView<TrackRequestController> {
                                           itemBuilder: (context, index) {
                                             return GestureDetector(
                                               onTap: () {
-                                                Get.toNamed(
+                                                context.navigateTo(
                                                   Routes.trackDetails,
                                                   arguments: {
                                                     RouteArguments.requestModel:

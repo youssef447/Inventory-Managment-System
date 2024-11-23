@@ -8,7 +8,7 @@ import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../core/extensions/extensions.dart';
 
 import '../constants/app_assets.dart';
 import '../theme/app_colors.dart';

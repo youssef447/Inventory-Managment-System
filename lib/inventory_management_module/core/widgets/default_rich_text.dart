@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 
 import '../theme/app_text_styles.dart';
+import '../extensions/extensions.dart';
 
 //Youssef Ashraf
 /// Default Rich Text As (Label : Value).

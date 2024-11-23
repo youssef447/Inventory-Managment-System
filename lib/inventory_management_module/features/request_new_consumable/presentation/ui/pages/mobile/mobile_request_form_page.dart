@@ -19,9 +19,12 @@ import '../../widgets/common/attachments/attachments_section.dart';
 class MobileRequestConsumableFormPage
     extends GetView<RequestConsumableController> {
   final ConsumablesEntity model;
+  final RequestActions requestAction;
+
   const MobileRequestConsumableFormPage({
     super.key,
     required this.model,
+    required this.requestAction,
   });
 
   @override
@@ -40,8 +43,7 @@ class MobileRequestConsumableFormPage
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   MobileCustomAppbar(
-                    title:
-                        '${'Request New'.tr} ${controller.requestAction.getName.tr}',
+                    title: '${'Request New'.tr} ${requestAction.getName.tr}',
                   ),
                   verticalSpace(15),
                   ClipRRect(
@@ -84,24 +86,21 @@ class MobileRequestConsumableFormPage
                     label: 'Brand',
                   ),
                   verticalSpace(24),
-                  if (controller.requestAction ==
-                      RequestActions.expiredConsumables)
+                  if (requestAction == RequestActions.expiredConsumables)
                     LabeledFormField(
                       controller: controller.pickUpDateController,
                       label: 'Pick Up Date',
                       date: true,
                       hintText: 'Pick Up Date',
                     ),
-                  if (controller.requestAction ==
-                      RequestActions.returnConsumables)
+                  if (requestAction == RequestActions.returnConsumables)
                     LabeledFormField(
                       controller: controller.returnDateController,
                       label: 'Return Date',
                       hintText: 'Return Date',
                       date: true,
                     ),
-                  if (controller.requestAction ==
-                      RequestActions.requestConsumables)
+                  if (requestAction == RequestActions.requestConsumables)
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

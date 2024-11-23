@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 import '../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
@@ -14,6 +13,8 @@ import '../../../../../home/presentation/ui/widgets/common/horizontal/rectangled
 import '../../../../../home/presentation/ui/widgets/common/vertical/squared_filter_card.dart';
 import '../../../controller/approval_controller.dart';
 import '../../constants/approval_id_constant.dart';
+import '../../../../../../core/extensions/extensions.dart';
+
 // Date: 11/12/2024
 // By: Mohamed Ashraf
 // Objectives: This file is responsible for providing the search filter widget which has search field and filter buttons In Tablet View.

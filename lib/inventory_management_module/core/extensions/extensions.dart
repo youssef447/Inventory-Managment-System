@@ -21,6 +21,10 @@ extension ContextExtension on BuildContext {
   bool get isArabic => Get.locale.toString().toLowerCase().contains('ar');
   bool get isDesktop =>
       Platform.isWindows || Platform.isLinux || Platform.isMacOS;
+
+  void navigateTo(String routeName, {Object? arguments}) {
+    Navigator.pushNamed(this, routeName, arguments: arguments);
+  }
 }
 
 //-----------------------String Colors Extension-----------------------------

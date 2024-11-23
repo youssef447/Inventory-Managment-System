@@ -27,5 +27,5 @@ Future showLoadingIndicator() {
 }
 
 hideLoadingIndicator() {
-  Get.back();
+  Navigator.of(Get.context!).pop();
 }

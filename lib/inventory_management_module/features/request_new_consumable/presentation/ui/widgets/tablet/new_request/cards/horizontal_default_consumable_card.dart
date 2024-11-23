@@ -5,9 +5,12 @@ part of '../../../../pages/tablet/tablet_new_request_page.dart';
 class HorizontalDefaultConsumableCard
     extends GetView<RequestConsumableController> {
   final ConsumablesEntity model;
+  final RequestActions requestAction;
+
   const HorizontalDefaultConsumableCard({
     super.key,
     required this.model,
+    required this.requestAction,
   });
 
   @override
@@ -78,7 +81,7 @@ class HorizontalDefaultConsumableCard
                                   model.dateReceived,
                                 ),
                               ),
-                              if (controller.requestAction ==
+                              if (requestAction ==
                                   RequestActions.returnConsumables)
                                 DefaultRichText(
                                   labelStyle: AppTextStyles
@@ -89,7 +92,7 @@ class HorizontalDefaultConsumableCard
                                     model.dateReturn ?? DateTime.now(),
                                   ),
                                 ),
-                              if (controller.requestAction ==
+                              if (requestAction ==
                                   RequestActions.expiredConsumables)
                                 DefaultRichText(
                                   labelStyle: AppTextStyles

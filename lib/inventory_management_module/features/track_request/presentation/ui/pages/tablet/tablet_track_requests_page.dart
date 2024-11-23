@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../core/animations/size_animation.dart';
 import '../../../../../../core/helpers/date_time_helper.dart';
@@ -76,12 +76,12 @@ class TabletTrackRequestsPage extends GetView<TrackRequestController> {
                                           (index) {
                                             return GestureDetector(
                                               onTap: () {
-                                                Get.toNamed(
+                                                context.navigateTo(
                                                   Routes.trackDetails,
                                                   arguments: {
                                                     RouteArguments.requestModel:
                                                         controller
-                                                            .requests[index]
+                                                            .requests[index],
                                                   },
                                                 );
                                               },

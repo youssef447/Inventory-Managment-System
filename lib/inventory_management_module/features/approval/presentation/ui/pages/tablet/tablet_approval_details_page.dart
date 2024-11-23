@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
+import '../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
@@ -21,7 +21,8 @@ import '../../widget/common/approval_buttons.dart';
 class TabletApprovalDetailsPage extends GetView<ApprovalController> {
   final int index;
   final List<ApprovalEntity> list;
-  const TabletApprovalDetailsPage({super.key, required this.index, required this.list});
+  const TabletApprovalDetailsPage(
+      {super.key, required this.index, required this.list});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +53,7 @@ class TabletApprovalDetailsPage extends GetView<ApprovalController> {
                           vibration: VibrateType.mediumImpact,
                           hapticFeedback: HapticFeedback.mediumImpact,
                         );
-                        Get.back();
+                        Navigator.of(context).pop();
                       },
                       child: CircleAvatar(
                         backgroundColor: AppColors.primary,
@@ -190,7 +191,7 @@ class TabletApprovalDetailsPage extends GetView<ApprovalController> {
                         ),
                         verticalSpace(8),
                         Obx(
-                              () => AppDropdown(
+                          () => AppDropdown(
                             showDropdownIcon: true,
                             onChanged: (value) {
                               controller.updatePriority(value);
@@ -201,13 +202,13 @@ class TabletApprovalDetailsPage extends GetView<ApprovalController> {
                             textButton: controller.priorityValue.value?.getName,
                             items: List.generate(
                               controller.priorities.length,
-                                  (index) {
+                              (index) {
                                 return DropdownMenuItem(
                                   value: controller.priorities[index],
                                   child: Text(
                                     controller.priorities[index].getName.tr,
-                                    style:
-                                    AppTextStyles.font14SecondaryBlackCairoMedium,
+                                    style: AppTextStyles
+                                        .font14SecondaryBlackCairoMedium,
                                   ),
                                 );
                               },

@@ -39,8 +39,8 @@ class ApprovalButtonVertical extends GetView<ApprovalController> {
                 title: 'Reject Approve'.tr,
                 subTitle: 'Are You sure You Want to Reject this Approve ?'.tr,
                 onConfirm: () {
-                  controller.changeApprovalStatusById(approvalId, 'Rejected');
-                  Get.back();
+                  controller.changeApprovalStatusById(
+                      approvalId, 'Rejected', context);
                 },
               ),
               context: context,
@@ -78,7 +78,8 @@ class ApprovalButtonVertical extends GetView<ApprovalController> {
               vibration: VibrateType.mediumImpact,
               hapticFeedback: HapticFeedback.mediumImpact,
             );
-            controller.changeApprovalStatusById(approvalId, 'Approved');
+            controller.changeApprovalStatusById(
+                approvalId, 'Approved', context);
           },
           child: Container(
             height: 40.h,

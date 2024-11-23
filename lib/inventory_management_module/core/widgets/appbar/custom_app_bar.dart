@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/core/helpers/spacing_helper.dart';
+import '../../../core/helpers/spacing_helper.dart';
+import '../../../core/extensions/extensions.dart';
 
 import '../../constants/app_assets.dart';
 import '../../theme/app_colors.dart';
@@ -43,9 +43,7 @@ class CustomAppBar extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Get.until(
-                          (route) => route.isFirst,
-                        );
+                        Navigator.popUntil(context, (route) => route.isFirst);
                       },
                       child: Text(
                         'Inventory Management'.tr,

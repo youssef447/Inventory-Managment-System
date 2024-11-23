@@ -2,7 +2,10 @@ part of '../../../../pages/mobile/mobile_new_request_page.dart';
 
 class MobileDefaultConsumableCard extends GetView<RequestConsumableController> {
   final ConsumablesEntity model;
-  const MobileDefaultConsumableCard({super.key, required this.model});
+  final RequestActions requestAction;
+
+  const MobileDefaultConsumableCard(
+      {super.key, required this.model, required this.requestAction});
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +75,7 @@ class MobileDefaultConsumableCard extends GetView<RequestConsumableController> {
                         ),
                       ),
                       verticalSpace(3),
-                      if (controller.requestAction ==
-                          RequestActions.returnConsumables)
+                      if (requestAction == RequestActions.returnConsumables)
                         DefaultRichText(
                           labelStyle:
                               AppTextStyles.font12SecondaryBlackCairoMedium,
@@ -83,8 +85,7 @@ class MobileDefaultConsumableCard extends GetView<RequestConsumableController> {
                             model.dateReturn ?? DateTime.now(),
                           ),
                         ),
-                      if (controller.requestAction ==
-                          RequestActions.expiredConsumables)
+                      if (requestAction == RequestActions.expiredConsumables)
                         DefaultRichText(
                           labelStyle:
                               AppTextStyles.font12SecondaryBlackCairoMedium,

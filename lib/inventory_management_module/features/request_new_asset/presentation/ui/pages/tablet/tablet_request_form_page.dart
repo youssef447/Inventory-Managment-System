@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../core/extensions/extensions.dart';
+
 import '../../../../../../core/animations/up_down_animation.dart';
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/enums/requests_enums.dart';
@@ -23,9 +24,12 @@ part '../../widgets/tablet/request_actions_fields/routine_maintenance_fields.dar
 
 class TabletRequestFormPage extends GetView<RequestAssetsController> {
   final AssetsEntity model;
+  final RequestActions requestAction;
+
   const TabletRequestFormPage({
     super.key,
     required this.model,
+    required this.requestAction,
   });
 
   @override
@@ -52,7 +56,7 @@ class TabletRequestFormPage extends GetView<RequestAssetsController> {
                               vibration: VibrateType.mediumImpact,
                               hapticFeedback: HapticFeedback.mediumImpact,
                             );
-                            Get.back();
+                            Navigator.of(context).pop();
                           },
                           child: SvgPicture.asset(
                             context.isArabic
@@ -65,7 +69,7 @@ class TabletRequestFormPage extends GetView<RequestAssetsController> {
                         ),
                         horizontalSpace(8),
                         Text(
-                          controller.requestAction.getName.tr,
+                          requestAction.getName.tr,
                           style: AppTextStyles.font24MediumBlackCairo,
                         ),
                       ],
@@ -135,14 +139,13 @@ class TabletRequestFormPage extends GetView<RequestAssetsController> {
                       ],
                     ),
                     verticalSpace(24),
-                    if (controller.requestAction == RequestActions.requestAsset)
+                    if (requestAction == RequestActions.requestAsset)
                       const TabletRequestAssetFields(),
-                    if (controller.requestAction == RequestActions.repairAsset)
+                    if (requestAction == RequestActions.repairAsset)
                       const TabletRepairAssetFields(),
-                    if (controller.requestAction ==
-                        RequestActions.routineMaintenance)
+                    if (requestAction == RequestActions.routineMaintenance)
                       const TabletRoutineMaintenanceFields(),
-                    if (controller.requestAction == RequestActions.returnAsset)
+                    if (requestAction == RequestActions.returnAsset)
                       Row(
                         children: [
                           Expanded(

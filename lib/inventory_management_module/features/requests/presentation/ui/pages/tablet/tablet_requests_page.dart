@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../core/helpers/date_time_helper.dart';

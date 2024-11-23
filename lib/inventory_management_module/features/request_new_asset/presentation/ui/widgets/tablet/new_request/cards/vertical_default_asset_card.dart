@@ -2,10 +2,12 @@ part of '../../../../pages/tablet/tablet_new_request_page.dart';
 
 class VerticalDefaultAssetCard extends GetView<RequestAssetsController> {
   final AssetsEntity model;
+  final RequestActions requestAction;
 
   const VerticalDefaultAssetCard({
     super.key,
     required this.model,
+    required this.requestAction,
   });
 
   @override
@@ -61,7 +63,7 @@ class VerticalDefaultAssetCard extends GetView<RequestAssetsController> {
             ),
           ),
           verticalSpace(3),
-          if (controller.requestAction == RequestActions.returnAsset)
+          if (requestAction == RequestActions.returnAsset)
             DefaultRichText(
               labelStyle: AppTextStyles.font12SecondaryBlackCairoMedium,
               style: AppTextStyles.font12BlackMediumCairo,
@@ -70,8 +72,8 @@ class VerticalDefaultAssetCard extends GetView<RequestAssetsController> {
                 model.dateReturn ?? DateTime.now(),
               ),
             ),
-          if (controller.requestAction == RequestActions.routineMaintenance ||
-              controller.requestAction == RequestActions.repairAsset)
+          if (requestAction == RequestActions.routineMaintenance ||
+              requestAction == RequestActions.repairAsset)
             DefaultRichText(
               labelStyle: AppTextStyles.font12SecondaryBlackCairoMedium,
               style: AppTextStyles.font12BlackMediumCairo,

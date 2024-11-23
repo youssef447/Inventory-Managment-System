@@ -32,7 +32,7 @@ class MobileApprovalDetailsPage extends GetView<ApprovalController> {
               children: [
                 Row(children: [
                   GestureDetector(
-                      onTap: () => Get.back(),
+                      onTap: () => Navigator.of(context).pop(),
                       child: SvgPicture.asset(
                         AppAssets.arrowBack,
                       )),
