@@ -10,6 +10,8 @@ import 'package:get/get.dart';
 
 import '../theme/app_colors.dart';
 
+final inventoryNavKey = GlobalKey<NavigatorState>();
+
 //-----------------------Context Extensions-----------------------------
 extension ContextExtension on BuildContext {
   // ScreenInfo
@@ -23,7 +25,7 @@ extension ContextExtension on BuildContext {
       Platform.isWindows || Platform.isLinux || Platform.isMacOS;
 
   void navigateTo(String routeName, {Object? arguments}) {
-    Navigator.pushNamed(this, routeName, arguments: arguments);
+    inventoryNavKey.currentState!.pushNamed(routeName, arguments: arguments);
   }
 }
 

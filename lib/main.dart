@@ -18,8 +18,6 @@ import 'inventory_management_module/core/routes/app_routes.dart';
 import 'inventory_management_module/core/routes/routes_generator.dart';
 import 'inventory_management_module/core/theme/app_theme.dart';
 
-final inventoryNavKey = GlobalKey<NavigatorState>();
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configurationDependencies();

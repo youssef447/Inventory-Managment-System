@@ -151,7 +151,9 @@ class TrackRequestController extends GetxController {
     requests.removeWhere((element) => element.requestId == requestId);
     Navigator.of(context, rootNavigator: true).pop();
     Navigator.of(context).pop();
-
+    /*   inventoryNavKey.currentState!.popUntil(
+      (route) => route.settings.name == Routes.trackRequest,
+    ); */
     update([TrackRequestIds.trackRequestsPage]);
     Get.find<RequestsController>()
         .update([RequestsIds.requestsPage, RequestsIds.summaryCircles]);

@@ -168,6 +168,9 @@ class MobileRequestConsumableFormPage
                         vibration: VibrateType.mediumImpact,
                         hapticFeedback: HapticFeedback.mediumImpact,
                       );
+                      Navigator.pop(context);
+
+                      controller.submitForApproval();
                     },
                     child: Container(
                       height: 40.h,
