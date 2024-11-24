@@ -2,7 +2,7 @@
 // By:Mohamed Ashraf
 
 import '../../../core/constants/app_assets.dart';
-import '../../requests/entities/attachment_entity.dart';
+import '../../employee/requests/entities/attachment_entity.dart';
 
 class ApprovalEntity {
   final String image = AppAssets.user;
