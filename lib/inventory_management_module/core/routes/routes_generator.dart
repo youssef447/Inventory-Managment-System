@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../features/admin/presentation/ui/page/tablet/tablet_admin_home.dart';
 import '../../features/home/presentation/ui/page/mobile/mobile_home_page.dart';
 import '../../features/home/presentation/ui/page/tablet/tablet_home_page.dart';
 import 'app_routes.dart';
@@ -152,6 +153,14 @@ abstract class RouteGenerator {
           const ResponsiveHelper(
             mobileWidget: MobileApprovalPage(),
             tabletWidget: TabletApprovalPage(),
+          ),
+          PageTransitionType.fade,
+        );
+      case Routes.tabletHomeAdmin:
+        return _buildPageRoute(
+          const ResponsiveHelper(
+            mobileWidget: SizedBox(),
+            tabletWidget: TabletAdminHome(),
           ),
           PageTransitionType.fade,
         );
