@@ -9,9 +9,9 @@ import 'package:inventory_management/inventory_management_module/core/widgets/bu
 import '../../../../../../core/constants/app_assets.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
 import '../../../../../../core/widgets/fields/labeled_dropDown_field.dart';
 import '../../../../../../core/widgets/fields/labled_form_field.dart';
-import '../../../../../employee/home/presentation/ui/widgets/common/horizontal/rectangled_filter_card.dart';
 import '../../../controller/add_product_controller.dart';
 import '../../widgets/common/attachments/product_specification_attachments_section.dart';
 import '../../widgets/common/attachments/product_warranty_attachment_section.dart';
@@ -389,9 +389,15 @@ class AddAssetPage extends GetView<AddProductController> {
               verticalSpace(26),
               Row(
                 children: [
-                  AppDefaultButton(text: 'Discard',color: AppColors.grey,),
+                  AppDefaultButton(
+                    text: 'Discard',
+                    color: AppColors.grey,
+                  ),
                   const Spacer(),
-                  AppDefaultButton(text: 'Add Asset',color: AppColors.primary,)
+                  AppDefaultButton(
+                    text: 'Add Asset',
+                    color: AppColors.primary,
+                  )
                 ],
               ),
             ],
