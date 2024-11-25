@@ -26,7 +26,7 @@ class TabletAdminHome extends GetView<AdminController> {
           padding: context.isLandscapee
               ? EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h)
               : EdgeInsets.symmetric(horizontal: 30.w, vertical: 18.h),
-          child:  Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(

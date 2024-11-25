@@ -115,3 +115,90 @@ extension GetIssuName on IssueTypes {
     }
   }
 }
+
+//------------------------ Product Type ------------------------
+
+enum ProductTypes {
+  asset,
+  consumables
+}
+
+extension GetProductTypes on ProductTypes {
+  String get getName {
+    switch (this) {
+      case ProductTypes.asset:
+        return 'Asset';
+      case ProductTypes.consumables:
+        return 'Consumables';
+    }
+  }
+}
+
+//------------------------ Product Type ------------------------
+
+enum Currency {
+  eur,
+  esd,
+  egy,
+}
+
+extension GetCurrencys on Currency {
+  String get getName {
+    switch (this) {
+      case Currency.eur:
+        return 'EUR';
+      case Currency.esd:
+        return 'ESD';
+      case Currency.egy:
+        return 'EGY';
+    }
+  }
+}
+
+
+//------------------------ UnitOfMeasurement ------------------------
+
+enum UnitOfMeasurement {
+  milligram ,
+  gram ,
+  kilogram ,
+}
+
+extension GetUnitOfMeasurement on UnitOfMeasurement {
+  String get getName {
+    switch (this) {
+      case UnitOfMeasurement.milligram:
+        return 'Milligram';
+      case UnitOfMeasurement.gram:
+        return 'Gram';
+      case UnitOfMeasurement.kilogram:
+        return 'Kilogram';
+    }
+  }
+}
+
+
+//------------------------ UnitOfMeasurement ------------------------
+
+enum StorageLocation {
+ room1,
+  room2
+}
+
+extension GetStorageLocation on StorageLocation {
+  String get getName {
+    switch (this) {
+
+      case StorageLocation.room1:
+        return 'Room1';
+      case StorageLocation.room2:
+        return 'Room2';
+    }
+  }
+}
+
+
+
+
+
+

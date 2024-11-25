@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/features/products/presentation/controller/add_product_controller.dart';
 
 import '../../features/admin/assets/presentation/controller/admin_assets_controller.dart';
 import '../../features/admin/home/presentation/controller/admin_controller.dart';
@@ -29,5 +30,6 @@ configurationDependencies() {
   //-----------admin controller
   Get.lazyPut(() => AdminController(), fenix: true);
   Get.lazyPut(() => AdminAssetsController(), fenix: true);
-  //Get.lazyPut(() => ProductsController(), fenix: true);
+  Get.lazyPut(() => ProductsController(), fenix: true);
+  Get.lazyPut(() => AddProductController(), fenix: true);
 }
