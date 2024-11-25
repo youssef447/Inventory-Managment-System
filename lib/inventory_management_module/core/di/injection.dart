@@ -9,6 +9,7 @@ import '../../features/employee/home/presentation/controller/home_controller.dar
 import '../../features/employee/request_new_asset/presentation/controller/request_assets_controller.dart';
 import '../../features/employee/request_new_consumable/presentation/controller/request_consumable_controller.dart';
 import '../../features/employee/requests/presentation/controller/requests_controller.dart';
+import '../../features/employee/track_request/presentation/controller/inquiry_chat_controller.dart';
 import '../../features/employee/track_request/presentation/controller/track_requests_controller.dart';
 
 configurationDependencies() {
@@ -20,6 +21,7 @@ configurationDependencies() {
   Get.lazyPut(() => RequestConsumableController(), fenix: true);
   Get.lazyPut(() => RequestsController(), fenix: true);
   Get.lazyPut(() => TrackRequestController(), fenix: true);
+  Get.lazyPut(() => InquiryChatController(), fenix: true);
   Get.lazyPut(() => FilterController(), fenix: true);
   Get.lazyPut(() => AdminController(), fenix: true);
 }

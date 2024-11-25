@@ -1,4 +1,3 @@
-
 import '../../home/domain/user_entity.dart';
 import 'attachment_entity.dart';
 
@@ -23,9 +22,14 @@ class MessageEntity {
   ///Indicates if Current User is who sent the message
   late bool isMe;
 
+  bool isEdited;
+  bool isDeleted;
+
   MessageEntity({
     this.attachment,
     this.message,
+    this.isEdited = false,
+    this.isDeleted = false,
     required this.userEntity,
   }) {
     sentDate = DateTime.now();

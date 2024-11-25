@@ -13,6 +13,7 @@ import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../core/theme/app_font_weights.dart';
 import '../../../../../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../../controller/track_requests_controller.dart';
+import '../dialogs/reason_of_rejection_dialog.dart';
 
 class CancelRequestButton extends GetView<TrackRequestController> {
   final String requestId;
@@ -30,6 +31,7 @@ class CancelRequestButton extends GetView<TrackRequestController> {
           hapticFeedback: HapticFeedback.mediumImpact,
         );
         GetDialogHelper.generalDialog(
+          context: context,
           child: DefaultDialog(
             width: context.isPhone ? 343.w : 411.w,
             showButtons: true,
@@ -37,11 +39,13 @@ class CancelRequestButton extends GetView<TrackRequestController> {
             title: 'Cancelation Request'.tr,
             subTitle: 'Are You sure You Want to Cancel this Request ?'.tr,
             onConfirm: () {
-              //  Navigator.of(context).pop();
-              controller.cancelRequest(requestId, context);
+              Navigator.of(context).pop();
+              GetDialogHelper.generalDialog(
+                context: context,
+                child: ReasonOfRejectionDialog(requestId: requestId),
+              );
             },
           ),
-          context: context,
         );
       },
       child: Container(

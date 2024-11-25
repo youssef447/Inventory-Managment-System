@@ -101,6 +101,7 @@ class Languages extends Translations {
           "No Data Found": "No Data Found",
           "Assets ID": "Assets ID",
           "Date Receive": "Date Receive",
+          'Delete': 'Delete',
         },
 
         // ****************************************** ARABIC LANGUAGE ******************************************
@@ -178,7 +179,7 @@ class Languages extends Translations {
 
           'Consumable Request': 'طلب مستهلك',
           'Asset Request': 'طلب سلعة',
-
+          'Delete': 'حذف',
           "Asset ID": "معرف الأصل",
           "Asset Name": "اسم الأصل",
           "Next Maintenance Schedule": "الجدول الزمني للصيانة القادمة",

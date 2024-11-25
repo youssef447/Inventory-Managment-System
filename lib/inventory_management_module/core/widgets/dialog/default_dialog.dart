@@ -47,7 +47,7 @@ class DefaultDialog extends StatelessWidget {
     }
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16.r),
+        borderRadius: BorderRadius.circular(8.r),
         color: AppColors.dialog,
       ),
       padding: EdgeInsets.symmetric(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/constants/approve_cycle.dart';

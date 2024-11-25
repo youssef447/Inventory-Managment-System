@@ -32,7 +32,7 @@ class TabletTrackRequestDetailsPage extends GetView<TrackRequestController> {
       backgroundColor: AppColors.background,
       body: SafeArea(
           child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: SingleChildScrollView(
           controller: controller.scrollController,
           child: Column(

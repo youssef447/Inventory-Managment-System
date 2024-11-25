@@ -8,9 +8,9 @@ import '../../../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../../../../requests/entities/request_entity.dart';
-import '../../../../../controller/track_requests_controller.dart';
+import '../../../../../controller/inquiry_chat_controller.dart';
 
-class NewMessageField extends GetView<TrackRequestController> {
+class NewMessageField extends GetView<InquiryChatController> {
   final RequestEntity model;
   const NewMessageField(this.model, {super.key});
 

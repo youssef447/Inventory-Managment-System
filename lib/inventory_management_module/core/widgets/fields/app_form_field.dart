@@ -144,7 +144,9 @@ class AppTextFormField extends StatelessWidget {
       readOnly: readOnly ?? false,
       enabled: enabled,
       maxLength: maxLength,
-      textAlignVertical: textAlignVertical ?? TextAlignVertical.center,
+      textAlignVertical: expands ?? false
+          ? TextAlignVertical.top
+          : textAlignVertical ?? TextAlignVertical.center,
       textAlign: textAlign ?? TextAlign.start,
       cursorColor: AppColors.primary,
       decoration: InputDecoration(

@@ -48,6 +48,7 @@ abstract class AppAssets {
   static const String video = 'assets/vectors/video.svg';
   static const String unknown = 'assets/vectors/unknown.svg';
   static const String attach = 'assets/vectors/attach.svg';
+  static const String trash = 'assets/vectors/trash.svg';
 
   //****************************************************************************
 

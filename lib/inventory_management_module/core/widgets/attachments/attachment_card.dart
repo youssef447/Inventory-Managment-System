@@ -40,9 +40,9 @@ class AttachmentCard extends StatelessWidget {
         vertical: 12.h,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.r),
-        color: AppColors.card,
-      ),
+          borderRadius: BorderRadius.circular(8.r),
+          color: AppColors.card,
+          border: Border.all(color: AppColors.grey)),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
