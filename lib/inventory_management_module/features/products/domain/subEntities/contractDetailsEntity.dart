@@ -1,10 +1,10 @@
 import '../../../employee/requests/entities/attachment_entity.dart';
 
-class Contractdetailsentity {
+class ContractdetailsEntity {
   AttachmentEntity attachmentEntity;
   DateTime startDate;
   DateTime endDate;
-  Contractdetailsentity({
+  ContractdetailsEntity({
     required this.attachmentEntity,
     required this.startDate,
     required this.endDate,

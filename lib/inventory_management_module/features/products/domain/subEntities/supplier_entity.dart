@@ -7,7 +7,7 @@ class SupplierEntity {
   String stateOrProvince;
   String city;
   String postalCode;
-  Contractdetailsentity contractDetails;
+  ContractdetailsEntity contractDetails;
   String firstName;
   String lastName;
   String phoneNumber;
