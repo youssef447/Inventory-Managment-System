@@ -96,6 +96,7 @@ class DefaultDialog extends StatelessWidget {
                   fontSize: 20.sp,
                 ),
               ),
+              verticalSpace(8),
               Text(
                 subTitle,
                 textAlign: TextAlign.center,
