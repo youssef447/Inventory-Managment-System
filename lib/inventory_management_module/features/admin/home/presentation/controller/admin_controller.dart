@@ -3,7 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../../../core/theme/app_theme.dart';
+import '../../../../../core/theme/app_theme.dart';
+
 
 class AdminController extends GetxController {
   //------------Tabs------------
@@ -16,12 +17,12 @@ class AdminController extends GetxController {
     const Text('data'),
   ];
   final List<Widget> tabletAdminTabs = [
-    const Text('1'),
-    const Text('2'),
-    const Text('23'),
-    const Text('24'),
-    const Text('25'),
-    const Text('26'),
+    const Text('products'),
+    const Text('Assets'),
+    const Text('Consumable'),
+    const Text('order'),
+    const Text('suppliers'),
+    const Text('Stprage :ocation'),
   ];
 
   //------------Category Filter Row------------

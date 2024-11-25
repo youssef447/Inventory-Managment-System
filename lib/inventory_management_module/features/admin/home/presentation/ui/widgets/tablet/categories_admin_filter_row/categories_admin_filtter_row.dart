@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import '../../../../../../../core/animations/horizontal_animation.dart';
-import '../../../../../../../core/enums/admin_categories.dart';
-import '../../../../../../employee/home/presentation/ui/widgets/tablet/cards/category_filter_card.dart';
+import '../../../../../../../../core/animations/horizontal_animation.dart';
+import '../../../../../../../../core/enums/admin_categories.dart';
+
+import '../../../../../../../employee/home/presentation/ui/widgets/tablet/cards/category_filter_card.dart';
 import '../../../../controller/admin_controller.dart';
 
 ///Represents the categories Filter Row in home page

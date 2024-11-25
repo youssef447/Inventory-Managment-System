@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../features/admin/presentation/ui/page/tablet/tablet_admin_home.dart';
 
+import '../../features/admin/home/presentation/ui/page/tablet/tablet_admin_home.dart';
 import '../../features/employee/Assets/presentation/ui/pages/mobile/mobile_assets_details.dart';
 import '../../features/employee/consumables/presentation/ui/pages/mobile/mobile_consumables_details_page.dart';
 import '../../features/employee/home/presentation/ui/page/mobile/mobile_home_page.dart';

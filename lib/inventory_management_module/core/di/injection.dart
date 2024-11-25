@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../features/admin/presentation/controller/admin_controller.dart';
+import '../../features/admin/home/presentation/controller/admin_controller.dart';
 import '../../features/approval/presentation/controller/approval_controller.dart';
 import '../../features/employee/Assets/presentation/controller/assets_controller.dart';
 import '../../features/employee/consumables/presentation/controller/consumables_controller.dart';
