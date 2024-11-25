@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../features/admin/assets/presentation/controller/admin_assets_controller.dart';
 import '../../features/admin/home/presentation/controller/admin_controller.dart';
 import '../../features/approval/presentation/controller/approval_controller.dart';
 import '../../features/employee/Assets/presentation/controller/assets_controller.dart';
@@ -23,5 +24,9 @@ configurationDependencies() {
   Get.lazyPut(() => TrackRequestController(), fenix: true);
   Get.lazyPut(() => InquiryChatController(), fenix: true);
   Get.lazyPut(() => FilterController(), fenix: true);
+
+  //-----------admin controller
   Get.lazyPut(() => AdminController(), fenix: true);
+  Get.lazyPut(() => AdminAssetsController(), fenix: true);
+
 }

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/theme/app_theme.dart';
+import '../../../assets/presentation/ui/pages/tablet/tablet_assets_page.dart';
 
 
 class AdminController extends GetxController {
@@ -18,7 +19,7 @@ class AdminController extends GetxController {
   ];
   final List<Widget> tabletAdminTabs = [
     const Text('products'),
-    const Text('Assets'),
+    const TabletAdminAssetsPage(),
     const Text('Consumable'),
     const Text('order'),
     const Text('suppliers'),

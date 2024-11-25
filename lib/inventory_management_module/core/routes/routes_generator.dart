@@ -156,7 +156,7 @@ abstract class RouteGenerator {
           ),
           PageTransitionType.fade,
         );
-      case Routes.tabletHomeAdmin:
+      case Routes.adminHome:
         return _buildPageRoute(
           const ResponsiveHelper(
             mobileWidget: SizedBox(),
