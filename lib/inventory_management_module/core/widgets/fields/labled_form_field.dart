@@ -31,7 +31,7 @@ class LabeledFormField extends StatelessWidget {
       children: [
         Text(
           label.tr,
-          style: AppTextStyles.font16BlackCairoMedium,
+          style: AppTextStyles.font16BlackCairoRegular,
         ),
         verticalSpace(8),
         date ?? false

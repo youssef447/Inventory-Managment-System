@@ -12,6 +12,7 @@ import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../../../core/widgets/table/default_data_table.dart';
 import '../../../../../../employee/Assets/presentation/controller/assets_controller.dart';
+import '../../../../../../products/presentation/controller/products_controller.dart';
 import '../../../controller/admin_assets_controller.dart';
 import '../../constants/admin_assets_columns_name.dart';
 import '../../constants/assets_id_constant.dart';
@@ -23,12 +24,12 @@ class TabletAdminAssetsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<AssetsController>(
-        id: AssetsAdminIdConstant.assetsData,
+    return GetBuilder<ProductsController>(
+       // id: AssetsAdminIdConstant.assetsData,
         builder: (controller) {
           return controller.loading
               ? const Expanded(child: AppCircleProgress())
-              : controller.assetsList.isEmpty
+              : controller.products.isEmpty
                   ? const Expanded(child: NoDataGif())
                   : Expanded(
                       child: DefaultDataTable(
@@ -43,7 +44,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                             )
                             .toList(),
                         rows: List.generate(
-                          controller.assetsList.length,
+                          controller.products.length,
                           (index) => DataRow(
                             color: WidgetStatePropertyAll(
                               index % 2 == 0
@@ -53,7 +54,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                             cells: [
                               DataCell(
                                 Text(
-                                  controller.assetsList[index].assetId,
+                                  controller.products[index].assetEntity!.assetId[index],
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -61,8 +62,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  controller.assetsList[index].brand +
-                                      controller.assetsList[index].model,
+                               'dd',
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -70,7 +70,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  controller.assetsList[index].supplierId,
+                                  'dd',
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -78,7 +78,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  controller.assetsList[index].supplierName,
+                                  'dd',
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -86,7 +86,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  controller.assetsList[index].storageLocation,
+                                  'dd',
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -94,7 +94,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  controller.assetsList[index].quantityOnHand.toString(),
+                                  'dd',
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -102,7 +102,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  controller.assetsList[index].unitCost,
+                                  'dd',
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -111,43 +111,37 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               DataCell(
                                 Center(
                                     child: Text(
-                                      controller.assetsList[index].currency,
+                                      'dd',
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 )),
                               ),
-                              DataCell(
+                              const DataCell(
                                 Text(
-                                  controller.assetsList[index].category,
-                                  style: controller
-                                              .assetsList[index].dateReturn !=
-                                          null
-                                      ? AppTextStyles.font16BlackRegularCairo
-                                      : AppTextStyles
-                                          .font16DarkGreyRegularCairo,
+                                  'dd',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                               DataCell(
                                 Text(
-                                  controller.assetsList[index].subcategory,
+                                  'dd',
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
-                              DataCell(
+                              const DataCell(
                                 Text(
-                                  controller.assetsList[index].model,
+                                  'dd',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
-                              DataCell(
+                              const DataCell(
                                 Text(
-                                  controller.assetsList[index].brand,
+                                  'dd',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
