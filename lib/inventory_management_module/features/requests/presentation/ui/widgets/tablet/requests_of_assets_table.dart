@@ -1,5 +1,7 @@
 part of '../../pages/tablet/tablet_requests_page.dart';
 
+//Youssef Ashraf
+/// Default Requests Of Assets Table when user is in Requests Tab and selecting Assets Category
 class RequestsOfAssetsTable extends GetView<RequestsController> {
   const RequestsOfAssetsTable({
     super.key,
@@ -167,7 +169,6 @@ class RequestsOfAssetsTable extends GetView<RequestsController> {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-
                 ],
               ),
             ).toList(),

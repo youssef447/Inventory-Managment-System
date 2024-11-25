@@ -12,6 +12,8 @@ import '../../../../../constants/ids_constants.dart';
 import '../../../../controller/requests_controller.dart';
 import '../../../../../../../core/extensions/extensions.dart';
 
+//Youssef Ashraf
+///Represents (windows & tablet landscape )  Requsts Summary Circles weather Requests are pending , Approved ,etc..
 class HorizontalRequstsSummaryCircles extends GetView<RequestsController> {
   const HorizontalRequstsSummaryCircles({super.key});
 

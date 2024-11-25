@@ -1,5 +1,7 @@
 part of '../../pages/tablet/tablet_requests_page.dart';
 
+//Youssef Ashraf
+/// Default Requests Of Consumables Table when user is in Requests Tab and selecting Assets Category
 class RequestsOfConsumablesTable extends GetView<RequestsController> {
   const RequestsOfConsumablesTable({
     super.key,

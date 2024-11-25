@@ -1,5 +1,7 @@
 part of '../../pages/mobile/mobile_requests_page.dart';
 
+//Youssef Ashraf
+/// Default Requests Card in Mobile View when user is in Requests Tab
 class MobileRequestCard extends GetView<RequestsController> {
   final RequestEntity request;
   const MobileRequestCard({
