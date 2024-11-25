@@ -10,10 +10,11 @@ import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../../employee/Assets/presentation/controller/assets_controller.dart';
 import '../../../controller/admin_assets_controller.dart';
 
 
-class MobileAssetsCard extends GetView<AdminAssetsController> {
+class MobileAssetsCard extends GetView<AssetsController> {
   final int index;
 
   const MobileAssetsCard({
