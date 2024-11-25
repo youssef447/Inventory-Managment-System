@@ -7,13 +7,16 @@ import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 import '../../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
+import '../../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../../../../employee/home/presentation/ui/widgets/common/horizontal/rectangled_filter_card.dart';
+import '../../../../../../../employee/home/presentation/ui/widgets/tablet/search_filter/filter_dialog.dart';
 import '../../../../../../../employee/requests/presentation/controller/requests_controller.dart';
+import '../../../../../../../products/presentation/ui/widgets/tablet/dialog/add_product_dialog.dart';
 import '../../../../controller/admin_controller.dart';
 
 // Date: 5/8/2024
@@ -113,7 +116,10 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                         text: 'Product'.tr,
                         color: AppColors.primary,
                         onTap: () {
-                          // Add product action
+                          GetDialogHelper.generalDialog(
+                            child: const AddProductDialog(),
+                            context: context,
+                          );
                         },
                       )
                     else if (controller.currentCategoryIndex == 1)
