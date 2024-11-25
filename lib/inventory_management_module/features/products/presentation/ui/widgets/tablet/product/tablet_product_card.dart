@@ -28,38 +28,44 @@ class TabletProductCard extends StatelessWidget {
                 ),
                 horizontalSpace(4),
                 Expanded(
-                  child: Column(
+                  child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Spacer(),
-                          Expanded(
-                            child: Align(
-                              alignment: AlignmentDirectional.centerEnd,
-                              child: DefaultRichText(
-                                label: 'Status',
-                                value: product.stockStatus.getName,
-                                valueColor: product.stockStatus.getColor,
-                              ),
+                          DefaultRichText(
+                            label: 'Product ID',
+                            value: product.id,
+                          ),
+                          DefaultRichText(
+                            label: 'Product Type',
+                            value: product.productType.getName,
+                          ),
+                          DefaultRichText(
+                            label: 'Supplier',
+                            value: product.supplier.supplierName,
+                            style:
+                                AppTextStyles.font12BlackMediumCairo.copyWith(
+                              decoration: TextDecoration.underline,
+                              color: AppColors.blue,
                             ),
                           ),
                         ],
                       ),
-                      DefaultRichText(
-                        label: 'Product ID',
-                        value: product.id,
-                      ),
-                      DefaultRichText(
-                        label: 'Product Type',
-                        value: product.productType.getName,
-                      ),
-                      DefaultRichText(
-                        label: 'Supplier',
-                        value: product.supplier.supplierName,
-                        style: AppTextStyles.font12BlackMediumCairo.copyWith(
-                          decoration: TextDecoration.underline,
-                          color: AppColors.blue,
+                      Expanded(
+                        child: Align(
+                          alignment: AlignmentDirectional.centerEnd,
+                          child: DefaultRichText(
+                            label: 'Status',
+                            labelStyle:
+                                AppTextStyles.font10SecondaryBlackCairoMedium,
+                            value: product.stockStatus.getName,
+                            style:
+                                AppTextStyles.font10BlackCairoMedium.copyWith(
+                              color: product.stockStatus.getColor,
+                            ),
+                          ),
                         ),
                       ),
                     ],
@@ -77,9 +83,11 @@ class TabletProductCard extends StatelessWidget {
               alignment: AlignmentDirectional.centerEnd,
               child: DefaultRichText(
                 label: 'Last Update',
+                labelStyle: AppTextStyles.font10SecondaryBlackCairoMedium,
                 value: DateTimeHelper.formatDate(
                   product.lastUpdate,
                 ),
+                style: AppTextStyles.font10BlackCairoMedium,
               ),
             ),
           ],

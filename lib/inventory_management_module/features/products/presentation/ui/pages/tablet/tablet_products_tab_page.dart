@@ -38,35 +38,40 @@ class TabletProductsTabPage extends GetView<ProductsController> {
                   ? const Expanded(
                       child: NoDataGif(),
                     )
-                  : Column(
-                      children: [
-                        verticalSpace(21),
-                        StaggeredGrid.count(
-                          crossAxisCount: Get.width > 1200 ? 3 : 2,
-                          mainAxisSpacing: 15.h,
-                          crossAxisSpacing: context.isLandscapee ? 20.w : 36.w,
-                          children: List.generate(
-                            controller.products.length,
-                            (index) {
-                              return GestureDetector(
-                                onTap: () {
-                                  context.navigateTo(Routes.productDetails,
-                                      arguments: {
-                                        RouteArguments.product:
-                                            controller.products[index],
-                                      });
-                                },
-                                child: TabletProductCard(
-                                  product: controller.products[index],
-                                  isConsumable:
-                                      controller.products[index].productType ==
+                  : Expanded(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            verticalSpace(21),
+                            StaggeredGrid.count(
+                              crossAxisCount: Get.width > 1200 ? 3 : 2,
+                              mainAxisSpacing: 15.h,
+                              crossAxisSpacing:
+                                  context.isLandscapee ? 20.w : 16.w,
+                              children: List.generate(
+                                controller.products.length,
+                                (index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      context.navigateTo(Routes.productDetails,
+                                          arguments: {
+                                            RouteArguments.product:
+                                                controller.products[index],
+                                          });
+                                    },
+                                    child: TabletProductCard(
+                                      product: controller.products[index],
+                                      isConsumable: controller
+                                              .products[index].productType ==
                                           ProductType.consumable,
-                                ),
-                              );
-                            },
-                          ),
-                        )
-                      ],
+                                    ),
+                                  );
+                                },
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                     );
         });
   }
