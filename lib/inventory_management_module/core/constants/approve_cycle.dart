@@ -1,4 +1,5 @@
-import '../../features/home/domain/user_entity.dart';
+
+import '../../features/employee/home/domain/user_entity.dart';
 
 abstract class ApproveCycle {
   static final List<UserEntity> approvalCycles = [

@@ -9,8 +9,9 @@ import '../../../../../../core/helpers/orientation_helper.dart';
 import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/widgets/appbar/custom_app_bar.dart';
-import '../../../../../requests/presentation/ui/widgets/common/horizontal/requests_summary_circles.dart';
-import '../../../../../requests/presentation/ui/widgets/common/vertical/requests_summary_circles.dart';
+
+import '../../../../../employee/requests/presentation/ui/widgets/common/horizontal/requests_summary_circles.dart';
+import '../../../../../employee/requests/presentation/ui/widgets/common/vertical/requests_summary_circles.dart';
 import '../../../controller/approval_controller.dart';
 import '../../constants/approval_id_constant.dart';
 import '../../widget/tablet/approval_categories_filter.dart';

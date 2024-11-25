@@ -60,15 +60,15 @@ class InventoryManagement extends StatelessWidget {
           title: 'Inventory Management',
           home: Column(
             children: [
-              Container(
-                height: 100.h,
-                color: Colors.red,
-              ),
+              // Container(
+              //   height: 100.h,
+              //   color: Colors.red,
+              // ),
               Expanded(
                 child: Navigator(
                   key: inventoryNavKey,
                   onGenerateRoute: RouteGenerator.generateRoute,
-                  initialRoute: Routes.home,
+                  initialRoute: Routes.tabletHomeAdmin,
                 ),
               ),
             ],
