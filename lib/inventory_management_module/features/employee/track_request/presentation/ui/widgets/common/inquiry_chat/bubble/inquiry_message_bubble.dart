@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../../../../../../../core/theme/app_font_weights.dart';
 
 import '../../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../../core/helpers/spacing_helper.dart';
@@ -35,6 +36,7 @@ class InquiryMessageBubble extends GetView<InquiryChatController> {
             return GestureDetector(
               behavior: HitTestBehavior.translucent,
               onLongPress: () {
+                if (messageEntity.isDeleted) return;
                 final RenderBox bubbleBox =
                     context.findRenderObject() as RenderBox;
                 final Offset position = bubbleBox.globalToLocal(Offset.zero);
@@ -46,27 +48,44 @@ class InquiryMessageBubble extends GetView<InquiryChatController> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  color: messageEntity.attachment != null
+                  color: messageEntity.attachment != null &&
+                          !messageEntity.isDeleted
                       ? Colors.transparent
                       : AppColors.background,
                   borderRadius: BorderRadius.circular(8.r),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-                child: messageEntity.attachment != null
-                    ? AttachmentCard(
-                        model: messageEntity.attachment!,
-                        showDownload: !messageEntity.isMe,
-                      )
-                    : Text(
-                        messageEntity.message!,
+                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+                child: messageEntity.isDeleted
+                    ? Text(
+                        'You Deleted This Message'.tr,
                         style: context.isPhone
                             ? AppTextStyles.font12BlackCairo
                             : AppTextStyles.font14BlackCairoMedium,
-                      ),
+                      )
+                    : messageEntity.attachment != null
+                        ? AttachmentCard(
+                            model: messageEntity.attachment!,
+                            showDownload: !messageEntity.isMe,
+                          )
+                        : Text(
+                            messageEntity.message!,
+                            style: context.isPhone
+                                ? AppTextStyles.font12BlackCairo
+                                : AppTextStyles.font14BlackCairoMedium,
+                          ),
               ),
             );
           }),
         ),
+        if (messageEntity.isEdited)
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 2.h),
+            child: Text(
+              'Edited',
+              style: AppTextStyles.font10SecondaryBlackCairoMedium
+                  .copyWith(fontWeight: AppFontWeights.regular),
+            ),
+          ),
         verticalSpace(8),
         Text(
           DateTimeHelper.formatDateWithTime(

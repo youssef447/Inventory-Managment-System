@@ -42,10 +42,15 @@ class NewMessageField extends GetView<InquiryChatController> {
         GestureDetector(
           onTap: () {
             if (controller.messageController.text.isEmpty) return;
-            controller.sendMessage(
-              model: model,
-              message: controller.messageController.text,
-            );
+
+            if (controller.editableMessageEntity != null) {
+              controller.editMessage();
+            } else {
+              controller.sendMessage(
+                model: model,
+                message: controller.messageController.text,
+              );
+            }
           },
           child: Container(
             height: 42.h,

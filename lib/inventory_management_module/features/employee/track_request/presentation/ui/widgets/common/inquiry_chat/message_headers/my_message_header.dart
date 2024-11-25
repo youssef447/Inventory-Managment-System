@@ -30,9 +30,7 @@ class MyMessageHeader extends StatelessWidget {
               ),
               Text(
                 userEntity.jobTitle,
-                style: context.isPhone
-                    ? AppTextStyles.font12SecondaryBlackCairoMedium
-                    : AppTextStyles.font16SecondaryBlackCairoMedium,
+                style: AppTextStyles.font12SecondaryBlackCairoMedium,
                 overflow: TextOverflow.ellipsis,
               ),
             ],

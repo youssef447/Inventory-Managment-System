@@ -13,6 +13,7 @@ import '../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_text_styles.dart';
+import '../../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../requests/entities/attachment_entity.dart';
 import '../../../requests/entities/message_entity.dart';
 import '../../../requests/entities/request_entity.dart';
@@ -106,31 +107,37 @@ class InquiryChatController extends GetxController {
     showMenu(
       context: context,
       position: RelativeRect.fromLTRB(
-        position.dx, // X position
-        position.dy + bubbleBox.size.height, // Y position above the widget
-        16.w + bubbleBox.size.width, // Right boundary
-        position.dy, // Bottom boundary
+        position.dx,
+        position.dy + bubbleBox.size.height,
+        16.w + bubbleBox.size.width,
+        position.dy,
       ),
       items: [
-        PopupMenuItem(
-          value: MessageActions.edit,
-          height: 34.h,
-          child: Row(
-            children: [
-              Icon(
-                Icons.edit,
-                color: AppColors.secondaryBlack,
-                size: 14.sp,
-              ),
-              horizontalSpace(4),
-              Text(
-                MessageActions.edit.getName,
-                style: AppTextStyles.font13SecondaryBlackCairoMedium,
-              ),
-            ],
+        // So That we don't show edit option with docs (already sent) only can be deleted
+        if (messageEntity.attachment == null)
+          PopupMenuItem(
+            value: MessageActions.edit,
+            height: 34.h,
+            child: Row(
+              children: [
+                Icon(
+                  Icons.edit,
+                  color: AppColors.secondaryBlack,
+                  size: 14.sp,
+                ),
+                horizontalSpace(4),
+                Text(
+                  MessageActions.edit.getName,
+                  style: AppTextStyles.font13SecondaryBlackCairoMedium,
+                ),
+              ],
+            ),
+            onTap: () {
+              editableMessageEntity = messageEntity;
+              messageController.text = messageEntity.message ?? '';
+              messageFocusNode.requestFocus();
+            },
           ),
-          onTap: () {},
-        ),
         PopupMenuItem(
           value: MessageActions.delete,
           height: 34.h,
@@ -144,12 +151,40 @@ class InquiryChatController extends GetxController {
               ),
             ],
           ),
-          onTap: () {},
+          onTap: () {
+            GetDialogHelper.generalDialog(
+              context: context,
+              child: DefaultDialog(
+                width: context.isPhone ? 343.w : 411.w,
+                showButtons: true,
+                icon: AppAssets.trash,
+                title: 'Delete Message'.tr,
+                subTitle: 'Are You sure You Want to Delete this Message ?'.tr,
+                onConfirm: () {
+                  Navigator.of(context, rootNavigator: true).pop();
+                  deleteMessage(messageEntity);
+                },
+              ),
+            );
+          },
         ),
       ],
     );
   }
 
-  deleteMessage(MessageEntity messageEnity) {}
-  editMessage(MessageEntity messageEnity) {}
+  deleteMessage(MessageEntity messageEntity) {
+    messageEntity.isDeleted = true;
+    update([TrackRequestIds.inquiryChat]);
+  }
+
+  MessageEntity? editableMessageEntity;
+
+  editMessage() {
+    editableMessageEntity!.message = messageController.text;
+    editableMessageEntity!.isEdited = true;
+    editableMessageEntity = null;
+    messageController.clear();
+    messageFocusNode.unfocus();
+    update([TrackRequestIds.inquiryChat]);
+  }
 }

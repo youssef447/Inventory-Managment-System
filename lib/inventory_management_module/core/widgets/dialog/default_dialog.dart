@@ -77,6 +77,7 @@ class DefaultDialog extends StatelessWidget {
                       icon!,
                       width: 20.w,
                       height: 20.h,
+                      color: Colors.white,
                     ),
                   )
                 : LottieBuilder.asset(

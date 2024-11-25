@@ -9,6 +9,7 @@ import 'attachment_entity.dart';
 /// that is used to represent a message in Inquiry for specific request's tracking details.
 class MessageEntity {
   ///includes image , video and documnets
+
   AttachmentEntity? attachment;
 
   String? message;
