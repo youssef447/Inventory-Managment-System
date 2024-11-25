@@ -27,6 +27,6 @@ abstract class Routes {
   static const approvalDetails = '/approvalDetails';
 
   //admin
-  static const tabletHomeAdmin = 'tabletHomeAdmin';
+  static const adminHome = 'adminHome';
 
 }

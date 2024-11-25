@@ -24,6 +24,14 @@ class AssetsEntity {
   final String availabilityStatus;
   final bool requiresApprovals;
   final DateTime lastUpdate = DateTime.now();
+  //---- admin ---
+  final String supplierId;
+  final String supplierName;
+  final String storageLocation;
+  final int quantityOnHand;
+  final String unitCost;
+  final String currency;
+
 
   AssetsEntity({
     this.assetId = '001',
@@ -42,5 +50,12 @@ class AssetsEntity {
     this.expirationDate,
     required this.status,
     required this.brand,
+    //---- admin ---
+    this.supplierId = '015',
+    this.supplierName = 'E-Tech Distributors',
+    this.storageLocation = 'Room A1',
+    this.quantityOnHand = 15,
+    this.unitCost = '200',
+    this.currency= 'USd' ,
   });
 }

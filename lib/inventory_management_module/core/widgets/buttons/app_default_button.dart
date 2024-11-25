@@ -6,6 +6,7 @@ import '../../extensions/extensions.dart';
 
 import '../../helpers/haptic_feedback_helper.dart';
 import '../../theme/app_colors.dart';
+import '../../theme/app_text_styles.dart';
 
 // mohamed && youssef ashraf work
 class AppDefaultButton extends StatelessWidget {
@@ -63,7 +64,9 @@ class AppDefaultButton extends StatelessWidget {
         child: FittedBox(
           child: Text(
             text,
-            style: style?.copyWith(color: textColor),
+            style: style?.copyWith(color: textColor) ?? AppTextStyles.font14BlackCairo.copyWith(
+          color: AppColors.textButton,
+          ),
           ),
         ),
       ),
