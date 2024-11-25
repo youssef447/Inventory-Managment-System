@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/features/admin/presentation/controller/admin_controller.dart';
-import '../../../../../../core/helpers/spacing_helper.dart';
-import '../../../../../../core/theme/app_colors.dart';
-import '../../../../../../core/widgets/appbar/custom_app_bar.dart';
-import '../../../../../../core/widgets/buttons/default_switch_button.dart';
+
+
+import '../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../core/theme/app_colors.dart';
+import '../../../../../../../core/widgets/appbar/custom_app_bar.dart';
+import '../../../../../../../core/widgets/buttons/default_switch_button.dart';
+import '../../../controller/admin_controller.dart';
 import '../../widgets/tablet/button/home_row_buton.dart';
 import '../../widgets/tablet/categories_admin_filter_row/categories_admin_filtter_row.dart';
 import '../../widgets/tablet/search_filer/tablet_admin_search_filter.dart';
