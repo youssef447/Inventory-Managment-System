@@ -18,7 +18,7 @@ import '../../../../../../../../core/widgets/dropdown/app_dropdown.dart';
 import '../../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../../../requests/presentation/controller/requests_controller.dart';
 import '../../../../controller/home_controller.dart';
-import '../../common/horizontal/rectangled_filter_card.dart';
+import '../../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
 import '../../common/vertical/squared_filter_card.dart';
 import 'filter_dialog.dart';
 

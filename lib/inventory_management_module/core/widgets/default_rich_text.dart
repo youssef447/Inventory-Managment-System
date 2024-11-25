@@ -12,6 +12,7 @@ class DefaultRichText extends StatelessWidget {
   final TextStyle? style;
   final TextStyle? labelStyle;
   final Color? valueColor;
+  final bool fullText;
   const DefaultRichText({
     super.key,
     required this.label,
@@ -19,26 +20,29 @@ class DefaultRichText extends StatelessWidget {
     this.style,
     this.valueColor,
     this.labelStyle,
+    this.fullText = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return RichText(
       textAlign: TextAlign.start,
-      overflow: TextOverflow.ellipsis,
+      overflow: fullText ? TextOverflow.visible : TextOverflow.ellipsis,
       text: TextSpan(
         text: '${label.tr}: ',
-        style: (context.isTablett
-            ? AppTextStyles.font14SecondaryBlackCairoMedium
-            : AppTextStyles.font12SecondaryBlackCairoMedium),
+        style: labelStyle ??
+            (context.isTablett
+                ? AppTextStyles.font14SecondaryBlackCairoMedium
+                : AppTextStyles.font12SecondaryBlackCairoMedium),
         children: [
           TextSpan(
             text: value,
-            style: context.isTablett
-                ? AppTextStyles.font14BlackCairoMedium
-                    .copyWith(color: valueColor ?? value.split(' ')[0].getColor)
-                : AppTextStyles.font12BlackMediumCairo.copyWith(
-                    color: valueColor ?? value.split(' ')[0].getColor),
+            style: style ??
+                (context.isTablett
+                    ? AppTextStyles.font14BlackCairoMedium.copyWith(
+                        color: valueColor ?? value.split(' ')[0].getColor)
+                    : AppTextStyles.font12BlackMediumCairo.copyWith(
+                        color: valueColor ?? value.split(' ')[0].getColor)),
           ),
         ],
       ),

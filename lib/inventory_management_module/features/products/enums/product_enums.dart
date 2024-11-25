@@ -1,7 +1,7 @@
 enum ProductType { consumable, asset }
 
 extension ProductTypeExtension on ProductType {
-  String get name {
+  String get getName {
     switch (this) {
       case ProductType.asset:
         return 'Asset';

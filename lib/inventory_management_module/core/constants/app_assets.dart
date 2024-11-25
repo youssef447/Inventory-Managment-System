@@ -39,6 +39,7 @@ abstract class AppAssets {
   static const String grid = 'assets/vectors/grid.svg';
   static const String list = 'assets/vectors/list.svg';
   static const String send = 'assets/vectors/send.svg';
+  static const String edit = 'assets/vectors/edit.svg';
 
   //media
   static const String powerpoint = 'assets/vectors/powerpoint.svg';

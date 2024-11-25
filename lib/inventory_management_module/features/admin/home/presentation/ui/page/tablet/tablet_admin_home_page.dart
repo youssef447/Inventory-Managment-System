@@ -2,8 +2,7 @@ import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-
+import '../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
@@ -14,8 +13,8 @@ import '../../widgets/tablet/button/home_row_buton.dart';
 import '../../widgets/tablet/categories_admin_filter_row/categories_admin_filtter_row.dart';
 import '../../widgets/tablet/search_filer/tablet_admin_search_filter.dart';
 
-class TabletAdminHome extends GetView<AdminController> {
-  const TabletAdminHome({super.key});
+class TabletAdminHomePage extends GetView<AdminController> {
+  const TabletAdminHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class TabletAdminHome extends GetView<AdminController> {
           padding: context.isLandscapee
               ? EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h)
               : EdgeInsets.symmetric(horizontal: 30.w, vertical: 18.h),
-          child:  Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
@@ -43,16 +42,16 @@ class TabletAdminHome extends GetView<AdminController> {
                           indicatorSize: const Size.fromWidth(60),
                           customIconBuilder: (context, isArabic, global) =>
                               Text(
-                                isArabic.value ? 'AR'.tr : 'ENG'.tr,
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Color.lerp(
-                                    AppColors.primary,
-                                    AppColors.primary,
-                                    isArabic.animationValue,
-                                  ),
-                                ),
+                            isArabic.value ? 'AR'.tr : 'ENG'.tr,
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color.lerp(
+                                AppColors.primary,
+                                AppColors.primary,
+                                isArabic.animationValue,
                               ),
+                            ),
+                          ),
                           borderWidth: 1,
                           iconAnimationType: AnimationType.onHover,
                           style: ToggleStyle(
@@ -98,16 +97,17 @@ class TabletAdminHome extends GetView<AdminController> {
               verticalSpace(20),
               const HomeAdminRowButton(),
               verticalSpace(20),
-               const TabletCategoriesAdminFilterRow(),
+              const TabletCategoriesAdminFilterRow(),
               verticalSpace(20),
               const TabletAdminSearchFilter(),
               verticalSpace(20),
-              Obx(() {
+              Obx(
+                () {
                   final index = controller.currentCategoryIndex.value;
                   return controller.tabletAdminTabs[index];
                 },
               ),
-             ],
+            ],
           ),
         ),
       ),

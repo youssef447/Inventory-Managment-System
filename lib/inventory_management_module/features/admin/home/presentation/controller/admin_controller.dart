@@ -1,24 +1,24 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/theme/app_theme.dart';
+import '../../../../products/presentation/ui/pages/mobile/mobile_products_tab_page.dart';
+import '../../../../products/presentation/ui/pages/tablet/tablet_products_tab_page.dart';
 import '../../../assets/presentation/ui/pages/tablet/tablet_assets_page.dart';
-
 
 class AdminController extends GetxController {
   //------------Tabs------------
   final List<Widget> mobileAdminTabs = [
+    const MobileProductsTabPage(),
+
+    /*  const Text('data'),
     const Text('data'),
     const Text('data'),
     const Text('data'),
-    const Text('data'),
-    const Text('data'),
-    const Text('data'),
+    const Text('data'), */
   ];
   final List<Widget> tabletAdminTabs = [
-    const Text('products'),
+    const TabletProductsTabPage(),
     const TabletAdminAssetsPage(),
     const Text('Consumable'),
     const Text('order'),
@@ -65,5 +65,5 @@ class AdminController extends GetxController {
 
   //----------------- TextController
 
-TextEditingController searchController =TextEditingController();
+  TextEditingController searchController = TextEditingController();
 }

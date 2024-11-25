@@ -28,5 +28,5 @@ abstract class Routes {
 
   //admin
   static const adminHome = 'adminHome';
-
+  static const productDetails = '$adminHome/productDetails';
 }

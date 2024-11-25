@@ -1,3 +1,4 @@
+import '../../../core/enums/stock_enums.dart';
 import '../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../employee/consumables/domain/entity/consumables_entity.dart';
 import '../../employee/requests/entities/attachment_entity.dart';
@@ -11,6 +12,7 @@ class ProductEntity {
   String id;
   ProductType productType;
   bool? requiresApproval;
+  StockStatus stockStatus;
   AssetsEntity? assetEntity;
   ConsumablesEntity? consumablesEntity;
   List<StorageLocationAndQuantityEntity> storage;
@@ -22,6 +24,8 @@ class ProductEntity {
   List<AttachmentEntity> productSpecifications;
   List<AttachmentEntity> productWaranties;
   String? additionalNotes;
+  final DateTime lastUpdate = DateTime.now();
+
   ProductEntity({
     required this.id,
     required this.productType,
@@ -36,6 +40,7 @@ class ProductEntity {
     required this.expectedLifeTime,
     required this.productSpecifications,
     required this.productWaranties,
+    this.stockStatus = StockStatus.inStock,
     this.additionalNotes,
   });
 }

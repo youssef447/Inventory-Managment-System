@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,9 +11,7 @@ import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../../../core/widgets/fields/app_form_field.dart';
-import '../../../../../../../employee/home/presentation/ui/widgets/common/horizontal/rectangled_filter_card.dart';
-import '../../../../../../../employee/home/presentation/ui/widgets/tablet/search_filter/filter_dialog.dart';
-import '../../../../../../../employee/requests/presentation/controller/requests_controller.dart';
+import '../../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
 import '../../../../../../../products/presentation/ui/widgets/tablet/dialog/add_product_dialog.dart';
 import '../../../../controller/admin_controller.dart';
 
@@ -37,9 +33,6 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
     return SlideAnimation(
       leftToRight: context.isArabic ? false : true,
       child: Obx(() {
-        final isRequest = controller.currentCategoryIndex.value == 2;
-        final requestController = Get.find<RequestsController>();
-
         return Padding(
           padding: EdgeInsetsDirectional.symmetric(
             vertical: 12.h,
@@ -61,7 +54,7 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                         hintText: 'Search Here...'.tr,
                         collapsed: true,
                         hintStyle:
-                        AppTextStyles.font16SecondaryBlackCairoMedium,
+                            AppTextStyles.font16SecondaryBlackCairoMedium,
                         controller: controller.searchController,
                         onChanged: (value) {
                           /*   if (index == 1) {
@@ -83,8 +76,8 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                         },
                         contentPadding: context.isTablett
                             ? EdgeInsets.symmetric(
-                          vertical: 2.h,
-                        )
+                                vertical: 2.h,
+                              )
                             : null,
                         prefixIcon: SvgPicture.asset(
                           AppAssets.search,
@@ -133,53 +126,52 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                         },
                       )
                     else if (controller.currentCategoryIndex == 2)
-                        RectangledFilterCard(
-                          width: 112.w,
-                          image: AppAssets.add,
-                          text: 'Consumables'.tr,
-                          color: AppColors.primary,
-                          onTap: () {
-                            // Add category action
-                          },
-                        )
-                      else if (controller.currentCategoryIndex == 3)
-                          RectangledFilterCard(
-                            width: 112.w,
-                            image: AppAssets.add,
-                            text: 'order'.tr,
-                            color: AppColors.primary,
-                            onTap: () {
-                              // Add category action
-                            },
-                          )
-                        else if (controller.currentCategoryIndex == 4)
-                            RectangledFilterCard(
-                              width: 112.w,
-                              image: AppAssets.add,
-                              text: 'Suppliers'.tr,
-                              color: AppColors.primary,
-                              onTap: () {
-                                // Add category action
-                              },
-                            )
-                      else
-                        RectangledFilterCard(
-                          width: 112.w,
-                          image:AppAssets.add,
-                          text: 'Storage Location'.tr,
-                          color: AppColors.primary,
-                          onTap: () {
-                            // Default action
-                          },
-                        ),
+                      RectangledFilterCard(
+                        width: 112.w,
+                        image: AppAssets.add,
+                        text: 'Consumables'.tr,
+                        color: AppColors.primary,
+                        onTap: () {
+                          // Add category action
+                        },
+                      )
+                    else if (controller.currentCategoryIndex == 3)
+                      RectangledFilterCard(
+                        width: 112.w,
+                        image: AppAssets.add,
+                        text: 'order'.tr,
+                        color: AppColors.primary,
+                        onTap: () {
+                          // Add category action
+                        },
+                      )
+                    else if (controller.currentCategoryIndex == 4)
+                      RectangledFilterCard(
+                        width: 112.w,
+                        image: AppAssets.add,
+                        text: 'Suppliers'.tr,
+                        color: AppColors.primary,
+                        onTap: () {
+                          // Add category action
+                        },
+                      )
+                    else
+                      RectangledFilterCard(
+                        width: 112.w,
+                        image: AppAssets.add,
+                        text: 'Storage Location'.tr,
+                        color: AppColors.primary,
+                        onTap: () {
+                          // Default action
+                        },
+                      ),
                     horizontalSpace(9),
                     RectangledFilterCard(
                       width: 112.w,
                       image: AppAssets.download,
                       text: 'Download'.tr,
                       color: AppColors.primary,
-                      onTap: () {
-                      },
+                      onTap: () {},
                     ),
                   ],
                 ),

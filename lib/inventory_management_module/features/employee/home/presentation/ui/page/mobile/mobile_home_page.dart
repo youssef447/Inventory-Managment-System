@@ -17,7 +17,6 @@ import '../../../../../../../core/widgets/appbar/custom_app_bar.dart';
 import '../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../constants/ids.dart';
 
-
 import '../../../controller/home_controller.dart';
 import '../../widgets/common/vertical/squared_filter_card.dart';
 import '../../widgets/tablet/search_filter/filter_dialog.dart';
@@ -35,11 +34,7 @@ class MobileHomePage extends GetView<HomeController> {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: Padding(
-        padding: context.isLandscapee
-            ? EdgeInsets.symmetric(horizontal: 24.w, vertical: 16.h)
-            : context.isTablett
-                ? EdgeInsets.symmetric(horizontal: 30.w, vertical: 18.h)
-                : EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
         child: SafeArea(
           child: GetBuilder<HomeController>(
             id: HomeIds.home,

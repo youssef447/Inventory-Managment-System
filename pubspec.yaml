@@ -48,8 +48,7 @@ dependencies:
   # dartz
   dartz: ^0.10.1
 
-  # intl
-  intl: ^0.19.0
+  
 
 
  # google fonts
@@ -93,8 +92,8 @@ dependencies:
   # media helper
   mime: ^1.0.6
   pdfx: ^2.6.0
-  printing: ^5.13.3
   pdf: ^3.11.1
+  printing: ^5.13.3
 
   # Permission
   permission_handler: ^11.3.1
@@ -111,6 +110,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+dependency_overrides:
+  intl: any
+  web: any
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

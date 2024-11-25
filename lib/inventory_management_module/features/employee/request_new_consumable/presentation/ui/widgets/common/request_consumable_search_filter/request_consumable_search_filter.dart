@@ -11,7 +11,7 @@ import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../../../core/widgets/fields/app_form_field.dart';
-import '../../../../../../home/presentation/ui/widgets/common/horizontal/rectangled_filter_card.dart';
+import '../../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
 import '../../../../../../home/presentation/ui/widgets/common/vertical/squared_filter_card.dart';
 import '../../../../controller/request_consumable_controller.dart';
 

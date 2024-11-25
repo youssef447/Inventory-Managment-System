@@ -29,5 +29,5 @@ configurationDependencies() {
   //-----------admin controller
   Get.lazyPut(() => AdminController(), fenix: true);
   Get.lazyPut(() => AdminAssetsController(), fenix: true);
-  //Get.lazyPut(() => ProductsController(), fenix: true);
+  Get.lazyPut(() => ProductsController(), fenix: true);
 }

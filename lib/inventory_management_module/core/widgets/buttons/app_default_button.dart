@@ -64,9 +64,10 @@ class AppDefaultButton extends StatelessWidget {
         child: FittedBox(
           child: Text(
             text,
-            style: style?.copyWith(color: textColor) ?? AppTextStyles.font14BlackCairo.copyWith(
-          color: AppColors.textButton,
-          ),
+            style: style?.copyWith(color: textColor) ??
+                AppTextStyles.font14BlackCairo.copyWith(
+                  color: AppColors.textButton,
+                ),
           ),
         ),
       ),

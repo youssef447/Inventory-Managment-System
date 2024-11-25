@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-
-import '../../features/admin/home/presentation/ui/page/tablet/tablet_admin_home.dart';
+import '../../features/admin/home/presentation/ui/page/mobile/mobile_admin_home_page.dart';
+import '../../features/admin/home/presentation/ui/page/tablet/tablet_admin_home_page.dart';
 import '../../features/employee/Assets/presentation/ui/pages/mobile/mobile_assets_details.dart';
 import '../../features/employee/consumables/presentation/ui/pages/mobile/mobile_consumables_details_page.dart';
 import '../../features/employee/home/presentation/ui/page/mobile/mobile_home_page.dart';
@@ -18,6 +18,8 @@ import '../../features/employee/track_request/presentation/ui/pages/mobile/mobil
 import '../../features/employee/track_request/presentation/ui/pages/mobile/mobile_track_requests_page.dart';
 import '../../features/employee/track_request/presentation/ui/pages/tablet/tablet_track_request_details_page.dart';
 import '../../features/employee/track_request/presentation/ui/pages/tablet/tablet_track_requests_page.dart';
+import '../../features/products/presentation/ui/pages/mobile/mobile_product_details_page.dart';
+import '../../features/products/presentation/ui/pages/tablet/tablet_product_details_page.dart';
 import 'app_routes.dart';
 import '../../features/approval/presentation/ui/pages/mobile/mobile_approval_page.dart';
 import '../../features/approval/presentation/ui/pages/tablet/tablet_approval_page.dart';
@@ -159,8 +161,20 @@ abstract class RouteGenerator {
       case Routes.adminHome:
         return _buildPageRoute(
           const ResponsiveHelper(
-            mobileWidget: SizedBox(),
-            tabletWidget: TabletAdminHome(),
+            mobileWidget: MobileAdminHomePage(),
+            tabletWidget: TabletAdminHomePage(),
+          ),
+          PageTransitionType.fade,
+        );
+      case Routes.productDetails:
+        return _buildPageRoute(
+          ResponsiveHelper(
+            mobileWidget: MobileProductDetailsPage(
+              product: args[RouteArguments.product],
+            ),
+            tabletWidget: TabletProductDetailsPage(
+              product: args[RouteArguments.product],
+            ),
           ),
           PageTransitionType.fade,
         );
