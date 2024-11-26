@@ -14,9 +14,11 @@ import '../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
 import '../../../../../../../core/widgets/fields/labeled_dropDown_field.dart';
 import '../../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../controller/add_product_controller.dart';
+import '../../../widgets/common/add_approvals_search.dart';
 import '../../../widgets/common/attachments/product_specification_attachments_section.dart';
 import '../../../widgets/common/attachments/product_warranty_attachment_section.dart';
 import '../../../widgets/common/upload_image_avatar_widget.dart';
+import '../../../widgets/tablet/card/add_approval_cycle.dart';
 
 
 class AddConsumablePage extends GetView<AddProductController> {
@@ -151,17 +153,42 @@ class AddConsumablePage extends GetView<AddProductController> {
               ),
               verticalSpace(24),
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  horizontalSpace(8),
+                  Expanded(
+                    child: Obx(() {
+                      return LabeledDropdownField(
+                        label: 'Usage Frequency'.tr,
+                        value: controller.currencyValue.value,
+                        textButton: controller.currencyValue.value?.getName,
+                        onChanged: (value) {
+                          controller.updateCurrencyValue(value);
+                        },
+                        controller: controller.currencyController,
+                        items: List.generate(
+                          controller.currency.length,
+                              (index) {
+                            return DropdownMenuItem(
+                              value: controller.currency[index],
+                              child: Text(
+                                controller.currency[index].getName.tr,
+                                style: AppTextStyles
+                                    .font14SecondaryBlackCairoMedium,
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    }),
+                  ),
+                  horizontalSpace(15),
                   Expanded(
                     child: LabeledFormField(
                       readOnly: false,
-                      controller: controller.additionalNoteController,
-                      label: 'Additional Note'.tr,
+                      date: true,
+                      controller: controller.expirationDateController,
+                      label: 'Expiration Date'.tr,
                     ),
                   ),
-
                 ],
               ),
               verticalSpace(24),
@@ -169,9 +196,27 @@ class AddConsumablePage extends GetView<AddProductController> {
                 children: [
                   Expanded(
                     child: LabeledFormField(
-                      controller: controller.expirationDateController,
-                      label: 'Expiration Date'.tr,
-                      date: true,
+                      controller: controller.reorderLevelController,
+                      label: 'Reorder Level'.tr,
+                    ),
+                  ),
+                  horizontalSpace(15),
+                  Expanded(
+                    child: LabeledFormField(
+                      readOnly: false,
+                      controller: controller.reorderQuantityController,
+                      label: 'Reorder Quantity'.tr,
+                    ),
+                  ),
+                ],
+              ),
+              verticalSpace(24),
+              Row(
+                children: [
+                  Expanded(
+                    child: LabeledFormField(
+                      controller: controller.quantityController,
+                      label: 'Quantity'.tr,
                     ),
                   ),
                   horizontalSpace(15),
@@ -413,15 +458,36 @@ class AddConsumablePage extends GetView<AddProductController> {
                 ],
               ),
               verticalSpace(26),
-              Row(
-                children: [
-                  Text(
-                    'Requires Approval'.tr,
-                    style: AppTextStyles.font16BlackMediumCairo,
-                  ),
-                  horizontalSpace(100),
-                  DefaultSwitchButton(value: false, onChanged: (v) {})
-                ],
+              GetBuilder<AddProductController>(
+                  builder: (controller) {
+                    return Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Requires Approval'.tr,
+                              style: AppTextStyles.font16BlackMediumCairo,
+                            ),
+                            horizontalSpace(100),
+                            DefaultSwitchButton(
+                              value: controller.isApproval,
+                              onChanged: (bool value) async {
+                                controller.toggleApproval();
+                              },
+                            ),
+                          ],
+                        ),
+                        verticalSpace(26),
+                        if(controller.isApproval)
+                          const Column(
+                            children: [
+                              AddApprovalsSearch(),
+                              AddApprovalCycle(),
+                            ],
+                          ),
+                      ],
+                    );
+                  }
               ),
               verticalSpace(26),
               Row(

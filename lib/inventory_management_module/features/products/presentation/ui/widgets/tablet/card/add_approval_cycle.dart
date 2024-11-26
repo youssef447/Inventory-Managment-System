@@ -8,9 +8,9 @@ import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
-import '../../../../controller/add_product_controller.dart';
+import '../../../../controller/add_approval_cycle_controller.dart';
 
-class AddApprovalCycle extends GetView<AddProductController> {
+class AddApprovalCycle extends GetView<AddApprovalCycleController> {
   const AddApprovalCycle({
     super.key,
   });
@@ -50,7 +50,7 @@ class AddApprovalCycle extends GetView<AddProductController> {
   }
 }
 
-class _BuildAvatarArrow extends GetView<AddProductController>  {
+class _BuildAvatarArrow extends GetView<AddApprovalCycleController>  {
   final String name;
   final String postion;
   final String profileImage;
@@ -64,13 +64,23 @@ class _BuildAvatarArrow extends GetView<AddProductController>  {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        CircleAvatar(
-          radius: 20.r,
-          backgroundColor: AppColors.green,
-          child: CircleAvatar(
-            radius: 16.r,
-            backgroundImage: NetworkImage(profileImage),
-          ),
+        Stack(
+          alignment: AlignmentDirectional.bottomEnd,
+          children: [
+            CircleAvatar(
+              radius: 20.r,
+              backgroundColor: AppColors.green,
+              child: CircleAvatar(
+                radius: 16.r,
+                backgroundImage: NetworkImage(profileImage),
+              ),
+            ),
+            GestureDetector(
+              onTap: (){
+                controller.toggleSelection(index);
+              },
+                child: CircleAvatar(radius: 8,backgroundColor: AppColors.red, child: Icon(Icons.remove,color: Colors.white,size: 12,),))
+          ],
         ),
         horizontalSpace(8),
         Column(

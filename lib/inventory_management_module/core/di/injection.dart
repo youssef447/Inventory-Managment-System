@@ -13,6 +13,7 @@ import '../../features/employee/request_new_consumable/presentation/controller/r
 import '../../features/employee/requests/presentation/controller/requests_controller.dart';
 import '../../features/employee/track_request/presentation/controller/inquiry_chat_controller.dart';
 import '../../features/employee/track_request/presentation/controller/track_requests_controller.dart';
+import '../../features/products/presentation/controller/add_approval_cycle_controller.dart';
 import '../../features/products/presentation/controller/products_controller.dart';
 
 configurationDependencies() {
@@ -32,4 +33,5 @@ configurationDependencies() {
   Get.lazyPut(() => AdminAssetsController(), fenix: true);
   Get.lazyPut(() => ProductsController(), fenix: true);
   Get.lazyPut(() => AddProductController(), fenix: true);
+  Get.lazyPut(() => AddApprovalCycleController(), fenix: true);
 }

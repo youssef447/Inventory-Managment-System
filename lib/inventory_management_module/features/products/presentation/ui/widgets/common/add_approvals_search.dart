@@ -11,9 +11,9 @@ import '../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../core/theme/app_colors.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/widgets/fields/app_form_field.dart';
-import '../../../controller/add_product_controller.dart';
+import '../../../controller/add_approval_cycle_controller.dart';
 
-class AddApprovalsSearch extends GetView<AddProductController> {
+class AddApprovalsSearch extends GetView<AddApprovalCycleController> {
   const AddApprovalsSearch({
     super.key,
   });
