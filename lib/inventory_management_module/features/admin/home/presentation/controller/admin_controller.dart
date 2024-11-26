@@ -5,6 +5,7 @@ import '../../../../../core/theme/app_theme.dart';
 import '../../../../products/presentation/ui/pages/mobile/mobile_products_tab_page.dart';
 import '../../../../products/presentation/ui/pages/tablet/tablet_products_tab_page.dart';
 import '../../../assets/presentation/ui/pages/tablet/tablet_assets_page.dart';
+import '../../../consumable/presentation/ui/pages/tablet/tablet_consumable_page.dart';
 
 class AdminController extends GetxController {
   //------------Tabs------------
@@ -20,7 +21,7 @@ class AdminController extends GetxController {
   final List<Widget> tabletAdminTabs = [
     const TabletProductsTabPage(),
     const TabletAdminAssetsPage(),
-    const Text('Consumable'),
+    const TabletConsumablePage(),
     const Text('order'),
     const Text('suppliers'),
     const Text('Stprage :ocation'),

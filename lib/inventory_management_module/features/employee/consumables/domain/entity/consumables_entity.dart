@@ -24,8 +24,15 @@ class ConsumablesEntity {
   final DateTime? expirationDate;
   final String status;
   final DateTime? dateReturn;
-
   final DateTime lastUpdate = DateTime.now();
+  //---- admin ---
+  final String supplierId;
+  final String supplierName;
+  final String storageLocation;
+  final int quantityOnHand;
+  final String unitCost;
+  final String currency;
+
 
   ConsumablesEntity({
     required this.consumableId,
@@ -47,5 +54,13 @@ class ConsumablesEntity {
     required this.usageFrequency,
     this.expirationDate,
     required this.status,
+
+    //---- admin ---
+    this.supplierId = '015',
+    this.supplierName = 'E-Tech Distributors',
+    this.storageLocation = 'Room A1',
+    this.quantityOnHand = 15,
+    this.unitCost = '200',
+    this.currency= 'USd' ,
   });
 }

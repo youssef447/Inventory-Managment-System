@@ -12,6 +12,7 @@ import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../../../core/widgets/table/default_data_table.dart';
 import '../../../../../../employee/Assets/presentation/controller/assets_controller.dart';
+import '../../../../../../products/constants/ids.dart';
 import '../../../../../../products/presentation/controller/products_controller.dart';
 import '../../../controller/admin_assets_controller.dart';
 import '../../constants/admin_assets_columns_name.dart';
@@ -25,11 +26,11 @@ class TabletAdminAssetsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ProductsController>(
-       // id: AssetsAdminIdConstant.assetsData,
+       id: ProductsIds.productsTab,
         builder: (controller) {
           return controller.loading
               ? const Expanded(child: AppCircleProgress())
-              : controller.products.isEmpty
+              : controller.assets.isEmpty
                   ? const Expanded(child: NoDataGif())
                   : Expanded(
                       child: DefaultDataTable(
@@ -44,7 +45,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                             )
                             .toList(),
                         rows: List.generate(
-                          controller.products.length,
+                          controller.assets.length,
                           (index) => DataRow(
                             color: WidgetStatePropertyAll(
                               index % 2 == 0
@@ -54,7 +55,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                             cells: [
                               DataCell(
                                 Text(
-                                  controller.products[index].assetEntity!.assetId[index],
+                                  controller.assets[index].assetId,
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -62,7 +63,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                               'dd',
+                                  controller.assets[index].brand + controller.assets[index].model,
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -70,7 +71,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  'dd',
+                                  controller.assets[index].supplierId,
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -78,7 +79,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  'dd',
+                                  controller.assets[index].supplierName,
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -86,7 +87,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  'dd',
+                                  controller.assets[index].storageLocation,
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -94,7 +95,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  'dd',
+                                  controller.assets[index].quantityOnHand.toString(),
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -102,7 +103,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  'dd',
+                                  controller.assets[index].unitCost,
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
@@ -111,37 +112,37 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               DataCell(
                                 Center(
                                     child: Text(
-                                      'dd',
-                                  style: AppTextStyles.font16BlackRegularCairo,
+                                      controller.assets[index].currency,
+                                      style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 )),
                               ),
-                              const DataCell(
+                               DataCell(
                                 Text(
-                                  'dd',
+                                  controller.assets[index].category,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                               DataCell(
                                 Text(
-                                  'dd',
+                                  controller.assets[index].subcategory,
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
-                              const DataCell(
+                               DataCell(
                                 Text(
-                                  'dd',
+                                  controller.assets[index].model,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
-                              const DataCell(
+                               DataCell(
                                 Text(
-                                  'dd',
+                                  controller.assets[index].brand,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                 ),

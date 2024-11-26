@@ -84,6 +84,7 @@ class AddProductDialog extends GetView<AddProductController> {
             AppDefaultButton(
               text: 'Next'.tr,
               onPressed: () {
+                Navigator.pop(context);
                 controller.productTypeValue.value == ProductTypes.asset
                     ? GetDialogHelper.generalDialog(
                         child: const AddAssetPage(),

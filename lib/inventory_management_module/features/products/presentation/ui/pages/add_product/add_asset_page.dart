@@ -13,6 +13,7 @@ import '../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
 import '../../../../../../core/widgets/fields/labeled_dropDown_field.dart';
 import '../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../controller/add_product_controller.dart';
+import '../../../controller/products_controller.dart';
 import '../../widgets/common/attachments/product_specification_attachments_section.dart';
 import '../../widgets/common/attachments/product_warranty_attachment_section.dart';
 import '../../widgets/common/upload_image_avatar_widget.dart';
@@ -392,11 +393,17 @@ class AddAssetPage extends GetView<AddProductController> {
                   AppDefaultButton(
                     text: 'Discard',
                     color: AppColors.grey,
+                    onPressed: (){
+                      Navigator.of(context).pop();
+                    },
                   ),
                   const Spacer(),
                   AppDefaultButton(
                     text: 'Add Asset',
                     color: AppColors.primary,
+                    onPressed: (){
+                      controller.addAssetItem();
+                    },
                   )
                 ],
               ),

@@ -7,8 +7,16 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/features/products/presentation/controller/products_controller.dart';
 import '../../../../core/enums/requests_enums.dart';
+import '../../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../../employee/requests/entities/attachment_entity.dart';
+import '../../constants/ids.dart';
+import '../../domain/product_entity.dart';
+import '../../domain/subEntities/contractDetailsEntity.dart';
+import '../../domain/subEntities/storage_location_entity.dart';
+import '../../domain/subEntities/supplier_entity.dart';
+import '../../enums/product_enums.dart';
 import '../constant/add_Product_ids_constant.dart';
 class AddProductController extends GetxController {
 
@@ -101,6 +109,94 @@ TextEditingController unitOfMeasurementController = TextEditingController();
 TextEditingController expectedLifetimeController = TextEditingController();
 TextEditingController stockOnHandController = TextEditingController();
 TextEditingController additionalNoteController = TextEditingController();
+
+
+  List<Map<String, String>> inventoryList = [];
+
+
+
+  void addAssetItem() {
+    ProductEntity item = ProductEntity(
+        id: '002',
+        productType: ProductType.asset,
+        additionalNotes:
+        'Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum',
+        storage: [
+          StorageLocationAndQuantityEntity(
+            locationName: 'Room A13',
+            quantity: 10,
+          ),
+          StorageLocationAndQuantityEntity(
+            locationName: 'Room A13',
+            quantity: 10,
+          ),
+          StorageLocationAndQuantityEntity(
+            locationName: 'Room A13',
+            quantity: 10,
+          ),
+        ],
+        assetEntity: AssetsEntity(
+          assetName: 'Dell GZ 15',
+          category: 'Electronics',
+          subcategory: 'Computer',
+          model: '552',
+          dateReceived: DateTime.now(),
+          quantity: '2',
+          status: 'InUse',
+          brand: 'Dell',
+        ),
+        supplier: SupplierEntity(
+          supplierName: 'TechSource Solutions',
+          postalCode: '1313',
+          city: 'Cairo',
+          country: 'Egypt',
+          email: 'jCgQ5@example.com',
+          firstName: 'Youssef',
+          lastName: 'Ashraf',
+          phoneNumber: '010100101010',
+          supplierId: '110',
+          stateOrProvince: 'NA',
+          contractDetails: ContractdetailsEntity(
+            attachmentEntity:
+            AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+            endDate: DateTime.now(),
+            startDate: DateTime.now(),
+          ),
+        ),
+        totalQuantity: 20,
+        currency: 'USD',
+        unitCost: 12,
+        expectedLifeTime: DateTime.now(),
+        productSpecifications: [
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+        ],
+        productWaranties: [
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+        ]);
+    Get.find<ProductsController>().products.add(item);
+    update([ProductsIds.productsTab]);
+  }
+
+  void clearControllers() {
+    orderIdController.clear();
+    productIdController.clear();
+    categoryController.clear();
+    subCategoryController.clear();
+    brandController.clear();
+    modelController.clear();
+    expirationDateController.clear();
+    quantityController.clear();
+    unitCostController.clear();
+    currencyController.clear();
+    supplierNameController.clear();
+    storageRequirementController.clear();
+    storageLocationController.clear();
+    unitOfMeasurementController.clear();
+    expectedLifetimeController.clear();
+    stockOnHandController.clear();
+    additionalNoteController.clear();
+  }
+
 
 
   //------------ Product Specification Uploaded Attachments ------------

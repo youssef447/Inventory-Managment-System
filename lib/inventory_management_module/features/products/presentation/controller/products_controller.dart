@@ -16,6 +16,8 @@ import '../../enums/product_enums.dart';
 
 class ProductsController extends GetxController {
   late List<ProductEntity> products;
+  List<AssetsEntity> assets = [];
+  List<ConsumablesEntity> consumables = [];
   bool loading = true;
 
   @override
@@ -31,7 +33,7 @@ class ProductsController extends GetxController {
     );
     products = [
       ProductEntity(
-          id: '001',
+          id: '002',
           productType: ProductType.asset,
           additionalNotes:
               'Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum',
@@ -53,7 +55,7 @@ class ProductsController extends GetxController {
             assetName: 'Dell GZ 15',
             category: 'Electronics',
             subcategory: 'Computer',
-            model: 'GZ 15',
+            model: '552',
             dateReceived: DateTime.now(),
             quantity: '2',
             status: 'InUse',
@@ -227,6 +229,55 @@ class ProductsController extends GetxController {
             AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
           ]),
       ProductEntity(
+          id: '004',
+          productType: ProductType.consumable,
+          consumablesEntity: ConsumablesEntity(
+            consumableId: 'C005',
+            name: 'Face Mask',
+            category: 'Medical Supplies',
+            subcategory: 'Personal Protective Equipment',
+            model: 'FM789',
+            brand: 'SafeHealth',
+            dateReceived: DateTime(2023, 7, 10),
+            quantity: '500',
+            unitOfMeasurement: 'pieces',
+            usageFrequency: 'Daily',
+            expirationDate: DateTime(2024, 7, 10),
+            status: 'Maintenance',
+          ),
+          storage: [
+            StorageLocationAndQuantityEntity(
+                locationName: 'Room A13', quantity: 10)
+          ],
+          supplier: SupplierEntity(
+            supplierName: 'TechSource Solutions',
+            postalCode: '1313',
+            city: 'Cairo',
+            country: 'Egypt',
+            email: 'jCgQ5@example.com',
+            firstName: 'Youssef',
+            lastName: 'Ashraf',
+            phoneNumber: '010100101010',
+            supplierId: '110',
+            stateOrProvince: 'NA',
+            contractDetails: ContractdetailsEntity(
+              attachmentEntity:
+                  AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+              endDate: DateTime.now(),
+              startDate: DateTime.now(),
+            ),
+          ),
+          totalQuantity: 20,
+          currency: 'USD',
+          unitCost: 12,
+          expectedLifeTime: DateTime.now(),
+          productSpecifications: [
+            AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+          ],
+          productWaranties: [
+            AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+          ]),
+      ProductEntity(
           id: '005',
           productType: ProductType.asset,
           assetEntity: AssetsEntity(
@@ -271,10 +322,19 @@ class ProductsController extends GetxController {
           ],
           productWaranties: [
             AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
-          ])
+          ]),
     ];
     loading = false;
+     for (var model in products) {
+      if (model.productType == ProductType.asset) {
+        assets.add(model.assetEntity!);
+      }
+      if (model.productType == ProductType.consumable) {
+        consumables.add(model.consumablesEntity!);
+      }
+    }
     update([ProductsIds.productsTab]);
+
   }
 
   //-----------------------Prodoct Details-----------------------
