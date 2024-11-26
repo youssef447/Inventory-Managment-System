@@ -68,7 +68,8 @@ class InventoryManagement extends StatelessWidget {
                 child: Navigator(
                   key: inventoryNavKey,
                   onGenerateRoute: RouteGenerator.generateRoute,
-                  initialRoute: Routes.adminHome,
+                  initialRoute: Routes.adminHome
+                  ,
                 ),
               ),
             ],

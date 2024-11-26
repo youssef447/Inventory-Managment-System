@@ -117,13 +117,12 @@ TextEditingController additionalNoteController = TextEditingController();
 
   void addAssetItem() {
     ProductEntity item = ProductEntity(
-        id: '002',
+        id: productIdController.text,
         productType: ProductType.asset,
-        additionalNotes:
-        'Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum',
+        additionalNotes: additionalNoteController.text,
         storage: [
           StorageLocationAndQuantityEntity(
-            locationName: 'Room A13',
+            locationName: storageLocationController.text,
             quantity: 10,
           ),
           StorageLocationAndQuantityEntity(
@@ -136,17 +135,17 @@ TextEditingController additionalNoteController = TextEditingController();
           ),
         ],
         assetEntity: AssetsEntity(
-          assetName: 'Dell GZ 15',
-          category: 'Electronics',
-          subcategory: 'Computer',
-          model: '552',
+          assetName: brandController.text + modelController.text,
+          category: categoryController.text,
+          subcategory: subCategoryController.text,
+          model: modelController.text,
           dateReceived: DateTime.now(),
-          quantity: '2',
+          quantity: quantityController.text,
           status: 'InUse',
-          brand: 'Dell',
+          brand: brandController.text,
         ),
         supplier: SupplierEntity(
-          supplierName: 'TechSource Solutions',
+          supplierName: supplierNameController.text,
           postalCode: '1313',
           city: 'Cairo',
           country: 'Egypt',
@@ -164,8 +163,8 @@ TextEditingController additionalNoteController = TextEditingController();
           ),
         ),
         totalQuantity: 20,
-        currency: 'USD',
-        unitCost: 12,
+        currency: currencyController.text,
+        unitCost: 2,
         expectedLifeTime: DateTime.now(),
         productSpecifications: [
           AttachmentEntity(file: File('assets/dummyFile/example.pdf'))

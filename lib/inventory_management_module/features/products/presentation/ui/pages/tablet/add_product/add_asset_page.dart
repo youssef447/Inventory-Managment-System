@@ -3,20 +3,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
-import 'package:inventory_management/inventory_management_module/core/theme/app_colors.dart';
-import 'package:inventory_management/inventory_management_module/core/widgets/buttons/app_default_button.dart';
-import 'package:inventory_management/inventory_management_module/core/widgets/buttons/default_switch_button.dart';
-import '../../../../../../core/constants/app_assets.dart';
-import '../../../../../../core/helpers/spacing_helper.dart';
-import '../../../../../../core/theme/app_text_styles.dart';
-import '../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
-import '../../../../../../core/widgets/fields/labeled_dropDown_field.dart';
-import '../../../../../../core/widgets/fields/labled_form_field.dart';
-import '../../../controller/add_product_controller.dart';
-import '../../../controller/products_controller.dart';
-import '../../widgets/common/attachments/product_specification_attachments_section.dart';
-import '../../widgets/common/attachments/product_warranty_attachment_section.dart';
-import '../../widgets/common/upload_image_avatar_widget.dart';
+
+import '../../../../../../../core/constants/app_assets.dart';
+import '../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../core/theme/app_colors.dart';
+import '../../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../../../core/widgets/buttons/app_default_button.dart';
+import '../../../../../../../core/widgets/buttons/default_switch_button.dart';
+import '../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
+import '../../../../../../../core/widgets/fields/labeled_dropDown_field.dart';
+import '../../../../../../../core/widgets/fields/labled_form_field.dart';
+import '../../../../controller/add_product_controller.dart';
+import '../../../widgets/common/attachments/product_specification_attachments_section.dart';
+import '../../../widgets/common/attachments/product_warranty_attachment_section.dart';
+import '../../../widgets/common/upload_image_avatar_widget.dart';
+
 
 class AddAssetPage extends GetView<AddProductController> {
   const AddAssetPage({super.key});
@@ -403,6 +404,7 @@ class AddAssetPage extends GetView<AddProductController> {
                     color: AppColors.primary,
                     onPressed: (){
                       controller.addAssetItem();
+                      Navigator.of(context).pop();
                     },
                   )
                 ],

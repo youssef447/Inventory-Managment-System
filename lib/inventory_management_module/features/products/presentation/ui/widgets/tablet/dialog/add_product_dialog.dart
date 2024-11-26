@@ -13,7 +13,7 @@ import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../../../core/widgets/dropdown/app_dropdown.dart';
 import '../../../../controller/add_product_controller.dart';
-import '../../../pages/add_product/add_asset_page.dart';
+import '../../../pages/tablet/add_product/add_asset_page.dart';
 
 class AddProductDialog extends GetView<AddProductController> {
   const AddProductDialog({super.key});
