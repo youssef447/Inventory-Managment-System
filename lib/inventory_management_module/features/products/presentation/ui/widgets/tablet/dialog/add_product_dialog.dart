@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
+import 'package:inventory_management/inventory_management_module/features/products/presentation/ui/pages/tablet/add_product/add_consumable_page.dart';
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
@@ -91,7 +92,7 @@ class AddProductDialog extends GetView<AddProductController> {
                         context: context,
                       )
                     : GetDialogHelper.generalDialog(
-                        child: const Text('data 2'),
+                        child: const AddConsumablePage(),
                         context: context,
                       );
               },

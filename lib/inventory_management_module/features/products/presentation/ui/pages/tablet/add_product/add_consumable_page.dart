@@ -3,32 +3,24 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/core/routes/app_routes.dart';
 
 import '../../../../../../../core/constants/app_assets.dart';
-import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
-import '../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../../../core/widgets/buttons/default_switch_button.dart';
 import '../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
-import '../../../../../../../core/widgets/dialog/default_dialog.dart';
-import '../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../../../../core/widgets/fields/labeled_dropDown_field.dart';
 import '../../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../controller/add_product_controller.dart';
-import '../../../widgets/common/add_approvals_search.dart';
 import '../../../widgets/common/attachments/product_specification_attachments_section.dart';
 import '../../../widgets/common/attachments/product_warranty_attachment_section.dart';
 import '../../../widgets/common/upload_image_avatar_widget.dart';
-import '../../../widgets/tablet/card/add_approval_cycle.dart';
 
 
-class AddAssetPage extends GetView<AddProductController> {
-  const AddAssetPage({super.key});
+class AddConsumablePage extends GetView<AddProductController> {
+  const AddConsumablePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +53,7 @@ class AddAssetPage extends GetView<AddProductController> {
                       )),
                   horizontalSpace(8),
                   Text(
-                    'Add New Assets'.tr,
+                    'Add New Consumable'.tr,
                     style: AppTextStyles.font24MediumBlackCairo,
                   ),
                 ],
@@ -215,7 +207,7 @@ class AddAssetPage extends GetView<AddProductController> {
                         controller: controller.currencyController,
                         items: List.generate(
                           controller.currency.length,
-                          (index) {
+                              (index) {
                             return DropdownMenuItem(
                               value: controller.currency[index],
                               child: Text(
@@ -240,14 +232,14 @@ class AddAssetPage extends GetView<AddProductController> {
                         label: 'Supplier Name'.tr,
                         value: controller.supplierNameValue.value,
                         textButton:
-                            controller.supplierNameValue.value?.toString(),
+                        controller.supplierNameValue.value?.toString(),
                         onChanged: (value) {
                           controller.updateSupplierNameValue(value);
                         },
                         controller: controller.supplierNameController,
                         items: List.generate(
                           controller.supplierName.length,
-                          (index) {
+                              (index) {
                             return DropdownMenuItem(
                               value: controller.supplierName[index],
                               child: Text(
@@ -276,7 +268,7 @@ class AddAssetPage extends GetView<AddProductController> {
                         controller: controller.storageRequirementController,
                         items: List.generate(
                           controller.storageRequirement.length,
-                          (index) {
+                              (index) {
                             return DropdownMenuItem(
                               value: controller.storageRequirement[index],
                               child: Text(
@@ -312,14 +304,14 @@ class AddAssetPage extends GetView<AddProductController> {
                         label: 'Unit Of Measurement'.tr,
                         value: controller.unitOfMeasurementValue.value,
                         textButton:
-                            controller.unitOfMeasurementValue.value?.getName,
+                        controller.unitOfMeasurementValue.value?.getName,
                         onChanged: (value) {
                           controller.updateUnitOfMeasurementValue(value);
                         },
                         controller: controller.unitOfMeasurementController,
                         items: List.generate(
                           controller.unitOfMeasurement.length,
-                          (index) {
+                              (index) {
                             return DropdownMenuItem(
                               value: controller.unitOfMeasurement[index],
                               child: Text(
@@ -344,14 +336,14 @@ class AddAssetPage extends GetView<AddProductController> {
                         label: 'Storage Location'.tr,
                         value: controller.storageLocationValue.value,
                         textButton:
-                            controller.storageLocationValue.value?.getName,
+                        controller.storageLocationValue.value?.getName,
                         onChanged: (value) {
                           controller.updateStorageLocationValue(value);
                         },
                         controller: controller.storageLocationController,
                         items: List.generate(
                           controller.storageLocation.length,
-                          (index) {
+                              (index) {
                             return DropdownMenuItem(
                               value: controller.storageLocation[index],
                               child: Text(
@@ -421,36 +413,15 @@ class AddAssetPage extends GetView<AddProductController> {
                 ],
               ),
               verticalSpace(26),
-              GetBuilder<AddProductController>(
-                builder: (controller) {
-                  return Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Requires Approval'.tr,
-                            style: AppTextStyles.font16BlackMediumCairo,
-                          ),
-                          horizontalSpace(100),
-                          DefaultSwitchButton(
-                            value: controller.isApproval,
-                            onChanged: (bool value) async {
-                              controller.toggleApproval();
-                            },
-                          ),
-                        ],
-                      ),
-                      verticalSpace(26),
-                      if(controller.isApproval)
-                        const Column(
-                          children: [
-                            AddApprovalsSearch(),
-                            AddApprovalCycle(),
-                          ],
-                        ),
-                    ],
-                  );
-                }
+              Row(
+                children: [
+                  Text(
+                    'Requires Approval'.tr,
+                    style: AppTextStyles.font16BlackMediumCairo,
+                  ),
+                  horizontalSpace(100),
+                  DefaultSwitchButton(value: false, onChanged: (v) {})
+                ],
               ),
               verticalSpace(26),
               Row(
@@ -467,15 +438,8 @@ class AddAssetPage extends GetView<AddProductController> {
                     text: 'Add Asset',
                     color: AppColors.primary,
                     onPressed: (){
-                     controller.addAssetItem();
-                     Navigator.pushReplacementNamed(context, Routes.adminHome);
-                     GetDialogHelper.generalDialog(
-                         context: Get.context!,
-                         child: DefaultDialog(
-                           title: 'Success'.tr,
-                           subTitle: 'You Successfully Added New Product'.tr,
-                           lottieAsset: AppAssets.success,
-                         ));
+                      controller.addAssetItem();
+                      Navigator.of(context).pop();
                     },
                   )
                 ],
@@ -485,6 +449,8 @@ class AddAssetPage extends GetView<AddProductController> {
         ));
   }
 }
+
+
 
 
 

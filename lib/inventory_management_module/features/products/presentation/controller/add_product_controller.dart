@@ -2,12 +2,15 @@
 // Date: 25/11/2024
 // By:Mohamed Ashraf
 
+
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/features/employee/home/domain/user_entity.dart';
 import 'package:inventory_management/inventory_management_module/features/products/presentation/controller/products_controller.dart';
+import '../../../../core/constants/approve_cycle.dart';
 import '../../../../core/enums/requests_enums.dart';
 import '../../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../../employee/requests/entities/attachment_entity.dart';
@@ -18,7 +21,89 @@ import '../../domain/subEntities/storage_location_entity.dart';
 import '../../domain/subEntities/supplier_entity.dart';
 import '../../enums/product_enums.dart';
 import '../constant/add_Product_ids_constant.dart';
+
+
+
 class AddProductController extends GetxController {
+
+  // Observable list of approval cycles
+  RxList<UserEntity> approvalCycles = <UserEntity>[
+    UserEntity(
+      firstName: 'Ahmed',
+      lastName: 'Ali',
+      id: '1',
+      isSelected: true,
+      position: 'Manager',
+    ),
+    UserEntity(
+      firstName: 'Ahmed',
+      lastName: 'Mohammed',
+      id: '2',
+      isSelected: true,
+      position: 'Engineer',
+    ),
+    UserEntity(
+      firstName: 'Ali',
+      lastName: 'Mohammed',
+      id: '3',
+      isSelected: false,
+      position: 'Designer',
+    ),
+    UserEntity(
+      firstName: 'Mohamed',
+      lastName: 'Mohammed',
+      id: '4',
+      isSelected: false,
+      position: 'Analyst',
+    ),
+  ].obs;
+
+  // Observable filtered list that will update UI reactively
+  RxList<UserEntity> filteredUsers = <UserEntity>[].obs;
+
+  // Initialize selectedApprovalCycle in onInit
+  RxList<UserEntity> selectedApprovalCycle = <UserEntity>[].obs;
+
+
+  @override
+  void onInit() {
+    super.onInit();
+    // Initially assign all users to filteredUsers
+    filteredUsers.assignAll(approvalCycles);
+    updateSelectedApprovalCycle();
+    // Initially set selectedApprovalCycle based on approvalCycles
+    selectedApprovalCycle.assignAll(approvalCycles.where((approval) => approval.isSelected).toList());
+
+  }
+
+  // Search function to filter users based on the query
+  void searchUser(String query) {
+    if (query.isEmpty) {
+      filteredUsers.assignAll(approvalCycles);
+    } else {
+      filteredUsers.assignAll(
+        approvalCycles.where(
+              (user) => user.firstName.toLowerCase().contains(query.toLowerCase()) ||
+              user.lastName.toLowerCase().contains(query.toLowerCase()),
+        ),
+      );
+    }
+  }
+
+  // Function to update selectedApprovalCycle
+  void updateSelectedApprovalCycle() {
+    selectedApprovalCycle.assignAll(
+      approvalCycles.where((approval) => approval.isSelected).toList(),
+    );
+  }
+
+  // Toggle user selection and update filteredUsers
+  void toggleSelection(int index) {
+    filteredUsers[index].isSelected = !filteredUsers[index].isSelected;
+    filteredUsers.refresh();
+    updateSelectedApprovalCycle();
+  }
+
 
 
   ///-------------- drop down
@@ -30,6 +115,18 @@ class AddProductController extends GetxController {
   Rxn<ProductTypes> productTypeValue = Rxn<ProductTypes>(ProductTypes.asset);
   updateProductTypeValue(ProductTypes value) {
     productTypeValue.value = value;
+  }
+
+
+  // -------------- supplierName   -----------
+  List<String> category = [
+    'Electronic',
+    'Event Planning',
+    'Eduction',
+  ];
+  Rxn<String> categoryValue = Rxn<String>();
+  updateCategoryValue(String value) {
+    categoryValue.value = value;
   }
 
   // -------------- product type  -----------
@@ -85,6 +182,15 @@ class AddProductController extends GetxController {
   updateStorageLocationValue(StorageLocation value) {
     storageLocationValue.value = value;
   }
+
+  // -------------- switch approval  -----------
+
+  var isApproval = true;
+  void toggleApproval() {
+    isApproval = !isApproval;
+    update();
+  }
+
 
 
 
@@ -173,7 +279,9 @@ TextEditingController additionalNoteController = TextEditingController();
           AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
         ]);
     Get.find<ProductsController>().products.add(item);
-    update([ProductsIds.productsTab]);
+
+    clearControllers();
+   update([ProductsIds.productsTab]);
   }
 
   void clearControllers() {
@@ -263,4 +371,8 @@ TextEditingController additionalNoteController = TextEditingController();
     update([AddProductIdsConstant.warrantyAttachments]);
   }
 
+  void changeApprovalStatusById(approvalId, String s, BuildContext context) {}
+
 }
+
+
