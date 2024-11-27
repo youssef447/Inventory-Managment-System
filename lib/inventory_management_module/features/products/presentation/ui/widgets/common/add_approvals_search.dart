@@ -18,29 +18,31 @@ class AddApprovalsSearch extends GetView<AddApprovalCycleController> {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AppTextFormField(
-          backGroundColor: AppColors.field,
-          maxLines: 1,
-          hintText: 'Search Here...'.tr,
-          collapsed: true,
-          hintStyle: AppTextStyles.font16SecondaryBlackCairoMedium,
-          onChanged: (query) {
-            controller.searchUser(query);
-          },
-          contentPadding: context.isTablett
-              ? EdgeInsets.symmetric(
-            vertical: 2.h,
-          )
-              : null,
-          prefixIcon: SvgPicture.asset(
-            AppAssets.search,
-            width: 24.w,
-            height: 24.h,
+        ClipRRect(
+          borderRadius: BorderRadius.circular(8.r),
+          child: AppTextFormField(
+            backGroundColor: AppColors.field,
+            maxLines: 1,
+            hintText: 'Search Here...'.tr,
+            collapsed: true,
+            hintStyle: AppTextStyles.font16SecondaryBlackCairoMedium,
+            onChanged: (query) {
+              controller.searchUser(query);
+            },
+            contentPadding: context.isTablett
+                ? EdgeInsets.symmetric(
+                    vertical: 2.h,
+                  )
+                : null,
+            prefixIcon: SvgPicture.asset(
+              AppAssets.search,
+              width: 24.w,
+              height: 24.h,
+            ),
           ),
         ),
         verticalSpace(8),

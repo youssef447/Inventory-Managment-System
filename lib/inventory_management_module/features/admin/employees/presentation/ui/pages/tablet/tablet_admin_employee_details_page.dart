@@ -10,7 +10,6 @@ import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/theme/app_theme.dart';
-import '../../../../../../../core/widgets/dropdown/app_dropdown.dart';
 import '../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';

@@ -129,7 +129,7 @@ class TabletEmployeeProuctsList extends StatelessWidget {
                                 crossAxisCount: Get.width > 1200 ? 3 : 2,
                                 mainAxisSpacing: 15.h,
                                 crossAxisSpacing:
-                                    context.isLandscapee ? 20.w : 36.w,
+                                    context.isLandscapee ? 20.w : 16.w,
                                 children: List.generate(
                                   controller.getCurrentProducts().length,
                                   (index) {

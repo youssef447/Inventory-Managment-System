@@ -6,9 +6,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/features/employee/home/domain/user_entity.dart';
 import 'package:inventory_management/inventory_management_module/features/products/presentation/controller/products_controller.dart';
-import '../../../../core/constants/approve_cycle.dart';
 import '../../../../core/enums/requests_enums.dart';
 import '../../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../../employee/consumables/domain/entity/consumables_entity.dart';
@@ -125,23 +123,7 @@ class AddProductController extends GetxController {
   TextEditingController expectedLifetimeController = TextEditingController();
   TextEditingController stockOnHandController = TextEditingController();
   TextEditingController additionalNoteController = TextEditingController();
-  TextEditingController orderIdController = TextEditingController();
-  TextEditingController productIdController = TextEditingController();
-  TextEditingController categoryController = TextEditingController();
-  TextEditingController subCategoryController = TextEditingController();
-  TextEditingController brandController = TextEditingController();
-  TextEditingController modelController = TextEditingController();
-  TextEditingController expirationDateController = TextEditingController();
-  TextEditingController quantityController = TextEditingController();
-  TextEditingController unitCostController = TextEditingController();
-  TextEditingController currencyController = TextEditingController();
-  TextEditingController supplierNameController = TextEditingController();
-  TextEditingController storageRequirementController = TextEditingController();
-  TextEditingController storageLocationController = TextEditingController();
-  TextEditingController unitOfMeasurementController = TextEditingController();
-  TextEditingController expectedLifetimeController = TextEditingController();
-  TextEditingController stockOnHandController = TextEditingController();
-  TextEditingController additionalNoteController = TextEditingController();
+
   TextEditingController reorderLevelController = TextEditingController();
   TextEditingController reorderQuantityController = TextEditingController();
 
