@@ -1,12 +1,10 @@
 // Date: 7/11/2024
 // By:Mohamed Ashraf
 
-
-
 import '../../../../../core/constants/app_assets.dart';
 
 class AssetsEntity {
-  final String image = AppAssets.phone;
+  final String image = AppAssets.pphone;
   final String assetId;
   final String assetName;
   final String category;
@@ -32,7 +30,6 @@ class AssetsEntity {
   final String unitCost;
   final String currency;
 
-
   AssetsEntity({
     this.assetId = '001',
     required this.assetName,
@@ -56,6 +53,6 @@ class AssetsEntity {
     this.storageLocation = 'Room A1',
     this.quantityOnHand = 15,
     this.unitCost = '200',
-    this.currency= 'USd' ,
+    this.currency = 'USd',
   });
 }

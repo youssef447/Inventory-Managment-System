@@ -25,7 +25,8 @@ class ProductEntity {
   List<AttachmentEntity> productWaranties;
   String? additionalNotes;
   final DateTime lastUpdate = DateTime.now();
-
+  String storageRequirement;
+  String status;
   ProductEntity({
     required this.id,
     required this.productType,
@@ -41,6 +42,8 @@ class ProductEntity {
     required this.productSpecifications,
     required this.productWaranties,
     this.stockStatus = StockStatus.inStock,
+    this.status = 'Maintenance',
+    this.storageRequirement = 'Electronics',
     this.additionalNotes,
   });
 }

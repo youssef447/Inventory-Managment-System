@@ -1,4 +1,3 @@
-
 // Date: 25/11/2024
 // By:Mohamed Ashraf
 
@@ -13,14 +12,13 @@ import '../../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../../employee/requests/entities/attachment_entity.dart';
 import '../../constants/ids.dart';
 import '../../domain/product_entity.dart';
-import '../../domain/subEntities/contractDetailsEntity.dart';
+import '../../domain/subEntities/contract_details_entity.dart';
 import '../../domain/subEntities/storage_location_entity.dart';
 import '../../domain/subEntities/supplier_entity.dart';
 import '../../enums/product_enums.dart';
 import '../constant/add_Product_ids_constant.dart';
+
 class AddProductController extends GetxController {
-
-
   ///-------------- drop down
   // -------------- product type  -----------
   List<ProductTypes> productType = [
@@ -37,7 +35,6 @@ class AddProductController extends GetxController {
     Currency.egy,
     Currency.esd,
     Currency.eur,
-
   ];
   Rxn<Currency> currencyValue = Rxn<Currency>();
   updateCurrencyValue(Currency value) {
@@ -71,9 +68,9 @@ class AddProductController extends GetxController {
     UnitOfMeasurement.gram,
     UnitOfMeasurement.kilogram,
   ];
-  Rxn<UnitOfMeasurement>  unitOfMeasurementValue = Rxn<UnitOfMeasurement>();
+  Rxn<UnitOfMeasurement> unitOfMeasurementValue = Rxn<UnitOfMeasurement>();
   updateUnitOfMeasurementValue(UnitOfMeasurement value) {
-     unitOfMeasurementValue.value = value;
+    unitOfMeasurementValue.value = value;
   }
 
   // -------------- storageLocation  -----------
@@ -81,39 +78,31 @@ class AddProductController extends GetxController {
     StorageLocation.room1,
     StorageLocation.room2,
   ];
-  Rxn<StorageLocation>  storageLocationValue = Rxn<StorageLocation>();
+  Rxn<StorageLocation> storageLocationValue = Rxn<StorageLocation>();
   updateStorageLocationValue(StorageLocation value) {
     storageLocationValue.value = value;
   }
 
-
-
-
-
-
   ///-------------------- TextEditingController --------------
-TextEditingController orderIdController = TextEditingController();
-TextEditingController productIdController = TextEditingController();
-TextEditingController categoryController = TextEditingController();
-TextEditingController subCategoryController = TextEditingController();
-TextEditingController brandController = TextEditingController();
-TextEditingController modelController = TextEditingController();
-TextEditingController expirationDateController = TextEditingController();
-TextEditingController quantityController = TextEditingController();
-TextEditingController unitCostController = TextEditingController();
-TextEditingController currencyController = TextEditingController();
-TextEditingController supplierNameController = TextEditingController();
-TextEditingController storageRequirementController = TextEditingController();
-TextEditingController storageLocationController = TextEditingController();
-TextEditingController unitOfMeasurementController = TextEditingController();
-TextEditingController expectedLifetimeController = TextEditingController();
-TextEditingController stockOnHandController = TextEditingController();
-TextEditingController additionalNoteController = TextEditingController();
-
+  TextEditingController orderIdController = TextEditingController();
+  TextEditingController productIdController = TextEditingController();
+  TextEditingController categoryController = TextEditingController();
+  TextEditingController subCategoryController = TextEditingController();
+  TextEditingController brandController = TextEditingController();
+  TextEditingController modelController = TextEditingController();
+  TextEditingController expirationDateController = TextEditingController();
+  TextEditingController quantityController = TextEditingController();
+  TextEditingController unitCostController = TextEditingController();
+  TextEditingController currencyController = TextEditingController();
+  TextEditingController supplierNameController = TextEditingController();
+  TextEditingController storageRequirementController = TextEditingController();
+  TextEditingController storageLocationController = TextEditingController();
+  TextEditingController unitOfMeasurementController = TextEditingController();
+  TextEditingController expectedLifetimeController = TextEditingController();
+  TextEditingController stockOnHandController = TextEditingController();
+  TextEditingController additionalNoteController = TextEditingController();
 
   List<Map<String, String>> inventoryList = [];
-
-
 
   void addAssetItem() {
     ProductEntity item = ProductEntity(
@@ -157,7 +146,7 @@ TextEditingController additionalNoteController = TextEditingController();
           stateOrProvince: 'NA',
           contractDetails: ContractdetailsEntity(
             attachmentEntity:
-            AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+                AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
             endDate: DateTime.now(),
             startDate: DateTime.now(),
           ),
@@ -196,8 +185,6 @@ TextEditingController additionalNoteController = TextEditingController();
     additionalNoteController.clear();
   }
 
-
-
   //------------ Product Specification Uploaded Attachments ------------
   List<AttachmentEntity> attachments = [];
   uploadAttachments() async {
@@ -224,12 +211,11 @@ TextEditingController additionalNoteController = TextEditingController();
 
   removeAttachment(AttachmentEntity model) {
     final index =
-    attachments.indexWhere((element) => element.fileName == model.fileName);
+        attachments.indexWhere((element) => element.fileName == model.fileName);
 
     attachments.removeAt(index);
     update([AddProductIdsConstant.specificationAttachments]);
   }
-
 
   //------------ Product Warranty Uploaded Attachments ------------
   List<AttachmentEntity> warrantyAttachments = [];
@@ -256,11 +242,10 @@ TextEditingController additionalNoteController = TextEditingController();
   }
 
   removeWarrantyAttachment(AttachmentEntity model) {
-    final index =
-    warrantyAttachments.indexWhere((element) => element.fileName == model.fileName);
+    final index = warrantyAttachments
+        .indexWhere((element) => element.fileName == model.fileName);
 
     warrantyAttachments.removeAt(index);
     update([AddProductIdsConstant.warrantyAttachments]);
   }
-
 }

@@ -1,7 +1,6 @@
 // Date: 7/11/2024
 // By:Mohamed Ashraf
 
-
 import '../../../../../core/constants/app_assets.dart';
 
 class ConsumablesEntity {
@@ -33,6 +32,8 @@ class ConsumablesEntity {
   final String unitCost;
   final String currency;
 
+  final DateTime maintenanceSchedule = DateTime.now();
+  final String maintenanceFrequency = 'Monthly';
 
   ConsumablesEntity({
     required this.consumableId,
@@ -61,6 +62,6 @@ class ConsumablesEntity {
     this.storageLocation = 'Room A1',
     this.quantityOnHand = 15,
     this.unitCost = '200',
-    this.currency= 'USd' ,
+    this.currency = 'USd',
   });
 }

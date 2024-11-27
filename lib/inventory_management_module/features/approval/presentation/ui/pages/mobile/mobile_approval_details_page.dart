@@ -113,7 +113,7 @@ class MobileApprovalDetailsPage extends GetView<ApprovalController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Image.asset(
-                          AppAssets.phone,
+                          AppAssets.pphone,
                           width: 65.w,
                           height: 65.h,
                           fit: BoxFit.fill,

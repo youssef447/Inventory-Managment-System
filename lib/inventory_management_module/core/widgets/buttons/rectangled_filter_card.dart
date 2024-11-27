@@ -12,7 +12,7 @@ class RectangledFilterCard extends StatelessWidget {
   final String image;
   final String text;
   final Color color;
-  final double? width, height;
+  final double? width, height, iconHeight, iconWidth;
   final Color? textColor;
   final Function()? onTap;
   const RectangledFilterCard({
@@ -24,6 +24,8 @@ class RectangledFilterCard extends StatelessWidget {
     this.textColor,
     this.width,
     this.height,
+    this.iconWidth,
+    this.iconHeight,
   });
 
   @override
@@ -44,8 +46,8 @@ class RectangledFilterCard extends StatelessWidget {
             SvgPicture.asset(
               image,
               color: textColor ?? AppColors.icon,
-              width: 15.w,
-              height: 15.h,
+              width: iconWidth ?? 15.w,
+              height: iconHeight ?? 15.h,
             ),
             horizontalSpace(4),
             Flexible(

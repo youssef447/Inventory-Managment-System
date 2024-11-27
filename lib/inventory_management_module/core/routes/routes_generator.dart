@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_admin_employee_details_page.dart';
+import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_admin_employees_page.dart';
+import '../../features/admin/employees/presentation/ui/pages/tablet/tablet_admin_employee_details_page.dart';
+import '../../features/admin/employees/presentation/ui/pages/tablet/tablet_admin_employees_page.dart';
 import '../../features/admin/home/presentation/ui/page/mobile/mobile_admin_home_page.dart';
 import '../../features/admin/home/presentation/ui/page/tablet/tablet_admin_home_page.dart';
 import '../../features/employee/Assets/presentation/ui/pages/mobile/mobile_assets_details.dart';
@@ -174,6 +178,26 @@ abstract class RouteGenerator {
             ),
             tabletWidget: TabletProductDetailsPage(
               product: args[RouteArguments.product],
+            ),
+          ),
+          PageTransitionType.fade,
+        );
+      case Routes.employees:
+        return _buildPageRoute(
+          const ResponsiveHelper(
+            mobileWidget: MobileAdminEmployeesPage(),
+            tabletWidget: TabletAdminEmployeesPage(),
+          ),
+          PageTransitionType.fade,
+        );
+      case Routes.employeeDetails:
+        return _buildPageRoute(
+          ResponsiveHelper(
+            mobileWidget: MobileAdminEmployeeDetailsPage(
+              userEntity: args[RouteArguments.userEntity],
+            ),
+            tabletWidget: TabletAdminEmployeeDetailsPage(
+              userEntity: args[RouteArguments.userEntity],
             ),
           ),
           PageTransitionType.fade,

@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/features/products/presentation/controller/add_product_controller.dart';
 
 import '../../features/admin/assets/presentation/controller/admin_assets_controller.dart';
+import '../../features/admin/employees/presentation/controller/employee_details_controller.dart';
+import '../../features/admin/employees/presentation/controller/employees_controller.dart';
 import '../../features/admin/home/presentation/controller/admin_controller.dart';
 import '../../features/approval/presentation/controller/approval_controller.dart';
 import '../../features/employee/Assets/presentation/controller/assets_controller.dart';
@@ -17,7 +19,6 @@ import '../../features/products/presentation/controller/products_controller.dart
 
 configurationDependencies() {
   Get.lazyPut(() => HomeController(), fenix: true);
-  Get.lazyPut(() => ApprovalController(), fenix: true);
   Get.lazyPut(() => AssetsController(), fenix: true);
   Get.lazyPut(() => ConsumablesController(), fenix: true);
   Get.lazyPut(() => RequestAssetsController(), fenix: true);
@@ -27,9 +28,14 @@ configurationDependencies() {
   Get.lazyPut(() => InquiryChatController(), fenix: true);
   Get.lazyPut(() => FilterController(), fenix: true);
 
+  //-----------Manager controller
+  Get.lazyPut(() => ApprovalController(), fenix: true);
+
   //-----------admin controller
   Get.lazyPut(() => AdminController(), fenix: true);
   Get.lazyPut(() => AdminAssetsController(), fenix: true);
   Get.lazyPut(() => ProductsController(), fenix: true);
   Get.lazyPut(() => AddProductController(), fenix: true);
+  Get.lazyPut(() => EmployeesController(), fenix: true);
+  Get.lazyPut(() => EmployeeDetailsController(), fenix: true);
 }

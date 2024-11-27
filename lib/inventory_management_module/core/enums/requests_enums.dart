@@ -4,6 +4,31 @@
 import '../constants/app_assets.dart';
 //------------------------Request Status------------------------
 
+enum EmployeeRequestStatus {
+  inUse,
+  returned,
+  retrieved,
+  maintenance,
+  requested,
+}
+
+extension GetEmployeeRequestName on EmployeeRequestStatus {
+  String get getName {
+    switch (this) {
+      case EmployeeRequestStatus.returned:
+        return 'Returned';
+      case EmployeeRequestStatus.maintenance:
+        return 'maintenance';
+      case EmployeeRequestStatus.requested:
+        return 'Requested';
+      case EmployeeRequestStatus.retrieved:
+        return 'Retrieved';
+      case EmployeeRequestStatus.inUse:
+        return 'InUse';
+    }
+  }
+}
+
 enum RequestStatus {
   approved,
   cancelled,
@@ -118,10 +143,7 @@ extension GetIssuName on IssueTypes {
 
 //------------------------ Product Type ------------------------
 
-enum ProductTypes {
-  asset,
-  consumables
-}
+enum ProductTypes { asset, consumables }
 
 extension GetProductTypes on ProductTypes {
   String get getName {
@@ -155,13 +177,12 @@ extension GetCurrencys on Currency {
   }
 }
 
-
 //------------------------ UnitOfMeasurement ------------------------
 
 enum UnitOfMeasurement {
-  milligram ,
-  gram ,
-  kilogram ,
+  milligram,
+  gram,
+  kilogram,
 }
 
 extension GetUnitOfMeasurement on UnitOfMeasurement {
@@ -177,18 +198,13 @@ extension GetUnitOfMeasurement on UnitOfMeasurement {
   }
 }
 
-
 //------------------------ UnitOfMeasurement ------------------------
 
-enum StorageLocation {
- room1,
-  room2
-}
+enum StorageLocation { room1, room2 }
 
 extension GetStorageLocation on StorageLocation {
   String get getName {
     switch (this) {
-
       case StorageLocation.room1:
         return 'Room1';
       case StorageLocation.room2:
@@ -196,9 +212,3 @@ extension GetStorageLocation on StorageLocation {
     }
   }
 }
-
-
-
-
-
-

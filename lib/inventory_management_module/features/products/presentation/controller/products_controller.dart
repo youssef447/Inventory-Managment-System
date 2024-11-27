@@ -6,10 +6,12 @@ import 'package:get/get.dart';
 import '../../../../core/enums/stock_enums.dart';
 import '../../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../../employee/consumables/domain/entity/consumables_entity.dart';
+import '../../../employee/home/domain/user_entity.dart';
 import '../../../employee/requests/entities/attachment_entity.dart';
 import '../../constants/ids.dart';
+import '../../domain/assigned_user_products_entity.dart';
 import '../../domain/product_entity.dart';
-import '../../domain/subEntities/contractDetailsEntity.dart';
+import '../../domain/subEntities/contract_details_entity.dart';
 import '../../domain/subEntities/storage_location_entity.dart';
 import '../../domain/subEntities/supplier_entity.dart';
 import '../../enums/product_enums.dart';
@@ -34,6 +36,7 @@ class ProductsController extends GetxController {
     products = [
       ProductEntity(
           id: '002',
+          status: 'Requested',
           productType: ProductType.asset,
           additionalNotes:
               'Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum',
@@ -58,7 +61,7 @@ class ProductsController extends GetxController {
             model: '552',
             dateReceived: DateTime.now(),
             quantity: '2',
-            status: 'InUse',
+            status: 'Maintenance',
             brand: 'Dell',
           ),
           supplier: SupplierEntity(
@@ -316,6 +319,7 @@ class ProductsController extends GetxController {
           totalQuantity: 20,
           currency: 'USD',
           unitCost: 12,
+          status: 'InUse',
           expectedLifeTime: DateTime.now(),
           productSpecifications: [
             AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
@@ -325,7 +329,7 @@ class ProductsController extends GetxController {
           ]),
     ];
     loading = false;
-     for (var model in products) {
+    for (var model in products) {
       if (model.productType == ProductType.asset) {
         assets.add(model.assetEntity!);
       }
@@ -334,7 +338,6 @@ class ProductsController extends GetxController {
       }
     }
     update([ProductsIds.productsTab]);
-
   }
 
   //-----------------------Prodoct Details-----------------------
@@ -344,4 +347,250 @@ class ProductsController extends GetxController {
   updateCategoryIndex(int index) {
     currentCategoryIndex.value = index;
   }
+
+  //dummy in stock data (get by id from backend)
+
+  final List<ProductEntity> dummyInStock = [
+    ProductEntity(
+        id: '002',
+        productType: ProductType.asset,
+        storage: [
+          StorageLocationAndQuantityEntity(
+              locationName: 'Room A13', quantity: 10)
+        ],
+        assetEntity: AssetsEntity(
+          assetName: 'Dell GZ 15',
+          category: 'Electronics',
+          subcategory: 'Computer',
+          model: 'GZ 15',
+          dateReceived: DateTime.now(),
+          quantity: '2',
+          status: 'InUse',
+          brand: 'Dell',
+        ),
+        supplier: SupplierEntity(
+          supplierName: 'TechSource Solutions',
+          postalCode: '1313',
+          city: 'Cairo',
+          country: 'Egypt',
+          email: 'jCgQ5@example.com',
+          firstName: 'Youssef',
+          lastName: 'Ashraf',
+          phoneNumber: '010100101010',
+          supplierId: '110',
+          stateOrProvince: 'NA',
+          contractDetails: ContractdetailsEntity(
+            attachmentEntity:
+                AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+            endDate: DateTime.now(),
+            startDate: DateTime.now(),
+          ),
+        ),
+        totalQuantity: 20,
+        currency: 'USD',
+        unitCost: 12,
+        expectedLifeTime: DateTime.now(),
+        productSpecifications: [
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+        ],
+        productWaranties: [
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+        ]),
+    ProductEntity(
+        id: '002',
+        productType: ProductType.asset,
+        storage: [
+          StorageLocationAndQuantityEntity(
+              locationName: 'Room A13', quantity: 10)
+        ],
+        assetEntity: AssetsEntity(
+          assetName: 'Dell GZ 15',
+          category: 'Electronics',
+          subcategory: 'Computer',
+          model: 'GZ 15',
+          dateReceived: DateTime.now(),
+          quantity: '2',
+          status: 'InUse',
+          brand: 'Dell',
+        ),
+        supplier: SupplierEntity(
+          supplierName: 'TechSource Solutions',
+          postalCode: '1313',
+          city: 'Cairo',
+          country: 'Egypt',
+          email: 'jCgQ5@example.com',
+          firstName: 'Youssef',
+          lastName: 'Ashraf',
+          phoneNumber: '010100101010',
+          supplierId: '110',
+          stateOrProvince: 'NA',
+          contractDetails: ContractdetailsEntity(
+            attachmentEntity:
+                AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+            endDate: DateTime.now(),
+            startDate: DateTime.now(),
+          ),
+        ),
+        totalQuantity: 20,
+        currency: 'USD',
+        unitCost: 12,
+        expectedLifeTime: DateTime.now(),
+        productSpecifications: [
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+        ],
+        productWaranties: [
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+        ]),
+    ProductEntity(
+        id: '002',
+        productType: ProductType.asset,
+        storage: [
+          StorageLocationAndQuantityEntity(
+              locationName: 'Room A13', quantity: 10)
+        ],
+        assetEntity: AssetsEntity(
+          assetName: 'Dell GZ 15',
+          category: 'Electronics',
+          subcategory: 'Computer',
+          model: 'GZ 15',
+          dateReceived: DateTime.now(),
+          quantity: '2',
+          status: 'InUse',
+          brand: 'Dell',
+        ),
+        supplier: SupplierEntity(
+          supplierName: 'TechSource Solutions',
+          postalCode: '1313',
+          city: 'Cairo',
+          country: 'Egypt',
+          email: 'jCgQ5@example.com',
+          firstName: 'Youssef',
+          lastName: 'Ashraf',
+          phoneNumber: '010100101010',
+          supplierId: '110',
+          stateOrProvince: 'NA',
+          contractDetails: ContractdetailsEntity(
+            attachmentEntity:
+                AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+            endDate: DateTime.now(),
+            startDate: DateTime.now(),
+          ),
+        ),
+        totalQuantity: 20,
+        currency: 'USD',
+        unitCost: 12,
+        expectedLifeTime: DateTime.now(),
+        productSpecifications: [
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+        ],
+        productWaranties: [
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+        ]),
+    ProductEntity(
+        id: '002',
+        productType: ProductType.asset,
+        storage: [
+          StorageLocationAndQuantityEntity(
+              locationName: 'Room A13', quantity: 10)
+        ],
+        assetEntity: AssetsEntity(
+          assetName: 'Dell GZ 15',
+          category: 'Electronics',
+          subcategory: 'Computer',
+          model: 'GZ 15',
+          dateReceived: DateTime.now(),
+          quantity: '2',
+          status: 'InUse',
+          brand: 'Dell',
+        ),
+        supplier: SupplierEntity(
+          supplierName: 'TechSource Solutions',
+          postalCode: '1313',
+          city: 'Cairo',
+          country: 'Egypt',
+          email: 'jCgQ5@example.com',
+          firstName: 'Youssef',
+          lastName: 'Ashraf',
+          phoneNumber: '010100101010',
+          supplierId: '110',
+          stateOrProvince: 'NA',
+          contractDetails: ContractdetailsEntity(
+            attachmentEntity:
+                AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+            endDate: DateTime.now(),
+            startDate: DateTime.now(),
+          ),
+        ),
+        totalQuantity: 20,
+        currency: 'USD',
+        unitCost: 12,
+        expectedLifeTime: DateTime.now(),
+        productSpecifications: [
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+        ],
+        productWaranties: [
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+        ]),
+  ];
+  //dummy AssignedUsers for specific product (get by product id from backend)
+
+  List<AssignedUserProductsEntity> dummyAssignedUsers = [
+    AssignedUserProductsEntity(
+      assigneDate: DateTime.now(),
+      lastUpdate: DateTime.now(),
+      returnDate: DateTime.now(),
+      quantityAssigned: 2,
+      userEntity: UserEntity(
+        firstName: 'Ahmed',
+        lastName: 'Mohammed',
+        id: '232424',
+      ),
+      //dummy
+      productentity: ProductEntity(
+          id: '002',
+          productType: ProductType.asset,
+          storage: [
+            StorageLocationAndQuantityEntity(
+                locationName: 'Room A13', quantity: 10)
+          ],
+          assetEntity: AssetsEntity(
+            assetName: 'Dell GZ 15',
+            category: 'Electronics',
+            subcategory: 'Computer',
+            model: 'GZ 15',
+            dateReceived: DateTime.now(),
+            quantity: '2',
+            status: 'InUse',
+            brand: 'Dell',
+          ),
+          supplier: SupplierEntity(
+            supplierName: 'TechSource Solutions',
+            postalCode: '1313',
+            city: 'Cairo',
+            country: 'Egypt',
+            email: 'jCgQ5@example.com',
+            firstName: 'Youssef',
+            lastName: 'Ashraf',
+            phoneNumber: '010100101010',
+            supplierId: '110',
+            stateOrProvince: 'NA',
+            contractDetails: ContractdetailsEntity(
+              attachmentEntity:
+                  AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+              endDate: DateTime.now(),
+              startDate: DateTime.now(),
+            ),
+          ),
+          totalQuantity: 20,
+          currency: 'USD',
+          unitCost: 12,
+          expectedLifeTime: DateTime.now(),
+          productSpecifications: [
+            AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+          ],
+          productWaranties: [
+            AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+          ]),
+    ),
+  ];
 }

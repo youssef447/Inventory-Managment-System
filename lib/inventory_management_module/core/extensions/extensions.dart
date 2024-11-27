@@ -55,7 +55,7 @@ extension GetColor on String {
     }
 
     if (this == 'Returned'.tr) {
-      return AppColors.primary;
+      return AppColors.red;
     }
     if (this == 'InUse'.tr) {
       return AppColors.green;

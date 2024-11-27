@@ -41,6 +41,7 @@ class AppDefaultButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: width ?? 120.w,
+      height: height,
       child: MaterialButton(
         splashColor: Colors.transparent,
         highlightColor: Colors.transparent,

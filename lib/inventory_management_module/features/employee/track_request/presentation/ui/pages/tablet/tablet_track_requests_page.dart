@@ -108,7 +108,7 @@ class TabletTrackRequestsPage extends GetView<TrackRequestController> {
                                           },
                                         ),
                                       ),
-                                    )
+                                    ),
                                   ],
                                 ),
                               ),

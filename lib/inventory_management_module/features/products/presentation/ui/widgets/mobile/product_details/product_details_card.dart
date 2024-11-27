@@ -23,10 +23,14 @@ class MobileProductDetailsCard extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                AppAssets.image,
-                width: 80.w,
-                height: 80.h,
+              ClipRRect(
+                borderRadius: BorderRadius.circular(4.r),
+                child: Image.asset(
+                  AppAssets.pphone,
+                  width: 45.w,
+                  height: 65.h,
+                  fit: BoxFit.cover,
+                ),
               ),
               horizontalSpace(4),
               Expanded(
@@ -103,6 +107,44 @@ class MobileProductDetailsCard extends StatelessWidget {
             label: 'Expected Lifetime',
             value: DateTimeHelper.formatDate(product.expectedLifeTime),
           ),
+          verticalSpace(2),
+          DefaultRichText(
+            label: 'Unit Cost',
+            value: DateTimeHelper.formatDouble(product.unitCost),
+          ),
+          if (isConsumable)
+            Padding(
+              padding: EdgeInsets.all(2.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  DefaultRichText(
+                    label: 'Unit Of Measurement',
+                    value: product.consumablesEntity!.unitOfMeasurement,
+                  ),
+                  verticalSpace(2),
+                  DefaultRichText(
+                    label: 'Reorder Level',
+                    value: DateTimeHelper.formatInt(
+                        product.consumablesEntity!.reorderLevel),
+                  ),
+                  verticalSpace(2),
+                  DefaultRichText(
+                    label: 'Reorder Quantity',
+                    value: DateTimeHelper.formatInt(
+                        product.consumablesEntity!.reorderQuantity),
+                  ),
+                  verticalSpace(2),
+                  DefaultRichText(
+                    label: 'Expiration Date',
+                    value: DateTimeHelper.formatDate(
+                        product.consumablesEntity!.expirationDate ??
+                            DateTime.now()),
+                  ),
+                ],
+              ),
+            ),
+          verticalSpace(2),
           DefaultRichText(
             label: 'Supplier Name',
             value: product.supplier.supplierName,

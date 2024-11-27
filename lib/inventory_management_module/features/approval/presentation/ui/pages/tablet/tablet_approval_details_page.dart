@@ -81,7 +81,7 @@ class TabletApprovalDetailsPage extends GetView<ApprovalController> {
               ),
               verticalSpace(15),
               Image.asset(
-                AppAssets.phone,
+                AppAssets.pphone,
                 width: 100.w,
                 height: 100.h,
                 fit: BoxFit.fill,

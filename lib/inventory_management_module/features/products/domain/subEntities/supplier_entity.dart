@@ -1,4 +1,4 @@
-import 'contractDetailsEntity.dart';
+import 'contract_details_entity.dart';
 
 class SupplierEntity {
   String supplierName;

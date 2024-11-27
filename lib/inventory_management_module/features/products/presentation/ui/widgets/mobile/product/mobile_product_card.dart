@@ -20,10 +20,14 @@ class MobileProductCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                Image.asset(
-                  AppAssets.image,
-                  width: 65.w,
-                  height: 65.h,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(4.r),
+                  child: Image.asset(
+                    AppAssets.pphone,
+                    width: 45.w,
+                    height: 65.h,
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 horizontalSpace(4),
                 Expanded(

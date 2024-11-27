@@ -8,4 +8,5 @@ abstract class RouteArguments {
   static const String consumablesModelIndex = 'consumablesModelIndex';
   static const String requestAction = 'requestAction';
   static const String product = 'product';
+  static const String userEntity = 'userEntity';
 }
