@@ -30,6 +30,7 @@ class AppDropdown extends StatelessWidget {
     this.style,
     this.textAlign,
     this.image,
+    this.iconColor,
     this.splashColorOn = true,
     this.showDropdownIcon = true,
   });
@@ -48,6 +49,7 @@ class AppDropdown extends StatelessWidget {
   final double? height, width, menuWidth;
   final TextAlign? textAlign;
   final String? image;
+  final Color? iconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -81,13 +83,11 @@ class AppDropdown extends StatelessWidget {
                   image == null
                       ? _buildDropdownText()
                       : textButton == null
-                          ? Center(
-                              child: SvgPicture.asset(
-                                image!,
-                                color: AppColors.icon,
-                                width: 24.w,
-                                height: 24.h,
-                              ),
+                          ? SvgPicture.asset(
+                              image!,
+                              color: iconColor ?? AppColors.icon,
+                              width: 24.w,
+                              height: 24.h,
                             )
                           : Expanded(
                               child: Row(
@@ -96,7 +96,7 @@ class AppDropdown extends StatelessWidget {
                                   Flexible(
                                     child: SvgPicture.asset(
                                       image!,
-                                      color: AppColors.icon,
+                                      color: iconColor ?? AppColors.icon,
                                       width: 24.w,
                                       height: 24.h,
                                     ),

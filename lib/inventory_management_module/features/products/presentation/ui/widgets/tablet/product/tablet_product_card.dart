@@ -34,43 +34,42 @@ class TabletProductCard extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          DefaultRichText(
-                            label: 'Product ID',
-                            value: product.id,
-                          ),
-                          DefaultRichText(
-                            label: 'Product Type',
-                            value: product.productType.getName,
-                          ),
-                          DefaultRichText(
-                            label: 'Supplier',
-                            value: product.supplier.supplierName,
-                            style:
-                                AppTextStyles.font12BlackMediumCairo.copyWith(
-                              decoration: TextDecoration.underline,
-                              color: AppColors.blue,
-                            ),
-                          ),
-                        ],
-                      ),
                       Expanded(
-                        child: Align(
-                          alignment: AlignmentDirectional.centerEnd,
-                          child: DefaultRichText(
-                            label: 'Status',
-                            labelStyle:
-                                AppTextStyles.font10SecondaryBlackCairoMedium,
-                            value: product.stockStatus.getName,
-                            style:
-                                AppTextStyles.font10BlackCairoMedium.copyWith(
-                              color: product.stockStatus.getColor,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            DefaultRichText(
+                              label: 'Product ID',
+                              value: product.id,
                             ),
-                          ),
+                            DefaultRichText(
+                              label: 'Product Type',
+                              value: product.productType.getName,
+                            ),
+                            DefaultRichText(
+                              label: 'Supplier',
+                              value: product.supplier.supplierName,
+                              style:
+                                  AppTextStyles.font12BlackMediumCairo.copyWith(
+                                decoration: TextDecoration.underline,
+                                overflow: TextOverflow.ellipsis,
+                                color: AppColors.blue,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
+                      DefaultRichText(
+                        end: true,
+                        label: 'Status',
+                        labelStyle:
+                            AppTextStyles.font10SecondaryBlackCairoMedium,
+                        value: product.stockStatus.getName,
+                        style: AppTextStyles.font10BlackCairoMedium.copyWith(
+                          color: product.stockStatus.getColor,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )
                     ],
                   ),
                 )

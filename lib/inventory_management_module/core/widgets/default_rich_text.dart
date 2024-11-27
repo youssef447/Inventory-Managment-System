@@ -13,6 +13,7 @@ class DefaultRichText extends StatelessWidget {
   final String value;
   final TextStyle? style;
   final TextStyle? labelStyle;
+  final bool? end;
   final Color? valueColor;
   final bool fullText;
   final String? icon;
@@ -24,45 +25,83 @@ class DefaultRichText extends StatelessWidget {
     this.valueColor,
     this.icon,
     this.labelStyle,
+    this.end,
     this.fullText = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        if (icon != null)
-          Padding(
-            padding: EdgeInsetsDirectional.only(end: 4.0.w),
-            child: SvgPicture.asset(
-              icon!,
-              width: 11.w,
-              height: 11.h,
+    return icon == null
+        ? RichText(
+            textAlign: TextAlign.start,
+            overflow: fullText ? TextOverflow.visible : TextOverflow.ellipsis,
+            text: TextSpan(
+              text: '${label.tr}: ',
+              style: labelStyle ??
+                  (context.isTablett
+                      ? AppTextStyles.font14SecondaryBlackCairoMedium
+                          .copyWith(overflow: TextOverflow.ellipsis)
+                      : AppTextStyles.font12SecondaryBlackCairoMedium
+                          .copyWith(overflow: TextOverflow.ellipsis)),
+              children: [
+                TextSpan(
+                  text: value,
+                  style: style ??
+                      (context.isTablett
+                          ? AppTextStyles.font14BlackCairoMedium.copyWith(
+                              overflow: TextOverflow.ellipsis,
+                              color: valueColor ?? value.split(' ')[0].getColor)
+                          : AppTextStyles.font12BlackMediumCairo.copyWith(
+                              overflow: TextOverflow.ellipsis,
+                              color:
+                                  valueColor ?? value.split(' ')[0].getColor)),
+                ),
+              ],
             ),
-          ),
-        RichText(
-          textAlign: TextAlign.start,
-          overflow: fullText ? TextOverflow.visible : TextOverflow.ellipsis,
-          text: TextSpan(
-            text: '${label.tr}: ',
-            style: labelStyle ??
-                (context.isTablett
-                    ? AppTextStyles.font14SecondaryBlackCairoMedium
-                    : AppTextStyles.font12SecondaryBlackCairoMedium),
+          )
+        : Row(
+            mainAxisAlignment:
+                end ?? false ? MainAxisAlignment.end : MainAxisAlignment.start,
             children: [
-              TextSpan(
-                text: value,
-                style: style ??
-                    (context.isTablett
-                        ? AppTextStyles.font14BlackCairoMedium.copyWith(
-                            color: valueColor ?? value.split(' ')[0].getColor)
-                        : AppTextStyles.font12BlackMediumCairo.copyWith(
-                            color: valueColor ?? value.split(' ')[0].getColor)),
+              if (icon != null)
+                Padding(
+                  padding: EdgeInsetsDirectional.only(end: 4.0.w),
+                  child: SvgPicture.asset(
+                    icon!,
+                    width: 11.w,
+                    height: 11.h,
+                  ),
+                ),
+              RichText(
+                textAlign: TextAlign.start,
+                overflow:
+                    fullText ? TextOverflow.visible : TextOverflow.ellipsis,
+                text: TextSpan(
+                  text: '${label.tr}: ',
+                  style: labelStyle ??
+                      (context.isTablett
+                          ? AppTextStyles.font14SecondaryBlackCairoMedium
+                              .copyWith(overflow: TextOverflow.ellipsis)
+                          : AppTextStyles.font12SecondaryBlackCairoMedium
+                              .copyWith(overflow: TextOverflow.ellipsis)),
+                  children: [
+                    TextSpan(
+                      text: value,
+                      style: style ??
+                          (context.isTablett
+                              ? AppTextStyles.font14BlackCairoMedium.copyWith(
+                                  overflow: TextOverflow.ellipsis,
+                                  color: valueColor ??
+                                      value.split(' ')[0].getColor)
+                              : AppTextStyles.font12BlackMediumCairo.copyWith(
+                                  overflow: TextOverflow.ellipsis,
+                                  color: valueColor ??
+                                      value.split(' ')[0].getColor)),
+                    ),
+                  ],
+                ),
               ),
             ],
-          ),
-        ),
-      ],
-    );
+          );
   }
 }
