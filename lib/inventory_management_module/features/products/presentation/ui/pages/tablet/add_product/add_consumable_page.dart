@@ -217,7 +217,7 @@ class AddConsumablePage extends GetView<AddProductController> {
                 children: [
                   Expanded(
                     child: LabeledFormField(
-                      controller: controller.quantityController,
+                      controller: controller.totalQuantityController,
                       label: 'Quantity'.tr,
                     ),
                   ),
@@ -371,44 +371,55 @@ class AddConsumablePage extends GetView<AddProductController> {
                 ],
               ),
               verticalSpace(24),
-              Row(
-                children: [
-                  Expanded(
-                    child: Obx(() {
-                      return LabeledDropdownField(
-                        label: 'Storage Location'.tr,
-                        value: controller.storageLocationValue.value,
-                        textButton:
-                        controller.storageLocationValue.value?.getName,
-                        onChanged: (value) {
-                          controller.updateStorageLocationValue(value);
-                        },
-                        controller: controller.storageLocationController,
-                        items: List.generate(
-                          controller.storageLocation.length,
-                              (index) {
-                            return DropdownMenuItem(
-                              value: controller.storageLocation[index],
-                              child: Text(
-                                controller.storageLocation[index].getName,
-                                style: AppTextStyles
-                                    .font14SecondaryBlackCairoMedium,
+              GetBuilder<AddProductController>(
+                  builder: (controller) {
+                    return ListView.separated(
+                      shrinkWrap: true,
+                      itemBuilder: (context,index){
+                        return  Row(
+                          children: [
+                            Expanded(
+                              child: Obx(() {
+                                return LabeledDropdownField(
+                                  label: 'Storage Location'.tr,
+                                  value: controller.selectedStorageLocations[index].value,
+                                  textButton:
+                                  controller.selectedStorageLocations[index].value?.getName,
+                                  onChanged: (value) {
+                                    controller.updateStorageLocationValue(index, value!);
+                                  },
+                                  controller: controller.storageLocationControllers[index],
+                                  items: List.generate(
+                                    controller.storageLocation.length,
+                                        (index) {
+                                      return DropdownMenuItem(
+                                        value: controller.storageLocation[index],
+                                        child: Text(
+                                          controller.storageLocation[index].getName,
+                                          style: AppTextStyles
+                                              .font14SecondaryBlackCairoMedium,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                );
+                              }),
+                            ),
+                            horizontalSpace(15),
+                            Expanded(
+                              child: LabeledFormField(
+                                readOnly: false,
+                                controller: controller.stockOnHandController[index],
+                                label: 'Stock On Hand'.tr,
                               ),
-                            );
-                          },
-                        ),
-                      );
-                    }),
-                  ),
-                  horizontalSpace(15),
-                  Expanded(
-                    child: LabeledFormField(
-                      readOnly: false,
-                      controller: controller.stockOnHandController,
-                      label: 'Stock On Hand'.tr,
-                    ),
-                  ),
-                ],
+                            ),
+                          ],
+                        );
+                      }, separatorBuilder: (context,index){
+                      return verticalSpace(12);
+                    }, itemCount: controller.storageLocationCount,
+                    );
+                  }
               ),
               verticalSpace(8),
               Align(
@@ -420,7 +431,7 @@ class AddConsumablePage extends GetView<AddProductController> {
                   textColor: AppColors.white,
                   color: AppColors.black,
                   onTap: () {
-                    // Add category action
+                    controller.addMoreStorage();
                   },
                 ),
               ),
@@ -503,7 +514,7 @@ class AddConsumablePage extends GetView<AddProductController> {
                     color: AppColors.primary,
                     onPressed: (){
                       controller.addConsumableItem();
-                      Navigator.pushReplacementNamed(context, Routes.adminHome);
+                      Navigator.pop(context);
                       GetDialogHelper.generalDialog(
                           context: Get.context!,
                           child: DefaultDialog(

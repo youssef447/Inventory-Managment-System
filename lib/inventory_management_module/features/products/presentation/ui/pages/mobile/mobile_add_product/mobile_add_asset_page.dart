@@ -150,7 +150,7 @@ class MobileAddAssetPage extends GetView<AddProductController> {
               verticalSpace(15),
               LabeledFormField(
                 readOnly: false,
-                controller: controller.quantityController,
+                controller: controller.totalQuantityController,
                 label: 'Unit Test'.tr,
               ),
               verticalSpace(15),
@@ -267,37 +267,58 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                 );
               }),
               verticalSpace(15),
-              Obx(() {
-                return LabeledDropdownField(
-                  label: 'Storage Location'.tr,
-                  value: controller.storageLocationValue.value,
-                  textButton:
-                  controller.storageLocationValue.value?.getName,
-                  onChanged: (value) {
-                    controller.updateStorageLocationValue(value);
-                  },
-                  controller: controller.storageLocationController,
-                  items: List.generate(
-                    controller.storageLocation.length,
-                        (index) {
-                      return DropdownMenuItem(
-                        value: controller.storageLocation[index],
-                        child: Text(
-                          controller.storageLocation[index].getName,
-                          style: AppTextStyles
-                              .font14SecondaryBlackCairoMedium,
-                        ),
-                      );
-                    },
-                  ),
-                );
-              }),
-              verticalSpace(15),
-              LabeledFormField(
-                readOnly: false,
-                controller: controller.stockOnHandController,
-                label: 'Stock On Hand'.tr,
+
+              GetBuilder<AddProductController>(
+                  builder: (controller) {
+                    return ListView.separated(
+                      shrinkWrap: true,
+                      itemBuilder: (context,index){
+                        return  Row(
+                          children: [
+                            Expanded(
+                              child: Obx(() {
+                                return LabeledDropdownField(
+                                  label: 'Storage Location'.tr,
+                                  value: controller.selectedStorageLocations[index].value,
+                                  textButton:
+                                  controller.selectedStorageLocations[index].value?.getName,
+                                  onChanged: (value) {
+                                    controller.updateStorageLocationValue(index, value!);
+                                  },
+                                  controller: controller.storageLocationControllers[index],
+                                  items: List.generate(
+                                    controller.storageLocation.length,
+                                        (index) {
+                                      return DropdownMenuItem(
+                                        value: controller.storageLocation[index],
+                                        child: Text(
+                                          controller.storageLocation[index].getName,
+                                          style: AppTextStyles
+                                              .font14SecondaryBlackCairoMedium,
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                );
+                              }),
+                            ),
+                            horizontalSpace(15),
+                            Expanded(
+                              child: LabeledFormField(
+                                readOnly: false,
+                                controller: controller.stockOnHandController[index],
+                                label: 'Stock On Hand'.tr,
+                              ),
+                            ),
+                          ],
+                        );
+                      }, separatorBuilder: (context,index){
+                      return verticalSpace(12);
+                    }, itemCount: controller.storageLocationCount,
+                    );
+                  }
               ),
+
               verticalSpace(8),
               Align(
                 alignment: AlignmentDirectional.centerStart,
@@ -308,7 +329,7 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                   textColor: AppColors.white,
                   color: AppColors.black,
                   onTap: () {
-                    // Add category action
+                    controller.addMoreStorage();
                   },
                 ),
               ),
