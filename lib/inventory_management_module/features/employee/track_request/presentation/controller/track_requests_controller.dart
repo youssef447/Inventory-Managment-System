@@ -1,3 +1,4 @@
+import '../../../../../core/enums/requests_enums.dart';
 import '../../../requests/constants/ids_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -67,12 +68,12 @@ class TrackRequestController extends GetxController {
       Get.find<RequestsController>()
           .requestsOfConsumables
           .firstWhere((element) => element.requestId == requestId)
-          .status = 'Canceled';
+          .status = RequestStatus.cancelled;
     } else {
       Get.find<RequestsController>()
           .requestsOfAssets
           .firstWhere((element) => element.requestId == requestId)
-          .status = 'Canceled';
+          .status = RequestStatus.cancelled;
     }
     requests.removeWhere((element) => element.requestId == requestId);
     Navigator.of(context, rootNavigator: true).pop();

@@ -28,7 +28,7 @@ class MobileTrackDetailsCard extends StatelessWidget {
         children: [
           DefaultRichText(
             label: 'Request Type',
-            value: model.requestType,
+            value: model.requestType.getName,
           ),
           DefaultRichText(
             label: 'Priority',
@@ -69,7 +69,7 @@ class MobileTrackDetailsCard extends StatelessWidget {
           verticalSpace(32),
           _BuildIconLabel(
             'Approval',
-            model.status,
+            model.status.getName,
             AppAssets.doc,
           ),
           verticalSpace(15),

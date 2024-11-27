@@ -1,7 +1,10 @@
 //Youssef Ashraf
 //Enums of Requests
 
+import 'dart:ui';
+
 import '../constants/app_assets.dart';
+import '../theme/app_colors.dart';
 //------------------------Request Status------------------------
 
 enum EmployeeRequestStatus {
@@ -34,6 +37,7 @@ enum RequestStatus {
   cancelled,
   pending,
   rejected,
+  waiting,
 }
 
 extension GetName on RequestStatus {
@@ -47,6 +51,25 @@ extension GetName on RequestStatus {
         return 'Canceled';
       case RequestStatus.rejected:
         return 'Rejected';
+      default:
+        return '';
+    }
+  }
+}
+
+extension GetRequestColor on RequestStatus {
+  Color get getColor {
+    switch (this) {
+      case RequestStatus.pending:
+        return AppColors.warming;
+      case RequestStatus.approved:
+        return AppColors.green;
+      case RequestStatus.cancelled:
+        return AppColors.red;
+      case RequestStatus.rejected:
+        return AppColors.red;
+      default:
+        return AppColors.black;
     }
   }
 }
@@ -62,6 +85,8 @@ extension GetAsset on RequestStatus {
         return AppAssets.canceled;
       case RequestStatus.rejected:
         return AppAssets.rejected;
+      default:
+        return '';
     }
   }
 }

@@ -40,7 +40,7 @@ class TabletTrackDeatailsCard extends GetView<TrackRequestController> {
               ),
               _BuildIconLabel(
                 'Approval',
-                model.status,
+                model.status.getName,
                 AppAssets.doc,
               ),
               _BuildIconLabel(

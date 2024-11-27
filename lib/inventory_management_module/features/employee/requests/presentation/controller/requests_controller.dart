@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 import '../../../../../core/constants/approve_cycle.dart';
 import '../../../../../core/enums/requests_enums.dart';
+import '../../../../products/enums/product_enums.dart';
 import '../../../Assets/domain/entity/assets_entity.dart';
 import '../../../consumables/domain/entity/consumables_entity.dart';
 import '../../constants/ids_constants.dart';
@@ -36,8 +37,8 @@ class RequestsController extends GetxController {
     requests = [
       RequestEntity(
         requestId: '001',
-        requestType: 'Asset Request',
-        status: 'Pending',
+        requestType: ProductType.asset,
+        status: RequestStatus.pending,
         requestDate: DateTime.now(),
         dateReturn: DateTime.now(),
         expectedRecieved: DateTime.now(),
@@ -67,8 +68,8 @@ class RequestsController extends GetxController {
         ],
       RequestEntity(
         requestId: '002',
-        requestType: 'Asset Request',
-        status: 'Approved',
+        requestType: ProductType.asset,
+        status: RequestStatus.approved,
         requestDate: DateTime.now(),
         dateReturn: DateTime.now(),
         expectedRecieved: DateTime.now(),
@@ -88,8 +89,8 @@ class RequestsController extends GetxController {
       ),
       RequestEntity(
         requestId: '0016',
-        requestType: 'Consumable Request',
-        status: 'Pending',
+        requestType: ProductType.consumable,
+        status: RequestStatus.pending,
         requestDate: DateTime.now(),
         dateReturn: DateTime.now(),
         expectedRecieved: DateTime.now(),
@@ -123,8 +124,8 @@ class RequestsController extends GetxController {
         ],
       RequestEntity(
         requestId: '004',
-        requestType: 'Asset Request',
-        status: 'Pending',
+        requestType: ProductType.asset,
+        status: RequestStatus.pending,
         requestDate: DateTime.now(),
         dateReturn: DateTime.now(),
         expectedRecieved: DateTime.now(),
@@ -144,8 +145,8 @@ class RequestsController extends GetxController {
       ),
       RequestEntity(
         requestId: '005',
-        requestType: 'Asset Request',
-        status: 'Pending',
+        requestType: ProductType.asset,
+        status: RequestStatus.pending,
         requestDate: DateTime.now(),
         dateReturn: DateTime.now(),
         expectedRecieved: DateTime.now(),
@@ -165,8 +166,8 @@ class RequestsController extends GetxController {
       ),
       RequestEntity(
         requestId: '0013',
-        requestType: 'Consumable Request',
-        status: 'Pending',
+        requestType: ProductType.consumable,
+        status: RequestStatus.pending,
         requestDate: DateTime.now(),
         dateReturn: DateTime.now(),
         expectedRecieved: DateTime.now(),
@@ -190,8 +191,8 @@ class RequestsController extends GetxController {
       ),
       RequestEntity(
         requestId: '009',
-        requestType: 'Consumable Request',
-        status: 'Pending',
+        requestType: ProductType.consumable,
+        status: RequestStatus.pending,
         requestDate: DateTime.now(),
         dateReturn: DateTime.now(),
         expectedRecieved: DateTime.now(),
@@ -262,34 +263,50 @@ class RequestsController extends GetxController {
   }
 
   int getPendingConsumableNumbers() {
-    return requestsOfConsumables.where((e) => e.status == 'Pending').length;
+    return requestsOfConsumables
+        .where((e) => e.status == RequestStatus.pending)
+        .length;
   }
 
   int getApprovedConsumableNumbers() {
-    return requestsOfConsumables.where((e) => e.status == 'Approved').length;
+    return requestsOfConsumables
+        .where((e) => e.status == RequestStatus.approved)
+        .length;
   }
 
   int getCanceledConsumableNumbers() {
-    return requestsOfConsumables.where((e) => e.status == 'Canceled').length;
+    return requestsOfConsumables
+        .where((e) => e.status == RequestStatus.cancelled)
+        .length;
   }
 
   int getRejectedConsumableNumbers() {
-    return requestsOfConsumables.where((e) => e.status == 'Rejected').length;
+    return requestsOfConsumables
+        .where((e) => e.status == RequestStatus.rejected)
+        .length;
   }
 
   int getPendingAssetNumbers() {
-    return requestsOfAssets.where((e) => e.status == 'Pending').length;
+    return requestsOfAssets
+        .where((e) => e.status == RequestStatus.pending)
+        .length;
   }
 
   int getApprovedAssetNumbers() {
-    return requestsOfAssets.where((e) => e.status == 'Approved').length;
+    return requestsOfAssets
+        .where((e) => e.status == RequestStatus.approved)
+        .length;
   }
 
   int getCanceledAssetNumbers() {
-    return requestsOfAssets.where((e) => e.status == 'Canceled').length;
+    return requestsOfAssets
+        .where((e) => e.status == RequestStatus.cancelled)
+        .length;
   }
 
   int getRejectedAssetNumbers() {
-    return requestsOfAssets.where((e) => e.status == 'Rejected').length;
+    return requestsOfAssets
+        .where((e) => e.status == RequestStatus.rejected)
+        .length;
   }
 }

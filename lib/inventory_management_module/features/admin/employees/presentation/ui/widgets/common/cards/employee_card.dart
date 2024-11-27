@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:inventory_management/inventory_management_module/core/theme/app_text_styles.dart';
-import '../../../../../../../core/animations/scale_animation.dart';
-import '../../../../../../../core/helpers/spacing_helper.dart';
-import '../../../../../../../features/admin/employees/enums/departments.dart';
+import '../../../../../../../../core/animations/scale_animation.dart';
+import '../../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../enums/departments.dart';
 
-import '../../../../../../../core/theme/app_colors.dart';
-import '../../../../../../../core/widgets/default_rich_text.dart';
-import '../../../../../../employee/home/domain/user_entity.dart';
+import '../../../../../../../../core/theme/app_colors.dart';
+import '../../../../../../../../core/widgets/default_rich_text.dart';
+import '../../../../../../../employee/home/domain/user_entity.dart';
 
+// Youssef Ashraf
+/// Employee Card in Employee Page (mobile,tablet)
 class EmployeeCard extends StatelessWidget {
   final UserEntity employee;
   const EmployeeCard({super.key, required this.employee});
@@ -37,6 +39,8 @@ class EmployeeCard extends StatelessWidget {
                   Text(
                     '${employee.firstName} ${employee.lastName}',
                     style: AppTextStyles.font16BlackCairoMedium,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   DefaultRichText(
                     label: 'Job Title',

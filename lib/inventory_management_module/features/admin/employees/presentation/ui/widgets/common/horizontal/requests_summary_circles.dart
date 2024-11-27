@@ -2,24 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../core/theme/app_text_styles.dart';
-import '../../../../../constants/ids_constants.dart';
-import '../../../../controller/requests_controller.dart';
+import '../../../../../constants/ids.dart';
+import '../../../../controller/employee_details_controller.dart';
 
 //Youssef Ashraf
 ///Represents (windows & tablet landscape )  Requsts Summary Circles weather Requests are pending , Approved ,etc..
-class HorizontalRequstsSummaryCircles extends GetView<RequestsController> {
+class HorizontalRequstsSummaryCircles
+    extends GetView<EmployeeDetailsController> {
   const HorizontalRequstsSummaryCircles({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<RequestsController>(
-        id: RequestsIds.summaryCircles,
+    return GetBuilder<EmployeeDetailsController>(
+        id: AdminEmployeesIds.summaryCircles,
         builder: (controller) {
           return Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
@@ -50,9 +51,9 @@ class HorizontalRequstsSummaryCircles extends GetView<RequestsController> {
                       //count of current status
                       Text(
                         DateTimeHelper.formatInt(
-                          controller.getPendingRequestNumbers(
-                            RequestStatus.values[index],
-                          ),
+                          controller
+                              .getRequestNumbers(RequestStatus.values[index])
+                              .length,
                         ),
                         style: AppTextStyles.font22BlackBoldCairo,
                       ),

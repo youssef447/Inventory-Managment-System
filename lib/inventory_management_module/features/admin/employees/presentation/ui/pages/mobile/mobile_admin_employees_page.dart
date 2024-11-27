@@ -24,7 +24,7 @@ import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../../core/widgets/fields/app_form_field.dart';
-import '../../widgets/common/employee_card.dart';
+import '../../widgets/common/cards/employee_card.dart';
 part '../../widgets/mobile/employee_search_filter.dart';
 part '../../widgets/mobile/employee_filter_dialog.dart';
 
@@ -36,6 +36,7 @@ class MobileAdminEmployeesPage extends GetView<EmployeesController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(

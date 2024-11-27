@@ -58,7 +58,7 @@ class VerticalTrackRequestCard extends StatelessWidget {
           ),
           DefaultRichText(
             label: 'Request Type',
-            value: model.requestType,
+            value: model.requestType.getName,
           ),
           DefaultRichText(
             label: 'Request Date',

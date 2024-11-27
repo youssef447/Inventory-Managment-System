@@ -1,3 +1,5 @@
+import '../../../../core/enums/requests_enums.dart';
+import '../../../products/enums/product_enums.dart';
 import '../../Assets/domain/entity/assets_entity.dart';
 import '../../consumables/domain/entity/consumables_entity.dart';
 import '../../home/domain/user_entity.dart';
@@ -9,10 +11,11 @@ import 'message_entity.dart';
 class RequestEntity {
   int quantity;
   String requestId;
-  String requestType;
+  UserEntity? userEntity;
+  ProductType requestType;
   DateTime requestDate;
   String priority;
-  String status;
+  RequestStatus status;
   String? maintenanceFrequency;
   AssetsEntity? assetsEntity;
   ConsumablesEntity? consumablesEntity;
@@ -29,6 +32,7 @@ class RequestEntity {
     required this.requestDate,
     required this.priority,
     this.maintenanceFrequency,
+    this.userEntity,
     this.assetsEntity,
     this.consumablesEntity,
     required this.expectedRecieved,

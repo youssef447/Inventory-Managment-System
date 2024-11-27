@@ -58,7 +58,7 @@ class HorizontalTrackRequestCard extends StatelessWidget {
                         Flexible(
                           child: DefaultRichText(
                             label: 'Request Type',
-                            value: model.requestType,
+                            value: model.requestType.getName,
                           ),
                         ),
                       ],

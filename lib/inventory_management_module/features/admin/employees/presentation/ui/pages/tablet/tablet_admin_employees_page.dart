@@ -22,7 +22,7 @@ import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../../core/widgets/dropdown/app_dropdown.dart';
 import '../../../../../../../core/widgets/fields/app_form_field.dart';
-import '../../widgets/common/employee_card.dart';
+import '../../widgets/common/cards/employee_card.dart';
 part '../../widgets/tablet/employee_search_filter.dart';
 
 //Youssef Ashraf
@@ -38,6 +38,7 @@ class TabletAdminEmployeesPage extends GetView<EmployeesController> {
       },
       child: Builder(builder: (context) {
         return Scaffold(
+          backgroundColor: AppColors.background,
           body: SafeArea(
             child: Padding(
               padding: EdgeInsets.symmetric(

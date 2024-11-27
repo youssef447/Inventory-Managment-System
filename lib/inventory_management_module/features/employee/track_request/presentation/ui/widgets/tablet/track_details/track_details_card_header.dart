@@ -25,7 +25,7 @@ class TrackDetailsCardHeader extends StatelessWidget {
                 style: AppTextStyles.font14SecondaryBlackCairoMedium,
                 children: [
                   TextSpan(
-                    text: model.requestType,
+                    text: model.requestType.getName,
                     style: AppTextStyles.font14BlackCairoMedium,
                   )
                 ],

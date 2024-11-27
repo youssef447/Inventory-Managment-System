@@ -42,7 +42,8 @@ class RequestsOfConsumablesTable extends GetView<RequestsController> {
                   ),
                   DataCell(
                     Text(
-                      controller.requestsOfConsumables[index].requestType,
+                      controller
+                          .requestsOfConsumables[index].requestType.getName,
                       style: AppTextStyles.font16BlackRegularCairo,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -62,10 +63,10 @@ class RequestsOfConsumablesTable extends GetView<RequestsController> {
                   ),
                   DataCell(
                     Text(
-                      controller.requestsOfConsumables[index].status.tr,
+                      controller.requestsOfConsumables[index].status.getName.tr,
                       style: AppTextStyles.font16BlackRegularCairo.copyWith(
-                        color: controller
-                            .requestsOfConsumables[index].status.tr.getColor,
+                        color: controller.requestsOfConsumables[index].status
+                            .getName.tr.getColor,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,

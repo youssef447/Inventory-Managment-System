@@ -42,7 +42,7 @@ class RequestsOfAssetsTable extends GetView<RequestsController> {
                   ),
                   DataCell(
                     Text(
-                      controller.requestsOfAssets[index].requestType,
+                      controller.requestsOfAssets[index].requestType.getName,
                       style: AppTextStyles.font16BlackRegularCairo,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -62,10 +62,10 @@ class RequestsOfAssetsTable extends GetView<RequestsController> {
                   ),
                   DataCell(
                     Text(
-                      controller.requestsOfAssets[index].status.tr,
+                      controller.requestsOfAssets[index].status.getName.tr,
                       style: AppTextStyles.font16BlackRegularCairo.copyWith(
                         color: controller
-                            .requestsOfAssets[index].status.tr.getColor,
+                            .requestsOfAssets[index].status.getName.tr.getColor,
                       ),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,

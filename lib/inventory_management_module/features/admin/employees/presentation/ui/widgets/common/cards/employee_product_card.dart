@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../../../core/extensions/extensions.dart';
-import '../../../../../../../features/products/domain/product_entity.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
+import '../../../../../../../products/domain/product_entity.dart';
 
-import '../../../../../../../core/animations/size_animation.dart';
-import '../../../../../../../core/constants/app_assets.dart';
-import '../../../../../../../core/helpers/date_time_helper.dart';
-import '../../../../../../../core/helpers/spacing_helper.dart';
-import '../../../../../../../core/theme/app_colors.dart';
-import '../../../../../../../core/theme/app_text_styles.dart';
-import '../../../../../../../core/widgets/default_rich_text.dart';
-import '../../../../../../products/enums/product_enums.dart';
+import '../../../../../../../../core/animations/size_animation.dart';
+import '../../../../../../../../core/constants/app_assets.dart';
+import '../../../../../../../../core/helpers/date_time_helper.dart';
+import '../../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../../core/theme/app_colors.dart';
+import '../../../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../../../../core/widgets/default_rich_text.dart';
+import '../../../../../../../products/enums/product_enums.dart';
 
 class EmployeeProductCard extends StatelessWidget {
   final ProductEntity productEntity;
