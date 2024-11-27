@@ -6,9 +6,12 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/features/employee/home/domain/user_entity.dart';
 import 'package:inventory_management/inventory_management_module/features/products/presentation/controller/products_controller.dart';
+import '../../../../core/constants/approve_cycle.dart';
 import '../../../../core/enums/requests_enums.dart';
 import '../../../employee/Assets/domain/entity/assets_entity.dart';
+import '../../../employee/consumables/domain/entity/consumables_entity.dart';
 import '../../../employee/requests/entities/attachment_entity.dart';
 import '../../constants/ids.dart';
 import '../../domain/product_entity.dart';
@@ -20,6 +23,8 @@ import '../constant/add_Product_ids_constant.dart';
 
 class AddProductController extends GetxController {
   ///-------------- drop down
+
+  ///-------------- drop down--------------------------------------------------------------------
   // -------------- product type  -----------
   List<ProductTypes> productType = [
     ProductTypes.asset,
@@ -28,6 +33,17 @@ class AddProductController extends GetxController {
   Rxn<ProductTypes> productTypeValue = Rxn<ProductTypes>(ProductTypes.asset);
   updateProductTypeValue(ProductTypes value) {
     productTypeValue.value = value;
+  }
+
+  // -------------- supplierName   -----------
+  List<String> category = [
+    'Electronic',
+    'Event Planning',
+    'Eduction',
+  ];
+  Rxn<String> categoryValue = Rxn<String>();
+  updateCategoryValue(String value) {
+    categoryValue.value = value;
   }
 
   // -------------- product type  -----------
@@ -83,6 +99,14 @@ class AddProductController extends GetxController {
     storageLocationValue.value = value;
   }
 
+  // -------------- switch approval  -----------
+
+  var isApproval = true;
+  void toggleApproval() {
+    isApproval = !isApproval;
+    update();
+  }
+
   ///-------------------- TextEditingController --------------
   TextEditingController orderIdController = TextEditingController();
   TextEditingController productIdController = TextEditingController();
@@ -101,6 +125,25 @@ class AddProductController extends GetxController {
   TextEditingController expectedLifetimeController = TextEditingController();
   TextEditingController stockOnHandController = TextEditingController();
   TextEditingController additionalNoteController = TextEditingController();
+  TextEditingController orderIdController = TextEditingController();
+  TextEditingController productIdController = TextEditingController();
+  TextEditingController categoryController = TextEditingController();
+  TextEditingController subCategoryController = TextEditingController();
+  TextEditingController brandController = TextEditingController();
+  TextEditingController modelController = TextEditingController();
+  TextEditingController expirationDateController = TextEditingController();
+  TextEditingController quantityController = TextEditingController();
+  TextEditingController unitCostController = TextEditingController();
+  TextEditingController currencyController = TextEditingController();
+  TextEditingController supplierNameController = TextEditingController();
+  TextEditingController storageRequirementController = TextEditingController();
+  TextEditingController storageLocationController = TextEditingController();
+  TextEditingController unitOfMeasurementController = TextEditingController();
+  TextEditingController expectedLifetimeController = TextEditingController();
+  TextEditingController stockOnHandController = TextEditingController();
+  TextEditingController additionalNoteController = TextEditingController();
+  TextEditingController reorderLevelController = TextEditingController();
+  TextEditingController reorderQuantityController = TextEditingController();
 
   List<Map<String, String>> inventoryList = [];
 
@@ -162,6 +205,72 @@ class AddProductController extends GetxController {
           AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
         ]);
     Get.find<ProductsController>().products.add(item);
+    clearControllers();
+    update([ProductsIds.productsTab]);
+  }
+
+  void addConsumableItem() {
+    ProductEntity item = ProductEntity(
+        id: productIdController.text,
+        productType: ProductType.consumable,
+        additionalNotes: additionalNoteController.text,
+        storage: [
+          StorageLocationAndQuantityEntity(
+            locationName: storageLocationController.text,
+            quantity: 10,
+          ),
+          StorageLocationAndQuantityEntity(
+            locationName: 'Room A13',
+            quantity: 10,
+          ),
+          StorageLocationAndQuantityEntity(
+            locationName: 'Room A13',
+            quantity: 10,
+          ),
+        ],
+        consumablesEntity: ConsumablesEntity(
+          consumableId: productIdController.text,
+          category: categoryController.text,
+          subcategory: subCategoryController.text,
+          model: modelController.text,
+          dateReceived: DateTime.now(),
+          quantity: quantityController.text,
+          status: 'InUse',
+          brand: brandController.text,
+          name: brandController.text + modelController.text,
+          unitOfMeasurement: unitOfMeasurementController.text,
+          usageFrequency: 'daily',
+        ),
+        supplier: SupplierEntity(
+          supplierName: supplierNameController.text,
+          postalCode: '1313',
+          city: 'Cairo',
+          country: 'Egypt',
+          email: 'jCgQ5@example.com',
+          firstName: 'Youssef',
+          lastName: 'Ashraf',
+          phoneNumber: '010100101010',
+          supplierId: '110',
+          stateOrProvince: 'NA',
+          contractDetails: ContractdetailsEntity(
+            attachmentEntity:
+                AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+            endDate: DateTime.now(),
+            startDate: DateTime.now(),
+          ),
+        ),
+        totalQuantity: 20,
+        currency: currencyController.text,
+        unitCost: 2,
+        expectedLifeTime: DateTime.now(),
+        productSpecifications: [
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+        ],
+        productWaranties: [
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+        ]);
+    Get.find<ProductsController>().products.add(item);
+    clearControllers();
     update([ProductsIds.productsTab]);
   }
 
@@ -248,4 +357,6 @@ class AddProductController extends GetxController {
     warrantyAttachments.removeAt(index);
     update([AddProductIdsConstant.warrantyAttachments]);
   }
+
+  void changeApprovalStatusById(approvalId, String s, BuildContext context) {}
 }

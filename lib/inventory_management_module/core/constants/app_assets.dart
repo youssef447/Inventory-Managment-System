@@ -46,7 +46,7 @@ abstract class AppAssets {
   static const String sms = 'assets/vectors/sms.svg';
   static const String transmission = 'assets/vectors/transmission.svg';
   static const String call = 'assets/vectors/call.svg';
-
+  static const String camera = 'assets/vectors/Camera.svg';
   //media
   static const String powerpoint = 'assets/vectors/powerpoint.svg';
   static const String pdf = 'assets/vectors/pdf.svg';

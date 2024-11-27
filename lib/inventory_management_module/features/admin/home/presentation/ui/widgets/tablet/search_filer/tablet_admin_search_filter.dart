@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import 'package:inventory_management/inventory_management_module/features/products/presentation/ui/pages/tablet/add_product/add_consumable_page.dart';
 import '../../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/get_dialog_helper.dart';
@@ -12,12 +13,13 @@ import '../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
+import '../../../../../../../products/presentation/ui/pages/tablet/add_product/add_asset_page.dart';
 import '../../../../../../../products/presentation/ui/widgets/tablet/dialog/add_product_dialog.dart';
 import '../../../../controller/admin_controller.dart';
 
-// Date: 5/8/2024
-// By: Youssef Ashraf
-// Last update: 6/8/2024
+// Date: 26/11/2024
+// By: Mohamed Ashraf
+// Last update: 27/11/2024
 // Objectives: This file is responsible for providing the search filter widget which has search field and filter buttons In Tablet View.
 
 class TabletAdminSearchFilter extends GetView<AdminController> {
@@ -122,7 +124,10 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                         text: 'Assets'.tr,
                         color: AppColors.primary,
                         onTap: () {
-                          // Add service action
+                          GetDialogHelper.generalDialog(
+                            child: const AddAssetPage(),
+                            context: context,
+                          );
                         },
                       )
                     else if (controller.currentCategoryIndex == 2)
@@ -132,7 +137,10 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                         text: 'Consumables'.tr,
                         color: AppColors.primary,
                         onTap: () {
-                          // Add category action
+                          GetDialogHelper.generalDialog(
+                            child: const AddConsumablePage(),
+                            context: context,
+                          );
                         },
                       )
                     else if (controller.currentCategoryIndex == 3)

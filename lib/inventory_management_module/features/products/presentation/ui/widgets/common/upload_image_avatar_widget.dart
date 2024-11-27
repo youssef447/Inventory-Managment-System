@@ -1,36 +1,30 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:inventory_management/inventory_management_module/core/constants/app_assets.dart';
+import 'package:inventory_management/inventory_management_module/core/theme/app_colors.dart';
 
 class UploadImageAvatarWidget extends StatelessWidget {
   const UploadImageAvatarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Stack(
-        alignment: AlignmentDirectional.bottomEnd,
-        children: [
-          CircleAvatar(
-            radius: 36, // Adjust the radius as needed
-            backgroundColor: Colors.grey.shade300,
-            child: Icon(
-              Icons.image_outlined,
-              size: 40,
-              color: Colors.grey.shade600,
-            ),
-          ),
-          // Positioned camera icon
-          const CircleAvatar(
-            radius: 12,
-            backgroundColor: Colors.yellow,
-            child: Icon(
-              Icons.camera_alt_outlined,
-              size: 15,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
+    return Stack(
+      alignment: AlignmentDirectional.bottomEnd,
+      children: [
+        CircleAvatar(
+          radius: 36, // Adjust the radius as needed
+          backgroundColor: Colors.grey.shade300,
+          child: SvgPicture.asset(AppAssets.gallery,width: 30,height: 30,)
+        ),
+        // Positioned camera icon
+         CircleAvatar(
+          radius: 12,
+          backgroundColor: Colors.yellow,
+            child: SvgPicture.asset(AppAssets.camera,width: 15,height: 15,color: AppColors.black)
+
+        ),
+      ],
     );
   }
 }

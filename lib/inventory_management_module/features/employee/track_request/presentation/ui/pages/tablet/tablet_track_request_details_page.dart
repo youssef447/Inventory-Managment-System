@@ -11,6 +11,7 @@ import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/appbar/custom_app_bar.dart';
 import '../../../../../../../core/widgets/default_rich_text.dart';
+import '../../../../../home/domain/user_entity.dart';
 import '../../../../../requests/entities/request_entity.dart';
 import '../../../controller/track_requests_controller.dart';
 import '../../widgets/common/track_request_details/cancel_request_button.dart';

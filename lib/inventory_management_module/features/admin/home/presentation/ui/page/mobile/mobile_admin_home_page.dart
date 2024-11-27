@@ -18,6 +18,7 @@ import '../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../../../employee/home/presentation/ui/widgets/common/vertical/squared_filter_card.dart';
 import '../../../controller/admin_controller.dart';
 import '../../widgets/tablet/button/home_row_buton.dart';
+import '../../widgets/mobile/button/mobile_add_button.dart';
 part '../../widgets/mobile/cards/category_filter_card.dart';
 part '../../widgets/mobile/categories_filter_row/categories_filter_row.dart';
 part '../../widgets/mobile/search_filter/mobile_search_filter.dart';
@@ -46,6 +47,7 @@ class MobileAdminHomePage extends GetView<AdminController> {
                   ),
                   SliverToBoxAdapter(child: verticalSpace(20)),
                   const SliverToBoxAdapter(child: MobileSearchFilter()),
+                  const SliverToBoxAdapter(child: MobileAddButton()),
                   SliverToBoxAdapter(child: verticalSpace(20)),
                   controller.mobileAdminTabs[index],
                 ],

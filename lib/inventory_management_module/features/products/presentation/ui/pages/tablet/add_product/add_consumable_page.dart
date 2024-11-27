@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
-
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
@@ -24,8 +23,8 @@ import '../../../widgets/common/upload_image_avatar_widget.dart';
 import '../../../widgets/tablet/card/add_approval_cycle.dart';
 
 
-class AddAssetPage extends GetView<AddProductController> {
-  const AddAssetPage({super.key});
+class AddConsumablePage extends GetView<AddProductController> {
+  const AddConsumablePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +57,7 @@ class AddAssetPage extends GetView<AddProductController> {
                       )),
                   horizontalSpace(8),
                   Text(
-                    'Add New Assets'.tr,
+                    'Add New Consumable'.tr,
                     style: AppTextStyles.font24MediumBlackCairo,
                   ),
                 ],
@@ -156,54 +155,11 @@ class AddAssetPage extends GetView<AddProductController> {
               ),
               verticalSpace(24),
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  horizontalSpace(8),
-                  Expanded(
-                    child: LabeledFormField(
-                      readOnly: false,
-                      controller: controller.additionalNoteController,
-                      label: 'Additional Note'.tr,
-                    ),
-                  ),
-
-                ],
-              ),
-              verticalSpace(24),
-              Row(
-                children: [
-                  Expanded(
-                    child: LabeledFormField(
-                      controller: controller.expirationDateController,
-                      label: 'Expiration Date'.tr,
-                      date: true,
-                    ),
-                  ),
-                  horizontalSpace(15),
-                  Expanded(
-                    child: LabeledFormField(
-                      readOnly: false,
-                      controller: controller.unitCostController,
-                      label: 'Unit Cost'.tr,
-                    ),
-                  ),
-                ],
-              ),
-              verticalSpace(24),
-              Row(
-                children: [
-                  Expanded(
-                    child: LabeledFormField(
-                      readOnly: false,
-                      controller: controller.quantityController,
-                      label: 'Unit Test'.tr,
-                    ),
-                  ),
-                  horizontalSpace(15),
                   Expanded(
                     child: Obx(() {
                       return LabeledDropdownField(
-                        label: 'Currency'.tr,
+                        label: 'Usage Frequency'.tr,
                         value: controller.currencyValue.value,
                         textButton: controller.currencyValue.value?.getName,
                         onChanged: (value) {
@@ -212,7 +168,7 @@ class AddAssetPage extends GetView<AddProductController> {
                         controller: controller.currencyController,
                         items: List.generate(
                           controller.currency.length,
-                          (index) {
+                              (index) {
                             return DropdownMenuItem(
                               value: controller.currency[index],
                               child: Text(
@@ -226,25 +182,102 @@ class AddAssetPage extends GetView<AddProductController> {
                       );
                     }),
                   ),
+                  horizontalSpace(15),
+                  Expanded(
+                    child: LabeledFormField(
+                      readOnly: false,
+                      date: true,
+                      controller: controller.expirationDateController,
+                      label: 'Expiration Date'.tr,
+                    ),
+                  ),
                 ],
               ),
               verticalSpace(24),
               Row(
                 children: [
                   Expanded(
+                    child: LabeledFormField(
+                      controller: controller.reorderLevelController,
+                      label: 'Reorder Level'.tr,
+                    ),
+                  ),
+                  horizontalSpace(15),
+                  Expanded(
+                    child: LabeledFormField(
+                      readOnly: false,
+                      controller: controller.reorderQuantityController,
+                      label: 'Reorder Quantity'.tr,
+                    ),
+                  ),
+                ],
+              ),
+              verticalSpace(24),
+              Row(
+                children: [
+                  Expanded(
+                    child: LabeledFormField(
+                      controller: controller.quantityController,
+                      label: 'Quantity'.tr,
+                    ),
+                  ),
+                  horizontalSpace(15),
+                  Expanded(
+                    child: LabeledFormField(
+                      readOnly: false,
+                      controller: controller.unitCostController,
+                      label: 'Unit Cost'.tr,
+                    ),
+                  ),
+                ],
+              ),
+              verticalSpace(24),
+
+
+              Row(
+                children: [
+
+                  Expanded(
+                    child: Obx(() {
+                      return LabeledDropdownField(
+                        label: 'Currency'.tr,
+                        value: controller.currencyValue.value,
+                        textButton: controller.currencyValue.value?.getName,
+                        onChanged: (value) {
+                          controller.updateCurrencyValue(value);
+                        },
+                        controller: controller.currencyController,
+                        items: List.generate(
+                          controller.currency.length,
+                              (index) {
+                            return DropdownMenuItem(
+                              value: controller.currency[index],
+                              child: Text(
+                                controller.currency[index].getName.tr,
+                                style: AppTextStyles
+                                    .font14SecondaryBlackCairoMedium,
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    }),
+                  ),
+                  horizontalSpace(15),
+                  Expanded(
                     child: Obx(() {
                       return LabeledDropdownField(
                         label: 'Supplier Name'.tr,
                         value: controller.supplierNameValue.value,
                         textButton:
-                            controller.supplierNameValue.value?.toString(),
+                        controller.supplierNameValue.value?.toString(),
                         onChanged: (value) {
                           controller.updateSupplierNameValue(value);
                         },
                         controller: controller.supplierNameController,
                         items: List.generate(
                           controller.supplierName.length,
-                          (index) {
+                              (index) {
                             return DropdownMenuItem(
                               value: controller.supplierName[index],
                               child: Text(
@@ -258,7 +291,11 @@ class AddAssetPage extends GetView<AddProductController> {
                       );
                     }),
                   ),
-                  horizontalSpace(15),
+                ],
+              ),
+              verticalSpace(24),
+              Row(
+                children: [
                   Expanded(
                     child: Obx(() {
                       return LabeledDropdownField(
@@ -273,7 +310,7 @@ class AddAssetPage extends GetView<AddProductController> {
                         controller: controller.storageRequirementController,
                         items: List.generate(
                           controller.storageRequirement.length,
-                          (index) {
+                              (index) {
                             return DropdownMenuItem(
                               value: controller.storageRequirement[index],
                               child: Text(
@@ -289,11 +326,7 @@ class AddAssetPage extends GetView<AddProductController> {
                       );
                     }),
                   ),
-                ],
-              ),
-              verticalSpace(24),
-              Row(
-                children: [
+                  horizontalSpace(15),
                   Expanded(
                     child: LabeledFormField(
                       readOnly: false,
@@ -302,21 +335,26 @@ class AddAssetPage extends GetView<AddProductController> {
                       label: 'Expected Lifetime'.tr,
                     ),
                   ),
-                  horizontalSpace(15),
-                  Expanded(
-                    child: Obx(() {
-                      return LabeledDropdownField(
+                ],
+              ),
+              verticalSpace(24),
+              Row(
+                children: [
+                  Obx(() {
+                    return SizedBox(
+                      width: Get.width *0.31.w,
+                      child: LabeledDropdownField(
                         label: 'Unit Of Measurement'.tr,
                         value: controller.unitOfMeasurementValue.value,
                         textButton:
-                            controller.unitOfMeasurementValue.value?.getName,
+                        controller.unitOfMeasurementValue.value?.getName,
                         onChanged: (value) {
                           controller.updateUnitOfMeasurementValue(value);
                         },
                         controller: controller.unitOfMeasurementController,
                         items: List.generate(
                           controller.unitOfMeasurement.length,
-                          (index) {
+                              (index) {
                             return DropdownMenuItem(
                               value: controller.unitOfMeasurement[index],
                               child: Text(
@@ -327,9 +365,9 @@ class AddAssetPage extends GetView<AddProductController> {
                             );
                           },
                         ),
-                      );
-                    }),
-                  ),
+                      ),
+                    );
+                  }),
                 ],
               ),
               verticalSpace(24),
@@ -341,14 +379,14 @@ class AddAssetPage extends GetView<AddProductController> {
                         label: 'Storage Location'.tr,
                         value: controller.storageLocationValue.value,
                         textButton:
-                            controller.storageLocationValue.value?.getName,
+                        controller.storageLocationValue.value?.getName,
                         onChanged: (value) {
                           controller.updateStorageLocationValue(value);
                         },
                         controller: controller.storageLocationController,
                         items: List.generate(
                           controller.storageLocation.length,
-                          (index) {
+                              (index) {
                             return DropdownMenuItem(
                               value: controller.storageLocation[index],
                               child: Text(
@@ -419,35 +457,35 @@ class AddAssetPage extends GetView<AddProductController> {
               ),
               verticalSpace(26),
               GetBuilder<AddProductController>(
-                builder: (controller) {
-                  return Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Requires Approval'.tr,
-                            style: AppTextStyles.font16BlackMediumCairo,
-                          ),
-                          horizontalSpace(100),
-                          DefaultSwitchButton(
-                            value: controller.isApproval,
-                            onChanged: (bool value) async {
-                              controller.toggleApproval();
-                            },
-                          ),
-                        ],
-                      ),
-                      verticalSpace(26),
-                      if(controller.isApproval)
-                        const Column(
+                  builder: (controller) {
+                    return Column(
+                      children: [
+                        Row(
                           children: [
-                            AddApprovalsSearch(),
-                            AddApprovalCycle(),
+                            Text(
+                              'Requires Approval'.tr,
+                              style: AppTextStyles.font16BlackMediumCairo,
+                            ),
+                            horizontalSpace(100),
+                            DefaultSwitchButton(
+                              value: controller.isApproval,
+                              onChanged: (bool value) async {
+                                controller.toggleApproval();
+                              },
+                            ),
                           ],
                         ),
-                    ],
-                  );
-                }
+                        verticalSpace(26),
+                        if(controller.isApproval)
+                          const Column(
+                            children: [
+                              AddApprovalsSearch(),
+                              AddApprovalCycle(),
+                            ],
+                          ),
+                      ],
+                    );
+                  }
               ),
               verticalSpace(26),
               Row(
@@ -461,18 +499,19 @@ class AddAssetPage extends GetView<AddProductController> {
                   ),
                   const Spacer(),
                   AppDefaultButton(
-                    text: 'Add Asset'.tr,
+                    text: 'Add Consumable'.tr,
                     color: AppColors.primary,
                     onPressed: (){
-                     controller.addAssetItem();
-                     Navigator.pushReplacementNamed(context, Routes.adminHome);
-                     GetDialogHelper.generalDialog(
-                         context: Get.context!,
-                         child: DefaultDialog(
-                           title: 'Success'.tr,
-                           subTitle: 'You Successfully Added New Product'.tr,
-                           lottieAsset: AppAssets.success,
-                         ));
+                      controller.addConsumableItem();
+                      Navigator.pushReplacementNamed(context, Routes.adminHome);
+                      GetDialogHelper.generalDialog(
+                          context: Get.context!,
+                          child: DefaultDialog(
+                            title: 'Success'.tr,
+                            subTitle: 'You Successfully Added New Product'.tr,
+                            lottieAsset: AppAssets.success,
+                          ));
+
                     },
                   )
                 ],
@@ -482,6 +521,8 @@ class AddAssetPage extends GetView<AddProductController> {
         ));
   }
 }
+
+
 
 
 

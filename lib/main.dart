@@ -17,7 +17,6 @@ import 'inventory_management_module/core/constants/languages.dart';
 import 'inventory_management_module/core/routes/app_routes.dart';
 import 'inventory_management_module/core/routes/routes_generator.dart';
 import 'inventory_management_module/core/theme/app_theme.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configurationDependencies();

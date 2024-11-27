@@ -7,6 +7,7 @@ class UserEntity {
   String jobTitle;
   String profileImage;
   String position;
+  bool isSelected;
   Departments department;
   String phoneNumber;
   String email;
@@ -14,6 +15,7 @@ class UserEntity {
     required this.firstName,
     required this.id,
     required this.lastName,
+    this.isSelected = false,
     this.jobTitle = 'Designer',
     this.position = 'Employee',
     this.department = Departments.marketing,

@@ -11,6 +11,11 @@ class AdminController extends GetxController {
   //------------Tabs------------
   final List<Widget> mobileAdminTabs = [
     const MobileProductsTabPage(),
+    const MobileProductsTabPage(),
+    const MobileProductsTabPage(),
+    const MobileProductsTabPage(),
+    const MobileProductsTabPage(),
+    const MobileProductsTabPage(),
 
     /*  const Text('data'),
     const Text('data'),

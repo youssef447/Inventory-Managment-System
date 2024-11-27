@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
+import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import 'package:inventory_management/inventory_management_module/features/products/presentation/ui/pages/tablet/add_product/add_consumable_page.dart';
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
@@ -13,6 +15,7 @@ import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../../../core/widgets/dropdown/app_dropdown.dart';
 import '../../../../controller/add_product_controller.dart';
+import '../../../pages/mobile/mobile_add_product/mobile_add_asset_page.dart';
 import '../../../pages/tablet/add_product/add_asset_page.dart';
 
 class AddProductDialog extends GetView<AddProductController> {
@@ -21,7 +24,7 @@ class AddProductDialog extends GetView<AddProductController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: Get.width * 0.6,
+        width: context.isTablett ? Get.width * 0.6 : Get.width * 0.9,
         padding: EdgeInsets.symmetric(
           horizontal: 16.w,
           vertical: 16.h,
@@ -31,7 +34,7 @@ class AddProductDialog extends GetView<AddProductController> {
           borderRadius: BorderRadius.circular(8.r),
         ),
         constraints: BoxConstraints(
-          maxHeight: Get.height * 0.2,
+          maxHeight: Get.height * 0.2
         ),
         child: Column(
           children: [
@@ -49,12 +52,13 @@ class AddProductDialog extends GetView<AddProductController> {
                 horizontalSpace(8),
                 Text(
                   'Add New Product'.tr,
-                  style: AppTextStyles.font24MediumBlackCairo,
+                  overflow: TextOverflow.ellipsis,
+                  style:context.isTablett? AppTextStyles.font24MediumBlackCairo : AppTextStyles.font16BlackMediumCairo
                 ),
                 const Spacer(),
                 Obx(
                   () => AppDropdown(
-                    width: 150.w,
+                    width: context.isTablett ?150.w : 120.w,
                     showDropdownIcon: true,
                     onChanged: (value) {
                       controller.updateProductTypeValue(value);
@@ -87,11 +91,11 @@ class AddProductDialog extends GetView<AddProductController> {
                 Navigator.pop(context);
                 controller.productTypeValue.value == ProductTypes.asset
                     ? GetDialogHelper.generalDialog(
-                        child: const AddAssetPage(),
+                        child: context.isTablett?  const AddAssetPage() :MobileAddAssetPage(),
                         context: context,
                       )
                     : GetDialogHelper.generalDialog(
-                        child: const Text('data 2'),
+                        child: const AddConsumablePage(),
                         context: context,
                       );
               },
