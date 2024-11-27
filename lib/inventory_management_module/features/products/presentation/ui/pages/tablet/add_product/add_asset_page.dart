@@ -3,20 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/core/routes/app_routes.dart';
 
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../core/routes/app_routes.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
-import '../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../../../core/widgets/buttons/default_switch_button.dart';
 import '../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
 import '../../../../../../../core/widgets/dialog/default_dialog.dart';
-import '../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../../../../core/widgets/fields/labeled_dropDown_field.dart';
 import '../../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../controller/add_product_controller.dart';
@@ -464,7 +461,7 @@ class AddAssetPage extends GetView<AddProductController> {
                   ),
                   const Spacer(),
                   AppDefaultButton(
-                    text: 'Add Asset',
+                    text: 'Add Asset'.tr,
                     color: AppColors.primary,
                     onPressed: (){
                      controller.addAssetItem();

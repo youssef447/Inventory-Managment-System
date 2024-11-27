@@ -13,6 +13,7 @@ import 'package:inventory_management/inventory_management_module/features/produc
 import '../../../../core/constants/approve_cycle.dart';
 import '../../../../core/enums/requests_enums.dart';
 import '../../../employee/Assets/domain/entity/assets_entity.dart';
+import '../../../employee/consumables/domain/entity/consumables_entity.dart';
 import '../../../employee/requests/entities/attachment_entity.dart';
 import '../../constants/ids.dart';
 import '../../domain/product_entity.dart';
@@ -204,9 +205,74 @@ TextEditingController reorderQuantityController = TextEditingController();
           AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
         ]);
     Get.find<ProductsController>().products.add(item);
-
     clearControllers();
    update([ProductsIds.productsTab]);
+  }
+
+
+  void addConsumableItem() {
+    ProductEntity item = ProductEntity(
+        id: productIdController.text,
+        productType: ProductType.consumable,
+        additionalNotes: additionalNoteController.text,
+        storage: [
+          StorageLocationAndQuantityEntity(
+            locationName: storageLocationController.text,
+            quantity: 10,
+          ),
+          StorageLocationAndQuantityEntity(
+            locationName: 'Room A13',
+            quantity: 10,
+          ),
+          StorageLocationAndQuantityEntity(
+            locationName: 'Room A13',
+            quantity: 10,
+          ),
+        ],
+        consumablesEntity: ConsumablesEntity(
+          consumableId: productIdController.text,
+          category: categoryController.text,
+          subcategory: subCategoryController.text,
+          model: modelController.text,
+          dateReceived: DateTime.now(),
+          quantity: quantityController.text,
+          status: 'InUse',
+          brand: brandController.text,
+            name: brandController.text + modelController.text,
+          unitOfMeasurement: unitOfMeasurementController.text,
+          usageFrequency: 'daily',
+        ),
+        supplier: SupplierEntity(
+          supplierName: supplierNameController.text,
+          postalCode: '1313',
+          city: 'Cairo',
+          country: 'Egypt',
+          email: 'jCgQ5@example.com',
+          firstName: 'Youssef',
+          lastName: 'Ashraf',
+          phoneNumber: '010100101010',
+          supplierId: '110',
+          stateOrProvince: 'NA',
+          contractDetails: ContractdetailsEntity(
+            attachmentEntity:
+            AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+            endDate: DateTime.now(),
+            startDate: DateTime.now(),
+          ),
+        ),
+        totalQuantity: 20,
+        currency: currencyController.text,
+        unitCost: 2,
+        expectedLifeTime: DateTime.now(),
+        productSpecifications: [
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+        ],
+        productWaranties: [
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
+        ]);
+    Get.find<ProductsController>().products.add(item);
+    clearControllers();
+    update([ProductsIds.productsTab]);
   }
 
   void clearControllers() {

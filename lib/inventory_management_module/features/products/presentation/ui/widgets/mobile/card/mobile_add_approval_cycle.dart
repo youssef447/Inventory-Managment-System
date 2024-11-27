@@ -1,17 +1,18 @@
 
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../controller/add_approval_cycle_controller.dart';
 
-class AddApprovalCycle extends GetView<AddApprovalCycleController> {
-  const AddApprovalCycle({
+class MobileAddApprovalCycle extends GetView<AddApprovalCycleController>  {
+  const MobileAddApprovalCycle({
     super.key,
   });
 
@@ -30,27 +31,30 @@ class AddApprovalCycle extends GetView<AddApprovalCycleController> {
         ),
         verticalSpace(16),
         Obx((){
-          return Wrap(
-            crossAxisAlignment: WrapCrossAlignment.start,
-            runSpacing: 15.h,
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: List.generate(
               controller.selectedApprovalCycle.length,
-                  (index) => _BuildAvatarArrow(
-                '${ controller.selectedApprovalCycle[index].firstName} ${ controller.selectedApprovalCycle[index].lastName}',
-                controller.selectedApprovalCycle[index].position,
-                controller.selectedApprovalCycle[index].profileImage,
-                index,
+                  (index) => Padding(
+                padding: index !=    controller.selectedApprovalCycle.length - 1
+                    ? EdgeInsets.only(bottom: 17.h)
+                    : EdgeInsets.zero,
+                child: _BuildAvatarArrow(
+                  '${   controller.selectedApprovalCycle[index].firstName} ${   controller.selectedApprovalCycle[index].lastName}',
+                  controller.selectedApprovalCycle[index].position,
+                  controller.selectedApprovalCycle[index].profileImage,
+                  index,
+                ),
               ),
             ),
           );
-
-        }),
+        })
       ],
     );
   }
 }
 
-class _BuildAvatarArrow extends GetView<AddApprovalCycleController>  {
+class _BuildAvatarArrow extends StatelessWidget {
   final String name;
   final String postion;
   final String profileImage;
@@ -60,23 +64,25 @@ class _BuildAvatarArrow extends GetView<AddApprovalCycleController>  {
 
   @override
   Widget build(BuildContext context) {
-    final isLast = index == controller.selectedApprovalCycle.length - 1;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Stack(
-          alignment: AlignmentDirectional.bottomEnd,
-          children: [
-            CircleAvatar(
-              radius: 20.r,
-              backgroundImage: NetworkImage(profileImage),
-            ),
-            GestureDetector(
-              onTap: (){
-                controller.toggleSelection(index);
-              },
-                child: CircleAvatar(radius: 8,backgroundColor: AppColors.red, child: Icon(Icons.remove,color: Colors.white,size: 12,),))
-          ],
+        if (index != 0)
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SvgPicture.asset(
+                AppAssets.line,
+                color: AppColors.black
+              ),
+              SvgPicture.asset(
+            AppAssets.blackArrow
+              ),
+            ],
+          ),
+        CircleAvatar(
+          radius: 16.r,
+          backgroundImage: NetworkImage(profileImage),
         ),
         horizontalSpace(8),
         Column(
@@ -87,18 +93,11 @@ class _BuildAvatarArrow extends GetView<AddApprovalCycleController>  {
               style: AppTextStyles.font14BlackCairoMedium,
             ),
             Text(
-              postion.tr,
+              postion,
               style: AppTextStyles.font12SecondaryBlackCairoMedium,
             ),
           ],
         ),
-        if (!isLast)
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: SvgPicture.asset(
-              AppAssets.blackArrow,
-            ),
-          ),
       ],
     );
   }

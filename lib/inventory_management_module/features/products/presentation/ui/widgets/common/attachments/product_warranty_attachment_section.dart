@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
@@ -34,22 +35,22 @@ class ProductWarrantyAttachmentSection extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4.r),
-                color: AppColors.primary,
+                color: AppColors.field,
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  Text(
+                    'No Files'.tr,
+                    style: AppTextStyles.font14BlackCairoMedium
+                        .copyWith(color: AppColors.textButton),
+                  ),
+                  context.isTablett ?horizontalSpace(100) : const Spacer(),
                   SvgPicture.asset(
                     AppAssets.export,
                     width: 16.w,
                     height: 16.h,
                     color: AppColors.icon,
-                  ),
-                  horizontalSpace(16),
-                  Text(
-                    'Upload Attachments'.tr,
-                    style: AppTextStyles.font14BlackCairoMedium
-                        .copyWith(color: AppColors.textButton),
                   ),
                 ],
               ),

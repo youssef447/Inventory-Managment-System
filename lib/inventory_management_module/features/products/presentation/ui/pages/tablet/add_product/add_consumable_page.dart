@@ -3,14 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
-
 import '../../../../../../../core/constants/app_assets.dart';
+import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../core/routes/app_routes.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../../../core/widgets/buttons/default_switch_button.dart';
 import '../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
+import '../../../../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../../../../../core/widgets/fields/labeled_dropDown_field.dart';
 import '../../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../controller/add_product_controller.dart';
@@ -230,16 +232,11 @@ class AddConsumablePage extends GetView<AddProductController> {
                 ],
               ),
               verticalSpace(24),
+
+
               Row(
                 children: [
-                  Expanded(
-                    child: LabeledFormField(
-                      readOnly: false,
-                      controller: controller.quantityController,
-                      label: 'Unit Test'.tr,
-                    ),
-                  ),
-                  horizontalSpace(15),
+
                   Expanded(
                     child: Obx(() {
                       return LabeledDropdownField(
@@ -266,11 +263,7 @@ class AddConsumablePage extends GetView<AddProductController> {
                       );
                     }),
                   ),
-                ],
-              ),
-              verticalSpace(24),
-              Row(
-                children: [
+                  horizontalSpace(15),
                   Expanded(
                     child: Obx(() {
                       return LabeledDropdownField(
@@ -298,7 +291,11 @@ class AddConsumablePage extends GetView<AddProductController> {
                       );
                     }),
                   ),
-                  horizontalSpace(15),
+                ],
+              ),
+              verticalSpace(24),
+              Row(
+                children: [
                   Expanded(
                     child: Obx(() {
                       return LabeledDropdownField(
@@ -329,11 +326,7 @@ class AddConsumablePage extends GetView<AddProductController> {
                       );
                     }),
                   ),
-                ],
-              ),
-              verticalSpace(24),
-              Row(
-                children: [
+                  horizontalSpace(15),
                   Expanded(
                     child: LabeledFormField(
                       readOnly: false,
@@ -342,10 +335,15 @@ class AddConsumablePage extends GetView<AddProductController> {
                       label: 'Expected Lifetime'.tr,
                     ),
                   ),
-                  horizontalSpace(15),
-                  Expanded(
-                    child: Obx(() {
-                      return LabeledDropdownField(
+                ],
+              ),
+              verticalSpace(24),
+              Row(
+                children: [
+                  Obx(() {
+                    return SizedBox(
+                      width: Get.width *0.31.w,
+                      child: LabeledDropdownField(
                         label: 'Unit Of Measurement'.tr,
                         value: controller.unitOfMeasurementValue.value,
                         textButton:
@@ -367,9 +365,9 @@ class AddConsumablePage extends GetView<AddProductController> {
                             );
                           },
                         ),
-                      );
-                    }),
-                  ),
+                      ),
+                    );
+                  }),
                 ],
               ),
               verticalSpace(24),
@@ -501,11 +499,19 @@ class AddConsumablePage extends GetView<AddProductController> {
                   ),
                   const Spacer(),
                   AppDefaultButton(
-                    text: 'Add Asset',
+                    text: 'Add Consumable'.tr,
                     color: AppColors.primary,
                     onPressed: (){
-                      controller.addAssetItem();
-                      Navigator.of(context).pop();
+                      controller.addConsumableItem();
+                      Navigator.pushReplacementNamed(context, Routes.adminHome);
+                      GetDialogHelper.generalDialog(
+                          context: Get.context!,
+                          child: DefaultDialog(
+                            title: 'Success'.tr,
+                            subTitle: 'You Successfully Added New Product'.tr,
+                            lottieAsset: AppAssets.success,
+                          ));
+
                     },
                   )
                 ],
