@@ -8,6 +8,7 @@ import '../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../core/animations/size_animation.dart';
 
 import '../../../../../../core/helpers/date_time_helper.dart';
+import '../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../core/theme/app_theme.dart';
 import '../../../../../../core/widgets/default_rich_text.dart';
@@ -86,7 +87,12 @@ class MobileProductDetailsPage extends StatelessWidget {
                     text: 'Restocking',
                     textColor: AppColors.textButton,
                     color: AppColors.primary,
-                    onTap: () {},
+                    onTap: () {
+                      GetDialogHelper.generalDialog(
+                        context: context,
+                        child:  Container(width: 200,height: 300,)
+                      );
+                    },
                   ),
                 ),
                 horizontalSpace(6),

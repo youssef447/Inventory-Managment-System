@@ -3,11 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
-
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
-import '../../../../../../../core/routes/app_routes.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/buttons/app_default_button.dart';
@@ -23,12 +21,17 @@ import '../../../widgets/common/attachments/product_warranty_attachment_section.
 import '../../../widgets/common/upload_image_avatar_widget.dart';
 import '../../../widgets/tablet/card/add_approval_cycle.dart';
 
-
+// by : mohamed ashraf
+//date :27/11/2024
 class AddAssetPage extends GetView<AddProductController> {
-  const AddAssetPage({super.key});
 
+  final bool? isEdit;
+  const AddAssetPage( {super.key,this.isEdit});
   @override
   Widget build(BuildContext context) {
+    // if (isEdit == true) {
+    //   controller.loadAssetData();
+    // }
     return Container(
         width: Get.width * 0.85,
         padding: EdgeInsets.symmetric(
@@ -156,21 +159,6 @@ class AddAssetPage extends GetView<AddProductController> {
               ),
               verticalSpace(24),
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  horizontalSpace(8),
-                  Expanded(
-                    child: LabeledFormField(
-                      readOnly: false,
-                      controller: controller.additionalNoteController,
-                      label: 'Additional Note'.tr,
-                    ),
-                  ),
-
-                ],
-              ),
-              verticalSpace(24),
-              Row(
                 children: [
                   Expanded(
                     child: LabeledFormField(
@@ -183,8 +171,8 @@ class AddAssetPage extends GetView<AddProductController> {
                   Expanded(
                     child: LabeledFormField(
                       readOnly: false,
-                      controller: controller.unitCostController,
-                      label: 'Unit Cost'.tr,
+                      controller: controller.totalQuantityController,
+                      label: 'quantity'.tr,
                     ),
                   ),
                 ],
@@ -195,7 +183,7 @@ class AddAssetPage extends GetView<AddProductController> {
                   Expanded(
                     child: LabeledFormField(
                       readOnly: false,
-                      controller: controller.quantityController,
+                      controller: controller.unitCostController,
                       label: 'Unit Test'.tr,
                     ),
                   ),
@@ -333,44 +321,55 @@ class AddAssetPage extends GetView<AddProductController> {
                 ],
               ),
               verticalSpace(24),
-              Row(
-                children: [
-                  Expanded(
-                    child: Obx(() {
-                      return LabeledDropdownField(
-                        label: 'Storage Location'.tr,
-                        value: controller.storageLocationValue.value,
-                        textButton:
-                            controller.storageLocationValue.value?.getName,
-                        onChanged: (value) {
-                          controller.updateStorageLocationValue(value);
-                        },
-                        controller: controller.storageLocationController,
-                        items: List.generate(
-                          controller.storageLocation.length,
-                          (index) {
-                            return DropdownMenuItem(
-                              value: controller.storageLocation[index],
-                              child: Text(
-                                controller.storageLocation[index].getName,
-                                style: AppTextStyles
-                                    .font14SecondaryBlackCairoMedium,
+              GetBuilder<AddProductController>(
+                builder: (controller) {
+                  return ListView.separated(
+                      shrinkWrap: true,
+                      itemBuilder: (context,index){
+                    return  Row(
+                      children: [
+                        Expanded(
+                          child: Obx(() {
+                            return LabeledDropdownField(
+                              label: 'Storage Location'.tr,
+                              value: controller.selectedStorageLocations[index].value,
+                              textButton:
+                              controller.selectedStorageLocations[index].value?.getName,
+                              onChanged: (value) {
+                                controller.updateStorageLocationValue(index, value!);
+                              },
+                              controller: controller.storageLocationControllers[index],
+                              items: List.generate(
+                                controller.storageLocation.length,
+                                    (index) {
+                                  return DropdownMenuItem(
+                                    value: controller.storageLocation[index],
+                                    child: Text(
+                                      controller.storageLocation[index].getName,
+                                      style: AppTextStyles
+                                          .font14SecondaryBlackCairoMedium,
+                                    ),
+                                  );
+                                },
                               ),
                             );
-                          },
+                          }),
                         ),
-                      );
-                    }),
-                  ),
-                  horizontalSpace(15),
-                  Expanded(
-                    child: LabeledFormField(
-                      readOnly: false,
-                      controller: controller.stockOnHandController,
-                      label: 'Stock On Hand'.tr,
-                    ),
-                  ),
-                ],
+                        horizontalSpace(15),
+                        Expanded(
+                          child: LabeledFormField(
+                            readOnly: false,
+                            controller: controller.stockOnHandController[index],
+                            label: 'Stock On Hand'.tr,
+                          ),
+                        ),
+                      ],
+                    );
+                  }, separatorBuilder: (context,index){
+                    return verticalSpace(12);
+                  }, itemCount: controller.storageLocationCount,
+                  );
+                }
               ),
               verticalSpace(8),
               Align(
@@ -382,7 +381,7 @@ class AddAssetPage extends GetView<AddProductController> {
                   textColor: AppColors.white,
                   color: AppColors.black,
                   onTap: () {
-                    // Add category action
+                    controller.addMoreStorage();
                   },
                 ),
               ),
@@ -465,7 +464,8 @@ class AddAssetPage extends GetView<AddProductController> {
                     color: AppColors.primary,
                     onPressed: (){
                      controller.addAssetItem();
-                     Navigator.pushReplacementNamed(context, Routes.adminHome);
+                     controller.clearControllers();
+                     Navigator.pop(context);
                      GetDialogHelper.generalDialog(
                          context: Get.context!,
                          child: DefaultDialog(

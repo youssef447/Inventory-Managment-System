@@ -20,9 +20,22 @@ import '../../enums/product_enums.dart';
 import '../constant/add_Product_ids_constant.dart';
 
 class AddProductController extends GetxController {
-  ///-------------- drop down
+  @override
+  void onInit() {
+    super.onInit();
+    // Initialize the first set of controllers
+    storageLocationControllers.add(TextEditingController());
+    stockOnHandController.add(TextEditingController());
+    selectedStorageLocations.add(Rxn<StorageLocation>());
+  }
 
-  ///-------------- drop down--------------------------------------------------------------------
+  // void loadAssetData(ProductEntity model) async {
+  //
+  //
+  // }
+
+
+  ///-------------- drop down-----------------------
   // -------------- product type  -----------
   List<ProductTypes> productType = [
     ProductTypes.asset,
@@ -68,8 +81,8 @@ class AddProductController extends GetxController {
 
   // -------------- storageRequirement   -----------
   List<String> storageRequirement = [
-    'yes',
-    'no',
+    'Electronic',
+    'Another',
   ];
   Rxn<String> storageRequirementValue = Rxn<String>();
   updateStorageRequirementValue(String value) {
@@ -92,9 +105,10 @@ class AddProductController extends GetxController {
     StorageLocation.room1,
     StorageLocation.room2,
   ];
-  Rxn<StorageLocation> storageLocationValue = Rxn<StorageLocation>();
-  updateStorageLocationValue(StorageLocation value) {
-    storageLocationValue.value = value;
+  List<Rxn<StorageLocation>> selectedStorageLocations = [];
+  void updateStorageLocationValue(int index, StorageLocation value) {
+    selectedStorageLocations[index].value = value;
+    update(); // Notify the UI to update the dropdown
   }
 
   // -------------- switch approval  -----------
@@ -104,28 +118,38 @@ class AddProductController extends GetxController {
     isApproval = !isApproval;
     update();
   }
+ //--------------- add More storage location
+   int storageLocationCount = 1;
+  void addMoreStorage() {
+    // Add a new controller for each new entry
+    storageLocationControllers.add(TextEditingController());
+    stockOnHandController.add(TextEditingController());
+    selectedStorageLocations.add(Rxn<StorageLocation>());
+    storageLocationCount += 1;
+    update(); // Notify the UI to refresh
+  }
 
   ///-------------------- TextEditingController --------------
   TextEditingController orderIdController = TextEditingController();
+  TextEditingController orderValueController = TextEditingController();
   TextEditingController productIdController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
   TextEditingController subCategoryController = TextEditingController();
   TextEditingController brandController = TextEditingController();
   TextEditingController modelController = TextEditingController();
   TextEditingController expirationDateController = TextEditingController();
-  TextEditingController quantityController = TextEditingController();
+  TextEditingController totalQuantityController = TextEditingController();
   TextEditingController unitCostController = TextEditingController();
   TextEditingController currencyController = TextEditingController();
   TextEditingController supplierNameController = TextEditingController();
   TextEditingController storageRequirementController = TextEditingController();
-  TextEditingController storageLocationController = TextEditingController();
-  TextEditingController unitOfMeasurementController = TextEditingController();
+  List<TextEditingController> storageLocationControllers = [];
+  List<TextEditingController> stockOnHandController = [];
   TextEditingController expectedLifetimeController = TextEditingController();
-  TextEditingController stockOnHandController = TextEditingController();
   TextEditingController additionalNoteController = TextEditingController();
-
   TextEditingController reorderLevelController = TextEditingController();
   TextEditingController reorderQuantityController = TextEditingController();
+  TextEditingController unitOfMeasurementController = TextEditingController();
 
   List<Map<String, String>> inventoryList = [];
 
@@ -134,32 +158,26 @@ class AddProductController extends GetxController {
         id: productIdController.text,
         productType: ProductType.asset,
         additionalNotes: additionalNoteController.text,
-        storage: [
-          StorageLocationAndQuantityEntity(
-            locationName: storageLocationController.text,
-            quantity: 10,
+        storageRequirement: storageRequirementController.text = storageRequirementValue.toString(),
+        storage: List.generate(
+          storageLocationControllers.length,
+              (index) => StorageLocationAndQuantityEntity(
+            locationName: storageLocationControllers[index].text =selectedStorageLocations[index].value!.getName, // Get location name from the corresponding controller
+            quantity: int.tryParse(stockOnHandController[index].text) ?? 0, // Parse quantity or default to 0
           ),
-          StorageLocationAndQuantityEntity(
-            locationName: 'Room A13',
-            quantity: 10,
-          ),
-          StorageLocationAndQuantityEntity(
-            locationName: 'Room A13',
-            quantity: 10,
-          ),
-        ],
+        ),
         assetEntity: AssetsEntity(
           assetName: brandController.text + modelController.text,
-          category: categoryController.text,
+          category: categoryController.text = categoryValue.toString(),
           subcategory: subCategoryController.text,
           model: modelController.text,
           dateReceived: DateTime.now(),
-          quantity: quantityController.text,
+          quantity: totalQuantityController.text,
           status: 'InUse',
           brand: brandController.text,
         ),
         supplier: SupplierEntity(
-          supplierName: supplierNameController.text,
+          supplierName: supplierNameController.text = supplierNameValue.toString(),
           postalCode: '1313',
           city: 'Cairo',
           country: 'Egypt',
@@ -177,7 +195,7 @@ class AddProductController extends GetxController {
           ),
         ),
         totalQuantity: 20,
-        currency: currencyController.text,
+        currency: currencyController.text = currencyValue.value!.getName,
         unitCost: 2,
         expectedLifeTime: DateTime.now(),
         productSpecifications: [
@@ -186,9 +204,9 @@ class AddProductController extends GetxController {
         productWaranties: [
           AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
         ]);
-    Get.find<ProductsController>().products.add(item);
-    clearControllers();
-    update([ProductsIds.productsTab]);
+    final controller = Get.find<ProductsController>();
+    controller.products.add(item); // Add item to the list
+    controller.update([ProductsIds.productsTab]);
   }
 
   void addConsumableItem() {
@@ -196,35 +214,29 @@ class AddProductController extends GetxController {
         id: productIdController.text,
         productType: ProductType.consumable,
         additionalNotes: additionalNoteController.text,
-        storage: [
-          StorageLocationAndQuantityEntity(
-            locationName: storageLocationController.text,
-            quantity: 10,
+        storage: List.generate(
+          storageLocationControllers.length,
+              (index) => StorageLocationAndQuantityEntity(
+            locationName: storageLocationControllers[index].text, // Get location name from the corresponding controller
+            quantity: int.tryParse(stockOnHandController[index].text) ?? 0, // Parse quantity or default to 0
           ),
-          StorageLocationAndQuantityEntity(
-            locationName: 'Room A13',
-            quantity: 10,
-          ),
-          StorageLocationAndQuantityEntity(
-            locationName: 'Room A13',
-            quantity: 10,
-          ),
-        ],
+        ),
+        storageRequirement: storageRequirementController.text = storageRequirementValue.toString(),
         consumablesEntity: ConsumablesEntity(
           consumableId: productIdController.text,
-          category: categoryController.text,
+          category: categoryController.text = categoryValue.toString(),
           subcategory: subCategoryController.text,
           model: modelController.text,
           dateReceived: DateTime.now(),
-          quantity: quantityController.text,
+          quantity: totalQuantityController.text,
           status: 'InUse',
           brand: brandController.text,
           name: brandController.text + modelController.text,
-          unitOfMeasurement: unitOfMeasurementController.text,
+          unitOfMeasurement: unitOfMeasurementController.text = unitOfMeasurementValue.value!.getName,
           usageFrequency: 'daily',
         ),
         supplier: SupplierEntity(
-          supplierName: supplierNameController.text,
+          supplierName: supplierNameController.text = supplierNameValue.toString(),
           postalCode: '1313',
           city: 'Cairo',
           country: 'Egypt',
@@ -242,7 +254,7 @@ class AddProductController extends GetxController {
           ),
         ),
         totalQuantity: 20,
-        currency: currencyController.text,
+        currency: currencyController.text = currencyValue.value!.getName,
         unitCost: 2,
         expectedLifeTime: DateTime.now(),
         productSpecifications: [
@@ -251,10 +263,12 @@ class AddProductController extends GetxController {
         productWaranties: [
           AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
         ]);
-    Get.find<ProductsController>().products.add(item);
-    clearControllers();
-    update([ProductsIds.productsTab]);
+    final controller = Get.find<ProductsController>();
+    controller.products.add(item); // Add item to the list
+    controller.update([ProductsIds.productsTab]);
   }
+
+
 
   void clearControllers() {
     orderIdController.clear();
@@ -264,15 +278,13 @@ class AddProductController extends GetxController {
     brandController.clear();
     modelController.clear();
     expirationDateController.clear();
-    quantityController.clear();
+    totalQuantityController.clear();
     unitCostController.clear();
     currencyController.clear();
     supplierNameController.clear();
     storageRequirementController.clear();
-    storageLocationController.clear();
-    unitOfMeasurementController.clear();
     expectedLifetimeController.clear();
-    stockOnHandController.clear();
+    totalQuantityController.clear();
     additionalNoteController.clear();
   }
 

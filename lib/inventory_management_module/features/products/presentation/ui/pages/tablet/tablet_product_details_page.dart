@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../../../../core/enums/stock_enums.dart';
 import '../../../../../../core/extensions/extensions.dart';
+import '../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../core/helpers/orientation_helper.dart';
 
 import '../../../../../../core/animations/horizontal_animation.dart';
@@ -26,6 +27,7 @@ import '../../../controller/products_controller.dart';
 import '../../widgets/common/cards/horizontal_assigned_user_card.dart';
 import '../../widgets/common/cards/vertical_assigned_user_card.dart';
 import '../../widgets/common/cards/instock_card.dart';
+import 'edit/restocking_edit.dart';
 
 part '../../widgets/tablet/product_details/assigned_and_stock_list.dart';
 
@@ -84,7 +86,13 @@ class TabletProductDetailsPage extends StatelessWidget {
                   text: 'Restocking',
                   textColor: AppColors.textButton,
                   color: AppColors.primary,
-                  onTap: () {},
+                  onTap: () {
+
+                    GetDialogHelper.generalDialog(
+                        context: context,
+                        child:  const RestockingEdit()
+                    );
+                  },
                 ),
                 horizontalSpace(6),
                 SizedBox(
