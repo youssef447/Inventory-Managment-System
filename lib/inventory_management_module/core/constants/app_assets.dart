@@ -11,6 +11,7 @@ abstract class AppAssets {
   static const String pphone = 'assets/images/pphone.png';
   static const String profileImage = 'assets/images/profileImage.png';
   static const String user = 'assets/images/user.png';
+  static const String qr = 'assets/images/qr.png';
 
   //****************************************************************************
 
@@ -47,6 +48,8 @@ abstract class AppAssets {
   static const String transmission = 'assets/vectors/transmission.svg';
   static const String call = 'assets/vectors/call.svg';
   static const String camera = 'assets/vectors/Camera.svg';
+  static const String system = 'assets/vectors/system.svg';
+  static const String status = 'assets/vectors/status.svg';
   //media
   static const String powerpoint = 'assets/vectors/powerpoint.svg';
   static const String pdf = 'assets/vectors/pdf.svg';

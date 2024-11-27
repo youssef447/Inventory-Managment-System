@@ -1,7 +1,12 @@
 // Date: 7/11/2024
 // By:Mohamed Ashraf
 
+import 'dart:io';
+
 import '../../../../../core/constants/app_assets.dart';
+import '../../../../products/domain/subEntities/contract_details_entity.dart';
+import '../../../../products/domain/subEntities/supplier_entity.dart';
+import '../../../requests/entities/attachment_entity.dart';
 
 class ConsumablesEntity {
   final String consumableId;
@@ -24,6 +29,24 @@ class ConsumablesEntity {
   final String status;
   final DateTime? dateReturn;
   final DateTime lastUpdate = DateTime.now();
+  SupplierEntity supplier = SupplierEntity(
+    supplierName: 'TechSource Solutions',
+    postalCode: '1313',
+    city: 'Cairo',
+    country: 'Egypt',
+    email: 'jCgQ5@example.com',
+    firstName: 'Youssef',
+    lastName: 'Ashraf',
+    phoneNumber: '010100101010',
+    supplierId: '110',
+    stateOrProvince: 'NA',
+    contractDetails: ContractdetailsEntity(
+      attachmentEntity:
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+      endDate: DateTime.now(),
+      startDate: DateTime.now(),
+    ),
+  );
   //---- admin ---
   final String supplierId;
   final String supplierName;

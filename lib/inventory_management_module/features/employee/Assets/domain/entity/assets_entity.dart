@@ -1,7 +1,12 @@
 // Date: 7/11/2024
 // By:Mohamed Ashraf
 
+import 'dart:io';
+
 import '../../../../../core/constants/app_assets.dart';
+import '../../../../products/domain/subEntities/contract_details_entity.dart';
+import '../../../../products/domain/subEntities/supplier_entity.dart';
+import '../../../requests/entities/attachment_entity.dart';
 
 class AssetsEntity {
   final String image = AppAssets.pphone;
@@ -16,7 +21,7 @@ class AssetsEntity {
   final String quantity;
   final String? maintenanceFrequency;
   final DateTime? nextMaintenanceSchedule;
-  final DateTime? expirationDate;
+  final DateTime? expectedLifeTime;
   final int availableQuantity;
   final String status;
   final String availabilityStatus;
@@ -29,7 +34,24 @@ class AssetsEntity {
   final int quantityOnHand;
   final String unitCost;
   final String currency;
-
+  SupplierEntity supplier = SupplierEntity(
+    supplierName: 'TechSource Solutions',
+    postalCode: '1313',
+    city: 'Cairo',
+    country: 'Egypt',
+    email: 'jCgQ5@example.com',
+    firstName: 'Youssef',
+    lastName: 'Ashraf',
+    phoneNumber: '010100101010',
+    supplierId: '110',
+    stateOrProvince: 'NA',
+    contractDetails: ContractdetailsEntity(
+      attachmentEntity:
+          AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+      endDate: DateTime.now(),
+      startDate: DateTime.now(),
+    ),
+  );
   AssetsEntity({
     this.assetId = '001',
     required this.assetName,
@@ -44,7 +66,7 @@ class AssetsEntity {
     this.availabilityStatus = 'In Stock',
     this.maintenanceFrequency,
     this.nextMaintenanceSchedule,
-    this.expirationDate,
+    this.expectedLifeTime,
     required this.status,
     required this.brand,
     //---- admin ---

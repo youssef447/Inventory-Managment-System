@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_admin_employee_details_page.dart';
 import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_admin_employees_page.dart';
+import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_track_requests_details_page.dart';
 import '../../features/admin/employees/presentation/ui/pages/tablet/tablet_admin_employee_details_page.dart';
 import '../../features/admin/employees/presentation/ui/pages/tablet/tablet_admin_employees_page.dart';
+import '../../features/admin/employees/presentation/ui/pages/tablet/tablet_track_requests_details_page.dart';
 import '../../features/admin/home/presentation/ui/page/mobile/mobile_admin_home_page.dart';
 import '../../features/admin/home/presentation/ui/page/tablet/tablet_admin_home_page.dart';
 import '../../features/employee/Assets/presentation/ui/pages/mobile/mobile_assets_details.dart';
@@ -198,6 +200,18 @@ abstract class RouteGenerator {
             ),
             tabletWidget: TabletAdminEmployeeDetailsPage(
               userEntity: args[RouteArguments.userEntity],
+            ),
+          ),
+          PageTransitionType.fade,
+        );
+      case Routes.employeeTrackRequestDetails:
+        return _buildPageRoute(
+          ResponsiveHelper(
+            mobileWidget: MobileAdminTrackRequestDetailsPage(
+              model: args[RouteArguments.requestModel],
+            ),
+            tabletWidget: TabletAdminTrackRequestDetailsPage(
+              model: args[RouteArguments.requestModel],
             ),
           ),
           PageTransitionType.fade,

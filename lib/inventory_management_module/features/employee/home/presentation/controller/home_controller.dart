@@ -109,7 +109,7 @@ class HomeController extends GetxController {
           model.maintenanceFrequency ?? 'Not Applicable',
           DateTimeHelper.formatDate(
               model.nextMaintenanceSchedule ?? DateTime.now()),
-          DateTimeHelper.formatDate(model.expirationDate ?? DateTime.now()),
+          DateTimeHelper.formatDate(model.expectedLifeTime ?? DateTime.now()),
           model.status,
         ];
       }).toList();

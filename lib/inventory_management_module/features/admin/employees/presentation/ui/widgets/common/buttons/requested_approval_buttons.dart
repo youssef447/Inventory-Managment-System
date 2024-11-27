@@ -16,6 +16,8 @@ import '../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../../../../../employee/requests/entities/request_entity.dart';
 
+//Youssef Ashraf
+///Represent the Request Approval Buttons
 class RequestedApprovalButtons extends StatelessWidget {
   final RequestEntity requestEntity;
   const RequestedApprovalButtons({super.key, required this.requestEntity});

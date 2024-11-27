@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../admin/employees/presentation/controller/employees_controller.dart';
 
 import '../../../../../core/constants/approve_cycle.dart';
 import '../../../../../core/enums/requests_enums.dart';
@@ -76,6 +75,29 @@ class EmployeeDetailsController extends GetxController {
         status: RequestStatus.approved,
         requestDate: DateTime.now(),
         dateReturn: DateTime.now(),
+        expectedRecieved: DateTime.now(),
+        priority: 'Urgent',
+        quantity: 2,
+        assetsEntity: AssetsEntity(
+          assetName: 'Dell GZ 15',
+          category: 'Electronics',
+          subcategory: 'Computer',
+          model: 'GZ 15',
+          dateReceived: DateTime.now(),
+          quantity: '2',
+          status: 'InUse',
+          brand: 'Dell',
+        ),
+        approvalCycles: ApproveCycle.approvalCycles,
+      ),
+      RequestEntity(
+        requestId: '002',
+        requestType: ProductType.asset,
+        status: RequestStatus.cancelled,
+        requestDate: DateTime.now(),
+        dateReturn: DateTime.now(),
+        reasonsOfCanccellation:
+            'Lorem Ipsum Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum',
         expectedRecieved: DateTime.now(),
         priority: 'Urgent',
         quantity: 2,
@@ -193,7 +215,6 @@ class EmployeeDetailsController extends GetxController {
               AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
             ]),
         //dummy
-        userEntity: Get.find<EmployeesController>().employees.first,
       ),
       AssignedUserProductsEntity(
         assigneDate: DateTime.now(),
@@ -260,7 +281,6 @@ class EmployeeDetailsController extends GetxController {
               AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
             ]),
         //dummy
-        userEntity: Get.find<EmployeesController>().employees.first,
       ),
       AssignedUserProductsEntity(
         assigneDate: DateTime.now(),
@@ -327,7 +347,6 @@ class EmployeeDetailsController extends GetxController {
               AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
             ]),
         //dummy
-        userEntity: Get.find<EmployeesController>().employees.first,
       ),
       AssignedUserProductsEntity(
         assigneDate: DateTime.now(),
@@ -394,7 +413,6 @@ class EmployeeDetailsController extends GetxController {
               AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
             ]),
         //dummy
-        userEntity: Get.find<EmployeesController>().employees.first,
       ),
       AssignedUserProductsEntity(
         assigneDate: DateTime.now(),
@@ -461,7 +479,6 @@ class EmployeeDetailsController extends GetxController {
               AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
             ]),
         //dummy
-        userEntity: Get.find<EmployeesController>().employees.first,
       ),
       AssignedUserProductsEntity(
         assigneDate: DateTime.now(),
@@ -528,7 +545,6 @@ class EmployeeDetailsController extends GetxController {
               AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
             ]),
         //dummy
-        userEntity: Get.find<EmployeesController>().employees.first,
       ),
       AssignedUserProductsEntity(
         assigneDate: DateTime.now(),
@@ -595,7 +611,6 @@ class EmployeeDetailsController extends GetxController {
               AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
             ]),
         //dummy
-        userEntity: Get.find<EmployeesController>().employees.first,
       ),
       AssignedUserProductsEntity(
         assigneDate: DateTime.now(),
@@ -662,7 +677,6 @@ class EmployeeDetailsController extends GetxController {
               AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
             ]),
         //dummy
-        userEntity: Get.find<EmployeesController>().employees.first,
       ),
     ];
 
@@ -748,4 +762,7 @@ class EmployeeDetailsController extends GetxController {
         .where((e) => e.status == RequestStatus.rejected)
         .toList();
   }
+
+  //---------Track Request Tab----------------
+  final scrollController = ScrollController();
 }

@@ -137,8 +137,20 @@ class TabletEmployeeProuctsList extends StatelessWidget {
                             : controller.getCurrentProducts().length,
                         (index) {
                           return controller.currentCategoryIndex == 4
-                              ? TabletRequestedProductCard(
-                                  request: controller.requestedProducts[index],
+                              ? GestureDetector(
+                                  onTap: () {
+                                    context.navigateTo(
+                                        Routes.employeeTrackRequestDetails,
+                                        arguments: {
+                                          RouteArguments.requestModel:
+                                              controller
+                                                  .requestedProducts[index],
+                                        });
+                                  },
+                                  child: TabletRequestedProductCard(
+                                    request:
+                                        controller.requestedProducts[index],
+                                  ),
                                 )
                               : EmployeeProductCard(
                                   productEntity: controller

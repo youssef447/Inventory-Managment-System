@@ -12,7 +12,8 @@ import '../../../../../controller/inquiry_chat_controller.dart';
 
 class NewMessageField extends GetView<InquiryChatController> {
   final RequestEntity model;
-  const NewMessageField(this.model, {super.key});
+  final bool? adminEmpDetailsPage;
+  const NewMessageField(this.model, {super.key, this.adminEmpDetailsPage});
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +50,7 @@ class NewMessageField extends GetView<InquiryChatController> {
               controller.sendMessage(
                 model: model,
                 message: controller.messageController.text,
+                adminEmpDetailsPage: adminEmpDetailsPage,
               );
             }
           },

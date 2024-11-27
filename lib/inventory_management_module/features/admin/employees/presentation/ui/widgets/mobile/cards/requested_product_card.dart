@@ -1,4 +1,4 @@
-part of '../../pages/mobile/mobile_admin_employee_details_page.dart';
+part of '../../../pages/mobile/mobile_admin_employee_details_page.dart';
 
 class MobileRequestedProductCard extends GetView<EmployeeDetailsController> {
   final RequestEntity request;
@@ -23,12 +23,13 @@ class MobileRequestedProductCard extends GetView<EmployeeDetailsController> {
               children: [
                 CircleAvatar(
                   radius: 20.r,
-                  backgroundImage: const AssetImage(AppAssets.user),
+                  backgroundImage:
+                      NetworkImage(request.userEntity.profileImage),
                 ),
                 horizontalSpace(12),
                 Expanded(
                     child: Text(
-                  '${request.userEntity?.firstName ?? 'Ahmed'} ${request.userEntity?.lastName ?? 'Mohammed'}',
+                  '${request.userEntity.firstName} ${request.userEntity.lastName}',
                   style: AppTextStyles.font18BlackMediumCairo,
                 )),
               ],

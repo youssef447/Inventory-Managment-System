@@ -27,16 +27,16 @@ class MobileTrackDetailsCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           DefaultRichText(
-            label: 'Request ID',
-            value: model.requestId,
-          ),
-          DefaultRichText(
             label: 'Request Type',
             value: model.requestType.getName,
           ),
           DefaultRichText(
-            label: 'Request Date',
-            value: DateTimeHelper.formatDate(model.requestDate),
+            label: 'Priority',
+            value: model.priority,
+          ),
+          DefaultRichText(
+            label: 'Request Delivery',
+            value: DateTimeHelper.formatDate(model.dateReturn),
           ),
           DefaultRichText(
             label: 'Quantity',
@@ -66,44 +66,34 @@ class MobileTrackDetailsCard extends StatelessWidget {
                 ? model.consumablesEntity!.brand
                 : model.assetsEntity!.brand,
           ),
-          if (isConsumable)
+          verticalSpace(32),
+          const MobileApprovalCycle(),
+          if (model.status == RequestStatus.cancelled &&
+              model.reasonsOfCanccellation != null)
             Padding(
-              padding: EdgeInsets.all(2.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              padding: EdgeInsets.symmetric(vertical: 16.h),
+              child: Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                runSpacing: 8.h,
                 children: [
-                  DefaultRichText(
-                    label: 'Unit Of Measurement',
-                    value: model.consumablesEntity!.unitOfMeasurement,
+                  SvgPicture.asset(AppAssets.status),
+                  Text(
+                    '${'Reasons Of Canccellation'.tr}: ',
+                    style: AppTextStyles.font14BlackCairoMedium.copyWith(
+                      color: AppColors.red,
+                    ),
                   ),
-                  verticalSpace(2),
-                  DefaultRichText(
-                    label: 'Reorder Level',
-                    value: DateTimeHelper.formatInt(
-                        model.consumablesEntity!.reorderLevel),
-                  ),
-                  verticalSpace(2),
-                  DefaultRichText(
-                    label: 'Reorder Quantity',
-                    value: DateTimeHelper.formatInt(
-                        model.consumablesEntity!.reorderQuantity),
-                  ),
-                  verticalSpace(2),
-                  DefaultRichText(
-                    label: 'Expiration Date',
-                    value: DateTimeHelper.formatDate(
-                        model.consumablesEntity!.expirationDate ??
-                            DateTime.now()),
-                  ),
+                  Text(model.reasonsOfCanccellation!,
+                      style: AppTextStyles.font14BlackCairoMedium),
                 ],
               ),
             ),
           verticalSpace(32),
-          const MobileApprovalCycle(),
-          verticalSpace(32),
           Align(
             alignment: AlignmentDirectional.centerEnd,
-            child: CancelRequestButton(requestId: model.requestId),
+            child: RequestedApprovalButtons(
+              requestEntity: model,
+            ),
           ),
         ],
       ),

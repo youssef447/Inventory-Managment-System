@@ -1,4 +1,4 @@
-part of '../../pages/mobile/mobile_admin_employee_details_page.dart';
+part of '../../../pages/mobile/mobile_admin_employee_details_page.dart';
 
 class MobileAdminEmployeeDetailsCard extends StatelessWidget {
   final UserEntity userEntity;

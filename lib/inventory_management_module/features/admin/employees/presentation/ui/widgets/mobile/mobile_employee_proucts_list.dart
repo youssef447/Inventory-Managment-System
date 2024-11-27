@@ -110,22 +110,25 @@ class MobileEmployeeProductsList extends StatelessWidget {
                 sliver: SliverList.separated(
                   separatorBuilder: (_, __) => verticalSpace(16),
                   itemBuilder: (context, index) {
-                    return GestureDetector(
-                        onTap: () {
-                          context
-                              .navigateTo(Routes.employeeDetails, arguments: {
-                            // RouteArguments.userEntity: controller.employeesFilters[index],
-                          });
-                        },
-                        child: controller.currentCategoryIndex == 4
-                            ? MobileRequestedProductCard(
-                                request: controller.requestedProducts[index],
-                              )
-                            : EmployeeProductCard(
-                                productEntity: controller
-                                    .getCurrentProducts()[index]
-                                    .productentity,
-                              ));
+                    return controller.currentCategoryIndex == 4
+                        ? GestureDetector(
+                            onTap: () {
+                              context.navigateTo(
+                                  Routes.employeeTrackRequestDetails,
+                                  arguments: {
+                                    RouteArguments.requestModel:
+                                        controller.requestedProducts[index],
+                                  });
+                            },
+                            child: MobileRequestedProductCard(
+                              request: controller.requestedProducts[index],
+                            ),
+                          )
+                        : EmployeeProductCard(
+                            productEntity: controller
+                                .getCurrentProducts()[index]
+                                .productentity,
+                          );
                   },
                   itemCount: controller.currentCategoryIndex == 4
                       ? controller.requestedProducts.length

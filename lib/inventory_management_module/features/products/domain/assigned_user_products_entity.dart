@@ -2,7 +2,11 @@ import '../../employee/home/domain/user_entity.dart';
 import 'product_entity.dart';
 
 class AssignedUserProductsEntity {
-  UserEntity userEntity;
+  UserEntity userEntity = UserEntity(
+    firstName: 'Ahmed',
+    lastName: 'Mohammed',
+    id: '',
+  );
   ProductEntity productentity;
   DateTime assigneDate;
   DateTime returnDate;
@@ -13,7 +17,6 @@ class AssignedUserProductsEntity {
     required this.assigneDate,
     required this.returnDate,
     required this.lastUpdate,
-    required this.userEntity,
     required this.quantityAssigned,
     required this.productentity,
   });

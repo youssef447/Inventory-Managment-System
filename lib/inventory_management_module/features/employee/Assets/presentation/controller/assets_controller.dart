@@ -32,7 +32,7 @@ class AssetsController extends GetxController {
       TextEditingController();
   TextEditingController nextMaintenanceScheduleController =
       TextEditingController();
-  TextEditingController expirationDateController = TextEditingController();
+  TextEditingController expectedLifeTimeController = TextEditingController();
   TextEditingController statusController = TextEditingController();
 
 // show dummy data for test ui ------ will be removed --------
@@ -53,7 +53,7 @@ class AssetsController extends GetxController {
         quantity: '700',
         maintenanceFrequency: 'Monthly',
         nextMaintenanceSchedule: DateTime(2024, 1, 10, 9, 0),
-        expirationDate: DateTime(2024, 1, 10, 9, 0),
+        expectedLifeTime: DateTime(2024, 1, 10, 9, 0),
         status: 'Maintenance'.tr,
       ),
       AssetsEntity(
@@ -70,7 +70,7 @@ class AssetsController extends GetxController {
           requiresApprovals: false,
           maintenanceFrequency: 'Monthly',
           nextMaintenanceSchedule: null,
-          expirationDate: DateTime(2023, 1, 10, 9, 0),
+          expectedLifeTime: DateTime(2023, 1, 10, 9, 0),
           status: 'Returned'.tr),
       AssetsEntity(
           assetId: 'A103',
@@ -84,7 +84,7 @@ class AssetsController extends GetxController {
           quantity: '5',
           maintenanceFrequency: 'Monthly',
           nextMaintenanceSchedule: DateTime(2023, 1, 10, 9, 0),
-          expirationDate: null,
+          expectedLifeTime: null,
           status: 'InUse'.tr),
       AssetsEntity(
         assetId: 'A103',
@@ -98,7 +98,7 @@ class AssetsController extends GetxController {
         quantity: '5',
         maintenanceFrequency: 'Monthly',
         nextMaintenanceSchedule: DateTime(2023, 1, 10, 9, 0),
-        expirationDate: null,
+        expectedLifeTime: null,
         status: 'InUse'.tr,
       ),
       AssetsEntity(
@@ -113,7 +113,7 @@ class AssetsController extends GetxController {
         quantity: '5',
         maintenanceFrequency: 'Monthly',
         nextMaintenanceSchedule: DateTime(2023, 1, 10, 9, 0),
-        expirationDate: null,
+        expectedLifeTime: null,
         status: 'Returned'.tr,
       ),
 
@@ -145,9 +145,9 @@ class AssetsController extends GetxController {
                 model.nextMaintenanceSchedule!,
               )
             : 'Not Applicable'.tr;
-    expirationDateController.text = model.expirationDate != null
+    expectedLifeTimeController.text = model.expectedLifeTime != null
         ? DateTimeHelper.formatDate(
-            model.expirationDate!,
+            model.expectedLifeTime!,
           )
         : 'Not Applicable'.tr;
     statusController.text = model.status;
@@ -166,7 +166,7 @@ class AssetsController extends GetxController {
     dateReturnController.clear();
     maintenanceFrequencyController.clear();
     dateReturnController.clear();
-    expirationDateController.clear();
+    expectedLifeTimeController.clear();
     statusController.clear();
   }
 }

@@ -14,6 +14,7 @@ import '../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../core/theme/app_colors.dart';
 import '../../../../../core/theme/app_text_styles.dart';
 import '../../../../../core/widgets/dialog/default_dialog.dart';
+import '../../../../admin/employees/presentation/controller/employee_details_controller.dart';
 import '../../../requests/entities/attachment_entity.dart';
 import '../../../requests/entities/message_entity.dart';
 import '../../../requests/entities/request_entity.dart';
@@ -65,6 +66,7 @@ class InquiryChatController extends GetxController {
       {required RequestEntity model,
       AttachmentEntity? attachment,
       bool autoUpdate = true,
+      bool? adminEmpDetailsPage = false,
       String? message}) {
     messageFocusNode.unfocus();
 
@@ -85,12 +87,14 @@ class InquiryChatController extends GetxController {
     if (autoUpdate) {
       update([TrackRequestIds.inquiryChat]);
     }
-    WidgetsBinding.instance.addPostFrameCallback((_) => scrollBottom());
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => scrollBottom(adminEmpDetailsPage));
   }
 
-  scrollBottom() {
-    final scrollController =
-        Get.find<TrackRequestController>().scrollController;
+  scrollBottom([bool? adminEmpDetailsPage]) {
+    final scrollController = adminEmpDetailsPage ?? false
+        ? Get.find<EmployeeDetailsController>().scrollController
+        : Get.find<TrackRequestController>().scrollController;
     scrollController.animateTo(scrollController.position.maxScrollExtent,
         duration: const Duration(milliseconds: 150), curve: Curves.ease);
   }

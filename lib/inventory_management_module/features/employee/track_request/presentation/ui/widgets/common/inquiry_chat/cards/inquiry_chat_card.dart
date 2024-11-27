@@ -16,7 +16,9 @@ import '../new_message_field/new_message_field.dart';
 ///Represent the Inquiry Chat Card in Track Request Details Screen
 class InquiryChatCard extends StatelessWidget {
   final RequestEntity model;
-  const InquiryChatCard({super.key, required this.model});
+  final bool? adminEmpDetailsPage;
+  const InquiryChatCard(
+      {super.key, required this.model, this.adminEmpDetailsPage});
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +74,7 @@ class InquiryChatCard extends StatelessWidget {
                   ),
                   NewMessageField(
                     model,
+                    adminEmpDetailsPage: adminEmpDetailsPage,
                   ),
                 ],
               ));

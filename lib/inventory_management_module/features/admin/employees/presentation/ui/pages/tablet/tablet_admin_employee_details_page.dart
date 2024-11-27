@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import '../../../../../../../core/animations/size_animation.dart';
 import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/helpers/orientation_helper.dart';
+import '../../../../../../../core/routes/app_routes.dart';
+import '../../../../../../../core/routes/route_arguments.dart';
 import '../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
 import '../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../core/constants/app_assets.dart';
@@ -33,9 +35,9 @@ import '../../widgets/common/buttons/requested_approval_buttons.dart';
 import '../../widgets/common/cards/employee_product_card.dart';
 import '../../widgets/common/horizontal/requests_summary_circles.dart';
 import '../../widgets/common/vertical/requests_summary_circles.dart';
-part '../../widgets/tablet/employee_details_card.dart';
+part '../../widgets/tablet/cards/employee_details_card.dart';
 part '../../widgets/tablet/tablet_employee_proucts_list.dart';
-part '../../widgets/tablet/requested_product_card.dart';
+part '../../widgets/tablet/cards/requested_product_card.dart';
 
 class TabletAdminEmployeeDetailsPage extends StatelessWidget {
   final UserEntity userEntity;

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/features/admin/employees/enums/departments.dart';
+import '../../../../../../../core/routes/route_arguments.dart';
+import '../../../../../../../features/admin/employees/enums/departments.dart';
 import '../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../core/animations/size_animation.dart';
 import '../../../../../../../core/constants/app_assets.dart';
@@ -30,8 +31,8 @@ import '../../../controller/employee_details_controller.dart';
 import '../../widgets/common/buttons/requested_approval_buttons.dart';
 import '../../widgets/common/cards/employee_product_card.dart';
 import '../../widgets/common/vertical/requests_summary_circles.dart';
-part '../../widgets/mobile/employee_details_card.dart';
-part '../../widgets/mobile/requested_product_card.dart';
+part '../../widgets/mobile/cards/employee_details_card.dart';
+part '../../widgets/mobile/cards/requested_product_card.dart';
 part '../../widgets/mobile/mobile_employee_proucts_list.dart';
 
 class MobileAdminEmployeeDetailsPage extends StatelessWidget {

@@ -188,15 +188,16 @@ class TabletAssetsPage extends StatelessWidget {
                               ),
                               DataCell(
                                 Text(
-                                  controller.assetsList[index].expirationDate !=
+                                  controller.assetsList[index]
+                                              .expectedLifeTime !=
                                           null
                                       ? DateTimeHelper.formatDate(
                                           controller.assetsList[index]
-                                              .expirationDate!,
+                                              .expectedLifeTime!,
                                         )
                                       : 'Not Applicable'.tr,
                                   style: controller.assetsList[index]
-                                              .expirationDate !=
+                                              .expectedLifeTime !=
                                           null
                                       ? AppTextStyles.font16BlackRegularCairo
                                       : AppTextStyles

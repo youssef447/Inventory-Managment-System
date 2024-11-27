@@ -11,7 +11,8 @@ import 'message_entity.dart';
 class RequestEntity {
   int quantity;
   String requestId;
-  UserEntity? userEntity;
+  UserEntity userEntity =
+      UserEntity(firstName: 'Ahmed', id: '001', lastName: 'Mohammed');
   ProductType requestType;
   DateTime requestDate;
   String priority;
@@ -25,6 +26,7 @@ class RequestEntity {
   List<AttachmentEntity> attachments;
   List<MessageEntity> inquiryMessages = [];
   List<UserEntity> approvalCycles;
+  String? reasonsOfCanccellation;
 
   RequestEntity({
     required this.requestId,
@@ -32,11 +34,11 @@ class RequestEntity {
     required this.requestDate,
     required this.priority,
     this.maintenanceFrequency,
-    this.userEntity,
     this.assetsEntity,
     this.consumablesEntity,
     required this.expectedRecieved,
     required this.dateReturn,
+    this.reasonsOfCanccellation,
     required this.quantity,
     required this.status,
     this.additionalNote,

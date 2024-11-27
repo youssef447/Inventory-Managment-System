@@ -6,7 +6,6 @@ import 'package:get/get.dart';
 import '../../../../core/enums/stock_enums.dart';
 import '../../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../../employee/consumables/domain/entity/consumables_entity.dart';
-import '../../../employee/home/domain/user_entity.dart';
 import '../../../employee/requests/entities/attachment_entity.dart';
 import '../../constants/ids.dart';
 import '../../domain/assigned_user_products_entity.dart';
@@ -540,11 +539,7 @@ class ProductsController extends GetxController {
       lastUpdate: DateTime.now(),
       returnDate: DateTime.now(),
       quantityAssigned: 2,
-      userEntity: UserEntity(
-        firstName: 'Ahmed',
-        lastName: 'Mohammed',
-        id: '232424',
-      ),
+
       //dummy
       productentity: ProductEntity(
           id: '002',

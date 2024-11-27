@@ -1,4 +1,4 @@
-part of '../../pages/tablet/tablet_admin_employee_details_page.dart';
+part of '../../../pages/tablet/tablet_admin_employee_details_page.dart';
 
 class TabletEmployeeDetailsCard extends StatelessWidget {
   final UserEntity userEntity;
