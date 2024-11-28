@@ -23,6 +23,7 @@ class DatePickerField extends StatelessWidget {
   final double? width;
   final bool showIcon;
   final bool openDatePiker;
+  final Color? backGroundColor;
 
   final Function(DateTime)? onDateChanged;
 
@@ -30,6 +31,7 @@ class DatePickerField extends StatelessWidget {
     super.key,
     required this.textEditingController,
     this.onDateChanged,
+    this.backGroundColor,
     this.hintText,
     this.width,
     this.icon,
@@ -60,6 +62,7 @@ class DatePickerField extends StatelessWidget {
         child: AppTextFormField(
           readOnly: true,
           enabled: false,
+          backGroundColor: backGroundColor,
           controller: textEditingController,
           hintText: hintText,
           suffixIcon: showIcon

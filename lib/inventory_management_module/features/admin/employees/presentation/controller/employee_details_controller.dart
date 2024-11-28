@@ -13,8 +13,8 @@ import '../../../../employee/requests/entities/request_entity.dart';
 import '../../../../products/domain/assigned_user_products_entity.dart';
 import '../../../../products/domain/product_entity.dart';
 import '../../../../products/domain/subEntities/contract_details_entity.dart';
-import '../../../../products/domain/subEntities/storage_location_entity.dart';
-import '../../../../products/domain/subEntities/supplier_entity.dart';
+import '../../../storage/domain/storage_location_entity.dart';
+import '../../../suppliers/domain/supplier_entity.dart';
 import '../../../../products/enums/product_enums.dart';
 import '../../constants/ids.dart';
 

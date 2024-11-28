@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import '../../features/admin/orders/presentation/controller/new_order_contrller.dart';
 import '../../features/admin/orders/presentation/controller/new_order_form_controller.dart';
 import '../../features/admin/orders/presentation/controller/orders_controller.dart';
+import '../../features/admin/suppliers/presentation/controller/suppliers_controller.dart';
 import '../../features/products/presentation/controller/add_product_controller.dart';
 
 import '../../features/admin/assets/presentation/controller/admin_assets_controller.dart';
@@ -46,4 +47,6 @@ configurationDependencies() {
   Get.lazyPut(() => OrdersController(), fenix: true);
   Get.lazyPut(() => NewOrderController(), fenix: true);
   Get.lazyPut(() => NewOrderFormController(), fenix: true);
+  Get.lazyPut(() => SuppliersController(), fenix: true);
+  // Get.lazyPut(() => StorageController(), fenix: true);
 }

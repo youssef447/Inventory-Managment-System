@@ -135,7 +135,7 @@ class HorizontalTrackDetailsCardHeader extends StatelessWidget {
                 ),
                 horizontalSpace(4),
                 Text(
-                  'Download As Png',
+                  'Download As PNG',
                   style: AppTextStyles.font14SecondaryBlackCairoRegular
                       .copyWith(decoration: TextDecoration.underline),
                 ),

@@ -21,11 +21,13 @@ class DefaultSwitchButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Transform.scale(
       scale: 0.6,
+      alignment: AlignmentDirectional.centerEnd,
       child: FlutterSwitch(
         activeColor: AppColors.secondaryPrimary,
         inactiveColor: AppColors.lightGrey,
         value: value,
         onToggle: onChanged,
+
         /*  width: context.isTablett ? (context.isPortrait ? 70.w : 65.w) : 40.w,
         height: context.isTablett ? (context.isPortrait ? 30.h : 35.h) : 30.h, */
       ),

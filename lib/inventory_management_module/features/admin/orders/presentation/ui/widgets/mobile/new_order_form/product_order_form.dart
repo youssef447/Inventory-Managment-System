@@ -1,76 +1,187 @@
 part of '../../../pages/mobile/mobile_new_order_form_page.dart';
 
-class ProductOrderForm extends StatelessWidget {
-  const ProductOrderForm({super.key});
+//Youssef Ashraf
+/// Product Order Form in Mobile View
+class MobileProductOrderForm extends GetView<NewOrderFormController> {
+  final int index;
+  const MobileProductOrderForm({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<NewOrderFormController>(
-        id: OrderIds.newOrderForm,
-        builder: (controller) {
-          return Column(
-            children: [
-              Text(
-                'Order Details'.tr,
-                style: AppTextStyles.font20BlackCairoMedium,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text(
+              'Order Details'.tr,
+              style: AppTextStyles.font20BlackCairoMedium,
+            ),
+            const Spacer(),
+            GestureDetector(
+              onTap: () => controller.hideProductDetailsCard(index),
+              child: Text(
+                controller.hideForm[index] ? 'Expand'.tr : 'Hide'.tr,
+                style: AppTextStyles.font14BlackCairoMedium
+                    .copyWith(color: AppColors.blue),
               ),
-              verticalSpace(17),
-              LabeledFormField(
-                controller: controller.orderIDController,
-                label: 'Order ID',
-              ),
-              LabeledFormField(
-                controller: controller.quantityController,
-                label: 'Quantity',
-              ),
-              LabeledFormField(
-                controller: controller.unitCostController,
-                label: 'Unit Cost',
-              ),
-              LabeledDropdownField(
-                value: 1,
-                controller: controller.currencyController,
-                label: 'Currency',
-                onChanged: (value) {},
-                items: List.generate(
-                  Currncies.values.length,
-                  (index) {
-                    return DropdownMenuItem(
-                      alignment: AlignmentDirectional.centerStart,
-                      value: Currncies.values[index],
-                      child: Text(
-                        Currncies.values[index].getName.tr,
-                        style: AppTextStyles.font14SecondaryBlackCairoMedium,
-                      ),
-                    );
-                  },
+            ),
+          ],
+        ),
+        verticalSpace(17),
+        LabeledFormField(
+          backGroundColor: Get.isDarkMode ? AppColors.field : AppColors.white,
+          controller: controller.orderIDController[index],
+          label: 'Order ID',
+          readOnly: controller.createAutomaticIDs[index],
+        ),
+        verticalSpace(8),
+        LabeledFormField(
+          backGroundColor: Get.isDarkMode ? AppColors.field : AppColors.white,
+          controller: controller.quantityController[index],
+          label: 'Quantity',
+          readOnly: false,
+        ),
+        verticalSpace(8),
+        LabeledFormField(
+          backGroundColor: Get.isDarkMode ? AppColors.field : AppColors.white,
+          controller: controller.unitCostController[index],
+          label: 'Unit Cost',
+          readOnly: false,
+        ),
+        verticalSpace(8),
+        LabeledDropdownField(
+          backGroundColor: Get.isDarkMode ? AppColors.field : AppColors.white,
+          controller: controller.currencyController[index],
+          label: 'Currency',
+          hintText: 'Select Currency',
+          textButton: controller.selectedCurrency[index]?.getName,
+          value: controller.selectedCurrency[index],
+          onChanged: (value) {
+            controller.selectCurrency(value, index);
+          },
+          items: List.generate(
+            Currency.values.length,
+            (index) {
+              return DropdownMenuItem(
+                alignment: AlignmentDirectional.centerStart,
+                value: Currency.values[index],
+                child: Text(
+                  Currency.values[index].getName.tr,
+                  style: AppTextStyles.font14SecondaryBlackCairoMedium,
                 ),
-              ),
-              LabeledDropdownField(
-                value: 1,
-                controller: controller.supplierController,
-                label: 'Supplier',
-                onChanged: (value) {},
-                items: List.generate(
-                  Currncies.values.length,
-                  (index) {
-                    return DropdownMenuItem(
-                      alignment: AlignmentDirectional.centerStart,
-                      value: Currncies.values[index],
-                      child: Text(
-                        Currncies.values[index].getName.tr,
-                        style: AppTextStyles.font14SecondaryBlackCairoMedium,
-                      ),
-                    );
-                  },
+              );
+            },
+          ),
+        ),
+        verticalSpace(8),
+        LabeledDropdownField(
+          backGroundColor: Get.isDarkMode ? AppColors.field : AppColors.white,
+          controller: controller.supplierController[index],
+          label: 'Supplier',
+          hintText: 'Select Supplier',
+          textButton: controller.selectedSupplier[index]?.supplierName,
+          value: controller.selectedSupplier[index],
+          onChanged: (value) {
+            controller.selectSupplier(value, index);
+          },
+          items: List.generate(
+            controller.suppliers.length,
+            (i) {
+              return DropdownMenuItem(
+                alignment: AlignmentDirectional.centerStart,
+                value: controller.suppliers[i],
+                child: Text(
+                  controller.suppliers[i].supplierName,
+                  style: AppTextStyles.font14SecondaryBlackCairoMedium,
                 ),
-              ),
-              LabeledFormField(
-                controller: controller.orderValueController,
-                label: 'Order Value',
-              ),
-            ],
-          );
-        });
+              );
+            },
+          ),
+        ),
+        verticalSpace(8),
+        LabeledFormField(
+          backGroundColor: Get.isDarkMode ? AppColors.field : AppColors.white,
+          controller: controller.orderValueController[index],
+          label: 'Order Value',
+          readOnly: false,
+        ),
+        verticalSpace(8),
+        LabeledFormField(
+          backGroundColor: Get.isDarkMode ? AppColors.field : AppColors.white,
+          controller: controller.expectedDeliveryController[index],
+          label: 'Expected Delivery',
+          date: true,
+        ),
+        verticalSpace(8),
+        ListView.separated(
+          separatorBuilder: (context, index) {
+            return verticalSpace(12);
+          },
+          itemCount: controller.storageLocationCount[index],
+          shrinkWrap: true,
+          itemBuilder: (context, count) {
+            return Row(
+              children: [
+                Expanded(
+                  child: LabeledDropdownField(
+                    backGroundColor:
+                        Get.isDarkMode ? AppColors.field : AppColors.white,
+                    label: 'Storage Location'.tr,
+                    value: controller.selectedStorageLocations[index][count],
+                    textButton: controller
+                        .selectedStorageLocations[index][count]?.locationName,
+                    onChanged: (value) {
+                      controller.updateStorageLocationValue(
+                        index,
+                        count,
+                        value,
+                      );
+                    },
+                    controller: controller.storageLocationControllers[index],
+                    items: List.generate(
+                      controller.storageLoctaions.length,
+                      (i) {
+                        return DropdownMenuItem(
+                          value: controller.storageLoctaions[i],
+                          child: Text(
+                            controller.storageLoctaions[i].locationName,
+                            style:
+                                AppTextStyles.font14SecondaryBlackCairoMedium,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+        verticalSpace(10),
+        Align(
+          alignment: AlignmentDirectional.centerStart,
+          child: RectangledFilterCard(
+            width: 200.w,
+            image: AppAssets.add,
+            text: 'Add More Storage'.tr,
+            textColor: AppColors.white,
+            color: AppColors.black,
+            onTap: () {
+              controller.addMoreStorage(index);
+            },
+          ),
+        ),
+        verticalSpace(8),
+        verticalSpace(8),
+        LabeledFormField(
+          backGroundColor: Get.isDarkMode ? AppColors.field : AppColors.white,
+          controller: controller.additonalNotesController[index],
+          label: 'Additional Notes',
+          readOnly: false,
+          expands: true,
+        ),
+      ],
+    );
   }
 }

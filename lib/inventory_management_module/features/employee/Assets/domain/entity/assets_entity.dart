@@ -5,7 +5,7 @@ import 'dart:io';
 
 import '../../../../../core/constants/app_assets.dart';
 import '../../../../products/domain/subEntities/contract_details_entity.dart';
-import '../../../../products/domain/subEntities/supplier_entity.dart';
+import '../../../../admin/suppliers/domain/supplier_entity.dart';
 import '../../../requests/entities/attachment_entity.dart';
 
 class AssetsEntity {

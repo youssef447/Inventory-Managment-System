@@ -1,4 +1,4 @@
-import 'contract_details_entity.dart';
+import '../../../products/domain/subEntities/contract_details_entity.dart';
 
 class SupplierEntity {
   String supplierName;
@@ -11,6 +11,9 @@ class SupplierEntity {
   String firstName;
   String lastName;
   String phoneNumber;
+  String businessType = 'Bussiness';
+  String catalogOfProduct = '';
+  String title = 'Designer';
   String email;
   SupplierEntity({
     required this.supplierName,

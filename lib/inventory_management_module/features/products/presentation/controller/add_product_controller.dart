@@ -14,8 +14,8 @@ import '../../../employee/requests/entities/attachment_entity.dart';
 import '../../constants/ids.dart';
 import '../../domain/product_entity.dart';
 import '../../domain/subEntities/contract_details_entity.dart';
-import '../../domain/subEntities/storage_location_entity.dart';
-import '../../domain/subEntities/supplier_entity.dart';
+import '../../../admin/storage/domain/storage_location_entity.dart';
+import '../../../admin/suppliers/domain/supplier_entity.dart';
 import '../../enums/product_enums.dart';
 import '../constant/add_Product_ids_constant.dart';
 

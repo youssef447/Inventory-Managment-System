@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../../../../../core/extensions/extensions.dart';
 
-import '../../../../../../../core/animations/size_animation.dart';
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/helpers/get_dialog_helper.dart';

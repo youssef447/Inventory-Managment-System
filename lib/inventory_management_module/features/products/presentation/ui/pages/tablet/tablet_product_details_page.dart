@@ -45,14 +45,13 @@ class TabletProductDetailsPage extends StatelessWidget {
         body: SafeArea(
             child: Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: context.isLandscapee ? 34.w : 16.w,
+        horizontal: context.isLandscapee ? 30.w : 20.w,
         vertical: 16.h,
       ),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            verticalSpace(16),
             CustomAppBar(
               titles: const ['Product', 'Product Details'],
               titleNavigations: [
