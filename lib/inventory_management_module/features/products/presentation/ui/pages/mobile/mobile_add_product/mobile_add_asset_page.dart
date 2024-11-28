@@ -1,11 +1,8 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
+import '../../../../../../../core/enums/requests_enums.dart';
 
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/get_dialog_helper.dart';
@@ -27,11 +24,10 @@ import '../../../widgets/common/attachments/product_warranty_attachment_section.
 import '../../../widgets/common/upload_image_avatar_widget.dart';
 import '../../../widgets/mobile/card/mobile_add_approval_cycle.dart';
 
-
 class MobileAddAssetPage extends GetView<AddProductController> {
   final bool? isEdit;
   final ProductEntity? product;
-  const MobileAddAssetPage({super.key,this.isEdit, this.product});
+  const MobileAddAssetPage({super.key, this.isEdit, this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +46,7 @@ class MobileAddAssetPage extends GetView<AddProductController> {
         ),
         child: SingleChildScrollView(
           child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
@@ -71,7 +67,6 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                 ],
               ),
               verticalSpace(24),
-
               Row(
                 children: [
                   const Spacer(),
@@ -99,21 +94,19 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                 return LabeledDropdownField(
                   label: 'Category'.tr,
                   value: controller.categoryValue.value,
-                  textButton:
-                  controller.categoryValue.value,
+                  textButton: controller.categoryValue.value,
                   onChanged: (value) {
                     controller.updateCategoryValue(value);
                   },
                   controller: controller.categoryController,
                   items: List.generate(
                     controller.category.length,
-                        (index) {
+                    (index) {
                       return DropdownMenuItem(
                         value: controller.category[index],
                         child: Text(
                           controller.category[index],
-                          style: AppTextStyles
-                              .font14SecondaryBlackCairoMedium,
+                          style: AppTextStyles.font14SecondaryBlackCairoMedium,
                         ),
                       );
                     },
@@ -168,13 +161,12 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                   controller: controller.currencyController,
                   items: List.generate(
                     controller.currency.length,
-                        (index) {
+                    (index) {
                       return DropdownMenuItem(
                         value: controller.currency[index],
                         child: Text(
                           controller.currency[index].getName.tr,
-                          style: AppTextStyles
-                              .font14SecondaryBlackCairoMedium,
+                          style: AppTextStyles.font14SecondaryBlackCairoMedium,
                         ),
                       );
                     },
@@ -186,21 +178,19 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                 return LabeledDropdownField(
                   label: 'Supplier Name'.tr,
                   value: controller.supplierNameValue.value,
-                  textButton:
-                  controller.supplierNameValue.value?.toString(),
+                  textButton: controller.supplierNameValue.value?.toString(),
                   onChanged: (value) {
                     controller.updateSupplierNameValue(value);
                   },
                   controller: controller.supplierNameController,
                   items: List.generate(
                     controller.supplierName.length,
-                        (index) {
+                    (index) {
                       return DropdownMenuItem(
                         value: controller.supplierName[index],
                         child: Text(
                           controller.supplierName[index].toString(),
-                          style: AppTextStyles
-                              .font14SecondaryBlackCairoMedium,
+                          style: AppTextStyles.font14SecondaryBlackCairoMedium,
                         ),
                       );
                     },
@@ -212,24 +202,20 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                 return LabeledDropdownField(
                   label: 'Storage Requirement'.tr,
                   value: controller.storageRequirementValue.value,
-                  textButton: controller.storageRequirementValue.value
-                      ?.toString()
-                      .tr,
+                  textButton:
+                      controller.storageRequirementValue.value?.toString().tr,
                   onChanged: (value) {
                     controller.updateStorageRequirementValue(value);
                   },
                   controller: controller.storageRequirementController,
                   items: List.generate(
                     controller.storageRequirement.length,
-                        (index) {
+                    (index) {
                       return DropdownMenuItem(
                         value: controller.storageRequirement[index],
                         child: Text(
-                          controller.storageRequirement[index]
-                              .toString()
-                              .tr,
-                          style: AppTextStyles
-                              .font14SecondaryBlackCairoMedium,
+                          controller.storageRequirement[index].toString().tr,
+                          style: AppTextStyles.font14SecondaryBlackCairoMedium,
                         ),
                       );
                     },
@@ -248,21 +234,19 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                 return LabeledDropdownField(
                   label: 'Unit Of Measurement'.tr,
                   value: controller.unitOfMeasurementValue.value,
-                  textButton:
-                  controller.unitOfMeasurementValue.value?.getName,
+                  textButton: controller.unitOfMeasurementValue.value?.getName,
                   onChanged: (value) {
                     controller.updateUnitOfMeasurementValue(value);
                   },
                   controller: controller.unitOfMeasurementController,
                   items: List.generate(
                     controller.unitOfMeasurement.length,
-                        (index) {
+                    (index) {
                       return DropdownMenuItem(
                         value: controller.unitOfMeasurement[index],
                         child: Text(
                           controller.unitOfMeasurement[index].getName,
-                          style: AppTextStyles
-                              .font14SecondaryBlackCairoMedium,
+                          style: AppTextStyles.font14SecondaryBlackCairoMedium,
                         ),
                       );
                     },
@@ -270,58 +254,61 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                 );
               }),
               verticalSpace(15),
-
-              GetBuilder<AddProductController>(
-                  builder: (controller) {
-                    return ListView.separated(
-                      shrinkWrap: true,
-                      itemBuilder: (context,index){
-                        return  Row(
-                          children: [
-                            Expanded(
-                              child: Obx(() {
-                                return LabeledDropdownField(
-                                  label: 'Storage Location'.tr,
-                                  value: controller.selectedStorageLocations[index].value,
-                                  textButton:
-                                  controller.selectedStorageLocations[index].value?.getName,
-                                  onChanged: (value) {
-                                    controller.updateStorageLocationValue(index, value!);
-                                  },
-                                  controller: controller.storageLocationControllers[index],
-                                  items: List.generate(
-                                    controller.storageLocation.length,
-                                        (index) {
-                                      return DropdownMenuItem(
-                                        value: controller.storageLocation[index],
-                                        child: Text(
-                                          controller.storageLocation[index].getName,
-                                          style: AppTextStyles
-                                              .font14SecondaryBlackCairoMedium,
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                );
-                              }),
-                            ),
-                            horizontalSpace(15),
-                            Expanded(
-                              child: LabeledFormField(
-                                readOnly: false,
-                                controller: controller.stockOnHandController[index],
-                                label: 'Stock On Hand'.tr,
+              GetBuilder<AddProductController>(builder: (controller) {
+                return ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      children: [
+                        Expanded(
+                          child: Obx(() {
+                            return LabeledDropdownField(
+                              label: 'Storage Location'.tr,
+                              value: controller
+                                  .selectedStorageLocations[index].value,
+                              textButton: controller
+                                  .selectedStorageLocations[index]
+                                  .value
+                                  ?.getName,
+                              onChanged: (value) {
+                                controller.updateStorageLocationValue(
+                                    index, value!);
+                              },
+                              controller:
+                                  controller.storageLocationControllers[index],
+                              items: List.generate(
+                                controller.storageLocation.length,
+                                (index) {
+                                  return DropdownMenuItem(
+                                    value: controller.storageLocation[index],
+                                    child: Text(
+                                      controller.storageLocation[index].getName,
+                                      style: AppTextStyles
+                                          .font14SecondaryBlackCairoMedium,
+                                    ),
+                                  );
+                                },
                               ),
-                            ),
-                          ],
-                        );
-                      }, separatorBuilder: (context,index){
-                      return verticalSpace(12);
-                    }, itemCount: controller.storageLocationCount,
+                            );
+                          }),
+                        ),
+                        horizontalSpace(15),
+                        Expanded(
+                          child: LabeledFormField(
+                            readOnly: false,
+                            controller: controller.stockOnHandController[index],
+                            label: 'Stock On Hand'.tr,
+                          ),
+                        ),
+                      ],
                     );
-                  }
-              ),
-
+                  },
+                  separatorBuilder: (context, index) {
+                    return verticalSpace(12);
+                  },
+                  itemCount: controller.storageLocationCount,
+                );
+              }),
               verticalSpace(8),
               Align(
                 alignment: AlignmentDirectional.centerStart,
@@ -356,44 +343,42 @@ class MobileAddAssetPage extends GetView<AddProductController> {
               ),
               const ProductWarrantyAttachmentSection(),
               verticalSpace(26),
-              GetBuilder<AddProductController>(
-                  builder: (controller) {
-                    return Column(
+              GetBuilder<AddProductController>(builder: (controller) {
+                return Column(
+                  children: [
+                    Row(
                       children: [
-                        Row(
-                          children: [
-                            Text(
-                              'Requires Approval'.tr,
-                              style: AppTextStyles.font16BlackMediumCairo,
-                            ),
-                                  Spacer(),
-                            DefaultSwitchButton(
-                              value: controller.isApproval,
-                              onChanged: (bool value) async {
-                                controller.toggleApproval();
-                              },
-                            ),
-                          ],
+                        Text(
+                          'Requires Approval'.tr,
+                          style: AppTextStyles.font16BlackMediumCairo,
                         ),
-                        verticalSpace(26),
-                        if(controller.isApproval)
-                          const Column(
-                            children: [
-                              AddApprovalsSearch(),
-                              MobileAddApprovalCycle()
-                            ],
-                          ),
+                        Spacer(),
+                        DefaultSwitchButton(
+                          value: controller.isApproval,
+                          onChanged: (bool value) async {
+                            controller.toggleApproval();
+                          },
+                        ),
                       ],
-                    );
-                  }
-              ),
+                    ),
+                    verticalSpace(26),
+                    if (controller.isApproval)
+                      const Column(
+                        children: [
+                          AddApprovalsSearch(),
+                          MobileAddApprovalCycle()
+                        ],
+                      ),
+                  ],
+                );
+              }),
               verticalSpace(26),
               Row(
                 children: [
                   AppDefaultButton(
                     text: 'Discard',
                     color: AppColors.grey,
-                    onPressed: (){
+                    onPressed: () {
                       Navigator.of(context).pop();
                     },
                   ),
@@ -401,7 +386,7 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                   AppDefaultButton(
                     text: 'Add Asset'.tr,
                     color: AppColors.primary,
-                    onPressed: (){
+                    onPressed: () {
                       controller.addAssetItem();
                       Navigator.pushReplacementNamed(context, Routes.adminHome);
                       GetDialogHelper.generalDialog(
@@ -420,7 +405,3 @@ class MobileAddAssetPage extends GetView<AddProductController> {
         ));
   }
 }
-
-
-
-

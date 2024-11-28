@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/features/products/presentation/controller/add_product_controller.dart';
+import '../../features/products/presentation/controller/add_product_controller.dart';
 
 import '../../features/admin/assets/presentation/controller/admin_assets_controller.dart';
 import '../../features/admin/employees/presentation/controller/employee_details_controller.dart';

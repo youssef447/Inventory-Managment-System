@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../../core/helpers/date_time_helper.dart';

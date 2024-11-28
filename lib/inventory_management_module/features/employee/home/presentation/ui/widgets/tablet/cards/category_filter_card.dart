@@ -1,10 +1,9 @@
-
 //Youssef Ashraf
 // Date: 7/11/2024
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';

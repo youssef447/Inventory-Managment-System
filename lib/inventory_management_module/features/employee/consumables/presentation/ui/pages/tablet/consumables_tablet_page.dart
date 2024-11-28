@@ -3,7 +3,7 @@
 // This widget displays a table of consumable items using data from ConsumablesController in tablet and windows view
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';

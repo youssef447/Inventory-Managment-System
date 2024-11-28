@@ -9,7 +9,7 @@ import '../../theme/app_colors.dart';
 import '../../theme/app_text_styles.dart';
 
 class RectangledFilterCard extends StatelessWidget {
-  final String image;
+  final String? image;
   final String text;
   final Color color;
   final double? width, height, iconHeight, iconWidth;
@@ -17,7 +17,7 @@ class RectangledFilterCard extends StatelessWidget {
   final Function()? onTap;
   const RectangledFilterCard({
     super.key,
-    required this.image,
+    this.image,
     required this.text,
     required this.onTap,
     required this.color,
@@ -40,29 +40,41 @@ class RectangledFilterCard extends StatelessWidget {
           color: color,
         ),
         padding: EdgeInsets.symmetric(horizontal: 2.w),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              image,
-              color: textColor ?? AppColors.icon,
-              width: iconWidth ?? 15.w,
-              height: iconHeight ?? 15.h,
-            ),
-            horizontalSpace(4),
-            Flexible(
-              child: Text(
-                text.tr,
-                overflow: TextOverflow.ellipsis,
-                style: !context.isTablett
-                    ? AppTextStyles.font12BlackMediumCairo
-                        .copyWith(color: textColor ?? AppColors.textButton)
-                    : AppTextStyles.font18BlackMediumCairo
-                        .copyWith(color: textColor ?? AppColors.textButton),
+        child: image == null
+            ? Center(
+                child: Text(
+                  text.tr,
+                  overflow: TextOverflow.ellipsis,
+                  style: !context.isTablett
+                      ? AppTextStyles.font16BlackMediumCairo
+                          .copyWith(color: textColor ?? AppColors.textButton)
+                      : AppTextStyles.font18BlackMediumCairo
+                          .copyWith(color: textColor ?? AppColors.textButton),
+                ),
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    image!,
+                    color: textColor ?? AppColors.icon,
+                    width: iconWidth ?? 15.w,
+                    height: iconHeight ?? 15.h,
+                  ),
+                  horizontalSpace(4),
+                  Flexible(
+                    child: Text(
+                      text.tr,
+                      overflow: TextOverflow.ellipsis,
+                      style: !context.isTablett
+                          ? AppTextStyles.font16BlackMediumCairo.copyWith(
+                              color: textColor ?? AppColors.textButton)
+                          : AppTextStyles.font18BlackMediumCairo.copyWith(
+                              color: textColor ?? AppColors.textButton),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ),
       ),
     );
   }

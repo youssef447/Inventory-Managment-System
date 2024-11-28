@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
@@ -11,7 +11,6 @@ import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/attachments/attachment_card.dart';
 import '../../../../constant/add_Product_ids_constant.dart';
 import '../../../../controller/add_product_controller.dart';
-
 
 class ProductWarrantyAttachmentSection extends StatelessWidget {
   const ProductWarrantyAttachmentSection({
@@ -45,7 +44,7 @@ class ProductWarrantyAttachmentSection extends StatelessWidget {
                     style: AppTextStyles.font14BlackCairoMedium
                         .copyWith(color: AppColors.textButton),
                   ),
-                  context.isTablett ?horizontalSpace(100) : const Spacer(),
+                  context.isTablett ? horizontalSpace(100) : const Spacer(),
                   SvgPicture.asset(
                     AppAssets.export,
                     width: 16.w,
@@ -68,13 +67,13 @@ class ProductWarrantyAttachmentSection extends StatelessWidget {
                 spacing: 8.w,
                 children: List.generate(
                   controller.warrantyAttachments.length,
-                      (index) {
+                  (index) {
                     return AttachmentCard(
                       model: controller.warrantyAttachments[index],
                       showDelete: true,
                       onDelete: () {
-                        controller
-                            .removeWarrantyAttachment(controller.warrantyAttachments[index]);
+                        controller.removeWarrantyAttachment(
+                            controller.warrantyAttachments[index]);
                       },
                     );
                   },

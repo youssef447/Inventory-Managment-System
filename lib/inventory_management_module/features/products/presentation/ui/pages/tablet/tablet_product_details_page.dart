@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/features/products/presentation/ui/pages/tablet/add_product/add_asset_page.dart';
+import '../../../../../../features/products/presentation/ui/pages/tablet/add_product/add_asset_page.dart';
 import '../../../../../../core/enums/stock_enums.dart';
 import '../../../../../../core/extensions/extensions.dart';
 import '../../../../../../core/helpers/get_dialog_helper.dart';
@@ -89,9 +89,7 @@ class TabletProductDetailsPage extends StatelessWidget {
                   color: AppColors.primary,
                   onTap: () {
                     GetDialogHelper.generalDialog(
-                        context: context,
-                        child:  const RestockingEdit()
-                    );
+                        context: context, child: const RestockingEdit());
                   },
                 ),
                 horizontalSpace(6),
@@ -105,8 +103,10 @@ class TabletProductDetailsPage extends StatelessWidget {
                       onTap: () {
                         GetDialogHelper.generalDialog(
                             context: context,
-                            child:   AddAssetPage(product: product,isEdit: true,)
-                        );
+                            child: AddAssetPage(
+                              product: product,
+                              isEdit: true,
+                            ));
                       },
                     )),
               ],

@@ -2,7 +2,7 @@ import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/widgets/appbar/custom_app_bar.dart';
@@ -10,7 +10,6 @@ import '../../../../../../../core/widgets/buttons/default_switch_button.dart';
 import '../../../controller/home_controller.dart';
 import '../../widgets/tablet/categories_filter_row/categories_filter_row.dart';
 import '../../widgets/tablet/search_filter/tablet_search_filter.dart';
-
 
 //Youssef Ashraf
 ///Represents The Home Page in Tablet View

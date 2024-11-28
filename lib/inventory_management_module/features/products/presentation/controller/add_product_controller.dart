@@ -6,7 +6,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/features/products/presentation/controller/products_controller.dart';
+import '../../../../features/products/presentation/controller/products_controller.dart';
 import '../../../../core/enums/requests_enums.dart';
 import '../../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../../employee/consumables/domain/entity/consumables_entity.dart';
@@ -18,8 +18,6 @@ import '../../domain/subEntities/storage_location_entity.dart';
 import '../../domain/subEntities/supplier_entity.dart';
 import '../../enums/product_enums.dart';
 import '../constant/add_Product_ids_constant.dart';
-import 'package:intl/intl.dart';
-
 
 class AddProductController extends GetxController {
   @override
@@ -30,26 +28,21 @@ class AddProductController extends GetxController {
     stockOnHandController.add(TextEditingController());
     selectedStorageLocations.add(Rxn<StorageLocation>());
   }
+
   void loadAssetData(ProductEntity model) {
-    orderIdController.text = model.id ?? '';
+    orderIdController.text = model.id;
     productIdController.text = model.assetEntity?.assetId ?? '';
     categoryController.text = model.assetEntity?.category ?? '';
     subCategoryController.text = model.assetEntity?.subcategory ?? '';
     brandController.text = model.assetEntity?.brand ?? '';
     modelController.text = model.assetEntity?.model ?? '';
     //expirationDateController.text = model.assetEntity?.expirationDate?.toString() ?? '';
-    totalQuantityController.text = model.totalQuantity.toString() ?? '';
-    unitCostController.text = model.unitCost.toString() ?? '';
-    currencyController.text = model.currency ?? '';
-    supplierNameController.text = model.supplier.firstName ?? '';
+    totalQuantityController.text = model.totalQuantity.toString();
+    unitCostController.text = model.unitCost.toString();
+    currencyController.text = model.currency;
+    supplierNameController.text = model.supplier.firstName;
     additionalNoteController.text = model.additionalNotes ?? '';
-
   }
-
-
-
-
-
 
   ///-------------- drop down-----------------------
   // -------------- product type  -----------
@@ -135,8 +128,9 @@ class AddProductController extends GetxController {
     isApproval = !isApproval;
     update();
   }
- //--------------- add More storage location
-   int storageLocationCount = 1;
+
+  //--------------- add More storage location
+  int storageLocationCount = 1;
   void addMoreStorage() {
     // Add a new controller for each new entry
     storageLocationControllers.add(TextEditingController());
@@ -175,12 +169,18 @@ class AddProductController extends GetxController {
         id: productIdController.text,
         productType: ProductType.asset,
         additionalNotes: additionalNoteController.text,
-        storageRequirement: storageRequirementController.text = storageRequirementValue.toString(),
+        storageRequirement: storageRequirementController.text =
+            storageRequirementValue.toString(),
         storage: List.generate(
           storageLocationControllers.length,
-              (index) => StorageLocationAndQuantityEntity(
-            locationName: storageLocationControllers[index].text =selectedStorageLocations[index].value!.getName, // Get location name from the corresponding controller
-            quantity: int.tryParse(stockOnHandController[index].text) ?? 0, // Parse quantity or default to 0
+          (index) => StorageLocationAndQuantityEntity(
+            locationName: storageLocationControllers[index]
+                .text = selectedStorageLocations[
+                    index]
+                .value!
+                .getName, // Get location name from the corresponding controller
+            quantity: int.tryParse(stockOnHandController[index].text) ??
+                0, // Parse quantity or default to 0
           ),
         ),
         assetEntity: AssetsEntity(
@@ -194,7 +194,8 @@ class AddProductController extends GetxController {
           brand: brandController.text,
         ),
         supplier: SupplierEntity(
-          supplierName: supplierNameController.text = supplierNameValue.toString(),
+          supplierName: supplierNameController.text =
+              supplierNameValue.toString(),
           postalCode: '1313',
           city: 'Cairo',
           country: 'Egypt',
@@ -233,12 +234,15 @@ class AddProductController extends GetxController {
         additionalNotes: additionalNoteController.text,
         storage: List.generate(
           storageLocationControllers.length,
-              (index) => StorageLocationAndQuantityEntity(
-            locationName: storageLocationControllers[index].text, // Get location name from the corresponding controller
-            quantity: int.tryParse(stockOnHandController[index].text) ?? 0, // Parse quantity or default to 0
+          (index) => StorageLocationAndQuantityEntity(
+            locationName: storageLocationControllers[index]
+                .text, // Get location name from the corresponding controller
+            quantity: int.tryParse(stockOnHandController[index].text) ??
+                0, // Parse quantity or default to 0
           ),
         ),
-        storageRequirement: storageRequirementController.text = storageRequirementValue.toString(),
+        storageRequirement: storageRequirementController.text =
+            storageRequirementValue.toString(),
         consumablesEntity: ConsumablesEntity(
           consumableId: productIdController.text,
           category: categoryController.text = categoryValue.toString(),
@@ -249,11 +253,13 @@ class AddProductController extends GetxController {
           status: 'InUse',
           brand: brandController.text,
           name: brandController.text + modelController.text,
-          unitOfMeasurement: unitOfMeasurementController.text = unitOfMeasurementValue.value!.getName,
+          unitOfMeasurement: unitOfMeasurementController.text =
+              unitOfMeasurementValue.value!.getName,
           usageFrequency: 'daily',
         ),
         supplier: SupplierEntity(
-          supplierName: supplierNameController.text = supplierNameValue.toString(),
+          supplierName: supplierNameController.text =
+              supplierNameValue.toString(),
           postalCode: '1313',
           city: 'Cairo',
           country: 'Egypt',
@@ -284,7 +290,6 @@ class AddProductController extends GetxController {
     controller.products.add(item); // Add item to the list
     controller.update([ProductsIds.productsTab]);
   }
-
 
   void clearControllers() {
     orderIdController.clear();

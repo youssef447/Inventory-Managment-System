@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
+import '../../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../features/products/enums/product_enums.dart';
 import '../../../../../../../core/animations/horizontal_animation.dart';

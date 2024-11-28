@@ -21,7 +21,7 @@ extension GetEmployeeRequestName on EmployeeRequestStatus {
       case EmployeeRequestStatus.returned:
         return 'Returned';
       case EmployeeRequestStatus.maintenance:
-        return 'maintenance';
+        return 'Maintenance';
       case EmployeeRequestStatus.requested:
         return 'Requested';
       case EmployeeRequestStatus.retrieved:

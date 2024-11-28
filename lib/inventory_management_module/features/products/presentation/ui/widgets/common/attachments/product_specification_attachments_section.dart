@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
@@ -11,7 +11,6 @@ import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/attachments/attachment_card.dart';
 import '../../../../constant/add_Product_ids_constant.dart';
 import '../../../../controller/add_product_controller.dart';
-
 
 class ProductSpecificationAttachmentsSection extends StatelessWidget {
   const ProductSpecificationAttachmentsSection({
@@ -45,7 +44,7 @@ class ProductSpecificationAttachmentsSection extends StatelessWidget {
                     style: AppTextStyles.font14BlackCairoMedium
                         .copyWith(color: AppColors.textButton),
                   ),
-                  context.isTablett ?horizontalSpace(100) : Spacer(),
+                  context.isTablett ? horizontalSpace(100) : Spacer(),
                   SvgPicture.asset(
                     AppAssets.export,
                     width: 16.w,

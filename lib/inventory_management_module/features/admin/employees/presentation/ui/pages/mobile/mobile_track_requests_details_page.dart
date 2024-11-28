@@ -42,7 +42,7 @@ class MobileAdminTrackRequestDetailsPage
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               MobileCustomAppbar(
-                title: 'Product Details'.tr,
+                title: 'Request Details'.tr,
               ),
               verticalSpace(30),
               Expanded(

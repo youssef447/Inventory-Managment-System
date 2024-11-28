@@ -72,7 +72,6 @@ class MobileAdminEmployeeDetailsPage extends StatelessWidget {
                         ? Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              verticalSpace(16),
                               const MobileCustomAppbar(
                                 title: 'Details',
                               ),

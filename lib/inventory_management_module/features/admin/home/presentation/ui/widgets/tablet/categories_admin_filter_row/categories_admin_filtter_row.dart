@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../../core/enums/admin_categories.dart';
 
@@ -26,7 +25,7 @@ class TabletCategoriesAdminFilterRow extends GetView<AdminController> {
           top: 8.h,
         ),
         child: Obx(
-              () {
+          () {
             return Row(
               children: [
                 Expanded(
@@ -35,26 +34,27 @@ class TabletCategoriesAdminFilterRow extends GetView<AdminController> {
                     child: Row(
                       children: [
                         ...List.generate(AdminCategories.values.length,
-                                (index) {
-                              final last =
-                                  index == AdminCategories.values.length - 1;
-                              return GestureDetector(
-                                behavior: HitTestBehavior.opaque,
-                                onTap: () {
-                                  controller.updateCategoryIndex(index);
-                                },
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.only(
-                                      end: last ? 0 : 37.w),
-                                  child: TabletCategoryFilterCard(
-                                    count: 10,
-                                    name: AdminCategories.values[index].getName,
-                                    selected: controller.currentCategoryIndex.value ==
+                            (index) {
+                          final last =
+                              index == AdminCategories.values.length - 1;
+                          return GestureDetector(
+                            behavior: HitTestBehavior.opaque,
+                            onTap: () {
+                              controller.updateCategoryIndex(index);
+                            },
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.only(
+                                  end: last ? 0 : 37.w),
+                              child: TabletCategoryFilterCard(
+                                count: 10,
+                                name: AdminCategories.values[index].getName,
+                                selected:
+                                    controller.currentCategoryIndex.value ==
                                         index,
-                                  ),
-                                ),
-                              );
-                            }),
+                              ),
+                            ),
+                          );
+                        }),
                       ],
                     ),
                   ),

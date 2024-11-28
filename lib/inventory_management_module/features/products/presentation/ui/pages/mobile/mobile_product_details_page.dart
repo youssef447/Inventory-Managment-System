@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/features/products/presentation/ui/pages/mobile/edit/mobile_restocking_edit.dart';
+import '../../../../../../features/products/presentation/ui/pages/mobile/edit/mobile_restocking_edit.dart';
 import '../../../../../../core/enums/stock_enums.dart';
 import '../../../../../../core/extensions/extensions.dart';
 import '../../../../../../core/animations/horizontal_animation.dart';
@@ -28,7 +28,6 @@ import '../../../../enums/product_enums.dart';
 import '../../../controller/products_controller.dart';
 import '../../widgets/common/cards/vertical_assigned_user_card.dart';
 import '../../widgets/common/cards/instock_card.dart';
-import '../tablet/add_product/add_asset_page.dart';
 import 'mobile_add_product/mobile_add_asset_page.dart';
 part '../../widgets/mobile/product_details/product_details_card.dart';
 part '../../widgets/mobile/product_details/assigned_and_stock_list.dart';
@@ -93,8 +92,7 @@ class MobileProductDetailsPage extends StatelessWidget {
                     onTap: () {
                       GetDialogHelper.generalDialog(
                           context: context,
-                          child:  const MobileRestockingEdit()
-                      );
+                          child: const MobileRestockingEdit());
                     },
                   ),
                 ),
@@ -103,8 +101,10 @@ class MobileProductDetailsPage extends StatelessWidget {
                   onTap: () {
                     GetDialogHelper.generalDialog(
                         context: context,
-                        child:MobileAddAssetPage(product: product,isEdit: true,)
-                    );
+                        child: MobileAddAssetPage(
+                          product: product,
+                          isEdit: true,
+                        ));
                   },
                   child: SizedBox(
                       height: 30.h,

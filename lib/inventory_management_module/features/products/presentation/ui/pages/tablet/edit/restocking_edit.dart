@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
+import '../../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
@@ -13,7 +13,6 @@ import '../../../../../../../core/widgets/fields/labeled_dropDown_field.dart';
 import '../../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../controller/add_product_controller.dart';
 import '../../../widgets/common/attachments/product_warranty_attachment_section.dart';
-
 
 // by : mohamed ashraf
 //date :27/11/2024
@@ -96,7 +95,7 @@ class RestockingEdit extends GetView<AddProductController> {
                         controller: controller.currencyController,
                         items: List.generate(
                           controller.currency.length,
-                              (index) {
+                          (index) {
                             return DropdownMenuItem(
                               value: controller.currency[index],
                               child: Text(
@@ -129,14 +128,14 @@ class RestockingEdit extends GetView<AddProductController> {
                         label: 'Supplier Name'.tr,
                         value: controller.supplierNameValue.value,
                         textButton:
-                        controller.supplierNameValue.value?.toString(),
+                            controller.supplierNameValue.value?.toString(),
                         onChanged: (value) {
                           controller.updateSupplierNameValue(value);
                         },
                         controller: controller.supplierNameController,
                         items: List.generate(
                           controller.supplierName.length,
-                              (index) {
+                          (index) {
                             return DropdownMenuItem(
                               value: controller.supplierName[index],
                               child: Text(
@@ -153,57 +152,61 @@ class RestockingEdit extends GetView<AddProductController> {
                 ],
               ),
               verticalSpace(24),
-
-              GetBuilder<AddProductController>(
-                  builder: (controller) {
-                    return ListView.separated(
-                      shrinkWrap: true,
-                      itemBuilder: (context,index){
-                        return  Row(
-                          children: [
-                            Expanded(
-                              child: Obx(() {
-                                return LabeledDropdownField(
-                                  label: 'Storage Location'.tr,
-                                  value: controller.selectedStorageLocations[index].value,
-                                  textButton:
-                                  controller.selectedStorageLocations[index].value?.getName,
-                                  onChanged: (value) {
-                                    controller.updateStorageLocationValue(index, value!);
-                                  },
-                                  controller: controller.storageLocationControllers[index],
-                                  items: List.generate(
-                                    controller.storageLocation.length,
-                                        (index) {
-                                      return DropdownMenuItem(
-                                        value: controller.storageLocation[index],
-                                        child: Text(
-                                          controller.storageLocation[index].getName,
-                                          style: AppTextStyles
-                                              .font14SecondaryBlackCairoMedium,
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                );
-                              }),
-                            ),
-                            horizontalSpace(15),
-                            Expanded(
-                              child: LabeledFormField(
-                                readOnly: false,
-                                controller: controller.stockOnHandController[index],
-                                label: 'Stock On Hand'.tr,
+              GetBuilder<AddProductController>(builder: (controller) {
+                return ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Row(
+                      children: [
+                        Expanded(
+                          child: Obx(() {
+                            return LabeledDropdownField(
+                              label: 'Storage Location'.tr,
+                              value: controller
+                                  .selectedStorageLocations[index].value,
+                              textButton: controller
+                                  .selectedStorageLocations[index]
+                                  .value
+                                  ?.getName,
+                              onChanged: (value) {
+                                controller.updateStorageLocationValue(
+                                    index, value!);
+                              },
+                              controller:
+                                  controller.storageLocationControllers[index],
+                              items: List.generate(
+                                controller.storageLocation.length,
+                                (index) {
+                                  return DropdownMenuItem(
+                                    value: controller.storageLocation[index],
+                                    child: Text(
+                                      controller.storageLocation[index].getName,
+                                      style: AppTextStyles
+                                          .font14SecondaryBlackCairoMedium,
+                                    ),
+                                  );
+                                },
                               ),
-                            ),
-                          ],
-                        );
-                      }, separatorBuilder: (context,index){
-                      return verticalSpace(12);
-                    }, itemCount: controller.storageLocationCount,
+                            );
+                          }),
+                        ),
+                        horizontalSpace(15),
+                        Expanded(
+                          child: LabeledFormField(
+                            readOnly: false,
+                            controller: controller.stockOnHandController[index],
+                            label: 'Stock On Hand'.tr,
+                          ),
+                        ),
+                      ],
                     );
-                  }
-              ),
+                  },
+                  separatorBuilder: (context, index) {
+                    return verticalSpace(12);
+                  },
+                  itemCount: controller.storageLocationCount,
+                );
+              }),
               verticalSpace(8),
               Align(
                 alignment: AlignmentDirectional.centerStart,
@@ -237,7 +240,7 @@ class RestockingEdit extends GetView<AddProductController> {
                   AppDefaultButton(
                     text: 'Discard',
                     color: AppColors.grey,
-                    onPressed: (){
+                    onPressed: () {
                       Navigator.of(context).pop();
                     },
                   ),
@@ -245,7 +248,7 @@ class RestockingEdit extends GetView<AddProductController> {
                   AppDefaultButton(
                     text: 'Save'.tr,
                     color: AppColors.primary,
-                    onPressed: (){
+                    onPressed: () {
                       Navigator.pop(context);
                     },
                   )
@@ -256,7 +259,3 @@ class RestockingEdit extends GetView<AddProductController> {
         ));
   }
 }
-
-
-
-

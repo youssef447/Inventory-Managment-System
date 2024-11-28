@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/features/products/enums/product_enums.dart';
+import '../../../../../../../features/products/enums/product_enums.dart';
 
 import '../../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../../core/extensions/extensions.dart';
@@ -41,14 +41,14 @@ class TabletAdminTrackRequestDetailsPage
       backgroundColor: AppColors.background,
       body: SafeArea(
           child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+        padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 16.h),
         child: SingleChildScrollView(
           controller: controller.scrollController,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomAppBar(
-                titles: const ['Employees', 'Details'],
+                titles: const ['Employees', 'Request Details'],
                 titleNavigations: [
                   () => Navigator.of(context).pop(),
                 ],

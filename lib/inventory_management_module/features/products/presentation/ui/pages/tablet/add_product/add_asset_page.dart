@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
+import '../../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
@@ -25,10 +25,9 @@ import '../../../widgets/tablet/card/add_approval_cycle.dart';
 // by : mohamed ashraf
 //date :27/11/2024
 class AddAssetPage extends GetView<AddProductController> {
-
   final bool? isEdit;
   final ProductEntity? product;
-  const AddAssetPage( {super.key,this.isEdit, this.product});
+  const AddAssetPage({super.key, this.isEdit, this.product});
   @override
   Widget build(BuildContext context) {
     if (isEdit == true) {
@@ -107,15 +106,14 @@ class AddAssetPage extends GetView<AddProductController> {
                       return LabeledDropdownField(
                         label: 'Category'.tr,
                         value: controller.categoryValue.value,
-                        textButton:
-                        controller.categoryValue.value,
+                        textButton: controller.categoryValue.value,
                         onChanged: (value) {
                           controller.updateCategoryValue(value);
                         },
                         controller: controller.categoryController,
                         items: List.generate(
                           controller.category.length,
-                              (index) {
+                          (index) {
                             return DropdownMenuItem(
                               value: controller.category[index],
                               child: Text(
@@ -323,27 +321,31 @@ class AddAssetPage extends GetView<AddProductController> {
                 ],
               ),
               verticalSpace(24),
-              GetBuilder<AddProductController>(
-                builder: (controller) {
-                  return ListView.separated(
-                      shrinkWrap: true,
-                      itemBuilder: (context,index){
-                    return  Row(
+              GetBuilder<AddProductController>(builder: (controller) {
+                return ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return Row(
                       children: [
                         Expanded(
                           child: Obx(() {
                             return LabeledDropdownField(
                               label: 'Storage Location'.tr,
-                              value: controller.selectedStorageLocations[index].value,
-                              textButton:
-                              controller.selectedStorageLocations[index].value?.getName,
+                              value: controller
+                                  .selectedStorageLocations[index].value,
+                              textButton: controller
+                                  .selectedStorageLocations[index]
+                                  .value
+                                  ?.getName,
                               onChanged: (value) {
-                                controller.updateStorageLocationValue(index, value!);
+                                controller.updateStorageLocationValue(
+                                    index, value!);
                               },
-                              controller: controller.storageLocationControllers[index],
+                              controller:
+                                  controller.storageLocationControllers[index],
                               items: List.generate(
                                 controller.storageLocation.length,
-                                    (index) {
+                                (index) {
                                   return DropdownMenuItem(
                                     value: controller.storageLocation[index],
                                     child: Text(
@@ -367,12 +369,13 @@ class AddAssetPage extends GetView<AddProductController> {
                         ),
                       ],
                     );
-                  }, separatorBuilder: (context,index){
+                  },
+                  separatorBuilder: (context, index) {
                     return verticalSpace(12);
-                  }, itemCount: controller.storageLocationCount,
-                  );
-                }
-              ),
+                  },
+                  itemCount: controller.storageLocationCount,
+                );
+              }),
               verticalSpace(8),
               Align(
                 alignment: AlignmentDirectional.centerStart,
@@ -419,44 +422,42 @@ class AddAssetPage extends GetView<AddProductController> {
                 ],
               ),
               verticalSpace(26),
-              GetBuilder<AddProductController>(
-                builder: (controller) {
-                  return Column(
-                    children: [
-                      Row(
+              GetBuilder<AddProductController>(builder: (controller) {
+                return Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Requires Approval'.tr,
+                          style: AppTextStyles.font16BlackMediumCairo,
+                        ),
+                        horizontalSpace(100),
+                        DefaultSwitchButton(
+                          value: controller.isApproval,
+                          onChanged: (bool value) async {
+                            controller.toggleApproval();
+                          },
+                        ),
+                      ],
+                    ),
+                    verticalSpace(26),
+                    if (controller.isApproval)
+                      const Column(
                         children: [
-                          Text(
-                            'Requires Approval'.tr,
-                            style: AppTextStyles.font16BlackMediumCairo,
-                          ),
-                          horizontalSpace(100),
-                          DefaultSwitchButton(
-                            value: controller.isApproval,
-                            onChanged: (bool value) async {
-                              controller.toggleApproval();
-                            },
-                          ),
+                          AddApprovalsSearch(),
+                          AddApprovalCycle(),
                         ],
                       ),
-                      verticalSpace(26),
-                      if(controller.isApproval)
-                        const Column(
-                          children: [
-                            AddApprovalsSearch(),
-                            AddApprovalCycle(),
-                          ],
-                        ),
-                    ],
-                  );
-                }
-              ),
+                  ],
+                );
+              }),
               verticalSpace(26),
               Row(
                 children: [
                   AppDefaultButton(
                     text: 'Discard',
                     color: AppColors.grey,
-                    onPressed: (){
+                    onPressed: () {
                       Navigator.of(context).pop();
                     },
                   ),
@@ -464,17 +465,17 @@ class AddAssetPage extends GetView<AddProductController> {
                   AppDefaultButton(
                     text: 'Add Asset'.tr,
                     color: AppColors.primary,
-                    onPressed: (){
-                     controller.addAssetItem();
-                     controller.clearControllers();
-                     Navigator.pop(context);
-                     GetDialogHelper.generalDialog(
-                         context: Get.context!,
-                         child: DefaultDialog(
-                           title: 'Success'.tr,
-                           subTitle: 'You Successfully Added New Product'.tr,
-                           lottieAsset: AppAssets.success,
-                         ));
+                    onPressed: () {
+                      controller.addAssetItem();
+                      controller.clearControllers();
+                      Navigator.pop(context);
+                      GetDialogHelper.generalDialog(
+                          context: Get.context!,
+                          child: DefaultDialog(
+                            title: 'Success'.tr,
+                            subTitle: 'You Successfully Added New Product'.tr,
+                            lottieAsset: AppAssets.success,
+                          ));
                     },
                   )
                 ],
@@ -484,7 +485,3 @@ class AddAssetPage extends GetView<AddProductController> {
         ));
   }
 }
-
-
-
-

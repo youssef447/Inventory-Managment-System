@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/features/products/presentation/ui/pages/tablet/add_product/add_consumable_page.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
+import '../../../../../../../../features/products/presentation/ui/pages/tablet/add_product/add_consumable_page.dart';
 import '../../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/get_dialog_helper.dart';
@@ -41,145 +41,160 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
           ),
           child: SlideAnimation(
             leftToRight: context.isArabic ? false : true,
-            child: Row(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.r),
-                    child: SizedBox(
-                      height: 37.h,
-                      child: AppTextFormField(
-                        backGroundColor: AppTheme.isDark ?? false
-                            ? AppColors.field
-                            : AppColors.white,
-                        maxLines: 1,
-                        hintText: 'Search Here...'.tr,
-                        collapsed: true,
-                        hintStyle:
-                            AppTextStyles.font16SecondaryBlackCairoMedium,
-                        controller: controller.searchController,
-                        onChanged: (value) {
-                          /*   if (index == 1) {
-                            Get.find<AttendanceController>()
-                                .searchAttendance(value);
-                          } else if (index == 2) {
-                            Get.find<RequestsController>().searchRequest(value);
-                          } else if (index == 3) {
-                            Get.find<ApprovalsController>()
-                                .searchApprovalRequest(value);
-                          } else if (index == 4) {
-                            print('value $value');
-                            Get.find<RequestTypeController>()
-                                .searchRequestType(value);
-                          } else if (index == 5) {
-                            Get.find<LocationController>()
-                                .searchLocation(value);
-                          } */
-                        },
-                        contentPadding: context.isTablett
-                            ? EdgeInsets.symmetric(
-                                vertical: 2.h,
-                              )
-                            : null,
-                        prefixIcon: SvgPicture.asset(
-                          AppAssets.search,
-                          width: 24.w,
-                          height: 24.h,
+                if (controller.currentCategoryIndex.value == 3)
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10.h),
+                    child: RectangledFilterCard(
+                      width: 112.w,
+                      text: 'Invoice'.tr,
+                      color: AppColors.primary,
+                      onTap: () {},
+                    ),
+                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8.r),
+                        child: SizedBox(
+                          height: 37.h,
+                          child: AppTextFormField(
+                            backGroundColor: AppTheme.isDark ?? false
+                                ? AppColors.field
+                                : AppColors.white,
+                            maxLines: 1,
+                            hintText: 'Search Here...'.tr,
+                            collapsed: true,
+                            hintStyle:
+                                AppTextStyles.font16SecondaryBlackCairoMedium,
+                            controller: controller.searchController,
+                            onChanged: (value) {
+                              /*   if (index == 1) {
+                                Get.find<AttendanceController>()
+                                    .searchAttendance(value);
+                              } else if (index == 2) {
+                                Get.find<RequestsController>().searchRequest(value);
+                              } else if (index == 3) {
+                                Get.find<ApprovalsController>()
+                                    .searchApprovalRequest(value);
+                              } else if (index == 4) {
+                                print('value $value');
+                                Get.find<RequestTypeController>()
+                                    .searchRequestType(value);
+                              } else if (index == 5) {
+                                Get.find<LocationController>()
+                                    .searchLocation(value);
+                              } */
+                            },
+                            contentPadding: context.isTablett
+                                ? EdgeInsets.symmetric(
+                                    vertical: 2.h,
+                                  )
+                                : null,
+                            prefixIcon: SvgPicture.asset(
+                              AppAssets.search,
+                              width: 24.w,
+                              height: 24.h,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-                horizontalSpace(9),
-                Row(
-                  children: [
-                    RectangledFilterCard(
-                      width: 112.w,
-                      image: AppAssets.filter,
-                      text: 'Filter',
-                      textColor: AppColors.text,
-                      color: AppColors.card,
-                      onTap: () {
-                        // Open filter dialog
-                      },
-                    ),
                     horizontalSpace(9),
-                    if (controller.currentCategoryIndex == 0)
-                      RectangledFilterCard(
-                        width: 112.w,
-                        image: AppAssets.add,
-                        text: 'Product'.tr,
-                        color: AppColors.primary,
-                        onTap: () {
-                          GetDialogHelper.generalDialog(
-                            child: const AddProductDialog(),
-                            context: context,
-                          );
-                        },
-                      )
-                    else if (controller.currentCategoryIndex == 1)
-                      RectangledFilterCard(
-                        width: 112.w,
-                        image: AppAssets.add,
-                        text: 'Assets'.tr,
-                        color: AppColors.primary,
-                        onTap: () {
-                          GetDialogHelper.generalDialog(
-                            child: const AddAssetPage(),
-                            context: context,
-                          );
-                        },
-                      )
-                    else if (controller.currentCategoryIndex == 2)
-                      RectangledFilterCard(
-                        width: 112.w,
-                        image: AppAssets.add,
-                        text: 'Consumables'.tr,
-                        color: AppColors.primary,
-                        onTap: () {
-                          GetDialogHelper.generalDialog(
-                            child: const AddConsumablePage(),
-                            context: context,
-                          );
-                        },
-                      )
-                    else if (controller.currentCategoryIndex == 3)
-                      RectangledFilterCard(
-                        width: 112.w,
-                        image: AppAssets.add,
-                        text: 'order'.tr,
-                        color: AppColors.primary,
-                        onTap: () {
-                          // Add category action
-                        },
-                      )
-                    else if (controller.currentCategoryIndex == 4)
-                      RectangledFilterCard(
-                        width: 112.w,
-                        image: AppAssets.add,
-                        text: 'Suppliers'.tr,
-                        color: AppColors.primary,
-                        onTap: () {
-                          // Add category action
-                        },
-                      )
-                    else
-                      RectangledFilterCard(
-                        width: 112.w,
-                        image: AppAssets.add,
-                        text: 'Storage Location'.tr,
-                        color: AppColors.primary,
-                        onTap: () {
-                          // Default action
-                        },
-                      ),
-                    horizontalSpace(9),
-                    RectangledFilterCard(
-                      width: 112.w,
-                      image: AppAssets.download,
-                      text: 'Download'.tr,
-                      color: AppColors.primary,
-                      onTap: () {},
+                    Row(
+                      children: [
+                        RectangledFilterCard(
+                          width: 112.w,
+                          image: AppAssets.filter,
+                          text: 'Filter',
+                          textColor: AppColors.text,
+                          color: AppColors.card,
+                          onTap: () {
+                            // Open filter dialog
+                          },
+                        ),
+                        horizontalSpace(9),
+                        if (controller.currentCategoryIndex.value == 0)
+                          RectangledFilterCard(
+                            width: 112.w,
+                            image: AppAssets.add,
+                            text: 'Product'.tr,
+                            color: AppColors.primary,
+                            onTap: () {
+                              GetDialogHelper.generalDialog(
+                                child: const AddProductDialog(),
+                                context: context,
+                              );
+                            },
+                          )
+                        else if (controller.currentCategoryIndex.value == 1)
+                          RectangledFilterCard(
+                            width: 112.w,
+                            image: AppAssets.add,
+                            text: 'Assets'.tr,
+                            color: AppColors.primary,
+                            onTap: () {
+                              GetDialogHelper.generalDialog(
+                                child: const AddAssetPage(),
+                                context: context,
+                              );
+                            },
+                          )
+                        else if (controller.currentCategoryIndex.value == 2)
+                          RectangledFilterCard(
+                            width: 112.w,
+                            image: AppAssets.add,
+                            text: 'Consumables'.tr,
+                            color: AppColors.primary,
+                            onTap: () {
+                              GetDialogHelper.generalDialog(
+                                child: const AddConsumablePage(),
+                                context: context,
+                              );
+                            },
+                          )
+                        else if (controller.currentCategoryIndex.value == 3)
+                          RectangledFilterCard(
+                            width: 112.w,
+                            image: AppAssets.add,
+                            text: 'Orders'.tr,
+                            color: AppColors.primary,
+                            onTap: () {
+                              // Add category action
+                            },
+                          )
+                        else if (controller.currentCategoryIndex.value == 4)
+                          RectangledFilterCard(
+                            width: 112.w,
+                            image: AppAssets.add,
+                            text: 'Suppliers'.tr,
+                            color: AppColors.primary,
+                            onTap: () {
+                              // Add category action
+                            },
+                          )
+                        else
+                          RectangledFilterCard(
+                            width: 112.w,
+                            image: AppAssets.add,
+                            text: 'Storage Location'.tr,
+                            color: AppColors.primary,
+                            onTap: () {
+                              // Default action
+                            },
+                          ),
+                        horizontalSpace(9),
+                        RectangledFilterCard(
+                          width: 112.w,
+                          image: AppAssets.download,
+                          text: 'Download'.tr,
+                          color: AppColors.primary,
+                          onTap: () {},
+                        ),
+                      ],
                     ),
                   ],
                 ),

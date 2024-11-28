@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
@@ -14,7 +14,6 @@ import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/fields/date_field.dart';
 import '../../../../../../../core/widgets/fields/text_single_field.dart';
 import '../../../controller/assets_controller.dart';
-
 
 class MobileAssetsDetails extends GetView<AssetsController> {
   const MobileAssetsDetails({

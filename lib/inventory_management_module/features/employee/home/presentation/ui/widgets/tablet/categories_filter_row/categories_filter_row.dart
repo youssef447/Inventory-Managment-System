@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../../core/enums/inventory_categories.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
@@ -37,7 +37,7 @@ class TabletCategoriesFilterRow extends GetView<HomeController> {
                 Expanded(
                   child: Row(
                     children: [
-                      ...List.generate( InventoryCategories.values.length,
+                      ...List.generate(InventoryCategories.values.length,
                           (index) {
                         final last =
                             index == InventoryCategories.values.length - 1;
@@ -49,7 +49,7 @@ class TabletCategoriesFilterRow extends GetView<HomeController> {
                           child: Padding(
                             padding: EdgeInsetsDirectional.only(
                                 end: last ? 0 : 37.w),
-                            child:   TabletCategoryFilterCard(
+                            child: TabletCategoryFilterCard(
                               count: 10,
                               name: InventoryCategories.values[index].getName,
                               selected: controller.currentCategoryIndex.value ==
