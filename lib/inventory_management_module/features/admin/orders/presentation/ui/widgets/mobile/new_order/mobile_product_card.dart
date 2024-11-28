@@ -1,4 +1,4 @@
-part of '../../../pages/mobile/mobile_products_tab_page.dart';
+part of '../../../pages/mobile/mobile_new_order_page.dart';
 
 class MobileProductCard extends StatelessWidget {
   final ProductEntity product;
@@ -71,6 +71,14 @@ class MobileProductCard extends StatelessWidget {
                   ),
                 )
               ],
+            ),
+            DefaultRichText(
+              label: 'Quantity In Stock',
+              value: DateTimeHelper.formatInt(product.totalQuantity),
+            ),
+            DefaultRichText(
+              label: 'Supplier Name',
+              value: product.supplier.supplierName,
             ),
             Align(
               alignment: AlignmentDirectional.centerEnd,

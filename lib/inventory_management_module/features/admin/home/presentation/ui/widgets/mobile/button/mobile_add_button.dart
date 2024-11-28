@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import '../../../../../../../../core/extensions/extensions.dart';
+import '../../../../../../../../core/routes/app_routes.dart';
 import '../../../../../../../../features/products/presentation/ui/pages/tablet/add_product/add_consumable_page.dart';
 import '../../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
@@ -95,6 +96,7 @@ class MobileAddButton extends GetView<AdminController> {
                         text: 'Orders'.tr,
                         color: AppColors.primary,
                         onTap: () {
+                          context.navigateTo(Routes.newOrder);
                           // Add category action
                         },
                       ),

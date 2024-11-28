@@ -40,7 +40,7 @@ class MobileCustomAppbar extends StatelessWidget {
         horizontalSpace(8),
         Text(
           title,
-          style: AppTextStyles.font16BlackMediumCairo,
+          style: AppTextStyles.font18BlackMediumCairo,
         ),
       ],
     );

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../../../../../../core/extensions/extensions.dart';
+import '../../../../../../../../core/routes/app_routes.dart';
 import '../../../../../../../../features/products/presentation/ui/pages/tablet/add_product/add_consumable_page.dart';
 import '../../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
@@ -171,7 +172,7 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                             text: 'Orders'.tr,
                             color: AppColors.primary,
                             onTap: () {
-                              // Add category action
+                              context.navigateTo(Routes.newOrder);
                             },
                           )
                         else if (controller.currentCategoryIndex.value == 4)
