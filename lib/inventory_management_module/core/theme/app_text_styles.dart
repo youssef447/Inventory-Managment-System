@@ -128,6 +128,11 @@ abstract class AppTextStyles {
         color: AppColors.secondaryBlack,
         fontWeight: AppFontWeights.regular,
       );
+  static TextStyle get font16SecondaryBlueCairoRegular => GoogleFonts.cairo(
+    fontSize: 16.sp,
+    color: AppColors.blue,
+    fontWeight: AppFontWeights.regular,
+  );
 
   static TextStyle get font16LightGreyRegularCairo => GoogleFonts.cairo(
         fontSize: 16.sp,

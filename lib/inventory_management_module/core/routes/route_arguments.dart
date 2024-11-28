@@ -9,4 +9,6 @@ abstract class RouteArguments {
   static const String requestAction = 'requestAction';
   static const String product = 'product';
   static const String userEntity = 'userEntity';
+  static const String asset = 'asset';
+  static const String adminAssetAssignedDetails = 'adminAssetAssignedDetails';
 }

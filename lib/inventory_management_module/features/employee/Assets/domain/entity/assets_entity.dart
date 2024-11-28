@@ -31,6 +31,7 @@ class AssetsEntity {
   final String supplierId;
   final String supplierName;
   final String storageLocation;
+  final String storageRequirement;
   final int quantityOnHand;
   final String unitCost;
   final String currency;
@@ -76,5 +77,6 @@ class AssetsEntity {
     this.quantityOnHand = 15,
     this.unitCost = '200',
     this.currency = 'USd',
+    this.storageRequirement = 'Electronic',
   });
 }

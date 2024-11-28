@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../features/admin/assets/presentation/ui/pages/tablet/tablet_admin_asset_details_page.dart';
+import '../../features/admin/assets/presentation/ui/pages/tablet/tablet_admin_assigned_details.dart';
 import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_admin_employee_details_page.dart';
 import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_admin_employees_page.dart';
 import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_track_requests_details_page.dart';
@@ -184,6 +186,31 @@ abstract class RouteGenerator {
             ),
             tabletWidget: TabletProductDetailsPage(
               product: args[RouteArguments.product],
+            ),
+          ),
+          PageTransitionType.fade,
+        );
+      case Routes.adminAssetDetails:
+        return _buildPageRoute(
+          ResponsiveHelper(
+            mobileWidget: TabletAdminAssetDetailsPage(
+              assetsEntity: args[RouteArguments.asset],
+            ),
+            tabletWidget: TabletAdminAssetDetailsPage(
+              assetsEntity: args[RouteArguments.asset],
+            ),
+          ),
+          PageTransitionType.fade,
+        );
+      case Routes.adminAssetAssignedDetails:
+        return _buildPageRoute(
+          ResponsiveHelper(
+            mobileWidget: TabletAdminAssignedDetails(
+              assignedUser: args[RouteArguments.adminAssetAssignedDetails],
+
+            ),
+            tabletWidget: TabletAdminAssignedDetails(
+              assignedUser: args[RouteArguments.adminAssetAssignedDetails],
             ),
           ),
           PageTransitionType.fade,

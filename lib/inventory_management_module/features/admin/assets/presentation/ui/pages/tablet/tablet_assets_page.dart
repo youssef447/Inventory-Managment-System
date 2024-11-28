@@ -3,8 +3,12 @@
 // This widget displays a table of assets items using data from AssetsController in tablet and windows view
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
+import '../../../../../../../core/helpers/haptic_feedback_helper.dart';
+import '../../../../../../../core/routes/app_routes.dart';
+import '../../../../../../../core/routes/route_arguments.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/loading.dart';
@@ -43,6 +47,20 @@ class TabletAdminAssetsPage extends StatelessWidget {
                         rows: List.generate(
                           controller.assets.length,
                           (index) => DataRow(
+                            onSelectChanged: (value) {
+                              if (value ?? false) {
+                                HapticFeedbackHelper.triggerHapticFeedback(
+                                  vibration: VibrateType.mediumImpact,
+                                  hapticFeedback: HapticFeedback.mediumImpact,
+                                );
+                                Get.toNamed(
+                                  Routes.adminAssetDetails,
+                                    arguments: {
+                                      RouteArguments.asset: controller.assets[index],
+                                    }
+                                );
+                              }
+                            },
                             color: WidgetStatePropertyAll(
                               index % 2 == 0
                                   ? AppColors.evenRowColor
