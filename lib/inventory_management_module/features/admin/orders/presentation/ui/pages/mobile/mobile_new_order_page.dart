@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import '../../../../../../../core/enums/stock_enums.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/animations/size_animation.dart';
 import '../../../../../../../core/constants/app_assets.dart';
@@ -103,12 +102,14 @@ class MobileNewOrderPage extends StatelessWidget {
                                             }); */
                                       },
                                       child: MobileProductCard(
+                                        checked:
+                                            controller.selectedProducts[index],
+                                        onCheckBoxChanged: (value) {
+                                          controller.selectOrderProduct(
+                                              index, value ?? false);
+                                        },
                                         product:
                                             controller.availableProducts[index],
-                                        isConsumable: controller
-                                                .availableProducts[index]
-                                                .productType ==
-                                            ProductType.consumable,
                                       ),
                                     );
                                   },

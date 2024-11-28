@@ -86,8 +86,8 @@ class NewOrderController extends GetxController {
     );
   }
 
-  selectOrderProduct(int index) {
-    selectedProducts[index] = !selectedProducts[index];
+  selectOrderProduct(int index, bool value) {
+    selectedProducts[index] = value;
     update([OrderIds.newOrderPage]);
   }
 

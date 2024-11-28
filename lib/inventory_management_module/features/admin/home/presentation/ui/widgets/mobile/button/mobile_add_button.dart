@@ -68,7 +68,7 @@ class MobileAddButton extends GetView<AdminController> {
                 )
               else if (controller.currentCategoryIndex.value == 2)
                 RectangledFilterCard(
-                  width: 112.w,
+                  width: 145.w,
                   image: AppAssets.add,
                   text: 'Consumables'.tr,
                   color: AppColors.primary,

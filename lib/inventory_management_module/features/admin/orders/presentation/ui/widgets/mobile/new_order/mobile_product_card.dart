@@ -2,12 +2,17 @@ part of '../../../pages/mobile/mobile_new_order_page.dart';
 
 class MobileProductCard extends StatelessWidget {
   final ProductEntity product;
-  final bool isConsumable;
+  final bool checked;
+  final void Function(bool?)? onCheckBoxChanged;
   const MobileProductCard(
-      {super.key, required this.product, required this.isConsumable});
+      {super.key,
+      required this.product,
+      required this.checked,
+      required this.onCheckBoxChanged});
 
   @override
   Widget build(BuildContext context) {
+    final isConsumable = product.productType == ProductType.consumable;
     return SizeAnimation(
       child: Container(
         padding: EdgeInsets.symmetric(
@@ -44,13 +49,28 @@ class MobileProductCard extends StatelessWidget {
                           ),
                           Expanded(
                             child: Align(
-                              alignment: AlignmentDirectional.centerEnd,
-                              child: DefaultRichText(
-                                label: 'Status',
-                                value: product.stockStatus.getName,
-                                valueColor: product.stockStatus.getColor,
-                              ),
-                            ),
+                                alignment: AlignmentDirectional.centerEnd,
+                                child: Checkbox(
+                                  value: checked,
+                                  activeColor: AppColors.primary,
+                                  checkColor: AppColors.icon,
+                                  materialTapTargetSize:
+                                      MaterialTapTargetSize.padded,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(4.r),
+                                  ),
+                                  overlayColor: WidgetStateProperty.all(
+                                    Colors.transparent,
+                                  ),
+                                  visualDensity: const VisualDensity(
+                                    horizontal: -4,
+                                    vertical: -4,
+                                  ),
+                                  side: BorderSide(
+                                    color: AppColors.fieldBorder,
+                                  ),
+                                  onChanged: onCheckBoxChanged,
+                                )),
                           ),
                         ],
                       ),
