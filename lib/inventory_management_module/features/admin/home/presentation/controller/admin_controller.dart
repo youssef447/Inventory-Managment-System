@@ -8,6 +8,8 @@ import '../../../assets/presentation/ui/pages/mobile/mobile_assets_admin_page.da
 import '../../../assets/presentation/ui/pages/tablet/tablet_assets_page.dart';
 import '../../../consumable/presentation/ui/pages/mobile/mobile_consumable_admin_page.dart';
 import '../../../consumable/presentation/ui/pages/tablet/tablet_consumable_page.dart';
+import '../../../orders/presentation/ui/pages/mobile/mobile_order_page.dart';
+import '../../../orders/presentation/ui/pages/tablet/tablet_order_page.dart';
 
 class AdminController extends GetxController {
   //------------Tabs------------
@@ -15,7 +17,7 @@ class AdminController extends GetxController {
     const MobileProductsTabPage(),
     const MobileAssetsAdminPage(),
     const MobileConsumableAdminPage(),
-    const MobileProductsTabPage(),
+    const MobileOrderPage(),
     const MobileProductsTabPage(),
     const MobileProductsTabPage(),
   ];
@@ -23,7 +25,7 @@ class AdminController extends GetxController {
     const TabletProductsTabPage(),
     const TabletAdminAssetsPage(),
     const TabletConsumablePage(),
-    const Text('order'),
+    const TabletOrderPage(),
     const Text('suppliers'),
     const Text('Stprage :ocation'),
   ];

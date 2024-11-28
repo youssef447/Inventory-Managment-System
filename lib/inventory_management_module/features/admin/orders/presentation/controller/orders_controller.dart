@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:get/get.dart';
 
+import '../../../../../core/enums/orders_status.dart';
 import '../../../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../../../employee/requests/entities/attachment_entity.dart';
 import '../../../../products/domain/product_entity.dart';
@@ -13,6 +14,21 @@ import '../../constants/order_ids.dart';
 import '../../domain/order_entity.dart';
 
 class OrdersController extends GetxController {
+  final List<String> orderHeaders = [
+    'Order ID',
+    'Order Date',
+    'Status',
+    'Expected Delivery',
+    'Product ID',
+    'Product Name',
+    'Supplier Name',
+    'Storage Location',
+    'Category',
+    'Subcategory',
+    'Brand',
+    'Model',
+    'Unit Cost',
+  ];
   late List<OrderEntity> orders;
   bool loading = true;
   @override
@@ -29,10 +45,15 @@ class OrdersController extends GetxController {
         orders = List.generate(
             10,
             (index) => OrderEntity(
-                  orderId: '001',
-                  requestDate: DateTime.now(),
+                  orderId: '00${index + 1}',
+                  orderDate: DateTime.now(),
                   dateReturn: DateTime.now(),
                   expectedRecieved: DateTime.now(),
+                  orderStatus: index == 1
+                      ? OrderStatus.pending
+                      : index == 3
+                          ? OrderStatus.processing
+                          : OrderStatus.completed,
                   priority: 'Urgent',
                   quantity: 2,
                   productEntity: ProductEntity(

@@ -12,6 +12,7 @@ class ProductEntity {
   String id;
   ProductType productType;
   bool? requiresApproval;
+
   StockStatus stockStatus;
   AssetsEntity? assetEntity;
   ConsumablesEntity? consumablesEntity;

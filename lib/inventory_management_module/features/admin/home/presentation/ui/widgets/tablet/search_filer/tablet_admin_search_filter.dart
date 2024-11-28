@@ -13,6 +13,7 @@ import '../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
+import '../../../../../../../employee/home/presentation/ui/widgets/common/vertical/squared_filter_card.dart';
 import '../../../../../../../products/presentation/ui/pages/tablet/add_product/add_asset_page.dart';
 import '../../../../../../../products/presentation/ui/widgets/tablet/dialog/add_product_dialog.dart';
 import '../../../../controller/admin_controller.dart';
@@ -106,16 +107,23 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                     horizontalSpace(9),
                     Row(
                       children: [
-                        RectangledFilterCard(
-                          width: 112.w,
-                          image: AppAssets.filter,
-                          text: 'Filter',
-                          textColor: AppColors.text,
-                          color: AppColors.card,
-                          onTap: () {
-                            // Open filter dialog
-                          },
-                        ),
+                        if (context.isLandscapee)
+                          RectangledFilterCard(
+                            width: 112.w,
+                            image: AppAssets.filter,
+                            text: 'Filter',
+                            textColor: AppColors.text,
+                            color: AppColors.card,
+                            onTap: () {
+                              // Open filter dialog
+                            },
+                          ),
+                        if (!context.isLandscapee)
+                          SquaredChipCard(
+                            icon: AppAssets.filter,
+                            color: AppColors.card,
+                            onTap: () {},
+                          ),
                         horizontalSpace(9),
                         if (controller.currentCategoryIndex.value == 0)
                           RectangledFilterCard(
@@ -187,13 +195,20 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                             },
                           ),
                         horizontalSpace(9),
-                        RectangledFilterCard(
-                          width: 112.w,
-                          image: AppAssets.download,
-                          text: 'Download'.tr,
-                          color: AppColors.primary,
-                          onTap: () {},
-                        ),
+                        if (context.isLandscapee)
+                          RectangledFilterCard(
+                            width: 112.w,
+                            image: AppAssets.download,
+                            text: 'Download'.tr,
+                            color: AppColors.primary,
+                            onTap: () {},
+                          ),
+                        if (!context.isLandscapee)
+                          SquaredChipCard(
+                            icon: AppAssets.download,
+                            color: AppColors.primary,
+                            onTap: () {},
+                          ),
                       ],
                     ),
                   ],

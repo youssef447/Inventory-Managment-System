@@ -6,7 +6,7 @@ class OrderEntity {
   int quantity;
   String orderId;
 
-  DateTime requestDate;
+  DateTime orderDate;
   String priority;
   String? maintenanceFrequency;
   ProductEntity productEntity;
@@ -19,14 +19,14 @@ class OrderEntity {
   OrderEntity({
     required this.orderId,
     required this.productEntity,
-    required this.requestDate,
+    required this.orderDate,
     required this.priority,
     this.maintenanceFrequency,
+    this.quantity = 2,
     this.invoice,
     this.orderStatus = OrderStatus.pending,
     required this.expectedRecieved,
     required this.dateReturn,
-    required this.quantity,
     this.additionalNote,
   });
 }
