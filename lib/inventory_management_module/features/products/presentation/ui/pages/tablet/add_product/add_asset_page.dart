@@ -14,6 +14,7 @@ import '../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
 import '../../../../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../../../../../core/widgets/fields/labeled_dropDown_field.dart';
 import '../../../../../../../core/widgets/fields/labled_form_field.dart';
+import '../../../../../domain/product_entity.dart';
 import '../../../../controller/add_product_controller.dart';
 import '../../../widgets/common/add_approvals_search.dart';
 import '../../../widgets/common/attachments/product_specification_attachments_section.dart';
@@ -26,12 +27,13 @@ import '../../../widgets/tablet/card/add_approval_cycle.dart';
 class AddAssetPage extends GetView<AddProductController> {
 
   final bool? isEdit;
-  const AddAssetPage( {super.key,this.isEdit});
+  final ProductEntity? product;
+  const AddAssetPage( {super.key,this.isEdit, this.product});
   @override
   Widget build(BuildContext context) {
-    // if (isEdit == true) {
-    //   controller.loadAssetData();
-    // }
+    if (isEdit == true) {
+      controller.loadAssetData(product!);
+    }
     return Container(
         width: Get.width * 0.85,
         padding: EdgeInsets.symmetric(
@@ -184,7 +186,7 @@ class AddAssetPage extends GetView<AddProductController> {
                     child: LabeledFormField(
                       readOnly: false,
                       controller: controller.unitCostController,
-                      label: 'Unit Test'.tr,
+                      label: 'Unit Cost'.tr,
                     ),
                   ),
                   horizontalSpace(15),

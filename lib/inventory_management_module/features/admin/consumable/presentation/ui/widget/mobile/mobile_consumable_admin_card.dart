@@ -10,10 +10,10 @@ import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../products/presentation/controller/products_controller.dart';
 
 
-class MobileAssetsAdminCard extends GetView<ProductsController> {
+class MobileConsumableAdminCard extends GetView<ProductsController> {
   final int index;
 
-  const MobileAssetsAdminCard({
+  const MobileConsumableAdminCard({
     super.key,
     required this.index,
   });
@@ -42,7 +42,7 @@ class MobileAssetsAdminCard extends GetView<ProductsController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${'Asset ID'.tr} : ${controller.assets[index].assetId}',
+                    '${'Asset ID'.tr} : ${controller.consumables[index].consumableId}',
                     style: AppTextStyles.font14BlackCairoMedium,
                   ),
                   verticalSpace(3),
@@ -53,7 +53,7 @@ class MobileAssetsAdminCard extends GetView<ProductsController> {
                         style: AppTextStyles.font12SecondaryBlackCairoMedium,
                         children: [
                           TextSpan(
-                              text: controller.assets[index].storageLocation,
+                              text: controller.consumables[index].storageLocation,
                               style: AppTextStyles.font12BlackCairo)
                         ]),
                   ),
@@ -65,7 +65,7 @@ class MobileAssetsAdminCard extends GetView<ProductsController> {
                         style: AppTextStyles.font12SecondaryBlackCairoMedium,
                         children: [
                           TextSpan(
-                              text: controller.assets[index].supplierName,
+                              text: controller.consumables[index].supplierName,
                               style: AppTextStyles.font12BlackCairo)
                         ]),
                   ),
@@ -75,7 +75,7 @@ class MobileAssetsAdminCard extends GetView<ProductsController> {
           ),
           verticalSpace(3),
           Text(
-          controller.assets[index].model + controller.assets[index].brand,
+          controller.consumables[index].model + controller.consumables[index].brand,
             style: AppTextStyles.font14BlackCairoMedium,
           ),
           verticalSpace(3),

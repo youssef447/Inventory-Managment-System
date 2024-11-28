@@ -19,6 +19,7 @@ import '../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
 import '../../../../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../../../../../core/widgets/fields/labeled_dropDown_field.dart';
 import '../../../../../../../core/widgets/fields/labled_form_field.dart';
+import '../../../../../domain/product_entity.dart';
 import '../../../../controller/add_product_controller.dart';
 import '../../../widgets/common/add_approvals_search.dart';
 import '../../../widgets/common/attachments/product_specification_attachments_section.dart';
@@ -28,7 +29,9 @@ import '../../../widgets/mobile/card/mobile_add_approval_cycle.dart';
 
 
 class MobileAddAssetPage extends GetView<AddProductController> {
-  const MobileAddAssetPage({super.key});
+  final bool? isEdit;
+  final ProductEntity? product;
+  const MobileAddAssetPage({super.key,this.isEdit, this.product});
 
   @override
   Widget build(BuildContext context) {
