@@ -12,11 +12,13 @@ class LabeledFormField extends StatelessWidget {
   final bool? readOnly;
   final String? hintText;
   final bool? expands;
+  final Color? backGroundColor;
   const LabeledFormField({
     super.key,
     required this.controller,
     this.date,
     this.readOnly,
+    this.backGroundColor,
     this.hintText,
     this.expands,
     required this.label,
@@ -38,19 +40,21 @@ class LabeledFormField extends StatelessWidget {
             ? DatePickerField(
                 textEditingController: controller,
                 width: double.infinity,
-                hintText: hintText ?? '${'Enter'.tr} $label',
+                hintText: hintText ?? '${'Pick'.tr} $label',
+                backGroundColor: backGroundColor,
               )
             : SizedBox(
                 height: expands ?? false ? 88.h : 44.h,
                 child: AppTextFormField(
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-                  hintText: hintText,
+                  hintText: hintText ?? '${'Enter'.tr} $label',
                   textAlignVertical:
                       expands ?? false ? TextAlignVertical.top : null,
                   readOnly: readOnly ?? true,
                   showBorder: true,
                   width: double.infinity,
+                  backGroundColor: backGroundColor,
                   controller: controller,
                   expands: expands,
                 ),

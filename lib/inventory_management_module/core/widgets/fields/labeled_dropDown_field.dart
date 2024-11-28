@@ -13,11 +13,13 @@ class LabeledDropdownField extends StatelessWidget {
   final String? textButton;
   final List<DropdownMenuItem> items;
   final dynamic value;
+  final Color? backGroundColor;
   final Function(dynamic) onChanged;
   const LabeledDropdownField(
       {super.key,
       required this.controller,
       this.hintText,
+      this.backGroundColor,
       required this.label,
       this.value,
       required this.onChanged,
@@ -42,6 +44,7 @@ class LabeledDropdownField extends StatelessWidget {
           hintText: hintText ?? 'choice',
           height: 44.h,
           value: value,
+          color: backGroundColor,
           textButton: textButton,
           items: items,
         ),

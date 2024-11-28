@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../../../../../../core/enums/stock_enums.dart';
-import '../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../core/widgets/buttons/default_switch_button.dart';
+import './../../../../../../../core/enums/stock_enums.dart';
+import './../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/enums/requests_enums.dart';
 import '../../../../../../../core/helpers/date_time_helper.dart';
+import '../../../../../../../core/helpers/orientation_helper.dart';
+import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
-import '../../../../../../../core/widgets/appbar/mobile_custom_appbar.dart';
-import '../../../../../../../core/widgets/buttons/default_switch_button.dart';
+import '../../../../../../../core/widgets/appbar/custom_app_bar.dart';
 import '../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
 import '../../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../../../core/widgets/fields/labeled_dropDown_field.dart';
@@ -20,12 +22,14 @@ import '../../../../../../products/domain/product_entity.dart';
 import '../../../../../../products/enums/product_enums.dart';
 import '../../../../constants/order_ids.dart';
 import '../../../controller/new_order_form_controller.dart';
-part '../../widgets/mobile/new_order_form/product_details_card.dart';
-part '../../widgets/mobile/new_order_form/product_order_form.dart';
+part '../../widgets/tablet/new_order_form/horizontal_product_details_card.dart';
+part '../../widgets/tablet/new_order_form/vertical_product_details_card.dart';
 
-class MobileNewOrderFormPage extends GetView<NewOrderFormController> {
+part '../../widgets/tablet/new_order_form/product_order_form.dart';
+
+class TabletNewOrderFormPage extends GetView<NewOrderFormController> {
   final List<ProductEntity> products;
-  const MobileNewOrderFormPage({super.key, required this.products});
+  const TabletNewOrderFormPage({super.key, required this.products});
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +38,19 @@ class MobileNewOrderFormPage extends GetView<NewOrderFormController> {
       body: SafeArea(
           child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: 16.w,
-          vertical: 12,
+          horizontal: context.isLandscapee ? 30.w : 20.w,
+          vertical: 16.h,
         ),
         child: SingleChildScrollView(
-          child: Column(children: [
-            MobileCustomAppbar(
-              title: 'Order Form'.tr,
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            CustomAppBar(
+              titles: const ['New Order', 'Order Form'],
+              titleNavigations: [
+                () {
+                  Navigator.of(context).pop();
+                }
+              ],
             ),
             verticalSpace(12),
             ...List.generate(
@@ -52,7 +62,12 @@ class MobileNewOrderFormPage extends GetView<NewOrderFormController> {
                   ),
                   child: Column(
                     children: [
-                      MobileProductDetailsCard(product: products[index]),
+                      OrientationHelper(
+                        landScape: HorizontalProductDetailsCard(
+                            product: products[index]),
+                        portrait: VerticalProductDetailsCard(
+                            product: products[index]),
+                      ),
                       verticalSpace(45),
                       GetBuilder<NewOrderFormController>(
                           id: OrderIds.newOrderForm,
@@ -75,29 +90,23 @@ class MobileNewOrderFormPage extends GetView<NewOrderFormController> {
                       GetBuilder<NewOrderFormController>(
                           id: OrderIds.newOrderForm,
                           builder: (controller) {
-                            return Column(
-                              children: [
-                                controller.hideForm[index]
-                                    ? Align(
-                                        alignment:
-                                            AlignmentDirectional.centerEnd,
-                                        child: GestureDetector(
-                                          onTap: () => controller
-                                              .hideProductDetailsCard(index),
-                                          child: Text(
-                                            controller.hideForm[index]
-                                                ? 'Expand'.tr
-                                                : 'Hide'.tr,
-                                            style: AppTextStyles
-                                                .font14BlackCairoMedium
-                                                .copyWith(
-                                                    color: AppColors.blue),
-                                          ),
-                                        ),
-                                      )
-                                    : MobileProductOrderForm(index: index),
-                              ],
-                            );
+                            return controller.hideForm[index]
+                                ? Align(
+                                    alignment: AlignmentDirectional.centerEnd,
+                                    child: GestureDetector(
+                                      onTap: () => controller
+                                          .hideProductDetailsCard(index),
+                                      child: Text(
+                                        controller.hideForm[index]
+                                            ? 'Expand'.tr
+                                            : 'Hide'.tr,
+                                        style: AppTextStyles
+                                            .font14BlackCairoMedium
+                                            .copyWith(color: AppColors.blue),
+                                      ),
+                                    ),
+                                  )
+                                : TabletProductOrderForm(index: index);
                           }),
                     ],
                   ),

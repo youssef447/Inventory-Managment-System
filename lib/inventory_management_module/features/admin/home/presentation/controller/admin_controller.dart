@@ -10,6 +10,7 @@ import '../../../consumable/presentation/ui/pages/mobile/mobile_consumable_admin
 import '../../../consumable/presentation/ui/pages/tablet/tablet_consumable_page.dart';
 import '../../../orders/presentation/ui/pages/mobile/mobile_order_page.dart';
 import '../../../orders/presentation/ui/pages/tablet/tablet_order_page.dart';
+import '../../../suppliers/presentation/ui/pages/tablet/tablet_suppliers_page.dart';
 
 class AdminController extends GetxController {
   //------------Tabs------------
@@ -26,7 +27,7 @@ class AdminController extends GetxController {
     const TabletAdminAssetsPage(),
     const TabletConsumablePage(),
     const TabletOrderPage(),
-    const Text('suppliers'),
+    const TabletSuppliersPage(),
     const Text('Stprage :ocation'),
   ];
 

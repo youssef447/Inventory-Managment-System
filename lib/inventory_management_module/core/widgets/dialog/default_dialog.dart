@@ -43,7 +43,9 @@ class DefaultDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (!showButtons) {
-      Timer(const Duration(seconds: 2), () => Navigator.of(context).pop());
+      Timer(const Duration(seconds: 2), () {
+        Navigator.of(context).pop();
+      });
     }
     return Container(
       decoration: BoxDecoration(

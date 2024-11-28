@@ -2,13 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/features/employee/consumables/domain/entity/consumables_entity.dart';
 
 import '../../../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../../../employee/requests/entities/attachment_entity.dart';
 import '../../../../products/domain/product_entity.dart';
 import '../../../../products/domain/subEntities/contract_details_entity.dart';
-import '../../../../products/domain/subEntities/storage_location_entity.dart';
-import '../../../../products/domain/subEntities/supplier_entity.dart';
+import '../../../storage/domain/storage_location_entity.dart';
+import '../../../suppliers/domain/supplier_entity.dart';
 import '../../../../products/enums/product_enums.dart';
 import '../../constants/order_ids.dart';
 
@@ -34,21 +35,39 @@ class NewOrderController extends GetxController {
           10,
           (index) => ProductEntity(
               id: '002',
-              productType: ProductType.asset,
+              productType:
+                  index == 0 ? ProductType.consumable : ProductType.asset,
               storage: [
                 StorageLocationAndQuantityEntity(
                     locationName: 'Room A13', quantity: 10)
               ],
-              assetEntity: AssetsEntity(
-                assetName: 'Dell GZ 15',
-                category: 'Electronics',
-                subcategory: 'Computer',
-                model: 'GZ 15',
-                dateReceived: DateTime.now(),
-                quantity: '2',
-                status: 'InUse',
-                brand: 'Dell',
-              ),
+              assetEntity: index == 0
+                  ? null
+                  : AssetsEntity(
+                      assetName: 'Dell GZ 15',
+                      category: 'Electronics',
+                      subcategory: 'Computer',
+                      model: 'GZ 15',
+                      dateReceived: DateTime.now(),
+                      quantity: '2',
+                      status: 'InUse',
+                      brand: 'Dell',
+                    ),
+              consumablesEntity: index != 0
+                  ? null
+                  : ConsumablesEntity(
+                      brand: 'Papers',
+                      consumableId: '001',
+                      name: 'Papers',
+                      category: 'Papers',
+                      subcategory: 'Papers',
+                      model: 'GZ 15',
+                      dateReceived: DateTime.now(),
+                      quantity: '1',
+                      unitOfMeasurement: '1',
+                      usageFrequency: 'Daily',
+                      status: 'Pending',
+                    ),
               supplier: SupplierEntity(
                 supplierName: 'TechSource Solutions',
                 postalCode: '1313',

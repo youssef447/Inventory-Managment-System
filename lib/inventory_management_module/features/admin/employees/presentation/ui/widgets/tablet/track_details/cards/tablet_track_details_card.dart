@@ -77,7 +77,7 @@ class TabletTrackDeatailsCard extends StatelessWidget {
                           SvgPicture.asset(AppAssets.system),
                           horizontalSpace(4),
                           Text(
-                            'Download As Png',
+                            'Download As PNG',
                             style: AppTextStyles
                                 .font14SecondaryBlackCairoRegular
                                 .copyWith(decoration: TextDecoration.underline),

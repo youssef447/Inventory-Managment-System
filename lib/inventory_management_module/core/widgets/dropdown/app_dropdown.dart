@@ -65,7 +65,7 @@ class AppDropdown extends StatelessWidget {
             width: width,
             height: height,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(4.r),
+              borderRadius: BorderRadius.circular(8.r),
               color: color ?? AppColors.field,
               border: Border.all(
                 color: Colors.transparent,

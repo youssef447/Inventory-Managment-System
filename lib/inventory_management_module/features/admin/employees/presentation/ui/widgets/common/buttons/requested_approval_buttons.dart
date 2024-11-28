@@ -67,6 +67,8 @@ class RequestedApprovalButtons extends StatelessWidget {
                           backgroundColor: AppColors.red,
                           child: SvgPicture.asset(
                             AppAssets.rejected,
+                            width: context.isTablett ? 16.w : 12.w,
+                            height: context.isTablett ? 16.h : 12.h,
                           ),
                         ),
                         horizontalSpace(8),
@@ -112,6 +114,8 @@ class RequestedApprovalButtons extends StatelessWidget {
                           backgroundColor: AppColors.green,
                           child: SvgPicture.asset(
                             AppAssets.approved,
+                            width: context.isTablett ? 24.w : 16.w,
+                            height: context.isTablett ? 24.h : 16.h,
                           ),
                         ),
                         horizontalSpace(8),
@@ -147,12 +151,22 @@ class RequestedApprovalButtons extends StatelessWidget {
                 CircleAvatar(
                   radius: context.isTablett ? 12.r : 8.r,
                   backgroundColor: requestStatus.getColor,
-                  child: FittedBox(
-                    child: SvgPicture.asset(
-                      requestStatus.getAsset,
-                      height: 14.h,
-                      width: 14.w,
-                    ),
+                  child: SvgPicture.asset(
+                    requestStatus.getAsset,
+                    width: requestStatus == RequestStatus.approved
+                        ? context.isTablett
+                            ? 24.w
+                            : 16.w
+                        : context.isTablett
+                            ? 16.w
+                            : 10.w,
+                    height: requestStatus == RequestStatus.approved
+                        ? context.isTablett
+                            ? 24.h
+                            : 16.h
+                        : context.isTablett
+                            ? 16.h
+                            : 10.h,
                   ),
                 ),
                 horizontalSpace(8),

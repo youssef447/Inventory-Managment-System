@@ -11,8 +11,8 @@ import '../../constants/ids.dart';
 import '../../domain/assigned_user_products_entity.dart';
 import '../../domain/product_entity.dart';
 import '../../domain/subEntities/contract_details_entity.dart';
-import '../../domain/subEntities/storage_location_entity.dart';
-import '../../domain/subEntities/supplier_entity.dart';
+import '../../../admin/storage/domain/storage_location_entity.dart';
+import '../../../admin/suppliers/domain/supplier_entity.dart';
 import '../../enums/product_enums.dart';
 
 class ProductsController extends GetxController {

@@ -1,10 +1,10 @@
-part of '../../../pages/mobile/mobile_new_order_page.dart';
+part of '../../../pages/tablet/tablet_new_order_page.dart';
 
-class MobileProductCard extends StatelessWidget {
+class VerticalTabletProductCard extends StatelessWidget {
   final ProductEntity product;
   final bool checked;
   final void Function(bool?)? onCheckBoxChanged;
-  const MobileProductCard(
+  const VerticalTabletProductCard(
       {super.key,
       required this.product,
       required this.checked,

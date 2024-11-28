@@ -88,6 +88,34 @@ class MobileTrackDetailsCard extends StatelessWidget {
                 ],
               ),
             ),
+          verticalSpace(10),
+          Row(
+            children: [
+              const Spacer(),
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                Image.asset(
+                  AppAssets.qr,
+                ),
+                verticalSpace(8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(AppAssets.system, color: AppColors.blue),
+                    horizontalSpace(4),
+                    Text(
+                      'Download As PNG',
+                      style: AppTextStyles.font14SecondaryBlackCairoRegular
+                          .copyWith(
+                        decoration: TextDecoration.underline,
+                        decorationColor: AppColors.blue,
+                        color: AppColors.blue,
+                      ),
+                    ),
+                  ],
+                )
+              ]),
+            ],
+          ),
           verticalSpace(32),
           Align(
             alignment: AlignmentDirectional.centerEnd,

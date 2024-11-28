@@ -83,7 +83,6 @@ class TabletAdminEmployeesPage extends GetView<EmployeesController> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    verticalSpace(16),
                                     CustomAppBar(
                                       titles: const ['Employees'],
                                       titleNavigations: [

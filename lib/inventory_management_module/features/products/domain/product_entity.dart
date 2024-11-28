@@ -3,8 +3,8 @@ import '../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../employee/consumables/domain/entity/consumables_entity.dart';
 import '../../employee/requests/entities/attachment_entity.dart';
 import '../enums/product_enums.dart';
-import 'subEntities/storage_location_entity.dart';
-import 'subEntities/supplier_entity.dart';
+import '../../admin/storage/domain/storage_location_entity.dart';
+import '../../admin/suppliers/domain/supplier_entity.dart';
 
 //Youssef Ashraf
 ///Represents a product entity which can be asset or consumable
