@@ -18,6 +18,8 @@ import '../../domain/subEntities/storage_location_entity.dart';
 import '../../domain/subEntities/supplier_entity.dart';
 import '../../enums/product_enums.dart';
 import '../constant/add_Product_ids_constant.dart';
+import 'package:intl/intl.dart';
+
 
 class AddProductController extends GetxController {
   @override
@@ -28,11 +30,25 @@ class AddProductController extends GetxController {
     stockOnHandController.add(TextEditingController());
     selectedStorageLocations.add(Rxn<StorageLocation>());
   }
+  void loadAssetData(ProductEntity model) {
+    orderIdController.text = model.id ?? '';
+    productIdController.text = model.assetEntity?.assetId ?? '';
+    categoryController.text = model.assetEntity?.category ?? '';
+    subCategoryController.text = model.assetEntity?.subcategory ?? '';
+    brandController.text = model.assetEntity?.brand ?? '';
+    modelController.text = model.assetEntity?.model ?? '';
+    expirationDateController.text = model.assetEntity?.expirationDate?.toString() ?? '';
+    totalQuantityController.text = model.totalQuantity.toString() ?? '';
+    unitCostController.text = model.unitCost.toString() ?? '';
+    currencyController.text = model.currency ?? '';
+    supplierNameController.text = model.supplier.firstName ?? '';
+    additionalNoteController.text = model.additionalNotes ?? '';
 
-  // void loadAssetData(ProductEntity model) async {
-  //
-  //
-  // }
+  }
+
+
+
+
 
 
   ///-------------- drop down-----------------------
@@ -77,6 +93,7 @@ class AddProductController extends GetxController {
   Rxn<String> supplierNameValue = Rxn<String>();
   updateSupplierNameValue(String value) {
     supplierNameValue.value = value;
+    supplierNameController.text = value;
   }
 
   // -------------- storageRequirement   -----------
@@ -196,7 +213,7 @@ class AddProductController extends GetxController {
         ),
         totalQuantity: 20,
         currency: currencyController.text = currencyValue.value!.getName,
-        unitCost: 2,
+        unitCost: double.parse(unitCostController.text),
         expectedLifeTime: DateTime.now(),
         productSpecifications: [
           AttachmentEntity(file: File('assets/dummyFile/example.pdf'))
@@ -267,7 +284,6 @@ class AddProductController extends GetxController {
     controller.products.add(item); // Add item to the list
     controller.update([ProductsIds.productsTab]);
   }
-
 
 
   void clearControllers() {

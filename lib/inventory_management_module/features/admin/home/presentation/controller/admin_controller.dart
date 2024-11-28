@@ -4,24 +4,20 @@ import 'package:get/get.dart';
 import '../../../../../core/theme/app_theme.dart';
 import '../../../../products/presentation/ui/pages/mobile/mobile_products_tab_page.dart';
 import '../../../../products/presentation/ui/pages/tablet/tablet_products_tab_page.dart';
+import '../../../assets/presentation/ui/pages/mobile/mobile_assets_admin_page.dart';
 import '../../../assets/presentation/ui/pages/tablet/tablet_assets_page.dart';
+import '../../../consumable/presentation/ui/pages/mobile/mobile_consumable_admin_page.dart';
 import '../../../consumable/presentation/ui/pages/tablet/tablet_consumable_page.dart';
 
 class AdminController extends GetxController {
   //------------Tabs------------
   final List<Widget> mobileAdminTabs = [
     const MobileProductsTabPage(),
+    const MobileAssetsAdminPage(),
+    const MobileConsumableAdminPage(),
     const MobileProductsTabPage(),
     const MobileProductsTabPage(),
     const MobileProductsTabPage(),
-    const MobileProductsTabPage(),
-    const MobileProductsTabPage(),
-
-    /*  const Text('data'),
-    const Text('data'),
-    const Text('data'),
-    const Text('data'),
-    const Text('data'), */
   ];
   final List<Widget> tabletAdminTabs = [
     const TabletProductsTabPage(),
