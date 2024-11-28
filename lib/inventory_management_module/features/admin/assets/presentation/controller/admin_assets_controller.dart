@@ -1,7 +1,6 @@
 // Date: 25/11/2024
 // By:Mohamed Ashraf
 
-
 import 'dart:ffi';
 import 'dart:io';
 
@@ -13,20 +12,18 @@ import '../../../../employee/requests/entities/attachment_entity.dart';
 import '../../../../products/domain/assigned_user_products_entity.dart';
 import '../../../../products/domain/product_entity.dart';
 import '../../../../products/domain/subEntities/contract_details_entity.dart';
-import '../../../../products/domain/subEntities/storage_location_entity.dart';
-import '../../../../products/domain/subEntities/supplier_entity.dart';
-import '../../../../products/enums/product_enums.dart';
 
+import '../../../../products/enums/product_enums.dart';
+import '../../../storage/domain/storage_location_entity.dart';
+import '../../../suppliers/domain/supplier_entity.dart';
 
 class AdminAssetsController extends GetxController {
-
   final searchDetailsController = TextEditingController();
   final assignServiceHistoryFilters = ['Assigned', 'Service History'];
   RxInt currentCategoryIndex = 0.obs;
   updateCategoryIndex(int index) {
     currentCategoryIndex.value = index;
   }
-
 
   //------------------ hide or expand
   bool hideMaintenance = true;
@@ -35,6 +32,7 @@ class AdminAssetsController extends GetxController {
     hideMaintenance = !hideMaintenance;
     update();
   }
+
 /////////////// delivery method dropDown
   List<String> deliveryMethod = [
     'car',
@@ -45,14 +43,12 @@ class AdminAssetsController extends GetxController {
     deliveryMethodValue.value = value;
   }
 
-
   //------------- TextEditingController
   TextEditingController assetIdController = TextEditingController();
   TextEditingController requestIdController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
   TextEditingController returnDateController = TextEditingController();
   TextEditingController deliveryMethodController = TextEditingController();
-
 
   //dummy in stock data (get by id from backend)
   final List<ProductEntity> dummyInStock = [
@@ -86,7 +82,7 @@ class AdminAssetsController extends GetxController {
           stateOrProvince: 'NA',
           contractDetails: ContractdetailsEntity(
             attachmentEntity:
-            AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+                AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
             endDate: DateTime.now(),
             startDate: DateTime.now(),
           ),
@@ -131,7 +127,7 @@ class AdminAssetsController extends GetxController {
           stateOrProvince: 'NA',
           contractDetails: ContractdetailsEntity(
             attachmentEntity:
-            AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+                AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
             endDate: DateTime.now(),
             startDate: DateTime.now(),
           ),
@@ -176,7 +172,7 @@ class AdminAssetsController extends GetxController {
           stateOrProvince: 'NA',
           contractDetails: ContractdetailsEntity(
             attachmentEntity:
-            AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+                AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
             endDate: DateTime.now(),
             startDate: DateTime.now(),
           ),
@@ -221,7 +217,7 @@ class AdminAssetsController extends GetxController {
           stateOrProvince: 'NA',
           contractDetails: ContractdetailsEntity(
             attachmentEntity:
-            AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+                AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
             endDate: DateTime.now(),
             startDate: DateTime.now(),
           ),
@@ -276,7 +272,7 @@ class AdminAssetsController extends GetxController {
             stateOrProvince: 'NA',
             contractDetails: ContractdetailsEntity(
               attachmentEntity:
-              AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+                  AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
               endDate: DateTime.now(),
               startDate: DateTime.now(),
             ),
@@ -329,7 +325,7 @@ class AdminAssetsController extends GetxController {
             stateOrProvince: 'NA',
             contractDetails: ContractdetailsEntity(
               attachmentEntity:
-              AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
+                  AttachmentEntity(file: File('assets/dummyFile/example.pdf')),
               endDate: DateTime.now(),
               startDate: DateTime.now(),
             ),
