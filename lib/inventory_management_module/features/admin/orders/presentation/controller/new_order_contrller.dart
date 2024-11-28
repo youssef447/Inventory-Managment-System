@@ -14,6 +14,9 @@ import '../../constants/order_ids.dart';
 
 class NewOrderController extends GetxController {
   late List<ProductEntity> availableProducts;
+
+  ///selected Products To be Ordered based on checkbox values (must be same length as availableProducts)
+
   late List<bool> selectedProducts;
   bool loading = true;
   @override
@@ -89,6 +92,14 @@ class NewOrderController extends GetxController {
   selectOrderProduct(int index, bool value) {
     selectedProducts[index] = value;
     update([OrderIds.newOrderPage]);
+  }
+
+  ///Return selected Products To be Ordered based on checkbox values
+  List<ProductEntity> getSelectedProducts() {
+    return availableProducts
+        .where(
+            (element) => selectedProducts[availableProducts.indexOf(element)])
+        .toList();
   }
 
 //products search controller

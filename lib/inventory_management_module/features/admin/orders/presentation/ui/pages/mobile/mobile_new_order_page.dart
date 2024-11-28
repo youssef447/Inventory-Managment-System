@@ -9,6 +9,8 @@ import '../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../core/routes/app_routes.dart';
+import '../../../../../../../core/routes/route_arguments.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/theme/app_theme.dart';
@@ -116,6 +118,32 @@ class MobileNewOrderPage extends StatelessWidget {
                                   itemCount:
                                       controller.availableProducts.length,
                                 ),
+                                if (controller.selectedProducts.any(
+                                  (element) => element,
+                                ))
+                                  SliverToBoxAdapter(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(top: 12.h),
+                                      child: Align(
+                                        alignment:
+                                            AlignmentDirectional.centerEnd,
+                                        child: RectangledFilterCard(
+                                          width: 145.w,
+                                          text: 'Next'.tr,
+                                          color: AppColors.primary,
+                                          onTap: () {
+                                            context.navigateTo(
+                                                Routes.newOrderForm,
+                                                arguments: {
+                                                  RouteArguments.product:
+                                                      controller
+                                                          .getSelectedProducts(),
+                                                });
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  )
                               ],
                             ),
                 ]),

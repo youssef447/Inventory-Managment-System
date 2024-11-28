@@ -8,8 +8,10 @@ import '../../features/admin/employees/presentation/ui/pages/tablet/tablet_admin
 import '../../features/admin/employees/presentation/ui/pages/tablet/tablet_track_requests_details_page.dart';
 import '../../features/admin/home/presentation/ui/page/mobile/mobile_admin_home_page.dart';
 import '../../features/admin/home/presentation/ui/page/tablet/tablet_admin_home_page.dart';
+import '../../features/admin/orders/presentation/ui/pages/mobile/mobile_new_order_form_page.dart';
 import '../../features/admin/orders/presentation/ui/pages/mobile/mobile_new_order_page.dart';
 import '../../features/admin/orders/presentation/ui/pages/tablet/tablet_new_order_page.dart';
+import '../../features/admin/orders/presentation/ui/pages/tablet/tablet_order_form_page.dart';
 import '../../features/employee/Assets/presentation/ui/pages/mobile/mobile_assets_details.dart';
 import '../../features/employee/consumables/presentation/ui/pages/mobile/mobile_consumables_details_page.dart';
 import '../../features/employee/home/presentation/ui/page/mobile/mobile_home_page.dart';
@@ -223,6 +225,18 @@ abstract class RouteGenerator {
           const ResponsiveHelper(
             mobileWidget: MobileNewOrderPage(),
             tabletWidget: TabletNewOrderPage(),
+          ),
+          PageTransitionType.fade,
+        );
+      case Routes.newOrderForm:
+        return _buildPageRoute(
+          ResponsiveHelper(
+            mobileWidget: MobileNewOrderFormPage(
+              products: args[RouteArguments.product],
+            ),
+            tabletWidget: TabletNewOrderFormPage(
+              products: args[RouteArguments.product],
+            ),
           ),
           PageTransitionType.fade,
         );

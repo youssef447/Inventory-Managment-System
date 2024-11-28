@@ -38,7 +38,7 @@ class LabeledFormField extends StatelessWidget {
             ? DatePickerField(
                 textEditingController: controller,
                 width: double.infinity,
-                hintText: hintText,
+                hintText: hintText ?? '${'Enter'.tr} $label',
               )
             : SizedBox(
                 height: expands ?? false ? 88.h : 44.h,

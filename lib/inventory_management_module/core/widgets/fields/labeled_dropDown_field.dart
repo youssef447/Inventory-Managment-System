@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -10,21 +9,20 @@ import '../dropdown/app_dropdown.dart';
 import 'app_form_field.dart';
 
 class LabeledDropdownField extends StatelessWidget {
-
-
   final String? hintText;
   final String? textButton;
   final List<DropdownMenuItem> items;
   final dynamic value;
   final Function(dynamic) onChanged;
-  const LabeledDropdownField({
-    super.key,
-    required this.controller,
-    this.hintText,
-    required this.label,
-    required this.value,
-    required this.onChanged, required this.items, this.textButton
-  });
+  const LabeledDropdownField(
+      {super.key,
+      required this.controller,
+      this.hintText,
+      required this.label,
+      this.value,
+      required this.onChanged,
+      required this.items,
+      this.textButton});
   final String label;
   final TextEditingController controller;
 

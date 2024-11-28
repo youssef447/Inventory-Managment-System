@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import '../../features/admin/orders/presentation/controller/new_order_contrller.dart';
+import '../../features/admin/orders/presentation/controller/new_order_form_controller.dart';
 import '../../features/admin/orders/presentation/controller/orders_controller.dart';
 import '../../features/products/presentation/controller/add_product_controller.dart';
 
@@ -44,4 +45,5 @@ configurationDependencies() {
   Get.lazyPut(() => EmployeeDetailsController(), fenix: true);
   Get.lazyPut(() => OrdersController(), fenix: true);
   Get.lazyPut(() => NewOrderController(), fenix: true);
+  Get.lazyPut(() => NewOrderFormController(), fenix: true);
 }
