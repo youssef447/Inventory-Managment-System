@@ -61,6 +61,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                                 );
                               }
                             },
+
                             color: WidgetStatePropertyAll(
                               index % 2 == 0
                                   ? AppColors.evenRowColor
