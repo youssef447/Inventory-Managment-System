@@ -13,6 +13,7 @@ import '../../../../../../products/domain/assigned_user_products_entity.dart';
 import '../../../../../employees/presentation/ui/pages/tablet/tablet_admin_employee_details_page.dart';
 import '../../../controller/admin_assets_controller.dart';
 import '../../widget/tablet/assigned/horizontal_assigned_details_card.dart';
+import '../../widget/tablet/assigned/vertical_assigned_details_card.dart';
 import '../../widget/tablet/cards/maintenance_card.dart';
 
 // by : Mohamed Ashraf
@@ -52,7 +53,7 @@ class TabletAdminAssignedDetails extends StatelessWidget {
                     child: OrientationHelper(
                         landScape: HorizontalAssignedDetailsCard(assets: assignedUser.productentity.assetEntity!,
                         ),
-                        portrait: HorizontalAssignedDetailsCard(assets: assignedUser.productentity.assetEntity!,)
+                        portrait: VerticalAssignedDetailsCard(assets: assignedUser.productentity.assetEntity!,)
                     ),
                   ),
                   verticalSpace(12),

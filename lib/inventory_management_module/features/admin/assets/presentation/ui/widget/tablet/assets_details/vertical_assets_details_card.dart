@@ -151,11 +151,12 @@ class VerticalAssetsDetailsCard extends StatelessWidget {
                     color: Colors.blue,
                   ),
                   Text(
-                    'Download As Png',
-                    style: AppTextStyles.font16SecondaryBlueCairoRegular
+                    'Download As PNG',
+                    style: AppTextStyles.font14SecondaryBlackCairoRegular
                         .copyWith(
-                        decoration: TextDecoration.underline,
-                        fontSize: 12
+                      decoration: TextDecoration.underline,
+                      decorationColor: AppColors.blue,
+                      color: AppColors.blue,
                     ),
                   ),
                 ],

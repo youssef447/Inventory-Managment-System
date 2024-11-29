@@ -68,7 +68,7 @@ class MaintenanceCard extends StatelessWidget {
                         ),
                       ),
                       horizontalSpace(2),
-                      DefaultRichText(
+                      context.isTablett ? DefaultRichText(
                           label: 'Status',
                           labelStyle:
                           AppTextStyles.font14SecondaryBlackCairoMedium,
@@ -77,7 +77,7 @@ class MaintenanceCard extends StatelessWidget {
                             color: AppColors.green
                           ),
                           value: 'InUse'
-                      ),
+                      ) : SizedBox(),
                     ]),
               ),
             ],
@@ -94,9 +94,23 @@ class MaintenanceCard extends StatelessWidget {
                 label: 'Maintenance End Date',
                 value: DateTimeHelper.formatDate(
                   DateTime.now(),
-                ),)
+                ),),
+
             ],
           ),
+           context.isTablett ? SizedBox() :  Align(
+             alignment: AlignmentDirectional.bottomEnd,
+             child: DefaultRichText(
+                 label: 'Status',
+                 labelStyle:
+                 AppTextStyles.font14SecondaryBlackCairoMedium,
+                 style: AppTextStyles.font14SecondaryBlackCairoMedium
+                     .copyWith(
+                     color: AppColors.green
+                 ),
+                 value: 'InUse'
+             ),
+           )
         ],
       ),
     );

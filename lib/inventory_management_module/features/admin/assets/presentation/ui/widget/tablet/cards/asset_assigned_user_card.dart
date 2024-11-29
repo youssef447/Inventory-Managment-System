@@ -86,17 +86,21 @@ class AssetAssignedUserCard extends StatelessWidget {
             verticalSpace(5),
             context.isLandscape ?Row(
               children: [
-                DefaultRichText(
-                  label: 'Assigned Date',
-                  value: DateTimeHelper.formatDate(
-                    assignedUser.assigneDate,
+                Expanded(
+                  child: DefaultRichText(
+                    label: 'Assigned Date',
+                    value: DateTimeHelper.formatDate(
+                      assignedUser.assigneDate,
+                    ),
                   ),
                 ),
-                Spacer(),
-                DefaultRichText(
-                  label: 'Return Date',
-                  value: DateTimeHelper.formatDate(
-                    assignedUser.returnDate,
+                horizontalSpace(12),
+                Expanded(
+                  child: DefaultRichText(
+                    label: 'Return Date',
+                    value: DateTimeHelper.formatDate(
+                      assignedUser.returnDate,
+                    ),
                   ),
                 ),
               ],

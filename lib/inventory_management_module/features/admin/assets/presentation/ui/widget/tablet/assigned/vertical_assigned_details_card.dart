@@ -16,10 +16,10 @@ import '../../../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../../../employee/track_request/presentation/ui/pages/tablet/tablet_track_request_details_page.dart';
 import '../dialog/retrieve_request_dialog.dart';
 
-class HorizontalAssignedDetailsCard extends StatelessWidget {
+class VerticalAssignedDetailsCard extends StatelessWidget {
   final AssetsEntity assets;
 
-  const HorizontalAssignedDetailsCard({super.key, required this.assets});
+  const VerticalAssignedDetailsCard({super.key, required this.assets});
 
   @override
   Widget build(BuildContext context) {
@@ -71,19 +71,30 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
                     value: assets.assetId,
                   ),
                   verticalSpace(2),
-                  DefaultRichText(label: 'Category', value: assets.category),
+                  DefaultRichText(
+                    label: 'Status',
+                    value: assets.status,
+                    labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium
+                        .copyWith(color: AppColors.secondaryBlack),
+                    style:
+                    AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
+                      color: assets.status.getColor,
+                    ),
+                  ),
+                  verticalSpace(2),
+
                 ],
               ),
               const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  DefaultRichText(
-                      label: 'Category', value: assets.category),
-                  verticalSpace(2),
 
+                  DefaultRichText(label: 'Category', value: assets.category),
+                  verticalSpace(2),
                   DefaultRichText(
                       label: 'Subcategory', value: assets.subcategory),
+                  verticalSpace(2),
 
                   DefaultRichText(label: 'Model', value: assets.model),
                   verticalSpace(2),
@@ -91,19 +102,16 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
                     label: 'Brand',
                     value: assets.brand,
                   ),
-                  verticalSpace(2),
 
-                  verticalSpace(2),
                 ],
               ),
               const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  verticalSpace(2),
                   DefaultRichText(
-                    label: 'quantity'.tr,
-                    value: assets.quantity,
+                    label: 'Maintenance Frequency'.tr,
+                    value: assets.maintenanceFrequency ?? '',
                   ),
                   verticalSpace(2),
                   DefaultRichText(
@@ -116,67 +124,31 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
                   ),
                   verticalSpace(2),
                   DefaultRichText(
-                    label: 'Expected Lifetime'.tr,
+                    label: 'Expected Lifetime',
                     value: assets.expectedLifeTime != null
                         ? DateTimeHelper.formatDate(
                       assets.expectedLifeTime!,
                     )
                         : 'Not Applicable'.tr,
                   ),
+                  verticalSpace(2),
                   DefaultRichText(
-                    label: 'Supplier Name',
-                    value: assets.supplier.supplierName,
-                    style: AppTextStyles.font12BlackMediumCairo.copyWith(
-                      decoration: TextDecoration.underline,
-                      color: AppColors.blue,
-                    ),
+                    label: 'Unit Of Measurement'.tr,
+                    value: assets.maintenanceFrequency ?? '',
                   ),
                 ],
               ),
-              const Spacer(),
-
-              Column(crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-              DefaultRichText(
-                label: 'Status',
-                value: assets.status,
-                labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium
-                    .copyWith(color: AppColors.secondaryBlack),
-                style:
-                    AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
-                  color: assets.status.getColor,
-                ),
-              ),
-              verticalSpace(4),
-              Image.asset(
-                AppAssets.qr,
-              ),
-              verticalSpace(8),
-              Row(
-                children: [
-                  SvgPicture.asset(
-                    AppAssets.download,
-                    width: 16,
-                    height: 16,
-                    color: Colors.blue,
-                  ),
-                  horizontalSpace(4),
-                  Text(
-                    'Download As PNG',
-                    style: AppTextStyles.font14SecondaryBlackCairoRegular
-                        .copyWith(
-                      decoration: TextDecoration.underline,
-                      decorationColor: AppColors.blue,
-                      color: AppColors.blue,
-                    ),
-                  ),
-                ],
-              )
-                              ],
-                            )
             ],
           ),
-
+          verticalSpace(8),
+          DefaultRichText(
+            label: 'Supplier Name',
+            value: assets.supplier.supplierName,
+            style: AppTextStyles.font12BlackMediumCairo.copyWith(
+              decoration: TextDecoration.underline,
+              color: AppColors.blue,
+            ),
+          ),
           Row(
             mainAxisAlignment: context.isLandscapee
                 ? MainAxisAlignment.start
@@ -201,14 +173,47 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
           ),
           verticalSpace(10),
           const ApprovalCycle(),
-          verticalSpace(10),
-          Align(
-              alignment: AlignmentDirectional.bottomEnd,
-              child:  GestureDetector(
+          verticalSpace(32),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+
+                children: [
+                  verticalSpace(4),
+                  Image.asset(
+                    AppAssets.qr,
+                  ),
+                  verticalSpace(8),
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        AppAssets.download,
+                        width: 16,
+                        height: 16,
+                        color: Colors.blue,
+                      ),
+                      horizontalSpace(4),
+                      Text(
+                        'Download As PNG',
+                        style: AppTextStyles.font14SecondaryBlackCairoRegular
+                            .copyWith(
+                          decoration: TextDecoration.underline,
+                          decorationColor: AppColors.blue,
+                          color: AppColors.blue,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              Spacer(),
+              GestureDetector(
                 onTap: (){
                   GetDialogHelper.generalDialog(
-                    context: context,
-                    child: const RetrieveRequestDialog()
+                      context: context,
+                      child: const RetrieveRequestDialog()
                   );
                 },
                 child: Container(
@@ -232,8 +237,7 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
                   ),
                 ),
               ),
-
-
+            ],
           )
         ],
       ),

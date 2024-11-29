@@ -18,8 +18,8 @@ import '../../../../../../../../core/widgets/fields/labeled_dropDown_field.dart'
 import '../../../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../controller/admin_assets_controller.dart';
 
-class RetrieveRequestDialog extends GetView<AdminAssetsController> {
-  const RetrieveRequestDialog({super.key});
+class MobileRetrieveRequestDialog extends GetView<AdminAssetsController> {
+  const MobileRetrieveRequestDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,64 +57,48 @@ class RetrieveRequestDialog extends GetView<AdminAssetsController> {
                 ],
               ),
               verticalSpace(24),
-              Row(
-                children: [
-                  Expanded(
-                    child: LabeledFormField(
-                    label: 'Asset Id',
-                      controller: controller.assetIdController,
-                    ),
-                  ),
-                         horizontalSpace(16),
-                  Expanded(
-                    child: LabeledFormField(
-                      label: 'Request Id',
-                      controller: controller.requestIdController,
-                    ),
-                  ),
-                ],
+              LabeledFormField(
+              label: 'Asset Id',
+                controller: controller.assetIdController,
+              ),
+                     horizontalSpace(16),
+              LabeledFormField(
+                label: 'Request Id',
+                controller: controller.requestIdController,
               ),
               verticalSpace(24),
-              Row(
-                children: [
-                  Expanded(
-                    child: LabeledFormField(
-                      label: 'Quantity',
-                      controller: controller.quantityController,
-                    ),
-                  ),
-                  horizontalSpace(16),
-                  Expanded(
-                    child: LabeledFormField(
-                      label: 'Return Date',
-                      controller: controller.returnDateController,
-                      date: true,
-                    ),
-                  ),
-                ],
+              LabeledFormField(
+                label: 'Quantity',
+                controller: controller.quantityController,
+              ),
+              horizontalSpace(16),
+              LabeledFormField(
+                label: 'Return Date',
+                controller: controller.returnDateController,
+                date: true,
               ),
               verticalSpace(24),
-              LabeledDropdownField(
-                label: 'Delivery Method'.tr,
-                value: controller.deliveryMethodValue.value,
-                textButton: controller.deliveryMethodValue.value,
-                onChanged: (value) {
-                  controller.updateDeliveryMethodValue(value);
-                },
-                controller: controller.deliveryMethodController,
-                items: List.generate(controller.deliveryMethod.length,
-                      (index) {
-                    return DropdownMenuItem(
-                      value: controller.deliveryMethod[index],
-                      child: Text(
-                        controller.deliveryMethod[index],
-                        style:
-                        AppTextStyles.font14SecondaryBlackCairoMedium,
-                      ),
-                    );
-                  },
+        LabeledDropdownField(
+          label: 'Delivery Method'.tr,
+          value: controller.deliveryMethodValue.value,
+          textButton: controller.deliveryMethodValue.value,
+          onChanged: (value) {
+            controller.updateDeliveryMethodValue(value);
+          },
+          controller: controller.deliveryMethodController,
+          items: List.generate(controller.deliveryMethod.length,
+                (index) {
+              return DropdownMenuItem(
+                value: controller.deliveryMethod[index],
+                child: Text(
+                  controller.deliveryMethod[index],
+                  style:
+                  AppTextStyles.font14SecondaryBlackCairoMedium,
                 ),
-              ),
+              );
+            },
+          ),
+        ),
               verticalSpace(24),
               Row(
                 children: [
@@ -127,7 +111,7 @@ class RetrieveRequestDialog extends GetView<AdminAssetsController> {
                   ),
                      const Spacer(),
                   AppDefaultButton(
-                    text: 'Next'.tr,
+                    text: 'Submit'.tr,
                     onPressed: () {
                       Navigator.pop(context);
                       GetDialogHelper.generalDialog(
