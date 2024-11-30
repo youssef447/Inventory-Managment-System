@@ -49,8 +49,8 @@ class TabletSuppliersPage extends StatelessWidget {
                         return DataRow(
                           onSelectChanged: (value) {
                             if (value ?? false) {
-                              Get.put(
-                                SupplierFormController()
+                              Get.lazyPut(
+                                () => SupplierFormController()
                                   ..setSupplierData(controller.suppliers[index])
                                   ..isEditable = false,
                               );

@@ -62,7 +62,7 @@ class TabletDocsForms extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 14.h),
                   child: AttachmentCard(
-                    showDelete: true,
+                    showDelete: controller.isEditable,
                     showDownload: false,
                     model: controller.contractDetails!,
                     onDelete: () {
@@ -120,7 +120,7 @@ class TabletDocsForms extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 14.h),
                   child: AttachmentCard(
-                    showDelete: true,
+                    showDelete: controller.isEditable,
                     showDownload: false,
                     model: controller.complianceDoc!,
                     onDelete: () {
@@ -188,7 +188,7 @@ class TabletDocsForms extends StatelessWidget {
                                 ? 0
                                 : 16.w),
                         child: AttachmentCard(
-                          showDelete: true,
+                          showDelete: controller.isEditable,
                           showDownload: false,
                           model: controller.additionalDoc[index],
                           onDelete: () {

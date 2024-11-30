@@ -42,8 +42,8 @@ class MobileSuppliersPage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          Get.put(
-                            SupplierFormController()
+                          Get.lazyPut(
+                            () => SupplierFormController()
                               ..setSupplierData(controller.suppliers[index])
                               ..isEditable = false,
                           );

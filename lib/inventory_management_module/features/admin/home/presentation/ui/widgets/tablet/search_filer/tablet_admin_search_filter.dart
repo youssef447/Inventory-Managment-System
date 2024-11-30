@@ -17,6 +17,7 @@ import '../../../../../../../../core/widgets/buttons/rectangled_filter_card.dart
 import '../../../../../../../employee/home/presentation/ui/widgets/common/vertical/squared_filter_card.dart';
 import '../../../../../../../products/presentation/ui/pages/tablet/add_product/add_asset_page.dart';
 import '../../../../../../../products/presentation/ui/widgets/tablet/dialog/add_product_dialog.dart';
+import '../../../../../../suppliers/presentation/controller/supplier_form_controller.dart';
 import '../../../../controller/admin_controller.dart';
 
 // Date: 26/11/2024
@@ -182,6 +183,10 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                             text: 'Suppliers'.tr,
                             color: AppColors.primary,
                             onTap: () {
+                              Get.lazyPut(
+                                () =>
+                                    SupplierFormController()..setSupplierData(),
+                              );
                               context.navigateTo(Routes.supplierForm);
                             },
                           )

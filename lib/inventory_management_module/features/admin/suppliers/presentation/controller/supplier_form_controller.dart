@@ -52,33 +52,63 @@ class SupplierFormController extends GetxController {
     update([SuppliersIds.supplierForm]);
   }
 
-  setSupplierData(SupplierEntity supplier) {
-    supplierIDController = TextEditingController(text: supplier.supplierId);
-    supplierNameController = TextEditingController(text: supplier.supplierName);
-    taxNumController = TextEditingController(text: supplier.taxNumber);
+  setSupplierData([SupplierEntity? supplier]) {
+    supplierIDController = TextEditingController(text: supplier?.supplierId);
+    supplierNameController =
+        TextEditingController(text: supplier?.supplierName);
+    taxNumController = TextEditingController(text: supplier?.taxNumber);
     stateOrProvinceController =
-        TextEditingController(text: supplier.stateOrProvince);
+        TextEditingController(text: supplier?.stateOrProvince);
     catalogOfProductsController =
-        TextEditingController(text: supplier.catalogOfProduct);
-    postalCodeController = TextEditingController(text: supplier.postalCode);
-    countryController = TextEditingController(text: supplier.country);
-    cityController = TextEditingController(text: supplier.city);
-    firstNameController = TextEditingController(text: supplier.firstName);
-    middleNameController = TextEditingController(text: supplier.middleName);
-    lastNameController = TextEditingController(text: supplier.lastName);
-    titleNameController = TextEditingController(text: supplier.title);
-    phoneNumberController = TextEditingController(text: supplier.phoneNumber);
-    emailController = TextEditingController(text: supplier.email);
+        TextEditingController(text: supplier?.catalogOfProduct);
+    postalCodeController = TextEditingController(text: supplier?.postalCode);
+    countryController = TextEditingController(text: supplier?.country);
+    cityController = TextEditingController(text: supplier?.city);
+    firstNameController = TextEditingController(text: supplier?.firstName);
+    middleNameController = TextEditingController(text: supplier?.middleName);
+    lastNameController = TextEditingController(text: supplier?.lastName);
+    titleNameController = TextEditingController(text: supplier?.title);
+    phoneNumberController = TextEditingController(text: supplier?.phoneNumber);
+    emailController = TextEditingController(text: supplier?.email);
     additionalNotesController =
-        TextEditingController(text: supplier.additionalNotes);
+        TextEditingController(text: supplier?.additionalNotes);
     startDateController = TextEditingController(
-        text: DateTimeHelper.formatDate(supplier.contractDetails.startDate));
+        text: DateTimeHelper.formatDate(
+            supplier?.contractDetails.startDate ?? DateTime.now()));
     endDateController = TextEditingController(
-        text: DateTimeHelper.formatDate(supplier.contractDetails.endDate));
-    selectedBusinessType = supplier.businessType;
-    additionalDoc = supplier.contractDetails.additionalDocs;
-    contractDetails = supplier.contractDetails.attachmentEntity;
-    complianceDoc = supplier.contractDetails.complianceDoc;
+        text: DateTimeHelper.formatDate(
+            supplier?.contractDetails.endDate ?? DateTime.now()));
+    selectedBusinessType = supplier?.businessType;
+    additionalDoc = supplier?.contractDetails.additionalDocs ?? [];
+    contractDetails = supplier?.contractDetails.attachmentEntity;
+    complianceDoc = supplier?.contractDetails.complianceDoc;
+  }
+
+  resetResources() {
+    supplierIDController.clear();
+    supplierNameController.clear();
+
+    taxNumController.clear();
+    stateOrProvinceController.clear();
+
+    catalogOfProductsController.clear();
+    postalCodeController.clear();
+    countryController.clear();
+    cityController.clear();
+    firstNameController.clear();
+    middleNameController.clear();
+    lastNameController.clear();
+    titleNameController.clear();
+    phoneNumberController.clear();
+    emailController.clear();
+    additionalNotesController.clear();
+
+    startDateController.clear();
+    endDateController.clear();
+    selectedBusinessType = null;
+    additionalDoc = [];
+    contractDetails = null;
+    complianceDoc = null;
   }
 
 //----------------------------Upload Docs Logic--------------------------------------
