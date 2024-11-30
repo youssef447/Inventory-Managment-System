@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../../core/routes/app_routes.dart';
-import '../../../../../../../../features/products/presentation/ui/pages/tablet/add_product/add_consumable_page.dart';
 import '../../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/get_dialog_helper.dart';
@@ -12,7 +11,8 @@ import '../../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../../core/theme/app_colors.dart';
 
 import '../../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
-import '../../../../../../../products/presentation/ui/pages/tablet/add_product/add_asset_page.dart';
+import '../../../../../../../products/presentation/ui/pages/mobile/mobile_add_product/mobile_add_asset_page.dart';
+import '../../../../../../../products/presentation/ui/pages/mobile/mobile_add_product/mobile_add_consumable_page.dart';
 import '../../../../../../../products/presentation/ui/widgets/tablet/dialog/add_product_dialog.dart';
 import '../../../../../../suppliers/presentation/controller/supplier_form_controller.dart';
 import '../../../../controller/admin_controller.dart';
@@ -60,7 +60,7 @@ class MobileAddButton extends GetView<AdminController> {
                       color: AppColors.primary,
                       onTap: () {
                         GetDialogHelper.generalDialog(
-                          child: const AddAssetPage(),
+                          child: const MobileAddAssetPage(),
                           context: context,
                         );
                       },
@@ -75,7 +75,7 @@ class MobileAddButton extends GetView<AdminController> {
                   color: AppColors.primary,
                   onTap: () {
                     GetDialogHelper.generalDialog(
-                      child: const AddConsumablePage(),
+                      child: const MobileAddConsumablePage(),
                       context: context,
                     );
                   },

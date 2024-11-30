@@ -77,7 +77,11 @@ class AddAssetPage extends GetView<AddProductController> {
                     style: AppTextStyles.font16BlackMediumCairo,
                   ),
                   horizontalSpace(8),
-                  DefaultSwitchButton(value: true, onChanged: (v) {})
+                  DefaultSwitchButton(
+                      value: controller.autoId,
+                      onChanged: (v) {
+                        controller.toggleAutomaticIdSwitch(v);
+                      })
                 ],
               ),
               verticalSpace(24),

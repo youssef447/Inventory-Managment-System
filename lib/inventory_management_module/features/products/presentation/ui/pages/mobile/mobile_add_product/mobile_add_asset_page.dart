@@ -74,7 +74,11 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                     'Create Automatic IDs'.tr,
                     style: AppTextStyles.font14BlackCairoMedium,
                   ),
-                  DefaultSwitchButton(value: true, onChanged: (v) {})
+                  DefaultSwitchButton(
+                      value: controller.autoId,
+                      onChanged: (v) {
+                        controller.toggleAutomaticIdSwitch(v);
+                      })
                 ],
               ),
               verticalSpace(16),

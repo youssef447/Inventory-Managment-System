@@ -29,6 +29,12 @@ class AddProductController extends GetxController {
     selectedStorageLocations.add(Rxn<StorageLocation>());
   }
 
+  bool autoId = true;
+  toggleAutomaticIdSwitch(bool v) {
+    autoId = v;
+    update();
+  }
+
   void loadAssetData(ProductEntity model) {
     orderIdController.text = model.id;
     productIdController.text = model.assetEntity?.assetId ?? '';

@@ -10,6 +10,7 @@ import '../../../consumable/presentation/ui/pages/mobile/mobile_consumable_admin
 import '../../../consumable/presentation/ui/pages/tablet/tablet_consumable_page.dart';
 import '../../../orders/presentation/ui/pages/mobile/mobile_order_page.dart';
 import '../../../orders/presentation/ui/pages/tablet/tablet_order_page.dart';
+import '../../../storage/presentation/ui/pages/tablet/tablet_storage_page.dart';
 import '../../../suppliers/presentation/ui/pages/mobile/mobile_suppliers_page.dart';
 import '../../../suppliers/presentation/ui/pages/tablet/tablet_suppliers_page.dart';
 
@@ -21,7 +22,8 @@ class AdminController extends GetxController {
     const MobileConsumableAdminPage(),
     const MobileOrderPage(),
     const MobileSuppliersPage(),
-    const MobileProductsTabPage(),
+
+    ///const MobileStorageTabPage(),
   ];
   final List<Widget> tabletAdminTabs = [
     const TabletProductsTabPage(),
@@ -29,7 +31,7 @@ class AdminController extends GetxController {
     const TabletConsumablePage(),
     const TabletOrderPage(),
     const TabletSuppliersPage(),
-    const Text('Stprage :ocation'),
+    const TabletStoragePage(),
   ];
 
   //------------Category Filter Row------------

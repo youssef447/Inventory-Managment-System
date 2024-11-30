@@ -16,6 +16,7 @@ import '../../../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../../../core/widgets/dropdown/app_dropdown.dart';
 import '../../../../controller/add_product_controller.dart';
 import '../../../pages/mobile/mobile_add_product/mobile_add_asset_page.dart';
+import '../../../pages/mobile/mobile_add_product/mobile_add_consumable_page.dart';
 import '../../../pages/tablet/add_product/add_asset_page.dart';
 
 class AddProductDialog extends GetView<AddProductController> {
@@ -95,7 +96,9 @@ class AddProductDialog extends GetView<AddProductController> {
                         context: context,
                       )
                     : GetDialogHelper.generalDialog(
-                        child: const AddConsumablePage(),
+                        child: context.isTablett
+                            ? const AddConsumablePage()
+                            : const MobileAddConsumablePage(),
                         context: context,
                       );
               },
