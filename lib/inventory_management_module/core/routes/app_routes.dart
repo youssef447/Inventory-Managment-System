@@ -41,4 +41,9 @@ abstract class Routes {
   static const employeeDetails = '$employees/employeeDetails';
   static const employeeTrackRequestDetails =
       '$employeeDetails/trackRequestDetails';
+
+  static const adminApproval = '$adminHome/adminApproval';
+  static const adminConsumablesDetails = '$adminHome/adminConsumablesDetails';
+  static const adminConsumablesAssignedDetails = '$adminHome/adminConsumablesAssignedDetails';
+
 }

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/features/employee/Assets/domain/entity/assets_entity.dart';
+import 'package:inventory_management/inventory_management_module/features/employee/consumables/domain/entity/consumables_entity.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/get_dialog_helper.dart';
@@ -12,12 +12,12 @@ import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../../../employee/track_request/presentation/ui/pages/mobile/mobile_track_requests_details_page.dart';
-import '../dialog/mobile_retrieve_request_dialog.dart';
+import '../../../../../../assets/presentation/ui/widget/mobile/dialog/mobile_retrieve_request_dialog.dart';
 
-class MobileAssignedDetailsCard extends StatelessWidget {
-  final AssetsEntity assets;
+class MobileAssignedConsumableDetailsCard extends StatelessWidget {
+  final ConsumablesEntity consumable;
 
-  const MobileAssignedDetailsCard({super.key, required this.assets});
+  const MobileAssignedConsumableDetailsCard({super.key, required this.consumable});
 
   @override
   Widget build(BuildContext context) {
@@ -53,17 +53,17 @@ class MobileAssignedDetailsCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        assets.model + assets.brand,
+                        consumable.model + consumable.brand,
                         style: AppTextStyles.font16BlackCairoRegular,
                       ),
                       DefaultRichText(
                         label: 'Status',
-                        value: assets.status,
+                        value: consumable.status,
                         labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium
                             .copyWith(color: AppColors.secondaryBlack),
                         style:
                         AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
-                          color: assets.status.getColor,
+                          color: consumable.status.getColor,
                         ),
                       ),
                     ],
@@ -76,39 +76,39 @@ class MobileAssignedDetailsCard extends StatelessWidget {
           ),
           horizontalSpace(6),
           DefaultRichText(
-            label: 'Asset ID',
-            value: assets.assetId,
+            label: 'Consumable ID'.tr,
+            value: consumable.consumableId,
           ),
           DefaultRichText(
-            label: 'Product ID',
-            value: assets.assetId,
+            label: 'Product ID'.tr,
+            value: consumable.consumableId,
           ),
           verticalSpace(2),
-          DefaultRichText(label: 'Category', value: assets.category),
-          DefaultRichText(label: 'Model', value: assets.model),
+          DefaultRichText(label: 'Category', value: consumable.category),
+          DefaultRichText(label: 'Model', value: consumable.model),
           verticalSpace(2),
           DefaultRichText(
-            label: 'Brand',
-            value: assets.brand,
+            label: 'Brand'.tr,
+            value: consumable.brand,
           ),
           verticalSpace(2),
           DefaultRichText(
-              label: 'Subcategory', value: assets.subcategory),
+              label: 'Subcategory'.tr, value: consumable.subcategory),
           verticalSpace(2),
           DefaultRichText(
             label: 'Expected Date',
-            value: assets.expectedLifeTime != null
+            value: consumable.expectedLifeTime != null
                 ? DateTimeHelper.formatDate(
-                    assets.expectedLifeTime!,
+                    consumable.expectedLifeTime!,
                   )
                 : 'Not Applicable'.tr,
           ),
           verticalSpace(2),
           DefaultRichText(
             label: 'Expected Lifetime',
-            value: assets.expectedLifeTime != null
+            value: consumable.expectedLifeTime != null
                 ? DateTimeHelper.formatDate(
-                    assets.expectedLifeTime!,
+                    consumable.expectedLifeTime!,
                   )
                 : 'Not Applicable'.tr,
           ),
@@ -117,23 +117,19 @@ class MobileAssignedDetailsCard extends StatelessWidget {
             children: [
               verticalSpace(2),
               DefaultRichText(
-                label: 'Unit Of Measurement'.tr,
-                value: assets.maintenanceFrequency ?? '',
+                label: 'Unit Of Measurement',
+                value: consumable.maintenanceFrequency ?? '',
               ),
               verticalSpace(2),
               DefaultRichText(
-                label: 'Unit Cost'.tr,
-                value: assets.unitCost,
+                label: 'Unit Cost',
+                value: consumable.unitCost,
               ),
               verticalSpace(2),
-              DefaultRichText(
-                label: 'Storage Requirement'.tr,
-                value: assets.storageRequirement,
-              ),
               verticalSpace(2),
               DefaultRichText(
-                label: 'Supplier Name'.tr,
-                value: assets.supplier.supplierName,
+                label: 'Supplier Name',
+                value: consumable.supplier.supplierName,
                 style: AppTextStyles.font12BlackMediumCairo.copyWith(
                   decoration: TextDecoration.underline,
                   color: AppColors.blue,
@@ -144,8 +140,8 @@ class MobileAssignedDetailsCard extends StatelessWidget {
           verticalSpace(8),
           _BuildIconLabel(
             'Assigned Date'.tr,
-            assets.dateReturn != null
-                ? DateTimeHelper.formatDate(assets.dateReturn!)
+            consumable.dateReturn != null
+                ? DateTimeHelper.formatDate(consumable.dateReturn!)
                 : DateTimeHelper.formatDate(DateTime.now()),
             AppAssets.calender,
           ),
@@ -153,8 +149,8 @@ class MobileAssignedDetailsCard extends StatelessWidget {
           if (context.isLandscapee) horizontalSpace(78),
           _BuildIconLabel(
             'Returned Date'.tr,
-            assets.dateReturn != null
-                ? DateTimeHelper.formatDate(assets.dateReturn!)
+            consumable.dateReturn != null
+                ? DateTimeHelper.formatDate(consumable.dateReturn!)
                 : DateTimeHelper.formatDate(DateTime.now()),
             AppAssets.calender,
           ),
@@ -189,7 +185,7 @@ class MobileAssignedDetailsCard extends StatelessWidget {
                 onTap: (){
                   GetDialogHelper.generalDialog(
                       context: context,
-                      child: const MobileRetrieveRequestDialog()
+                      child: const MobileRetrieveRequestDialog(isAsset: false,)
                   );
                 },
                 child: Container(

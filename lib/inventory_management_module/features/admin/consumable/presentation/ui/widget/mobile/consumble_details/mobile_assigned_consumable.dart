@@ -13,45 +13,37 @@ import '../../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../../../../employee/home/presentation/ui/page/mobile/mobile_home_page.dart';
 import '../../../../../../../employee/home/presentation/ui/widgets/common/vertical/squared_filter_card.dart';
-import '../../../../controller/admin_assets_controller.dart';
-import '../../tablet/cards/asset_assigned_user_card.dart';
-import '../../tablet/cards/service_history.dart';
+import '../../../../controller/admin_consumable_controller.dart';
+import '../../tablet/cards/consumable_assigned_user_card.dart';
 // by : Mohamed ashraf
-class MobileAssignedAndServiceHistoryList
-    extends GetView<AdminAssetsController> {
-  const MobileAssignedAndServiceHistoryList({super.key});
+class MobileAssignedConsumable
+    extends GetView<ConsumableAssetsController> {
+  const MobileAssignedConsumable({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Obx(() {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children:
-              List.generate(
-                  controller.assignServiceHistoryFilters.length, (index) {
-                return Padding(
-                  padding: EdgeInsetsDirectional.only(
-                      end: index ==
-                          controller.assignServiceHistoryFilters.length - 1
-                          ? 0
-                          : 35.w),
-                  child: GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                    onTap: () {
-                      controller.updateCategoryIndex(index);
-                    },
-                    child: MobileCategoryFilterCard(
-                      count: 12,
-                      name: controller.assignServiceHistoryFilters[index],
-                      selected: controller.currentCategoryIndex.value == index,
-                    ),
-                  ),
-                );
-              }),
-            );
-          },
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children:
+            List.generate(
+                controller.assignFilters.length, (index) {
+              return GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  controller.updateCategoryIndex(index);
+                },
+                child: MobileCategoryFilterCard(
+                  count: 12,
+                  name: controller.assignFilters[index],
+                  selected: controller.currentCategoryIndex.value == index,
+                ),
+              );
+            }),
+          );
+        },
         ),
         verticalSpace(15),
         SlideAnimation(
@@ -103,23 +95,17 @@ class MobileAssignedAndServiceHistoryList
           ),
         ),
         verticalSpace(15),
-        Obx(() =>
-            StaggeredGrid.count(
-              crossAxisCount: context.isTablet ? Get.width > 1200 ? 3 : 2 : 1,
-              mainAxisSpacing: 15.h,
-              crossAxisSpacing: context.isLandscapee ? 20.w : 36.w,
-              children: List.generate(
-                controller.currentCategoryIndex.value == 0
-                    ? controller.dummyAssignedUsers.length
-                    : controller.dummyServiceHistory.length,
-                    (index) {
-                  return controller.currentCategoryIndex.value == 0
-                      ? AssetAssignedUserCard(
-                      assignedUser: controller.dummyAssignedUsers[index],)
-                      : ServiceHistory(serviceEntity: controller.dummyServiceHistory[index]);
-                },
-              ),
-            ))
+        StaggeredGrid.count(
+          crossAxisCount: context.isTablet ? Get.width > 1200 ? 3 : 2 : 1,
+          mainAxisSpacing: 15.h,
+          crossAxisSpacing: context.isLandscapee ? 20.w : 36.w,
+          children: List.generate(
+            controller.dummyAssignedUsers.length,
+                (index) {
+              return  ConsumableAssignedUserCard(assignedUser: controller.dummyAssignedUsers[index],);
+            },
+          ),
+        )
       ],
     );
   }

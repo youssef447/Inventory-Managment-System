@@ -12,21 +12,20 @@ import '../../../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../../../employee/requests/entities/request_entity.dart';
 import '../../../../../../../products/domain/assigned_user_products_entity.dart';
 
-class AssetAssignedUserCard extends StatelessWidget {
+class ConsumableAssignedUserCard extends StatelessWidget {
   final AssignedUserProductsEntity assignedUser;
-  const AssetAssignedUserCard({super.key, required this.assignedUser});
+  const ConsumableAssignedUserCard({super.key, required this.assignedUser});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
         context.navigateTo(
-            Routes.adminAssetAssignedDetails,
+            Routes.adminConsumablesAssignedDetails,
             arguments: {
-              RouteArguments.adminAssetAssignedDetails: assignedUser,
+              RouteArguments.adminConsumablesAssignedDetails: assignedUser,
             }
         );
-
       },
       child: Container(
         decoration: BoxDecoration(
@@ -71,9 +70,10 @@ class AssetAssignedUserCard extends StatelessWidget {
                         ),
                         horizontalSpace(2),
                         DefaultRichText(
-                            label: 'Status',
+                            label: 'Status'.tr,
                             labelStyle: context.isTablett ?   AppTextStyles.font14SecondaryBlackCairoMedium : AppTextStyles.font12SecondaryBlackCairoMedium,
-                            style: AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
+                            style: AppTextStyles.font14SecondaryBlackCairoMedium
+                                .copyWith(
                               fontSize:    context.isTablett ?  14.sp :12.sp,
                               color: assignedUser.productentity.status.getColor,
                             ),
@@ -83,11 +83,11 @@ class AssetAssignedUserCard extends StatelessWidget {
               ],
             ),
             verticalSpace(5),
-            context.isLandscape ? Row(
+            context.isLandscape ?Row(
               children: [
                 Expanded(
                   child: DefaultRichText(
-                    label: 'Assigned Date',
+                    label: 'Assigned Date'.tr,
                     value: DateTimeHelper.formatDate(
                       assignedUser.assigneDate,
                     ),
@@ -96,7 +96,7 @@ class AssetAssignedUserCard extends StatelessWidget {
                 horizontalSpace(12),
                 Expanded(
                   child: DefaultRichText(
-                    label: 'Return Date',
+                    label: 'Return Date'.tr,
                     value: DateTimeHelper.formatDate(
                       assignedUser.returnDate,
                     ),
@@ -104,15 +104,16 @@ class AssetAssignedUserCard extends StatelessWidget {
                 ),
               ],
             ) : Column(
-crossAxisAlignment: CrossAxisAlignment.start,              children: [
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 DefaultRichText(
-                  label: 'Assigned Date',
+                  label: 'Assigned Date'.tr,
                   value: DateTimeHelper.formatDate(
                     assignedUser.assigneDate,
                   ),
                 ),
                 DefaultRichText(
-                  label: 'Return Date',
+                  label: 'Return Date'.tr,
                   value: DateTimeHelper.formatDate(
                     assignedUser.returnDate,
                   ),

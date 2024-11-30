@@ -32,7 +32,9 @@ class HomeAdminRowButton extends StatelessWidget {
               horizontalSpace(10),
               AppDefaultButton(
                 text: 'Approval'.tr,
-                onPressed: () {},
+                onPressed: () {
+                  context.navigateTo(Routes.adminApproval);
+                },
               ),
               horizontalSpace(10),
               AppDefaultButton(

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import '../../features/admin/consumable/presentation/controller/admin_consumable_controller.dart';
 import '../../features/admin/dashboard/presentaton/controller/dashboard_controller.dart';
 import '../../features/admin/orders/presentation/controller/new_order_contrller.dart';
 import '../../features/admin/orders/presentation/controller/new_order_form_controller.dart';
@@ -55,4 +56,5 @@ configurationDependencies() {
   Get.lazyPut(() => DashboardController(), fenix: true);
   Get.lazyPut(() => StorageController(), fenix: true);
   Get.lazyPut(() => StorageFormController(), fenix: true);
+  Get.lazyPut(() => ConsumableAssetsController(), fenix: true);
 }

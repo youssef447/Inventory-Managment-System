@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 import 'package:inventory_management/inventory_management_module/core/theme/app_colors.dart';
+import 'package:inventory_management/inventory_management_module/features/employee/consumables/presentation/controller/consumables_controller.dart';
 import '../../../../../../../core/animations/size_animation.dart';
-import '../../../../../../../core/helpers/orientation_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
-import '../../../../../../../core/widgets/appbar/custom_app_bar.dart';
 import '../../../../../../../core/widgets/appbar/mobile_custom_appbar.dart';
 import '../../../../../../products/domain/assigned_user_products_entity.dart';
+import '../../../../../assets/presentation/ui/widget/mobile/assigned/mobile_assigned_details_card.dart';
 import '../../../../../employees/presentation/ui/pages/mobile/mobile_admin_employee_details_page.dart';
-import '../../../../../employees/presentation/ui/pages/tablet/tablet_admin_employee_details_page.dart';
-import '../../../controller/admin_assets_controller.dart';
-import '../../widget/mobile/assigned/mobile_assigned_details_card.dart';
-import '../../widget/tablet/assigned/horizontal_assigned_details_card.dart';
-import '../../widget/tablet/cards/maintenance_card.dart';
+import '../../widget/mobile/assigned/mobile_assigned_consumable_details_card.dart';
 
 // by : Mohamed Ashraf
-class MobileAdminAssignedDetails extends StatelessWidget {
-  const MobileAdminAssignedDetails({super.key, required this.assignedUser,});
+class MobileAdminAssignedConsumableDetails extends StatelessWidget {
+  const MobileAdminAssignedConsumableDetails({super.key, required this.assignedUser,});
   final AssignedUserProductsEntity assignedUser;
 
 
@@ -49,48 +44,44 @@ class MobileAdminAssignedDetails extends StatelessWidget {
                     ),
                     verticalSpace(12),
                     SizeAnimation(
-                      child: MobileAssignedDetailsCard(assets: assignedUser.productentity.assetEntity!,)
+                      child: MobileAssignedConsumableDetailsCard(consumable: assignedUser.productentity.consumablesEntity!)
                     ),
                     verticalSpace(12),
-                    GetBuilder<AdminAssetsController>(
+                    GetBuilder<ConsumablesController>(
                         builder: (controller) {
-                          return Row(
+                          return const Row(
                             children: [
-                              Text(
-                                'Maintenance Details'.tr,
-                                style: AppTextStyles.font22BlackBoldCairo,
-                              ),
-                              const Spacer(),
-                              GestureDetector(
-                                onTap: (){
-                                  controller.toggleHideAndExpand();
-                                },
-                                child: Text(
-                                  controller.hideMaintenance? 'Hide'.tr :  'Expand'.tr,
-                                  style: AppTextStyles.font12BlueCairoRegular,
-                                ),
-                              ),
+
+                              // GestureDetector(
+                              //   onTap: (){
+                              //   controller.toggleHideAndExpand();
+                              //   },
+                              //   child: Text(
+                              //     controller.hideMaintenance? 'Hide'.tr :  'Expand'.tr,
+                              //     style: AppTextStyles.font12BlueCairoRegular,
+                              //   ),
+                              // ),
 
                             ],
                           );
                         }
                     ),
                     verticalSpace(13),
-                    GetBuilder<AdminAssetsController>(
-                        builder: (controller) {
-                          return controller.hideMaintenance ?
-                          StaggeredGrid.count(
-                            crossAxisCount: 1,
-                            mainAxisSpacing: 15.h,
-                            crossAxisSpacing:
-                            context.isLandscapee ? 20.w : 16.w,
-                            children: List.generate(4, (index) {
-                              return const MaintenanceCard();
-                            },
-                            ),
-                          ) : const SizedBox();
-                        }
-                    ),
+                    // GetBuilder<AdminAssetsController>(
+                    //     builder: (controller) {
+                    //       return controller.hideMaintenance ?
+                    //       StaggeredGrid.count(
+                    //         crossAxisCount: 1,
+                    //         mainAxisSpacing: 15.h,
+                    //         crossAxisSpacing:
+                    //         context.isLandscapee ? 20.w : 16.w,
+                    //         children: List.generate(4, (index) {
+                    //           return const MaintenanceCard();
+                    //         },
+                    //         ),
+                    //       ) : const SizedBox();
+                    //     }
+                    // ),
 
 
                     verticalSpace(
@@ -100,6 +91,7 @@ class MobileAdminAssignedDetails extends StatelessWidget {
                     //   'Inquiries And Comments'.tr,
                     //   style: AppTextStyles.font22BlackBoldCairo,
                     // ),
+                    verticalSpace(13),
                     // InquiryChatCard(
                     //   model: model,
                     //   adminEmpDetailsPage: true,
