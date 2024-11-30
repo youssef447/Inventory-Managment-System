@@ -8,6 +8,8 @@ import '../../../suppliers/domain/supplier_entity.dart';
 
 import '../../constants/suppliers_ids.dart';
 
+//Youssef Ashraf
+///Represents The Suppliers Controller for Supplier Tab
 class SuppliersController extends GetxController {
   final List<String> orderHeaders = [
     'Supplier ID',
@@ -52,7 +54,11 @@ class SuppliersController extends GetxController {
             contractDetails: ContractdetailsEntity(
                 endDate: DateTime(2025),
                 startDate: DateTime(2025),
-                attachmentEntity: AttachmentEntity(file: File('path'))),
+                attachmentEntity: AttachmentEntity(
+                    file: File('path'),
+                    fileName: 'File',
+                    extension: 'pdf',
+                    totalSize: 10)),
             firstName: 'Ahmed',
             lastName: 'Mohammed',
             phoneNumber: '1212112',

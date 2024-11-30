@@ -11,6 +11,8 @@ import 'app_colors.dart';
 import 'app_font_weights.dart';
 
 abstract class AppTextStyles {
+  static var font14SecondaryBlackCairo;
+
   // --------------------- REGULAR Text Styles - w400 ---------------------
 
   static TextStyle get font10LightGreyRegularCairo => GoogleFonts.cairo(
@@ -129,10 +131,10 @@ abstract class AppTextStyles {
         fontWeight: AppFontWeights.regular,
       );
   static TextStyle get font16SecondaryBlueCairoRegular => GoogleFonts.cairo(
-    fontSize: 16.sp,
-    color: AppColors.blue,
-    fontWeight: AppFontWeights.regular,
-  );
+        fontSize: 16.sp,
+        color: AppColors.blue,
+        fontWeight: AppFontWeights.regular,
+      );
 
   static TextStyle get font16LightGreyRegularCairo => GoogleFonts.cairo(
         fontSize: 16.sp,

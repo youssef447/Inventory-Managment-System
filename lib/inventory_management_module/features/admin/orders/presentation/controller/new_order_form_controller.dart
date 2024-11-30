@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../core/constants/app_assets.dart';
@@ -21,6 +22,7 @@ class NewOrderFormController extends GetxController {
   late List<bool> hideForm;
   late List<bool> createAutomaticIDs;
   late List<int> storageLocationCount;
+  late List<AttachmentEntity?> invoices;
   late final List<TextEditingController> orderIDController;
   late final List<TextEditingController> quantityController;
   late final List<TextEditingController> unitCostController;
@@ -53,6 +55,10 @@ class NewOrderFormController extends GetxController {
       (index) => null,
     );
     selectedCurrency = List.generate(
+      numOfProducts,
+      (index) => null,
+    );
+    invoices = List.generate(
       numOfProducts,
       (index) => null,
     );
@@ -166,6 +172,33 @@ class NewOrderFormController extends GetxController {
     storageLocationControllers.add(TextEditingController());
     selectedStorageLocations[index].add(null);
     storageLocationCount[index]++;
+    update([OrderIds.newOrderForm]);
+  }
+
+  uploadAttachments(int index) async {
+    final result = await FilePicker.platform.pickFiles(
+      type: FileType.any,
+      allowMultiple: false,
+    );
+    if (result != null) {
+      final file = result.files.first;
+      String fileName = File(file.path!).path.split('/').last;
+      String extension = fileName.split('.').last;
+      double totalSize = File(file.path!).lengthSync() / (1024 * 1024);
+
+      invoices[index] = AttachmentEntity(
+        file: File(file.path!),
+        fileName: fileName,
+        extension: extension,
+        totalSize: totalSize,
+      );
+      ;
+      update([OrderIds.newOrderForm]);
+    }
+  }
+
+  removeAttachment(int index) {
+    invoices[index] = null;
     update([OrderIds.newOrderForm]);
   }
 

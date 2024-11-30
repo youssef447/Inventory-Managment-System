@@ -26,8 +26,11 @@ abstract class GetDatePickerHelper {
 
     return showCalendarDatePicker2Dialog(
       context: context,
-      dialogSize:
-          isTablet ? Size(Get.width / 2.2, Get.height / 2) : Size(365.w, 350.h),
+      dialogSize: isTablet
+          ? context.isLandscapee
+              ? Size(Get.width / 2, Get.height / 2)
+              : Size(Get.width, Get.height / 2)
+          : Size(365.w, 350.h),
       borderRadius: BorderRadius.circular(10.r),
       dialogBackgroundColor: AppColors.dialog,
       config: CalendarDatePicker2WithActionButtonsConfig(
@@ -41,7 +44,11 @@ abstract class GetDatePickerHelper {
         }) {
           return Center(
             child: Container(
-              width: 30.w,
+              width: context.isTablett
+                  ? context.isLandscapee
+                      ? 30.w
+                      : 50.w
+                  : 30.w,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 border: Border.all(

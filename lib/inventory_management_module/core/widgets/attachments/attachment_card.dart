@@ -1,11 +1,9 @@
-// Date: 29/9/2024
-// By: Youssef Ashraf
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import '../../../core/extensions/extensions.dart';
 
 import '../../../features/employee/requests/entities/attachment_entity.dart';
 import '../../constants/app_assets.dart';
@@ -34,7 +32,7 @@ class AttachmentCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 70.h,
-      width: context.isPhone ? double.infinity : 193.w,
+      width: !context.isTablett ? double.infinity : 200.w,
       padding: EdgeInsets.symmetric(
         horizontal: 6.w,
         vertical: 12.h,

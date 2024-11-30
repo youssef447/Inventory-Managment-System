@@ -50,6 +50,18 @@ abstract class AppAssets {
   static const String camera = 'assets/vectors/Camera.svg';
   static const String system = 'assets/vectors/system.svg';
   static const String status = 'assets/vectors/status.svg';
+  static const String truck = 'assets/vectors/truck.svg';
+  static const String house = 'assets/vectors/house.svg';
+  static const String stock = 'assets/vectors/stock.svg';
+  static const String supplier = 'assets/vectors/supplier.svg';
+  static const String products = 'assets/vectors/products.svg';
+  static const String subcategory = 'assets/vectors/subcategory.svg';
+  static const String maintenancee = 'assets/vectors/maintenance.svg';
+  static const String expenses = 'assets/vectors/expenses.svg';
+  static const String stockOut = 'assets/vectors/stockOut.svg';
+  static const String requests = 'assets/vectors/request.svg';
+  static const String suppliers = 'assets/vectors/suppliers.svg';
+  static const String departments = 'assets/vectors/departments.svg';
   //media
   static const String powerpoint = 'assets/vectors/powerpoint.svg';
   static const String pdf = 'assets/vectors/pdf.svg';

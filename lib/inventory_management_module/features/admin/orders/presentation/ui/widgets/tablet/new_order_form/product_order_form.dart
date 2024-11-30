@@ -215,7 +215,6 @@ class TabletProductOrderForm extends GetView<NewOrderFormController> {
           ),
         ),
         verticalSpace(8),
-        verticalSpace(8),
         LabeledFormField(
           backGroundColor: Get.isDarkMode ? AppColors.field : AppColors.white,
           controller: controller.additonalNotesController[index],
@@ -223,6 +222,63 @@ class TabletProductOrderForm extends GetView<NewOrderFormController> {
           readOnly: false,
           expands: true,
         ),
+        verticalSpace(40),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Invoice'.tr,
+              style: AppTextStyles.font24MediumBlackCairo,
+            ),
+            const Spacer(),
+            if (controller.invoices[index] == null)
+              GestureDetector(
+                onTap: () {
+                  controller.uploadAttachments(index);
+                },
+                child: Container(
+                  height: 35.h,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.5.w,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4.r),
+                    color: AppColors.card,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'No Files'.tr,
+                        style: AppTextStyles.font14BlackCairoMedium
+                            .copyWith(color: AppColors.textButton),
+                      ),
+                      context.isTablett ? horizontalSpace(100) : const Spacer(),
+                      SvgPicture.asset(
+                        AppAssets.export,
+                        width: 16.w,
+                        height: 16.h,
+                        color: AppColors.icon,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+          ],
+        ),
+        if (controller.invoices[index] != null)
+          Padding(
+            padding: EdgeInsets.only(top: 14.h),
+            child: AttachmentCard(
+              showDelete: true,
+              showDownload: false,
+              model: controller.invoices[index]!,
+              onDelete: () {
+                controller.removeAttachment(index);
+              },
+            ),
+          ),
+        verticalSpace(20),
       ],
     );
   }

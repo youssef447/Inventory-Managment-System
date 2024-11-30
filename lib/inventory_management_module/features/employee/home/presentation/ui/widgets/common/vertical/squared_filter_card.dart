@@ -39,7 +39,7 @@ class SquaredChipCard extends StatelessWidget {
           ),
           child: SvgPicture.asset(
             icon,
-            color: color == AppColors.card ? AppColors.black : AppColors.icon,
+            color: color == AppColors.card ? AppColors.text : AppColors.icon,
             width: context.isTablett ? 23.w : 16.w,
             height: context.isTablett ? 23.h : 16.h,
           ),

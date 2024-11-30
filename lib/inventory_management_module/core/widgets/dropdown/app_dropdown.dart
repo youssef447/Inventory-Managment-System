@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 
 import '../../constants/app_assets.dart';
 import '../../helpers/spacing_helper.dart';
@@ -81,7 +82,9 @@ class AppDropdown extends StatelessWidget {
                     : MainAxisAlignment.spaceBetween,
                 children: [
                   image == null
-                      ? _buildDropdownText()
+                      ? width != null
+                          ? Flexible(child: _buildDropdownText())
+                          : _buildDropdownText()
                       : textButton == null
                           ? SvgPicture.asset(
                               image!,
@@ -109,8 +112,17 @@ class AppDropdown extends StatelessWidget {
                             ),
                   customSpacing ?? const SizedBox(),
                   showDropdownIcon
-                      ? SvgPicture.asset(
-                          AppAssets.arrowDown,
+                      ? Row(
+                          children: [
+                            if (width == null)
+                              horizontalSpace(!context.isTablett ? 8.w : 16.w),
+                            SvgPicture.asset(
+                              AppAssets.arrowDown,
+                              color: color == AppColors.primary
+                                  ? AppColors.icon
+                                  : AppColors.text,
+                            ),
+                          ],
                         )
                       : const SizedBox(),
                 ],
@@ -142,7 +154,8 @@ class AppDropdown extends StatelessWidget {
     return Text(
       textAlign: textAlign,
       textButton ?? hintText ?? '',
-      style: value != null
+      maxLines: 1,
+      style: value != null || textButton != null
           ? AppTextStyles.font14BlackCairoRegular.copyWith(color: textColor)
           : (style ?? AppTextStyles.font14SecondaryBlackCairoRegular),
       overflow: TextOverflow.ellipsis,

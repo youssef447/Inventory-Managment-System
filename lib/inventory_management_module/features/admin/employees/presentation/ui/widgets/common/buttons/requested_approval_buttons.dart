@@ -15,6 +15,7 @@ import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../../../../../employee/requests/entities/request_entity.dart';
+import '../../../../../../../employee/track_request/presentation/ui/widgets/common/dialogs/reason_of_rejection_dialog.dart';
 
 //Youssef Ashraf
 ///Represent the Request Approval Buttons
@@ -47,7 +48,13 @@ class RequestedApprovalButtons extends StatelessWidget {
                               'Are You sure You Want to Reject this Approve ?'
                                   .tr,
                           onConfirm: () {
-                            Navigator.of(context, rootNavigator: true).pop();
+                            Navigator.of(context).pop();
+                            GetDialogHelper.generalDialog(
+                              context: context,
+                              child: ReasonOfRejectionDialog(
+                                requestId: requestEntity.requestId,
+                              ),
+                            );
                           }),
                       context: context,
                     );

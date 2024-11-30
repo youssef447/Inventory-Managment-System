@@ -23,6 +23,7 @@ import '../../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../../employee/home/presentation/ui/widgets/common/vertical/squared_filter_card.dart';
 import '../../../../../../products/domain/product_entity.dart';
 import '../../../../../../products/enums/product_enums.dart';
+import '../../../../../../products/presentation/ui/widgets/tablet/dialog/add_product_dialog.dart';
 import '../../../../constants/order_ids.dart';
 import '../../../controller/new_order_contrller.dart';
 part '../../widgets/tablet/new_order/vertical_product_card.dart';

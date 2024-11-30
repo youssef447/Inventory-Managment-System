@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import '../../../../../../../core/di/injection.dart';
 import '../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../core/constants/app_assets.dart';
@@ -43,7 +44,28 @@ class MobileHomePage extends GetView<HomeController> {
                 final index = controller.currentCategoryIndex.value;
                 return CustomScrollView(
                   slivers: [
-                    const SliverToBoxAdapter(child: CustomAppBar()),
+                    SliverToBoxAdapter(
+                      child: isAdmin
+                          ? Row(mainAxisSize: MainAxisSize.min, children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.popUntil(
+                                      context, (route) => route.isFirst);
+                                },
+                                child: SvgPicture.asset(
+                                  context.isArabic
+                                      ? AppAssets.arrowForward
+                                      : AppAssets.arrowBack,
+                                  width: 24.w,
+                                  height: 24.h,
+                                  color: AppColors.text,
+                                ),
+                              ),
+                              horizontalSpace(8),
+                              const CustomAppBar(),
+                            ])
+                          : const CustomAppBar(),
+                    ),
                     SliverToBoxAdapter(child: verticalSpace(20)),
                     const SliverToBoxAdapter(
                         child: MobileCategoriesFilterRow()),

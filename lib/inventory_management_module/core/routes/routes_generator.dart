@@ -4,6 +4,8 @@ import '../../features/admin/assets/presentation/ui/pages/mobile/mobile_admin_as
 import '../../features/admin/assets/presentation/ui/pages/mobile/mobile_admin_assigned_details.dart';
 import '../../features/admin/assets/presentation/ui/pages/tablet/tablet_admin_asset_details_page.dart';
 import '../../features/admin/assets/presentation/ui/pages/tablet/tablet_admin_assigned_details.dart';
+import '../../features/admin/dashboard/presentaton/ui/pages/mobile/mobile_dashboard_page.dart';
+import '../../features/admin/dashboard/presentaton/ui/pages/tablet/tablet_dashboard_page.dart';
 import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_admin_employee_details_page.dart';
 import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_admin_employees_page.dart';
 import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_track_requests_details_page.dart';
@@ -16,6 +18,10 @@ import '../../features/admin/orders/presentation/ui/pages/mobile/mobile_new_orde
 import '../../features/admin/orders/presentation/ui/pages/mobile/mobile_new_order_page.dart';
 import '../../features/admin/orders/presentation/ui/pages/tablet/tablet_new_order_page.dart';
 import '../../features/admin/orders/presentation/ui/pages/tablet/tablet_new_order_form_page.dart';
+import '../../features/admin/storage/presentation/ui/pages/mobile/mobile_storage_form_page.dart';
+import '../../features/admin/storage/presentation/ui/pages/tablet/tablet_storage_form_page.dart';
+import '../../features/admin/suppliers/presentation/ui/pages/mobile/mobile_supplier_form_page.dart';
+import '../../features/admin/suppliers/presentation/ui/pages/tablet/tablet_supplier_form_page.dart';
 import '../../features/employee/Assets/presentation/ui/pages/mobile/mobile_assets_details.dart';
 import '../../features/employee/consumables/presentation/ui/pages/mobile/mobile_consumables_details_page.dart';
 import '../../features/employee/home/presentation/ui/page/mobile/mobile_home_page.dart';
@@ -209,7 +215,6 @@ abstract class RouteGenerator {
           ResponsiveHelper(
             mobileWidget: MobileAdminAssignedDetails(
               assignedUser: args[RouteArguments.adminAssetAssignedDetails],
-
             ),
             tabletWidget: TabletAdminAssignedDetails(
               assignedUser: args[RouteArguments.adminAssetAssignedDetails],
@@ -265,6 +270,38 @@ abstract class RouteGenerator {
             ),
             tabletWidget: TabletNewOrderFormPage(
               products: args[RouteArguments.product],
+            ),
+          ),
+          PageTransitionType.fade,
+        );
+      case Routes.dashboard:
+        return _buildPageRoute(
+          const ResponsiveHelper(
+            mobileWidget: MobileDashboardPage(),
+            tabletWidget: TabletDashboardPage(),
+          ),
+          PageTransitionType.fade,
+        );
+      case Routes.supplierForm:
+        return _buildPageRoute(
+          ResponsiveHelper(
+            mobileWidget: MobileSupplierFormPage(
+              supplier: args[RouteArguments.supplier],
+            ),
+            tabletWidget: TabletSupplierFormPage(
+              supplier: args[RouteArguments.supplier],
+            ),
+          ),
+          PageTransitionType.fade,
+        );
+      case Routes.storageForm:
+        return _buildPageRoute(
+          ResponsiveHelper(
+            mobileWidget: MobileStorageFormPage(
+              storage: args[RouteArguments.storage],
+            ),
+            tabletWidget: TabletStorageFormPage(
+              storage: args[RouteArguments.storage],
             ),
           ),
           PageTransitionType.fade,

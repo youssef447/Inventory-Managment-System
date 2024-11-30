@@ -121,6 +121,15 @@ class NewOrderController extends GetxController {
         .toList();
   }
 
+  resetSelectedProducts() {
+    selectedProducts = selectedProducts
+        .map(
+          (_) => false,
+        )
+        .toList();
+    update([OrderIds.newOrderPage]);
+  }
+
 //products search controller
   final searchController = TextEditingController();
 }

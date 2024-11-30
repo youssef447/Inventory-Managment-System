@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 
 import '../../../../employee/home/domain/user_entity.dart';
 import '../../constants/ids.dart';
-import '../../enums/departments.dart';
-import '../../enums/sort_options.dart';
+import '../../../../../core/enums/departments.dart';
+import '../../../../../core/enums/sort_options.dart';
 
 class EmployeesController extends GetxController {
   List<UserEntity> employees = [];

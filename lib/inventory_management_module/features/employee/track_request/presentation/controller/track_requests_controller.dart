@@ -29,7 +29,7 @@ class TrackRequestController extends GetxController {
         requests = Get.find<RequestsController>()
             .requestsOfAssets
             .where(
-              (element) => element.status == 'Pending',
+              (element) => element.status == RequestStatus.pending,
             )
             .map(
               (e) => e,
@@ -39,7 +39,7 @@ class TrackRequestController extends GetxController {
         requests = Get.find<RequestsController>()
             .requestsOfConsumables
             .where(
-              (element) => element.status == 'Pending',
+              (element) => element.status == RequestStatus.pending,
             )
             .map(
               (e) => e,

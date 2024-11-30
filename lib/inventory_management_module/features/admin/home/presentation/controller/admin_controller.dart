@@ -10,6 +10,7 @@ import '../../../consumable/presentation/ui/pages/mobile/mobile_consumable_admin
 import '../../../consumable/presentation/ui/pages/tablet/tablet_consumable_page.dart';
 import '../../../orders/presentation/ui/pages/mobile/mobile_order_page.dart';
 import '../../../orders/presentation/ui/pages/tablet/tablet_order_page.dart';
+import '../../../suppliers/presentation/ui/pages/mobile/mobile_suppliers_page.dart';
 import '../../../suppliers/presentation/ui/pages/tablet/tablet_suppliers_page.dart';
 
 class AdminController extends GetxController {
@@ -19,7 +20,7 @@ class AdminController extends GetxController {
     const MobileAssetsAdminPage(),
     const MobileConsumableAdminPage(),
     const MobileOrderPage(),
-    const MobileProductsTabPage(),
+    const MobileSuppliersPage(),
     const MobileProductsTabPage(),
   ];
   final List<Widget> tabletAdminTabs = [

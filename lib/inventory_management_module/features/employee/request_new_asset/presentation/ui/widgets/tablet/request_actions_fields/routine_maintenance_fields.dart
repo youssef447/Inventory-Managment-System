@@ -50,6 +50,7 @@ class TabletRoutineMaintenanceFields extends GetView<RequestAssetsController> {
             date: true,
             hintText: 'Maintenance Date',
             label: 'Maintenance Date',
+            backGroundColor: AppColors.field,
           ),
         ),
       ],

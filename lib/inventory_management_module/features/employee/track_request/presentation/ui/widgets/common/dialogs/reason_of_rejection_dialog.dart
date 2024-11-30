@@ -82,6 +82,7 @@ class ReasonOfRejectionDialog extends GetView<TrackRequestController> {
               color: AppColors.primary,
               style: AppTextStyles.font16ButtonMediumCairo,
               onPressed: () {
+                controller.reasonOfRejectionController.clear();
                 controller.cancelRequest(requestId, context);
               },
             ),

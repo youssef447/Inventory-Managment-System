@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../../../../../../core/routes/route_arguments.dart';
-import '../../../../../../../features/admin/employees/enums/departments.dart';
+import '../../../../../../../core/enums/departments.dart';
 import '../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../core/animations/size_animation.dart';
 import '../../../../../../../core/constants/app_assets.dart';

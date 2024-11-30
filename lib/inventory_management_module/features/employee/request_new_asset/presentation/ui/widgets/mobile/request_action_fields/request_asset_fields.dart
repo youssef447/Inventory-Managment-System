@@ -53,6 +53,7 @@ class MobileRequestAssetFields extends GetView<RequestAssetsController> {
           date: true,
           label: 'Expected Delivery',
           hintText: 'Expected Delivery',
+          backGroundColor: AppColors.field,
         ),
         verticalSpace(24),
         LabeledFormField(
@@ -60,6 +61,7 @@ class MobileRequestAssetFields extends GetView<RequestAssetsController> {
           date: true,
           label: 'Expected Return',
           hintText: 'Expected Return',
+          backGroundColor: AppColors.field,
         ),
       ],
     );

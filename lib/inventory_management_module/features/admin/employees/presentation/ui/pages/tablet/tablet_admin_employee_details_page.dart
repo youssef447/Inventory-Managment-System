@@ -17,7 +17,7 @@ import '../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';
-import '../../../../../../../features/admin/employees/enums/departments.dart';
+import '../../../../../../../core/enums/departments.dart';
 import '../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/spacing_helper.dart';

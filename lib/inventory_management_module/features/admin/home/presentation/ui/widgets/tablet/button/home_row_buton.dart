@@ -17,8 +17,10 @@ class HomeAdminRowButton extends StatelessWidget {
         ? Row(
             children: [
               AppDefaultButton(
-                text: 'MyRequest'.tr,
-                onPressed: () {},
+                text: 'My Request'.tr,
+                onPressed: () {
+                  context.navigateTo(Routes.home);
+                },
               ),
               const Spacer(),
               AppDefaultButton(
@@ -35,7 +37,9 @@ class HomeAdminRowButton extends StatelessWidget {
               horizontalSpace(10),
               AppDefaultButton(
                 text: 'Dashboard'.tr,
-                onPressed: () {},
+                onPressed: () {
+                  context.navigateTo(Routes.dashboard);
+                },
               ),
             ],
           )
@@ -46,7 +50,9 @@ class HomeAdminRowButton extends StatelessWidget {
                 text: 'MyRequest'.tr,
                 width: 100,
                 height: 37.h,
-                onPressed: () {},
+                onPressed: () {
+                  context.navigateTo(Routes.home);
+                },
               ),
               verticalSpace(20),
               Row(
@@ -71,7 +77,9 @@ class HomeAdminRowButton extends StatelessWidget {
                     text: 'Dashboard'.tr,
                     width: 100,
                     height: 37.h,
-                    onPressed: () {},
+                    onPressed: () {
+                      context.navigateTo(Routes.dashboard);
+                    },
                   ),
                 ],
               ),

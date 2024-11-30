@@ -173,7 +173,56 @@ class MobileProductOrderForm extends GetView<NewOrderFormController> {
           ),
         ),
         verticalSpace(8),
-        verticalSpace(8),
+        Text(
+          'Invoice'.tr,
+          style: AppTextStyles.font16BlackCairoRegular,
+        ),
+        if (controller.invoices[index] == null)
+          GestureDetector(
+            onTap: () {
+              controller.uploadAttachments(index);
+            },
+            child: Container(
+              height: 35.h,
+              margin: EdgeInsets.only(top: 16.h),
+              padding: EdgeInsets.symmetric(
+                horizontal: 12.5.w,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4.r),
+                color: AppColors.card,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'No Files'.tr,
+                    style: AppTextStyles.font14BlackCairoMedium
+                        .copyWith(color: AppColors.textButton),
+                  ),
+                  context.isTablett ? horizontalSpace(100) : const Spacer(),
+                  SvgPicture.asset(
+                    AppAssets.export,
+                    width: 16.w,
+                    height: 16.h,
+                    color: AppColors.icon,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        if (controller.invoices[index] != null)
+          Padding(
+            padding: EdgeInsets.only(bottom: 8.h),
+            child: AttachmentCard(
+              showDelete: true,
+              showDownload: false,
+              model: controller.invoices[index]!,
+              onDelete: () {
+                controller.removeAttachment(index);
+              },
+            ),
+          ),
         LabeledFormField(
           backGroundColor: Get.isDarkMode ? AppColors.field : AppColors.white,
           controller: controller.additonalNotesController[index],

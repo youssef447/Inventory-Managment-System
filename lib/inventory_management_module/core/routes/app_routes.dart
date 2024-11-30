@@ -29,10 +29,14 @@ abstract class Routes {
   //admin
   static const adminHome = 'adminHome';
   static const newOrder = '$adminHome/newOrder';
+  static const supplierForm = '$adminHome/supplierForm';
+  static const storageForm = '$adminHome/storageForm';
+  static const dashboard = '$adminHome/dashboard';
   static const newOrderForm = '$newOrder/newOrderForm';
   static const productDetails = '$adminHome/productDetails';
   static const adminAssetDetails = '$adminHome/adminAssetDetails';
-  static const adminAssetAssignedDetails = '$adminHome/adminAssetAssignedDetails';
+  static const adminAssetAssignedDetails =
+      '$adminHome/adminAssetAssignedDetails';
   static const employees = '$adminHome/employees';
   static const employeeDetails = '$employees/employeeDetails';
   static const employeeTrackRequestDetails =

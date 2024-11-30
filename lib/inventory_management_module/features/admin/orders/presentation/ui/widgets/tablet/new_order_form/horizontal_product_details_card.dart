@@ -205,7 +205,7 @@ class HorizontalProductDetailsCard extends StatelessWidget {
                   SvgPicture.asset(AppAssets.system, color: AppColors.blue),
                   horizontalSpace(4),
                   Text(
-                    'Download As PNG',
+                    'Download As PNG'.tr,
                     style:
                         AppTextStyles.font14SecondaryBlackCairoRegular.copyWith(
                       decoration: TextDecoration.underline,

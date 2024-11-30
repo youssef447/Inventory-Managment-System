@@ -66,7 +66,12 @@ class TabletProductSearchFilter extends GetView<NewOrderController> {
           text: 'New Product',
           width: 142.w,
           image: AppAssets.add,
-          onTap: () {},
+          onTap: () {
+            GetDialogHelper.generalDialog(
+              child: const AddProductDialog(),
+              context: context,
+            );
+          },
         ),
       ],
     );

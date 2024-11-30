@@ -15,8 +15,8 @@ import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/widgets/appbar/mobile_custom_appbar.dart';
 import '../../../../../../employee/home/presentation/ui/widgets/common/vertical/squared_filter_card.dart';
 import '../../../../constants/ids.dart';
-import '../../../../enums/departments.dart';
-import '../../../../enums/sort_options.dart';
+import '../../../../../../../core/enums/departments.dart';
+import '../../../../../../../core/enums/sort_options.dart';
 import '../../../controller/employees_controller.dart';
 
 import '../../../../../../../core/constants/app_assets.dart';

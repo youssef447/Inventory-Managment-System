@@ -110,7 +110,7 @@ class MobileAddButton extends GetView<AdminController> {
                   text: 'Suppliers'.tr,
                   color: AppColors.primary,
                   onTap: () {
-                    // Add category action
+                    context.navigateTo(Routes.supplierForm);
                   },
                 )
               else
@@ -120,7 +120,7 @@ class MobileAddButton extends GetView<AdminController> {
                   text: 'Storage Location'.tr,
                   color: AppColors.primary,
                   onTap: () {
-                    // Default action
+                    context.navigateTo(Routes.storageForm);
                   },
                 ),
             ],

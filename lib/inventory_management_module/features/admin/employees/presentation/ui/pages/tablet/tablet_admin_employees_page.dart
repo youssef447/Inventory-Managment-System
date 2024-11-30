@@ -12,8 +12,8 @@ import '../../../../../../../core/widgets/appbar/custom_app_bar.dart';
 import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../constants/ids.dart';
-import '../../../../enums/departments.dart';
-import '../../../../enums/sort_options.dart';
+import '../../../../../../../core/enums/departments.dart';
+import '../../../../../../../core/enums/sort_options.dart';
 import '../../../controller/employees_controller.dart';
 
 import '../../../../../../../core/constants/app_assets.dart';

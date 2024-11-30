@@ -91,7 +91,7 @@ class AddProductDialog extends GetView<AddProductController> {
                     ? GetDialogHelper.generalDialog(
                         child: context.isTablett
                             ? const AddAssetPage()
-                            : MobileAddAssetPage(),
+                            : const MobileAddAssetPage(),
                         context: context,
                       )
                     : GetDialogHelper.generalDialog(

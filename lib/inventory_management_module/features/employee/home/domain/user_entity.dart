@@ -1,4 +1,4 @@
-import '../../../admin/employees/enums/departments.dart';
+import '../../../../core/enums/departments.dart';
 
 class UserEntity {
   String id;

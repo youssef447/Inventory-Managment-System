@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../core/animations/scale_animation.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
-import '../../../../../enums/departments.dart';
+import '../../../../../../../../core/enums/departments.dart';
 
 import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../core/widgets/default_rich_text.dart';

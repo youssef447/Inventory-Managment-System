@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import '../../../../../../../core/widgets/attachments/attachment_card.dart';
 import '../../../../../../../core/widgets/buttons/default_switch_button.dart';
+import '../../../controller/new_order_contrller.dart';
 import './../../../../../../../core/enums/stock_enums.dart';
 import './../../../../../../../core/extensions/extensions.dart';
 
@@ -33,101 +35,107 @@ class TabletNewOrderFormPage extends GetView<NewOrderFormController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SafeArea(
-          child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: context.isLandscapee ? 30.w : 20.w,
-          vertical: 16.h,
-        ),
-        child: SingleChildScrollView(
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            CustomAppBar(
-              titles: const ['New Order', 'Order Form'],
-              titleNavigations: [
-                () {
-                  Navigator.of(context).pop();
-                }
-              ],
-            ),
-            verticalSpace(12),
-            ...List.generate(
-              products.length,
-              (index) {
-                return Padding(
-                  padding: EdgeInsets.only(
-                    bottom: index == products.length - 1 ? 0 : 30.h,
-                  ),
-                  child: Column(
-                    children: [
-                      OrientationHelper(
-                        landScape: HorizontalProductDetailsCard(
-                            product: products[index]),
-                        portrait: VerticalProductDetailsCard(
-                            product: products[index]),
-                      ),
-                      verticalSpace(45),
-                      GetBuilder<NewOrderFormController>(
-                          id: OrderIds.newOrderForm,
-                          builder: (controller) {
-                            return Row(
-                              children: [
-                                const Spacer(),
-                                Text(
-                                  'Create Automatic IDs'.tr,
-                                  style: AppTextStyles.font14BlackCairoMedium,
-                                ),
-                                DefaultSwitchButton(
-                                    value: controller.createAutomaticIDs[index],
-                                    onChanged: (v) {
-                                      controller.toggleAutomaticIds(v, index);
-                                    })
-                              ],
-                            );
-                          }),
-                      GetBuilder<NewOrderFormController>(
-                          id: OrderIds.newOrderForm,
-                          builder: (controller) {
-                            return controller.hideForm[index]
-                                ? Align(
-                                    alignment: AlignmentDirectional.centerEnd,
-                                    child: GestureDetector(
-                                      onTap: () => controller
-                                          .hideProductDetailsCard(index),
-                                      child: Text(
-                                        controller.hideForm[index]
-                                            ? 'Expand'.tr
-                                            : 'Hide'.tr,
-                                        style: AppTextStyles
-                                            .font14BlackCairoMedium
-                                            .copyWith(color: AppColors.blue),
+    return PopScope(
+      onPopInvokedWithResult: (didPop, result) {
+        Get.find<NewOrderController>().resetSelectedProducts();
+      },
+      child: Scaffold(
+        backgroundColor: AppColors.background,
+        body: SafeArea(
+            child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: context.isLandscapee ? 30.w : 20.w,
+            vertical: 16.h,
+          ),
+          child: SingleChildScrollView(
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              CustomAppBar(
+                titles: const ['New Order', 'Order Form'],
+                titleNavigations: [
+                  () {
+                    Navigator.of(context).pop();
+                  }
+                ],
+              ),
+              verticalSpace(12),
+              ...List.generate(
+                products.length,
+                (index) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      bottom: index == products.length - 1 ? 0 : 30.h,
+                    ),
+                    child: Column(
+                      children: [
+                        OrientationHelper(
+                          landScape: HorizontalProductDetailsCard(
+                              product: products[index]),
+                          portrait: VerticalProductDetailsCard(
+                              product: products[index]),
+                        ),
+                        verticalSpace(45),
+                        GetBuilder<NewOrderFormController>(
+                            id: OrderIds.newOrderForm,
+                            builder: (controller) {
+                              return Row(
+                                children: [
+                                  const Spacer(),
+                                  Text(
+                                    'Create Automatic IDs'.tr,
+                                    style: AppTextStyles.font14BlackCairoMedium,
+                                  ),
+                                  DefaultSwitchButton(
+                                      value:
+                                          controller.createAutomaticIDs[index],
+                                      onChanged: (v) {
+                                        controller.toggleAutomaticIds(v, index);
+                                      })
+                                ],
+                              );
+                            }),
+                        GetBuilder<NewOrderFormController>(
+                            id: OrderIds.newOrderForm,
+                            builder: (controller) {
+                              return controller.hideForm[index]
+                                  ? Align(
+                                      alignment: AlignmentDirectional.centerEnd,
+                                      child: GestureDetector(
+                                        onTap: () => controller
+                                            .hideProductDetailsCard(index),
+                                        child: Text(
+                                          controller.hideForm[index]
+                                              ? 'Expand'.tr
+                                              : 'Hide'.tr,
+                                          style: AppTextStyles
+                                              .font14BlackCairoMedium
+                                              .copyWith(color: AppColors.blue),
+                                        ),
                                       ),
-                                    ),
-                                  )
-                                : TabletProductOrderForm(index: index);
-                          }),
-                    ],
-                  ),
-                );
-              },
-            ),
-            verticalSpace(8),
-            Align(
-              alignment: AlignmentDirectional.centerEnd,
-              child: RectangledFilterCard(
-                width: 145.w,
-                text: 'Submit'.tr,
-                color: AppColors.primary,
-                onTap: () {
-                  controller.submitOrder(context);
+                                    )
+                                  : TabletProductOrderForm(index: index);
+                            }),
+                      ],
+                    ),
+                  );
                 },
               ),
-            ),
-          ]),
-        ),
-      )),
+              verticalSpace(8),
+              Align(
+                alignment: AlignmentDirectional.centerEnd,
+                child: RectangledFilterCard(
+                  width: 145.w,
+                  text: 'Submit'.tr,
+                  color: AppColors.primary,
+                  onTap: () {
+                    controller.submitOrder(context);
+                  },
+                ),
+              ),
+            ]),
+          ),
+        )),
+      ),
     );
   }
 }

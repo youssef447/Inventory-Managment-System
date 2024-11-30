@@ -51,7 +51,7 @@ class MobileTrackRequestsPage extends GetView<TrackRequestController> {
                               child: AppCircleProgress(),
                             )
                           : controller.requests.isEmpty
-                              ? const NoDataGif()
+                              ? const Expanded(child: NoDataGif())
                               : Expanded(
                                   child: Column(
                                     crossAxisAlignment:

@@ -104,6 +104,7 @@ dependencies:
   #Files
   file_selector: ^1.0.3
   path_provider: ^2.1.5
+  syncfusion_flutter_charts: ^27.2.4
 
 
 

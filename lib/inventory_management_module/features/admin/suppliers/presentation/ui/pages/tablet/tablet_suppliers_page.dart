@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../../../../core/enums/business_type.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/date_time_helper.dart';
+import '../../../../../../../core/routes/app_routes.dart';
+import '../../../../../../../core/routes/route_arguments.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/loading.dart';
@@ -9,6 +13,7 @@ import '../../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../../../core/widgets/table/default_data_table.dart';
 import '../../../../../../products/enums/product_enums.dart';
 import '../../../../constants/suppliers_ids.dart';
+import '../../../controller/supplier_form_controller.dart';
 import '../../../controller/suppliers_controller.dart';
 
 //Youssef Ashraf
@@ -42,6 +47,23 @@ class TabletSuppliersPage extends StatelessWidget {
                       (index) {
                         ProductType.consumable;
                         return DataRow(
+                          onSelectChanged: (value) {
+                            if (value ?? false) {
+                              Get.put(
+                                SupplierFormController()
+                                  ..setSupplierData(controller.suppliers[index])
+                                  ..isEditable = false,
+                              );
+
+                              context.navigateTo(
+                                Routes.supplierForm,
+                                arguments: {
+                                  RouteArguments.supplier:
+                                      controller.suppliers[index]
+                                },
+                              );
+                            }
+                          },
                           color: WidgetStatePropertyAll(
                             index % 2 == 0
                                 ? AppColors.evenRowColor
@@ -90,7 +112,8 @@ class TabletSuppliersPage extends StatelessWidget {
                             ),
                             DataCell(
                               Text(
-                                controller.suppliers[index].businessType,
+                                controller
+                                    .suppliers[index].businessType.getName,
                                 style: AppTextStyles.font16BlackRegularCairo,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,

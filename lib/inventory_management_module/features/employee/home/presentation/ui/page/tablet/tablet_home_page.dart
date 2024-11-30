@@ -1,7 +1,10 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import '../../../../../../../core/constants/app_assets.dart';
+import '../../../../../../../core/di/injection.dart';
 import '../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
@@ -30,7 +33,26 @@ class TabletHomePage extends GetView<HomeController> {
             children: [
               Row(
                 children: [
-                  const CustomAppBar(),
+                  isAdmin
+                      ? Row(mainAxisSize: MainAxisSize.min, children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.popUntil(
+                                  context, (route) => route.isFirst);
+                            },
+                            child: SvgPicture.asset(
+                              context.isArabic
+                                  ? AppAssets.arrowForward
+                                  : AppAssets.arrowBack,
+                              width: 24.w,
+                              height: 24.h,
+                              color: AppColors.text,
+                            ),
+                          ),
+                          horizontalSpace(8),
+                          const CustomAppBar(),
+                        ])
+                      : const CustomAppBar(),
                   Expanded(
                     child: Row(
                       children: [

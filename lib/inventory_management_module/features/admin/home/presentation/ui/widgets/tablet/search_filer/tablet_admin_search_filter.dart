@@ -169,7 +169,7 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                           RectangledFilterCard(
                             width: 112.w,
                             image: AppAssets.add,
-                            text: 'Orders'.tr,
+                            text: 'Order'.tr,
                             color: AppColors.primary,
                             onTap: () {
                               context.navigateTo(Routes.newOrder);
@@ -182,7 +182,7 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                             text: 'Suppliers'.tr,
                             color: AppColors.primary,
                             onTap: () {
-                              // Add category action
+                              context.navigateTo(Routes.supplierForm);
                             },
                           )
                         else
@@ -192,7 +192,7 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                             text: 'Storage Location'.tr,
                             color: AppColors.primary,
                             onTap: () {
-                              // Default action
+                              context.navigateTo(Routes.storageForm);
                             },
                           ),
                         horizontalSpace(9),

@@ -1,7 +1,10 @@
 import 'package:get/get.dart';
+import '../../features/admin/dashboard/presentaton/controller/dashboard_controller.dart';
 import '../../features/admin/orders/presentation/controller/new_order_contrller.dart';
 import '../../features/admin/orders/presentation/controller/new_order_form_controller.dart';
 import '../../features/admin/orders/presentation/controller/orders_controller.dart';
+import '../../features/admin/storage/presentation/controller/storage_controller.dart';
+import '../../features/admin/storage/presentation/controller/storage_form_controller.dart';
 import '../../features/admin/suppliers/presentation/controller/suppliers_controller.dart';
 import '../../features/products/presentation/controller/add_product_controller.dart';
 
@@ -22,6 +25,7 @@ import '../../features/employee/track_request/presentation/controller/track_requ
 import '../../features/products/presentation/controller/add_approval_cycle_controller.dart';
 import '../../features/products/presentation/controller/products_controller.dart';
 
+bool isAdmin = true;
 configurationDependencies() {
   Get.lazyPut(() => HomeController(), fenix: true);
   Get.lazyPut(() => AssetsController(), fenix: true);
@@ -48,5 +52,7 @@ configurationDependencies() {
   Get.lazyPut(() => NewOrderController(), fenix: true);
   Get.lazyPut(() => NewOrderFormController(), fenix: true);
   Get.lazyPut(() => SuppliersController(), fenix: true);
-  // Get.lazyPut(() => StorageController(), fenix: true);
+  Get.lazyPut(() => DashboardController(), fenix: true);
+  Get.lazyPut(() => StorageController(), fenix: true);
+  Get.lazyPut(() => StorageFormController(), fenix: true);
 }

@@ -73,6 +73,7 @@ class MobileRepairAssetFields extends GetView<RequestAssetsController> {
           date: true,
           label: 'Repair Date',
           hintText: 'Repair Date',
+          backGroundColor: AppColors.field,
         ),
       ],
     );
