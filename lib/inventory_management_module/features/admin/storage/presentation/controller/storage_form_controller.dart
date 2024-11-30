@@ -1,117 +1,148 @@
-import 'dart:io';
-
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/features/employee/home/domain/user_entity.dart';
 
-import '../../../../employee/requests/entities/attachment_entity.dart';
+import '../../../../products/enums/product_enums.dart';
 import '../../constants/storage_ids.dart';
 import '../../domain/storage_location_entity.dart';
 
 class StorageFormController extends GetxController {
+  late List<bool> assignedUsers;
+  @override
+  void onInit() {
+    super.onInit();
+    assignedUsers = List.generate(
+      dummyUsers.length,
+      (index) => false,
+    );
+  }
+
+  bool automaticIds = false;
   bool isEditable = true;
-  AttachmentEntity? contractDetails;
-  late final TextEditingController supplierIDController;
-  late final TextEditingController supplierNameController;
-  late final TextEditingController taxNumController;
+  toggleAutomaticIds(bool val) {
+    automaticIds = val;
+    update([StorageIds.storageForm]);
+  }
+
+  toggleEdit() {
+    isEditable = !isEditable;
+    update([StorageIds.storageForm]);
+  }
+
+  late final TextEditingController locationIDController;
+  late final TextEditingController locationNameController;
+  late final TextEditingController equipmentAvailable;
   late final TextEditingController stateOrProvinceController;
-  late final TextEditingController catalogOfProductsController;
   late final TextEditingController postalCodeController;
   late final TextEditingController countryController;
   late final TextEditingController cityController;
-  late final TextEditingController firstNameController;
-  late final TextEditingController middleNameController;
-  late final TextEditingController lastNameController;
-  late final TextEditingController titleNameController;
-  late final TextEditingController phoneNumberController;
-  late final TextEditingController emailController;
+  late final TextEditingController storageCapacityController;
+  late final TextEditingController storageCategoryController;
+  late final TextEditingController conditionOfStorageController;
+
   late final TextEditingController additionalNotesController;
-  late final TextEditingController startDateController;
-  late final TextEditingController endDateController;
-  setSupplierData([StorageLocationAndQuantityEntity? storage]) {
-    /* supplierIDController = TextEditingController(text: supplier?.supplierId);
-    supplierNameController =
-        TextEditingController(text: supplier?.supplierName);
-    taxNumController = TextEditingController(text: supplier?.taxNumber);
+  final TextEditingController searchController = TextEditingController();
+
+  List<String> dummyAcessLevels = ['Access Level 1', 'Access Level 2'];
+  List<String> dummyProducts = ['Product 1', 'Product 2'];
+  List<String> dummyLocationTypes = ['Location Type 1', 'Location Type 2'];
+  List<String> dummyEnvControlTypes = ['Env Control 1', 'Env Control 2'];
+  List<UserEntity> dummyUsers = [
+    UserEntity(
+      firstName: 'Ahmed',
+      id: '024',
+      lastName: 'Mohammed',
+    ),
+    UserEntity(
+      firstName: 'Khaled',
+      id: '024',
+      lastName: 'Ahmed',
+    ),
+    UserEntity(
+      firstName: 'Youssef',
+      id: '024',
+      lastName: 'Mohammed',
+    ),
+  ];
+  selectUser(int index) {
+    assignedUsers[index] = true;
+    update([StorageIds.storageForm]);
+  }
+
+  unassignUser(int index) {
+    assignedUsers[index] = false;
+    update([StorageIds.storageForm]);
+  }
+
+  String? selectedAcessLevel;
+  String? selectedProduct;
+  String? selectedLocationType;
+  String? selectedEnvControlType;
+  updateLocationType(String locationType) {
+    selectedLocationType = locationType;
+    update([StorageIds.storageForm]);
+  }
+
+  updateProduct(String product) {
+    selectedProduct = product;
+    update([StorageIds.storageForm]);
+  }
+
+  updateEnvControlType(String envControlType) {
+    selectedEnvControlType = envControlType;
+    update([StorageIds.storageForm]);
+  }
+
+  updateAccessLevel(String accessLevel) {
+    selectedAcessLevel = accessLevel;
+    update([StorageIds.storageForm]);
+  }
+
+  setStorageData([StorageLocationAndQuantityEntity? storage]) {
+    locationIDController = TextEditingController(text: storage?.locationID);
+    locationNameController = TextEditingController(text: storage?.locationName);
+    equipmentAvailable =
+        TextEditingController(text: storage?.equipmentAvailable);
     stateOrProvinceController =
-        TextEditingController(text: supplier?.stateOrProvince);
-    catalogOfProductsController =
-        TextEditingController(text: supplier?.catalogOfProduct);
-    postalCodeController = TextEditingController(text: supplier?.postalCode);
-    countryController = TextEditingController(text: supplier?.country);
-    cityController = TextEditingController(text: supplier?.city);
-    firstNameController = TextEditingController(text: supplier?.firstName);
-    middleNameController = TextEditingController(text: supplier?.middleName);
-    lastNameController = TextEditingController(text: supplier?.lastName);
-    titleNameController = TextEditingController(text: supplier?.title);
-    phoneNumberController = TextEditingController(text: supplier?.phoneNumber);
-    emailController = TextEditingController(text: supplier?.email);
+        TextEditingController(text: storage?.stateOrProvince);
+
+    postalCodeController = TextEditingController(text: storage?.postalCode);
+    countryController = TextEditingController(text: storage?.country);
+    cityController = TextEditingController(text: storage?.city);
+    storageCapacityController =
+        TextEditingController(text: storage?.storageCapacity.toString());
+    storageCategoryController = TextEditingController(text: storage?.category);
     additionalNotesController =
-        TextEditingController(text: supplier?.additionalNotes);
-    startDateController = TextEditingController(
-        text: DateTimeHelper.formatDate(
-            supplier?.contractDetails.startDate ?? DateTime.now()));
-    endDateController = TextEditingController(
-        text: DateTimeHelper.formatDate(
-            supplier?.contractDetails.endDate ?? DateTime.now()));
-    selectedBusinessType = supplier?.businessType;
-    additionalDoc = supplier?.contractDetails.additionalDocs ?? [];
-    contractDetails = supplier?.contractDetails.attachmentEntity;
-    complianceDoc = supplier?.contractDetails.complianceDoc;
+        TextEditingController(text: storage?.additionalNotes);
+    conditionOfStorageController =
+        TextEditingController(text: storage?.conditionOfStorage);
+
+    selectedAcessLevel = storage?.accessLevel;
+    selectedLocationType = storage?.locationType;
+    selectedEnvControlType = storage?.envControlType;
+    selectedProduct = storage?.products.first.productType == ProductType.asset
+        ? storage?.products.first.assetEntity?.assetName
+        : storage?.products.first.consumablesEntity?.name;
   }
 
   resetResources() {
-    supplierIDController.clear();
-    supplierNameController.clear();
+    locationIDController.clear();
+    locationNameController.clear();
 
-    taxNumController.clear();
+    equipmentAvailable.clear();
     stateOrProvinceController.clear();
 
-    catalogOfProductsController.clear();
     postalCodeController.clear();
     countryController.clear();
     cityController.clear();
-    firstNameController.clear();
-    middleNameController.clear();
-    lastNameController.clear();
-    titleNameController.clear();
-    phoneNumberController.clear();
-    emailController.clear();
+    storageCapacityController.clear();
+    storageCategoryController.clear();
+    conditionOfStorageController.clear();
     additionalNotesController.clear();
 
-    startDateController.clear();
-    endDateController.clear();
-    selectedBusinessType = null;
-    additionalDoc = [];
-    contractDetails = null;
-    complianceDoc = null;*/
-  }
-
-//----------------------------Upload Docs Logic--------------------------------------
-  uploadContract() async {
-    final result = await FilePicker.platform.pickFiles(
-      type: FileType.any,
-      allowMultiple: false,
-    );
-    if (result != null) {
-      final file = result.files.first;
-      String fileName = File(file.path!).path.split('/').last;
-      String extension = fileName.split('.').last;
-      double totalSize = File(file.path!).lengthSync() / (1024 * 1024);
-
-      contractDetails = AttachmentEntity(
-        file: File(file.path!),
-        fileName: fileName,
-        extension: extension,
-        totalSize: totalSize,
-      );
-      ;
-      update([StorageIds.storageForm]);
-    }
-  }
-
-  removeContract() {
-    contractDetails = null;
-    update([StorageIds.storageForm]);
+    selectedAcessLevel = null;
+    selectedEnvControlType = null;
+    selectedProduct = null;
+    selectedLocationType = null;
   }
 }

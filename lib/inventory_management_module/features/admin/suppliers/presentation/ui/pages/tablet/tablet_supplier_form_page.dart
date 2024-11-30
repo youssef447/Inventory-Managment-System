@@ -188,6 +188,7 @@ class TabletSupplierFormPage extends GetView<SupplierFormController> {
                           children: [
                             Expanded(
                               child: LabeledDropdownField(
+                                disabled: !controller.isEditable,
                                 backGroundColor: Get.isDarkMode
                                     ? AppColors.field
                                     : AppColors.white,

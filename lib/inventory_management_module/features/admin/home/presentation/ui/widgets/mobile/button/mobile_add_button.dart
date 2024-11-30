@@ -14,6 +14,7 @@ import '../../../../../../../../core/widgets/buttons/rectangled_filter_card.dart
 import '../../../../../../../products/presentation/ui/pages/mobile/mobile_add_product/mobile_add_asset_page.dart';
 import '../../../../../../../products/presentation/ui/pages/mobile/mobile_add_product/mobile_add_consumable_page.dart';
 import '../../../../../../../products/presentation/ui/widgets/tablet/dialog/add_product_dialog.dart';
+import '../../../../../../storage/presentation/controller/storage_form_controller.dart';
 import '../../../../../../suppliers/presentation/controller/supplier_form_controller.dart';
 import '../../../../controller/admin_controller.dart';
 
@@ -118,11 +119,13 @@ class MobileAddButton extends GetView<AdminController> {
                 )
               else
                 RectangledFilterCard(
-                  width: 112.w,
                   image: AppAssets.add,
+                  width: 140.w,
                   text: 'Storage Location'.tr,
                   color: AppColors.primary,
                   onTap: () {
+                    Get.lazyPut(
+                        () => StorageFormController()..setStorageData());
                     context.navigateTo(Routes.storageForm);
                   },
                 ),

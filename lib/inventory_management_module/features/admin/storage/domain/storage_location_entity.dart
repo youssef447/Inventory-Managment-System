@@ -15,7 +15,9 @@ class StorageLocationAndQuantityEntity {
   String equipmentAvailable;
   String envControlType;
   List<ProductEntity> products;
+  String additionalNotes;
   int quantity;
+  String category;
   StorageLocationAndQuantityEntity({
     this.locationName = 'Room A13',
     this.locationID = '0022',
@@ -31,5 +33,7 @@ class StorageLocationAndQuantityEntity {
     this.envControlType = 'Env Type',
     this.quantity = 0,
     this.products = const [],
+    this.additionalNotes = '',
+    this.category = '',
   });
 }

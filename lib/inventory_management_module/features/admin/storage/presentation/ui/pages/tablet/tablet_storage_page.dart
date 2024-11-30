@@ -15,6 +15,8 @@ import '../../../../constants/storage_ids.dart';
 import '../../../controller/storage_controller.dart';
 import '../../../controller/storage_form_controller.dart';
 
+//Youssef Ashraf
+///Default Storage Table Tab in Tablet View
 class TabletStoragePage extends StatelessWidget {
   const TabletStoragePage({super.key});
 
@@ -47,7 +49,7 @@ class TabletStoragePage extends StatelessWidget {
                             if (value ?? false) {
                               Get.lazyPut(
                                 () => StorageFormController()
-                                  ..setSupplierData(controller.storages[index])
+                                  ..setStorageData(controller.storages[index])
                                   ..isEditable = false,
                               );
 

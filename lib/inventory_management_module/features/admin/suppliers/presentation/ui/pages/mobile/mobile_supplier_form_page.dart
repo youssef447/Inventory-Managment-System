@@ -159,6 +159,7 @@ class MobileSupplierFormPage extends GetView<SupplierFormController> {
                               ),
                               verticalSpace(8),
                               LabeledDropdownField(
+                                disabled: !controller.isEditable,
                                 backGroundColor: Get.isDarkMode
                                     ? AppColors.field
                                     : AppColors.white,
