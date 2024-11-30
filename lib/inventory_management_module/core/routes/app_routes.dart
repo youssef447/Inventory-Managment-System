@@ -45,5 +45,8 @@ abstract class Routes {
   static const adminApproval = '$adminHome/adminApproval';
   static const adminConsumablesDetails = '$adminHome/adminConsumablesDetails';
   static const adminConsumablesAssignedDetails = '$adminHome/adminConsumablesAssignedDetails';
+  static const adminHomeApproval = '$adminHome/adminHomeApproval';
+  static const adminApprovalDetails =
+      '$employeeDetails/adminApprovalDetails';
 
 }

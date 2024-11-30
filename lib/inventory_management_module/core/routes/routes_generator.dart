@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../features/admin/approval/presentation/ui/page/mobile/mobile_admin_home_approval_page.dart';
+import '../../features/admin/approval/presentation/ui/page/tablet/tablet_admin_home_approval_page.dart';
 import '../../features/admin/assets/presentation/ui/pages/mobile/mobile_admin_asset_details.dart';
 import '../../features/admin/assets/presentation/ui/pages/mobile/mobile_admin_assigned_details.dart';
 import '../../features/admin/assets/presentation/ui/pages/tablet/tablet_admin_asset_details_page.dart';
@@ -258,6 +260,18 @@ abstract class RouteGenerator {
           ),
           PageTransitionType.fade,
         );
+      case Routes.adminApprovalDetails:
+        return _buildPageRoute(
+          ResponsiveHelper(
+            mobileWidget: MobileAdminTrackRequestDetailsPage(
+              model: args[RouteArguments.adminApprovalDetailsArg],
+            ),
+            tabletWidget: TabletAdminTrackRequestDetailsPage(
+              model: args[RouteArguments.adminApprovalDetailsArg],
+            ),
+          ),
+          PageTransitionType.fade,
+        );
       case Routes.newOrder:
         return _buildPageRoute(
           const ResponsiveHelper(
@@ -335,11 +349,11 @@ abstract class RouteGenerator {
           ),
           PageTransitionType.fade,
         );
-      case Routes.adminApproval:
+      case Routes.adminHomeApproval:
         return _buildPageRoute(
-          ResponsiveHelper(
-            mobileWidget: Placeholder(),
-            tabletWidget: Placeholder(),
+          const ResponsiveHelper(
+            mobileWidget: MobileAdminHomeApprovalPage(),
+            tabletWidget: TabletAdminHomeApprovalPage(),
           ),
           PageTransitionType.fade,
         );

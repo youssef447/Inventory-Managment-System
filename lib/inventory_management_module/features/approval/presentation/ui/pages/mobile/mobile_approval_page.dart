@@ -54,7 +54,7 @@ class MobileApprovalPage extends GetView<ApprovalController> {
                         const VerticalRequstsSummaryCircles(),
                         verticalSpace(16),
                         Obx(
-                          () {
+                              () {
                             if (controller.currentCategoryIndex.value == 0) {
                               return MobileAllCategories(
                                   list: controller.allApprovalList);
