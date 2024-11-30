@@ -15,4 +15,5 @@ abstract class RouteArguments {
   static const String adminAssetAssignedDetails = 'adminAssetAssignedDetails';
   static const String consumables = 'consumables';
   static const String adminConsumablesAssignedDetails = 'adminConsumablesAssignedDetails';
+  static const String adminApprovalDetailsArg = 'adminApprovalDetailsArg';
 }

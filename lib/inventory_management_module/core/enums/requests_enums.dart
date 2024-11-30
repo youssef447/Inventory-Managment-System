@@ -38,6 +38,7 @@ enum RequestStatus {
   pending,
   rejected,
   waiting,
+  retrieved,
 }
 
 extension GetName on RequestStatus {
@@ -51,6 +52,8 @@ extension GetName on RequestStatus {
         return 'Canceled';
       case RequestStatus.rejected:
         return 'Rejected';
+      case RequestStatus.retrieved:
+        return 'Retrieved';
       default:
         return '';
     }
@@ -68,6 +71,8 @@ extension GetRequestColor on RequestStatus {
         return AppColors.red;
       case RequestStatus.rejected:
         return AppColors.red;
+      case RequestStatus.retrieved:
+        return AppColors.red;
       default:
         return AppColors.black;
     }
@@ -84,6 +89,8 @@ extension GetAsset on RequestStatus {
       case RequestStatus.cancelled:
         return AppAssets.canceled;
       case RequestStatus.rejected:
+        return AppAssets.rejected;
+      case RequestStatus.retrieved:
         return AppAssets.rejected;
       default:
         return '';
