@@ -297,6 +297,15 @@ abstract class RouteGenerator {
           ),
           PageTransitionType.fade,
         );
+      case Routes.adminApproval:
+        return _buildPageRoute(
+          ResponsiveHelper(
+            mobileWidget: Placeholder(),
+            tabletWidget: Placeholder(),
+          ),
+          PageTransitionType.fade,
+        );
+
 
       default:
         return MaterialPageRoute(

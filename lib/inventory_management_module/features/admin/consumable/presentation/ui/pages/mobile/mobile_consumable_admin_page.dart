@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/routes/app_routes.dart';
@@ -40,7 +41,7 @@ class MobileConsumableAdminPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Get.toNamed(
+                      context.navigateTo(
                           Routes.adminConsumablesDetails,
                           arguments: {
                             RouteArguments.consumables: controller.consumables[index],

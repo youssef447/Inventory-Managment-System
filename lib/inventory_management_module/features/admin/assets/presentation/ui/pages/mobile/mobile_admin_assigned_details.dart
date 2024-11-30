@@ -100,7 +100,6 @@ class MobileAdminAssignedDetails extends StatelessWidget {
                     //   'Inquiries And Comments'.tr,
                     //   style: AppTextStyles.font22BlackBoldCairo,
                     // ),
-                    verticalSpace(13),
                     // InquiryChatCard(
                     //   model: model,
                     //   adminEmpDetailsPage: true,

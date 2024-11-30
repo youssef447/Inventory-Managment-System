@@ -20,7 +20,7 @@ class AssetAssignedUserCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Get.toNamed(
+        context.navigateTo(
             Routes.adminAssetAssignedDetails,
             arguments: {
               RouteArguments.adminAssetAssignedDetails: assignedUser,

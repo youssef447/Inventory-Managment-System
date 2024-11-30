@@ -20,7 +20,7 @@ class ConsumableAssignedUserCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Get.toNamed(
+        context.navigateTo(
             Routes.adminConsumablesAssignedDetails,
             arguments: {
               RouteArguments.adminConsumablesAssignedDetails: assignedUser,
