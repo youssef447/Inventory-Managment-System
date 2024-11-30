@@ -19,7 +19,8 @@ import '../../../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../controller/admin_assets_controller.dart';
 
 class MobileRetrieveRequestDialog extends GetView<AdminAssetsController> {
-  const MobileRetrieveRequestDialog({super.key});
+  const MobileRetrieveRequestDialog({super.key ,this.isAsset = true });
+  final bool isAsset;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class MobileRetrieveRequestDialog extends GetView<AdminAssetsController> {
           color: AppColors.dialog,
           borderRadius: BorderRadius.circular(8.r),
         ),
-        constraints: BoxConstraints(maxHeight: Get.height * 0.7),
+        constraints: BoxConstraints(maxHeight: Get.height * 0.8),
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -58,10 +59,10 @@ class MobileRetrieveRequestDialog extends GetView<AdminAssetsController> {
               ),
               verticalSpace(24),
               LabeledFormField(
-              label: 'Asset Id',
+              label: isAsset ? 'Asset Id' : 'Consumable Id' ,
                 controller: controller.assetIdController,
               ),
-                     horizontalSpace(16),
+              verticalSpace(16),
               LabeledFormField(
                 label: 'Request Id',
                 controller: controller.requestIdController,
@@ -71,7 +72,7 @@ class MobileRetrieveRequestDialog extends GetView<AdminAssetsController> {
                 label: 'Quantity',
                 controller: controller.quantityController,
               ),
-              horizontalSpace(16),
+              verticalSpace(16),
               LabeledFormField(
                 label: 'Return Date',
                 controller: controller.returnDateController,

@@ -60,11 +60,11 @@ class AssetAssignedUserCard extends StatelessWidget {
                             children: [
                               Text(
                                 '${assignedUser.userEntity.firstName} ${assignedUser.userEntity.lastName}',
-                                style: AppTextStyles.font16BlackCairoRegular,
+                                style: context.isTablett ? AppTextStyles.font16BlackCairoRegular : AppTextStyles.font12BlackCairoRegular ,
                               ),
                               Text(
                                 assignedUser.userEntity.jobTitle,
-                                style: AppTextStyles.font16BlackCairoRegular,
+                                style: context.isTablett ? AppTextStyles.font16BlackCairoRegular : AppTextStyles.font12BlackCairoRegular ,
                               ),
                             ],
                           ),
@@ -72,10 +72,9 @@ class AssetAssignedUserCard extends StatelessWidget {
                         horizontalSpace(2),
                         DefaultRichText(
                             label: 'Status',
-                            labelStyle:
-                                AppTextStyles.font14SecondaryBlackCairoMedium,
-                            style: AppTextStyles.font14SecondaryBlackCairoMedium
-                                .copyWith(
+                            labelStyle: context.isTablett ?   AppTextStyles.font14SecondaryBlackCairoMedium : AppTextStyles.font12SecondaryBlackCairoMedium,
+                            style: AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
+                              fontSize:    context.isTablett ?  14.sp :12.sp,
                               color: assignedUser.productentity.status.getColor,
                             ),
                             value: assignedUser.productentity.status),
@@ -84,7 +83,7 @@ class AssetAssignedUserCard extends StatelessWidget {
               ],
             ),
             verticalSpace(5),
-            context.isLandscape ?Row(
+            context.isLandscape ? Row(
               children: [
                 Expanded(
                   child: DefaultRichText(
@@ -105,7 +104,7 @@ class AssetAssignedUserCard extends StatelessWidget {
                 ),
               ],
             ) : Column(
-              children: [
+crossAxisAlignment: CrossAxisAlignment.start,              children: [
                 DefaultRichText(
                   label: 'Assigned Date',
                   value: DateTimeHelper.formatDate(

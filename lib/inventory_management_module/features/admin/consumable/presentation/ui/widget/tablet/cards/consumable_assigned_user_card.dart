@@ -59,22 +59,22 @@ class ConsumableAssignedUserCard extends StatelessWidget {
                             children: [
                               Text(
                                 '${assignedUser.userEntity.firstName} ${assignedUser.userEntity.lastName}',
-                                style: AppTextStyles.font16BlackCairoRegular,
+                                style: context.isTablett ? AppTextStyles.font16BlackCairoRegular : AppTextStyles.font12BlackCairoRegular ,
                               ),
                               Text(
                                 assignedUser.userEntity.jobTitle,
-                                style: AppTextStyles.font16BlackCairoRegular,
+                                style: context.isTablett ? AppTextStyles.font16BlackCairoRegular : AppTextStyles.font12BlackCairoRegular ,
                               ),
                             ],
                           ),
                         ),
                         horizontalSpace(2),
                         DefaultRichText(
-                            label: 'Status',
-                            labelStyle:
-                                AppTextStyles.font14SecondaryBlackCairoMedium,
+                            label: 'Status'.tr,
+                            labelStyle: context.isTablett ?   AppTextStyles.font14SecondaryBlackCairoMedium : AppTextStyles.font12SecondaryBlackCairoMedium,
                             style: AppTextStyles.font14SecondaryBlackCairoMedium
                                 .copyWith(
+                              fontSize:    context.isTablett ?  14.sp :12.sp,
                               color: assignedUser.productentity.status.getColor,
                             ),
                             value: assignedUser.productentity.status),
@@ -87,7 +87,7 @@ class ConsumableAssignedUserCard extends StatelessWidget {
               children: [
                 Expanded(
                   child: DefaultRichText(
-                    label: 'Assigned Date',
+                    label: 'Assigned Date'.tr,
                     value: DateTimeHelper.formatDate(
                       assignedUser.assigneDate,
                     ),
@@ -96,7 +96,7 @@ class ConsumableAssignedUserCard extends StatelessWidget {
                 horizontalSpace(12),
                 Expanded(
                   child: DefaultRichText(
-                    label: 'Return Date',
+                    label: 'Return Date'.tr,
                     value: DateTimeHelper.formatDate(
                       assignedUser.returnDate,
                     ),
@@ -104,15 +104,16 @@ class ConsumableAssignedUserCard extends StatelessWidget {
                 ),
               ],
             ) : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 DefaultRichText(
-                  label: 'Assigned Date',
+                  label: 'Assigned Date'.tr,
                   value: DateTimeHelper.formatDate(
                     assignedUser.assigneDate,
                   ),
                 ),
                 DefaultRichText(
-                  label: 'Return Date',
+                  label: 'Return Date'.tr,
                   value: DateTimeHelper.formatDate(
                     assignedUser.returnDate,
                   ),

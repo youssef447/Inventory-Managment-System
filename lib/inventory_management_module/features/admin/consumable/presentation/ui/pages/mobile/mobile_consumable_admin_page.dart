@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 import '../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../core/routes/app_routes.dart';
+import '../../../../../../../core/routes/route_arguments.dart';
 import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../../../products/constants/ids.dart';
@@ -36,6 +40,12 @@ class MobileConsumableAdminPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
+                      Get.toNamed(
+                          Routes.adminConsumablesDetails,
+                          arguments: {
+                            RouteArguments.consumables: controller.consumables[index],
+                          }
+                      );
                     },
                     child: MobileConsumableAdminCard(
                       index: index,

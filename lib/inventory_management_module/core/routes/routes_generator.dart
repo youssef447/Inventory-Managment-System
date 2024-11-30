@@ -4,6 +4,8 @@ import '../../features/admin/assets/presentation/ui/pages/mobile/mobile_admin_as
 import '../../features/admin/assets/presentation/ui/pages/mobile/mobile_admin_assigned_details.dart';
 import '../../features/admin/assets/presentation/ui/pages/tablet/tablet_admin_asset_details_page.dart';
 import '../../features/admin/assets/presentation/ui/pages/tablet/tablet_admin_assigned_details.dart';
+import '../../features/admin/consumable/presentation/ui/pages/mobile/mobile_admin_assigned_consumable_details.dart';
+import '../../features/admin/consumable/presentation/ui/pages/mobile/mobile_admin_consumable_details.dart';
 import '../../features/admin/consumable/presentation/ui/pages/tablet/tablet_admin_assigned_consumable_details.dart';
 import '../../features/admin/consumable/presentation/ui/pages/tablet/tablet_admin_consumable_details_page.dart';
 import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_admin_employee_details_page.dart';
@@ -209,7 +211,7 @@ abstract class RouteGenerator {
       case Routes.adminConsumablesDetails:
         return _buildPageRoute(
           ResponsiveHelper(
-            mobileWidget: TabletAdminConsumableDetailsPage(
+            mobileWidget: MobileAdminConsumableDetails(
               consumablesEntity: args[RouteArguments.consumables],
             ),
             tabletWidget: TabletAdminConsumableDetailsPage(
@@ -221,7 +223,7 @@ abstract class RouteGenerator {
       case Routes.adminConsumablesAssignedDetails:
         return _buildPageRoute(
           ResponsiveHelper(
-            mobileWidget: TabletAdminConsumableDetails(
+            mobileWidget: MobileAdminAssignedConsumableDetails(
               assignedUser: args[RouteArguments.adminConsumablesAssignedDetails],
             ),
             tabletWidget: TabletAdminConsumableDetails(
@@ -235,7 +237,6 @@ abstract class RouteGenerator {
           ResponsiveHelper(
             mobileWidget: MobileAdminAssignedDetails(
               assignedUser: args[RouteArguments.adminAssetAssignedDetails],
-
             ),
             tabletWidget: TabletAdminAssignedDetails(
               assignedUser: args[RouteArguments.adminAssetAssignedDetails],
