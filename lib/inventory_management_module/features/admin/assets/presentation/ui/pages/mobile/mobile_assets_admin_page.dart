@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/routes/app_routes.dart';
@@ -39,12 +40,11 @@ class MobileAssetsAdminPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Get.toNamed(
+                      context.navigateTo(
                           Routes.adminAssetDetails,
                           arguments: {
                             RouteArguments.asset: controller.assets[index],
-                          }
-                      );
+                          });
                     },
                     child: MobileAssetsAdminCard(
                        index: index,

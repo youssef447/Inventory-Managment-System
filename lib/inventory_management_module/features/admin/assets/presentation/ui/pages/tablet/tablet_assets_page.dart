@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../../core/routes/app_routes.dart';
@@ -53,7 +54,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                                   vibration: VibrateType.mediumImpact,
                                   hapticFeedback: HapticFeedback.mediumImpact,
                                 );
-                                Get.toNamed(
+                                context.navigateTo(
                                   Routes.adminAssetDetails,
                                     arguments: {
                                       RouteArguments.asset: controller.assets[index],

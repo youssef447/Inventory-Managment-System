@@ -10,16 +10,18 @@ import '../../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../core/theme/app_theme.dart';
+import '../../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
 import '../../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../../../../employee/home/presentation/ui/page/mobile/mobile_home_page.dart';
-import '../../../../../../../employee/home/presentation/ui/widgets/common/vertical/squared_filter_card.dart';
-import '../../../../controller/admin_assets_controller.dart';
-import '../../tablet/cards/asset_assigned_user_card.dart';
-import '../../tablet/cards/service_history.dart';
-// by : Mohamed ashraf
-class MobileAssignedAndServiceHistoryList
-    extends GetView<AdminAssetsController> {
-  const MobileAssignedAndServiceHistoryList({super.key});
+import '../../../../../../assets/presentation/ui/widget/tablet/cards/asset_assigned_user_card.dart';
+import '../../../../controller/admin_consumable_controller.dart';
+import '../cards/consumable_assigned_user_card.dart';
+
+
+
+class TabletConsumableAssigned
+    extends GetView<ConsumableAssetsController> {
+  const TabletConsumableAssigned({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,23 +32,16 @@ class MobileAssignedAndServiceHistoryList
               mainAxisAlignment: MainAxisAlignment.start,
               children:
               List.generate(
-                  controller.assignServiceHistoryFilters.length, (index) {
-                return Padding(
-                  padding: EdgeInsetsDirectional.only(
-                      end: index ==
-                          controller.assignServiceHistoryFilters.length - 1
-                          ? 0
-                          : 35.w),
-                  child: GestureDetector(
-                    behavior: HitTestBehavior.opaque,
-                    onTap: () {
-                      controller.updateCategoryIndex(index);
-                    },
-                    child: MobileCategoryFilterCard(
-                      count: 12,
-                      name: controller.assignServiceHistoryFilters[index],
-                      selected: controller.currentCategoryIndex.value == index,
-                    ),
+                  controller.assignFilters.length, (index) {
+                return GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
+                    controller.updateCategoryIndex(index);
+                  },
+                  child: MobileCategoryFilterCard(
+                    count: 12,
+                    name: controller.assignFilters[index],
+                    selected: controller.currentCategoryIndex.value == index,
                   ),
                 );
               }),
@@ -62,7 +57,7 @@ class MobileAssignedAndServiceHistoryList
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.r),
                   child: SizedBox(
-                    height: 40.h,
+                    height: 37.h,
                     child: AppTextFormField(
                       backGroundColor: AppTheme.isDark ?? false
                           ? AppColors.field
@@ -89,37 +84,37 @@ class MobileAssignedAndServiceHistoryList
                 ),
               ),
               horizontalSpace(9),
-              SquaredChipCard(
-                icon: AppAssets.filter,
+              RectangledFilterCard(
+                width: 112.w,
+                image: AppAssets.filter,
+                text: 'Filter',
                 color: AppColors.card,
-                onTap: () {
-                  // GetDialogHelper.generalDialog(
-                  //   child:const FilterDialog(),
-                  //context: context,
-                  // );
-                },
+                onTap: () {},
+              ),
+              horizontalSpace(9),
+              RectangledFilterCard(
+                width: 112.w,
+                image: AppAssets.sort,
+                text: 'Sort',
+                color: AppColors.card,
+                onTap: () {},
               ),
             ],
           ),
         ),
         verticalSpace(15),
-        Obx(() =>
-            StaggeredGrid.count(
-              crossAxisCount: context.isTablet ? Get.width > 1200 ? 3 : 2 : 1,
-              mainAxisSpacing: 15.h,
-              crossAxisSpacing: context.isLandscapee ? 20.w : 36.w,
-              children: List.generate(
-                controller.currentCategoryIndex.value == 0
-                    ? controller.dummyAssignedUsers.length
-                    : controller.dummyServiceHistory.length,
-                    (index) {
-                  return controller.currentCategoryIndex.value == 0
-                      ? AssetAssignedUserCard(
-                      assignedUser: controller.dummyAssignedUsers[index],)
-                      : ServiceHistory(serviceEntity: controller.dummyServiceHistory[index]);
-                },
-              ),
-            ))
+        // if you want add more tab navigate wrap it with Obx()
+        StaggeredGrid.count(
+          crossAxisCount: Get.width > 1200 ? 3 : 2,
+          mainAxisSpacing: 15.h,
+          crossAxisSpacing: context.isLandscapee ? 20.w : 36.w,
+          children: List.generate(
+            controller.dummyAssignedUsers.length,
+                (index) {
+              return  ConsumableAssignedUserCard(assignedUser: controller.dummyAssignedUsers[index],);
+            },
+          ),
+        )
       ],
     );
   }

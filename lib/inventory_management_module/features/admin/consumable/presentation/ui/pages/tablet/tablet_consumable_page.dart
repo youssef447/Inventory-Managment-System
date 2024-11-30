@@ -5,8 +5,13 @@
 // This widget displays a table of consumables items using data from AssetsController in tablet and windows view
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 
+import '../../../../../../../core/helpers/haptic_feedback_helper.dart';
+import '../../../../../../../core/routes/app_routes.dart';
+import '../../../../../../../core/routes/route_arguments.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/loading.dart';
@@ -51,6 +56,20 @@ class TabletConsumablePage extends StatelessWidget {
                         ? AppColors.evenRowColor
                         : AppColors.oddRowColor,
                   ),
+                      onSelectChanged: (value) {
+                        if (value ?? false) {
+                          HapticFeedbackHelper.triggerHapticFeedback(
+                            vibration: VibrateType.mediumImpact,
+                            hapticFeedback: HapticFeedback.mediumImpact,
+                          );
+                          context.navigateTo(
+                              Routes.adminConsumablesDetails,
+                              arguments: {
+                                RouteArguments.consumables: controller.consumables[index],
+                              }
+                          );
+                        }
+                      },
                   cells: [
                     DataCell(
                       Text(
