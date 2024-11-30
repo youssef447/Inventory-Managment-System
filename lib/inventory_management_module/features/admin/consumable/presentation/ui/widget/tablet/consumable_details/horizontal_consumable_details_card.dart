@@ -1,21 +1,20 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/features/employee/Assets/domain/entity/assets_entity.dart';
+import 'package:inventory_management/inventory_management_module/features/employee/consumables/domain/entity/consumables_entity.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../core/widgets/default_rich_text.dart';
+// by :mohamed ashraf
+class HorizontalConsumableDetailsCard extends StatelessWidget {
+  final ConsumablesEntity consumable;
 
-class HorizontalAssetsDetailsCard extends StatelessWidget {
-  final AssetsEntity assets;
-
-  const HorizontalAssetsDetailsCard({super.key, required this.assets});
+  const HorizontalConsumableDetailsCard({super.key, required this.consumable});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +47,7 @@ class HorizontalAssetsDetailsCard extends StatelessWidget {
                   ),
                   verticalSpace(4),
                   Text(
-                    assets.model + assets.brand,
+                    consumable.model + consumable.brand,
                     style: AppTextStyles.font16BlackCairoRegular,
                   ),
                 ],
@@ -58,47 +57,42 @@ class HorizontalAssetsDetailsCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   DefaultRichText(
-                    label: 'Asset ID',
-                    value: assets.assetId,
+                    label: 'Consumable ID'.tr,
+                    value: consumable.consumableId,
                   ),
                   DefaultRichText(
-                    label: 'Product ID',
-                    value: assets.assetId,
+                    label: 'Product ID'.tr,
+                    value: consumable.consumableId,
                   ),
                   verticalSpace(2),
-                  DefaultRichText(label: 'Category', value: assets.category),
+                  DefaultRichText(label: 'Category'.tr, value: consumable.category),
+                  verticalSpace(2),
+                  DefaultRichText(
+                      label: 'Subcategory'.tr, value: consumable.subcategory),
                 ],
               ),
-              const Spacer(),
+             const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  DefaultRichText(label: 'Model', value: assets.model),
-                  verticalSpace(2),
+                  DefaultRichText(label: 'Model'.tr, value: consumable.model),
                   DefaultRichText(
-                    label: 'Brand',
-                    value: assets.brand,
+                    label: 'Brand'.tr,
+                    value: consumable.brand,
                   ),
                   verticalSpace(2),
                   DefaultRichText(
-                      label: 'Subcategory', value: assets.subcategory),
-                  verticalSpace(2),
-                  DefaultRichText(
-                    label: 'Expected Date',
-                    value: assets.expectedLifeTime != null
+                    label: 'Expected Date'.tr,
+                    value: consumable.expirationDate != null
                         ? DateTimeHelper.formatDate(
-                            assets.expectedLifeTime!,
+                            consumable.expirationDate!,
                           )
                         : 'Not Applicable'.tr,
                   ),
                   verticalSpace(2),
                   DefaultRichText(
                     label: 'Expected Lifetime',
-                    value: assets.expectedLifeTime != null
-                        ? DateTimeHelper.formatDate(
-                            assets.expectedLifeTime!,
-                          )
-                        : 'Not Applicable'.tr,
+                    value: DateTimeHelper.formatDate(consumable.expirationDate!,)
                   ),
                 ],
               ),
@@ -106,34 +100,43 @@ class HorizontalAssetsDetailsCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  verticalSpace(2),
                   DefaultRichText(
                     label: 'Unit Of Measurement'.tr,
-                    value: assets.maintenanceFrequency ?? '',
+                    value: consumable.unitOfMeasurement ?? '',
+                  ),
+                  verticalSpace(2),
+                  DefaultRichText(
+                    label: 'Unit Of Frequency'.tr,
+                    value: consumable.maintenanceFrequency ?? '',
+                  ),
+                  verticalSpace(2),
+                  DefaultRichText(
+                    label: 'Reorder Quantity'.tr,
+                    value: consumable.reorderQuantity.toString(),
+                  ),
+                  verticalSpace(2),
+                  DefaultRichText(
+                    label: 'Reorder Level'.tr,
+                    value: consumable.reorderLevel.toString(),
                   ),
                   verticalSpace(2),
                   DefaultRichText(
                     label: 'Unit Cost'.tr,
-                    value: assets.unitCost,
-                  ),
-                  verticalSpace(2),
-                  DefaultRichText(
-                    label: 'Storage Requirement'.tr,
-                    value: assets.storageRequirement,
+                    value: consumable.unitCost,
                   ),
                 ],
               ),
-              const Spacer(),
+             const Spacer(),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
               DefaultRichText(
-                label: 'Status'.tr,
-                value: assets.status,
+                label: 'Status',
+                value: consumable.status,
                 labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium
                     .copyWith(color: AppColors.secondaryBlack),
                 style: AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
-                  color: assets.status.getColor,
+                  color: consumable.status.getColor,
                 ),
               ),
               verticalSpace(4),
@@ -151,7 +154,7 @@ class HorizontalAssetsDetailsCard extends StatelessWidget {
                   ),
                   horizontalSpace(4),
                   Text(
-                    'Download As PNG'.tr,
+                    'Download As PNG',
                     style: AppTextStyles.font14SecondaryBlackCairoRegular
                         .copyWith(
                       decoration: TextDecoration.underline,
@@ -167,8 +170,8 @@ class HorizontalAssetsDetailsCard extends StatelessWidget {
           ),
           verticalSpace(2),
           DefaultRichText(
-            label: 'Supplier Name'.tr,
-            value: assets.supplier.supplierName,
+            label: 'Supplier Name',
+            value: consumable.supplier.supplierName,
             style: AppTextStyles.font12BlackMediumCairo.copyWith(
               decoration: TextDecoration.underline,
               color: AppColors.blue,

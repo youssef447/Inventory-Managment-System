@@ -32,7 +32,9 @@ abstract class Routes {
   static const newOrderForm = '$newOrder/newOrderForm';
   static const productDetails = '$adminHome/productDetails';
   static const adminAssetDetails = '$adminHome/adminAssetDetails';
+  static const adminConsumablesDetails = '$adminHome/adminConsumablesDetails';
   static const adminAssetAssignedDetails = '$adminHome/adminAssetAssignedDetails';
+  static const adminConsumablesAssignedDetails = '$adminHome/adminConsumablesAssignedDetails';
   static const employees = '$adminHome/employees';
   static const employeeDetails = '$employees/employeeDetails';
   static const employeeTrackRequestDetails =

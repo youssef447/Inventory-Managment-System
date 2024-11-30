@@ -4,22 +4,21 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/features/employee/Assets/domain/entity/assets_entity.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../core/theme/app_text_styles.dart';
-import '../../../../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../../../../core/widgets/default_rich_text.dart';
+import '../../../../../../../employee/consumables/domain/entity/consumables_entity.dart';
 import '../../../../../../../employee/track_request/presentation/ui/pages/tablet/tablet_track_request_details_page.dart';
-import '../dialog/retrieve_request_dialog.dart';
+import '../../../../../../assets/presentation/ui/widget/tablet/dialog/retrieve_request_dialog.dart';
 
-class HorizontalAssignedDetailsCard extends StatelessWidget {
-  final AssetsEntity assets;
+class VerticalAssignedConsumableDetailsCard extends StatelessWidget {
+  final ConsumablesEntity consumable;
 
-  const HorizontalAssignedDetailsCard({super.key, required this.assets});
+  const VerticalAssignedConsumableDetailsCard({super.key, required this.consumable});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +51,7 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
                   ),
                   verticalSpace(4),
                   Text(
-                    assets.model + assets.brand,
+                    consumable.model + consumable.brand,
                     style: AppTextStyles.font16BlackCairoRegular,
                   ),
                   verticalSpace(8),
@@ -63,119 +62,74 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   DefaultRichText(
-                    label: 'Asset ID',
-                    value: assets.assetId,
+                    label: 'Consumable ID',
+                    value: consumable.consumableId,
                   ),
                   DefaultRichText(
                     label: 'Product ID',
-                    value: assets.assetId,
+                    value: consumable.consumableId,
                   ),
                   verticalSpace(2),
-                  DefaultRichText(label: 'Category', value: assets.category),
-                ],
-              ),
-              const Spacer(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                  DefaultRichText(label: 'Category', value: consumable.category),
+                  verticalSpace(2),
                   DefaultRichText(
-                      label: 'Category', value: assets.category),
+                      label: 'Subcategory', value: consumable.subcategory),
                   verticalSpace(2),
 
-                  DefaultRichText(
-                      label: 'Subcategory', value: assets.subcategory),
-
-                  DefaultRichText(label: 'Model', value: assets.model),
+                  DefaultRichText(label: 'Model', value: consumable.model),
                   verticalSpace(2),
                   DefaultRichText(
                     label: 'Brand',
-                    value: assets.brand,
+                    value: consumable.brand,
                   ),
-                  verticalSpace(2),
 
-                  verticalSpace(2),
                 ],
               ),
+
               const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  verticalSpace(2),
                   DefaultRichText(
-                    label: 'quantity'.tr,
-                    value: assets.quantity,
+                    label: 'Maintenance Frequency'.tr,
+                    value: consumable.maintenanceFrequency ?? '',
                   ),
                   verticalSpace(2),
                   DefaultRichText(
                     label: 'Expected Date',
-                    value: assets.expectedLifeTime != null
+                    value: consumable.expectedLifeTime != null
                         ? DateTimeHelper.formatDate(
-                      assets.expectedLifeTime!,
+                      consumable.expectedLifeTime!,
                     )
                         : 'Not Applicable'.tr,
                   ),
                   verticalSpace(2),
                   DefaultRichText(
-                    label: 'Expected Lifetime'.tr,
-                    value: assets.expectedLifeTime != null
+                    label: 'Expected Lifetime',
+                    value: consumable.expectedLifeTime != null
                         ? DateTimeHelper.formatDate(
-                      assets.expectedLifeTime!,
+                      consumable.expectedLifeTime!,
                     )
                         : 'Not Applicable'.tr,
                   ),
+                  verticalSpace(2),
                   DefaultRichText(
-                    label: 'Supplier Name',
-                    value: assets.supplier.supplierName,
-                    style: AppTextStyles.font12BlackMediumCairo.copyWith(
-                      decoration: TextDecoration.underline,
-                      color: AppColors.blue,
-                    ),
+                    label: 'Unit Of Measurement'.tr,
+                    value: consumable.maintenanceFrequency ?? '',
                   ),
                 ],
               ),
-              const Spacer(),
-              Column(crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-              DefaultRichText(
-                label: 'Status',
-                value: assets.status,
-                labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium
-                    .copyWith(color: AppColors.secondaryBlack),
-                style:
-                    AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
-                  color: assets.status.getColor,
-                ),
-              ),
-              verticalSpace(4),
-              Image.asset(
-                AppAssets.qr,
-              ),
-              verticalSpace(8),
-              Row(
-                children: [
-                  SvgPicture.asset(
-                    AppAssets.download,
-                    width: 16,
-                    height: 16,
-                    color: Colors.blue,
-                  ),
-                  horizontalSpace(4),
-                  Text(
-                    'Download As PNG',
-                    style: AppTextStyles.font14SecondaryBlackCairoRegular
-                        .copyWith(
-                      decoration: TextDecoration.underline,
-                      decorationColor: AppColors.blue,
-                      color: AppColors.blue,
-                    ),
-                  ),
-                ],
-              )
-                              ],
-                            )
             ],
           ),
-
+          verticalSpace(8),
+          DefaultRichText(
+            label: 'Supplier Name',
+            value: consumable.supplier.supplierName,
+            style: AppTextStyles.font12BlackMediumCairo.copyWith(
+              decoration: TextDecoration.underline,
+              color: AppColors.blue,
+            ),
+          ),
           Row(
             mainAxisAlignment: context.isLandscapee
                 ? MainAxisAlignment.start
@@ -183,16 +137,16 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
             children: [
               _BuildIconLabel(
                 'Assigned Date'.tr,
-                assets.dateReturn != null
-                    ? DateTimeHelper.formatDate(assets.dateReturn!)
+                consumable.dateReturn != null
+                    ? DateTimeHelper.formatDate(consumable.dateReturn!)
                     : DateTimeHelper.formatDate(DateTime.now()),
                 AppAssets.calender,
               ),
               if (context.isLandscapee) horizontalSpace(78),
               _BuildIconLabel(
                 'Returned Date'.tr,
-                assets.dateReturn != null
-                    ? DateTimeHelper.formatDate(assets.dateReturn!)
+                consumable.dateReturn != null
+                    ? DateTimeHelper.formatDate(consumable.dateReturn!)
                     : DateTimeHelper.formatDate(DateTime.now()),
                 AppAssets.calender,
               ),
@@ -200,14 +154,47 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
           ),
           verticalSpace(10),
           const ApprovalCycle(),
-          verticalSpace(10),
-          Align(
-              alignment: AlignmentDirectional.bottomEnd,
-              child:  GestureDetector(
+          verticalSpace(32),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+
+                children: [
+                  verticalSpace(4),
+                  Image.asset(
+                    AppAssets.qr,
+                  ),
+                  verticalSpace(8),
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        AppAssets.download,
+                        width: 16,
+                        height: 16,
+                        color: Colors.blue,
+                      ),
+                      horizontalSpace(4),
+                      Text(
+                        'Download As PNG',
+                        style: AppTextStyles.font14SecondaryBlackCairoRegular
+                            .copyWith(
+                          decoration: TextDecoration.underline,
+                          decorationColor: AppColors.blue,
+                          color: AppColors.blue,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              Spacer(),
+              GestureDetector(
                 onTap: (){
                   GetDialogHelper.generalDialog(
-                    context: context,
-                    child: const RetrieveRequestDialog()
+                      context: context,
+                      child: const RetrieveRequestDialog(isAsset: false,)
                   );
                 },
                 child: Container(
@@ -231,8 +218,7 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
                   ),
                 ),
               ),
-
-
+            ],
           )
         ],
       ),

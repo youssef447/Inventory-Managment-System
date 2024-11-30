@@ -26,6 +26,8 @@ class ConsumablesEntity {
   final String unitOfMeasurement;
   final String usageFrequency;
   final DateTime? expirationDate;
+  final DateTime? expectedLifeTime;
+  final DateTime expectedLifeTimeDate = DateTime.now();
   final String status;
   final DateTime? dateReturn;
   final DateTime lastUpdate = DateTime.now();
@@ -77,6 +79,7 @@ class ConsumablesEntity {
     required this.unitOfMeasurement,
     required this.usageFrequency,
     this.expirationDate,
+    this.expectedLifeTime,
     required this.status,
 
     //---- admin ---

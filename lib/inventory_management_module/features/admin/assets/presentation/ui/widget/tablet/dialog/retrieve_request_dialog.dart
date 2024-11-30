@@ -19,8 +19,8 @@ import '../../../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../controller/admin_assets_controller.dart';
 
 class RetrieveRequestDialog extends GetView<AdminAssetsController> {
-  const RetrieveRequestDialog({super.key});
-
+  const RetrieveRequestDialog({super.key, this.isAsset = true,});
+   final bool isAsset ;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -61,7 +61,7 @@ class RetrieveRequestDialog extends GetView<AdminAssetsController> {
                 children: [
                   Expanded(
                     child: LabeledFormField(
-                    label: 'Asset Id',
+                    label: isAsset ? 'Asset Id' .tr: 'Consumable Id' ,
                       controller: controller.assetIdController,
                     ),
                   ),

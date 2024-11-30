@@ -4,6 +4,8 @@ import '../../features/admin/assets/presentation/ui/pages/mobile/mobile_admin_as
 import '../../features/admin/assets/presentation/ui/pages/mobile/mobile_admin_assigned_details.dart';
 import '../../features/admin/assets/presentation/ui/pages/tablet/tablet_admin_asset_details_page.dart';
 import '../../features/admin/assets/presentation/ui/pages/tablet/tablet_admin_assigned_details.dart';
+import '../../features/admin/consumable/presentation/ui/pages/tablet/tablet_admin_assigned_consumable_details.dart';
+import '../../features/admin/consumable/presentation/ui/pages/tablet/tablet_admin_consumable_details_page.dart';
 import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_admin_employee_details_page.dart';
 import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_admin_employees_page.dart';
 import '../../features/admin/employees/presentation/ui/pages/mobile/mobile_track_requests_details_page.dart';
@@ -204,6 +206,30 @@ abstract class RouteGenerator {
           ),
           PageTransitionType.fade,
         );
+      case Routes.adminConsumablesDetails:
+        return _buildPageRoute(
+          ResponsiveHelper(
+            mobileWidget: TabletAdminConsumableDetailsPage(
+              consumablesEntity: args[RouteArguments.consumables],
+            ),
+            tabletWidget: TabletAdminConsumableDetailsPage(
+              consumablesEntity: args[RouteArguments.consumables],
+            ),
+          ),
+          PageTransitionType.fade,
+        );
+      case Routes.adminConsumablesAssignedDetails:
+        return _buildPageRoute(
+          ResponsiveHelper(
+            mobileWidget: TabletAdminConsumableDetails(
+              assignedUser: args[RouteArguments.adminConsumablesAssignedDetails],
+            ),
+            tabletWidget: TabletAdminConsumableDetails(
+              assignedUser: args[RouteArguments.adminConsumablesAssignedDetails],
+            ),
+          ),
+          PageTransitionType.fade,
+        );
       case Routes.adminAssetAssignedDetails:
         return _buildPageRoute(
           ResponsiveHelper(
@@ -217,6 +243,7 @@ abstract class RouteGenerator {
           ),
           PageTransitionType.fade,
         );
+
       case Routes.employees:
         return _buildPageRoute(
           const ResponsiveHelper(

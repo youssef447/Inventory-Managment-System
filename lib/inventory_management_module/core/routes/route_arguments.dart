@@ -11,4 +11,6 @@ abstract class RouteArguments {
   static const String userEntity = 'userEntity';
   static const String asset = 'asset';
   static const String adminAssetAssignedDetails = 'adminAssetAssignedDetails';
+  static const String consumables = 'consumables';
+  static const String adminConsumablesAssignedDetails = 'adminConsumablesAssignedDetails';
 }

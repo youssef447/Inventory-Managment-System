@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import 'package:inventory_management/inventory_management_module/features/employee/consumables/domain/entity/consumables_entity.dart';
 
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
@@ -11,12 +12,11 @@ import '../../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../core/widgets/default_rich_text.dart';
-import '../../../../../../../employee/Assets/domain/entity/assets_entity.dart';
 
-class VerticalAssetsDetailsCard extends StatelessWidget {
-  final AssetsEntity assets;
+class VerticalConsumableDetailsCard extends StatelessWidget {
+  final ConsumablesEntity consumable;
 
-  const VerticalAssetsDetailsCard({super.key, required this.assets});
+  const VerticalConsumableDetailsCard({super.key, required this.consumable});
 
   @override
   Widget build(BuildContext context) {;
@@ -48,7 +48,7 @@ class VerticalAssetsDetailsCard extends StatelessWidget {
                   ),
                   verticalSpace(4),
                   Text(
-                    assets.model + assets.brand,
+                    consumable.model + consumable.brand,
                     style: AppTextStyles.font16BlackCairoRegular,
                   ),
                   verticalSpace(8),
@@ -66,18 +66,26 @@ class VerticalAssetsDetailsCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     DefaultRichText(
-                      label: 'Asset ID',
-                      value: assets.assetId,
+                      label: 'Consumable ID',
+                      value: consumable.consumableId,
                     ),
                     DefaultRichText(
                       label: 'Product ID',
-                      value: assets.assetId,
+                      value: consumable.consumableId,
                     ),
                     verticalSpace(2),
-                    DefaultRichText(label: 'Category', value: assets.category),
+                    DefaultRichText(label: 'Category', value: consumable.category),
                     verticalSpace(2),
                     DefaultRichText(
-                        label: 'Subcategory', value: assets.subcategory),
+                        label: 'Subcategory', value: consumable.subcategory),
+                    DefaultRichText(label: 'Model'.tr, value: consumable.model),
+                    verticalSpace(2),
+                    DefaultRichText(
+                      label: 'Brand'.tr,
+                      value: consumable.brand,
+                    ),
+
+
                   ],
                 ),
               ),
@@ -86,44 +94,36 @@ class VerticalAssetsDetailsCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    DefaultRichText(label: 'Model', value: assets.model),
+
                     verticalSpace(2),
                     DefaultRichText(
-                      label: 'Brand',
-                      value: assets.brand,
-                    ),
-                    verticalSpace(2),
-                    verticalSpace(2),
-                    DefaultRichText(
-                      label: 'Expected Date',
-                      value: assets.expectedLifeTime != null
-                          ? DateTimeHelper.formatDate(
-                        assets.expectedLifeTime!,
-                      )
-                          : 'Not Applicable'.tr,
+                        label: 'Expected Lifetime',
+                        value: DateTimeHelper.formatDate(consumable.expirationDate!,)
                     ),
                     verticalSpace(2),
                     DefaultRichText(
-                      label: 'Expected Lifetime',
-                      value: assets.expectedLifeTime != null
-                          ? DateTimeHelper.formatDate(
-                        assets.expectedLifeTime!,
-                      )
-                          : 'Not Applicable'.tr,
-                    ),
-                    DefaultRichText(
-                      label: 'Unit Of Measurement',
-                      value: assets.maintenanceFrequency ?? '',
+                      label: 'Unit Of Measurement'.tr,
+                      value: consumable.unitOfMeasurement ?? '',
                     ),
                     verticalSpace(2),
                     DefaultRichText(
-                      label: 'Unit Cost',
-                      value: assets.unitCost,
+                      label: 'Unit Of Frequency'.tr,
+                      value: consumable.maintenanceFrequency ?? '',
                     ),
                     verticalSpace(2),
                     DefaultRichText(
-                      label: 'Storage Requirement'.tr,
-                      value: assets.storageRequirement,
+                      label: 'Reorder Quantity'.tr,
+                      value: consumable.reorderQuantity.toString(),
+                    ),
+                    verticalSpace(2),
+                    DefaultRichText(
+                      label: 'Reorder Level'.tr,
+                      value: consumable.reorderLevel.toString(),
+                    ),
+                    verticalSpace(2),
+                    DefaultRichText(
+                      label: 'Unit Cost'.tr,
+                      value: consumable.unitCost,
                     ),
                   ],
                 ),
@@ -131,11 +131,11 @@ class VerticalAssetsDetailsCard extends StatelessWidget {
 
               DefaultRichText(
                 label: 'Status',
-                value: assets.status,
+                value: consumable.status,
                 labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium
                     .copyWith(color: AppColors.secondaryBlack),
                 style: AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
-                  color: assets.status.getColor,
+                  color: consumable.status.getColor,
                 ),
               ),
             ],
@@ -164,7 +164,7 @@ class VerticalAssetsDetailsCard extends StatelessWidget {
               Spacer(),
               DefaultRichText(
                 label: 'Supplier Name',
-                value: assets.supplier.supplierName,
+                value: consumable.supplier.supplierName,
                 style: AppTextStyles.font12BlackMediumCairo.copyWith(
                   decoration: TextDecoration.underline,
                   color: AppColors.blue,
