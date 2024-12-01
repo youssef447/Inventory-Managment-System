@@ -1,5 +1,7 @@
 part of '../../../pages/mobile/mobile_admin_employee_details_page.dart';
 
+//Youssef Ashraf
+///Represents The Requested Product Card in Employee Details Page
 class MobileRequestedProductCard extends GetView<EmployeeDetailsController> {
   final RequestEntity request;
   const MobileRequestedProductCard({
@@ -11,11 +13,11 @@ class MobileRequestedProductCard extends GetView<EmployeeDetailsController> {
   Widget build(BuildContext context) {
     final isConsumable = request.requestType == ProductType.consumable;
 
-    return SizeAnimation(
+    return ScaleAnimation(
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
         decoration: BoxDecoration(
-            color: AppColors.base, borderRadius: BorderRadius.circular(8.r)),
+            color: AppColors.card, borderRadius: BorderRadius.circular(8.r)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

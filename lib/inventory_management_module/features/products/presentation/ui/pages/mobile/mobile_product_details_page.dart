@@ -40,98 +40,99 @@ class MobileProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: AppColors.background,
         body: SafeArea(
             child: Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 16.w,
-      ),
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: verticalSpace(16),
+          padding: EdgeInsets.symmetric(
+            horizontal: 16.w,
           ),
-          SliverToBoxAdapter(
-            child: MobileCustomAppbar(
-              title: 'Product Details'.tr,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: verticalSpace(12),
-          ),
-          SliverToBoxAdapter(
-            child: Row(
-              children: [
-                Expanded(
-                  child: RectangledFilterCard(
-                    height: 30.h,
-                    image: AppAssets.download,
-                    text: 'Warranty',
-                    textColor: AppColors.textButton,
-                    color: AppColors.primary,
-                    onTap: () {},
-                  ),
-                ),
-                horizontalSpace(6),
-                Expanded(
-                  child: RectangledFilterCard(
-                    height: 30.h,
-                    image: AppAssets.download,
-                    text: 'Specification',
-                    textColor: AppColors.textButton,
-                    color: AppColors.primary,
-                    onTap: () {},
-                  ),
-                ),
-                horizontalSpace(6),
-                Expanded(
-                  child: RectangledFilterCard(
-                    height: 30.h,
-                    image: AppAssets.download,
-                    text: 'Restocking',
-                    textColor: AppColors.textButton,
-                    color: AppColors.primary,
-                    onTap: () {
-                      GetDialogHelper.generalDialog(
-                          context: context,
-                          child: const MobileRestockingEdit());
-                    },
-                  ),
-                ),
-                horizontalSpace(6),
-                GestureDetector(
-                  onTap: () {
-                    GetDialogHelper.generalDialog(
-                        context: context,
-                        child: MobileAddAssetPage(
-                          product: product,
-                          isEdit: true,
-                        ));
-                  },
-                  child: SizedBox(
-                      height: 30.h,
-                      child: const SquaredChipCard(
-                        icon: AppAssets.edit,
-                      )),
-                ),
-              ],
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: verticalSpace(9),
-          ),
-          SliverToBoxAdapter(
-            child: SizeAnimation(
-              child: MobileProductDetailsCard(
-                product: product,
+          child: CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(
+                child: verticalSpace(16),
               ),
-            ),
+              SliverToBoxAdapter(
+                child: MobileCustomAppbar(
+                  title: 'Product Details'.tr,
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: verticalSpace(12),
+              ),
+              SliverToBoxAdapter(
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: RectangledFilterCard(
+                        height: 30.h,
+                        image: AppAssets.download,
+                        text: 'Warranty',
+                        textColor: AppColors.textButton,
+                        color: AppColors.primary,
+                        onTap: () {},
+                      ),
+                    ),
+                    horizontalSpace(6),
+                    Expanded(
+                      child: RectangledFilterCard(
+                        height: 30.h,
+                        image: AppAssets.download,
+                        text: 'Specification',
+                        textColor: AppColors.textButton,
+                        color: AppColors.primary,
+                        onTap: () {},
+                      ),
+                    ),
+                    horizontalSpace(6),
+                    Expanded(
+                      child: RectangledFilterCard(
+                        height: 30.h,
+                        image: AppAssets.download,
+                        text: 'Restocking',
+                        textColor: AppColors.textButton,
+                        color: AppColors.primary,
+                        onTap: () {
+                          GetDialogHelper.generalDialog(
+                              context: context,
+                              child: const MobileRestockingEdit());
+                        },
+                      ),
+                    ),
+                    horizontalSpace(6),
+                    GestureDetector(
+                      onTap: () {
+                        GetDialogHelper.generalDialog(
+                            context: context,
+                            child: MobileAddAssetPage(
+                              product: product,
+                              isEdit: true,
+                            ));
+                      },
+                      child: SizedBox(
+                          height: 30.h,
+                          child: const SquaredChipCard(
+                            icon: AppAssets.edit,
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: verticalSpace(9),
+              ),
+              SliverToBoxAdapter(
+                child: SizeAnimation(
+                  child: MobileProductDetailsCard(
+                    product: product,
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: verticalSpace(22),
+              ),
+              const MobileAssignedAndStockList(),
+            ],
           ),
-          SliverToBoxAdapter(
-            child: verticalSpace(22),
-          ),
-          const MobileAssignedAndStockList(),
-        ],
-      ),
-    )));
+        )));
   }
 }

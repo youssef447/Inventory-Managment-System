@@ -75,6 +75,8 @@ class TabletAssignedAndStockList extends GetView<ProductsController> {
                 image: AppAssets.filter,
                 text: 'Filter',
                 color: AppColors.card,
+                textColor: AppColors.text,
+                iconColor: AppColors.inverseBase,
                 onTap: () {
                   if (controller.currentCategoryIndex.value == 0) {
                     GetDialogHelper.generalDialog(

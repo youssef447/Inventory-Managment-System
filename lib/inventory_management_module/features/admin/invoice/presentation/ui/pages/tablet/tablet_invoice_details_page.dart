@@ -12,10 +12,12 @@ import '../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_font_weights.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
+import '../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../../core/widgets/appbar/mobile_custom_appbar.dart';
 import '../../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../orders/domain/order_entity.dart';
 import '../../widgets/common/invoice_details/invoice_details_body.dart';
+import '../../widgets/common/invoice_details/invoice_products_table.dart';
 part '../../widgets/tablet/tablet_invoice_header.dart';
 
 //Youssef Ashraf
@@ -27,6 +29,7 @@ class TabletInvoiceDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
@@ -41,7 +44,7 @@ class TabletInvoiceDetailsPage extends StatelessWidget {
               ),
               verticalSpace(36),
               Container(
-                width: context.isLandscapee ? 754.w : 654.w,
+                //   width: context.isLandscapee ? 754.w : 654.w,
                 decoration: BoxDecoration(
                   color: AppColors.card,
                   borderRadius: BorderRadius.circular(8.r),
@@ -56,6 +59,8 @@ class TabletInvoiceDetailsPage extends StatelessWidget {
                     TabletInvoiceHeader(order: invoice),
                     verticalSpace(32),
                     InvoiceDetailsBody(order: invoice),
+                    verticalSpace(32),
+                    InvoiceProductsTable(products: invoice.productEntity)
                   ],
                 ),
               )

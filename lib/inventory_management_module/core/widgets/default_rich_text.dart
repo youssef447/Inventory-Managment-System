@@ -39,10 +39,12 @@ class DefaultRichText extends StatelessWidget {
               text: '${label.tr}: ',
               style: labelStyle ??
                   (context.isTablett
-                      ? AppTextStyles.font14SecondaryBlackCairoMedium
-                          .copyWith(overflow: TextOverflow.ellipsis)
-                      : AppTextStyles.font12SecondaryBlackCairoMedium
-                          .copyWith(overflow: TextOverflow.ellipsis)),
+                      ? AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
+                          overflow: TextOverflow.ellipsis,
+                        )
+                      : AppTextStyles.font12SecondaryBlackCairoMedium.copyWith(
+                          overflow: TextOverflow.ellipsis,
+                        )),
               children: [
                 TextSpan(
                   text: value,

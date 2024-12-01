@@ -16,6 +16,7 @@ class TabletInvoiceHeader extends StatelessWidget {
             Text(
               '${'Order Done By'.tr}: ',
               style: GoogleFonts.inter(
+                color: AppColors.text,
                 fontSize: 16.sp,
                 fontWeight: AppFontWeights.semiBold,
               ),
@@ -94,7 +95,9 @@ class TabletInvoiceHeader extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.r),
-                  color: AppColors.field,
+                  color: AppTheme.isDark ?? false
+                      ? AppColors.background
+                      : const Color(0xffFAFAFA),
                 ),
                 padding: EdgeInsets.symmetric(
                   horizontal: 12.w,
@@ -104,7 +107,7 @@ class TabletInvoiceHeader extends StatelessWidget {
                   order.orderId,
                   style: GoogleFonts.inter(
                     fontSize: 12.sp,
-                    color: AppColors.black,
+                    color: AppColors.text,
                     fontWeight: AppFontWeights.semiBold,
                   ),
                 ),
@@ -125,7 +128,7 @@ class TabletInvoiceHeader extends StatelessWidget {
                 )}',
                 style: GoogleFonts.inter(
                   fontSize: 20.sp,
-                  color: AppColors.black,
+                  color: AppColors.text,
                   fontWeight: AppFontWeights.bold,
                 ),
               ),

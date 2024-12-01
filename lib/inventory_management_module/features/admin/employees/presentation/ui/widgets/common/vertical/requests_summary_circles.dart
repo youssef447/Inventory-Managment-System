@@ -87,8 +87,8 @@ class VerticalRequstsSummaryCircles extends GetView<EmployeeDetailsController> {
                                 backgroundColor:
                                     RequestStatus.values[1].getName.tr.getColor,
                                 child: SvgPicture.asset(
-                                  width: 16.w,
-                                  height: 16.h,
+                                  width: 12.w,
+                                  height: 12.h,
                                   RequestStatus.values[1].getAsset,
                                 ),
                               ),
@@ -179,8 +179,8 @@ class VerticalRequstsSummaryCircles extends GetView<EmployeeDetailsController> {
                                 backgroundColor:
                                     RequestStatus.values[3].getName.tr.getColor,
                                 child: SvgPicture.asset(
-                                  width: 20.w,
-                                  height: 20.h,
+                                  width: 16.w,
+                                  height: 16.h,
                                   RequestStatus.values[3].getAsset,
                                 ),
                               ),

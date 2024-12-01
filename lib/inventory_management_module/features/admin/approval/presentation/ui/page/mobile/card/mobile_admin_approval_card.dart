@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -29,7 +28,7 @@ class MobileAdminApprovalCard extends GetView<AdminApprovalController> {
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
         decoration: BoxDecoration(
-            color: AppColors.base, borderRadius: BorderRadius.circular(8.r)),
+            color: AppColors.card, borderRadius: BorderRadius.circular(8.r)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -38,14 +37,14 @@ class MobileAdminApprovalCard extends GetView<AdminApprovalController> {
                 CircleAvatar(
                   radius: 20.r,
                   backgroundImage:
-                  NetworkImage(request.userEntity.profileImage),
+                      NetworkImage(request.userEntity.profileImage),
                 ),
                 horizontalSpace(12),
                 Expanded(
                     child: Text(
-                      '${request.userEntity.firstName} ${request.userEntity.lastName}',
-                      style: AppTextStyles.font18BlackMediumCairo,
-                    )),
+                  '${request.userEntity.firstName} ${request.userEntity.lastName}',
+                  style: AppTextStyles.font18BlackMediumCairo,
+                )),
               ],
             ),
             verticalSpace(14),

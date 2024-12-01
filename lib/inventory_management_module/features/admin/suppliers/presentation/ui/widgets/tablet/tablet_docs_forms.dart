@@ -24,6 +24,7 @@ class TabletDocsForms extends StatelessWidget {
                   if (controller.contractDetails == null)
                     GestureDetector(
                       onTap: () {
+                        if (!controller.isEditable) return;
                         controller.uploadContract();
                       },
                       child: Container(
@@ -38,11 +39,8 @@ class TabletDocsForms extends StatelessWidget {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(
-                              'No Files'.tr,
-                              style: AppTextStyles.font14BlackCairoMedium
-                                  .copyWith(color: AppColors.textButton),
-                            ),
+                            Text('No Files'.tr,
+                                style: AppTextStyles.font14BlackCairoMedium),
                             context.isTablett
                                 ? horizontalSpace(100)
                                 : const Spacer(),
@@ -50,7 +48,7 @@ class TabletDocsForms extends StatelessWidget {
                               AppAssets.export,
                               width: 16.w,
                               height: 16.h,
-                              color: AppColors.icon,
+                              color: AppColors.inverseBase,
                             ),
                           ],
                         ),
@@ -82,6 +80,7 @@ class TabletDocsForms extends StatelessWidget {
                   if (controller.complianceDoc == null)
                     GestureDetector(
                       onTap: () {
+                        if (!controller.isEditable) return;
                         controller.uploadCompliance();
                       },
                       child: Container(
@@ -96,11 +95,8 @@ class TabletDocsForms extends StatelessWidget {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(
-                              'No Files'.tr,
-                              style: AppTextStyles.font14BlackCairoMedium
-                                  .copyWith(color: AppColors.textButton),
-                            ),
+                            Text('No Files'.tr,
+                                style: AppTextStyles.font14BlackCairoMedium),
                             context.isTablett
                                 ? horizontalSpace(100)
                                 : const Spacer(),
@@ -108,7 +104,7 @@ class TabletDocsForms extends StatelessWidget {
                               AppAssets.export,
                               width: 16.w,
                               height: 16.h,
-                              color: AppColors.icon,
+                              color: AppColors.inverseBase,
                             ),
                           ],
                         ),
@@ -140,6 +136,7 @@ class TabletDocsForms extends StatelessWidget {
                   if (controller.additionalDoc.isEmpty)
                     GestureDetector(
                       onTap: () {
+                        if (!controller.isEditable) return;
                         controller.uploadAdditionalDocs();
                       },
                       child: Container(
@@ -154,11 +151,8 @@ class TabletDocsForms extends StatelessWidget {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(
-                              'No Files'.tr,
-                              style: AppTextStyles.font14BlackCairoMedium
-                                  .copyWith(color: AppColors.textButton),
-                            ),
+                            Text('No Files'.tr,
+                                style: AppTextStyles.font14BlackCairoMedium),
                             context.isTablett
                                 ? horizontalSpace(100)
                                 : const Spacer(),
@@ -166,7 +160,7 @@ class TabletDocsForms extends StatelessWidget {
                               AppAssets.export,
                               width: 16.w,
                               height: 16.h,
-                              color: AppColors.icon,
+                              color: AppColors.inverseBase,
                             ),
                           ],
                         ),

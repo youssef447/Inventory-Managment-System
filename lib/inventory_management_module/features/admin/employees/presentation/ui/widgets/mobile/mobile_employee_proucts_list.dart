@@ -1,5 +1,7 @@
 part of '../../pages/mobile/mobile_admin_employee_details_page.dart';
 
+//Youssef Ashraf
+///Represents The Employee Products List in Employee Details Page
 class MobileEmployeeProductsList extends StatelessWidget {
   const MobileEmployeeProductsList({super.key});
 

@@ -16,7 +16,6 @@ import '../../../../../../products/enums/product_enums.dart';
 import '../../../../../employees/presentation/ui/widgets/common/buttons/requested_approval_buttons.dart';
 import '../../../controller/admin_approval_controller.dart';
 
-
 class ApprovalCategoriesCard extends GetView<AdminApprovalController> {
   const ApprovalCategoriesCard({super.key, required this.request});
   final RequestEntity request;
@@ -26,9 +25,9 @@ class ApprovalCategoriesCard extends GetView<AdminApprovalController> {
     return SizeAnimation(
       child: Container(
         padding:
-        EdgeInsets.only(top: 10.h, right: 17.w, left: 17.w, bottom: 16.h),
+            EdgeInsets.only(top: 10.h, right: 17.w, left: 17.w, bottom: 16.h),
         decoration: BoxDecoration(
-            color: AppColors.base, borderRadius: BorderRadius.circular(8.r)),
+            color: AppColors.card, borderRadius: BorderRadius.circular(8.r)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -37,14 +36,14 @@ class ApprovalCategoriesCard extends GetView<AdminApprovalController> {
                 CircleAvatar(
                   radius: 26,
                   backgroundImage:
-                  NetworkImage(request.userEntity.profileImage),
+                      NetworkImage(request.userEntity.profileImage),
                 ),
                 horizontalSpace(12),
                 Expanded(
                     child: Text(
-                      '${request.userEntity.firstName} ${request.userEntity.lastName}',
-                      style: AppTextStyles.font18BlackMediumCairo,
-                    )),
+                  '${request.userEntity.firstName} ${request.userEntity.lastName}',
+                  style: AppTextStyles.font18BlackMediumCairo,
+                )),
               ],
             ),
             verticalSpace(10),

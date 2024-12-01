@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 import '../../../../../../../../core/enums/inventory_categories.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../features/admin/dashboard/constants/dashboard_ids.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/enums/category_subactegory.dart';
@@ -31,6 +32,8 @@ class BarChartList extends GetView<DashboardController> {
                 data: controller.expensesHistoryBarChartData,
                 dropDowns: [
                   AppDropdown(
+                    color:
+                        Get.isDarkMode ? AppColors.background : AppColors.field,
                     height: 36.h,
                     onChanged: (v) {
                       controller.updateExpensesInventoryType(v);
@@ -62,6 +65,8 @@ class BarChartList extends GetView<DashboardController> {
                 data: controller.maintenanceHistoryBarChartData,
                 dropDowns: [
                   AppDropdown(
+                    color:
+                        Get.isDarkMode ? AppColors.background : AppColors.field,
                     height: 36.h,
                     onChanged: (v) {
                       controller.updateMaintenanceCategory(v);
@@ -85,6 +90,8 @@ class BarChartList extends GetView<DashboardController> {
                         controller.selectedMaintenanceCategory?.getName.tr,
                   ),
                   AppDropdown(
+                    color:
+                        Get.isDarkMode ? AppColors.background : AppColors.field,
                     height: 36.h,
                     onChanged: (v) {
                       controller.updateMaintenanceSubcategory(v);
@@ -116,6 +123,8 @@ class BarChartList extends GetView<DashboardController> {
                 data: controller.requestsHistoryBarChartData,
                 dropDowns: [
                   AppDropdown(
+                    color:
+                        Get.isDarkMode ? AppColors.background : AppColors.field,
                     height: 36.h,
                     onChanged: (v) {
                       controller.updateReqeustInventoryType(v);
@@ -139,6 +148,8 @@ class BarChartList extends GetView<DashboardController> {
                         controller.selectedReqeustInventoryType?.getName.tr,
                   ),
                   AppDropdown(
+                    color:
+                        Get.isDarkMode ? AppColors.background : AppColors.field,
                     height: 36.h,
                     onChanged: (v) {
                       controller.updateRequestStatus(v);
@@ -175,6 +186,8 @@ class BarChartList extends GetView<DashboardController> {
                 data: controller.depsBarChartData,
                 dropDowns: [
                   AppDropdown(
+                    color:
+                        Get.isDarkMode ? AppColors.background : AppColors.field,
                     height: 36.h,
                     onChanged: (v) {
                       controller.updateDepInventoryType(v);
@@ -205,6 +218,8 @@ class BarChartList extends GetView<DashboardController> {
                 data: controller.lowStockBarChartData,
                 dropDowns: [
                   AppDropdown(
+                    color:
+                        Get.isDarkMode ? AppColors.background : AppColors.field,
                     height: 36.h,
                     width: !context.isTablett ? 103.w : null,
                     onChanged: (v) {
@@ -229,6 +244,8 @@ class BarChartList extends GetView<DashboardController> {
                         controller.selectedStockInventoryType?.getName.tr,
                   ),
                   AppDropdown(
+                    color:
+                        Get.isDarkMode ? AppColors.background : AppColors.field,
                     height: 36.h,
                     width: !context.isTablett ? 86.w : null,
                     onChanged: (v) {
@@ -252,6 +269,8 @@ class BarChartList extends GetView<DashboardController> {
                     textButton: controller.selectedStockCategory?.getName.tr,
                   ),
                   AppDropdown(
+                    color:
+                        Get.isDarkMode ? AppColors.background : AppColors.field,
                     height: 36.h,
                     width: !context.isTablett ? 107.w : null,
                     onChanged: (v) {

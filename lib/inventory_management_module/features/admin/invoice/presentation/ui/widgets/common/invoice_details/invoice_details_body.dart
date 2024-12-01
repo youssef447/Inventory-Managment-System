@@ -8,6 +8,7 @@ import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../core/theme/app_font_weights.dart';
+import '../../../../../../../../core/theme/app_theme.dart';
 import '../../../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../../orders/domain/order_entity.dart';
 
@@ -25,7 +26,9 @@ class InvoiceDetailsBody extends StatelessWidget {
         Container(
           width: context.isTablett ? 200.w : null,
           decoration: BoxDecoration(
-            color: const Color(0xffFAFAFA),
+            color: AppTheme.isDark ?? false
+                ? AppColors.background
+                : const Color(0xffFAFAFA),
             borderRadius: BorderRadius.circular(8.r),
           ),
           padding: EdgeInsets.symmetric(
@@ -50,7 +53,7 @@ class InvoiceDetailsBody extends StatelessWidget {
                 ),
                 style: GoogleFonts.inter(
                   fontSize: 14.sp,
-                  color: AppColors.black,
+                  color: AppColors.text,
                   fontWeight: AppFontWeights.semiBold,
                 ),
               ),
@@ -70,7 +73,7 @@ class InvoiceDetailsBody extends StatelessWidget {
                 ),
                 style: GoogleFonts.inter(
                   fontSize: 14.sp,
-                  color: AppColors.black,
+                  color: AppColors.text,
                   fontWeight: AppFontWeights.semiBold,
                 ),
               ),
@@ -90,7 +93,7 @@ class InvoiceDetailsBody extends StatelessWidget {
                 ),
                 style: GoogleFonts.inter(
                   fontSize: 14.sp,
-                  color: AppColors.black,
+                  color: AppColors.text,
                   fontWeight: AppFontWeights.semiBold,
                 ),
               ),
@@ -115,7 +118,7 @@ class InvoiceDetailsBody extends StatelessWidget {
                 order.productEntity[0].supplier.supplierName,
                 style: GoogleFonts.inter(
                   fontSize: 14.sp,
-                  color: AppColors.black,
+                  color: AppColors.text,
                   fontWeight: AppFontWeights.semiBold,
                 ),
               ),
@@ -183,7 +186,7 @@ class InvoiceDetailsBody extends StatelessWidget {
                     'loreammamamamamamammammamamammamamamammamamamamamammammaammamamamama',
                 style: GoogleFonts.inter(
                   fontSize: 14.sp,
-                  color: AppColors.black,
+                  color: AppColors.text,
                   fontWeight: AppFontWeights.semiBold,
                 ),
               ),

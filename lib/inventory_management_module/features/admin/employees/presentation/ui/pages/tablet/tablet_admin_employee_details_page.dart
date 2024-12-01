@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import '../../../../../../../core/animations/scale_animation.dart';
 import '../../../../../../../core/animations/size_animation.dart';
 import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/helpers/orientation_helper.dart';

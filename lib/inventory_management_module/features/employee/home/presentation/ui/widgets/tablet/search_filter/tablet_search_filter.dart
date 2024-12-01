@@ -130,6 +130,7 @@ class TabletSearchFilter extends GetView<HomeController> {
                                 : AppTextStyles.font18BlackMediumCairo
                                     .copyWith(color: AppColors.textButton),
                             color: AppColors.primary,
+                            textColor: AppColors.textButton,
                             height: 37.h,
                             onChanged: (value) {
                               if (value == RequestActions.expiredConsumables ||
@@ -268,6 +269,7 @@ class TabletSearchFilter extends GetView<HomeController> {
                                 );
                               },
                             ),
+                            textColor: AppColors.textButton,
                             textButton: 'Request'.tr,
                           ),
                         ),

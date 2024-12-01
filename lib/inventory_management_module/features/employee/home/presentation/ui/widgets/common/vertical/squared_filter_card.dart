@@ -13,6 +13,7 @@ class SquaredChipCard extends StatelessWidget {
   final String icon;
   final Color? color;
   final Color? borderColor;
+  final Color? iconColor;
   final void Function()? onTap;
   const SquaredChipCard({
     super.key,
@@ -20,6 +21,7 @@ class SquaredChipCard extends StatelessWidget {
     this.color,
     this.onTap,
     this.borderColor,
+    this.iconColor,
   });
 
   @override
@@ -39,7 +41,8 @@ class SquaredChipCard extends StatelessWidget {
           ),
           child: SvgPicture.asset(
             icon,
-            color: color == AppColors.card ? AppColors.text : AppColors.icon,
+            color: iconColor ??
+                (color == AppColors.card ? AppColors.text : AppColors.icon),
             width: context.isTablett ? 23.w : 16.w,
             height: context.isTablett ? 23.h : 16.h,
           ),

@@ -79,7 +79,8 @@ class MobileAssignedAndStockList extends GetView<ProductsController> {
                 horizontalSpace(9),
                 SquaredChipCard(
                   icon: AppAssets.filter,
-                  color: AppColors.card,
+                  color: AppColors.inverseBase,
+                  iconColor: AppColors.icon,
                   onTap: () {
                     if (controller.currentCategoryIndex.value == 0) {
                       GetDialogHelper.generalDialog(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import '../../../../../../../core/animations/scale_animation.dart';
 import '../../../../../../../core/routes/route_arguments.dart';
 import '../../../../../../../core/enums/departments.dart';
 import '../../../../../../../core/animations/horizontal_animation.dart';

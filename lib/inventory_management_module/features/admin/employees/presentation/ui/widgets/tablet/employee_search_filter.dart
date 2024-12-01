@@ -75,7 +75,7 @@ class TabletEmployeeSearchFilter extends GetView<EmployeesController> {
             horizontalSpace(9),
             AppDropdown(
               showDropdownIcon: false,
-              iconColor: AppColors.black,
+              iconColor: AppColors.inverseBase,
               width: context.isLandscapee ? 100.w : 55.w,
               image: AppAssets.sort,
               style: AppTextStyles.font14BlackRegularCairo,

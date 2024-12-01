@@ -1,5 +1,7 @@
 part of '../../../../pages/tablet/tablet_track_requests_details_page.dart';
 
+//Youssef Ashraf
+///Represents The Vertical Tablet Track Request Details Card Header Wich contains Req Info and Aprroval Cycle
 class VerticalTrackDetailsCardHeader extends StatelessWidget {
   final RequestEntity model;
   final bool isConsumable;

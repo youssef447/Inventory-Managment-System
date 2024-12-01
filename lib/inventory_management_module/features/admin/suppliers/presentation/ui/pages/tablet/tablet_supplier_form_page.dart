@@ -39,6 +39,7 @@ class TabletSupplierFormPage extends GetView<SupplierFormController> {
         }
       },
       child: Scaffold(
+        backgroundColor: AppColors.background,
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(

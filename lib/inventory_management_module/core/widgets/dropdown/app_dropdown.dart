@@ -155,9 +155,10 @@ class AppDropdown extends StatelessWidget {
       textAlign: textAlign,
       textButton ?? hintText ?? '',
       maxLines: 1,
-      style: value != null || textButton != null
-          ? AppTextStyles.font14BlackCairoRegular.copyWith(color: textColor)
-          : (style ?? AppTextStyles.font14SecondaryBlackCairoRegular),
+      style: style ??
+          (value != null || textButton != null
+              ? AppTextStyles.font14BlackCairoRegular.copyWith(color: textColor)
+              : (style ?? AppTextStyles.font14SecondaryBlackCairoRegular)),
       overflow: TextOverflow.ellipsis,
     );
   }

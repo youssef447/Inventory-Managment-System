@@ -35,11 +35,8 @@ class MobileDocsForms extends StatelessWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          'No Files'.tr,
-                          style: AppTextStyles.font14BlackCairoMedium
-                              .copyWith(color: AppColors.textButton),
-                        ),
+                        Text('No Files'.tr,
+                            style: AppTextStyles.font14BlackCairoMedium),
                         context.isTablett
                             ? horizontalSpace(100)
                             : const Spacer(),
@@ -88,11 +85,8 @@ class MobileDocsForms extends StatelessWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          'No Files'.tr,
-                          style: AppTextStyles.font14BlackCairoMedium
-                              .copyWith(color: AppColors.textButton),
-                        ),
+                        Text('No Files'.tr,
+                            style: AppTextStyles.font14BlackCairoMedium),
                         context.isTablett
                             ? horizontalSpace(100)
                             : const Spacer(),
@@ -141,11 +135,8 @@ class MobileDocsForms extends StatelessWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          'No Files'.tr,
-                          style: AppTextStyles.font14BlackCairoMedium
-                              .copyWith(color: AppColors.textButton),
-                        ),
+                        Text('No Files'.tr,
+                            style: AppTextStyles.font14BlackCairoMedium),
                         context.isTablett
                             ? horizontalSpace(100)
                             : const Spacer(),

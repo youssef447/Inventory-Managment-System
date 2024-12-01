@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../approval/presentation/ui/constants/approval_categories.dart';
 import '../../../../../../employee/home/presentation/ui/widgets/tablet/cards/category_filter_card.dart';
 import '../../../controller/admin_approval_controller.dart';
@@ -28,7 +28,8 @@ class ApprovalAdminCategoriesFilter extends GetView<AdminApprovalController> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                ...List.generate(AdminApprovalCategories.categories.length, (index) {
+                ...List.generate(AdminApprovalCategories.categories.length,
+                    (index) {
                   final last =
                       index == AdminApprovalCategories.categories.length - 1;
                   return GestureDetector(

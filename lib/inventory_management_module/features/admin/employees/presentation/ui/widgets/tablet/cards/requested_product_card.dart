@@ -1,5 +1,7 @@
 part of '../../../pages/tablet/tablet_admin_employee_details_page.dart';
 
+//Youssef Ashraf
+///Represents The Requested Product Card in Tablet View
 class TabletRequestedProductCard extends GetView<EmployeeDetailsController> {
   final RequestEntity request;
   const TabletRequestedProductCard({
@@ -10,12 +12,12 @@ class TabletRequestedProductCard extends GetView<EmployeeDetailsController> {
   @override
   Widget build(BuildContext context) {
     final isConsumable = request.requestType == ProductType.consumable;
-    return SizeAnimation(
+    return ScaleAnimation(
       child: Container(
         padding:
             EdgeInsets.only(top: 10.h, right: 17.w, left: 17.w, bottom: 16.h),
         decoration: BoxDecoration(
-            color: AppColors.base, borderRadius: BorderRadius.circular(8.r)),
+            color: AppColors.card, borderRadius: BorderRadius.circular(8.r)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

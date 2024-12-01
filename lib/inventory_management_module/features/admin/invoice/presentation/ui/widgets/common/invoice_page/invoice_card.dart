@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../../../core/animations/scale_animation.dart';
-import '../../../../../../../core/enums/orders_status.dart';
+import '../../../../../../../../core/animations/scale_animation.dart';
+import '../../../../../../../../core/enums/orders_status.dart';
 
-import '../../../../../../../core/constants/app_assets.dart';
-import '../../../../../../../core/helpers/date_time_helper.dart';
-import '../../../../../../../core/helpers/spacing_helper.dart';
-import '../../../../../../../core/theme/app_colors.dart';
-import '../../../../../../../core/widgets/default_rich_text.dart';
-import '../../../../../../products/enums/product_enums.dart';
-import '../../../../../orders/domain/order_entity.dart';
+import '../../../../../../../../core/constants/app_assets.dart';
+import '../../../../../../../../core/helpers/date_time_helper.dart';
+import '../../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../../core/theme/app_colors.dart';
+import '../../../../../../../../core/widgets/default_rich_text.dart';
+import '../../../../../../../products/enums/product_enums.dart';
+import '../../../../../../orders/domain/order_entity.dart';
 
 ///Youssef Ashraf
 ///Represents The Invoice Card in Tablet - Mobile Views

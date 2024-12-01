@@ -28,6 +28,10 @@ class ProductEntity {
   final DateTime lastUpdate = DateTime.now();
   String storageRequirement;
   String status;
+  String description = 'Product Description';
+  double vat = 0;
+  double amount = 3500;
+  double finalAmount = 3500;
   ProductEntity({
     required this.id,
     required this.productType,

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../..//core/widgets/fields/date_picker_field.dart';
 
 import '../../helpers/spacing_helper.dart';
+import '../../theme/app_colors.dart';
 import '../../theme/app_text_styles.dart';
 import 'app_form_field.dart';
 
@@ -43,7 +44,7 @@ class LabeledFormField extends StatelessWidget {
                 textEditingController: controller,
                 width: double.infinity,
                 hintText: hintText ?? '${'Pick'.tr} $label',
-                backGroundColor: backGroundColor,
+                backGroundColor: backGroundColor ?? AppColors.field,
                 onDateChanged: onDateChanged,
               )
             : SizedBox(

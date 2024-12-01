@@ -12,8 +12,8 @@ import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../constants/ids.dart';
 import '../../../controller/invoices_controller.dart';
-import '../../widgets/common/invoice_card.dart';
-import '../../widgets/common/search_filter.dart';
+import '../../widgets/common/invoice_page/invoice_card.dart';
+import '../../widgets/common/invoice_page/search_filter.dart';
 //Youssef Ashraf
 ///Represents The Invoices Page in Mobile View
 

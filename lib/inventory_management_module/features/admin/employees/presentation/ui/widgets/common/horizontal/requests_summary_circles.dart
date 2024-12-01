@@ -30,7 +30,7 @@ class HorizontalRequstsSummaryCircles
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate(
-                RequestStatus.values.length - 1,
+                RequestStatus.values.length - 2,
                 (index) {
                   return Row(
                     children: [

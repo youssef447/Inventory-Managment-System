@@ -43,90 +43,91 @@ class TabletProductDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: AppColors.background,
         body: SafeArea(
             child: Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: context.isLandscapee ? 30.w : 20.w,
-        vertical: 16.h,
-      ),
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomAppBar(
-              titles: const ['Product', 'Product Details'],
-              titleNavigations: [
-                () => Navigator.of(context).pop(),
-              ],
-            ),
-            verticalSpace(12),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+          padding: EdgeInsets.symmetric(
+            horizontal: context.isLandscapee ? 30.w : 20.w,
+            vertical: 16.h,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                RectangledFilterCard(
-                  height: 30.h,
-                  image: AppAssets.download,
-                  text: 'Warranty',
-                  textColor: AppColors.textButton,
-                  color: AppColors.primary,
-                  onTap: () {},
+                CustomAppBar(
+                  titles: const ['Product', 'Product Details'],
+                  titleNavigations: [
+                    () => Navigator.of(context).pop(),
+                  ],
                 ),
-                horizontalSpace(6),
-                RectangledFilterCard(
-                  height: 30.h,
-                  image: AppAssets.download,
-                  text: 'Specification',
-                  textColor: AppColors.textButton,
-                  color: AppColors.primary,
-                  onTap: () {},
-                ),
-                horizontalSpace(6),
-                RectangledFilterCard(
-                  height: 30.h,
-                  image: AppAssets.download,
-                  text: 'Restocking',
-                  textColor: AppColors.textButton,
-                  color: AppColors.primary,
-                  onTap: () {
-                    GetDialogHelper.generalDialog(
-                        context: context, child: const RestockingEdit());
-                  },
-                ),
-                horizontalSpace(6),
-                SizedBox(
-                    height: 30.h,
-                    child: RectangledFilterCard(
-                      image: AppAssets.edit,
-                      text: 'Edit',
+                verticalSpace(12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    RectangledFilterCard(
+                      height: 30.h,
+                      image: AppAssets.download,
+                      text: 'Warranty',
+                      textColor: AppColors.textButton,
+                      color: AppColors.primary,
+                      onTap: () {},
+                    ),
+                    horizontalSpace(6),
+                    RectangledFilterCard(
+                      height: 30.h,
+                      image: AppAssets.download,
+                      text: 'Specification',
+                      textColor: AppColors.textButton,
+                      color: AppColors.primary,
+                      onTap: () {},
+                    ),
+                    horizontalSpace(6),
+                    RectangledFilterCard(
+                      height: 30.h,
+                      image: AppAssets.download,
+                      text: 'Restocking',
                       textColor: AppColors.textButton,
                       color: AppColors.primary,
                       onTap: () {
                         GetDialogHelper.generalDialog(
-                            context: context,
-                            child: AddAssetPage(
-                              product: product,
-                              isEdit: true,
-                            ));
+                            context: context, child: const RestockingEdit());
                       },
-                    )),
+                    ),
+                    horizontalSpace(6),
+                    SizedBox(
+                        height: 30.h,
+                        child: RectangledFilterCard(
+                          image: AppAssets.edit,
+                          text: 'Edit',
+                          textColor: AppColors.textButton,
+                          color: AppColors.primary,
+                          onTap: () {
+                            GetDialogHelper.generalDialog(
+                                context: context,
+                                child: AddAssetPage(
+                                  product: product,
+                                  isEdit: true,
+                                ));
+                          },
+                        )),
+                  ],
+                ),
+                verticalSpace(9),
+                SizeAnimation(
+                  child: OrientationHelper(
+                    landScape: HorizontalProductDetailsCard(
+                      product: product,
+                    ),
+                    portrait: VerticalProductDetailsCard(
+                      product: product,
+                    ),
+                  ),
+                ),
+                verticalSpace(22),
+                const TabletAssignedAndStockList(),
               ],
             ),
-            verticalSpace(9),
-            SizeAnimation(
-              child: OrientationHelper(
-                landScape: HorizontalProductDetailsCard(
-                  product: product,
-                ),
-                portrait: VerticalProductDetailsCard(
-                  product: product,
-                ),
-              ),
-            ),
-            verticalSpace(22),
-            const TabletAssignedAndStockList(),
-          ],
-        ),
-      ),
-    )));
+          ),
+        )));
   }
 }

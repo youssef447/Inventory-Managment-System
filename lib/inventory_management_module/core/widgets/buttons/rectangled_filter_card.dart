@@ -14,6 +14,7 @@ class RectangledFilterCard extends StatelessWidget {
   final Color color;
   final double? width, height, iconHeight, iconWidth;
   final Color? textColor;
+  final Color? iconColor;
   final Function()? onTap;
   const RectangledFilterCard({
     super.key,
@@ -26,6 +27,7 @@ class RectangledFilterCard extends StatelessWidget {
     this.height,
     this.iconWidth,
     this.iconHeight,
+    this.iconColor,
   });
 
   @override
@@ -57,7 +59,7 @@ class RectangledFilterCard extends StatelessWidget {
                 children: [
                   SvgPicture.asset(
                     image!,
-                    color: textColor ?? AppColors.icon,
+                    color: iconColor ?? textColor ?? AppColors.icon,
                     width: iconWidth ?? 15.w,
                     height: iconHeight ?? 15.h,
                   ),

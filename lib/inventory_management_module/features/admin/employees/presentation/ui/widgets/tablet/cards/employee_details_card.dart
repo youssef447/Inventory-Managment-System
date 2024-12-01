@@ -1,5 +1,7 @@
 part of '../../../pages/tablet/tablet_admin_employee_details_page.dart';
 
+//Youssef Ashraf
+///Represents The Employee Details Card in Tablet View
 class TabletEmployeeDetailsCard extends StatelessWidget {
   final UserEntity userEntity;
   const TabletEmployeeDetailsCard({

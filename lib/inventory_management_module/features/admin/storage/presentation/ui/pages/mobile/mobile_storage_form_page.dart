@@ -34,6 +34,7 @@ class MobileStorageFormPage extends GetView<StorageFormController> {
         }
       },
       child: Scaffold(
+        backgroundColor: AppColors.background,
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(

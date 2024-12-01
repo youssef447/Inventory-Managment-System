@@ -1,5 +1,7 @@
 part of '../../../pages/tablet/tablet_track_requests_details_page.dart';
 
+//Youssef Ashraf
+///Represents The Approval Cycle Section in Tablet View
 class ApprovalCycle extends StatelessWidget {
   const ApprovalCycle({
     super.key,
