@@ -160,7 +160,7 @@ class RequestsOfConsumablesTable extends GetView<RequestsController> {
                   DataCell(
                     Text(
                       controller.requestsOfConsumables[index].consumablesEntity!
-                          .unitOfMeasurement,
+                          .unitOfMeasurement.getName,
                       style: AppTextStyles.font16BlackRegularCairo,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,

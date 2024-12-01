@@ -4,6 +4,7 @@
 import 'dart:io';
 
 import '../../../../../core/constants/app_assets.dart';
+import '../../../../../core/enums/requests_enums.dart';
 import '../../../../products/domain/subEntities/contract_details_entity.dart';
 import '../../../../admin/suppliers/domain/supplier_entity.dart';
 import '../../../requests/entities/attachment_entity.dart';
@@ -34,7 +35,7 @@ class AssetsEntity {
   final String storageRequirement;
   final int quantityOnHand;
   final String unitCost;
-  final String currency;
+  final Currency currency;
   SupplierEntity supplier = SupplierEntity(
     supplierName: 'TechSource Solutions',
     postalCode: '1313',
@@ -76,7 +77,7 @@ class AssetsEntity {
     this.storageLocation = 'Room A1',
     this.quantityOnHand = 15,
     this.unitCost = '200',
-    this.currency = 'USd',
+    this.currency = Currency.eur,
     this.storageRequirement = 'Electronic',
   });
 }

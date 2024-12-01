@@ -126,7 +126,7 @@ class VerticalProductDetailsCard extends StatelessWidget {
                   verticalSpace(2),
                   DefaultRichText(
                     label: 'Unit Of Measurement',
-                    value: product.consumablesEntity!.unitOfMeasurement,
+                    value: product.consumablesEntity!.unitOfMeasurement.getName,
                   ),
                   verticalSpace(2),
                   DefaultRichText(

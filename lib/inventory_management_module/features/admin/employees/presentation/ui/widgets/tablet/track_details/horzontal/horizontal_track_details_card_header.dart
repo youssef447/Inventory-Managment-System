@@ -97,7 +97,7 @@ class HorizontalTrackDetailsCardHeader extends StatelessWidget {
                 verticalSpace(2),
                 DefaultRichText(
                   label: 'Unit Of Measurement',
-                  value: model.consumablesEntity!.unitOfMeasurement,
+                  value: model.consumablesEntity!.unitOfMeasurement.getName,
                 ),
                 verticalSpace(2),
                 DefaultRichText(

@@ -18,6 +18,7 @@ import '../../../widgets/common/attachments/product_warranty_attachment_section.
 //date :27/11/2024
 class MobileRestockingEdit extends GetView<AddProductController> {
   const MobileRestockingEdit({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -34,48 +35,47 @@ class MobileRestockingEdit extends GetView<AddProductController> {
           maxHeight: Get.height * 0.9,
         ),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  CircleAvatar(
-                      backgroundColor: AppColors.primary,
-                      radius: 16,
-                      child: SvgPicture.asset(
-                        AppAssets.add,
-                        width: 16,
-                        height: 16,
-                        color: Colors.black,
-                      )),
-                  horizontalSpace(8),
-                  Text(
-                    'Restocking Product'.tr,
-                    style: AppTextStyles.font24MediumBlackCairo,
-                  ),
-                ],
-              ),
-              verticalSpace(24),
-              LabeledFormField(
-                controller: controller.orderIdController,
-                label: 'Order Id'.tr,
-              ),
-              horizontalSpace(15),
-              LabeledFormField(
-                controller: controller.totalQuantityController,
-                label: 'Quantity'.tr,
-              ),
-              verticalSpace(24),
-              LabeledFormField(
-                readOnly: false,
-                controller: controller.unitCostController,
-                label: 'Unit Test'.tr,
-              ),
-              horizontalSpace(15),
-              Obx(() {
-                return LabeledDropdownField(
+          child: GetBuilder<AddProductController>(builder: (controller) {
+            return Column(
+              children: [
+                Row(
+                  children: [
+                    CircleAvatar(
+                        backgroundColor: AppColors.primary,
+                        radius: 16,
+                        child: SvgPicture.asset(
+                          AppAssets.add,
+                          width: 16,
+                          height: 16,
+                          color: Colors.black,
+                        )),
+                    horizontalSpace(8),
+                    Text(
+                      'Restocking Product'.tr,
+                      style: AppTextStyles.font24MediumBlackCairo,
+                    ),
+                  ],
+                ),
+                verticalSpace(24),
+                LabeledFormField(
+                  controller: controller.orderIdController,
+                  label: 'Order Id'.tr,
+                ),
+                horizontalSpace(15),
+                LabeledFormField(
+                  controller: controller.totalQuantityController,
+                  label: 'Quantity'.tr,
+                ),
+                verticalSpace(24),
+                LabeledFormField(
+                  readOnly: false,
+                  controller: controller.unitCostController,
+                  label: 'Unit Test'.tr,
+                ),
+                horizontalSpace(15),
+                LabeledDropdownField(
                   label: 'Currency'.tr,
-                  value: controller.currencyValue.value,
-                  textButton: controller.currencyValue.value?.getName,
+                  textButton: controller.currencyValue?.getName,
                   onChanged: (value) {
                     controller.updateCurrencyValue(value);
                   },
@@ -92,20 +92,17 @@ class MobileRestockingEdit extends GetView<AddProductController> {
                       );
                     },
                   ),
-                );
-              }),
-              verticalSpace(24),
-              LabeledFormField(
-                readOnly: false,
-                controller: controller.orderIdController,
-                label: 'Order Value'.tr,
-              ),
-              horizontalSpace(15),
-              Obx(() {
-                return LabeledDropdownField(
+                ),
+                verticalSpace(24),
+                LabeledFormField(
+                  readOnly: false,
+                  controller: controller.orderIdController,
+                  label: 'Order Value'.tr,
+                ),
+                horizontalSpace(15),
+                LabeledDropdownField(
                   label: 'Supplier Name'.tr,
-                  value: controller.supplierNameValue.value,
-                  textButton: controller.supplierNameValue.value?.toString(),
+                  textButton: controller.supplierNameValue,
                   onChanged: (value) {
                     controller.updateSupplierNameValue(value);
                   },
@@ -122,18 +119,16 @@ class MobileRestockingEdit extends GetView<AddProductController> {
                       );
                     },
                   ),
-                );
-              }),
-              verticalSpace(24),
-              GetBuilder<AddProductController>(builder: (controller) {
-                return ListView.separated(
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    return Row(
-                      children: [
-                        Expanded(
-                          child: Obx(() {
-                            return LabeledDropdownField(
+                ),
+                verticalSpace(24),
+                GetBuilder<AddProductController>(builder: (controller) {
+                  return ListView.separated(
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return Row(
+                        children: [
+                          Expanded(
+                            child: LabeledDropdownField(
                               label: 'Storage Location'.tr,
                               value: controller
                                   .selectedStorageLocations[index].value,
@@ -145,83 +140,85 @@ class MobileRestockingEdit extends GetView<AddProductController> {
                                 controller.updateStorageLocationValue(
                                     index, value!);
                               },
-                              controller:
-                                  controller.storageLocationControllers[index],
+                              controller: controller
+                                  .storageLocationControllers[index],
                               items: List.generate(
                                 controller.storageLocation.length,
-                                (index) {
+                                    (index) {
                                   return DropdownMenuItem(
                                     value: controller.storageLocation[index],
                                     child: Text(
-                                      controller.storageLocation[index].getName,
+                                      controller
+                                          .storageLocation[index].getName,
                                       style: AppTextStyles
                                           .font14SecondaryBlackCairoMedium,
                                     ),
                                   );
                                 },
                               ),
-                            );
-                          }),
-                        ),
-                        horizontalSpace(15),
-                        Expanded(
-                          child: LabeledFormField(
-                            readOnly: false,
-                            controller: controller.stockOnHandController[index],
-                            label: 'Stock On Hand'.tr,
+                            ),
                           ),
-                        ),
-                      ],
-                    );
-                  },
-                  separatorBuilder: (context, index) {
-                    return verticalSpace(12);
-                  },
-                  itemCount: controller.storageLocationCount,
-                );
-              }),
-              verticalSpace(8),
-              Align(
-                alignment: AlignmentDirectional.centerStart,
-                child: RectangledFilterCard(
-                  width: 200.w,
-                  image: AppAssets.add,
-                  text: 'Add More Storage'.tr,
-                  textColor: AppColors.white,
-                  color: AppColors.black,
-                  onTap: () {
-                    controller.addMoreStorage();
-                  },
-                ),
-              ),
-              verticalSpace(24),
-              Text(
-                'Invoice'.tr,
-                style: AppTextStyles.font24MediumBlackCairo,
-              ),
-              const ProductWarrantyAttachmentSection(),
-              verticalSpace(26),
-              Row(
-                children: [
-                  AppDefaultButton(
-                    text: 'Discard',
-                    color: AppColors.grey,
-                    onPressed: () {
-                      Navigator.of(context).pop();
+                          horizontalSpace(15),
+                          Expanded(
+                            child: LabeledFormField(
+                              readOnly: false,
+                              controller:
+                                  controller.stockOnHandController[index],
+                              label: 'Stock On Hand'.tr,
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return verticalSpace(12);
+                    },
+                    itemCount: controller.storageLocationCount,
+                  );
+                }),
+                verticalSpace(8),
+                Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: RectangledFilterCard(
+                    width: 200.w,
+                    image: AppAssets.add,
+                    text: 'Add More Storage'.tr,
+                    textColor: AppColors.white,
+                    color: AppColors.black,
+                    onTap: () {
+                      controller.addMoreStorage();
                     },
                   ),
-                  const Spacer(),
-                  AppDefaultButton(
-                    text: 'Save'.tr,
-                    color: AppColors.primary,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  )
-                ],
-              ),
-            ],
-          ),
+                ),
+                verticalSpace(24),
+                Text(
+                  'Invoice'.tr,
+                  style: AppTextStyles.font24MediumBlackCairo,
+                ),
+                const ProductWarrantyAttachmentSection(),
+                verticalSpace(26),
+                Row(
+                  children: [
+                    AppDefaultButton(
+                      text: 'Discard',
+                      color: AppColors.grey,
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    const Spacer(),
+                    AppDefaultButton(
+                      text: 'Save'.tr,
+                      color: AppColors.primary,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    )
+                  ],
+                ),
+              ],
+            );
+          }),
         ));
   }
 }

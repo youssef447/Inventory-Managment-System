@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../../core/enums/requests_enums.dart';
 import '../../../../../core/helpers/date_time_helper.dart';
 import '../../domain/entity/consumables_entity.dart';
 import '../constants/consumables_id_constant.dart';
@@ -49,7 +50,7 @@ class ConsumablesController extends GetxController {
         brand: 'SafeHealth',
         dateReceived: DateTime(2023, 7, 10),
         quantity: '500',
-        unitOfMeasurement: 'pieces',
+        unitOfMeasurement: UnitOfMeasurement.gram,
         usageFrequency: 'daily',
         expirationDate: DateTime(2024, 7, 10),
         status: 'Returned',
@@ -63,7 +64,7 @@ class ConsumablesController extends GetxController {
         brand: 'CleanCo',
         dateReceived: DateTime(2023, 6, 15),
         quantity: '50',
-        unitOfMeasurement: 'liters',
+        unitOfMeasurement: UnitOfMeasurement.gram,
         usageFrequency: 'as needed',
         expirationDate: DateTime(2025, 6, 15),
         status: 'InUse',
@@ -77,7 +78,7 @@ class ConsumablesController extends GetxController {
         brand: 'MedBrand',
         dateReceived: DateTime(2023, 5, 20),
         quantity: '200',
-        unitOfMeasurement: 'pieces',
+        unitOfMeasurement: UnitOfMeasurement.gram,
         usageFrequency: 'daily',
         expirationDate: null,
         status: 'Expired',
@@ -96,7 +97,7 @@ class ConsumablesController extends GetxController {
     modelController.text = model.model;
     brandController.text = model.brand;
     quantityController.text = model.quantity;
-    unitOfMeasurementController.text = model.unitOfMeasurement;
+    unitOfMeasurementController.text = model.unitOfMeasurement.getName;
     usageFrequencyController.text = model.usageFrequency;
     dateReceivedController.text = DateTimeHelper.formatDate(
       model.dateReceived,
