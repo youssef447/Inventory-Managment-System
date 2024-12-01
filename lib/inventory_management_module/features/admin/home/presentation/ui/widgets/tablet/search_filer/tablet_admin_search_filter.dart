@@ -114,7 +114,7 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                           RectangledFilterCard(
                             width: 112.w,
                             image: AppAssets.filter,
-                            text: 'Filter',
+                            text: 'Filter'.tr,
                             textColor: AppColors.text,
                             color: AppColors.card,
                             onTap: () {

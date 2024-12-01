@@ -39,7 +39,7 @@ class ApprovalAdminCategoriesFilter extends GetView<AdminApprovalController> {
                     child: Padding(
                       padding: EdgeInsetsDirectional.only(end: last ? 0 : 37.w),
                       child: TabletCategoryFilterCard(
-                        count: 10,
+                        count: 6,
                         name: AdminApprovalCategories.categories[index],
                         selected:
                             controller.currentCategoryIndex.value == index,

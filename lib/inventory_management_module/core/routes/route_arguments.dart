@@ -13,6 +13,7 @@ abstract class RouteArguments {
   static const String supplier = 'supplier';
   static const String storage = 'storage';
   static const String adminAssetAssignedDetails = 'adminAssetAssignedDetails';
+  static const String adminAssetServiceHistoryDetails = 'adminAssetServiceHistoryDetails';
   static const String consumables = 'consumables';
   static const String adminConsumablesAssignedDetails = 'adminConsumablesAssignedDetails';
   static const String adminApprovalDetailsArg = 'adminApprovalDetailsArg';

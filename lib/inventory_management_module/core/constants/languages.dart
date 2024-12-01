@@ -102,6 +102,24 @@ class Languages extends Translations {
           "Assets ID": "Assets ID",
           "Date Receive": "Date Receive",
           'Delete': 'Delete',
+
+
+          "Add New Assets": "Add New Assets",
+          "Create Automatic IDs": "Create Automatic IDs",
+          "Order Id": "Order Id",
+          "Product Id": "Product Id",
+          "Product Type": "Product Type",
+          "Supplier": "Supplier",
+          "Reject Approve": "Reject Approve",
+          "Product ID": "Product ID",
+          "My Request": "My Request",
+          "Dashboard": "Dashboard",
+          "Products": "Products",
+          "Storage Location": "Storage Location",
+          "Product": "Product",
+
+
+
         },
 
         // ****************************************** ARABIC LANGUAGE ******************************************
@@ -198,6 +216,23 @@ class Languages extends Translations {
           "Assets ID": "معرف الأصول",
           "Date Receive": "تاريخ الاستلام",
           "Consumables Details": "تفاصيل المستهلكات",
+          "Add New Assets": "إضافة أصول جديدة",
+          "Create Automatic IDs": "إنشاء معرفات تلقائية",
+          "Order Id": "معرف الطلب",
+          "Product Id": "معرف المنتج",
+
+          "Product Type": "نوع المنتج",
+          "Supplier": "المورد",
+          "Reject Approve": "رفض/موافقة",
+          "Product ID": "معرف المنتج",
+          "My Request": "طلبي",
+          "Dashboard": "لوحة التحكم",
+          "Products": "المنتجات",
+          "Storage Location": "موقع التخزين",
+          "Product": "منتج",
+
+
+
         },
       };
 }

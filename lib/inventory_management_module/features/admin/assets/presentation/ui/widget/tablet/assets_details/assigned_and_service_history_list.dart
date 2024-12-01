@@ -16,7 +16,7 @@ import '../../../../../../../employee/home/presentation/ui/page/mobile/mobile_ho
 import '../../../../../../../products/presentation/ui/widgets/common/cards/instock_card.dart';
 import '../../../../controller/admin_assets_controller.dart';
 import '../cards/asset_assigned_user_card.dart';
-import '../cards/service_history.dart';
+import '../cards/service_history_card.dart';
 
 class TabletAssignedAndServiceHistoryList
     extends GetView<AdminAssetsController> {
@@ -122,7 +122,7 @@ class TabletAssignedAndServiceHistoryList
                   return controller.currentCategoryIndex.value == 0
                       ? AssetAssignedUserCard(
                       assignedUser: controller.dummyAssignedUsers[index],)
-                      : ServiceHistory(serviceEntity: controller.dummyServiceHistory[index]);
+                      : ServiceHistoryCard(serviceEntity: controller.dummyServiceHistory[index]);
                 },
               ),
             ))

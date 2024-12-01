@@ -4,8 +4,10 @@ import '../../features/admin/approval/presentation/ui/page/mobile/mobile_admin_h
 import '../../features/admin/approval/presentation/ui/page/tablet/tablet_admin_home_approval_page.dart';
 import '../../features/admin/assets/presentation/ui/pages/mobile/mobile_admin_asset_details.dart';
 import '../../features/admin/assets/presentation/ui/pages/mobile/mobile_admin_assigned_details.dart';
+import '../../features/admin/assets/presentation/ui/pages/mobile/mobile_service_history_page.dart';
 import '../../features/admin/assets/presentation/ui/pages/tablet/tablet_admin_asset_details_page.dart';
 import '../../features/admin/assets/presentation/ui/pages/tablet/tablet_admin_assigned_details.dart';
+import '../../features/admin/assets/presentation/ui/pages/tablet/tablet_service_history_page.dart';
 import '../../features/admin/consumable/presentation/ui/pages/mobile/mobile_admin_assigned_consumable_details.dart';
 import '../../features/admin/consumable/presentation/ui/pages/mobile/mobile_admin_consumable_details.dart';
 import '../../features/admin/consumable/presentation/ui/pages/tablet/tablet_admin_assigned_consumable_details.dart';
@@ -341,10 +343,12 @@ abstract class RouteGenerator {
         return _buildPageRoute(
           ResponsiveHelper(
             mobileWidget: MobileAdminAssignedConsumableDetails(
-              assignedUser: args[RouteArguments.adminConsumablesAssignedDetails],
+              assignedUser:
+                  args[RouteArguments.adminConsumablesAssignedDetails],
             ),
             tabletWidget: TabletAdminConsumableDetails(
-              assignedUser: args[RouteArguments.adminConsumablesAssignedDetails],
+              assignedUser:
+                  args[RouteArguments.adminConsumablesAssignedDetails],
             ),
           ),
           PageTransitionType.fade,
@@ -354,6 +358,17 @@ abstract class RouteGenerator {
           const ResponsiveHelper(
             mobileWidget: MobileAdminHomeApprovalPage(),
             tabletWidget: TabletAdminHomeApprovalPage(),
+          ),
+          PageTransitionType.fade,
+        );
+      case Routes.adminAssetServiceHistoryDetails:
+        return _buildPageRoute(
+          ResponsiveHelper(
+            mobileWidget: MobileServiceHistoryPage(
+                serviceEntity: args[RouteArguments.adminAssetServiceHistoryDetails]),
+            tabletWidget:  TabletServiceHistoryPage(
+                serviceEntity:
+                    args[RouteArguments.adminAssetServiceHistoryDetails]),
           ),
           PageTransitionType.fade,
         );

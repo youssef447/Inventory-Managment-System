@@ -3,6 +3,7 @@ import 'package:inventory_management/inventory_management_module/features/employ
 
 import '../../../employee/home/domain/user_entity.dart';
 import '../../../products/domain/product_entity.dart';
+import 'maintenance_entity.dart';
 
 class ServiceEntity {
   UserEntity userEntity = UserEntity(
@@ -10,17 +11,37 @@ class ServiceEntity {
     lastName: 'Mohammed',
     id: '',
   );
-  AssetsEntity assetsEntity;
   String issueType;
-  DateTime assignedDate;
+  String? description;
+  String status;
+  DateTime requestRepairDate;
   DateTime returnDate;
   DateTime lastUpdate;
+  MaintenanceEntity maintenanceEntity;
+  String? serviceProvider;
+    String? firstName;
+    String? lastName;
+    String? descriptionOrIssueReported  ;
+    String? wasPartReplaced;
+    String? warrantyCoverage;
+    String? warrantyExpirationDate;
+    String? dateOfApproval;
 
   ServiceEntity({
-    required this.assignedDate,
+    required this.requestRepairDate,
     required this.returnDate,
     required this.lastUpdate,
-    required this.assetsEntity,
     required this.issueType,
+    required this.status,
+    required this.maintenanceEntity,
+    this.description,
+    this.serviceProvider,
+    this.firstName,
+    this.lastName,
+    this.descriptionOrIssueReported,
+    this.wasPartReplaced,
+    this.warrantyCoverage,
+    this.warrantyExpirationDate,
+    this.dateOfApproval,
   });
 }

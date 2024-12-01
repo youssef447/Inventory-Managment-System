@@ -39,15 +39,15 @@ class TabletProductCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             DefaultRichText(
-                              label: 'Product ID',
+                              label: 'Product ID'.tr,
                               value: product.id,
                             ),
                             DefaultRichText(
-                              label: 'Product Type',
+                              label: 'Product Type'.tr,
                               value: product.productType.getName,
                             ),
                             DefaultRichText(
-                              label: 'Supplier',
+                              label: 'Supplier'.tr,
                               value: product.supplier.supplierName,
                               style:
                                   AppTextStyles.font12BlackMediumCairo.copyWith(
@@ -61,7 +61,7 @@ class TabletProductCard extends StatelessWidget {
                       ),
                       DefaultRichText(
                         end: true,
-                        label: 'Status',
+                        label: 'Status'.tr,
                         labelStyle:
                             AppTextStyles.font10SecondaryBlackCairoMedium,
                         value: product.stockStatus.getName,

@@ -13,21 +13,20 @@ import '../../../../../../../../core/widgets/default_rich_text.dart';
 import '../../../../../../../employee/requests/entities/request_entity.dart';
 import '../../../../../../../products/domain/assigned_user_products_entity.dart';
 
-class ServiceHistory extends StatelessWidget {
+class ServiceHistoryCard extends StatelessWidget {
   final ServiceEntity serviceEntity;
-  const ServiceHistory({super.key, required this.serviceEntity});
+  const ServiceHistoryCard({super.key, required this.serviceEntity});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        // Get.toNamed(
-        //     Routes.adminAssetAssignedDetails,
-        //     arguments: {
-        //       RouteArguments.adminAssetAssignedDetails: serviceEntity,
-        //     }
-        // );
-
+        Get.toNamed(
+            Routes.adminAssetServiceHistoryDetails,
+            arguments: {
+              RouteArguments.adminAssetServiceHistoryDetails: serviceEntity,
+            }
+        );
       },
       child: Container(
         decoration: BoxDecoration(
@@ -72,31 +71,30 @@ class ServiceHistory extends StatelessWidget {
                         ),
                         horizontalSpace(2),
                         DefaultRichText(
-                            label: 'Status',
+                            label: 'Status'.tr,
                             labelStyle:
                             AppTextStyles.font14SecondaryBlackCairoMedium,
                             style: AppTextStyles.font14SecondaryBlackCairoMedium
                                 .copyWith(
-                              color: serviceEntity.assetsEntity.status.getColor,
+                              color: serviceEntity.status.getColor,
                             ),
-                            value: serviceEntity.assetsEntity.status),
+                            value: serviceEntity.status),
                       ]),
                 ),
               ],
             ),
             verticalSpace(5), Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 DefaultRichText(
-                  label: 'Return Date',
+                  label: 'Request Repair Date'.tr,
                   value: DateTimeHelper.formatDate(
-                    serviceEntity.returnDate,
+                    serviceEntity.requestRepairDate,
                   ),
                 ),
                 DefaultRichText(
-                  label: 'Return Date',
-                  value: DateTimeHelper.formatDate(
-                    serviceEntity.returnDate,
-                  ),
+                  label: 'Issue Type'.tr,
+                  value:   serviceEntity.issueType,
                 ),
               ],
             ),

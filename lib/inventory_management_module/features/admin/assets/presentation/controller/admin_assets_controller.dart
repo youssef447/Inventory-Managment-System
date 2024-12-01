@@ -16,6 +16,7 @@ import '../../../../products/domain/subEntities/contract_details_entity.dart';
 import '../../../../products/enums/product_enums.dart';
 import '../../../storage/domain/storage_location_entity.dart';
 import '../../../suppliers/domain/supplier_entity.dart';
+import '../../domin/maintenance_entity.dart';
 import '../../domin/service_entity.dart';
 
 class AdminAssetsController extends GetxController {
@@ -51,41 +52,41 @@ class AdminAssetsController extends GetxController {
   TextEditingController returnDateController = TextEditingController();
   TextEditingController deliveryMethodController = TextEditingController();
 
+  //------------- TextEditingController for ServiceHistory
+  TextEditingController issueTypeController = TextEditingController();
+  TextEditingController requestRepairDateController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController maintenanceIDController = TextEditingController();
+  TextEditingController maintenanceStartDateController = TextEditingController();
+  TextEditingController maintenanceEndDateController = TextEditingController();
+  TextEditingController nextScheduledMaintenanceController = TextEditingController();
+  TextEditingController serviceProviderController = TextEditingController();
+  TextEditingController serviceProviderFirstNameController = TextEditingController();
+  TextEditingController serviceProviderLastNameController = TextEditingController();
+  TextEditingController descriptionOrIssueReportedController = TextEditingController();
+  TextEditingController wasAPartReplacedController = TextEditingController();
+  TextEditingController warrantyCoverageController = TextEditingController();
+  TextEditingController warrantyExpirationDateController = TextEditingController();
+  TextEditingController dateOfApprovalController = TextEditingController();
+
   //dummy in stock data (get by id from backend)
   final List<ServiceEntity> dummyServiceHistory = [
     ServiceEntity(
-      assetsEntity: AssetsEntity(
-          assetName: 'Dell GZ 15',
-          category: 'Electronics',
-          subcategory: 'Computer',
-          model: 'GZ 15',
-          dateReceived: DateTime.now(),
-          quantity: '2',
-          status: 'InUse',
-          brand: 'Dell',
-        ),
-      assignedDate:  DateTime.now(),
+      requestRepairDate:  DateTime.now(),
       returnDate:  DateTime.now(),
       lastUpdate:  DateTime.now(),
       issueType: 'Mechanical',
-    ),
-    ServiceEntity(
-      assetsEntity: AssetsEntity(
-        assetName: 'Dell GZ 15',
-        category: 'Electronics',
-        subcategory: 'Computer',
-        model: 'GZ 15',
-        dateReceived: DateTime.now(),
-        quantity: '2',
-        status: 'InUse',
-        brand: 'Dell',
-      ),
-      assignedDate:  DateTime.now(),
-      returnDate:  DateTime.now(),
-      lastUpdate:  DateTime.now(),
-      issueType: 'Mechanical',
+      status: 'Pending',
+       maintenanceEntity:  MaintenanceEntity(
+           maintenanceStartDate: DateTime.now(),
+       maintenanceEndDate: DateTime.now(),
+        nextScheduledMaintenance : DateTime.now(),
+        requestedMaintenance : DateTime.now(),
+         maintenanceSchedule : DateTime.now(),
+       )
     ),
   ];
+
 
   List<AssignedUserProductsEntity> dummyAssignedUsers = [
     AssignedUserProductsEntity(

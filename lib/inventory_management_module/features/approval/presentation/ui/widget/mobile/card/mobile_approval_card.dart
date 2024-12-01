@@ -71,13 +71,13 @@ class MobileApprovalCard extends GetView<ApprovalController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       DefaultRichText(
-                          label: 'Subcategory', value: list[index].subcategory),
+                          label: 'Subcategory'.tr, value: list[index].subcategory),
                       DefaultRichText(
-                          label: 'Model', value: list[index].model),
+                          label: 'Model'.tr, value: list[index].model),
                       DefaultRichText(
-                          label: 'Brand', value: list[index].brand),
+                          label: 'Brand'.tr, value: list[index].brand),
                       DefaultRichText(
-                          label: 'Quantity',
+                          label: 'Quantity'.tr,
                           value: list[index].quantity.toString()),
                     ]),
               )

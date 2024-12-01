@@ -93,7 +93,7 @@ class TabletAdminAssignedDetails extends StatelessWidget {
                          return const MaintenanceCard();
                           },
                         ),
-                      ) : SizedBox();
+                      ) : const SizedBox();
                     }
                   ),
 

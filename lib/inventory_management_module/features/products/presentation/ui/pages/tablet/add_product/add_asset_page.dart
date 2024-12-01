@@ -108,7 +108,7 @@ class AddAssetPage extends GetView<AddProductController> {
                   Expanded(
                     child: Obx(() {
                       return LabeledDropdownField(
-                        label: 'Category'.tr,
+                        label: 'ProductId'.tr,
                         value: controller.categoryValue.value,
                         textButton: controller.categoryValue.value,
                         onChanged: (value) {

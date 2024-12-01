@@ -61,10 +61,10 @@ class TabletAdminConsumableDetails extends StatelessWidget {
                   verticalSpace(
                     context.isLandscapee ? 26 : 38,
                   ),
-                  Text(
-                    'Inquiries And Comments'.tr,
-                    style: AppTextStyles.font22BlackBoldCairo,
-                  ),
+                  // Text(
+                  //   'Inquiries And Comments'.tr,
+                  //   style: AppTextStyles.font22BlackBoldCairo,
+                  // ),
                  verticalSpace(13),
                   // InquiryChatCard(
                   //   model: model,

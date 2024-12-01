@@ -92,7 +92,6 @@ class MobileAdminAssignedDetails extends StatelessWidget {
                         }
                     ),
 
-
                     verticalSpace(
                       context.isLandscapee ? 26 : 38,
                     ),
