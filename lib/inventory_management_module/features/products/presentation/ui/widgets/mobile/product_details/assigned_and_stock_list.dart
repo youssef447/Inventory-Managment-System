@@ -80,6 +80,12 @@ class MobileAssignedAndStockList extends GetView<ProductsController> {
                 SquaredChipCard(
                   icon: AppAssets.filter,
                   color: AppColors.card,
+                  onTap: () {
+                    if (controller.currentCategoryIndex.value == 0) {
+                      GetDialogHelper.generalDialog(
+                          child: const AssignFilterDialog(), context: context);
+                    }
+                  },
                 )
               ],
             ),

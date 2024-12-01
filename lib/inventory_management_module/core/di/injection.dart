@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import '../../features/admin/approval/presentation/controller/admin_approval_controller.dart';
 import '../../features/admin/consumable/presentation/controller/admin_consumable_controller.dart';
 import '../../features/admin/dashboard/presentaton/controller/dashboard_controller.dart';
+import '../../features/admin/invoice/presentation/controller/invoices_controller.dart';
 import '../../features/admin/orders/presentation/controller/new_order_contrller.dart';
 import '../../features/admin/orders/presentation/controller/new_order_form_controller.dart';
 import '../../features/admin/orders/presentation/controller/orders_controller.dart';
@@ -57,5 +58,5 @@ configurationDependencies() {
   Get.lazyPut(() => StorageController(), fenix: true);
   Get.lazyPut(() => ConsumableAssetsController(), fenix: true);
   Get.lazyPut(() => AdminApprovalController(), fenix: true);
-
+  Get.lazyPut(() => InvoicesController(), fenix: true);
 }

@@ -47,9 +47,12 @@ class MobileStoragePage extends StatelessWidget {
                               ..isEditable = false,
                           );
 
-                          context.navigateTo(Routes.supplierForm, arguments: {
-                            RouteArguments.storage: controller.storages[index]
-                          });
+                          context.navigateTo(
+                            Routes.storageForm,
+                            arguments: {
+                              RouteArguments.storage: controller.storages[index]
+                            },
+                          );
                         },
                         child: MobileStorageCard(
                           storage: controller.storages[index],

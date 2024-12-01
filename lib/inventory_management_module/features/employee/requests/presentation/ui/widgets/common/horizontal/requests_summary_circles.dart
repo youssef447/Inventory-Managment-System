@@ -29,7 +29,7 @@ class HorizontalRequstsSummaryCircles extends GetView<RequestsController> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: List.generate(
-                RequestStatus.values.length - 1,
+                RequestStatus.values.length - 2,
                 (index) {
                   return Row(
                     children: [
@@ -39,6 +39,8 @@ class HorizontalRequstsSummaryCircles extends GetView<RequestsController> {
                             RequestStatus.values[index].getName.tr.getColor,
                         child: SvgPicture.asset(
                           RequestStatus.values[index].getAsset,
+                          width: index == 0 ? 24.w : 16.w,
+                          height: index == 0 ? 24.h : 16.h,
                         ),
                       ),
                       horizontalSpace(10),

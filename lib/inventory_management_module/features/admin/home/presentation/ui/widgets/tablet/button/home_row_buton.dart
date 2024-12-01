@@ -17,7 +17,7 @@ class HomeAdminRowButton extends StatelessWidget {
         ? Row(
             children: [
               AppDefaultButton(
-                text: 'My Request'.tr,
+                text: 'My Requests'.tr,
                 onPressed: () {
                   context.navigateTo(Routes.home);
                 },

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 import '../../../../../../../../core/enums/requests_enums.dart';
 
 import '../../../../../../../../core/constants/app_assets.dart';
@@ -23,7 +24,7 @@ class FilterDialog extends GetView<FilterController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: Get.width * 0.6,
+        width: context.isTablett ? 411.w : 343.w,
         padding: EdgeInsets.symmetric(
           horizontal: 16.w,
           vertical: 16.h,
@@ -32,10 +33,8 @@ class FilterDialog extends GetView<FilterController> {
           color: AppColors.dialog,
           borderRadius: BorderRadius.circular(8.r),
         ),
-        constraints: BoxConstraints(
-          maxHeight: Get.height * 0.35,
-        ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Row(
               children: [
@@ -116,15 +115,22 @@ class FilterDialog extends GetView<FilterController> {
               ],
             ),
             verticalSpace(12),
-            Expanded(
-              child: LabeledFormField(
-                controller: controller.requestedDateController,
-                readOnly: false,
-                date: true,
-                label: 'Expected Delivery'.tr,
-                hintText: 'Expected Delivery'.tr,
-              ),
+            Row(
+              children: [
+                Expanded(
+                  child: LabeledFormField(
+                    controller: controller.requestedDateController,
+                    readOnly: false,
+                    date: true,
+                    label: 'Expected Delivery'.tr,
+                    hintText: 'Expected Delivery'.tr,
+                  ),
+                ),
+                horizontalSpace(15),
+                const Spacer(),
+              ],
             ),
+            verticalSpace(24),
             Row(
               children: [
                 Expanded(

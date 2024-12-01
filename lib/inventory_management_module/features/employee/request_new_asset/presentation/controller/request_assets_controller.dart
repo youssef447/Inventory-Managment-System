@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../../core/constants/app_assets.dart';
 import '../../../../../core/enums/requests_enums.dart';
+import '../../../../../core/enums/requires_approval.dart';
 import '../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../Assets/domain/entity/assets_entity.dart';
@@ -171,5 +172,28 @@ class RequestAssetsController extends GetxController {
     brandController.text = model.brand;
     availabilityController.text = model.availableQuantity.toString();
     quantityController.text = model.quantity;
+  }
+
+//------------Filter ------------
+  Rxn<RequestStatus>? selectedReqStatus = Rxn<RequestStatus>();
+  Rxn<RequiresApproval>? selectedRequiresApproval = Rxn<RequiresApproval>();
+
+  updateReqStatus(RequestStatus value) {
+    applyEnabled.value = true;
+    selectedReqStatus?.value = value;
+  }
+
+  updateRequiresApproval(RequiresApproval value) {
+    applyEnabled.value = true;
+    selectedRequiresApproval?.value = value;
+  }
+
+  Rx<bool> applyEnabled = false.obs;
+  applyFilter() {}
+
+  resetFilter() {
+    selectedReqStatus?.value = null;
+    selectedRequiresApproval?.value = null;
+    applyEnabled.value = false;
   }
 }

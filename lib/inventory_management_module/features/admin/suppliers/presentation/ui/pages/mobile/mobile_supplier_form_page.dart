@@ -49,7 +49,9 @@ class MobileSupplierFormPage extends GetView<SupplierFormController> {
               child: SingleChildScrollView(
                 child: Column(children: [
                   MobileCustomAppbar(
-                    title: 'Order Form'.tr,
+                    title: supplier == null
+                        ? 'Supplier Form'.tr
+                        : 'Supplier Details'.tr,
                   ),
                   verticalSpace(12),
                   GetBuilder<SupplierFormController>(

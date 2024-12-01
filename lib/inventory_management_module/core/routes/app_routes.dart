@@ -40,15 +40,15 @@ abstract class Routes {
   static const adminAssetServiceHistoryDetails =
       '$adminHome/adminAssetServiceHistoryDetails';
   static const employees = '$adminHome/employees';
+  static const invoices = '$adminHome/invoices';
   static const employeeDetails = '$employees/employeeDetails';
   static const employeeTrackRequestDetails =
       '$employeeDetails/trackRequestDetails';
 
   static const adminApproval = '$adminHome/adminApproval';
   static const adminConsumablesDetails = '$adminHome/adminConsumablesDetails';
-  static const adminConsumablesAssignedDetails = '$adminHome/adminConsumablesAssignedDetails';
+  static const adminConsumablesAssignedDetails =
+      '$adminHome/adminConsumablesAssignedDetails';
   static const adminHomeApproval = '$adminHome/adminHomeApproval';
-  static const adminApprovalDetails =
-      '$employeeDetails/adminApprovalDetails';
-
+  static const adminApprovalDetails = '$employeeDetails/adminApprovalDetails';
 }

@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../../../../../../core/enums/departments.dart';
 import '../../../../../../../core/extensions/extensions.dart';
+import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../features/admin/storage/presentation/controller/storage_form_controller.dart';
 
@@ -16,7 +17,10 @@ import '../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
 import '../../../../../../../core/widgets/fields/app_form_field.dart';
 import '../../../../../../employee/home/presentation/ui/widgets/common/vertical/squared_filter_card.dart';
 import '../../../../constants/storage_ids.dart';
+import 'filter_dialog.dart';
 
+//Youssef Ashraf
+///Objectives: This file is responsible for providing Employee Assignment sectionin Storage Form Page (Mobile-Tablet).
 class AssignEmployeeSection extends GetView<StorageFormController> {
   const AssignEmployeeSection({super.key});
 
@@ -74,14 +78,22 @@ class AssignEmployeeSection extends GetView<StorageFormController> {
                       textColor: AppColors.text,
                       color: AppColors.card,
                       onTap: () {
-                        // Open filter dialog
+                        GetDialogHelper.generalDialog(
+                          child: const AssignEmployeeFilterDialog(),
+                          context: context,
+                        );
                       },
                     ),
                   if (!context.isLandscapee)
                     SquaredChipCard(
                       icon: AppAssets.filter,
                       color: AppColors.card,
-                      onTap: () {},
+                      onTap: () {
+                        GetDialogHelper.generalDialog(
+                          child: const AssignEmployeeFilterDialog(),
+                          context: context,
+                        );
+                      },
                     ),
                 ],
               ),
@@ -126,18 +138,18 @@ class AssignEmployeeSection extends GetView<StorageFormController> {
                                     Text(
                                       '${controller.dummyUsers[index].firstName} ${controller.dummyUsers[index].lastName}',
                                       style:
-                                          AppTextStyles.font18BlackCairoMedium,
+                                          AppTextStyles.font14BlackCairoMedium,
                                     ),
                                     Text(
                                       controller
                                           .dummyUsers[index].department.getName,
-                                      style:
-                                          AppTextStyles.font18BlackCairoMedium,
+                                      style: AppTextStyles
+                                          .font14SecondaryBlackCairoRegular,
                                     ),
                                     Text(
                                       controller.dummyUsers[index].jobTitle,
-                                      style:
-                                          AppTextStyles.font18BlackCairoMedium,
+                                      style: AppTextStyles
+                                          .font14SecondaryBlackCairoRegular,
                                     ),
                                   ]),
                             ),

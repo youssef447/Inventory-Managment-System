@@ -75,7 +75,12 @@ class TabletAssignedAndStockList extends GetView<ProductsController> {
                 image: AppAssets.filter,
                 text: 'Filter',
                 color: AppColors.card,
-                onTap: () {},
+                onTap: () {
+                  if (controller.currentCategoryIndex.value == 0) {
+                    GetDialogHelper.generalDialog(
+                        child: const AssignFilterDialog(), context: context);
+                  }
+                },
               ),
             ],
           ),

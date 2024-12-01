@@ -13,6 +13,7 @@ class LabeledFormField extends StatelessWidget {
   final String? hintText;
   final bool? expands;
   final Color? backGroundColor;
+  final Function(DateTime)? onDateChanged;
   const LabeledFormField({
     super.key,
     required this.controller,
@@ -22,6 +23,7 @@ class LabeledFormField extends StatelessWidget {
     this.hintText,
     this.expands,
     required this.label,
+    this.onDateChanged,
   });
   final String label;
   final TextEditingController controller;
@@ -42,6 +44,7 @@ class LabeledFormField extends StatelessWidget {
                 width: double.infinity,
                 hintText: hintText ?? '${'Pick'.tr} $label',
                 backGroundColor: backGroundColor,
+                onDateChanged: onDateChanged,
               )
             : SizedBox(
                 height: expands ?? false ? 88.h : 44.h,

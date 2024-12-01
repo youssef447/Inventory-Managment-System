@@ -28,6 +28,7 @@ import '../../../../enums/product_enums.dart';
 import '../../../controller/products_controller.dart';
 import '../../widgets/common/cards/vertical_assigned_user_card.dart';
 import '../../widgets/common/cards/instock_card.dart';
+import '../../widgets/common/dialogs/assign_filter_dialog.dart';
 import 'mobile_add_product/mobile_add_asset_page.dart';
 part '../../widgets/mobile/product_details/product_details_card.dart';
 part '../../widgets/mobile/product_details/assigned_and_stock_list.dart';

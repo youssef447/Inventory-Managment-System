@@ -1,3 +1,4 @@
+import '../../../../../core/enums/category_subactegory.dart';
 import '../../../../../core/enums/requests_enums.dart';
 import '../../../requests/constants/ids_constants.dart';
 import 'package:flutter/material.dart';
@@ -86,5 +87,39 @@ class TrackRequestController extends GetxController {
         .update([RequestsIds.requestsPage, RequestsIds.summaryCircles]);
   }
 
-  //------------Inquiry Chat ------------
+  //----------------- Filter
+  TextEditingController startDateController = TextEditingController();
+  TextEditingController endDateController = TextEditingController();
+  Rxn<Category>? selectedCategory = Rxn<Category>();
+  Rxn<SubCategory>? selectedSubcategory = Rxn<SubCategory>();
+
+  updateSubCategory(SubCategory value) {
+    applyEnabled.value = true;
+    selectedSubcategory?.value = value;
+  }
+
+  updateStartDate(DateTime value) {
+    applyEnabled.value = true;
+  }
+
+  updateEndDate(DateTime value) {
+    applyEnabled.value = true;
+  }
+
+  updateCategory(Category value) {
+    applyEnabled.value = true;
+
+    selectedCategory?.value = value;
+  }
+
+  Rx<bool> applyEnabled = false.obs;
+  applyFilter() {}
+
+  resetFilter() {
+    startDateController.clear();
+    endDateController.clear();
+    selectedCategory?.value = null;
+    selectedSubcategory?.value = null;
+    applyEnabled.value = false;
+  }
 }

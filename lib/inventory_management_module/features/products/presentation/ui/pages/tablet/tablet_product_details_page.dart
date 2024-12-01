@@ -28,6 +28,7 @@ import '../../../controller/products_controller.dart';
 import '../../widgets/common/cards/horizontal_assigned_user_card.dart';
 import '../../widgets/common/cards/vertical_assigned_user_card.dart';
 import '../../widgets/common/cards/instock_card.dart';
+import '../../widgets/common/dialogs/assign_filter_dialog.dart';
 import 'edit/restocking_edit.dart';
 
 part '../../widgets/tablet/product_details/assigned_and_stock_list.dart';

@@ -1,4 +1,11 @@
-enum AdminCategories { products, assets, consumables, order , suppliers ,storageLocation}
+enum AdminCategories {
+  products,
+  assets,
+  consumables,
+  order,
+  suppliers,
+  storageLocation
+}
 
 extension AdminCategoriesExtension on AdminCategories {
   String get getName {
@@ -10,12 +17,11 @@ extension AdminCategoriesExtension on AdminCategories {
       case AdminCategories.consumables:
         return 'Consumables';
       case AdminCategories.order:
-        return 'Order';
+        return 'Orders';
       case AdminCategories.suppliers:
         return 'Suppliers';
       case AdminCategories.storageLocation:
-    return 'Storage Location';
-
+        return 'Storage Location';
     }
   }
 }

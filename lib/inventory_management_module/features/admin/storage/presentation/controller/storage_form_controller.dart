@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/features/employee/home/domain/user_entity.dart';
 
+import '../../../../../core/enums/departments.dart';
 import '../../../../products/enums/product_enums.dart';
 import '../../constants/storage_ids.dart';
 import '../../domain/storage_location_entity.dart';
@@ -47,6 +48,7 @@ class StorageFormController extends GetxController {
   List<String> dummyProducts = ['Product 1', 'Product 2'];
   List<String> dummyLocationTypes = ['Location Type 1', 'Location Type 2'];
   List<String> dummyEnvControlTypes = ['Env Control 1', 'Env Control 2'];
+
   List<UserEntity> dummyUsers = [
     UserEntity(
       firstName: 'Ahmed',
@@ -144,5 +146,32 @@ class StorageFormController extends GetxController {
     selectedEnvControlType = null;
     selectedProduct = null;
     selectedLocationType = null;
+  }
+
+  //-----------------------Filter---------------------
+  List<String> dummyjobTitles = ['job 1', 'job 2'];
+  Rxn<String>? selectedJobTitle = Rxn<String>();
+  Rxn<Departments>? selectedDepartment = Rxn<Departments>();
+  updateJobTitle(String v) {
+    applyEnabled.value = true;
+    selectedJobTitle?.value = v;
+  }
+
+  updateDep(Departments v) {
+    applyEnabled.value = true;
+
+    selectedDepartment?.value = v;
+  }
+
+  Rx<bool> applyEnabled = false.obs;
+  applyFilter() {
+    if (selectedDepartment?.value != null) {}
+    if (selectedJobTitle?.value != null) {}
+  }
+
+  resetFilter() {
+    selectedDepartment?.value = null;
+    selectedJobTitle?.value = null;
+    applyEnabled.value = false;
   }
 }

@@ -63,45 +63,56 @@ class MobileAdminEmployeesPage extends GetView<EmployeesController> {
                                   ],
                                 ),
                               )
-                            : SliverToBoxAdapter(
-                                child: MobileCustomAppbar(
-                                  title: 'Employees'.tr,
-                                ),
+                            : SliverMainAxisGroup(
+                                slivers: [
+                                  SliverToBoxAdapter(
+                                    child: MobileCustomAppbar(
+                                      title: 'Employees'.tr,
+                                    ),
+                                  ),
+                                  SliverToBoxAdapter(child: verticalSpace(35)),
+                                  SliverToBoxAdapter(
+                                    child: Text(
+                                      'Employees Information'.tr,
+                                      style:
+                                          AppTextStyles.font18BlackCairoMedium,
+                                    ),
+                                  ),
+                                  SliverToBoxAdapter(child: verticalSpace(8)),
+                                  const SliverToBoxAdapter(
+                                      child: MobileEmployeeSearchFilter()),
+                                  SliverToBoxAdapter(child: verticalSpace(8)),
+                                  SliverPadding(
+                                    padding: EdgeInsets.only(
+                                      bottom: 12.h,
+                                    ),
+                                    sliver: SliverList.separated(
+                                      separatorBuilder: (_, __) =>
+                                          verticalSpace(16),
+                                      itemBuilder: (context, index) {
+                                        return GestureDetector(
+                                          onTap: () {
+                                            context.navigateTo(
+                                                Routes.employeeDetails,
+                                                arguments: {
+                                                  RouteArguments.userEntity:
+                                                      controller
+                                                              .employeesFilters[
+                                                          index],
+                                                });
+                                          },
+                                          child: EmployeeCard(
+                                            employee: controller
+                                                .employeesFilters[index],
+                                          ),
+                                        );
+                                      },
+                                      itemCount:
+                                          controller.employeesFilters.length,
+                                    ),
+                                  )
+                                ],
                               ),
-                    SliverToBoxAdapter(child: verticalSpace(35)),
-                    SliverToBoxAdapter(
-                      child: Text(
-                        'Employees Information'.tr,
-                        style: AppTextStyles.font18BlackCairoMedium,
-                      ),
-                    ),
-                    SliverToBoxAdapter(child: verticalSpace(8)),
-                    const SliverToBoxAdapter(
-                        child: MobileEmployeeSearchFilter()),
-                    SliverToBoxAdapter(child: verticalSpace(8)),
-                    SliverPadding(
-                      padding: EdgeInsets.only(
-                        bottom: 12.h,
-                      ),
-                      sliver: SliverList.separated(
-                        separatorBuilder: (_, __) => verticalSpace(16),
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              context.navigateTo(Routes.employeeDetails,
-                                  arguments: {
-                                    RouteArguments.userEntity:
-                                        controller.employeesFilters[index],
-                                  });
-                            },
-                            child: EmployeeCard(
-                              employee: controller.employeesFilters[index],
-                            ),
-                          );
-                        },
-                        itemCount: controller.employeesFilters.length,
-                      ),
-                    )
                   ],
                 );
               }),

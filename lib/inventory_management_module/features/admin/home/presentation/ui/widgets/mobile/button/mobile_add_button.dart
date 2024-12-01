@@ -89,7 +89,9 @@ class MobileAddButton extends GetView<AdminController> {
                         width: 112.w,
                         text: 'Invoice'.tr,
                         color: AppColors.primary,
-                        onTap: () {},
+                        onTap: () {
+                          context.navigateTo(Routes.invoices);
+                        },
                       ),
                       const Spacer(),
                       RectangledFilterCard(

@@ -198,7 +198,12 @@ class TabletSearchFilter extends GetView<HomeController> {
                       SquaredChipCard(
                         icon: AppAssets.filter,
                         color: AppColors.card,
-                        onTap: () {},
+                        onTap: () {
+                          GetDialogHelper.generalDialog(
+                            child: const FilterDialog(),
+                            context: context,
+                          );
+                        },
                       ),
                       horizontalSpace(9),
                       if (isRequest)

@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/enums/departments.dart';
+
 import '../../../../core/enums/stock_enums.dart';
 import '../../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../../employee/consumables/domain/entity/consumables_entity.dart';
@@ -15,6 +17,8 @@ import '../../../admin/storage/domain/storage_location_entity.dart';
 import '../../../admin/suppliers/domain/supplier_entity.dart';
 import '../../enums/product_enums.dart';
 
+//Youssef Ashraf
+///Handles the logic of the Products Tab Page in Home
 class ProductsController extends GetxController {
   late List<ProductEntity> products;
   List<AssetsEntity> assets = [];
@@ -588,4 +592,30 @@ class ProductsController extends GetxController {
           ]),
     ),
   ];
+
+  List<String> dummyjobTitles = ['job 1', 'job 2'];
+  Rxn<String>? selectedJobTitle = Rxn<String>();
+  Rxn<Departments>? selectedDepartment = Rxn<Departments>();
+  updateJobTitle(String v) {
+    applyEnabled.value = true;
+    selectedJobTitle?.value = v;
+  }
+
+  updateDep(Departments v) {
+    applyEnabled.value = true;
+
+    selectedDepartment?.value = v;
+  }
+
+  Rx<bool> applyEnabled = false.obs;
+  applyFilter() {
+    if (selectedDepartment?.value != null) {}
+    if (selectedJobTitle?.value != null) {}
+  }
+
+  resetFilter() {
+    selectedDepartment?.value = null;
+    selectedJobTitle?.value = null;
+    applyEnabled.value = false;
+  }
 }

@@ -20,6 +20,7 @@ import '../../../../../../../products/presentation/ui/widgets/tablet/dialog/add_
 import '../../../../../../storage/presentation/controller/storage_form_controller.dart';
 import '../../../../../../suppliers/presentation/controller/supplier_form_controller.dart';
 import '../../../../controller/admin_controller.dart';
+import '../../common/admin_filter_dialog.dart';
 
 // Date: 26/11/2024
 // By: Mohamed Ashraf
@@ -55,7 +56,9 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                       width: 112.w,
                       text: 'Invoice'.tr,
                       color: AppColors.primary,
-                      onTap: () {},
+                      onTap: () {
+                        context.navigateTo(Routes.invoices);
+                      },
                     ),
                   ),
                 Row(
@@ -118,14 +121,20 @@ class TabletAdminSearchFilter extends GetView<AdminController> {
                             textColor: AppColors.text,
                             color: AppColors.card,
                             onTap: () {
-                              // Open filter dialog
+                              GetDialogHelper.generalDialog(
+                                  child: const AdminFilterDialog(),
+                                  context: context);
                             },
                           ),
                         if (!context.isLandscapee)
                           SquaredChipCard(
                             icon: AppAssets.filter,
                             color: AppColors.card,
-                            onTap: () {},
+                            onTap: () {
+                              GetDialogHelper.generalDialog(
+                                  child: const AdminFilterDialog(),
+                                  context: context);
+                            },
                           ),
                         horizontalSpace(9),
                         if (controller.currentCategoryIndex.value == 0)
