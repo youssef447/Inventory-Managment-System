@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/enums/inventory_categories.dart';
+import '../../../../../core/enums/inventory_categories.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../../../../core/enums/category_subactegory.dart';

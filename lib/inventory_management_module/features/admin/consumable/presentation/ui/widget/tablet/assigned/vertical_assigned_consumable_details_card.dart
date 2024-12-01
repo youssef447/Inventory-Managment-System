@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/get_dialog_helper.dart';
@@ -18,7 +18,8 @@ import '../../../../../../assets/presentation/ui/widget/tablet/dialog/retrieve_r
 class VerticalAssignedConsumableDetailsCard extends StatelessWidget {
   final ConsumablesEntity consumable;
 
-  const VerticalAssignedConsumableDetailsCard({super.key, required this.consumable});
+  const VerticalAssignedConsumableDetailsCard(
+      {super.key, required this.consumable});
 
   @override
   Widget build(BuildContext context) {
@@ -70,22 +71,20 @@ class VerticalAssignedConsumableDetailsCard extends StatelessWidget {
                     value: consumable.consumableId,
                   ),
                   verticalSpace(2),
-                  DefaultRichText(label: 'Category', value: consumable.category),
+                  DefaultRichText(
+                      label: 'Category', value: consumable.category),
                   verticalSpace(2),
                   DefaultRichText(
                       label: 'Subcategory', value: consumable.subcategory),
                   verticalSpace(2),
-
                   DefaultRichText(label: 'Model', value: consumable.model),
                   verticalSpace(2),
                   DefaultRichText(
                     label: 'Brand',
                     value: consumable.brand,
                   ),
-
                 ],
               ),
-
               const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,8 +98,8 @@ class VerticalAssignedConsumableDetailsCard extends StatelessWidget {
                     label: 'Expected Date',
                     value: consumable.expectedLifeTime != null
                         ? DateTimeHelper.formatDate(
-                      consumable.expectedLifeTime!,
-                    )
+                            consumable.expectedLifeTime!,
+                          )
                         : 'Not Applicable'.tr,
                   ),
                   verticalSpace(2),
@@ -108,8 +107,8 @@ class VerticalAssignedConsumableDetailsCard extends StatelessWidget {
                     label: 'Expected Lifetime',
                     value: consumable.expectedLifeTime != null
                         ? DateTimeHelper.formatDate(
-                      consumable.expectedLifeTime!,
-                    )
+                            consumable.expectedLifeTime!,
+                          )
                         : 'Not Applicable'.tr,
                   ),
                   verticalSpace(2),
@@ -160,7 +159,6 @@ class VerticalAssignedConsumableDetailsCard extends StatelessWidget {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-
                 children: [
                   verticalSpace(4),
                   Image.asset(
@@ -191,11 +189,12 @@ class VerticalAssignedConsumableDetailsCard extends StatelessWidget {
               ),
               Spacer(),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   GetDialogHelper.generalDialog(
                       context: context,
-                      child: const RetrieveRequestDialog(isAsset: false,)
-                  );
+                      child: const RetrieveRequestDialog(
+                        isAsset: false,
+                      ));
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -206,7 +205,7 @@ class VerticalAssignedConsumableDetailsCard extends StatelessWidget {
                     color: Colors.transparent,
                     border: Border.all(
                       color: AppColors.red, // Red color for the border
-                      width: 1.0,          // Border width
+                      width: 1.0, // Border width
                     ),
                   ),
                   child: Text(

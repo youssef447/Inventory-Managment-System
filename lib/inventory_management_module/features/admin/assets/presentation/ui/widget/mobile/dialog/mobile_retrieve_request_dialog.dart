@@ -1,11 +1,10 @@
 //by : Mohamed Ashraf
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
@@ -19,7 +18,7 @@ import '../../../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../controller/admin_assets_controller.dart';
 
 class MobileRetrieveRequestDialog extends GetView<AdminAssetsController> {
-  const MobileRetrieveRequestDialog({super.key ,this.isAsset = true });
+  const MobileRetrieveRequestDialog({super.key, this.isAsset = true});
   final bool isAsset;
 
   @override
@@ -59,7 +58,7 @@ class MobileRetrieveRequestDialog extends GetView<AdminAssetsController> {
               ),
               verticalSpace(24),
               LabeledFormField(
-              label: isAsset ? 'Asset Id' : 'Consumable Id' ,
+                label: isAsset ? 'Asset Id' : 'Consumable Id',
                 controller: controller.assetIdController,
               ),
               verticalSpace(16),
@@ -79,27 +78,27 @@ class MobileRetrieveRequestDialog extends GetView<AdminAssetsController> {
                 date: true,
               ),
               verticalSpace(24),
-        LabeledDropdownField(
-          label: 'Delivery Method'.tr,
-          value: controller.deliveryMethodValue.value,
-          textButton: controller.deliveryMethodValue.value,
-          onChanged: (value) {
-            controller.updateDeliveryMethodValue(value);
-          },
-          controller: controller.deliveryMethodController,
-          items: List.generate(controller.deliveryMethod.length,
-                (index) {
-              return DropdownMenuItem(
-                value: controller.deliveryMethod[index],
-                child: Text(
-                  controller.deliveryMethod[index],
-                  style:
-                  AppTextStyles.font14SecondaryBlackCairoMedium,
+              LabeledDropdownField(
+                label: 'Delivery Method'.tr,
+                value: controller.deliveryMethodValue.value,
+                textButton: controller.deliveryMethodValue.value,
+                onChanged: (value) {
+                  controller.updateDeliveryMethodValue(value);
+                },
+                controller: controller.deliveryMethodController,
+                items: List.generate(
+                  controller.deliveryMethod.length,
+                  (index) {
+                    return DropdownMenuItem(
+                      value: controller.deliveryMethod[index],
+                      child: Text(
+                        controller.deliveryMethod[index],
+                        style: AppTextStyles.font14SecondaryBlackCairoMedium,
+                      ),
+                    );
+                  },
                 ),
-              );
-            },
-          ),
-        ),
+              ),
               verticalSpace(24),
               Row(
                 children: [
@@ -110,23 +109,22 @@ class MobileRetrieveRequestDialog extends GetView<AdminAssetsController> {
                       Navigator.pop(context);
                     },
                   ),
-                     const Spacer(),
+                  const Spacer(),
                   AppDefaultButton(
                     text: 'Submit'.tr,
                     onPressed: () {
                       Navigator.pop(context);
                       GetDialogHelper.generalDialog(
                         context: Get.context!,
-                        child:  DefaultDialog(
+                        child: DefaultDialog(
                           title: 'Successful'.tr,
-                          subTitle: 'You Successfully Retrieved This Product'.tr,
+                          subTitle:
+                              'You Successfully Retrieved This Product'.tr,
                           lottieAsset: AppAssets.success,
                         ),
                       );
-
                     },
                   ),
-
                 ],
               )
             ],

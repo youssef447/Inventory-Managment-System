@@ -1,9 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
@@ -19,7 +18,8 @@ class VerticalAssetsDetailsCard extends StatelessWidget {
   const VerticalAssetsDetailsCard({super.key, required this.assets});
 
   @override
-  Widget build(BuildContext context) {;
+  Widget build(BuildContext context) {
+    ;
     return Container(
       decoration: BoxDecoration(
         color: AppColors.card,
@@ -57,7 +57,6 @@ class VerticalAssetsDetailsCard extends StatelessWidget {
                     AppAssets.qr,
                   ),
                   verticalSpace(8),
-
                 ],
               ),
               horizontalSpace(16),
@@ -98,8 +97,8 @@ class VerticalAssetsDetailsCard extends StatelessWidget {
                       label: 'Expected Date',
                       value: assets.expectedLifeTime != null
                           ? DateTimeHelper.formatDate(
-                        assets.expectedLifeTime!,
-                      )
+                              assets.expectedLifeTime!,
+                            )
                           : 'Not Applicable'.tr,
                     ),
                     verticalSpace(2),
@@ -107,8 +106,8 @@ class VerticalAssetsDetailsCard extends StatelessWidget {
                       label: 'Expected Lifetime',
                       value: assets.expectedLifeTime != null
                           ? DateTimeHelper.formatDate(
-                        assets.expectedLifeTime!,
-                      )
+                              assets.expectedLifeTime!,
+                            )
                           : 'Not Applicable'.tr,
                     ),
                     DefaultRichText(
@@ -128,7 +127,6 @@ class VerticalAssetsDetailsCard extends StatelessWidget {
                   ],
                 ),
               ),
-
               DefaultRichText(
                 label: 'Status',
                 value: assets.status,
@@ -152,8 +150,8 @@ class VerticalAssetsDetailsCard extends StatelessWidget {
                   ),
                   Text(
                     'Download As PNG',
-                    style: AppTextStyles.font14SecondaryBlackCairoRegular
-                        .copyWith(
+                    style:
+                        AppTextStyles.font14SecondaryBlackCairoRegular.copyWith(
                       decoration: TextDecoration.underline,
                       decorationColor: AppColors.blue,
                       color: AppColors.blue,

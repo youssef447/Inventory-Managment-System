@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../..//core/extensions/extensions.dart';
 import '../../../../../../../core/animations/size_animation.dart';
 import '../../../../../../../core/helpers/orientation_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
@@ -18,8 +18,7 @@ import '../../widget/tablet/assets_details/vertical_assets_details_card.dart';
 
 class MobileAdminAssetDetails extends StatelessWidget {
   final AssetsEntity assetsEntity;
-  const MobileAdminAssetDetails({super.key, required this.assetsEntity
-  });
+  const MobileAdminAssetDetails({super.key, required this.assetsEntity});
 
   @override
   Widget build(BuildContext context) {
@@ -27,28 +26,28 @@ class MobileAdminAssetDetails extends StatelessWidget {
         backgroundColor: AppColors.background,
         body: SafeArea(
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: context.isLandscapee ? 34.w : 16.w,
-                vertical: 16.h,
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    verticalSpace(16),
-                    MobileCustomAppbar(
-                      title: 'Asset Details'.tr,
-                    ),
-                    verticalSpace(12),
-                    SizeAnimation(
-                      child: MobileAssetsDetailsCard(assets: assetsEntity,)
-                    ),
-                    verticalSpace(22),
-                    const MobileAssignedAndServiceHistoryList(),
-                  ],
+          padding: EdgeInsets.symmetric(
+            horizontal: context.isLandscapee ? 34.w : 16.w,
+            vertical: 16.h,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                verticalSpace(16),
+                MobileCustomAppbar(
+                  title: 'Asset Details'.tr,
                 ),
-              ),
-            ))
-    );
+                verticalSpace(12),
+                SizeAnimation(
+                    child: MobileAssetsDetailsCard(
+                  assets: assetsEntity,
+                )),
+                verticalSpace(22),
+                const MobileAssignedAndServiceHistoryList(),
+              ],
+            ),
+          ),
+        )));
   }
 }

@@ -1,7 +1,6 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
@@ -15,7 +14,6 @@ class MaintenanceCard extends StatelessWidget {
   const MaintenanceCard({
     super.key,
   });
-
 
   @override
   Widget build(BuildContext context) {
@@ -68,16 +66,16 @@ class MaintenanceCard extends StatelessWidget {
                         ),
                       ),
                       horizontalSpace(2),
-                      context.isTablett ? DefaultRichText(
-                          label: 'Status',
-                          labelStyle:
-                          AppTextStyles.font14SecondaryBlackCairoMedium,
-                          style: AppTextStyles.font14SecondaryBlackCairoMedium
-                              .copyWith(
-                            color: AppColors.green
-                          ),
-                          value: 'InUse'
-                      ) : SizedBox(),
+                      context.isTablett
+                          ? DefaultRichText(
+                              label: 'Status',
+                              labelStyle:
+                                  AppTextStyles.font14SecondaryBlackCairoMedium,
+                              style: AppTextStyles
+                                  .font14SecondaryBlackCairoMedium
+                                  .copyWith(color: AppColors.green),
+                              value: 'InUse')
+                          : SizedBox(),
                     ]),
               ),
             ],
@@ -89,28 +87,27 @@ class MaintenanceCard extends StatelessWidget {
                 label: 'Maintenance Start Date',
                 value: DateTimeHelper.formatDate(
                   DateTime.now(),
-                ),),
+                ),
+              ),
               DefaultRichText(
                 label: 'Maintenance End Date',
                 value: DateTimeHelper.formatDate(
                   DateTime.now(),
-                ),),
-
+                ),
+              ),
             ],
           ),
-           context.isTablett ? SizedBox() :  Align(
-             alignment: AlignmentDirectional.bottomEnd,
-             child: DefaultRichText(
-                 label: 'Status',
-                 labelStyle:
-                 AppTextStyles.font14SecondaryBlackCairoMedium,
-                 style: AppTextStyles.font14SecondaryBlackCairoMedium
-                     .copyWith(
-                     color: AppColors.green
-                 ),
-                 value: 'InUse'
-             ),
-           )
+          context.isTablett
+              ? SizedBox()
+              : Align(
+                  alignment: AlignmentDirectional.bottomEnd,
+                  child: DefaultRichText(
+                      label: 'Status',
+                      labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium,
+                      style: AppTextStyles.font14SecondaryBlackCairoMedium
+                          .copyWith(color: AppColors.green),
+                      value: 'InUse'),
+                )
         ],
       ),
     );

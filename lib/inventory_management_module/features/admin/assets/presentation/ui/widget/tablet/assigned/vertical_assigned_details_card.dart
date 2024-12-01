@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/features/employee/Assets/domain/entity/assets_entity.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
+import '../../../../../../../../features/employee/Assets/domain/entity/assets_entity.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/get_dialog_helper.dart';
@@ -77,32 +77,28 @@ class VerticalAssignedDetailsCard extends StatelessWidget {
                     labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium
                         .copyWith(color: AppColors.secondaryBlack),
                     style:
-                    AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
+                        AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
                       color: assets.status.getColor,
                     ),
                   ),
                   verticalSpace(2),
-
                 ],
               ),
               const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   DefaultRichText(label: 'Category', value: assets.category),
                   verticalSpace(2),
                   DefaultRichText(
                       label: 'Subcategory', value: assets.subcategory),
                   verticalSpace(2),
-
                   DefaultRichText(label: 'Model', value: assets.model),
                   verticalSpace(2),
                   DefaultRichText(
                     label: 'Brand',
                     value: assets.brand,
                   ),
-
                 ],
               ),
               const Spacer(),
@@ -118,8 +114,8 @@ class VerticalAssignedDetailsCard extends StatelessWidget {
                     label: 'Expected Date',
                     value: assets.expectedLifeTime != null
                         ? DateTimeHelper.formatDate(
-                      assets.expectedLifeTime!,
-                    )
+                            assets.expectedLifeTime!,
+                          )
                         : 'Not Applicable'.tr,
                   ),
                   verticalSpace(2),
@@ -127,8 +123,8 @@ class VerticalAssignedDetailsCard extends StatelessWidget {
                     label: 'Expected Lifetime',
                     value: assets.expectedLifeTime != null
                         ? DateTimeHelper.formatDate(
-                      assets.expectedLifeTime!,
-                    )
+                            assets.expectedLifeTime!,
+                          )
                         : 'Not Applicable'.tr,
                   ),
                   verticalSpace(2),
@@ -179,7 +175,6 @@ class VerticalAssignedDetailsCard extends StatelessWidget {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-
                 children: [
                   verticalSpace(4),
                   Image.asset(
@@ -210,11 +205,9 @@ class VerticalAssignedDetailsCard extends StatelessWidget {
               ),
               Spacer(),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   GetDialogHelper.generalDialog(
-                      context: context,
-                      child: const RetrieveRequestDialog()
-                  );
+                      context: context, child: const RetrieveRequestDialog());
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -225,7 +218,7 @@ class VerticalAssignedDetailsCard extends StatelessWidget {
                     color: Colors.transparent,
                     border: Border.all(
                       color: AppColors.red, // Red color for the border
-                      width: 1.0,          // Border width
+                      width: 1.0, // Border width
                     ),
                   ),
                   child: Text(

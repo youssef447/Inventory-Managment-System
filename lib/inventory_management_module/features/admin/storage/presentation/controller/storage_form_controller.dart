@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/features/employee/home/domain/user_entity.dart';
+import '../../../../../features/employee/home/domain/user_entity.dart';
 
 import '../../../../../core/enums/departments.dart';
 import '../../../../products/enums/product_enums.dart';

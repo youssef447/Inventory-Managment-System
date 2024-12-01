@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
@@ -15,35 +15,34 @@ import '../../../../../../../employee/home/presentation/ui/page/mobile/mobile_ho
 import '../../../../../../../employee/home/presentation/ui/widgets/common/vertical/squared_filter_card.dart';
 import '../../../../controller/admin_consumable_controller.dart';
 import '../../tablet/cards/consumable_assigned_user_card.dart';
+
 // by : Mohamed ashraf
-class MobileAssignedConsumable
-    extends GetView<ConsumableAssetsController> {
+class MobileAssignedConsumable extends GetView<ConsumableAssetsController> {
   const MobileAssignedConsumable({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Obx(() {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children:
-            List.generate(
-                controller.assignFilters.length, (index) {
-              return GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () {
-                  controller.updateCategoryIndex(index);
-                },
-                child: MobileCategoryFilterCard(
-                  count: 12,
-                  name: controller.assignFilters[index],
-                  selected: controller.currentCategoryIndex.value == index,
-                ),
-              );
-            }),
-          );
-        },
+        Obx(
+          () {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: List.generate(controller.assignFilters.length, (index) {
+                return GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
+                    controller.updateCategoryIndex(index);
+                  },
+                  child: MobileCategoryFilterCard(
+                    count: 12,
+                    name: controller.assignFilters[index],
+                    selected: controller.currentCategoryIndex.value == index,
+                  ),
+                );
+              }),
+            );
+          },
         ),
         verticalSpace(15),
         SlideAnimation(
@@ -68,8 +67,8 @@ class MobileAssignedConsumable
                       onChanged: (value) {},
                       contentPadding: context.isTablett
                           ? EdgeInsets.symmetric(
-                        vertical: 2.h,
-                      )
+                              vertical: 2.h,
+                            )
                           : null,
                       prefixIcon: SvgPicture.asset(
                         AppAssets.search,
@@ -96,13 +95,19 @@ class MobileAssignedConsumable
         ),
         verticalSpace(15),
         StaggeredGrid.count(
-          crossAxisCount: context.isTablet ? Get.width > 1200 ? 3 : 2 : 1,
+          crossAxisCount: context.isTablet
+              ? Get.width > 1200
+                  ? 3
+                  : 2
+              : 1,
           mainAxisSpacing: 15.h,
           crossAxisSpacing: context.isLandscapee ? 20.w : 36.w,
           children: List.generate(
             controller.dummyAssignedUsers.length,
-                (index) {
-              return  ConsumableAssignedUserCard(assignedUser: controller.dummyAssignedUsers[index],);
+            (index) {
+              return ConsumableAssignedUserCard(
+                assignedUser: controller.dummyAssignedUsers[index],
+              );
             },
           ),
         )

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../..//core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/routes/app_routes.dart';
@@ -18,43 +18,43 @@ class MobileAssetsAdminPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  return GetBuilder<ProductsController>(
+    return GetBuilder<ProductsController>(
         id: ProductsIds.productsTab,
         builder: (controller) {
           return controller.loading
               ? const SliverFillRemaining(
-            child: AppCircleProgress(),
-          )
+                  child: AppCircleProgress(),
+                )
               : controller.assets.isEmpty
-              ? const SliverFillRemaining(
-            child: NoDataGif(),
-          )
-              : SliverMainAxisGroup(slivers: [
-            SliverToBoxAdapter(child: verticalSpace(10)),
-            SliverPadding(
-              padding: EdgeInsets.only(
-                bottom: 12.h,
-              ),
-              sliver: SliverList.separated(
-                separatorBuilder: (_, __) => verticalSpace(16),
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      context.navigateTo(
-                          Routes.adminAssetDetails,
-                          arguments: {
-                            RouteArguments.asset: controller.assets[index],
-                          });
-                    },
-                    child: MobileAssetsAdminCard(
-                       index: index,
-                    ),
-                  );
-                },
-                itemCount: controller.assets.length,
-              ),
-            )
-          ]);
+                  ? const SliverFillRemaining(
+                      child: NoDataGif(),
+                    )
+                  : SliverMainAxisGroup(slivers: [
+                      SliverToBoxAdapter(child: verticalSpace(10)),
+                      SliverPadding(
+                        padding: EdgeInsets.only(
+                          bottom: 12.h,
+                        ),
+                        sliver: SliverList.separated(
+                          separatorBuilder: (_, __) => verticalSpace(16),
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                context.navigateTo(Routes.adminAssetDetails,
+                                    arguments: {
+                                      RouteArguments.asset:
+                                          controller.assets[index],
+                                    });
+                              },
+                              child: MobileAssetsAdminCard(
+                                index: index,
+                              ),
+                            );
+                          },
+                          itemCount: controller.assets.length,
+                        ),
+                      )
+                    ]);
         });
   }
 }

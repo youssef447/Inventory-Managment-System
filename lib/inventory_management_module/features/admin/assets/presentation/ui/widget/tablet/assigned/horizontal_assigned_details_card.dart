@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/features/employee/Assets/domain/entity/assets_entity.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
+import '../../../../../../../../features/employee/Assets/domain/entity/assets_entity.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/get_dialog_helper.dart';
@@ -78,13 +78,10 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  DefaultRichText(
-                      label: 'Category', value: assets.category),
+                  DefaultRichText(label: 'Category', value: assets.category),
                   verticalSpace(2),
-
                   DefaultRichText(
                       label: 'Subcategory', value: assets.subcategory),
-
                   DefaultRichText(label: 'Model', value: assets.model),
                   verticalSpace(2),
                   DefaultRichText(
@@ -92,7 +89,6 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
                     value: assets.brand,
                   ),
                   verticalSpace(2),
-
                   verticalSpace(2),
                 ],
               ),
@@ -110,8 +106,8 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
                     label: 'Expected Date',
                     value: assets.expectedLifeTime != null
                         ? DateTimeHelper.formatDate(
-                      assets.expectedLifeTime!,
-                    )
+                            assets.expectedLifeTime!,
+                          )
                         : 'Not Applicable'.tr,
                   ),
                   verticalSpace(2),
@@ -119,8 +115,8 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
                     label: 'Expected Lifetime'.tr,
                     value: assets.expectedLifeTime != null
                         ? DateTimeHelper.formatDate(
-                      assets.expectedLifeTime!,
-                    )
+                            assets.expectedLifeTime!,
+                          )
                         : 'Not Applicable'.tr,
                   ),
                   DefaultRichText(
@@ -134,48 +130,48 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              Column(crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-              DefaultRichText(
-                label: 'Status',
-                value: assets.status,
-                labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium
-                    .copyWith(color: AppColors.secondaryBlack),
-                style:
-                    AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
-                  color: assets.status.getColor,
-                ),
-              ),
-              verticalSpace(4),
-              Image.asset(
-                AppAssets.qr,
-              ),
-              verticalSpace(8),
-              Row(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SvgPicture.asset(
-                    AppAssets.download,
-                    width: 16,
-                    height: 16,
-                    color: Colors.blue,
-                  ),
-                  horizontalSpace(4),
-                  Text(
-                    'Download As PNG'.tr,
-                    style: AppTextStyles.font14SecondaryBlackCairoRegular
-                        .copyWith(
-                      decoration: TextDecoration.underline,
-                      decorationColor: AppColors.blue,
-                      color: AppColors.blue,
+                  DefaultRichText(
+                    label: 'Status',
+                    value: assets.status,
+                    labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium
+                        .copyWith(color: AppColors.secondaryBlack),
+                    style:
+                        AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
+                      color: assets.status.getColor,
                     ),
                   ),
+                  verticalSpace(4),
+                  Image.asset(
+                    AppAssets.qr,
+                  ),
+                  verticalSpace(8),
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        AppAssets.download,
+                        width: 16,
+                        height: 16,
+                        color: Colors.blue,
+                      ),
+                      horizontalSpace(4),
+                      Text(
+                        'Download As PNG'.tr,
+                        style: AppTextStyles.font14SecondaryBlackCairoRegular
+                            .copyWith(
+                          decoration: TextDecoration.underline,
+                          decorationColor: AppColors.blue,
+                          color: AppColors.blue,
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               )
-                              ],
-                            )
             ],
           ),
-
           Row(
             mainAxisAlignment: context.isLandscapee
                 ? MainAxisAlignment.start
@@ -202,37 +198,33 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
           const ApprovalCycle(),
           verticalSpace(10),
           Align(
-              alignment: AlignmentDirectional.bottomEnd,
-              child:  GestureDetector(
-                onTap: (){
-                  GetDialogHelper.generalDialog(
-                    context: context,
-                    child: const RetrieveRequestDialog()
-                  );
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 40.h,
-                  width: 110.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.r),
-                    color: Colors.transparent,
-                    border: Border.all(
-                      color: AppColors.red, // Red color for the border
-                      width: 1.0,          // Border width
-                    ),
+            alignment: AlignmentDirectional.bottomEnd,
+            child: GestureDetector(
+              onTap: () {
+                GetDialogHelper.generalDialog(
+                    context: context, child: const RetrieveRequestDialog());
+              },
+              child: Container(
+                alignment: Alignment.center,
+                height: 40.h,
+                width: 110.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.r),
+                  color: Colors.transparent,
+                  border: Border.all(
+                    color: AppColors.red, // Red color for the border
+                    width: 1.0, // Border width
                   ),
-                  child: Text(
-                    'Retrieve'.tr,
-                    style: AppTextStyles.font16BlackMediumCairo.copyWith(
-                      color: AppColors.red,
-                      fontSize: 19.sp,
-                    ),
+                ),
+                child: Text(
+                  'Retrieve'.tr,
+                  style: AppTextStyles.font16BlackMediumCairo.copyWith(
+                    color: AppColors.red,
+                    fontSize: 19.sp,
                   ),
                 ),
               ),
-
-
+            ),
           )
         ],
       ),

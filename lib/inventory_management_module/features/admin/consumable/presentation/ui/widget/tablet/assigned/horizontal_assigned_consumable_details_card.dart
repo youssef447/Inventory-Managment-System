@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/features/employee/consumables/domain/entity/consumables_entity.dart';
+import '../../../../../../../../core/enums/requests_enums.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
+import '../../../../../../../../features/employee/consumables/domain/entity/consumables_entity.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/get_dialog_helper.dart';
@@ -20,7 +20,8 @@ import '../../../../../../assets/presentation/ui/widget/tablet/dialog/retrieve_r
 class HorizontalAssignedConsumableDetailsCard extends StatelessWidget {
   final ConsumablesEntity consumable;
 
-  const HorizontalAssignedConsumableDetailsCard({super.key, required this.consumable});
+  const HorizontalAssignedConsumableDetailsCard(
+      {super.key, required this.consumable});
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +73,8 @@ class HorizontalAssignedConsumableDetailsCard extends StatelessWidget {
                     value: consumable.consumableId,
                   ),
                   verticalSpace(2),
-                  DefaultRichText(label: 'Request type'.tr, value: 'Consumable Request'),
+                  DefaultRichText(
+                      label: 'Request type'.tr, value: 'Consumable Request'),
                   verticalSpace(2),
                   DefaultRichText(
                     label: 'Quantity'.tr,
@@ -85,22 +87,20 @@ class HorizontalAssignedConsumableDetailsCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   DefaultRichText(
-                      label: 'Consumable ID'.tr, value: consumable.consumableId),
+                      label: 'Consumable ID'.tr,
+                      value: consumable.consumableId),
                   verticalSpace(2),
                   DefaultRichText(
                       label: 'Category'.tr, value: consumable.category),
                   verticalSpace(2),
-
                   DefaultRichText(
                       label: 'Subcategory'.tr, value: consumable.subcategory),
-
                   verticalSpace(2),
                   DefaultRichText(
                     label: 'Brand'.tr,
                     value: consumable.brand,
                   ),
                   verticalSpace(2),
-
                   verticalSpace(2),
                 ],
               ),
@@ -114,8 +114,8 @@ class HorizontalAssignedConsumableDetailsCard extends StatelessWidget {
                     label: 'Expiration Date'.tr,
                     value: consumable.expirationDate != null
                         ? DateTimeHelper.formatDate(
-                      consumable.expirationDate!,
-                    )
+                            consumable.expirationDate!,
+                          )
                         : 'Not Applicable'.tr,
                   ),
                   verticalSpace(2),
@@ -123,16 +123,18 @@ class HorizontalAssignedConsumableDetailsCard extends StatelessWidget {
                     label: 'Expected Lifetime'.tr,
                     value: consumable.expectedLifeTime != null
                         ? DateTimeHelper.formatDate(
-                      consumable.expectedLifeTime!,
-                    )
+                            consumable.expectedLifeTime!,
+                          )
                         : 'Not Applicable'.tr,
                   ),
-                  DefaultRichText(label: 'Unit Of Measurement'.tr, value: consumable.unitOfMeasurement.getName),
-
+                  DefaultRichText(
+                      label: 'Unit Of Measurement'.tr,
+                      value: consumable.unitOfMeasurement.getName),
                 ],
               ),
               const Spacer(),
-              Column(crossAxisAlignment: CrossAxisAlignment.center,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   DefaultRichText(
                     label: 'Status',
@@ -140,7 +142,7 @@ class HorizontalAssignedConsumableDetailsCard extends StatelessWidget {
                     labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium
                         .copyWith(color: AppColors.secondaryBlack),
                     style:
-                    AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
+                        AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
                       color: consumable.status.getColor,
                     ),
                   ),
@@ -173,7 +175,6 @@ class HorizontalAssignedConsumableDetailsCard extends StatelessWidget {
               )
             ],
           ),
-
           Row(
             mainAxisAlignment: context.isLandscapee
                 ? MainAxisAlignment.start
@@ -185,7 +186,8 @@ class HorizontalAssignedConsumableDetailsCard extends StatelessWidget {
                     ? DateTimeHelper.formatDate(consumable.dateReturn!)
                     : DateTimeHelper.formatDate(DateTime.now()),
                 AppAssets.calender,
-              ), horizontalSpace(78),
+              ),
+              horizontalSpace(78),
               _BuildIconLabel(
                 'Expected Return'.tr,
                 consumable.dateReturn != null
@@ -193,50 +195,48 @@ class HorizontalAssignedConsumableDetailsCard extends StatelessWidget {
                     : DateTimeHelper.formatDate(DateTime.now()),
                 AppAssets.calender,
               ),
-                horizontalSpace(78),
+              horizontalSpace(78),
               _BuildIconLabel(
-                'Priority'.tr,'Urgent',
+                'Priority'.tr,
+                'Urgent',
                 AppAssets.system,
               ),
-
-
             ],
           ),
           verticalSpace(10),
           const ApprovalCycle(),
           verticalSpace(10),
           Align(
-              alignment: AlignmentDirectional.bottomEnd,
-              child:  GestureDetector(
-                onTap: (){
-                  GetDialogHelper.generalDialog(
+            alignment: AlignmentDirectional.bottomEnd,
+            child: GestureDetector(
+              onTap: () {
+                GetDialogHelper.generalDialog(
                     context: context,
-                    child: const RetrieveRequestDialog(isAsset: false,)
-                  );
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 40.h,
-                  width: 110.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.r),
-                    color: Colors.transparent,
-                    border: Border.all(
-                      color: AppColors.red, // Red color for the border
-                      width: 1.0,          // Border width
-                    ),
+                    child: const RetrieveRequestDialog(
+                      isAsset: false,
+                    ));
+              },
+              child: Container(
+                alignment: Alignment.center,
+                height: 40.h,
+                width: 110.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.r),
+                  color: Colors.transparent,
+                  border: Border.all(
+                    color: AppColors.red, // Red color for the border
+                    width: 1.0, // Border width
                   ),
-                  child: Text(
-                    'Retrieve'.tr,
-                    style: AppTextStyles.font16BlackMediumCairo.copyWith(
-                      color: AppColors.red,
-                      fontSize: 19.sp,
-                    ),
+                ),
+                child: Text(
+                  'Retrieve'.tr,
+                  style: AppTextStyles.font16BlackMediumCairo.copyWith(
+                    color: AppColors.red,
+                    fontSize: 19.sp,
                   ),
                 ),
               ),
-
-
+            ),
           )
         ],
       ),

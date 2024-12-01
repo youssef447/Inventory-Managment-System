@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/features/employee/consumables/domain/entity/consumables_entity.dart';
+import '../../../../../../../../core/enums/requests_enums.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
+import '../../../../../../../../features/employee/consumables/domain/entity/consumables_entity.dart';
 
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
@@ -20,7 +19,8 @@ class VerticalConsumableDetailsCard extends StatelessWidget {
   const VerticalConsumableDetailsCard({super.key, required this.consumable});
 
   @override
-  Widget build(BuildContext context) {;
+  Widget build(BuildContext context) {
+    ;
     return Container(
       decoration: BoxDecoration(
         color: AppColors.card,
@@ -58,7 +58,6 @@ class VerticalConsumableDetailsCard extends StatelessWidget {
                     AppAssets.qr,
                   ),
                   verticalSpace(8),
-
                 ],
               ),
               horizontalSpace(16),
@@ -75,7 +74,8 @@ class VerticalConsumableDetailsCard extends StatelessWidget {
                       value: consumable.consumableId,
                     ),
                     verticalSpace(2),
-                    DefaultRichText(label: 'Category', value: consumable.category),
+                    DefaultRichText(
+                        label: 'Category', value: consumable.category),
                     verticalSpace(2),
                     DefaultRichText(
                         label: 'Subcategory', value: consumable.subcategory),
@@ -85,8 +85,6 @@ class VerticalConsumableDetailsCard extends StatelessWidget {
                       label: 'Brand'.tr,
                       value: consumable.brand,
                     ),
-
-
                   ],
                 ),
               ),
@@ -95,12 +93,12 @@ class VerticalConsumableDetailsCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     verticalSpace(2),
                     DefaultRichText(
                         label: 'Expected Lifetime',
-                        value: DateTimeHelper.formatDate(consumable.expirationDate!,)
-                    ),
+                        value: DateTimeHelper.formatDate(
+                          consumable.expirationDate!,
+                        )),
                     verticalSpace(2),
                     DefaultRichText(
                       label: 'Unit Of Measurement'.tr,
@@ -129,7 +127,6 @@ class VerticalConsumableDetailsCard extends StatelessWidget {
                   ],
                 ),
               ),
-
               DefaultRichText(
                 label: 'Status',
                 value: consumable.status,
@@ -153,8 +150,8 @@ class VerticalConsumableDetailsCard extends StatelessWidget {
                   ),
                   Text(
                     'Download As PNG',
-                    style: AppTextStyles.font14SecondaryBlackCairoRegular
-                        .copyWith(
+                    style:
+                        AppTextStyles.font14SecondaryBlackCairoRegular.copyWith(
                       decoration: TextDecoration.underline,
                       decorationColor: AppColors.blue,
                       color: AppColors.blue,

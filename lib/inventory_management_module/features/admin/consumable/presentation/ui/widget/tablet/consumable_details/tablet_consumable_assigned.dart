@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
@@ -17,22 +17,18 @@ import '../../../../../../assets/presentation/ui/widget/tablet/cards/asset_assig
 import '../../../../controller/admin_consumable_controller.dart';
 import '../cards/consumable_assigned_user_card.dart';
 
-
-
-class TabletConsumableAssigned
-    extends GetView<ConsumableAssetsController> {
+class TabletConsumableAssigned extends GetView<ConsumableAssetsController> {
   const TabletConsumableAssigned({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Obx(() {
+        Obx(
+          () {
             return Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children:
-              List.generate(
-                  controller.assignFilters.length, (index) {
+              children: List.generate(controller.assignFilters.length, (index) {
                 return GestureDetector(
                   behavior: HitTestBehavior.opaque,
                   onTap: () {
@@ -71,8 +67,8 @@ class TabletConsumableAssigned
                       onChanged: (value) {},
                       contentPadding: context.isTablett
                           ? EdgeInsets.symmetric(
-                        vertical: 2.h,
-                      )
+                              vertical: 2.h,
+                            )
                           : null,
                       prefixIcon: SvgPicture.asset(
                         AppAssets.search,
@@ -110,8 +106,10 @@ class TabletConsumableAssigned
           crossAxisSpacing: context.isLandscapee ? 20.w : 36.w,
           children: List.generate(
             controller.dummyAssignedUsers.length,
-                (index) {
-              return  ConsumableAssignedUserCard(assignedUser: controller.dummyAssignedUsers[index],);
+            (index) {
+              return ConsumableAssignedUserCard(
+                assignedUser: controller.dummyAssignedUsers[index],
+              );
             },
           ),
         )

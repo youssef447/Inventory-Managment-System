@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/features/employee/Assets/domain/entity/assets_entity.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
+import '../../../../../../../../features/employee/Assets/domain/entity/assets_entity.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/get_dialog_helper.dart';
@@ -59,16 +59,16 @@ class MobileAssignedDetailsCard extends StatelessWidget {
                       DefaultRichText(
                         label: 'Status',
                         value: assets.status,
-                        labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium
+                        labelStyle: AppTextStyles
+                            .font14SecondaryBlackCairoMedium
                             .copyWith(color: AppColors.secondaryBlack),
-                        style:
-                        AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
+                        style: AppTextStyles.font14SecondaryBlackCairoMedium
+                            .copyWith(
                           color: assets.status.getColor,
                         ),
                       ),
                     ],
                   ),
-
                 ],
               ),
               verticalSpace(8),
@@ -92,8 +92,7 @@ class MobileAssignedDetailsCard extends StatelessWidget {
             value: assets.brand,
           ),
           verticalSpace(2),
-          DefaultRichText(
-              label: 'Subcategory', value: assets.subcategory),
+          DefaultRichText(label: 'Subcategory', value: assets.subcategory),
           verticalSpace(2),
           DefaultRichText(
             label: 'Expected Date',
@@ -177,8 +176,7 @@ class MobileAssignedDetailsCard extends StatelessWidget {
               horizontalSpace(4),
               Text(
                 'Download As PNG',
-                style: AppTextStyles.font14SecondaryBlackCairoRegular
-                    .copyWith(
+                style: AppTextStyles.font14SecondaryBlackCairoRegular.copyWith(
                   decoration: TextDecoration.underline,
                   decorationColor: AppColors.blue,
                   color: AppColors.blue,
@@ -186,11 +184,10 @@ class MobileAssignedDetailsCard extends StatelessWidget {
               ),
               Spacer(),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   GetDialogHelper.generalDialog(
                       context: context,
-                      child: const MobileRetrieveRequestDialog()
-                  );
+                      child: const MobileRetrieveRequestDialog());
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -201,7 +198,7 @@ class MobileAssignedDetailsCard extends StatelessWidget {
                     color: Colors.transparent,
                     border: Border.all(
                       color: AppColors.red, // Red color for the border
-                      width: 1.0,          // Border width
+                      width: 1.0, // Border width
                     ),
                   ),
                   child: Text(
@@ -215,8 +212,6 @@ class MobileAssignedDetailsCard extends StatelessWidget {
               )
             ],
           ),
-
-
         ],
       ),
     );

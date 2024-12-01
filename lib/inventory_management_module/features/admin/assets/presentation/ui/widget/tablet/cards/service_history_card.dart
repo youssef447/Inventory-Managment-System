@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/features/admin/assets/domin/service_entity.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
+import '../../../../../../../../features/admin/assets/domin/service_entity.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../../core/routes/app_routes.dart';
@@ -20,13 +20,10 @@ class ServiceHistoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Get.toNamed(
-            Routes.adminAssetServiceHistoryDetails,
-            arguments: {
-              RouteArguments.adminAssetServiceHistoryDetails: serviceEntity,
-            }
-        );
+      onTap: () {
+        Get.toNamed(Routes.adminAssetServiceHistoryDetails, arguments: {
+          RouteArguments.adminAssetServiceHistoryDetails: serviceEntity,
+        });
       },
       child: Container(
         decoration: BoxDecoration(
@@ -73,7 +70,7 @@ class ServiceHistoryCard extends StatelessWidget {
                         DefaultRichText(
                             label: 'Status'.tr,
                             labelStyle:
-                            AppTextStyles.font14SecondaryBlackCairoMedium,
+                                AppTextStyles.font14SecondaryBlackCairoMedium,
                             style: AppTextStyles.font14SecondaryBlackCairoMedium
                                 .copyWith(
                               color: serviceEntity.status.getColor,
@@ -83,7 +80,8 @@ class ServiceHistoryCard extends StatelessWidget {
                 ),
               ],
             ),
-            verticalSpace(5), Column(
+            verticalSpace(5),
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 DefaultRichText(
@@ -94,7 +92,7 @@ class ServiceHistoryCard extends StatelessWidget {
                 ),
                 DefaultRichText(
                   label: 'Issue Type'.tr,
-                  value:   serviceEntity.issueType,
+                  value: serviceEntity.issueType,
                 ),
               ],
             ),

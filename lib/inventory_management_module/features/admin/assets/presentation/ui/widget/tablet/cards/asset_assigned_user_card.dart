@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../../core/routes/app_routes.dart';
@@ -19,14 +19,10 @@ class AssetAssignedUserCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        context.navigateTo(
-            Routes.adminAssetAssignedDetails,
-            arguments: {
-              RouteArguments.adminAssetAssignedDetails: assignedUser,
-            }
-        );
-
+      onTap: () {
+        context.navigateTo(Routes.adminAssetAssignedDetails, arguments: {
+          RouteArguments.adminAssetAssignedDetails: assignedUser,
+        });
       },
       child: Container(
         decoration: BoxDecoration(
@@ -60,11 +56,15 @@ class AssetAssignedUserCard extends StatelessWidget {
                             children: [
                               Text(
                                 '${assignedUser.userEntity.firstName} ${assignedUser.userEntity.lastName}',
-                                style: context.isTablett ? AppTextStyles.font16BlackCairoRegular : AppTextStyles.font12BlackCairoRegular ,
+                                style: context.isTablett
+                                    ? AppTextStyles.font16BlackCairoRegular
+                                    : AppTextStyles.font12BlackCairoRegular,
                               ),
                               Text(
                                 assignedUser.userEntity.jobTitle,
-                                style: context.isTablett ? AppTextStyles.font16BlackCairoRegular : AppTextStyles.font12BlackCairoRegular ,
+                                style: context.isTablett
+                                    ? AppTextStyles.font16BlackCairoRegular
+                                    : AppTextStyles.font12BlackCairoRegular,
                               ),
                             ],
                           ),
@@ -72,9 +72,12 @@ class AssetAssignedUserCard extends StatelessWidget {
                         horizontalSpace(2),
                         DefaultRichText(
                             label: 'Status',
-                            labelStyle: context.isTablett ?   AppTextStyles.font14SecondaryBlackCairoMedium : AppTextStyles.font12SecondaryBlackCairoMedium,
-                            style: AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
-                              fontSize:    context.isTablett ?  14.sp :12.sp,
+                            labelStyle: context.isTablett
+                                ? AppTextStyles.font14SecondaryBlackCairoMedium
+                                : AppTextStyles.font12SecondaryBlackCairoMedium,
+                            style: AppTextStyles.font14SecondaryBlackCairoMedium
+                                .copyWith(
+                              fontSize: context.isTablett ? 14.sp : 12.sp,
                               color: assignedUser.productentity.status.getColor,
                             ),
                             value: assignedUser.productentity.status),
@@ -83,43 +86,45 @@ class AssetAssignedUserCard extends StatelessWidget {
               ],
             ),
             verticalSpace(5),
-            context.isLandscape ? Row(
-              children: [
-                Expanded(
-                  child: DefaultRichText(
-                    label: 'Assigned Date',
-                    value: DateTimeHelper.formatDate(
-                      assignedUser.assigneDate,
-                    ),
+            context.isLandscape
+                ? Row(
+                    children: [
+                      Expanded(
+                        child: DefaultRichText(
+                          label: 'Assigned Date',
+                          value: DateTimeHelper.formatDate(
+                            assignedUser.assigneDate,
+                          ),
+                        ),
+                      ),
+                      horizontalSpace(12),
+                      Expanded(
+                        child: DefaultRichText(
+                          label: 'Return Date',
+                          value: DateTimeHelper.formatDate(
+                            assignedUser.returnDate,
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      DefaultRichText(
+                        label: 'Assigned Date',
+                        value: DateTimeHelper.formatDate(
+                          assignedUser.assigneDate,
+                        ),
+                      ),
+                      DefaultRichText(
+                        label: 'Return Date',
+                        value: DateTimeHelper.formatDate(
+                          assignedUser.returnDate,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                horizontalSpace(12),
-                Expanded(
-                  child: DefaultRichText(
-                    label: 'Return Date',
-                    value: DateTimeHelper.formatDate(
-                      assignedUser.returnDate,
-                    ),
-                  ),
-                ),
-              ],
-            ) : Column(
-crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                DefaultRichText(
-                  label: 'Assigned Date',
-                  value: DateTimeHelper.formatDate(
-                    assignedUser.assigneDate,
-                  ),
-                ),
-                DefaultRichText(
-                  label: 'Return Date',
-                  value: DateTimeHelper.formatDate(
-                    assignedUser.returnDate,
-                  ),
-                ),
-              ],
-            ),
             verticalSpace(5),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,

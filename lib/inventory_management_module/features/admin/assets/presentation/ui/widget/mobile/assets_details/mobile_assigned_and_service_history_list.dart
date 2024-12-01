@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../../core/animations/horizontal_animation.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
@@ -16,6 +16,7 @@ import '../../../../../../../employee/home/presentation/ui/widgets/common/vertic
 import '../../../../controller/admin_assets_controller.dart';
 import '../../tablet/cards/asset_assigned_user_card.dart';
 import '../../tablet/cards/service_history_card.dart';
+
 // by : Mohamed ashraf
 class MobileAssignedAndServiceHistoryList
     extends GetView<AdminAssetsController> {
@@ -25,16 +26,16 @@ class MobileAssignedAndServiceHistoryList
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Obx(() {
+        Obx(
+          () {
             return Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children:
-              List.generate(
+              children: List.generate(
                   controller.assignServiceHistoryFilters.length, (index) {
                 return Padding(
                   padding: EdgeInsetsDirectional.only(
                       end: index ==
-                          controller.assignServiceHistoryFilters.length - 1
+                              controller.assignServiceHistoryFilters.length - 1
                           ? 0
                           : 35.w),
                   child: GestureDetector(
@@ -76,8 +77,8 @@ class MobileAssignedAndServiceHistoryList
                       onChanged: (value) {},
                       contentPadding: context.isTablett
                           ? EdgeInsets.symmetric(
-                        vertical: 2.h,
-                      )
+                              vertical: 2.h,
+                            )
                           : null,
                       prefixIcon: SvgPicture.asset(
                         AppAssets.search,
@@ -103,20 +104,25 @@ class MobileAssignedAndServiceHistoryList
           ),
         ),
         verticalSpace(15),
-        Obx(() =>
-            StaggeredGrid.count(
-              crossAxisCount: context.isTablet ? Get.width > 1200 ? 3 : 2 : 1,
+        Obx(() => StaggeredGrid.count(
+              crossAxisCount: context.isTablet
+                  ? Get.width > 1200
+                      ? 3
+                      : 2
+                  : 1,
               mainAxisSpacing: 15.h,
               crossAxisSpacing: context.isLandscapee ? 20.w : 36.w,
               children: List.generate(
                 controller.currentCategoryIndex.value == 0
                     ? controller.dummyAssignedUsers.length
                     : controller.dummyServiceHistory.length,
-                    (index) {
+                (index) {
                   return controller.currentCategoryIndex.value == 0
                       ? AssetAssignedUserCard(
-                      assignedUser: controller.dummyAssignedUsers[index],)
-                      : ServiceHistoryCard(serviceEntity: controller.dummyServiceHistory[index]);
+                          assignedUser: controller.dummyAssignedUsers[index],
+                        )
+                      : ServiceHistoryCard(
+                          serviceEntity: controller.dummyServiceHistory[index]);
                 },
               ),
             ))

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/features/employee/Assets/domain/entity/assets_entity.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
+import '../../../../../../../../features/employee/Assets/domain/entity/assets_entity.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
@@ -126,43 +126,44 @@ class HorizontalAssetsDetailsCard extends StatelessWidget {
               const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-              DefaultRichText(
-                label: 'Status'.tr,
-                value: assets.status,
-                labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium
-                    .copyWith(color: AppColors.secondaryBlack),
-                style: AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
-                  color: assets.status.getColor,
-                ),
-              ),
-              verticalSpace(4),
-              Image.asset(
-                AppAssets.qr,
-              ),
-              verticalSpace(8),
-              Row(
                 children: [
-                  SvgPicture.asset(
-                    AppAssets.download,
-                    width: 16,
-                    height: 16,
-                    color: Colors.blue,
-                  ),
-                  horizontalSpace(4),
-                  Text(
-                    'Download As PNG'.tr,
-                    style: AppTextStyles.font14SecondaryBlackCairoRegular
-                        .copyWith(
-                      decoration: TextDecoration.underline,
-                      decorationColor: AppColors.blue,
-                      color: AppColors.blue,
+                  DefaultRichText(
+                    label: 'Status'.tr,
+                    value: assets.status,
+                    labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium
+                        .copyWith(color: AppColors.secondaryBlack),
+                    style:
+                        AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
+                      color: assets.status.getColor,
                     ),
                   ),
+                  verticalSpace(4),
+                  Image.asset(
+                    AppAssets.qr,
+                  ),
+                  verticalSpace(8),
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        AppAssets.download,
+                        width: 16,
+                        height: 16,
+                        color: Colors.blue,
+                      ),
+                      horizontalSpace(4),
+                      Text(
+                        'Download As PNG'.tr,
+                        style: AppTextStyles.font14SecondaryBlackCairoRegular
+                            .copyWith(
+                          decoration: TextDecoration.underline,
+                          decorationColor: AppColors.blue,
+                          color: AppColors.blue,
+                        ),
+                      ),
+                    ],
+                  )
                 ],
               )
-                              ],
-                            )
             ],
           ),
           verticalSpace(2),

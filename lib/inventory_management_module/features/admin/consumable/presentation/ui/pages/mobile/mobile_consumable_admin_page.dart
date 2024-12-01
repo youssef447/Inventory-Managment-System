@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../..//core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/routes/app_routes.dart';
@@ -24,39 +24,39 @@ class MobileConsumableAdminPage extends StatelessWidget {
         builder: (controller) {
           return controller.loading
               ? const SliverFillRemaining(
-            child: AppCircleProgress(),
-          )
+                  child: AppCircleProgress(),
+                )
               : controller.consumables.isEmpty
-              ? const SliverFillRemaining(
-            child: NoDataGif(),
-          )
-              : SliverMainAxisGroup(slivers: [
-            SliverToBoxAdapter(child: verticalSpace(10)),
-            SliverPadding(
-              padding: EdgeInsets.only(
-                bottom: 12.h,
-              ),
-              sliver: SliverList.separated(
-                separatorBuilder: (_, __) => verticalSpace(16),
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      context.navigateTo(
-                          Routes.adminConsumablesDetails,
-                          arguments: {
-                            RouteArguments.consumables: controller.consumables[index],
-                          }
-                      );
-                    },
-                    child: MobileConsumableAdminCard(
-                      index: index,
-                    ),
-                  );
-                },
-                itemCount: controller.consumables.length,
-              ),
-            )
-          ]);
+                  ? const SliverFillRemaining(
+                      child: NoDataGif(),
+                    )
+                  : SliverMainAxisGroup(slivers: [
+                      SliverToBoxAdapter(child: verticalSpace(10)),
+                      SliverPadding(
+                        padding: EdgeInsets.only(
+                          bottom: 12.h,
+                        ),
+                        sliver: SliverList.separated(
+                          separatorBuilder: (_, __) => verticalSpace(16),
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                context.navigateTo(
+                                    Routes.adminConsumablesDetails,
+                                    arguments: {
+                                      RouteArguments.consumables:
+                                          controller.consumables[index],
+                                    });
+                              },
+                              child: MobileConsumableAdminCard(
+                                index: index,
+                              ),
+                            );
+                          },
+                          itemCount: controller.consumables.length,
+                        ),
+                      )
+                    ]);
         });
   }
 }

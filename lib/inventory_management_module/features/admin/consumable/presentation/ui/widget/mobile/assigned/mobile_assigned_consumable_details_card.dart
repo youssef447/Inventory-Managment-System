@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
-import 'package:inventory_management/inventory_management_module/features/employee/consumables/domain/entity/consumables_entity.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
+import '../../../../../../../../features/employee/consumables/domain/entity/consumables_entity.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../../core/helpers/get_dialog_helper.dart';
@@ -17,7 +17,8 @@ import '../../../../../../assets/presentation/ui/widget/mobile/dialog/mobile_ret
 class MobileAssignedConsumableDetailsCard extends StatelessWidget {
   final ConsumablesEntity consumable;
 
-  const MobileAssignedConsumableDetailsCard({super.key, required this.consumable});
+  const MobileAssignedConsumableDetailsCard(
+      {super.key, required this.consumable});
 
   @override
   Widget build(BuildContext context) {
@@ -59,16 +60,16 @@ class MobileAssignedConsumableDetailsCard extends StatelessWidget {
                       DefaultRichText(
                         label: 'Status',
                         value: consumable.status,
-                        labelStyle: AppTextStyles.font14SecondaryBlackCairoMedium
+                        labelStyle: AppTextStyles
+                            .font14SecondaryBlackCairoMedium
                             .copyWith(color: AppColors.secondaryBlack),
-                        style:
-                        AppTextStyles.font14SecondaryBlackCairoMedium.copyWith(
+                        style: AppTextStyles.font14SecondaryBlackCairoMedium
+                            .copyWith(
                           color: consumable.status.getColor,
                         ),
                       ),
                     ],
                   ),
-
                 ],
               ),
               verticalSpace(8),
@@ -173,8 +174,7 @@ class MobileAssignedConsumableDetailsCard extends StatelessWidget {
               horizontalSpace(4),
               Text(
                 'Download As PNG',
-                style: AppTextStyles.font14SecondaryBlackCairoRegular
-                    .copyWith(
+                style: AppTextStyles.font14SecondaryBlackCairoRegular.copyWith(
                   decoration: TextDecoration.underline,
                   decorationColor: AppColors.blue,
                   color: AppColors.blue,
@@ -182,11 +182,12 @@ class MobileAssignedConsumableDetailsCard extends StatelessWidget {
               ),
               Spacer(),
               GestureDetector(
-                onTap: (){
+                onTap: () {
                   GetDialogHelper.generalDialog(
                       context: context,
-                      child: const MobileRetrieveRequestDialog(isAsset: false,)
-                  );
+                      child: const MobileRetrieveRequestDialog(
+                        isAsset: false,
+                      ));
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -197,7 +198,7 @@ class MobileAssignedConsumableDetailsCard extends StatelessWidget {
                     color: Colors.transparent,
                     border: Border.all(
                       color: AppColors.red, // Red color for the border
-                      width: 1.0,          // Border width
+                      width: 1.0, // Border width
                     ),
                   ),
                   child: Text(
@@ -211,8 +212,6 @@ class MobileAssignedConsumableDetailsCard extends StatelessWidget {
               )
             ],
           ),
-
-
         ],
       ),
     );

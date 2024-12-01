@@ -1,11 +1,10 @@
 //by : Mohamed Ashraf
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
+import '../../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
 import '../../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../../core/helpers/spacing_helper.dart';
@@ -19,8 +18,11 @@ import '../../../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../controller/admin_assets_controller.dart';
 
 class RetrieveRequestDialog extends GetView<AdminAssetsController> {
-  const RetrieveRequestDialog({super.key, this.isAsset = true,});
-   final bool isAsset ;
+  const RetrieveRequestDialog({
+    super.key,
+    this.isAsset = true,
+  });
+  final bool isAsset;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -61,11 +63,11 @@ class RetrieveRequestDialog extends GetView<AdminAssetsController> {
                 children: [
                   Expanded(
                     child: LabeledFormField(
-                    label: isAsset ? 'Asset Id' .tr: 'Consumable Id' ,
+                      label: isAsset ? 'Asset Id'.tr : 'Consumable Id',
                       controller: controller.assetIdController,
                     ),
                   ),
-                         horizontalSpace(16),
+                  horizontalSpace(16),
                   Expanded(
                     child: LabeledFormField(
                       label: 'Request Id',
@@ -102,14 +104,14 @@ class RetrieveRequestDialog extends GetView<AdminAssetsController> {
                   controller.updateDeliveryMethodValue(value);
                 },
                 controller: controller.deliveryMethodController,
-                items: List.generate(controller.deliveryMethod.length,
-                      (index) {
+                items: List.generate(
+                  controller.deliveryMethod.length,
+                  (index) {
                     return DropdownMenuItem(
                       value: controller.deliveryMethod[index],
                       child: Text(
                         controller.deliveryMethod[index],
-                        style:
-                        AppTextStyles.font14SecondaryBlackCairoMedium,
+                        style: AppTextStyles.font14SecondaryBlackCairoMedium,
                       ),
                     );
                   },
@@ -125,23 +127,22 @@ class RetrieveRequestDialog extends GetView<AdminAssetsController> {
                       Navigator.pop(context);
                     },
                   ),
-                     const Spacer(),
+                  const Spacer(),
                   AppDefaultButton(
                     text: 'Next'.tr,
                     onPressed: () {
                       Navigator.pop(context);
                       GetDialogHelper.generalDialog(
                         context: Get.context!,
-                        child:  DefaultDialog(
+                        child: DefaultDialog(
                           title: 'Successful'.tr,
-                          subTitle: 'You Successfully Retrieved This Product'.tr,
+                          subTitle:
+                              'You Successfully Retrieved This Product'.tr,
                           lottieAsset: AppAssets.success,
                         ),
                       );
-
                     },
                   ),
-
                 ],
               )
             ],
