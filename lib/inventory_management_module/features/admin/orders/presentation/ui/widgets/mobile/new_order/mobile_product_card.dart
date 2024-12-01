@@ -52,7 +52,7 @@ class MobileProductCard extends StatelessWidget {
                               child: Checkbox(
                                 value: checked,
                                 activeColor: AppColors.primary,
-                                checkColor: AppColors.icon,
+                                checkColor: AppColors.white,
                                 materialTapTargetSize:
                                     MaterialTapTargetSize.padded,
                                 shape: RoundedRectangleBorder(

@@ -90,48 +90,54 @@ class MobiletInvoiceHeader extends StatelessWidget {
                 ),
               ],
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.r),
-                    color: AppColors.field,
-                  ),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 12.w,
-                    vertical: 8.h,
-                  ),
-                  child: Text(
-                    order.orderId,
-                    style: GoogleFonts.inter(
-                      fontSize: 12.sp,
-                      color: AppColors.black,
-                      fontWeight: AppFontWeights.semiBold,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      color: AppColors.field,
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 12.w,
+                      vertical: 8.h,
+                    ),
+                    child: Text(
+                      order.orderId,
+                      style: GoogleFonts.inter(
+                        fontSize: 12.sp,
+                        color: AppColors.black,
+                        fontWeight: AppFontWeights.semiBold,
+                      ),
                     ),
                   ),
-                ),
-                verticalSpace(50),
-                Text(
-                  'Total Amount'.tr,
-                  style: GoogleFonts.inter(
-                    fontSize: 12.sp,
-                    color: AppColors.secondaryBlack,
-                    fontWeight: AppFontWeights.medium,
+                  verticalSpace(50),
+                  Text(
+                    'Total Amount'.tr,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.inter(
+                      fontSize: 12.sp,
+                      color: AppColors.secondaryBlack,
+                      fontWeight: AppFontWeights.medium,
+                    ),
                   ),
-                ),
-                verticalSpace(8),
-                Text(
-                  '\$ ${DateTimeHelper.formatMoneyDouble(
-                    order.totalAmount,
-                  )}',
-                  style: GoogleFonts.inter(
-                    fontSize: 20.sp,
-                    color: AppColors.black,
-                    fontWeight: AppFontWeights.bold,
+                  verticalSpace(8),
+                  Text(
+                    '\$${DateTimeHelper.formatMoneyDouble(
+                      order.totalAmount,
+                    )}',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.inter(
+                      fontSize: 20.sp,
+                      color: AppColors.black,
+                      fontWeight: AppFontWeights.bold,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

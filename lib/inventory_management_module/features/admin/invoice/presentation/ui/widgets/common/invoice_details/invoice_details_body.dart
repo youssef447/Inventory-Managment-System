@@ -185,7 +185,7 @@ class InvoiceDetailsBody extends StatelessWidget {
                 order.additionalNote ??
                     'loreammamamamamamammammamamammamamamammamamamamamammammaammamamamama',
                 style: GoogleFonts.inter(
-                  fontSize: 14.sp,
+                  fontSize: context.isTablett ? 14.sp : 12.sp,
                   color: AppColors.text,
                   fontWeight: AppFontWeights.semiBold,
                 ),

@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../../core/enums/departments.dart';
 import '../../../../../core/enums/orders_status.dart';
 import '../../../../employee/Assets/domain/entity/assets_entity.dart';
+import '../../../../employee/home/domain/user_entity.dart';
 import '../../../../employee/requests/entities/attachment_entity.dart';
 import '../../../../products/domain/product_entity.dart';
 import '../../../../products/domain/subEntities/contract_details_entity.dart';
@@ -201,4 +203,48 @@ class InvoicesController extends GetxController {
     'AMOUNT',
     'FINAL AMOUNT',
   ];
+  List<UserEntity> dummyUsers = [
+    UserEntity(
+      firstName: 'Ahmed',
+      id: '024',
+      lastName: 'Mohammed',
+    ),
+    UserEntity(
+      firstName: 'Khaled',
+      id: '024',
+      lastName: 'Ahmed',
+    ),
+    UserEntity(
+      firstName: 'Youssef',
+      id: '024',
+      lastName: 'Mohammed',
+    ),
+  ];
+
+  //-----------------------Filter---------------------
+  List<String> dummyjobTitles = ['job 1', 'job 2'];
+  Rxn<String>? selectedJobTitle = Rxn<String>();
+  Rxn<Departments>? selectedDepartment = Rxn<Departments>();
+  updateJobTitle(String v) {
+    applyEnabled.value = true;
+    selectedJobTitle?.value = v;
+  }
+
+  updateDep(Departments v) {
+    applyEnabled.value = true;
+
+    selectedDepartment?.value = v;
+  }
+
+  Rx<bool> applyEnabled = false.obs;
+  applyFilter() {
+    if (selectedDepartment?.value != null) {}
+    if (selectedJobTitle?.value != null) {}
+  }
+
+  resetFilter() {
+    selectedDepartment?.value = null;
+    selectedJobTitle?.value = null;
+    applyEnabled.value = false;
+  }
 }

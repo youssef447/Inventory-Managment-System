@@ -49,7 +49,7 @@ class HorizontalTabletProductCard extends StatelessWidget {
                           child: Checkbox(
                             value: checked,
                             activeColor: AppColors.primary,
-                            checkColor: AppColors.icon,
+                            checkColor: AppColors.white,
                             materialTapTargetSize: MaterialTapTargetSize.padded,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(4.r),

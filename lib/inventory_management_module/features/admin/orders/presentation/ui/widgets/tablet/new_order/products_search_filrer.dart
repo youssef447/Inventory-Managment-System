@@ -53,6 +53,8 @@ class TabletProductSearchFilter extends GetView<NewOrderController> {
             image: AppAssets.filter,
             color: AppColors.card,
             text: 'Fitler'.tr,
+            textColor: AppColors.inverseBase,
+            iconColor: AppColors.inverseBase,
             onTap: () {
               GetDialogHelper.generalDialog(
                 context: context,
