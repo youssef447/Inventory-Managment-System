@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 
 import '../../../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../../../employee/requests/entities/attachment_entity.dart';
+import '../../../../employee/requests/entities/request_entity.dart';
 import '../../../../products/domain/assigned_user_products_entity.dart';
 import '../../../../products/domain/product_entity.dart';
 import '../../../../products/domain/subEntities/contract_details_entity.dart';
@@ -45,6 +46,7 @@ class AdminAssetsController extends GetxController {
     deliveryMethodValue.value = value;
   }
 
+
   //------------- TextEditingController
   TextEditingController assetIdController = TextEditingController();
   TextEditingController requestIdController = TextEditingController();
@@ -76,7 +78,7 @@ class AdminAssetsController extends GetxController {
       returnDate:  DateTime.now(),
       lastUpdate:  DateTime.now(),
       issueType: 'Mechanical',
-      status: 'Pending',
+      status: 'Damage',
        maintenanceEntity:  MaintenanceEntity(
            maintenanceStartDate: DateTime.now(),
        maintenanceEndDate: DateTime.now(),

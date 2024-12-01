@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/core/constants/app_assets.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 
+import '../../../../../../../core/helpers/get_dialog_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/appbar/custom_app_bar.dart';
+import '../../../../../../../core/widgets/buttons/app_default_button.dart';
 import '../../../../../../../core/widgets/default_rich_text.dart';
+import '../../../../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../../../../../core/widgets/fields/labled_form_field.dart';
 import '../../../../../employees/presentation/ui/pages/tablet/tablet_admin_employee_details_page.dart';
 import '../../../../domin/service_entity.dart';
@@ -264,8 +268,36 @@ class TabletServiceHistoryPage extends GetView<AdminAssetsController> {
                             ],
                           ),
                         ),
+
                       ],
+                    ),
+                   verticalSpace(42),
+                    Align(
+                      alignment: AlignmentDirectional.bottomEnd,
+                      child: AppDefaultButton(
+                        text: 'Next'.tr,
+                        color: AppColors.primary,
+                        onPressed: () {
+                          GetDialogHelper.generalDialog(
+                            child: DefaultDialog(
+                                width: context.isPhone ? 343.w : 411.w,
+                                showButtons: true,
+                                icon: AppAssets.canceled,
+                                title: 'Unassign'.tr,
+                                subTitle:
+                                'Are You sure You Want to Unassign This Asset?'
+                                    .tr,
+                                onConfirm: () {
+                                  Navigator.of(context).pop();
+                                  Navigator.of(context).pop();
+                                }),
+                            context: context,
+                          );
+
+                        },
+                      ),
                     )
+
 
                   ],
                 ),

@@ -288,30 +288,58 @@ class AddConsumablePage extends GetView<AddProductController> {
               ),
               verticalSpace(24),
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
-                    child: LabeledDropdownField(
-                      label: 'Storage Requirement'.tr,
-                      textButton: controller.storageRequirementValue,
-                      onChanged: (value) {
-                        controller.updateStorageRequirementValue(value);
-                      },
-                      controller: controller.storageRequirementController,
-                      items: List.generate(
-                        controller.storageRequirement.length,
-                            (index) {
-                          return DropdownMenuItem(
-                            value: controller.storageRequirement[index],
-                            child: Text(
-                              controller.storageRequirement[index]
-                                  .toString()
-                                  .tr,
-                              style: AppTextStyles
-                                  .font14SecondaryBlackCairoMedium,
-                            ),
-                          );
-                        },
-                      ),
+                    child: Column(
+                      children: [
+                        LabeledDropdownField(
+                          label: 'Storage Requirement'.tr,
+                          textButton: controller.storageRequirementValue,
+                          onChanged: (value) {
+                            controller.updateStorageRequirementValue(value);
+                          },
+                          controller: controller.storageRequirementController,
+                          items: List.generate(
+                            controller.storageRequirement.length,
+                                (index) {
+                              return DropdownMenuItem(
+                                value: controller.storageRequirement[index],
+                                child: Text(
+                                  controller.storageRequirement[index]
+                                      .toString()
+                                      .tr,
+                                  style: AppTextStyles
+                                      .font14SecondaryBlackCairoMedium,
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        verticalSpace(24),
+                        LabeledDropdownField(
+                          label: 'Unit Of Measurement'.tr,
+                          textButton:
+                          controller.unitOfMeasurementValue?.getName,
+                          onChanged: (value) {
+                            controller.updateUnitOfMeasurementValue(value);
+                          },
+                          controller: controller.unitOfMeasurementController,
+                          items: List.generate(
+                            controller.unitOfMeasurement.length,
+                                (index) {
+                              return DropdownMenuItem(
+                                value: controller.unitOfMeasurement[index],
+                                child: Text(
+                                  controller.unitOfMeasurement[index].getName,
+                                  style: AppTextStyles
+                                      .font14SecondaryBlackCairoMedium,
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
                     )
                   ),
                   horizontalSpace(15),
@@ -323,36 +351,6 @@ class AddConsumablePage extends GetView<AddProductController> {
                       label: 'Expected Lifetime'.tr,
                     ),
                   ),
-                ],
-              ),
-              verticalSpace(24),
-              Row(
-                children: [
-              SizedBox(
-              width: Get.width * 0.31.w,
-                child: LabeledDropdownField(
-                  label: 'Unit Of Measurement'.tr,
-                  textButton:
-                  controller.unitOfMeasurementValue?.getName,
-                  onChanged: (value) {
-                    controller.updateUnitOfMeasurementValue(value);
-                  },
-                  controller: controller.unitOfMeasurementController,
-                  items: List.generate(
-                    controller.unitOfMeasurement.length,
-                        (index) {
-                      return DropdownMenuItem(
-                        value: controller.unitOfMeasurement[index],
-                        child: Text(
-                          controller.unitOfMeasurement[index].getName,
-                          style: AppTextStyles
-                              .font14SecondaryBlackCairoMedium,
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              )
                 ],
               ),
               verticalSpace(24),

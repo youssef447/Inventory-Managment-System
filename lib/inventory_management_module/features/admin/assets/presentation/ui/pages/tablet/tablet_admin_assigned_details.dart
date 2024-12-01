@@ -9,6 +9,8 @@ import '../../../../../../../core/helpers/orientation_helper.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../core/widgets/appbar/custom_app_bar.dart';
+import '../../../../../../employee/requests/entities/request_entity.dart';
+import '../../../../../../employee/track_request/presentation/ui/widgets/common/inquiry_chat/cards/inquiry_chat_card.dart';
 import '../../../../../../products/domain/assigned_user_products_entity.dart';
 import '../../../../../employees/presentation/ui/pages/tablet/tablet_admin_employee_details_page.dart';
 import '../../../controller/admin_assets_controller.dart';
@@ -20,6 +22,7 @@ import '../../widget/tablet/cards/maintenance_card.dart';
 class TabletAdminAssignedDetails extends StatelessWidget {
   const TabletAdminAssignedDetails({super.key, required this.assignedUser,});
   final AssignedUserProductsEntity assignedUser;
+
 
 
 
@@ -101,13 +104,13 @@ class TabletAdminAssignedDetails extends StatelessWidget {
                   verticalSpace(
                     context.isLandscapee ? 26 : 38,
                   ),
-                  // Text(
-                  //   'Inquiries And Comments'.tr,
-                  //   style: AppTextStyles.font22BlackBoldCairo,
-                  // ),
+                  Text(
+                    'Inquiries And Comments'.tr,
+                    style: AppTextStyles.font22BlackBoldCairo,
+                  ),
                   verticalSpace(13),
                   // InquiryChatCard(
-                  //   model: model,
+                  //   model: request,
                   //   adminEmpDetailsPage: true,
                   // ),
                 ],

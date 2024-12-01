@@ -1,4 +1,5 @@
 import '../../employee/home/domain/user_entity.dart';
+import '../../employee/requests/entities/request_entity.dart';
 import 'product_entity.dart';
 
 class AssignedUserProductsEntity {

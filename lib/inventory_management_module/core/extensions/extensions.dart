@@ -63,6 +63,9 @@ extension GetColor on String {
     if (this == 'Expired'.tr) {
       return AppColors.red;
     }
+    if (this == 'Damage'.tr) {
+      return AppColors.red;
+    }
     return null;
   }
 }
