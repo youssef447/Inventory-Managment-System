@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 import 'package:inventory_management/inventory_management_module/features/employee/consumables/domain/entity/consumables_entity.dart';
 
@@ -103,7 +104,7 @@ class VerticalConsumableDetailsCard extends StatelessWidget {
                     verticalSpace(2),
                     DefaultRichText(
                       label: 'Unit Of Measurement'.tr,
-                      value: consumable.unitOfMeasurement ?? '',
+                      value: consumable.unitOfMeasurement.getName ?? '',
                     ),
                     verticalSpace(2),
                     DefaultRichText(

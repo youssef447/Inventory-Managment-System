@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import '../../../../core/helpers/date_time_helper.dart';
 import '../../../../features/products/presentation/controller/products_controller.dart';
 import '../../../../core/enums/requests_enums.dart';
 import '../../../employee/Assets/domain/entity/assets_entity.dart';
@@ -42,13 +43,43 @@ class AddProductController extends GetxController {
     subCategoryController.text = model.assetEntity?.subcategory ?? '';
     brandController.text = model.assetEntity?.brand ?? '';
     modelController.text = model.assetEntity?.model ?? '';
-    //expirationDateController.text = model.assetEntity?.expirationDate?.toString() ?? '';
     totalQuantityController.text = model.totalQuantity.toString();
     unitCostController.text = model.unitCost.toString();
     currencyController.text = model.currency;
     supplierNameController.text = model.supplier.firstName;
     additionalNoteController.text = model.additionalNotes ?? '';
+    categoryValue = model.assetEntity!.category;
+    supplierNameValue = model.assetEntity!.supplierName;
+    storageRequirementValue = model.assetEntity!.storageRequirement;
+    currencyValue = model.assetEntity!.currency;
+    expectedLifetimeController.text = DateTimeHelper.formatDate(model.expectedLifeTime);
+
+
+
   }
+
+  void loadConsumableData(ProductEntity model) {
+    orderIdController.text = model.id;
+    productIdController.text = model.consumablesEntity?.consumableId ?? '';
+    categoryController.text = model.consumablesEntity?.category ?? '';
+    subCategoryController.text = model.consumablesEntity?.subcategory ?? '';
+    brandController.text = model.consumablesEntity?.brand ?? '';
+    modelController.text = model.consumablesEntity?.model ?? '';
+    totalQuantityController.text = model.totalQuantity.toString();
+    unitCostController.text = model.unitCost.toString();
+    currencyController.text = model.currency;
+    supplierNameController.text = model.supplier.firstName;
+    additionalNoteController.text = model.additionalNotes ?? '';
+    categoryValue = model.consumablesEntity!.category;
+    supplierNameValue = model.consumablesEntity!.supplierName;
+    unitOfMeasurementValue = model.consumablesEntity!.unitOfMeasurement;
+    reorderLevelController.text = model.consumablesEntity!.reorderLevel.toString();
+    reorderQuantityController.text = model.consumablesEntity!.reorderQuantity.toString();
+    expectedLifetimeController.text = DateTimeHelper.formatDate(model.expectedLifeTime);
+    expirationDateController.text = DateTimeHelper.formatDate(model.consumablesEntity!.expirationDate!);
+
+  }
+
 
   ///-------------- drop down-----------------------
   // -------------- product type  -----------
@@ -67,9 +98,10 @@ class AddProductController extends GetxController {
     'Event Planning',
     'Eduction',
   ];
-  Rxn<String> categoryValue = Rxn<String>();
+  String? categoryValue;
   updateCategoryValue(String value) {
-    categoryValue.value = value;
+    categoryValue = value;
+    update();
   }
 
   // -------------- product type  -----------
@@ -78,9 +110,10 @@ class AddProductController extends GetxController {
     Currency.esd,
     Currency.eur,
   ];
-  Rxn<Currency> currencyValue = Rxn<Currency>();
+  Currency? currencyValue;
   updateCurrencyValue(Currency value) {
-    currencyValue.value = value;
+    currencyValue = value;
+    update();
   }
 
   // -------------- supplierName   -----------
@@ -89,10 +122,10 @@ class AddProductController extends GetxController {
     'ahmed',
     'ali',
   ];
-  Rxn<String> supplierNameValue = Rxn<String>();
+  String? supplierNameValue;
   updateSupplierNameValue(String value) {
-    supplierNameValue.value = value;
-    supplierNameController.text = value;
+    supplierNameValue = value;
+    update();
   }
 
   // -------------- storageRequirement   -----------
@@ -100,9 +133,10 @@ class AddProductController extends GetxController {
     'Electronic',
     'Another',
   ];
-  Rxn<String> storageRequirementValue = Rxn<String>();
+String? storageRequirementValue;
   updateStorageRequirementValue(String value) {
-    storageRequirementValue.value = value;
+    storageRequirementValue = value;
+    update();
   }
 
   // -------------- unitOfMeasurement   -----------
@@ -111,9 +145,10 @@ class AddProductController extends GetxController {
     UnitOfMeasurement.gram,
     UnitOfMeasurement.kilogram,
   ];
-  Rxn<UnitOfMeasurement> unitOfMeasurementValue = Rxn<UnitOfMeasurement>();
+  UnitOfMeasurement? unitOfMeasurementValue;
   updateUnitOfMeasurementValue(UnitOfMeasurement value) {
-    unitOfMeasurementValue.value = value;
+    unitOfMeasurementValue = value;
+    update();
   }
 
   // -------------- storageLocation  -----------
@@ -219,7 +254,7 @@ class AddProductController extends GetxController {
           ),
         ),
         totalQuantity: 20,
-        currency: currencyController.text = currencyValue.value!.getName,
+        currency: currencyController.text = currencyValue!.getName,
         unitCost: double.parse(unitCostController.text),
         expectedLifeTime: DateTime.now(),
         productSpecifications: [
@@ -259,8 +294,9 @@ class AddProductController extends GetxController {
           status: 'InUse',
           brand: brandController.text,
           name: brandController.text + modelController.text,
-          unitOfMeasurement: unitOfMeasurementController.text =
-              unitOfMeasurementValue.value!.getName,
+         reorderLevel: int.parse(reorderLevelController.text),
+         reorderQuantity: int.parse(reorderQuantityController.text),
+         unitOfMeasurement: UnitOfMeasurement.gram,
           usageFrequency: 'daily',
         ),
         supplier: SupplierEntity(
@@ -283,7 +319,7 @@ class AddProductController extends GetxController {
           ),
         ),
         totalQuantity: 20,
-        currency: currencyController.text = currencyValue.value!.getName,
+        currency: currencyController.text = currencyValue!.getName,
         unitCost: 2,
         expectedLifeTime: DateTime.now(),
         productSpecifications: [

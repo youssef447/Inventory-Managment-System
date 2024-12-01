@@ -94,29 +94,27 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                 label: 'ProductId'.tr,
               ),
               verticalSpace(15),
-              Obx(() {
-                return LabeledDropdownField(
-                  label: 'Category'.tr,
-                  value: controller.categoryValue.value,
-                  textButton: controller.categoryValue.value,
-                  onChanged: (value) {
-                    controller.updateCategoryValue(value);
-                  },
-                  controller: controller.categoryController,
-                  items: List.generate(
-                    controller.category.length,
-                    (index) {
-                      return DropdownMenuItem(
-                        value: controller.category[index],
-                        child: Text(
-                          controller.category[index],
-                          style: AppTextStyles.font14SecondaryBlackCairoMedium,
-                        ),
-                      );
-                    },
-                  ),
-                );
-              }),
+        LabeledDropdownField(
+          label: 'Category'.tr,
+          value: controller.categoryValue,
+          textButton: controller.categoryValue,
+          onChanged: (value) {
+            controller.updateCategoryValue(value);
+          },
+          controller: controller.categoryController,
+          items: List.generate(
+            controller.category.length,
+                (index) {
+              return DropdownMenuItem(
+                value: controller.category[index],
+                child: Text(
+                  controller.category[index],
+                  style: AppTextStyles.font14SecondaryBlackCairoMedium,
+                ),
+              );
+            },
+          ),
+        ),
               verticalSpace(15),
               LabeledFormField(
                 readOnly: false,
@@ -154,35 +152,32 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                 label: 'Unit Test'.tr,
               ),
               verticalSpace(15),
-              Obx(() {
-                return LabeledDropdownField(
-                  label: 'Currency'.tr,
-                  value: controller.currencyValue.value,
-                  textButton: controller.currencyValue.value?.getName,
-                  onChanged: (value) {
-                    controller.updateCurrencyValue(value);
-                  },
-                  controller: controller.currencyController,
-                  items: List.generate(
-                    controller.currency.length,
-                    (index) {
-                      return DropdownMenuItem(
-                        value: controller.currency[index],
-                        child: Text(
-                          controller.currency[index].getName.tr,
-                          style: AppTextStyles.font14SecondaryBlackCairoMedium,
-                        ),
-                      );
-                    },
-                  ),
-                );
-              }),
+        LabeledDropdownField(
+          label: 'Currency'.tr,
+          textButton: controller.currencyValue?.getName,
+          onChanged: (value) {
+            controller.updateCurrencyValue(value);
+          },
+          controller: controller.currencyController,
+          items: List.generate(
+            controller.currency.length,
+                (index) {
+              return DropdownMenuItem(
+                value: controller.currency[index],
+                child: Text(
+                  controller.currency[index].getName.tr,
+                  style: AppTextStyles.font14SecondaryBlackCairoMedium,
+                ),
+              );
+            },
+          ),
+        ),
               verticalSpace(15),
               Obx(() {
                 return LabeledDropdownField(
                   label: 'Supplier Name'.tr,
-                  value: controller.supplierNameValue.value,
-                  textButton: controller.supplierNameValue.value?.toString(),
+                  value: controller.supplierNameValue,
+                  textButton: controller.supplierNameValue?.toString(),
                   onChanged: (value) {
                     controller.updateSupplierNameValue(value);
                   },
@@ -205,9 +200,9 @@ class MobileAddAssetPage extends GetView<AddProductController> {
               Obx(() {
                 return LabeledDropdownField(
                   label: 'Storage Requirement'.tr,
-                  value: controller.storageRequirementValue.value,
+                  value: controller.storageRequirementValue,
                   textButton:
-                      controller.storageRequirementValue.value?.toString().tr,
+                      controller.storageRequirementValue?.toString().tr,
                   onChanged: (value) {
                     controller.updateStorageRequirementValue(value);
                   },
@@ -237,8 +232,7 @@ class MobileAddAssetPage extends GetView<AddProductController> {
               Obx(() {
                 return LabeledDropdownField(
                   label: 'Unit Of Measurement'.tr,
-                  value: controller.unitOfMeasurementValue.value,
-                  textButton: controller.unitOfMeasurementValue.value?.getName,
+                  textButton: controller.unitOfMeasurementValue?.getName,
                   onChanged: (value) {
                     controller.updateUnitOfMeasurementValue(value);
                   },

@@ -14,6 +14,7 @@ import '../../../../../../../core/widgets/buttons/rectangled_filter_card.dart';
 import '../../../../../../../core/widgets/dialog/default_dialog.dart';
 import '../../../../../../../core/widgets/fields/labeled_dropDown_field.dart';
 import '../../../../../../../core/widgets/fields/labled_form_field.dart';
+import '../../../../../domain/product_entity.dart';
 import '../../../../controller/add_product_controller.dart';
 import '../../../widgets/common/add_approvals_search.dart';
 import '../../../widgets/common/attachments/product_specification_attachments_section.dart';
@@ -22,10 +23,15 @@ import '../../../widgets/common/upload_image_avatar_widget.dart';
 import '../../../widgets/tablet/card/add_approval_cycle.dart';
 
 class AddConsumablePage extends GetView<AddProductController> {
-  const AddConsumablePage({super.key});
+  const AddConsumablePage({super.key,this.isEdit,this.product});
+  final bool? isEdit;
+  final ProductEntity? product;
 
   @override
   Widget build(BuildContext context) {
+    if (isEdit == true) {
+      controller.loadConsumableData(product!);
+    }
     return Container(
         width: Get.width * 0.85,
         padding: EdgeInsets.symmetric(
@@ -55,7 +61,7 @@ class AddConsumablePage extends GetView<AddProductController> {
                       )),
                   horizontalSpace(8),
                   Text(
-                    'Add New Consumable'.tr,
+                    isEdit==true ? 'Edit Consumable'.tr:'Add New Consumable'.tr,
                     style: AppTextStyles.font24MediumBlackCairo,
                   ),
                 ],
@@ -99,30 +105,27 @@ class AddConsumablePage extends GetView<AddProductController> {
               Row(
                 children: [
                   Expanded(
-                    child: Obx(() {
-                      return LabeledDropdownField(
-                        label: 'Category'.tr,
-                        value: controller.categoryValue.value,
-                        textButton: controller.categoryValue.value,
-                        onChanged: (value) {
-                          controller.updateCategoryValue(value);
+                    child: LabeledDropdownField(
+                      label: 'Category'.tr,
+                      textButton: controller.categoryValue,
+                      onChanged: (value) {
+                        controller.updateCategoryValue(value);
+                      },
+                      controller: controller.categoryController,
+                      items: List.generate(
+                        controller.category.length,
+                            (index) {
+                          return DropdownMenuItem(
+                            value: controller.category[index],
+                            child: Text(
+                              controller.category[index],
+                              style: AppTextStyles
+                                  .font14SecondaryBlackCairoMedium,
+                            ),
+                          );
                         },
-                        controller: controller.categoryController,
-                        items: List.generate(
-                          controller.category.length,
-                          (index) {
-                            return DropdownMenuItem(
-                              value: controller.category[index],
-                              child: Text(
-                                controller.category[index],
-                                style: AppTextStyles
-                                    .font14SecondaryBlackCairoMedium,
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    }),
+                      ),
+                    ),
                   ),
                   horizontalSpace(15),
                   Expanded(
@@ -158,30 +161,28 @@ class AddConsumablePage extends GetView<AddProductController> {
               Row(
                 children: [
                   Expanded(
-                    child: Obx(() {
-                      return LabeledDropdownField(
-                        label: 'Usage Frequency'.tr,
-                        value: controller.currencyValue.value,
-                        textButton: controller.currencyValue.value?.getName,
-                        onChanged: (value) {
-                          controller.updateCurrencyValue(value);
+                    child: LabeledDropdownField(
+                      label: 'Usage Frequency'.tr,
+                      value: controller.currencyValue,
+                      textButton: controller.currencyValue?.getName,
+                      onChanged: (value) {
+                        controller.updateCurrencyValue(value);
+                      },
+                      controller: controller.currencyController,
+                      items: List.generate(
+                        controller.currency.length,
+                            (index) {
+                          return DropdownMenuItem(
+                            value: controller.currency[index],
+                            child: Text(
+                              controller.currency[index].getName.tr,
+                              style: AppTextStyles
+                                  .font14SecondaryBlackCairoMedium,
+                            ),
+                          );
                         },
-                        controller: controller.currencyController,
-                        items: List.generate(
-                          controller.currency.length,
-                          (index) {
-                            return DropdownMenuItem(
-                              value: controller.currency[index],
-                              child: Text(
-                                controller.currency[index].getName.tr,
-                                style: AppTextStyles
-                                    .font14SecondaryBlackCairoMedium,
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    }),
+                      ),
+                    )
                   ),
                   horizontalSpace(15),
                   Expanded(
@@ -236,58 +237,52 @@ class AddConsumablePage extends GetView<AddProductController> {
               Row(
                 children: [
                   Expanded(
-                    child: Obx(() {
-                      return LabeledDropdownField(
-                        label: 'Currency'.tr,
-                        value: controller.currencyValue.value,
-                        textButton: controller.currencyValue.value?.getName,
-                        onChanged: (value) {
-                          controller.updateCurrencyValue(value);
+                    child: LabeledDropdownField(
+                      label: 'Currency'.tr,
+                      textButton: controller.currencyValue?.getName,
+                      onChanged: (value) {
+                        controller.updateCurrencyValue(value);
+                      },
+                      controller: controller.currencyController,
+                      items: List.generate(
+                        controller.currency.length,
+                            (index) {
+                          return DropdownMenuItem(
+                            value: controller.currency[index],
+                            child: Text(
+                              controller.currency[index].getName.tr,
+                              style: AppTextStyles
+                                  .font14SecondaryBlackCairoMedium,
+                            ),
+                          );
                         },
-                        controller: controller.currencyController,
-                        items: List.generate(
-                          controller.currency.length,
-                          (index) {
-                            return DropdownMenuItem(
-                              value: controller.currency[index],
-                              child: Text(
-                                controller.currency[index].getName.tr,
-                                style: AppTextStyles
-                                    .font14SecondaryBlackCairoMedium,
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    }),
+                      ),
+                    )
                   ),
                   horizontalSpace(15),
                   Expanded(
-                    child: Obx(() {
-                      return LabeledDropdownField(
-                        label: 'Supplier Name'.tr,
-                        value: controller.supplierNameValue.value,
-                        textButton:
-                            controller.supplierNameValue.value?.toString(),
-                        onChanged: (value) {
-                          controller.updateSupplierNameValue(value);
+                    child:LabeledDropdownField(
+                      label: 'Supplier Name'.tr,
+                      textButton:
+                      controller.supplierNameValue?.toString(),
+                      onChanged: (value) {
+                        controller.updateSupplierNameValue(value);
+                      },
+                      controller: controller.supplierNameController,
+                      items: List.generate(
+                        controller.supplierName.length,
+                            (index) {
+                          return DropdownMenuItem(
+                            value: controller.supplierName[index],
+                            child: Text(
+                              controller.supplierName[index].toString(),
+                              style: AppTextStyles
+                                  .font14SecondaryBlackCairoMedium,
+                            ),
+                          );
                         },
-                        controller: controller.supplierNameController,
-                        items: List.generate(
-                          controller.supplierName.length,
-                          (index) {
-                            return DropdownMenuItem(
-                              value: controller.supplierName[index],
-                              child: Text(
-                                controller.supplierName[index].toString(),
-                                style: AppTextStyles
-                                    .font14SecondaryBlackCairoMedium,
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    }),
+                      ),
+                    )
                   ),
                 ],
               ),
@@ -295,34 +290,29 @@ class AddConsumablePage extends GetView<AddProductController> {
               Row(
                 children: [
                   Expanded(
-                    child: Obx(() {
-                      return LabeledDropdownField(
-                        label: 'Storage Requirement'.tr,
-                        value: controller.storageRequirementValue.value,
-                        textButton: controller.storageRequirementValue.value
-                            ?.toString()
-                            .tr,
-                        onChanged: (value) {
-                          controller.updateStorageRequirementValue(value);
+                    child: LabeledDropdownField(
+                      label: 'Storage Requirement'.tr,
+                      textButton: controller.storageRequirementValue,
+                      onChanged: (value) {
+                        controller.updateStorageRequirementValue(value);
+                      },
+                      controller: controller.storageRequirementController,
+                      items: List.generate(
+                        controller.storageRequirement.length,
+                            (index) {
+                          return DropdownMenuItem(
+                            value: controller.storageRequirement[index],
+                            child: Text(
+                              controller.storageRequirement[index]
+                                  .toString()
+                                  .tr,
+                              style: AppTextStyles
+                                  .font14SecondaryBlackCairoMedium,
+                            ),
+                          );
                         },
-                        controller: controller.storageRequirementController,
-                        items: List.generate(
-                          controller.storageRequirement.length,
-                          (index) {
-                            return DropdownMenuItem(
-                              value: controller.storageRequirement[index],
-                              child: Text(
-                                controller.storageRequirement[index]
-                                    .toString()
-                                    .tr,
-                                style: AppTextStyles
-                                    .font14SecondaryBlackCairoMedium,
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    }),
+                      ),
+                    )
                   ),
                   horizontalSpace(15),
                   Expanded(
@@ -338,34 +328,31 @@ class AddConsumablePage extends GetView<AddProductController> {
               verticalSpace(24),
               Row(
                 children: [
-                  Obx(() {
-                    return SizedBox(
-                      width: Get.width * 0.31.w,
-                      child: LabeledDropdownField(
-                        label: 'Unit Of Measurement'.tr,
-                        value: controller.unitOfMeasurementValue.value,
-                        textButton:
-                            controller.unitOfMeasurementValue.value?.getName,
-                        onChanged: (value) {
-                          controller.updateUnitOfMeasurementValue(value);
-                        },
-                        controller: controller.unitOfMeasurementController,
-                        items: List.generate(
-                          controller.unitOfMeasurement.length,
-                          (index) {
-                            return DropdownMenuItem(
-                              value: controller.unitOfMeasurement[index],
-                              child: Text(
-                                controller.unitOfMeasurement[index].getName,
-                                style: AppTextStyles
-                                    .font14SecondaryBlackCairoMedium,
-                              ),
-                            );
-                          },
+              SizedBox(
+              width: Get.width * 0.31.w,
+                child: LabeledDropdownField(
+                  label: 'Unit Of Measurement'.tr,
+                  textButton:
+                  controller.unitOfMeasurementValue?.getName,
+                  onChanged: (value) {
+                    controller.updateUnitOfMeasurementValue(value);
+                  },
+                  controller: controller.unitOfMeasurementController,
+                  items: List.generate(
+                    controller.unitOfMeasurement.length,
+                        (index) {
+                      return DropdownMenuItem(
+                        value: controller.unitOfMeasurement[index],
+                        child: Text(
+                          controller.unitOfMeasurement[index].getName,
+                          style: AppTextStyles
+                              .font14SecondaryBlackCairoMedium,
                         ),
-                      ),
-                    );
-                  }),
+                      );
+                    },
+                  ),
+                ),
+              )
                 ],
               ),
               verticalSpace(24),
@@ -511,7 +498,7 @@ class AddConsumablePage extends GetView<AddProductController> {
                   ),
                   const Spacer(),
                   AppDefaultButton(
-                    text: 'Add Consumable'.tr,
+                    text:  isEdit==true ?'Save' :'Add Consumable'.tr,
                     color: AppColors.primary,
                     onPressed: () {
                       controller.addConsumableItem();
@@ -520,7 +507,7 @@ class AddConsumablePage extends GetView<AddProductController> {
                           context: Get.context!,
                           child: DefaultDialog(
                             title: 'Success'.tr,
-                            subTitle: 'You Successfully Added New Product'.tr,
+                            subTitle:isEdit==true ? 'You Successfully Edit Product'.tr : 'You Successfully Added New Product'.tr,
                             lottieAsset: AppAssets.success,
                           ));
                     },

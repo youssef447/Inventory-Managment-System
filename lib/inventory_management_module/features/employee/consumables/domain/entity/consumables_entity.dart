@@ -4,6 +4,7 @@
 import 'dart:io';
 
 import '../../../../../core/constants/app_assets.dart';
+import '../../../../../core/enums/requests_enums.dart';
 import '../../../../products/domain/subEntities/contract_details_entity.dart';
 import '../../../../admin/suppliers/domain/supplier_entity.dart';
 import '../../../requests/entities/attachment_entity.dart';
@@ -23,7 +24,7 @@ class ConsumablesEntity {
   final bool requiresApproval;
   final int reorderQuantity;
   final int availableQuantity;
-  final String unitOfMeasurement;
+  final UnitOfMeasurement unitOfMeasurement;
   final String usageFrequency;
   final DateTime? expirationDate;
   final DateTime? expectedLifeTime;
@@ -76,7 +77,7 @@ class ConsumablesEntity {
     this.stockRemaining = 2,
     this.reorderQuantity = 3,
     this.availableQuantity = 3,
-    required this.unitOfMeasurement,
+     this.unitOfMeasurement = UnitOfMeasurement.gram,
     required this.usageFrequency,
     this.expirationDate,
     this.expectedLifeTime,

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/features/employee/consumables/domain/entity/consumables_entity.dart';
 
+import '../../../../../core/enums/requests_enums.dart';
 import '../../../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../../../employee/requests/entities/attachment_entity.dart';
 import '../../../../products/domain/product_entity.dart';
@@ -64,7 +65,7 @@ class NewOrderController extends GetxController {
                       model: 'GZ 15',
                       dateReceived: DateTime.now(),
                       quantity: '1',
-                      unitOfMeasurement: '1',
+                      unitOfMeasurement: UnitOfMeasurement.gram,
                       usageFrequency: 'Daily',
                       status: 'Pending',
                     ),

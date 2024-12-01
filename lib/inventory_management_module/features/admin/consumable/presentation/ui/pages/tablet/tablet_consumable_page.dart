@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/haptic_feedback_helper.dart';
@@ -150,7 +151,7 @@ class TabletConsumablePage extends StatelessWidget {
                     ),
                     DataCell(
                       Text(
-                        controller.consumables[index].unitOfMeasurement,
+                        controller.consumables[index].unitOfMeasurement.getName,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),

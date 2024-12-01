@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 import 'package:inventory_management/inventory_management_module/features/employee/consumables/domain/entity/consumables_entity.dart';
 import '../../../../../../../../core/constants/app_assets.dart';
@@ -126,7 +127,7 @@ class HorizontalAssignedConsumableDetailsCard extends StatelessWidget {
                     )
                         : 'Not Applicable'.tr,
                   ),
-                  DefaultRichText(label: 'Unit Of Measurement'.tr, value: consumable.unitOfMeasurement),
+                  DefaultRichText(label: 'Unit Of Measurement'.tr, value: consumable.unitOfMeasurement.getName),
 
                 ],
               ),

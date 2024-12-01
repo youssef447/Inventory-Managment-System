@@ -131,7 +131,7 @@ class EmployeeDetailsController extends GetxController {
           brand: 'SafeHealth',
           dateReceived: DateTime(2023, 7, 10),
           quantity: '500',
-          unitOfMeasurement: 'pieces',
+          unitOfMeasurement: UnitOfMeasurement.gram,
           usageFrequency: 'Daily',
           expirationDate: DateTime(2024, 7, 10),
           status: 'Maintenance',

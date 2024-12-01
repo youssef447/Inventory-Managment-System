@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/haptic_feedback_helper.dart';
@@ -130,7 +131,7 @@ class TabletAdminAssetsPage extends StatelessWidget {
                               DataCell(
                                 Center(
                                     child: Text(
-                                  controller.assets[index].currency,
+                                  controller.assets[index].currency.getName,
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
