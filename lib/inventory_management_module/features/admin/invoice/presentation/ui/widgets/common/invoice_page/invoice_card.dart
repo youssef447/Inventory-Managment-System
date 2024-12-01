@@ -91,9 +91,12 @@ class InvoiceCard extends StatelessWidget {
                   label: 'Order Date',
                   value: DateTimeHelper.formatDate(invoice.orderDate),
                 ),
-                DefaultRichText(
-                  label: 'Recieving Date',
-                  value: DateTimeHelper.formatDate(invoice.expectedRecieved),
+                horizontalSpace(8),
+                Flexible(
+                  child: DefaultRichText(
+                    label: 'Recieving Date',
+                    value: DateTimeHelper.formatDate(invoice.expectedRecieved),
+                  ),
                 ),
               ],
             ),
