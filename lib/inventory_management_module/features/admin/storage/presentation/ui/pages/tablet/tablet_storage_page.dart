@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../../../..//core/extensions/extensions.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/date_time_helper.dart';
 import '../../../../../../../core/routes/app_routes.dart';

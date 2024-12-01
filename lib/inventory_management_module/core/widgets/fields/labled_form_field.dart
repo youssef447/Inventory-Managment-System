@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../..//core/widgets/fields/date_picker_field.dart';
+import '../../../core/widgets/fields/date_picker_field.dart';
 
 import '../../helpers/spacing_helper.dart';
 import '../../theme/app_colors.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../../../..//core/extensions/extensions.dart';
-import '../../../../../../..//core/theme/app_colors.dart';
+import '../../../../../../../core/extensions/extensions.dart';
+import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../..//features/employee/consumables/presentation/controller/consumables_controller.dart';
 import '../../../../../../../core/animations/size_animation.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';

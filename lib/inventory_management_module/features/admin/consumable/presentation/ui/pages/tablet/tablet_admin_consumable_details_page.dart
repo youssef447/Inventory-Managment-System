@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../../..//core/extensions/extensions.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../..//features/employee/consumables/domain/entity/consumables_entity.dart';
 import '../../../../../../../core/animations/size_animation.dart';
 import '../../../../../../../core/helpers/orientation_helper.dart';

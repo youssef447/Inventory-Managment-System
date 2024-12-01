@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../../../..//core/extensions/extensions.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../..//features/admin/employees/presentation/ui/pages/mobile/mobile_admin_employee_details_page.dart';
 
 import '../../../../../../../core/helpers/spacing_helper.dart';

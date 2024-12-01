@@ -5,8 +5,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import '../../../../../../..//core/enums/requests_enums.dart';
-import '../../../../../../..//core/extensions/extensions.dart';
+import '../../../../../../../core/enums/requests_enums.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/haptic_feedback_helper.dart';
 import '../../../../../../../core/routes/app_routes.dart';

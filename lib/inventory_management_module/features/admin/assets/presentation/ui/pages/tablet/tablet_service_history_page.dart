@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../../../../..//core/constants/app_assets.dart';
+import '../../../../../../../core/constants/app_assets.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/get_dialog_helper.dart';
