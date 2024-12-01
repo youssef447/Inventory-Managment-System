@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
+import 'package:inventory_management/inventory_management_module/features/products/presentation/ui/pages/tablet/add_product/add_consumable_page.dart';
 import '../../../../../../features/products/presentation/ui/pages/tablet/add_product/add_asset_page.dart';
 import '../../../../../../core/enums/stock_enums.dart';
 import '../../../../../../core/extensions/extensions.dart';
@@ -104,10 +106,15 @@ class TabletProductDetailsPage extends StatelessWidget {
                           onTap: () {
                             GetDialogHelper.generalDialog(
                                 context: context,
-                                child: AddAssetPage(
-                                  product: product,
-                                  isEdit: true,
-                                ));
+                                child: product.productType == ProductType.asset
+                                    ? AddAssetPage(
+                                        product: product,
+                                        isEdit: true,
+                                      )
+                                    : AddConsumablePage(
+                                        isEdit: true,
+                                        product: product,
+                                      ));
                           },
                         )),
                   ],

@@ -116,7 +116,7 @@ class MobileProductDetailsCard extends StatelessWidget {
                 children: [
                   DefaultRichText(
                     label: 'Unit Of Measurement',
-                    value: product.consumablesEntity!.unitOfMeasurement,
+                    value: product.consumablesEntity!.unitOfMeasurement.getName,
                   ),
                   verticalSpace(2),
                   DefaultRichText(

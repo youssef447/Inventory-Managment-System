@@ -6,6 +6,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import '../../../../../core/enums/requests_enums.dart';
 import '../../../../employee/consumables/domain/entity/consumables_entity.dart';
 import '../../../../employee/requests/entities/attachment_entity.dart';
 import '../../../../products/domain/assigned_user_products_entity.dart';
@@ -75,7 +76,7 @@ class ConsumableAssetsController extends GetxController {
   brand: 'SafeHealth',
   dateReceived: DateTime(2023, 7, 10),
   quantity: '500',
-  unitOfMeasurement: 'pieces',
+  unitOfMeasurement: UnitOfMeasurement.gram,
   usageFrequency: 'daily',
   expirationDate: DateTime(2024, 7, 10),
   status: 'Returned',
@@ -133,7 +134,7 @@ class ConsumableAssetsController extends GetxController {
   brand: 'SafeHealth',
   dateReceived: DateTime(2023, 7, 10),
   quantity: '500',
-  unitOfMeasurement: 'pieces',
+            unitOfMeasurement: UnitOfMeasurement.gram,
   usageFrequency: 'daily',
   expirationDate: DateTime(2024, 7, 10),
   status: 'Returned',

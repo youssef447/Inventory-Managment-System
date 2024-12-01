@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../../../core/enums/departments.dart';
 
+import '../../../../core/enums/requests_enums.dart';
 import '../../../../core/enums/stock_enums.dart';
 import '../../../employee/Assets/domain/entity/assets_entity.dart';
 import '../../../employee/consumables/domain/entity/consumables_entity.dart';
@@ -197,7 +198,7 @@ class ProductsController extends GetxController {
             brand: 'SafeHealth',
             dateReceived: DateTime(2023, 7, 10),
             quantity: '500',
-            unitOfMeasurement: 'pieces',
+            unitOfMeasurement: UnitOfMeasurement.gram,
             usageFrequency: 'Daily',
             expirationDate: DateTime(2024, 7, 10),
             status: 'Maintenance',
@@ -246,7 +247,7 @@ class ProductsController extends GetxController {
             brand: 'SafeHealth',
             dateReceived: DateTime(2023, 7, 10),
             quantity: '500',
-            unitOfMeasurement: 'pieces',
+            unitOfMeasurement: UnitOfMeasurement.gram,
             usageFrequency: 'Daily',
             expirationDate: DateTime(2024, 7, 10),
             status: 'Maintenance',

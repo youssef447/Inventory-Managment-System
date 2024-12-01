@@ -3,6 +3,7 @@
 // This widget displays a table of consumable items using data from ConsumablesController in tablet and windows view
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
 import '../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/date_time_helper.dart';
@@ -139,7 +140,7 @@ class ConsumablesTabletPage extends StatelessWidget {
                               DataCell(
                                 Text(
                                   controller
-                                      .consumablesList[index].unitOfMeasurement,
+                                      .consumablesList[index].unitOfMeasurement.getName,
                                   style: AppTextStyles.font16BlackRegularCairo,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
