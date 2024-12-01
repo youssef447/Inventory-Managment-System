@@ -29,6 +29,9 @@ class MobileAddConsumablePage extends GetView<AddProductController> {
 
   @override
   Widget build(BuildContext context) {
+    if (isEdit == true) {
+      controller.loadConsumableData(product!);
+    }
     return GetBuilder<AddProductController>(builder: (controller) {
       return Container(
           width: Get.width * 0.85,
@@ -96,7 +99,6 @@ class MobileAddConsumablePage extends GetView<AddProductController> {
                 verticalSpace(24),
           LabeledDropdownField(
             label: 'Category'.tr,
-            value: controller.categoryValue,
             textButton: controller.categoryValue,
             onChanged: (value) {
               controller.updateCategoryValue(value);

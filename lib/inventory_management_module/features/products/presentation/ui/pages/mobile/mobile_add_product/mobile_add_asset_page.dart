@@ -32,6 +32,9 @@ class MobileAddAssetPage extends GetView<AddProductController> {
 
   @override
   Widget build(BuildContext context) {
+    if (isEdit == true) {
+      controller.loadAssetData(product!);
+    }
     return Container(
         width: Get.width * 0.85,
         padding: EdgeInsets.symmetric(
@@ -63,7 +66,7 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                         )),
                     horizontalSpace(8),
                     Text(
-                      'Add New Assets'.tr,
+                      isEdit == true ? 'Edit Assets'.tr :'Add New Assets'.tr,
                       style: AppTextStyles.font16BlackCairoRegular,
                     ),
                   ],
@@ -98,7 +101,6 @@ class MobileAddAssetPage extends GetView<AddProductController> {
                 verticalSpace(15),
                 LabeledDropdownField(
                   label: 'Category'.tr,
-                  value: controller.categoryValue,
                   textButton: controller.categoryValue,
                   onChanged: (value) {
                     controller.updateCategoryValue(value);

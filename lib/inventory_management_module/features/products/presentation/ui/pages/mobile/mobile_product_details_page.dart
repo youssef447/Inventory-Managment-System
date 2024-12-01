@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/enums/requests_enums.dart';
+import 'package:inventory_management/inventory_management_module/features/products/presentation/ui/pages/mobile/mobile_add_product/mobile_add_consumable_page.dart';
 import '../../../../../../features/products/presentation/ui/pages/mobile/edit/mobile_restocking_edit.dart';
 import '../../../../../../core/enums/stock_enums.dart';
 import '../../../../../../core/extensions/extensions.dart';
@@ -103,10 +104,14 @@ class MobileProductDetailsPage extends StatelessWidget {
                   onTap: () {
                     GetDialogHelper.generalDialog(
                         context: context,
-                        child: MobileAddAssetPage(
+                        child: product.productType == ProductType.asset ? MobileAddAssetPage(
                           product: product,
                           isEdit: true,
-                        ));
+                        ) :  MobileAddConsumablePage(
+                          product: product,
+                          isEdit: true,
+                        )
+                    );
                   },
                   child: SizedBox(
                       height: 30.h,

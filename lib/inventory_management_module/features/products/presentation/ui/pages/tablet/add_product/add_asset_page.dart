@@ -451,7 +451,7 @@ class AddAssetPage extends GetView<AddProductController> {
                       ),
                       const Spacer(),
                       AppDefaultButton(
-                        text:isEdit==true ? 'Add Asset'.tr : 'Save'.tr,
+                        text:isEdit==true ? 'Save'.tr : 'Add Asset'.tr,
                         color: AppColors.primary,
                         onPressed: () {
                           controller.addAssetItem();
