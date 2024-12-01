@@ -82,4 +82,8 @@ abstract class DateTimeHelper {
   static String formatDouble(double number) {
     return NumberFormat('0.00', Get.locale.toString()).format(number);
   }
+
+  static String formatMoneyDouble(double number) {
+    return NumberFormat('#,####.00', Get.locale.toString()).format(number);
+  }
 }

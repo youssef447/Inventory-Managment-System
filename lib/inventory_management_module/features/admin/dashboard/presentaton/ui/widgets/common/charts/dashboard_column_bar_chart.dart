@@ -114,7 +114,7 @@ class DashboardColumnBarChart extends StatelessWidget {
                       child: SfCartesianChart(
                         plotAreaBorderWidth: 0,
                         // isTransposed: true,
-                        margin: EdgeInsets.zero,
+                        //margin: EdgeInsets.zero,
                         backgroundColor: AppColors.card,
                         primaryXAxis: CategoryAxis(
                           labelStyle: AppTextStyles.font10BlackRegularInter,

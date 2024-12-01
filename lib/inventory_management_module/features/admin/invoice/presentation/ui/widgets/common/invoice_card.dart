@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../../core/animations/scale_animation.dart';
-import '../../../../../../core/enums/orders_status.dart';
+import '../../../../../../../core/animations/scale_animation.dart';
+import '../../../../../../../core/enums/orders_status.dart';
 
-import '../../../../../../core/constants/app_assets.dart';
-import '../../../../../../core/helpers/date_time_helper.dart';
-import '../../../../../../core/helpers/spacing_helper.dart';
-import '../../../../../../core/theme/app_colors.dart';
-import '../../../../../../core/widgets/default_rich_text.dart';
-import '../../../../../products/enums/product_enums.dart';
-import '../../../../orders/domain/order_entity.dart';
+import '../../../../../../../core/constants/app_assets.dart';
+import '../../../../../../../core/helpers/date_time_helper.dart';
+import '../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../core/theme/app_colors.dart';
+import '../../../../../../../core/widgets/default_rich_text.dart';
+import '../../../../../../products/enums/product_enums.dart';
+import '../../../../../orders/domain/order_entity.dart';
 
 ///Youssef Ashraf
 ///Represents The Invoice Card in Tablet - Mobile Views
@@ -20,7 +20,7 @@ class InvoiceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isConsumable =
-        invoice.productEntity.productType == ProductType.consumable;
+        invoice.productEntity[0].productType == ProductType.consumable;
     return ScaleAnimation(
       child: Container(
         padding: EdgeInsets.symmetric(
@@ -68,12 +68,12 @@ class InvoiceCard extends StatelessWidget {
                       DefaultRichText(
                         label: 'Product Name',
                         value: isConsumable
-                            ? invoice.productEntity.consumablesEntity!.name
-                            : invoice.productEntity.assetEntity!.assetName,
+                            ? invoice.productEntity[0].consumablesEntity!.name
+                            : invoice.productEntity[0].assetEntity!.assetName,
                       ),
                       DefaultRichText(
                         label: 'Product Type',
-                        value: invoice.productEntity.productType.getName,
+                        value: invoice.productEntity[0].productType.getName,
                       ),
                     ],
                   ),
@@ -82,7 +82,7 @@ class InvoiceCard extends StatelessWidget {
             ),
             DefaultRichText(
               label: 'Supplier Name',
-              value: invoice.productEntity.supplier.supplierName,
+              value: invoice.productEntity[0].supplier.supplierName,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

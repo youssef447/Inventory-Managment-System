@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../core/routes/app_routes.dart';
+import '../../../../../../../core/routes/route_arguments.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/widgets/appbar/mobile_custom_appbar.dart';
 import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../constants/ids.dart';
 import '../../../controller/invoices_controller.dart';
-import '../../widgets/invoice_card.dart';
-import '../../widgets/search_filter.dart';
+import '../../widgets/common/invoice_card.dart';
+import '../../widgets/common/search_filter.dart';
 //Youssef Ashraf
 ///Represents The Invoices Page in Mobile View
 
@@ -67,8 +70,19 @@ class MobileInvoicesPage extends StatelessWidget {
                                       separatorBuilder: (_, __) =>
                                           verticalSpace(16),
                                       itemBuilder: (context, index) {
-                                        return InvoiceCard(
-                                          invoice: controller.invoices[index],
+                                        return GestureDetector(
+                                          onTap: () {
+                                            context.navigateTo(
+                                                Routes.invoiceDetails,
+                                                arguments: {
+                                                  RouteArguments.invoice:
+                                                      controller
+                                                          .invoices[index],
+                                                });
+                                          },
+                                          child: InvoiceCard(
+                                            invoice: controller.invoices[index],
+                                          ),
                                         );
                                       },
                                       itemCount: controller.invoices.length,

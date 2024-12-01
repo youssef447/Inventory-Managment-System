@@ -5,14 +5,16 @@ import 'package:get/get.dart';
 import '../../../../../../../core/extensions/extensions.dart';
 
 import '../../../../../../../core/helpers/spacing_helper.dart';
+import '../../../../../../../core/routes/app_routes.dart';
+import '../../../../../../../core/routes/route_arguments.dart';
 import '../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../core/widgets/appbar/custom_app_bar.dart';
 import '../../../../../../../core/widgets/loading.dart';
 import '../../../../../../../core/widgets/no_data_gif.dart';
 import '../../../../constants/ids.dart';
 import '../../../controller/invoices_controller.dart';
-import '../../widgets/invoice_card.dart';
-import '../../widgets/search_filter.dart';
+import '../../widgets/common/invoice_card.dart';
+import '../../widgets/common/search_filter.dart';
 
 //Youssef Ashraf
 ///Represents The Invoices Page in Tablet View
@@ -86,14 +88,12 @@ class TabletInvoicesPage extends StatelessWidget {
                                     (index) {
                                       return GestureDetector(
                                         onTap: () {
-                                          /*  context.navigateTo(
-                                                  Routes.employeeDetails,
-                                                  arguments: {
-                                                    RouteArguments
-                                                        .userEntity: controller
-                                                            .employeesFilters[
-                                                        index],
-                                                  }); */
+                                          context.navigateTo(
+                                              Routes.invoiceDetails,
+                                              arguments: {
+                                                RouteArguments.invoice:
+                                                    controller.invoices[index],
+                                              });
                                         },
                                         child: InvoiceCard(
                                           invoice: controller.invoices[index],

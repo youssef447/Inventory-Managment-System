@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:inventory_management/inventory_management_module/features/admin/dashboard/presentaton/ui/widgets/common/charts/bar_chart_list.dart';
+import '../../../../../../../features/admin/dashboard/presentaton/ui/widgets/common/charts/bar_chart_list.dart';
 import '../../../../../../../core/animations/size_animation.dart';
 import '../../../../../../../core/extensions/extensions.dart';
 

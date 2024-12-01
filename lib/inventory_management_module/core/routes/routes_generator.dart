@@ -22,6 +22,8 @@ import '../../features/admin/employees/presentation/ui/pages/tablet/tablet_admin
 import '../../features/admin/employees/presentation/ui/pages/tablet/tablet_track_requests_details_page.dart';
 import '../../features/admin/home/presentation/ui/page/mobile/mobile_admin_home_page.dart';
 import '../../features/admin/home/presentation/ui/page/tablet/tablet_admin_home_page.dart';
+import '../../features/admin/invoice/presentation/ui/pages/mobile/mobile_invoice_details_page.dart';
+import '../../features/admin/invoice/presentation/ui/pages/tablet/tablet_invoice_details_page.dart';
 import '../../features/admin/invoice/presentation/ui/pages/mobile/mobile_invoice_page.dart';
 import '../../features/admin/invoice/presentation/ui/pages/tablet/tablet_invoice_page.dart';
 import '../../features/admin/orders/presentation/ui/pages/mobile/mobile_new_order_form_page.dart';
@@ -301,6 +303,18 @@ abstract class RouteGenerator {
           const ResponsiveHelper(
             mobileWidget: MobileInvoicesPage(),
             tabletWidget: TabletInvoicesPage(),
+          ),
+          PageTransitionType.fade,
+        );
+      case Routes.invoiceDetails:
+        return _buildPageRoute(
+          ResponsiveHelper(
+            tabletWidget: TabletInvoiceDetailsPage(
+              invoice: args[RouteArguments.invoice],
+            ),
+            mobileWidget: MobileInvoiceDetailsPage(
+              invoice: args[RouteArguments.invoice],
+            ),
           ),
           PageTransitionType.fade,
         );

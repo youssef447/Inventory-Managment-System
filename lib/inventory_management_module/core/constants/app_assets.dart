@@ -12,7 +12,7 @@ abstract class AppAssets {
   static const String profileImage = 'assets/images/profileImage.png';
   static const String user = 'assets/images/user.png';
   static const String qr = 'assets/images/qr.png';
-
+  static const String maintenance = 'assets/images/maintenace.png';
   //****************************************************************************
 
 //******************************* VECTORS ************************************
@@ -71,7 +71,7 @@ abstract class AppAssets {
   static const String unknown = 'assets/vectors/unknown.svg';
   static const String attach = 'assets/vectors/attach.svg';
   static const String trash = 'assets/vectors/trash.svg';
-  static const String maintenance = 'assets/images/maintenace.png';
+  static const String logo = 'assets/vectors/logo.svg';
 
   //****************************************************************************
 

@@ -9,7 +9,7 @@ class MobileOrderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isConsumable =
-        order.productEntity.productType == ProductType.consumable;
+        order.productEntity[0].productType == ProductType.consumable;
     return SizeAnimation(
       child: Container(
         padding: EdgeInsets.symmetric(
@@ -67,8 +67,8 @@ class MobileOrderCard extends StatelessWidget {
             DefaultRichText(
               label: 'Product Name',
               value: isConsumable
-                  ? order.productEntity.consumablesEntity!.name
-                  : order.productEntity.assetEntity!.assetName,
+                  ? order.productEntity[0].consumablesEntity!.name
+                  : order.productEntity[0].assetEntity!.assetName,
             ),
             DefaultRichText(
               label: 'Expected Delivery',

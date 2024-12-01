@@ -42,7 +42,7 @@ class TabletOrderPage extends StatelessWidget {
                       controller.orders.length,
                       (index) {
                         final isConsumable = controller
-                                .orders[index].productEntity.productType ==
+                                .orders[index].productEntity[0].productType ==
                             ProductType.consumable;
                         return DataRow(
                           color: WidgetStatePropertyAll(
@@ -93,7 +93,7 @@ class TabletOrderPage extends StatelessWidget {
                             ),
                             DataCell(
                               Text(
-                                controller.orders[index].productEntity.id,
+                                controller.orders[index].productEntity[0].id,
                                 style: AppTextStyles.font16BlackRegularCairo,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -102,9 +102,9 @@ class TabletOrderPage extends StatelessWidget {
                             DataCell(
                               Text(
                                 isConsumable
-                                    ? controller.orders[index].productEntity
+                                    ? controller.orders[index].productEntity[0]
                                         .consumablesEntity!.name
-                                    : controller.orders[index].productEntity
+                                    : controller.orders[index].productEntity[0]
                                         .assetEntity!.assetName,
                                 style: AppTextStyles.font16BlackRegularCairo,
                                 maxLines: 1,
@@ -113,8 +113,8 @@ class TabletOrderPage extends StatelessWidget {
                             ),
                             DataCell(
                               Text(
-                                controller.orders[index].productEntity.supplier
-                                    .supplierName,
+                                controller.orders[index].productEntity[0]
+                                    .supplier.supplierName,
                                 style: AppTextStyles.font16BlackRegularCairo,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
@@ -122,7 +122,7 @@ class TabletOrderPage extends StatelessWidget {
                             ),
                             DataCell(
                               Text(
-                                controller.orders[index].productEntity
+                                controller.orders[index].productEntity[0]
                                     .storage[0].locationName,
                                 style: AppTextStyles.font16BlackRegularCairo,
                                 maxLines: 1,
@@ -132,9 +132,9 @@ class TabletOrderPage extends StatelessWidget {
                             DataCell(
                               Text(
                                 isConsumable
-                                    ? controller.orders[index].productEntity
+                                    ? controller.orders[index].productEntity[0]
                                         .consumablesEntity!.category
-                                    : controller.orders[index].productEntity
+                                    : controller.orders[index].productEntity[0]
                                         .assetEntity!.category,
                                 style: AppTextStyles.font16BlackRegularCairo,
                                 maxLines: 1,
@@ -144,9 +144,9 @@ class TabletOrderPage extends StatelessWidget {
                             DataCell(
                               Text(
                                 isConsumable
-                                    ? controller.orders[index].productEntity
+                                    ? controller.orders[index].productEntity[0]
                                         .consumablesEntity!.subcategory
-                                    : controller.orders[index].productEntity
+                                    : controller.orders[index].productEntity[0]
                                         .assetEntity!.subcategory,
                                 style: AppTextStyles.font16BlackRegularCairo,
                                 maxLines: 1,
@@ -156,9 +156,9 @@ class TabletOrderPage extends StatelessWidget {
                             DataCell(
                               Text(
                                 isConsumable
-                                    ? controller.orders[index].productEntity
+                                    ? controller.orders[index].productEntity[0]
                                         .consumablesEntity!.brand
-                                    : controller.orders[index].productEntity
+                                    : controller.orders[index].productEntity[0]
                                         .assetEntity!.brand,
                                 style: AppTextStyles.font16BlackRegularCairo,
                                 maxLines: 1,
@@ -168,9 +168,9 @@ class TabletOrderPage extends StatelessWidget {
                             DataCell(
                               Text(
                                 isConsumable
-                                    ? controller.orders[index].productEntity
+                                    ? controller.orders[index].productEntity[0]
                                         .consumablesEntity!.model
-                                    : controller.orders[index].productEntity
+                                    : controller.orders[index].productEntity[0]
                                         .assetEntity!.model,
                                 style: AppTextStyles.font16BlackRegularCairo,
                                 maxLines: 1,
@@ -181,7 +181,7 @@ class TabletOrderPage extends StatelessWidget {
                               Text(
                                 DateTimeHelper.formatDouble(
                                   controller
-                                      .orders[index].productEntity.unitCost,
+                                      .orders[index].productEntity[0].unitCost,
                                 ),
                                 style: AppTextStyles.font16BlackRegularCairo,
                                 maxLines: 1,

@@ -41,6 +41,7 @@ abstract class Routes {
       '$adminHome/adminAssetServiceHistoryDetails';
   static const employees = '$adminHome/employees';
   static const invoices = '$adminHome/invoices';
+  static const invoiceDetails = '$invoices/invoiceDetails';
   static const employeeDetails = '$employees/employeeDetails';
   static const employeeTrackRequestDetails =
       '$employeeDetails/trackRequestDetails';
