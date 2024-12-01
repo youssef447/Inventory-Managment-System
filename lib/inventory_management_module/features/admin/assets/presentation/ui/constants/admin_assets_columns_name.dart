@@ -9,10 +9,10 @@ abstract class AssetsColumnsName {
     'Supplier Name',
     'Storage Location',
     'Quantity On Hand',
-    'UnitCost',
+    'Unit Cost',
     'Currency',
     'Category',
-    'SubCategory',
+    'Sub Category',
     'Model',
     'Brand',
   ];

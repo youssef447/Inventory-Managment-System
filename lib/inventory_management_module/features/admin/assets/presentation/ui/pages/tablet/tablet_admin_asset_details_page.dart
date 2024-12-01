@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:inventory_management/inventory_management_module/core/extensions/extensions.dart';
 import '../../../../../../../core/animations/size_animation.dart';
 import '../../../../../../../core/helpers/orientation_helper.dart';
@@ -37,7 +38,7 @@ class TabletAdminAssetDetailsPage extends StatelessWidget {
                   children: [
                     verticalSpace(16),
                     CustomAppBar(
-                      titles: const ['Asset', 'Asset Details'],
+                      titles:  ['Asset'.tr, 'Asset Details'.tr],
                       titleNavigations: [
                             () => Navigator.of(context).pop(),
                       ],

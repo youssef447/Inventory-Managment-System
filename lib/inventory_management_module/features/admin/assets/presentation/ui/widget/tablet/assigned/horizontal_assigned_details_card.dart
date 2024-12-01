@@ -102,7 +102,7 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
                 children: [
                   verticalSpace(2),
                   DefaultRichText(
-                    label: 'quantity'.tr,
+                    label: 'Quantity'.tr,
                     value: assets.quantity,
                   ),
                   verticalSpace(2),
@@ -161,7 +161,7 @@ class HorizontalAssignedDetailsCard extends StatelessWidget {
                   ),
                   horizontalSpace(4),
                   Text(
-                    'Download As PNG',
+                    'Download As PNG'.tr,
                     style: AppTextStyles.font14SecondaryBlackCairoRegular
                         .copyWith(
                       decoration: TextDecoration.underline,

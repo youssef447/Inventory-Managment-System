@@ -39,7 +39,7 @@ class TabletAdminAssignedDetails extends StatelessWidget {
                 children: [
                   verticalSpace(16),
                   CustomAppBar(
-                    titles:  const ['Asset Details','Assigned'],
+                    titles:   ['Asset Details'.tr,'Assigned'.tr],
                     titleNavigations: [
                           () => Navigator.of(context).pop(),
                     ],

@@ -58,22 +58,22 @@ class HorizontalAssetsDetailsCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   DefaultRichText(
-                    label: 'Asset ID',
+                    label: 'Asset ID'.tr,
                     value: assets.assetId,
                   ),
                   DefaultRichText(
-                    label: 'Product ID',
+                    label: 'Product ID'.tr,
                     value: assets.assetId,
                   ),
                   verticalSpace(2),
-                  DefaultRichText(label: 'Category', value: assets.category),
+                  DefaultRichText(label: 'Category'.tr, value: assets.category),
                 ],
               ),
               const Spacer(),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  DefaultRichText(label: 'Model', value: assets.model),
+                  DefaultRichText(label: 'Model'.tr, value: assets.model),
                   verticalSpace(2),
                   DefaultRichText(
                     label: 'Brand',
@@ -81,10 +81,10 @@ class HorizontalAssetsDetailsCard extends StatelessWidget {
                   ),
                   verticalSpace(2),
                   DefaultRichText(
-                      label: 'Subcategory', value: assets.subcategory),
+                      label: 'Subcategory'.tr, value: assets.subcategory),
                   verticalSpace(2),
                   DefaultRichText(
-                    label: 'Expected Date',
+                    label: 'Expected Date'.tr,
                     value: assets.expectedLifeTime != null
                         ? DateTimeHelper.formatDate(
                             assets.expectedLifeTime!,
@@ -93,7 +93,7 @@ class HorizontalAssetsDetailsCard extends StatelessWidget {
                   ),
                   verticalSpace(2),
                   DefaultRichText(
-                    label: 'Expected Lifetime',
+                    label: 'Expected Lifetime'.tr,
                     value: assets.expectedLifeTime != null
                         ? DateTimeHelper.formatDate(
                             assets.expectedLifeTime!,
