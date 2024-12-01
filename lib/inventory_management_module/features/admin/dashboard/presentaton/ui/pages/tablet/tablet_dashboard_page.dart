@@ -39,7 +39,7 @@ class TabletDashboardPage extends GetView<DashboardController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const CustomAppBar(
-                  titles: ['Dashborad'],
+                  titles: ['Dashboard'],
                 ),
                 verticalSpace(30),
                 const TabletFitlerHeader(),

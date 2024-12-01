@@ -284,7 +284,7 @@ class MobileStorageFormPage extends GetView<StorageFormController> {
                               ? AppColors.field
                               : AppColors.white,
                           controller: controller.equipmentAvailable,
-                          label: 'Equiment Available',
+                          label: 'Equipment Available',
                           readOnly: !controller.isEditable,
                         ),
                         verticalSpace(16),

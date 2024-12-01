@@ -32,7 +32,7 @@ class TabletOrderPage extends StatelessWidget {
                         .map(
                           (element) => DataColumn(
                             label: Text(
-                              element..tr,
+                              element.tr,
                               style: AppTextStyles.font16WhiteRegularCairo,
                             ),
                           ),
@@ -71,7 +71,7 @@ class TabletOrderPage extends StatelessWidget {
                             ),
                             DataCell(
                               Text(
-                                controller.orders[index].orderStatus.getName,
+                                controller.orders[index].orderStatus.getName.tr,
                                 style: AppTextStyles.font16BlackRegularCairo
                                     .copyWith(
                                   color: controller

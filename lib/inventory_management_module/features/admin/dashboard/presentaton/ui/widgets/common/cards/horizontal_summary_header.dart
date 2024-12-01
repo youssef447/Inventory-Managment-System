@@ -90,7 +90,7 @@ class HorizontalSummaryHeader extends GetView<DashboardController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                OverallInventory.values[index].getName,
+                                OverallInventory.values[index].getName.tr,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: AppTextStyles.font16BlackSemiBoldCairo

@@ -43,7 +43,7 @@ class LabeledFormField extends StatelessWidget {
             ? DatePickerField(
                 textEditingController: controller,
                 width: double.infinity,
-                hintText: hintText ?? '${'Pick'.tr} $label',
+                hintText: hintText ?? '${'Pick'.tr} ${label.tr}',
                 backGroundColor: backGroundColor ?? AppColors.field,
                 onDateChanged: onDateChanged,
               )
@@ -52,7 +52,7 @@ class LabeledFormField extends StatelessWidget {
                 child: AppTextFormField(
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-                  hintText: hintText ?? '${'Enter'.tr} $label',
+                  hintText: hintText ?? '${'Enter'.tr} ${label.tr}',
                   textAlignVertical:
                       expands ?? false ? TextAlignVertical.top : null,
                   readOnly: readOnly ?? true,

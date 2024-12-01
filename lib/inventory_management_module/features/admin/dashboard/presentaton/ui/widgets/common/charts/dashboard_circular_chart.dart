@@ -62,7 +62,7 @@ class DashboardCircularChart extends StatelessWidget {
                       ),
                       horizontalSpace(4),
                       Text(
-                        title,
+                        title.tr,
                         style: AppTextStyles.font16BlackRegularCairo,
                       ),
                     ],

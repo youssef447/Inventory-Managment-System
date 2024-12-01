@@ -57,7 +57,7 @@ class VerticalSummaryHeader extends GetView<DashboardController> {
                               alignment: AlignmentDirectional.centerStart,
                               value: ProductType.values[index],
                               child: Text(
-                                ProductType.values[index].getName.tr,
+                                ProductType.values[index].getName.tr.tr,
                                 style: AppTextStyles
                                     .font14SecondaryBlackCairoMedium,
                               ),
@@ -85,7 +85,7 @@ class VerticalSummaryHeader extends GetView<DashboardController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              OverallInventory.values[0].getName,
+                              OverallInventory.values[0].getName.tr,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: AppTextStyles.font16BlackSemiBoldCairo
@@ -115,7 +115,7 @@ class VerticalSummaryHeader extends GetView<DashboardController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                OverallInventory.values[1].getName,
+                                OverallInventory.values[1].getName.tr,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: AppTextStyles.font16BlackSemiBoldCairo
@@ -149,7 +149,7 @@ class VerticalSummaryHeader extends GetView<DashboardController> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              OverallInventory.values[2].getName,
+                              OverallInventory.values[2].getName.tr,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: AppTextStyles.font16BlackSemiBoldCairo
@@ -179,7 +179,7 @@ class VerticalSummaryHeader extends GetView<DashboardController> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                OverallInventory.values[3].getName,
+                                OverallInventory.values[3].getName.tr,
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: AppTextStyles.font16BlackSemiBoldCairo
@@ -214,7 +214,7 @@ class VerticalSummaryHeader extends GetView<DashboardController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        OverallInventory.values[4].getName,
+                        OverallInventory.values[4].getName.tr,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: AppTextStyles.font16BlackSemiBoldCairo.copyWith(

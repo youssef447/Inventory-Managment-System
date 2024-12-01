@@ -35,7 +35,7 @@ class TabletStoragePage extends StatelessWidget {
                         .map(
                           (element) => DataColumn(
                             label: Text(
-                              element..tr,
+                              element.tr,
                               style: AppTextStyles.font16WhiteRegularCairo,
                             ),
                           ),
