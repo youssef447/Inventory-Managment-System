@@ -104,7 +104,8 @@ class AssetAssignedUserCard extends StatelessWidget {
                 ),
               ],
             ) : Column(
-crossAxisAlignment: CrossAxisAlignment.start,              children: [
+crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
                 DefaultRichText(
                   label: 'Assigned Date',
                   value: DateTimeHelper.formatDate(

@@ -53,7 +53,7 @@ class MaintenanceCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             DefaultRichText(
-                              label: 'Maintenance Schedule ',
+                              label: 'Maintenance Schedule',
                               value: DateTimeHelper.formatDate(
                                 DateTime.now(),
                               ),

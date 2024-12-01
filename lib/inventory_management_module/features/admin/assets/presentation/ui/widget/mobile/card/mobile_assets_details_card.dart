@@ -146,7 +146,7 @@ class MobileAssetsDetailsCard extends StatelessWidget {
                   color: Colors.blue,
                 ),
                 Text(
-                  'Download As PNG',
+                  'Download As PNG'.tr,
                   style: AppTextStyles.font14SecondaryBlackCairoRegular
                       .copyWith(
                     decoration: TextDecoration.underline,

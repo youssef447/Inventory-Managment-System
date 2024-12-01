@@ -75,7 +75,7 @@ class HorizontalAssignedConsumableDetailsCard extends StatelessWidget {
                   DefaultRichText(label: 'Request type'.tr, value: 'Consumable Request'),
                   verticalSpace(2),
                   DefaultRichText(
-                    label: 'quantity'.tr,
+                    label: 'Quantity'.tr,
                     value: consumable.quantity,
                   ),
                 ],

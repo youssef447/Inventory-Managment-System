@@ -3,8 +3,8 @@
 abstract class AdminConsumableColumnsName {
   // name of column for table of assets
   static const List<String> tableColumnsName = [
-    'consumables ID',
-    'consumables Name',
+    'Consumables ID',
+    'Consumables Name',
     'Supplier Id',
     'Supplier Name',
     'Storage Location',
