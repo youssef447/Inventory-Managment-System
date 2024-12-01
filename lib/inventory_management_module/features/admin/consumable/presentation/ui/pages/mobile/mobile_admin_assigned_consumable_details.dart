@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../core/theme/app_colors.dart';
-import '../../../../../../..//features/employee/consumables/presentation/controller/consumables_controller.dart';
+import '../../../../../../../features/employee/consumables/presentation/controller/consumables_controller.dart';
 import '../../../../../../../core/animations/size_animation.dart';
 import '../../../../../../../core/helpers/spacing_helper.dart';
 import '../../../../../../../core/theme/app_text_styles.dart';
