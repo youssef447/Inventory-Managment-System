@@ -27,7 +27,7 @@ class SendInvoiceDialog extends GetView<InvoicesController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: context.isTablett ? 411.w : 343.w,
+      width: context.isTablett ? 500.w : 420.w,
       padding: EdgeInsets.symmetric(
         horizontal: 16.w,
         vertical: 16.h,
@@ -61,6 +61,7 @@ class SendInvoiceDialog extends GetView<InvoicesController> {
           Row(
             children: [
               Expanded(
+                flex: 3,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.r),
                   child: SizedBox(
@@ -91,20 +92,22 @@ class SendInvoiceDialog extends GetView<InvoicesController> {
               ),
               horizontalSpace(9),
               if (context.isLandscapee)
-                RectangledFilterCard(
-                  width: 112.w,
-                  image: AppAssets.filter,
-                  text: 'Filter',
-                  textColor: AppColors.text,
-                  color: AppTheme.isDark ?? false
-                      ? AppColors.field
-                      : AppColors.chatBackground,
-                  onTap: () {
-                    GetDialogHelper.generalDialog(
-                      child: const InvoiceEmployeeFilterDialog(),
-                      context: context,
-                    );
-                  },
+                Expanded(
+                  child: RectangledFilterCard(
+                    width: 112.w,
+                    image: AppAssets.filter,
+                    text: 'Filter',
+                    textColor: AppColors.text,
+                    color: AppTheme.isDark ?? false
+                        ? AppColors.field
+                        : AppColors.chatBackground,
+                    onTap: () {
+                      GetDialogHelper.generalDialog(
+                        child: const InvoiceEmployeeFilterDialog(),
+                        context: context,
+                      );
+                    },
+                  ),
                 ),
               if (!context.isLandscapee)
                 SquaredChipCard(

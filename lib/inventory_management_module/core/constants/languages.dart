@@ -491,6 +491,7 @@ class Languages extends Translations {
           'AMOUNT': 'المبلغ',
           'ARTICLE': 'المقال',
           'QUANTITY': 'الكمية',
+          'Total Picked Files': 'Total Picked Files',
           'UNIT PRICE': 'سعر الوحدة',
           'Tax Number': 'الرقم الضريبي',
           'Order Date': 'تاريخ الطلب',

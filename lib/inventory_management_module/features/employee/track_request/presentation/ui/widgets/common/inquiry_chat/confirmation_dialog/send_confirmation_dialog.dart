@@ -8,9 +8,8 @@ import '../../../../../../../../../core/extensions/extensions.dart';
 import '../../../../../../../../../core/theme/app_colors.dart';
 import '../../../../../../../../../core/theme/app_text_styles.dart';
 import '../../../../../../../../../core/widgets/buttons/app_default_button.dart';
-import '../../../../../controller/track_requests_controller.dart';
 
-class SendConfirmationDialog extends GetView<TrackRequestController> {
+class SendConfirmationDialog extends StatelessWidget {
   final int? count;
   const SendConfirmationDialog({super.key, this.count});
 
